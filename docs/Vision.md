@@ -1,0 +1,2 @@
+# Vision
+KGL is a **living knowledge lab**: open-world ingestion, provenance-first storage, a **morphing ontology** over a canonical meta-schema, and **neuro-symbolic reasoning** with **graph-aware RAG**. Goals: (1) discover what to research next, (2) revise past conclusions as evidence changes, (3) publish trustworthy briefs and APIs. KGL is domain-agnostic; domain differences live in **Packs**.

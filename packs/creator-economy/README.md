@@ -1,0 +1,1 @@
+Seed pack for Creator Economy (stub; no sources yet).

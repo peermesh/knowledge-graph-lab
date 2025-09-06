@@ -1,0 +1,2 @@
+# RFC-0001: Project Naming and URL Strategy
+Decision: "Knowledge Graph Lab (KGL)"; canonical path `/projects/knowledge-graph-lab/`; no subdomains. Rationale, alternatives, and SEO implications recorded.

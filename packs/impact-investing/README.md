@@ -1,0 +1,1 @@
+Seed pack for Impact Investing (stub; no sources yet).

@@ -1,0 +1,2 @@
+# Research Agenda (High-Level)
+Themes: Living Ontology & Dynamic KGs; Neuro-symbolic reasoning; Graph-aware RAG; Evaluation frameworks. Each theme will have 3–5 replication targets and 2 ablation studies.

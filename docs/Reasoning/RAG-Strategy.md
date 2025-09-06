@@ -1,0 +1,2 @@
+# RAG Strategy
+Default: **graph-aware retrieval** (communities/paths) + **self-reflection** and **corrective retrieval** on low-confidence contexts. Feed retrieval gaps and contradictions back into the research frontier.

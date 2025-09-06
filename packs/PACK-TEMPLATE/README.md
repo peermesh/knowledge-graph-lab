@@ -1,0 +1,1 @@
+Template for Domain Packs (ontology, sources, scoring, guards, templates). Packs extend KGL without changing the meta-schema.
