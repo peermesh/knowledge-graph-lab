@@ -46,6 +46,8 @@ Work through this checklist in order. Check off each item as you complete it:
 ### Research Framework
 | Resource | Purpose | When to Use |
 |----------|---------|-------------|
+| [Research Methodology](./docs/research/research-methodology.md) | Learn the SEARCH framework for systematic research | Start of Week 1 |
+| [Research Process Guide](./docs/research/research-process.md) | AI prompts, file organization, Git workflow | During Week 1 |
 | [Research Templates](#research-brief-templates) | Structure your research brief | Week 1 |
 | [GitHub Issue Templates](./.github/ISSUE_TEMPLATE/) | Submit assignments | Week 1 |
 | [Evaluation Criteria](#evaluation-criteria) | Understand grading | Before submission |
@@ -197,6 +199,8 @@ Each module has a specific focus question that drives your Week 1 research:
 ---
 
 ## 📝 Research Brief Templates
+
+**Before you start**: Read the [Research Methodology Guide](./docs/research/research-methodology.md) to learn the SEARCH framework, and the [Research Process Guide](./docs/research/research-process.md) for practical execution steps.
 
 ### Standard Template Structure
 

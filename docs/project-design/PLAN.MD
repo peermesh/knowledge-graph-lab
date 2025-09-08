@@ -4,20 +4,22 @@
 **Purpose**: Step-by-step plan to complete all project-design documentation with meticulous attention to quality, clarity, and consistency
 **Source Material**: MASTER-DOCUMENT.md (currently in archive/)
 **Target Audience**: Computer Science interns with limited professional experience, project leads, and external reviewers
+**Style Guide**: `/Users/grig/work/peermesh/repo/knowledge-graph-lab/docs/STYLEGUIDE.md`
 
 ---
 
-## STYLE GUIDE REFERENCE
+## DOCUMENTATION STANDARDS
 
-**The complete style guide has been extracted to `/docs/STYLEGUIDE.md`**
+All documentation created during this plan MUST follow the style guide located at:
+**`/Users/grig/work/peermesh/repo/knowledge-graph-lab/docs/STYLEGUIDE.md`**
 
-All documentation must follow the standards defined in the style guide, which includes:
-- Core writing philosophy
-- Target reading level
-- Writing and formatting standards
-- Language guidelines
-- Quality checklists
-- Common pitfalls to avoid
+Key principles from the style guide:
+- Write as if the reader is smart but has never built production software
+- Define all technical terms on first use
+- Include concrete examples with real data
+- Build complexity gradually
+- Explain decisions, not just outcomes
+- Use proper spacing and formatting as defined in the guide
 
 ---
 

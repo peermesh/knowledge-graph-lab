@@ -67,6 +67,8 @@
 
 | File | Purpose | Content |
 |------|---------|---------|
+| [docs/research/research-methodology.md](./docs/research/research-methodology.md) | HOW to conduct technical research | The SEARCH framework - systematic approach to evaluate technologies |
+| [docs/research/research-process.md](./docs/research/research-process.md) | Practical research execution | AI prompts, file organization, Git workflow, completion criteria |
 | [docs/research-brief-template.md](./docs/research-brief-template.md) | Exact format for Week 1 deliverable | Template structure, example sections, what good looks like |
 | [docs/glossary.md](./docs/glossary.md) | Terms explained in simple language | Creator economy, knowledge graphs, APIs - defined for CS students |
 | [docs/help.md](./docs/help.md) | Where to get help when stuck | Contact info, office hours, common questions, troubleshooting |
