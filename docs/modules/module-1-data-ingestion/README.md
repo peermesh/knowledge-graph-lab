@@ -11,7 +11,7 @@
 
 ### What You Need to Do RIGHT NOW:
 1. Read this entire README to understand the module scope
-2. Review the research brief template at `/raw-materials/today-2025-09-07/04-intern-materials/week1-research-briefs.md`
+2. Review the research brief template at `/docs/research-brief-template.md`
 3. Start researching the technologies listed in the "Week 1 Research Focus" section below
 4. Complete your 2-page research brief by Friday
 
@@ -53,14 +53,13 @@
 - ✅ Clear fallback plan if primary approach fails
 
 ### Research Resources & Templates
-- **Research Template**: [`/docs/templates/research-brief-template.md`](/docs/templates/research-brief-template.md)
+- **Research Template**: [`/docs/research-brief-template.md`](/docs/research-brief-template.md)
 - **Submission Format**: Create your research brief as `/docs/research/module-1-research-brief.md`
-- **Module Specification**: [`/raw-materials/today-2025-09-07/intern-project-specs/modules/module-1-ingestion.md`](/raw-materials/today-2025-09-07/intern-project-specs/modules/module-1-ingestion.md)
-- **Evaluation Rubric**: Available in docs/templates/ folder
+- **Evaluation Rubric**: See research template for evaluation criteria
 - **GitHub Issue**: Your Week 1 assignment will be tracked via GitHub Issues with Friday 5PM deadline
 
 ### Research Submission Process
-1. **Use the Template**: Copy `/docs/templates/research-brief-template.md` as your starting point
+1. **Use the Template**: Copy `/docs/research-brief-template.md` as your starting point
 2. **Create Your Brief**: Save as `/docs/research/module-1-research-brief.md`
 3. **Follow the Format**: Use the provided template structure exactly
 4. **Submit via GitHub**: Commit your completed research brief and reference it in your assigned GitHub Issue
