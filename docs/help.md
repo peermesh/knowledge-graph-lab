@@ -24,12 +24,12 @@
 #### Can't find your assignment?
 1. Check the [Project Board](https://github.com/grigb/knowledge-graph-lab-alpha-setup/projects/1)
 2. Look for issue assigned to your module (#7-10)
-3. Read your module's README in `/modules/module-X/`
+3. Read your module's README in `/docs/modules/module-X-[name]/`
 
 #### Need clarification on research brief?
 - Review the [Research Brief Template](research-brief-template.md)
-- Check your module's `week-1-research.md` file
-- Ask in your module's Slack channel
+- Check your module's `week-1-research.md` file in `/docs/modules/`
+- Ask in your module's Slack channel (#kgl-module-X)
 
 #### Technical setup problems?
 - Follow the [Intern Guide](../INTERN-GUIDE.md) setup section
@@ -57,8 +57,8 @@
 ## Resources
 
 ### Essential Reading
-- [Project Overview](../project-design/overview.md)
-- [System Architecture](../project-design/architecture.md)
+- [Project Overview](project-design/overview.md)
+- [System Architecture](project-design/architecture.md)
 - [Technical Glossary](glossary.md)
 
 ### External Resources

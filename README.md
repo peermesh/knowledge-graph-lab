@@ -12,16 +12,16 @@
 ## 🚀 Quick Start
 
 **New to the project?** Start here:
-1. 📋 [**Getting Started Guide**](GETTING-STARTED.md) - Setup and onboarding
-2. 📊 [**Project Outline**](docs/project-outline.md) - Complete project vision and timeline
+1. 📋 [**Intern Guide**](INTERN-GUIDE.md) - Complete workbook for interns
+2. 📊 [**Project Architecture**](docs/project-design/architecture.md) - System design and timeline
 3. 🏗️ [**Module Architecture**](#architecture) - System overview and module breakdown
-4. 📝 [**Master PRD**](docs/MASTER-PRD.md) - Detailed product requirements
+4. 📝 [**Project Overview**](docs/project-design/overview.md) - Detailed project requirements
 
 **For Development:**
-- 📦 [**Module 1: Data Ingestion**](modules/module-1-ingestion/) - Multi-source data pipeline
-- 🧠 [**Module 2: Knowledge Graph**](modules/module-2-knowledge-graph/) - AI-powered entity extraction
-- 🤖 [**Module 3: Reasoning Engine**](modules/module-3-reasoning/) - Content synthesis and personalization
-- 🎨 [**Module 4: Frontend**](modules/module-4-frontend/) - Interactive user experience
+- 📦 [**Module 1: Data Ingestion**](docs/modules/module-1-data-ingestion/) - Multi-source data pipeline
+- 🧠 [**Module 2: Knowledge Graph**](docs/modules/module-2-knowledge-graph/) - AI-powered entity extraction
+- 🤖 [**Module 3: Reasoning Engine**](docs/modules/module-3-reasoning/) - Content synthesis and personalization
+- 🎨 [**Module 4: Frontend**](docs/modules/module-4-frontend/) - Interactive user experience
 
 ---
 

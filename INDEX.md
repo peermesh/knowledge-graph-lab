@@ -20,26 +20,26 @@
 ### Module 1: Data Ingestion
 | File | Purpose |
 |------|---------|
-| [modules/module-1-data-ingestion/README.md](./modules/module-1-data-ingestion/README.md) | You are the Data Ingestion intern - your role explained |
-| [modules/module-1-data-ingestion/week-1-research.md](./modules/module-1-data-ingestion/week-1-research.md) | Your Week 1 assignment - specific research task |
+| [docs/modules/module-1-data-ingestion/README.md](./docs/modules/module-1-data-ingestion/README.md) | You are the Data Ingestion intern - your role explained |
+| [docs/modules/module-1-data-ingestion/week-1-research.md](./docs/modules/module-1-data-ingestion/week-1-research.md) | Your Week 1 assignment - specific research task |
 
 ### Module 2: Knowledge Graph
 | File | Purpose |
 |------|---------|
-| [modules/module-2-knowledge-graph/README.md](./modules/module-2-knowledge-graph/README.md) | You are the Knowledge Graph intern - your role explained |
-| [modules/module-2-knowledge-graph/week-1-research.md](./modules/module-2-knowledge-graph/week-1-research.md) | Your Week 1 assignment - specific research task |
+| [docs/modules/module-2-knowledge-graph/README.md](./docs/modules/module-2-knowledge-graph/README.md) | You are the Knowledge Graph intern - your role explained |
+| [docs/modules/module-2-knowledge-graph/week-1-research.md](./docs/modules/module-2-knowledge-graph/week-1-research.md) | Your Week 1 assignment - specific research task |
 
 ### Module 3: Reasoning Engine
 | File | Purpose |
 |------|---------|
-| [modules/module-3-reasoning/README.md](./modules/module-3-reasoning/README.md) | You are the Reasoning Engine intern - your role explained |
-| [modules/module-3-reasoning/week-1-research.md](./modules/module-3-reasoning/week-1-research.md) | Your Week 1 assignment - specific research task |
+| [docs/modules/module-3-reasoning/README.md](./docs/modules/module-3-reasoning/README.md) | You are the Reasoning Engine intern - your role explained |
+| [docs/modules/module-3-reasoning/week-1-research.md](./docs/modules/module-3-reasoning/week-1-research.md) | Your Week 1 assignment - specific research task |
 
 ### Module 4: Frontend
 | File | Purpose |
 |------|---------|
-| [modules/module-4-frontend/README.md](./modules/module-4-frontend/README.md) | You are the Frontend intern - your role explained |
-| [modules/module-4-frontend/week-1-research.md](./modules/module-4-frontend/week-1-research.md) | Your Week 1 assignment - specific research task |
+| [docs/modules/module-4-frontend/README.md](./docs/modules/module-4-frontend/README.md) | You are the Frontend intern - your role explained |
+| [docs/modules/module-4-frontend/week-1-research.md](./docs/modules/module-4-frontend/week-1-research.md) | Your Week 1 assignment - specific research task |
 
 ---
 
@@ -49,14 +49,14 @@
 
 | File | Purpose | Content |
 |------|---------|---------|
-| [project-design/overview.md](./project-design/overview.md) | High-level project vision and goals | Problem statement, solution approach, success metrics, target outcomes |
-| [project-design/architecture.md](./project-design/architecture.md) | System architecture and module interactions | 4-module system design, data flow, API contracts, integration points |
-| [project-design/user-journeys.md](./project-design/user-journeys.md) | End-user scenarios and workflows | Creator, researcher, analyst user stories and interaction flows |
-| [project-design/technology-stack.md](./project-design/technology-stack.md) | Technology decisions and rationale | Framework choices, databases, APIs, development tools - evolves from Week 1 research |
-| [project-design/data-model.md](./project-design/data-model.md) | Data structures and knowledge representation | Entity schemas, knowledge graph design, database structures |
-| [project-design/api-specification.md](./project-design/api-specification.md) | Inter-module API contracts and data formats | REST endpoints, data schemas, authentication, error handling |
-| [project-design/deployment-strategy.md](./project-design/deployment-strategy.md) | Development, testing, and production deployment | Environment setup, CI/CD pipeline, containerization, scaling considerations |
-| [project-design/success-metrics.md](./project-design/success-metrics.md) | Measurable outcomes and evaluation criteria | Technical KPIs, user experience metrics, demo day objectives |
+| [docs/project-design/overview.md](./docs/project-design/overview.md) | High-level project vision and goals | Problem statement, solution approach, success metrics, target outcomes |
+| [docs/project-design/architecture.md](./docs/project-design/architecture.md) | System architecture and module interactions | 4-module system design, data flow, API contracts, integration points |
+| [docs/project-design/user-journeys.md](./docs/project-design/user-journeys.md) | End-user scenarios and workflows | Creator, researcher, analyst user stories and interaction flows |
+| [docs/project-design/technology-stack.md](./docs/project-design/technology-stack.md) | Technology decisions and rationale | Framework choices, databases, APIs, development tools - evolves from Week 1 research |
+| [docs/project-design/data-model.md](./docs/project-design/data-model.md) | Data structures and knowledge representation | Entity schemas, knowledge graph design, database structures |
+| [docs/project-design/api-specification.md](./docs/project-design/api-specification.md) | Inter-module API contracts and data formats | REST endpoints, data schemas, authentication, error handling |
+| [docs/project-design/deployment-strategy.md](./docs/project-design/deployment-strategy.md) | Development, testing, and production deployment | Environment setup, CI/CD pipeline, containerization, scaling considerations |
+| [docs/project-design/success-metrics.md](./docs/project-design/success-metrics.md) | Measurable outcomes and evaluation criteria | Technical KPIs, user experience metrics, demo day objectives |
 
 ---
 

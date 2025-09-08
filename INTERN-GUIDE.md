@@ -14,9 +14,9 @@
 Work through this checklist in order. Check off each item as you complete it:
 
 ### Environment Setup (15 minutes)
-- [ ] **Development Environment**: Follow [SETUP.md](./SETUP.md) for technical setup
+- [ ] **Development Environment**: Follow technical setup guide
 - [ ] **GitHub Access**: Verify you can create issues in this repository
-- [ ] **Communication Setup**: Join project Discord/Slack channels
+- [ ] **Communication Setup**: Join project Slack channels (#kgl-general, #kgl-module-X)
 - [ ] **Documentation Access**: Bookmark key project documents (listed below)
 
 ### Research Assignment Discovery (10 minutes)
@@ -40,8 +40,8 @@ Work through this checklist in order. Check off each item as you complete it:
 |----------|---------|--------------|
 | [INDEX.md](./INDEX.md) | Project structure overview | 3 minutes |
 | [README.md](./README.md) | High-level project description | 2 minutes |
-| [SETUP.md](./SETUP.md) | Technical environment setup | 15 minutes |
-| [Module Integration](./modules/INTEGRATION.md) | How modules work together | 5 minutes |
+| [Project Overview](./docs/project-design/overview.md) | Complete project vision | 10 minutes |
+| [Module Integration](./docs/project-design/technology-stack.md) | How modules work together | 5 minutes |
 
 ### Research Framework
 | Resource | Purpose | When to Use |
@@ -54,25 +54,90 @@ Work through this checklist in order. Check off each item as you complete it:
 ### Communication & Support
 | Channel | Purpose | Response Time |
 |---------|---------|---------------|
-| **Discord #general** | Daily communication | ~1 hour |
-| **Discord #help-wanted** | Technical support | ~2 hours |
-| **Office Hours** | 1:1 guidance | Same day |
+| **Slack #kgl-general** | Daily communication | ~1 hour |
+| **Slack #kgl-module-[1-4]** | Module-specific help | ~2 hours |
+| **Office Hours** | Tuesday/Thursday 2-3 PM | Same day |
 | **GitHub Issues** | Assignment submission | 24 hours |
 
 ---
 
-## 🔍 Find Your Research Assignment
+## 🔍 Find Your Module Assignment
 
-### Step 1: Identify Your Module Assignment
+### You Are One of Four Module Interns
 
-You'll be assigned to one of four modules:
+Each intern owns one module completely. Find your assignment below:
 
-| Module | Focus Area | Research Question |
-|--------|------------|-------------------|
-| **Module 1** | Data Ingestion & Source Adapters | What technology stack will enable ethical, scalable data ingestion? |
-| **Module 2** | Knowledge Graph & Entity Extraction | How do we build domain-agnostic entity extraction with high accuracy? |
-| **Module 3** | Reasoning Engine & Content Generation | What neuro-symbolic approach optimizes reasoning for our use case? |
-| **Module 4** | Frontend & User Experience | How do we design interfaces that make complex AI accessible? |
+---
+
+## 📦 Module 1: Data Ingestion Intern
+
+**Your Role**: Build the system that collects data from websites and APIs
+
+### Your Resources:
+- 📖 [Module README](./docs/modules/module-1-data-ingestion/README.md) - Complete module documentation
+- 🔬 [Week 1 Research](./docs/modules/module-1-data-ingestion/week-1-research.md) - Your research assignment
+- 📢 Slack Channel: #kgl-module-1
+- 🎯 GitHub Issue: #7
+
+### What You're Building:
+A data collection service that ethically and efficiently gathers information from multiple sources (websites, APIs, RSS feeds) while respecting rate limits and legal requirements.
+
+### Your Week 1 Mission:
+Research and recommend the technology stack for web scraping, API integration, and data storage. Focus on tools that are beginner-friendly but production-ready.
+
+---
+
+## 🧠 Module 2: Knowledge Graph Intern
+
+**Your Role**: Build the brain that organizes and connects information
+
+### Your Resources:
+- 📖 [Module README](./docs/modules/module-2-knowledge-graph/README.md) - Complete module documentation
+- 🔬 [Week 1 Research](./docs/modules/module-2-knowledge-graph/week-1-research.md) - Your research assignment
+- 📢 Slack Channel: #kgl-module-2
+- 🎯 GitHub Issue: #8
+
+### What You're Building:
+An AI-powered system that extracts entities (people, companies, concepts) from text and builds a connected graph showing relationships between them.
+
+### Your Week 1 Mission:
+Research knowledge graph technologies and entity extraction methods. Focus on finding the right balance between complexity and feasibility for our 10-week timeline.
+
+---
+
+## 🤖 Module 3: Reasoning Engine Intern
+
+**Your Role**: Build the AI that answers questions and creates content
+
+### Your Resources:
+- 📖 [Module README](./docs/modules/module-3-reasoning/README.md) - Complete module documentation
+- 🔬 [Week 1 Research](./docs/modules/module-3-reasoning/week-1-research.md) - Your research assignment
+- 📢 Slack Channel: #kgl-module-3
+- 🎯 GitHub Issue: #9
+
+### What You're Building:
+A reasoning system that uses the knowledge graph to answer questions, generate summaries, and create personalized content for different user types.
+
+### Your Week 1 Mission:
+Research AI reasoning approaches, prompt engineering, and content generation. Focus on practical implementations using existing LLMs rather than building from scratch.
+
+---
+
+## 🎨 Module 4: Frontend Intern
+
+**Your Role**: Build the user interface that makes AI accessible
+
+### Your Resources:
+- 📖 [Module README](./docs/modules/module-4-frontend/README.md) - Complete module documentation
+- 🔬 [Week 1 Research](./docs/modules/module-4-frontend/week-1-research.md) - Your research assignment
+- 📢 Slack Channel: #kgl-module-4
+- 🎯 GitHub Issue: #10
+
+### What You're Building:
+A modern web interface that lets users explore the knowledge graph, ask questions, and receive personalized insights through an intuitive, accessible design.
+
+### Your Week 1 Mission:
+Research modern frontend frameworks, AI interface patterns, and knowledge graph visualization. Focus on React/Next.js ecosystem and component libraries.
 
 ### Step 2: Create Your Research Issue
 
