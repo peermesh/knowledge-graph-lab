@@ -12,7 +12,7 @@
 
 ### What You Need to Do RIGHT NOW:
 1. Read this entire README to understand the module scope
-2. Review the research brief template at `/docs/templates/research-brief-template.md`
+2. Review the research brief template at `/docs/research-brief-template.md`
 3. Focus on the "Week 1 Research Focus" section below
 4. Complete your 2-page research brief by Friday
 
@@ -57,14 +57,13 @@
 - ✅ Performance optimization strategy with measurable targets
 
 ### Research Resources & Templates
-- **Research Template**: [`/docs/templates/research-brief-template.md`](/docs/templates/research-brief-template.md)
+- **Research Template**: [`/docs/research-brief-template.md`](/docs/research-brief-template.md)
 - **Submission Format**: Create your research brief as `/docs/research/module-4-research-brief.md`
-- **Module Specification**: [`/raw-materials/today-2025-09-07/intern-project-specs/modules/module-4-frontend.md`](/raw-materials/today-2025-09-07/intern-project-specs/modules/module-4-frontend.md)
-- **Evaluation Rubric**: Available in docs/templates/ folder
+- **Evaluation Rubric**: See research template for evaluation criteria
 - **GitHub Issue**: Your Week 1 assignment will be tracked via GitHub Issues with Friday 5PM deadline
 
 ### Research Submission Process
-1. **Use the Template**: Copy `/docs/templates/research-brief-template.md` as your starting point
+1. **Use the Template**: Copy `/docs/research-brief-template.md` as your starting point
 2. **Create Your Brief**: Save as `/docs/research/module-4-research-brief.md`
 3. **Include Artifacts**: UI mockups/wireframes for 3 key screens, component hierarchy diagram
 4. **Submit via GitHub**: Commit your completed research brief and reference it in your assigned GitHub Issue
