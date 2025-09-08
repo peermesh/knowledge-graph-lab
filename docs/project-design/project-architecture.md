@@ -2,7 +2,7 @@
 title: "Project Architecture: How We're Building This"
 status: "Approved"
 updated: 2025-09-09
-owner: "@project-lead"
+author: "@project-lead"
 version: "v1.0"
 doc_id: "project-architecture"
 ---
@@ -140,9 +140,10 @@ Using PostgreSQL for everything would be like using a Swiss Army knife for every
 - Vector similarity in SQL is slow without extensions
 - Time-series data in regular tables wastes space
 
-<!-- DIAGRAM: architecture
+<!-- DAB
 id: microservices-architecture
 title: Microservices Architecture with Data Stores
+type: architecture
 show: services, databases, event-bus, api-gateway
 notes: Show how services communicate through events and access their own data stores
 -->
@@ -436,9 +437,10 @@ knowledge-graph-lab/
     └── deployment/
 ```
 
-<!-- DIAGRAM: gantt
+<!-- DAB
 id: development-timeline
 title: 10-Week Development Timeline
+type: gantt
 notes: Show phases, milestones, and key deliverables across weeks
 -->
 
@@ -822,9 +824,10 @@ volumes:
 docker-compose up
 ```
 
-<!-- DIAGRAM: architecture
+<!-- DAB
 id: tech-stack-layers
 title: Technology Stack by Layer
+type: architecture
 show: infrastructure, backend, frontend, ai-ml, data
 notes: Show complete tech stack organized by architectural layers
 -->
@@ -1269,9 +1272,10 @@ Each module should demonstrate:
 - **Impact**: Real value to real users
 - **Learning**: Clear growth from start to finish
 
-<!-- DIAGRAM: pie
+<!-- CAB
 id: success-metrics-distribution
 title: Success Metrics Weight Distribution
+type: pie
 data: Technical:40, User:35, Learning:25
 notes: Show balanced focus across metrics categories
 -->

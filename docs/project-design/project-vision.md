@@ -2,7 +2,7 @@
 title: "Project Vision: Knowledge Graph Lab"
 status: "Approved"
 updated: 2025-09-09
-owner: "@project-lead"
+author: "@project-lead"
 version: "v1.0"
 doc_id: "project-vision"
 ---
@@ -163,9 +163,10 @@ This intellectual honesty builds trust and enables users to make informed decisi
 
 Inspired by Unix philosophy ("do one thing well") and modern microservices architecture, each module provides value independently while contributing to a greater whole.
 
-<!-- DIAGRAM: flowchart
+<!-- DAB
 id: transformation-flow
 title: Information Transformation Pipeline
+type: flowchart
 show: chaos-to-structure, structure-to-intelligence, intelligence-to-insights
 notes: Show progression from scattered sources through organization to personalized value
 -->

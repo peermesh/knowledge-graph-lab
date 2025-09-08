@@ -1,3 +1,12 @@
+---
+title: "Deployment Strategy"
+version: "v1.0"
+updated: 2025-09-09
+author: "@project-lead"
+status: approved
+doc_id: "deployment-strategy"
+---
+
 # Deployment Strategy
 
 **Status**: Complete - Ready for implementation

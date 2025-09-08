@@ -2,7 +2,7 @@
 title: "Project Overview: What We're Building"
 status: "Approved"
 updated: 2025-09-09
-owner: "@project-lead"
+author: "@project-lead"
 version: "v1.0"
 doc_id: "project-overview"
 ---
@@ -79,9 +79,10 @@ Users interact with this intelligence through channels optimized for different n
 
 *Table 1: Multi-channel delivery system for different user needs*
 
-<!-- DIAGRAM: architecture
+<!-- DAB
 id: system-overview
 title: Knowledge Graph Lab System Architecture
+type: architecture
 show: data-sources, four-modules, knowledge-graph, intelligence-layer, delivery-channels
 notes: Show data flow from raw sources through processing to user value
 -->
@@ -456,9 +457,10 @@ User feedback directly improves the system:
 - **Aggregate patterns**: What similar users find valuable
 - **System learning**: Adjusting algorithms based on outcomes
 
-<!-- DIAGRAM: flowchart
+<!-- DAB
 id: module-interaction
 title: Module Interaction and Data Flow
+type: flowchart
 show: module-connections, data-transformation, feedback-loops
 notes: Show how modules work together with example data flowing through
 -->
@@ -772,9 +774,10 @@ Based on system intelligence, Morgan recommends:
 - Identified whitespace competitors missed
 - Predicted outcomes with 85% confidence
 
-<!-- DIAGRAM: sequence
+<!-- DAB
 id: user-interaction-flow
 title: User Interaction Sequence
+type: sequence
 actors: User, WebUI, API, IntelligenceModule, KnowledgeGraph
 show: query-flow, processing, response-generation
 notes: Show complete interaction from user query to insight delivery
@@ -920,8 +923,8 @@ Now that you understand what we're building, explore:
 
 - [Project Architecture](./project-architecture.md) - Technical implementation details
 - [Module Documentation](../modules/) - Your specific module guide
-- [API Specification](./api-specification.md) - Integration contracts
-- [Data Model](./data-model.md) - Entity and relationship schemas
+- [User Journeys](./user-journeys.md) - Detailed user experience narratives
+- [Deployment Strategy](./deployment-strategy.md) - Production deployment approach
 
 Remember: This system will help thousands of creators succeed. Your contribution matters. Your code will make a difference. Your learning will launch your career.
 

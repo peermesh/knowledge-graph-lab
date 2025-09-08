@@ -1,6 +1,15 @@
+---
+title: "Success Metrics"
+version: "v1.0"
+updated: 2025-09-09
+author: "@project-lead"
+status: draft
+doc_id: "success-metrics"
+---
+
 # Success Metrics
 
-**Status**: Draft - To be completed during Week 2 planning
+**Status**: Draft - Partial implementation metrics defined
 **Purpose**: Define measurable outcomes for the Knowledge Graph Lab project
 
 ## Overview
