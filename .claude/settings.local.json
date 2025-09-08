@@ -8,7 +8,9 @@
       "Read(//Users/grig/work/obsidian-vault/🕸️ PeerMesh.org/foundations/current/**)",
       "WebSearch",
       "Read(//Users/grig/work/ai/repo/ottomator-agents/agentic-rag-knowledge-graph/docs/ai/**)",
-      "Read(//Users/grig/work/rivr/repo/rivr-data-tests/docs/ai/**)"
+      "Read(//Users/grig/work/rivr/repo/rivr-data-tests/docs/ai/**)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_screen_capture"
     ],
     "deny": [],
     "ask": []
