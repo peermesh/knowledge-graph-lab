@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Read(//Users/grig/.claude/**)"
+      "Read(//Users/grig/.claude/**)",
+      "Read(//Users/grig/work/peermesh/repo/**)",
+      "Read(//Users/grig/work/obsidian-vault/🕸️ PeerMesh.org/design-docs/**)",
+      "Read(//Users/grig/work/obsidian-vault/🕸️ PeerMesh.org/implementations/api-abstraction-layer-25-08-27-00-45/**)",
+      "Read(//Users/grig/work/obsidian-vault/🕸️ PeerMesh.org/foundations/current/**)",
+      "WebSearch",
+      "Read(//Users/grig/work/ai/repo/ottomator-agents/agentic-rag-knowledge-graph/docs/ai/**)",
+      "Read(//Users/grig/work/rivr/repo/rivr-data-tests/docs/ai/**)"
     ],
     "deny": [],
     "ask": []

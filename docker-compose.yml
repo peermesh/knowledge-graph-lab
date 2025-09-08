@@ -1,0 +1,183 @@
+version: '3.8'
+
+services:
+  # Database Services
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: kgl_database
+      POSTGRES_USER: kgl_user
+      POSTGRES_PASSWORD: kgl_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./shared/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kgl_user -d kgl_database"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for caching and job queues
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Qdrant vector database
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    environment:
+      QDRANT__SERVICE__HTTP_PORT: 6333
+      QDRANT__SERVICE__GRPC_PORT: 6334
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Module 1: Data Ingestion Service
+  ingestion-service:
+    build:
+      context: ./modules/module-1-ingestion
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      DATABASE_URL: postgresql://kgl_user:kgl_password@postgres:5432/kgl_database
+      REDIS_URL: redis://redis:6379
+      DEBUG: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./modules/module-1-ingestion/src:/app/src
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Module 2: Knowledge Graph Service
+  knowledge-graph-service:
+    build:
+      context: ./modules/module-2-knowledge-graph
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      DATABASE_URL: postgresql://kgl_user:kgl_password@postgres:5432/kgl_database
+      QDRANT_URL: http://qdrant:6333
+      REDIS_URL: redis://redis:6379
+      DEBUG: "true"
+      # Add your API keys here or use .env file
+      # OPENAI_API_KEY: your_openai_key
+      # ANTHROPIC_API_KEY: your_anthropic_key
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_healthy
+    volumes:
+      - ./modules/module-2-knowledge-graph/src:/app/src
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Module 3: Reasoning Service
+  reasoning-service:
+    build:
+      context: ./modules/module-3-reasoning
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8003"
+    environment:
+      DATABASE_URL: postgresql://kgl_user:kgl_password@postgres:5432/kgl_database
+      REDIS_URL: redis://redis:6379
+      KNOWLEDGE_GRAPH_URL: http://knowledge-graph-service:8002
+      INGESTION_SERVICE_URL: http://ingestion-service:8001
+      DEBUG: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      knowledge-graph-service:
+        condition: service_healthy
+    volumes:
+      - ./modules/module-3-reasoning/src:/app/src
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8003/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Module 4: Frontend
+  frontend:
+    build:
+      context: ./modules/module-4-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+      NEXT_PUBLIC_INGESTION_API: http://localhost:8001
+      NEXT_PUBLIC_KNOWLEDGE_API: http://localhost:8002
+      NEXT_PUBLIC_REASONING_API: http://localhost:8003
+      NODE_ENV: development
+    depends_on:
+      - ingestion-service
+      - knowledge-graph-service
+      - reasoning-service
+    volumes:
+      - ./modules/module-4-frontend/src:/app/src
+      - ./modules/module-4-frontend/public:/app/public
+      - /app/node_modules
+    command: npm run dev
+
+  # API Gateway (optional - for production routing)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./shared/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - ingestion-service
+      - knowledge-graph-service
+      - reasoning-service
+      - frontend
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:
+  redis_data:
+  qdrant_data:
+
+networks:
+  default:
+    name: kgl-network

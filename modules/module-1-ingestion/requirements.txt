@@ -1,0 +1,29 @@
+# KGL Module 1: Data Ingestion Service Dependencies
+
+# Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Database
+sqlalchemy==2.0.23
+pydantic-settings==2.0.3
+
+# HTTP Client & Web Scraping
+aiohttp==3.9.1
+beautifulsoup4==4.12.2
+lxml==4.9.3
+playwright==1.40.0
+
+# Content Processing
+python-magic==0.4.27
+chardet==5.2.0
+
+# Background Jobs
+redis==5.0.1
+celery==5.3.4
+
+# Utilities
+python-dotenv==1.0.0
+asyncio==3.4.3
+hashlib2==1.3.1

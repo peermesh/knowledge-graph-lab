@@ -1,0 +1,282 @@
+"""
+Research management API endpoints
+"""
+
+from fastapi import APIRouter, HTTPException, BackgroundTasks, Depends
+from pydantic import BaseModel
+from typing import List, Optional, Dict, Any
+from sqlalchemy.orm import Session
+import uuid
+import json
+
+from ..core.database import get_db, ResearchTopic, ResearchSession, KnowledgeGap
+from ..services.research_service import ResearchService
+
+router = APIRouter()
+
+class ResearchTopicCreate(BaseModel):
+    """Request model for creating a research topic"""
+    topic: str
+    domain: str
+    priority_score: float = 5.0
+    location_scope: str = "global"
+
+class ResearchTopicResponse(BaseModel):
+    """Response model for research topic data"""
+    id: int
+    topic: str
+    domain: str
+    priority_score: float
+    status: str
+    research_depth: int
+    location_scope: str
+    created_at: str
+    last_researched: Optional[str] = None
+
+class StartResearchRequest(BaseModel):
+    """Request to start research on specific topics"""
+    topic_ids: Optional[List[int]] = None
+    domains: Optional[List[str]] = None
+    max_topics: int = 5
+
+class ResearchStatusResponse(BaseModel):
+    """Research queue status information"""
+    active_sessions: int
+    pending_topics: int
+    completed_today: int
+    priority_queue: List[Dict[str, Any]]
+
+@router.get("/topics", response_model=List[ResearchTopicResponse])
+async def list_research_topics(
+    domain: Optional[str] = None,
+    status: Optional[str] = None,
+    limit: int = 50,
+    db: Session = Depends(get_db)
+):
+    """
+    List research topics with optional filtering
+    """
+    query = db.query(ResearchTopic)
+    
+    if domain:
+        query = query.filter(ResearchTopic.domain == domain)
+    
+    if status:
+        query = query.filter(ResearchTopic.status == status)
+    
+    topics = query.order_by(ResearchTopic.priority_score.desc()).limit(limit).all()
+    
+    return [
+        ResearchTopicResponse(
+            id=topic.id,
+            topic=topic.topic,
+            domain=topic.domain,
+            priority_score=topic.priority_score,
+            status=topic.status,
+            research_depth=topic.research_depth,
+            location_scope=topic.location_scope,
+            created_at=topic.created_at.isoformat(),
+            last_researched=topic.last_researched.isoformat() if topic.last_researched else None
+        ) for topic in topics
+    ]
+
+@router.post("/topics", response_model=ResearchTopicResponse)
+async def create_research_topic(
+    topic_data: ResearchTopicCreate,
+    db: Session = Depends(get_db)
+):
+    """
+    Add a new research topic to the queue
+    """
+    # Check if topic already exists
+    existing = db.query(ResearchTopic).filter(ResearchTopic.topic == topic_data.topic).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Research topic already exists")
+    
+    # Create new research topic
+    topic = ResearchTopic(
+        topic=topic_data.topic,
+        domain=topic_data.domain,
+        priority_score=topic_data.priority_score,
+        location_scope=topic_data.location_scope
+    )
+    
+    db.add(topic)
+    db.commit()
+    db.refresh(topic)
+    
+    return ResearchTopicResponse(
+        id=topic.id,
+        topic=topic.topic,
+        domain=topic.domain,
+        priority_score=topic.priority_score,
+        status=topic.status,
+        research_depth=topic.research_depth,
+        location_scope=topic.location_scope,
+        created_at=topic.created_at.isoformat(),
+        last_researched=topic.last_researched.isoformat() if topic.last_researched else None
+    )
+
+@router.post("/start", response_model=dict)
+async def start_research(
+    request: StartResearchRequest,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db)
+):
+    """
+    Start autonomous research on specified topics or domains
+    
+    This will begin background processing of research tasks.
+    """
+    research_service = ResearchService()
+    
+    # Determine which topics to research
+    query = db.query(ResearchTopic)
+    
+    if request.topic_ids:
+        query = query.filter(ResearchTopic.id.in_(request.topic_ids))
+    elif request.domains:
+        query = query.filter(ResearchTopic.domain.in_(request.domains))
+    else:
+        # Research highest priority pending topics
+        query = query.filter(ResearchTopic.status == "pending")
+    
+    topics = query.order_by(ResearchTopic.priority_score.desc()).limit(request.max_topics).all()
+    
+    if not topics:
+        return {"message": "No topics found matching criteria"}
+    
+    # Start background research
+    session_ids = []
+    for topic in topics:
+        session_id = str(uuid.uuid4())
+        session_ids.append(session_id)
+        
+        # Create research session record
+        session = ResearchSession(
+            session_id=session_id,
+            topic_id=topic.id,
+            research_prompt="",  # Will be generated by service
+            status="pending"
+        )
+        db.add(session)
+    
+    db.commit()
+    
+    # Start background processing
+    background_tasks.add_task(
+        research_service.research_topics_batch,
+        session_ids,
+        [topic.id for topic in topics]
+    )
+    
+    return {
+        "message": f"Started research on {len(topics)} topics",
+        "session_ids": session_ids,
+        "topics": [topic.topic for topic in topics]
+    }
+
+@router.get("/status", response_model=ResearchStatusResponse)
+async def get_research_status(db: Session = Depends(get_db)):
+    """
+    Get current research queue status and activity
+    """
+    # Count active sessions
+    active_sessions = db.query(ResearchSession).filter(
+        ResearchSession.status.in_(["pending", "processing"])
+    ).count()
+    
+    # Count pending topics
+    pending_topics = db.query(ResearchTopic).filter(
+        ResearchTopic.status == "pending"
+    ).count()
+    
+    # Count completed today (simplified - would use date filtering in production)
+    completed_today = db.query(ResearchSession).filter(
+        ResearchSession.status == "completed"
+    ).count()
+    
+    # Get priority queue (top 10 pending topics)
+    priority_topics = db.query(ResearchTopic).filter(
+        ResearchTopic.status == "pending"
+    ).order_by(ResearchTopic.priority_score.desc()).limit(10).all()
+    
+    priority_queue = [
+        {
+            "id": topic.id,
+            "topic": topic.topic,
+            "domain": topic.domain,
+            "priority": topic.priority_score
+        } for topic in priority_topics
+    ]
+    
+    return ResearchStatusResponse(
+        active_sessions=active_sessions,
+        pending_topics=pending_topics,
+        completed_today=completed_today,
+        priority_queue=priority_queue
+    )
+
+@router.get("/gaps", response_model=List[dict])
+async def list_knowledge_gaps(
+    priority_threshold: float = 5.0,
+    limit: int = 20,
+    db: Session = Depends(get_db)
+):
+    """
+    List identified knowledge gaps that need research
+    """
+    gaps = db.query(KnowledgeGap).filter(
+        KnowledgeGap.priority_score >= priority_threshold,
+        KnowledgeGap.status == "identified"
+    ).order_by(KnowledgeGap.priority_score.desc()).limit(limit).all()
+    
+    return [
+        {
+            "id": gap.id,
+            "description": gap.gap_description,
+            "type": gap.gap_type,
+            "priority": gap.priority_score,
+            "context": gap.context,
+            "created_at": gap.created_at.isoformat()
+        } for gap in gaps
+    ]
+
+@router.put("/topics/{topic_id}/priority")
+async def update_topic_priority(
+    topic_id: int,
+    priority_score: float,
+    db: Session = Depends(get_db)
+):
+    """
+    Update the priority score for a research topic
+    """
+    topic = db.query(ResearchTopic).filter(ResearchTopic.id == topic_id).first()
+    
+    if not topic:
+        raise HTTPException(status_code=404, detail="Research topic not found")
+    
+    topic.priority_score = max(1.0, min(10.0, priority_score))  # Clamp 1-10
+    db.commit()
+    
+    return {"message": f"Updated priority for '{topic.topic}' to {topic.priority_score}"}
+
+@router.get("/domains")
+async def list_research_domains(db: Session = Depends(get_db)):
+    """
+    Get list of all research domains and their topic counts
+    """
+    # This would be a more complex query in production
+    from sqlalchemy import func
+    
+    domains = db.query(
+        ResearchTopic.domain,
+        func.count(ResearchTopic.id).label('topic_count')
+    ).group_by(ResearchTopic.domain).all()
+    
+    return [
+        {
+            "domain": domain,
+            "topic_count": count
+        } for domain, count in domains
+    ]
