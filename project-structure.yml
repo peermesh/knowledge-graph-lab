@@ -1,0 +1,117 @@
+# Knowledge Graph Lab - Project Structure
+# Minimal workbook-style hierarchy for 4 CS interns
+# Each file guides interns step-by-step through 10-week program
+
+project_root:
+  
+  # Entry Points - First Contact
+  README.md:
+    purpose: "Project overview in plain English - What is Knowledge Graph Lab?"
+    content: "Problem statement, 4-module overview, link to intern guide"
+    audience: "Anyone discovering the project"
+    
+  INTERN-GUIDE.md:
+    purpose: "Complete intern workbook - Your path through 10 weeks" 
+    content: "Day 1 setup, complete 10-week timeline, Week 1 research overview, support, success criteria"
+    audience: "New interns on their first day"
+    includes: "Full weekly schedule from research through demo day"
+
+  # Module Assignments - One per Intern (Week 1 only for now)
+  modules:
+    
+    module-1-data-ingestion:
+      README.md:
+        purpose: "You are the Data Ingestion intern - your role explained"
+        content: "What you're building, how it fits, Week 1 research link"
+        
+      week-1-research.md:
+        purpose: "Your Week 1 assignment - specific research task"
+        content: "Research question, deliverable format, due date, submission process"
+    
+    module-2-knowledge-graph:
+      README.md:
+        purpose: "You are the Knowledge Graph intern - your role explained"
+        content: "What you're building, how it fits, Week 1 research link"
+        
+      week-1-research.md:
+        purpose: "Your Week 1 assignment - specific research task" 
+        content: "Research question, deliverable format, due date, submission process"
+    
+    module-3-reasoning:
+      README.md:
+        purpose: "You are the Reasoning Engine intern - your role explained"
+        content: "What you're building, how it fits, Week 1 research link"
+        
+      week-1-research.md:
+        purpose: "Your Week 1 assignment - specific research task"
+        content: "Research question, deliverable format, due date, submission process"
+    
+    module-4-frontend:
+      README.md:
+        purpose: "You are the Frontend intern - your role explained"
+        content: "What you're building, how it fits, Week 1 research link"
+        
+      week-1-research.md:
+        purpose: "Your Week 1 assignment - specific research task"
+        content: "Research question, deliverable format, due date, submission process"
+
+  # Detailed Project Specifications - Evolving Design Documents  
+  project-design:
+    
+    overview.md:
+      purpose: "High-level project vision and goals"
+      content: "Problem statement, solution approach, success metrics, target outcomes"
+      
+    architecture.md:
+      purpose: "System architecture and module interactions"
+      content: "4-module system design, data flow, API contracts, integration points"
+      
+    user-journeys.md:
+      purpose: "End-user scenarios and workflows"
+      content: "Creator, researcher, analyst user stories and interaction flows"
+      
+    technology-stack.md:
+      purpose: "Technology decisions and rationale"
+      content: "Framework choices, databases, APIs, development tools - evolves from Week 1 research"
+      
+    data-model.md:
+      purpose: "Data structures and knowledge representation"
+      content: "Entity schemas, knowledge graph design, database structures"
+      
+    api-specification.md:
+      purpose: "Inter-module API contracts and data formats"
+      content: "REST endpoints, data schemas, authentication, error handling"
+      
+    deployment-strategy.md:
+      purpose: "Development, testing, and production deployment"
+      content: "Environment setup, CI/CD pipeline, containerization, scaling considerations"
+      
+    success-metrics.md:
+      purpose: "Measurable outcomes and evaluation criteria"
+      content: "Technical KPIs, user experience metrics, demo day objectives"
+
+  # Essential Support - Only what interns need
+  docs:
+    
+    research-brief-template.md:
+      purpose: "Exact format for Week 1 deliverable"
+      content: "Template structure, example sections, what good looks like"
+      
+    glossary.md:
+      purpose: "Terms explained in simple language"
+      content: "Creator economy, knowledge graphs, APIs - defined for CS students"
+      
+    help.md:
+      purpose: "Where to get help when stuck"
+      content: "Contact info, office hours, common questions, troubleshooting"
+
+# Navigation Flow:
+# README.md → INTERN-GUIDE.md → modules/module-X/README.md → week-1-research.md
+# Support files available from any point via links
+
+# Design Principles:
+# - Every file has ONE clear purpose
+# - Every file has ONE clear next step  
+# - No jargon without explanation
+# - Workbook style - tell them exactly what to do
+# - Minimal complexity - only essential files
