@@ -11,7 +11,7 @@
 | [README.md](./README.md) | Project overview in plain English - What is Knowledge Graph Lab? | Anyone discovering the project |
 | [INTERN-GUIDE.md](./INTERN-GUIDE.md) | Complete intern workbook - Your path through 10 weeks | New interns on their first day |
 
-**Navigation Flow**: README.md → INTERN-GUIDE.md → Your Module → Week 1 Assignment
+**Navigation Flow**: README.md → INTERN-GUIDE.md → MASTER-DOCUMENT.md → Your Module → Week 1 Assignment
 
 ---
 
@@ -43,20 +43,29 @@
 
 ---
 
-## 🏗️ Detailed Project Specifications
+## 🏗️ Project Documentation
 
-**Evolving design documents that start with initial vision and refine based on intern research**
-
+### 🌟 START HERE - Master Document
 | File | Purpose | Content |
 |------|---------|---------|
-| [docs/project-design/overview.md](./docs/project-design/overview.md) | High-level project vision and goals | Problem statement, solution approach, success metrics, target outcomes |
-| [docs/project-design/architecture.md](./docs/project-design/architecture.md) | System architecture and module interactions | 4-module system design, data flow, API contracts, integration points |
-| [docs/project-design/user-journeys.md](./docs/project-design/user-journeys.md) | End-user scenarios and workflows | Creator, researcher, analyst user stories and interaction flows |
-| [docs/project-design/technology-stack.md](./docs/project-design/technology-stack.md) | Technology decisions and rationale | Framework choices, databases, APIs, development tools - evolves from Week 1 research |
-| [docs/project-design/data-model.md](./docs/project-design/data-model.md) | Data structures and knowledge representation | Entity schemas, knowledge graph design, database structures |
-| [docs/project-design/api-specification.md](./docs/project-design/api-specification.md) | Inter-module API contracts and data formats | REST endpoints, data schemas, authentication, error handling |
-| [docs/project-design/deployment-strategy.md](./docs/project-design/deployment-strategy.md) | Development, testing, and production deployment | Environment setup, CI/CD pipeline, containerization, scaling considerations |
-| [docs/project-design/success-metrics.md](./docs/project-design/success-metrics.md) | Measurable outcomes and evaluation criteria | Technical KPIs, user experience metrics, demo day objectives |
+| [docs/project-design/MASTER-DOCUMENT.md](./docs/project-design/MASTER-DOCUMENT.md) | **Complete project guide - READ THIS FIRST** | Comprehensive guide covering vision (why), overview (what), and architecture (how). This is your primary reference for understanding the entire Knowledge Graph Lab project. |
+
+### Technical Specifications
+| File | Purpose | Content |
+|------|---------|---------|
+| [docs/project-design/data-model.md](./docs/project-design/data-model.md) | Complete entity schemas and relationships | All 6 entity types with full field definitions, relationship mappings, and query examples |
+| [docs/project-design/api-specification.md](./docs/project-design/api-specification.md) | Complete API contracts between modules | Every endpoint with request/response examples, error codes, and test commands |
+| [docs/project-design/user-journeys.md](./docs/project-design/user-journeys.md) | End-user scenarios and workflows | Creator Sarah, Researcher Alex, and Consultant Morgan - their complete journeys |
+| [docs/project-design/deployment-strategy.md](./docs/project-design/deployment-strategy.md) | Development and deployment setup | Local development, Docker configuration, environment variables |
+| [docs/project-design/success-metrics.md](./docs/project-design/success-metrics.md) | Measurable outcomes and evaluation | Technical KPIs, user metrics, and Week 10 demo criteria |
+
+### Reference Documents (Being Consolidated)
+| File | Status | Note |
+|------|--------|------|
+| [docs/project-design/vision.md](./docs/project-design/vision.md) | Expanded | Now contains full vision narrative |
+| [docs/project-design/overview.md](./docs/project-design/overview.md) | Redundant | Content moved to MASTER-DOCUMENT.md |
+| [docs/project-design/architecture.md](./docs/project-design/architecture.md) | Redundant | Content moved to MASTER-DOCUMENT.md |
+| [docs/project-design/technology-stack.md](./docs/project-design/technology-stack.md) | Active | Module integration patterns and communication |
 
 ---
 
@@ -95,4 +104,4 @@
 
 ---
 
-**New Intern?** Start with [README.md](./README.md) → [INTERN-GUIDE.md](./INTERN-GUIDE.md) → Your Module Assignment
+**New Intern?** Start with [README.md](./README.md) → [INTERN-GUIDE.md](./INTERN-GUIDE.md) → [MASTER-DOCUMENT.md](./docs/project-design/MASTER-DOCUMENT.md) → Your Module Assignment
