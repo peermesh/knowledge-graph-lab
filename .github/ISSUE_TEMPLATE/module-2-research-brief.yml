@@ -1,0 +1,143 @@
+name: "Module 2 Research Brief - AI Knowledge Graph & Autonomous Research"
+description: Week 1 research assignment for Module 2 - AI Knowledge Graph & Autonomous Research
+title: "[Module 2] Research Brief - AI Knowledge Graph & Autonomous Research"
+labels: ["research", "module-2", "week-1", "high-complexity"]
+projects: ["knowledge-graph-lab"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Research Assignment: Module 2 - AI Knowledge Graph & Autonomous Research
+        
+        **Due Date**: Friday 5:00 PM (End of Week 1)  
+        **Deliverable**: 2-page research brief using provided template  
+        **Focus**: Autonomous research system with knowledge graphs and entity relationships  
+        **⚠️ CRITICAL**: This module has the highest complexity - focus heavily on scope reduction!
+        
+        ---
+        
+  - type: input
+    id: intern-name
+    attributes:
+      label: "Intern Name"
+      description: "Your full name"
+      placeholder: "Enter your name"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: focus-question
+    attributes:
+      label: "Focus Question Response"
+      description: "How can we build an autonomous research system that manages knowledge graphs and entity relationships within realistic scope for a 10-week project?"
+      placeholder: "Provide your analysis focusing on scope reduction and practical implementation..."
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: required-analysis
+    attributes:
+      label: "Required Analysis Completed"
+      description: "Check all analysis areas you have completed:"
+      options:
+        - label: "Scope Reduction Strategy (minimum viable autonomous research system)"
+        - label: "Knowledge Management Platforms (Notion AI, Obsidian, Neo4j, Perplexity API)"
+        - label: "Entity Extraction Tools (spaCy, Hugging Face, OpenAI API, local LLM options)"
+        - label: "Fallback Planning (template-based vs. AI-powered, manual override strategies)"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: deliverables
+    attributes:
+      label: "Deliverables Prepared"
+      description: "Check all deliverables you have prepared:"
+      options:
+        - label: "Tiered implementation plan (Basic → Enhanced → Advanced)"
+        - label: "AI service cost analysis and provider comparison"
+        - label: "Knowledge graph schema design for creator economy domain"
+        - label: "Risk mitigation with simplified fallback approaches"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: scope-reduction-strategy
+    attributes:
+      label: "Scope Reduction Strategy"
+      description: "Describe your minimum viable autonomous research system approach"
+      placeholder: |
+        Basic Tier (Essential):
+        - [Feature 1]
+        - [Feature 2]
+        
+        Enhanced Tier (If time allows):
+        - [Feature 3]
+        - [Feature 4]
+        
+        Advanced Tier (Stretch goals):
+        - [Feature 5]
+        - [Feature 6]
+    validations:
+      required: true
+      
+  - type: textarea
+    id: complexity-assessment
+    attributes:
+      label: "Complexity & Risk Assessment"
+      description: "Rate overall complexity (1-5) and identify top 3 risks with mitigation strategies"
+      placeholder: |
+        Overall Complexity: [1-5]/5 (Expected: 4-5)
+        
+        Top Risks:
+        1. [Risk] → Mitigation: [Strategy]
+        2. [Risk] → Mitigation: [Strategy]  
+        3. [Risk] → Mitigation: [Strategy]
+        
+        Fallback Plan: [Simplified approach if complexity proves too high]
+    validations:
+      required: true
+      
+  - type: textarea
+    id: ai-cost-analysis
+    attributes:
+      label: "AI Service Cost Analysis"
+      description: "Compare AI service providers with cost projections for the project duration"
+      placeholder: |
+        | Service | Monthly Cost | Pros | Cons | Recommendation |
+        |---------|-------------|------|------|----------------|
+        | OpenAI API | $X | ... | ... | Yes/No |
+        | Claude API | $X | ... | ... | Yes/No |
+        | Local LLM | $X | ... | ... | Yes/No |
+    validations:
+      required: true
+      
+  - type: input
+    id: research-brief-file
+    attributes:
+      label: "Research Brief File Location"
+      description: "Path to your completed research brief markdown file"
+      placeholder: "docs/module-2-research-brief.md"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: artifacts-submitted
+    attributes:
+      label: "Required Artifacts Submitted"
+      description: "Confirm you have submitted all required artifacts:"
+      options:
+        - label: "docs/module-2-research-brief.md (using provided template)"
+        - label: "Entity schema diagram or specification"
+        - label: "AI service integration plan with cost projections"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: questions-clarifications
+    attributes:
+      label: "Questions & Clarifications Needed"
+      description: "Any questions or clarifications needed for Week 2 planning?"
+      placeholder: "List any questions or areas where you need clarification..."
+    validations:
+      required: false

@@ -1,6 +1,77 @@
 # Module 1: Data Ingestion Service
 
-## Overview
+**Assigned Intern**: [Will be filled during deployment]  
+**Research Focus**: Ethical & scalable data ingestion technology stack  
+**Timeline**: 10 weeks (Research → Development → Integration → Demo)
+
+## 🎯 Quick Start for Week 1
+**Your Week 1 Task**: Complete research brief on data ingestion technologies  
+**Deadline**: Friday 5PM  
+**GitHub Issue**: [Will be added during deployment - Issue #1]
+
+### What You Need to Do RIGHT NOW:
+1. Read this entire README to understand the module scope
+2. Review the research brief template at `/raw-materials/today-2025-09-07/04-intern-materials/week1-research-briefs.md`
+3. Start researching the technologies listed in the "Week 1 Research Focus" section below
+4. Complete your 2-page research brief by Friday
+
+## 🔬 Week 1 Research Assignment
+
+### Your Focus Question
+**What technology stack and implementation approach will enable ethical, scalable data ingestion within our 10-week timeline while handling legal/compliance requirements?**
+
+### Required Analysis Areas
+
+#### 1. Professional Platform Comparison
+- **ScrapingBee**: API-based web scraping service (analyze cost, features, learning curve)
+- **Apify**: Web scraping and automation platform (evaluate complexity, capabilities)
+- **Airbyte**: Open-source data integration platform (assess setup time, connector availability)
+- **Fivetran**: Managed data pipeline service (review pricing, supported sources)
+
+#### 2. Open Source Tool Evaluation
+- **Scrapy vs Playwright vs Beautiful Soup**: Compare scraping frameworks (complexity, features, community)
+- **FastAPI vs Flask**: API framework selection (performance, ease of use, async support)
+- **Celery vs RQ vs Dramatiq**: Queue system comparison (scalability, setup complexity)
+- **Content extraction libraries**: Newspaper3k, Readability, Trafilatura (quality, maintenance)
+
+#### 3. Legal & Ethical Framework Assessment
+- robots.txt compliance strategies
+- Rate limiting implementation approaches
+- GDPR/privacy considerations for content storage
+- Terms of service analysis for target platforms
+
+#### 4. AI Assistance Integration
+- How can GitHub Copilot/Cursor accelerate adapter development?
+- Which parts can be generated vs. require manual coding?
+- Cost-benefit analysis of AI-powered vs traditional approaches
+
+### Success Criteria for Your Research Brief
+- ✅ Technology recommendation matrix with 1-5 scoring
+- ✅ Implementation timeline showing AI assistance multipliers
+- ✅ Legal compliance checklist with risk mitigation strategies
+- ✅ Integration complexity assessment with other modules
+- ✅ Clear fallback plan if primary approach fails
+
+### Research Resources & Templates
+- **Research Template**: [`/docs/templates/research-brief-template.md`](/docs/templates/research-brief-template.md)
+- **Submission Format**: Create your research brief as `/docs/research/module-1-research-brief.md`
+- **Module Specification**: [`/raw-materials/today-2025-09-07/intern-project-specs/modules/module-1-ingestion.md`](/raw-materials/today-2025-09-07/intern-project-specs/modules/module-1-ingestion.md)
+- **Evaluation Rubric**: Available in docs/templates/ folder
+- **GitHub Issue**: Your Week 1 assignment will be tracked via GitHub Issues with Friday 5PM deadline
+
+### Research Submission Process
+1. **Use the Template**: Copy `/docs/templates/research-brief-template.md` as your starting point
+2. **Create Your Brief**: Save as `/docs/research/module-1-research-brief.md`
+3. **Follow the Format**: Use the provided template structure exactly
+4. **Submit via GitHub**: Commit your completed research brief and reference it in your assigned GitHub Issue
+5. **Deadline**: Friday 5PM - no extensions without prior approval
+
+### Additional Resources
+- **Strategic Context**: Review the project handover documents in `/docs/handovers/` for background
+- **Architecture Decisions**: Database selection framework in project documentation
+- **Integration Points**: Study other module specifications to understand dependencies
+
+## 📋 Module Overview
 The Data Ingestion Service is the data acquisition layer of the Knowledge Graph Lab, responsible for fetching, normalizing, and processing content from multiple sources. It implements ethical scraping practices, respects rate limits, and provides clean, structured data to downstream modules through a RESTful API.
 
 ## Quick Start
@@ -324,6 +395,39 @@ curl http://localhost:8001/health/adapters
 - API key rotation support
 - Rate limiting per API key
 
+## Getting Started Guide
+
+### Week 1: Research & Planning (No Coding!)
+1. **Environment Setup**: No development environment needed yet - focus on research
+2. **Read Module Spec**: Study the detailed module specification linked above
+3. **Research Technologies**: Use the research assignment framework to evaluate tools
+4. **Document Findings**: Use the research brief template to document your analysis
+5. **Submit Brief**: Complete and submit your 2-page research brief by Friday 5PM
+
+### Week 2: Development Environment Setup
+```bash
+# Navigate to module directory
+cd modules/module-1-ingestion
+
+# Create Python virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies (will be created based on your research)
+pip install -r requirements.txt
+
+# Set up development database
+python scripts/setup_dev_db.py
+
+# Run initial service (will be implemented in Week 3)
+python src/main.py
+```
+
+### Week 3+: Implementation Path
+- **Tier 1 (Weeks 3-6)**: Core data ingestion pipeline with ethical scraping
+- **Tier 2 (Weeks 7-9)**: Advanced features and PeerMesh integration
+- **Week 10**: Demo preparation and integration testing
+
 ## Module Development Tips
 
 1. **Start Simple**: Begin with RSS feeds before tackling complex web scraping
@@ -331,6 +435,8 @@ curl http://localhost:8001/health/adapters
 3. **Test Early**: Write tests as you develop each adapter
 4. **Document APIs**: Keep the OpenAPI/Swagger docs updated
 5. **Monitor Everything**: Add logging and metrics from the start
+6. **WordPress Plugin Philosophy**: Build this module to be independent and reusable
+7. **Legal First**: Always implement ethical scraping and compliance measures from day one
 
 ## Next Steps for Enhancement
 

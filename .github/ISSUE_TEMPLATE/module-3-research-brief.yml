@@ -1,0 +1,166 @@
+name: "Module 3 Research Brief - Reasoning Engine & Content Synthesis"
+description: Week 1 research assignment for Module 3 - Reasoning Engine & Content Synthesis
+title: "[Module 3] Research Brief - Reasoning Engine & Content Synthesis"
+labels: ["research", "module-3", "week-1"]
+projects: ["knowledge-graph-lab"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Research Assignment: Module 3 - Reasoning Engine & Content Synthesis
+        
+        **Due Date**: Friday 5:00 PM (End of Week 1)  
+        **Deliverable**: 2-page research brief using provided template  
+        **Focus**: AI-powered content generation and personalization within timeline constraints  
+        **⚠️ CRITICAL**: Focus on proven content generation over complex reasoning systems
+        
+        ---
+        
+  - type: input
+    id: intern-name
+    attributes:
+      label: "Intern Name"
+      description: "Your full name"
+      placeholder: "Enter your name"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: focus-question
+    attributes:
+      label: "Focus Question Response"
+      description: "What's the most practical approach to AI-powered content generation and personalization that delivers real value within timeline constraints?"
+      placeholder: "Focus on practical approaches that avoid over-complexity..."
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: required-analysis
+    attributes:
+      label: "Required Analysis Completed"
+      description: "Check all analysis areas you have completed:"
+      options:
+        - label: "Content Generation Approaches (template-based vs. LLM-generated vs. hybrid)"
+        - label: "Personalization Strategy (simple user preferences vs. complex behavioral analysis)"
+        - label: "Multi-Channel Publishing (email newsletter, social media formatting, content calendars)"
+        - label: "AI Integration Reality Check (OpenAI, Claude, local Ollama - cost/latency/quality trade-offs)"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: deliverables
+    attributes:
+      label: "Deliverables Prepared"
+      description: "Check all deliverables you have prepared:"
+      options:
+        - label: "Content generation workflow design (step-by-step process)"
+        - label: "Personalization algorithm specification (start simple, scale complex)"
+        - label: "Publishing channel integration plan with API requirements"
+        - label: "AI model selection with cost and performance analysis"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: content-generation-approach
+    attributes:
+      label: "Recommended Content Generation Approach"
+      description: "Describe your recommended approach: template-based, LLM-generated, or hybrid"
+      placeholder: |
+        Recommended Approach: [Template-based/LLM-generated/Hybrid]
+        
+        Rationale:
+        - [Reason 1]
+        - [Reason 2]
+        - [Reason 3]
+        
+        Implementation Steps:
+        1. [Step 1]
+        2. [Step 2]
+        3. [Step 3]
+    validations:
+      required: true
+      
+  - type: textarea
+    id: personalization-strategy
+    attributes:
+      label: "Personalization Strategy"
+      description: "Describe your personalization approach - start simple and scale to complex"
+      placeholder: |
+        Phase 1 (Simple): [Basic user preferences approach]
+        Phase 2 (Enhanced): [More sophisticated personalization]
+        Phase 3 (Advanced): [Complex behavioral analysis - if time allows]
+        
+        Key personalization variables:
+        - [Variable 1]
+        - [Variable 2]
+        - [Variable 3]
+    validations:
+      required: true
+      
+  - type: textarea
+    id: multi-channel-publishing
+    attributes:
+      label: "Multi-Channel Publishing Plan"
+      description: "Describe your approach to email newsletters, social media, and content calendars"
+      placeholder: |
+        Email Newsletter:
+        - [API/Platform choice]
+        - [Template structure]
+        - [Personalization approach]
+        
+        Social Media:
+        - [Platforms targeted]
+        - [Content adaptation strategy]
+        - [Scheduling approach]
+        
+        Content Calendar:
+        - [Planning approach]
+        - [Content types]
+        - [Publishing frequency]
+    validations:
+      required: true
+      
+  - type: textarea
+    id: ai-model-selection
+    attributes:
+      label: "AI Model Selection & Cost Analysis"
+      description: "Compare AI models with cost, latency, and quality trade-offs"
+      placeholder: |
+        | AI Model | Monthly Cost | Latency | Quality | Best For | Recommendation |
+        |----------|-------------|---------|---------|----------|----------------|
+        | OpenAI GPT-4 | $X | Xms | High | ... | Yes/No |
+        | Claude | $X | Xms | High | ... | Yes/No |
+        | Local Ollama | $X | Xms | Medium | ... | Yes/No |
+    validations:
+      required: true
+      
+  - type: input
+    id: research-brief-file
+    attributes:
+      label: "Research Brief File Location"
+      description: "Path to your completed research brief markdown file"
+      placeholder: "docs/module-3-research-brief.md"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: artifacts-submitted
+    attributes:
+      label: "Required Artifacts Submitted"
+      description: "Confirm you have submitted all required artifacts:"
+      options:
+        - label: "docs/module-3-research-brief.md (using provided template)"
+        - label: "Content workflow diagram or specification"
+        - label: "Email/social template examples with personalization variables"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: questions-clarifications
+    attributes:
+      label: "Questions & Clarifications Needed"
+      description: "Any questions or clarifications needed for Week 2 planning?"
+      placeholder: "List any questions or areas where you need clarification..."
+    validations:
+      required: false

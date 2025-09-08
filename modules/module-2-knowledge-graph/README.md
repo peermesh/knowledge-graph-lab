@@ -1,5 +1,80 @@
 # Module 2: AI Knowledge Graph Service
 
+**Assigned Intern**: [Will be filled during deployment]  
+**Research Focus**: Autonomous research system architecture and scope management  
+**Timeline**: 10 weeks (Research → Development → Integration → Demo)  
+**Complexity Level**: ⚠️ **HIGH** - Most technically sophisticated module
+
+## 🎯 Quick Start for Week 1
+**Your Week 1 Task**: Complete research brief on autonomous research systems  
+**Deadline**: Friday 5PM  
+**GitHub Issue**: [Will be added during deployment - Issue #2]
+
+### What You Need to Do RIGHT NOW:
+1. Read this entire README to understand the module scope
+2. Review the research brief template at `/docs/templates/research-brief-template.md`
+3. Focus on the "Week 1 Research Focus" section below
+4. Complete your 2-page research brief by Friday
+
+## 🔬 Week 1 Research Assignment
+
+### Your Focus Question
+**How can we build an autonomous research system that manages knowledge graphs and entity relationships within realistic scope for a 10-week project, considering the HIGH complexity warning?**
+
+⚠️ **CRITICAL**: This module has the highest complexity. Focus heavily on scope reduction and practical implementation.
+
+### Required Analysis Areas
+
+#### 1. Scope Reduction Strategy Assessment
+- **Minimum Viable System**: What's the simplest autonomous research system that adds value?
+- **Tiered Implementation**: How to build Basic → Enhanced → Advanced tiers
+- **Complexity Management**: Strategies to prevent scope creep and over-engineering
+- **Fallback Planning**: Template-based vs. AI-powered approaches with manual override strategies
+
+#### 2. Knowledge Management Platform Evaluation  
+- **Enterprise Solutions**: Notion AI, Obsidian, Roam Research integration possibilities
+- **Graph Databases**: Neo4j vs PostgreSQL graph extensions vs simple relational approaches
+- **Vector Databases**: Qdrant, Chroma, Weaviate for similarity search and RAG
+- **API Integrations**: Perplexity API, OpenAI, local LLM options (Ollama)
+
+#### 3. Entity Extraction & NLP Tool Analysis
+- **Professional Services**: OpenAI API, Anthropic Claude, Hugging Face hosted models
+- **Open Source Options**: spaCy, Stanford NER, Hugging Face transformers locally
+- **Cost-Benefit Analysis**: API costs vs local compute vs development time trade-offs
+- **Accuracy vs Speed**: Quality requirements for creator economy domain
+
+#### 4. Integration & Architecture Planning
+- **Module Independence**: How to maintain WordPress plugin philosophy while sharing knowledge
+- **Database Architecture**: Decision framework for knowledge storage and relationships
+- **API Design**: Clean interfaces for other modules to access knowledge
+- **Performance Considerations**: Scaling knowledge graphs without performance degradation
+
+### Success Criteria for Your Research Brief
+- ✅ Tiered implementation plan (Basic → Enhanced → Advanced) with clear scope boundaries
+- ✅ AI service cost analysis and provider comparison with budget considerations
+- ✅ Knowledge graph schema design specifically for creator economy domain
+- ✅ Risk mitigation strategies with simplified fallback approaches
+- ✅ Clear integration plan with realistic complexity assessment
+
+### Research Resources & Templates
+- **Research Template**: [`/docs/templates/research-brief-template.md`](/docs/templates/research-brief-template.md)
+- **Submission Format**: Create your research brief as `/docs/research/module-2-research-brief.md`
+- **Module Specification**: [`/raw-materials/today-2025-09-07/intern-project-specs/modules/module-2-knowledge-graph.md`](/raw-materials/today-2025-09-07/intern-project-specs/modules/module-2-knowledge-graph.md)
+- **Evaluation Rubric**: Available in docs/templates/ folder
+- **GitHub Issue**: Your Week 1 assignment will be tracked via GitHub Issues with Friday 5PM deadline
+
+### Research Submission Process
+1. **Use the Template**: Copy `/docs/templates/research-brief-template.md` as your starting point
+2. **Create Your Brief**: Save as `/docs/research/module-2-research-brief.md`  
+3. **Include Artifacts**: Entity schema diagram, AI service integration plan with cost projections
+4. **Submit via GitHub**: Commit your completed research brief and reference it in your assigned GitHub Issue
+5. **Deadline**: Friday 5PM - no extensions without prior approval
+
+### Additional Resources
+- **Strategic Context**: Review project handover documents for autonomous research vision
+- **Database Decisions**: Study the database architecture decision framework
+- **Complexity Warnings**: Review fallback strategies in module specifications
+
 ## Overview
 The AI Knowledge Graph Service transforms raw content into structured knowledge by performing entity extraction, relationship discovery, and knowledge organization. It builds and maintains a graph database of interconnected entities in the creator economy domain, providing intelligent query capabilities and entity resolution through advanced NLP techniques.
 
@@ -403,6 +478,46 @@ python scripts/graph_explorer.py --port 8080
 - Automated consistency checks
 - Periodic graph cleanup jobs
 
+## Getting Started Guide
+
+### Week 1: Research & Planning (No Coding!)
+1. **Complexity Assessment**: This is the most complex module - focus on realistic scope
+2. **Read Module Spec**: Study the detailed module specification thoroughly
+3. **Technology Research**: Evaluate AI services, graph databases, and entity extraction tools
+4. **Scope Planning**: Create a tiered implementation plan to manage complexity
+5. **Submit Research Brief**: Complete and submit your analysis by Friday 5PM
+
+### Week 2: Architecture & Environment Setup
+```bash
+# Navigate to module directory
+cd modules/module-2-knowledge-graph
+
+# Create Python virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies (based on your research recommendations)
+pip install -r requirements.txt
+
+# Set up development environment
+python scripts/setup_dev_environment.py
+
+# Initialize knowledge base (will be implemented in Week 3)
+python src/initialize_kb.py
+```
+
+### Week 3+: Implementation Path
+- **Tier 1 (Weeks 3-6)**: Autonomous research foundation with basic knowledge graph
+- **Tier 2 (Weeks 7-9)**: Advanced reasoning and user intelligence features
+- **Week 10**: Demo preparation with knowledge discovery showcase
+
+### ⚠️ Complexity Management Strategies
+1. **Start Small**: Build simple entity extraction before autonomous research
+2. **Mock AI First**: Use simulated responses to build interfaces before expensive API calls
+3. **Test Incremental**: Validate each component before building complex interactions
+4. **Monitor Costs**: Track AI API usage carefully to stay within budget
+5. **Plan Fallbacks**: Always have a simpler manual approach ready
+
 ## Module Development Tips
 
 1. **Start with Schema**: Define your entity types and relationships first
@@ -410,6 +525,8 @@ python scripts/graph_explorer.py --port 8080
 3. **Test Entity Resolution**: This is the hardest part - test thoroughly
 4. **Monitor API Costs**: Track OpenAI usage and optimize prompts
 5. **Visualize Often**: Use graph visualization to understand your data
+6. **Autonomous Intelligence**: Build the system to learn and improve its research priorities
+7. **WordPress Plugin Philosophy**: Maintain module independence while enabling knowledge sharing
 
 ## Next Steps for Enhancement
 
