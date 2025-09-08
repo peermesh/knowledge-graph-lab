@@ -11,7 +11,7 @@
 | [README.md](./README.md) | Project overview in plain English - What is Knowledge Graph Lab? | Anyone discovering the project |
 | [INTERN-GUIDE.md](./INTERN-GUIDE.md) | Complete intern workbook - Your path through 10 weeks | New interns on their first day |
 
-**Navigation Flow**: README.md → INTERN-GUIDE.md → MASTER-DOCUMENT.md → Your Module → Week 1 Assignment
+**Navigation Flow**: README.md → INTERN-GUIDE.md → project-vision.md → project-overview.md → project-architecture.md → Your Module → Week 1 Assignment
 
 ---
 
@@ -45,10 +45,12 @@
 
 ## 🏗️ Project Documentation
 
-### 🌟 START HERE - Master Document
+### 🌟 START HERE - Core Project Documents
 | File | Purpose | Content |
 |------|---------|---------|
-| [docs/project-design/MASTER-DOCUMENT.md](./docs/project-design/MASTER-DOCUMENT.md) | **Complete project guide - READ THIS FIRST** | Comprehensive guide covering vision (why), overview (what), and architecture (how). This is your primary reference for understanding the entire Knowledge Graph Lab project. |
+| [docs/project-design/project-vision.md](./docs/project-design/project-vision.md) | **Part 1: Why We're Building This** | The problem we're solving, the opportunity, our approach, why now, what success looks like |
+| [docs/project-design/project-overview.md](./docs/project-design/project-overview.md) | **Part 2: What We're Building** | System overview, the four modules explained, user journeys (Sarah, Alex, Morgan) |
+| [docs/project-design/project-architecture.md](./docs/project-design/project-architecture.md) | **Part 3: How We're Building This** | Technical architecture, development timeline, technology stack, design principles, success metrics |
 
 ### Technical Specifications
 | File | Purpose | Content |
@@ -58,14 +60,6 @@
 | [docs/project-design/user-journeys.md](./docs/project-design/user-journeys.md) | End-user scenarios and workflows | Creator Sarah, Researcher Alex, and Consultant Morgan - their complete journeys |
 | [docs/project-design/deployment-strategy.md](./docs/project-design/deployment-strategy.md) | Development and deployment setup | Local development, Docker configuration, environment variables |
 | [docs/project-design/success-metrics.md](./docs/project-design/success-metrics.md) | Measurable outcomes and evaluation | Technical KPIs, user metrics, and Week 10 demo criteria |
-
-### Reference Documents (Being Consolidated)
-| File | Status | Note |
-|------|--------|------|
-| [docs/project-design/vision.md](./docs/project-design/vision.md) | Expanded | Now contains full vision narrative |
-| [docs/project-design/overview.md](./docs/project-design/overview.md) | Redundant | Content moved to MASTER-DOCUMENT.md |
-| [docs/project-design/architecture.md](./docs/project-design/architecture.md) | Redundant | Content moved to MASTER-DOCUMENT.md |
-| [docs/project-design/technology-stack.md](./docs/project-design/technology-stack.md) | Active | Module integration patterns and communication |
 
 ---
 
@@ -104,4 +98,4 @@
 
 ---
 
-**New Intern?** Start with [README.md](./README.md) → [INTERN-GUIDE.md](./INTERN-GUIDE.md) → [MASTER-DOCUMENT.md](./docs/project-design/MASTER-DOCUMENT.md) → Your Module Assignment
+**New Intern?** Start with [README.md](./README.md) → [INTERN-GUIDE.md](./INTERN-GUIDE.md) → [Project Vision](./docs/project-design/project-vision.md) → Your Module Assignment
