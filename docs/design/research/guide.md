@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide provides the practical, step-by-step process for conducting research. For the underlying philosophy and principles behind our approach, see the [Research Philosophy](./06-research-philosophy.md) document.
+This guide provides the practical, step-by-step process for conducting research. For the underlying philosophy and principles behind our approach, see the [Research Philosophy](./philosophy.md) document.
 
 **Core Principle**: Research everything comprehensively first, then select what's within reason to build, and become expert in those chosen areas as you develop the system.
 
@@ -17,7 +17,7 @@ Write a clear research brief that explains:
 - What constraints matter (time, money, complexity)
 
 ### 2. Generate Comprehensive Prompt
-Use the [deep research prompt generator](../research/prompts/deep-research-prompt-generator.md) to create a structured research brief that gets good results from AI tools.
+Use the [deep research prompt generator](../../research/prompts/deep-research-prompt-generator.md) to create a structured research brief that gets good results from AI tools.
 
 ### 3. Execute Across AI Tools
 Run the same prompt through multiple AI systems:
@@ -111,8 +111,7 @@ For ongoing research programs:
 
 ## Resources
 
-- [Deep Research Prompt Generator](../research/prompts/deep-research-prompt-generator.md) - Generates effective research briefs
-- [Example Research](../research/producer-queries/data-exploration-interfaces/) - Complete research workflow example
+- [Deep Research Prompt Generator](../../research/prompts/deep-research-prompt-generator.md) - Generates effective research briefs
 
 ---
 

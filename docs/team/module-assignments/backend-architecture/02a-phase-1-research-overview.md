@@ -1,6 +1,6 @@
 # Backend Architecture - Phase 1 Research
 
-Optional Deep Dive: see [02c-phase-1-advanced.md](02c-phase-1-advanced.md)
+Optional Deep Dive: see [02c-phase-1-research-advanced.md](02c-phase-1-research-advanced.md)
 
 ## Your Focus Area
 
@@ -116,7 +116,7 @@ You need to research and make recommendations for:
 6. **Performance Benchmarks** - Load test results for target scenarios (100 concurrent users, 1K file uploads)
 7. **Cost Analysis** - Monthly hosting costs for 10/100/1K users with breakeven calculations
 8. **Risk Register** - Top 5 technical risks with probability, impact, and mitigation strategies
-9. **Implementation Roadmap** - Week-by-week breakdown for Phase 2 development (no fixed deadlines, effort estimates only)
+9. **Implementation Roadmap** - Task breakdown for Phase 2 development (no fixed deadlines, effort estimates only)
 
 ## Specific Learning Resources
 

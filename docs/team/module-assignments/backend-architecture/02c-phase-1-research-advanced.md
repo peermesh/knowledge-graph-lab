@@ -1,6 +1,6 @@
 # Backend Architecture: Phase 1 Deep Dive
 
-**Scope**: Optional reference for advanced backend patterns beyond Phase 1 MVP. Use [02b-phase-1-assignment.md](02b-phase-1-assignment.md) for immediate implementation tasks.
+**Scope**: Optional reference for advanced backend patterns beyond Phase 1 MVP. Use [02b-phase-1-research-assignment.md](02b-phase-1-research-assignment.md) for immediate implementation tasks.
 
 ## Advanced Infrastructure Topics
 
@@ -252,4 +252,4 @@ Research time-series database patterns:
 
 ---
 
-**Next Steps**: Use [02b-phase-1-assignment.md](02b-phase-1-assignment.md) for immediate Phase 1 implementation. Return to these advanced patterns when scaling beyond MVP or implementing enterprise features.
+**Next Steps**: Use [02b-phase-1-research-assignment.md](02b-phase-1-research-assignment.md) for immediate Phase 1 implementation. Return to these advanced patterns when scaling beyond MVP or implementing enterprise features.

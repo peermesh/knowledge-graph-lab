@@ -1,6 +1,6 @@
 # AI Development Phase 1 Research
 
-Optional Advanced Topics: see [02c-phase-1-advanced.md](02c-phase-1-advanced.md)
+Optional Advanced Topics: see [02c-phase-1-research-advanced.md](02c-phase-1-research-advanced.md)
 
 ## What You're Building
 

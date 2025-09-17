@@ -1,4 +1,4 @@
-# Project Timeline
+# Project Plan
 
 ## Phase Overview
 
@@ -14,7 +14,6 @@
 
 ### Phase 1: Research
 **Start**: When project begins
-**Duration**: 2 weeks
 
 **Tasks**:
 - You'll research specific technologies: Neo4j vs ArangoDB for graph database
@@ -39,7 +38,6 @@
 
 ### Phase 2: Planning
 **Start**: When Phase 1 completes
-**Duration**: 2 weeks
 
 **Tasks**:
 - You'll create 10-page PRD for your module with technical specifications
@@ -61,7 +59,6 @@
 
 ### Phase 3: MVP Development
 **Start**: When Phase 2 completes
-**Duration**: 4 weeks
 
 **Tasks**:
 - You'll set up environment and configuration (beginning of phase)
@@ -89,7 +86,6 @@
 
 ### Phase 4: Enhancement
 **Start**: When Phase 3 completes
-**Duration**: 4 weeks
 
 **Tasks**:
 - You'll add feature improvements to standalone module
@@ -123,7 +119,6 @@
 
 ### Phase 5: Integration
 **Start**: After Demo Day
-**Duration**: 4 weeks
 
 **Tasks**:
 - You'll plan integration based on demo learnings

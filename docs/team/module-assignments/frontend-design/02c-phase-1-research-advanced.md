@@ -1,6 +1,6 @@
 # Frontend Design: Phase 1 Deep Dive (Optional)
 
-Back to Phase 1 Research: see [02a-phase-1-overview.md](02a-phase-1-overview.md)
+Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-research-overview.md)
 
 ## When to Use This Document
 
@@ -10,7 +10,7 @@ Back to Phase 1 Research: see [02a-phase-1-overview.md](02a-phase-1-overview.md)
 - Deep technical research on specific frontend challenges
 
 **Skip this if you're**:
-- Just starting Phase 1 (focus on 02a-phase-1-overview.md first)
+- Just starting Phase 1 (focus on 02a-phase-1-research-overview.md first)
 - Looking for basic implementation patterns
 - Need immediate development guidance
 
@@ -378,4 +378,4 @@ Back to Phase 1 Research: see [02a-phase-1-overview.md](02a-phase-1-overview.md)
 
 ---
 
-**Remember**: This is optional deep-dive material. Focus on 02b-phase-1-assignment.md for your immediate Phase 1 deliverables. Return to these topics when you're ready to explore advanced patterns or need enterprise-scale solutions.
+**Remember**: This is optional deep-dive material. Focus on 02b-phase-1-research-assignment.md for your immediate Phase 1 deliverables. Return to these topics when you're ready to explore advanced patterns or need enterprise-scale solutions.

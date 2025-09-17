@@ -20,9 +20,9 @@ Your research will naturally span from basic implementations to enterprise-scale
 
 ### 📚 Research Process
 
-**Follow the complete research methodology**: See [Research Guide](/docs/team/research-guide.md) for the 6-step process including how to use AI tools, organize findings, and synthesize results.
+**Follow the complete research methodology**: See [Research Guide](../../research-guide.md) for the 6-step process including how to use AI tools, organize findings, and synthesize results.
 
-**Remember**: Research broadly (everything from SQLite to Spanner), implement pragmatically (what works in 10 weeks).
+**Remember**: Research broadly (everything from SQLite to Spanner), implement pragmatically (what works within the project phases).
 
 ---
 

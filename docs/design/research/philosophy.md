@@ -35,7 +35,7 @@ We deliberately show researchers everything - from basic tutorials to enterprise
 - Create actionable insights
 
 ### Phase 3: Pragmatic Implementation
-- Transform research into 8-week PRD
+- Transform research into actionable PRD
 - Scope appropriately for resources
 - Maintain architectural awareness
 - Build with knowledge of the full landscape
@@ -171,5 +171,4 @@ The difference between a novice and an expert isn't that the expert knows less -
 
 ## Related Documents
 
-- [Research Guide](./07-research-guide.md) - Practical research process and tools
-- `/docs/ai/25-09-09-20-30-research-strategy-analysis.md` - Detailed analysis
+- [Research Guide](./guide.md) - Practical research process and tools

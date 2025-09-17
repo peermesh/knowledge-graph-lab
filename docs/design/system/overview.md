@@ -714,13 +714,12 @@ Each module sends signals back to improve the system:
 Now that you understand what we're building, explore:
 
 - [Project Architecture](./architecture.md) - Technical implementation details
-- [Module Documentation](../modules/) - Your specific module guide
+- [Module Documentation](../../modules/) - Your specific module guide
 - [User Journeys](../user-journeys/) - 61 comprehensive user journeys across 6 domains
 - [Deployment Strategy](./deployment.md) - Production deployment approach
 
 ## For Team Members
-- [Your Module Specification](/docs/team/modules.md) - Find your module's requirements
-- [Current Assignments](/docs/team/phase-1.md) - This phase's work
+- [Module Ownership](../../team/module-ownership.md) - Find your module's requirements
 
 Remember: This system will help thousands of creators succeed. Your contribution matters. Your code will make a difference. Your learning will launch your career.
 

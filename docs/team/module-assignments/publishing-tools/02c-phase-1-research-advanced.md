@@ -2,7 +2,7 @@
 
 **Reading Time**: 8-10 minutes | **Complexity**: Advanced | **Phase**: Optional Deep Dive
 
-Back to Phase 1 Research: see [02a-phase-1-overview.md](02a-phase-1-overview.md)
+Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-research-overview.md)
 
 Use this document for optional advanced topics and enterprise-scale references for future exploration. Apply these patterns and case studies in future phases - they are not required for Phase 1 completion.
 
@@ -128,6 +128,6 @@ Use this document for optional advanced topics and enterprise-scale references f
 
 ---
 
-**Take Action**: Complete [02b-phase-1-assignment.md](02b-phase-1-assignment.md) for your immediate Phase 1 deliverables first. Return to this deep-dive material when you need advanced patterns or enterprise-scale solutions for future phases.
+**Take Action**: Complete [02b-phase-1-research-assignment.md](02b-phase-1-research-assignment.md) for your immediate Phase 1 deliverables first. Return to this deep-dive material when you need advanced patterns or enterprise-scale solutions for future phases.
 
-**Phase Connections**: This document supports Phase 2+ implementation planning. Refer to [Publishing Tools Spec](Publishing-Tools-Spec.md) for module requirements and [Publishing Tools README](README.md) for module overview.
+**Phase Connections**: This document supports Phase 2+ implementation planning. Refer to the Publishing Tools Spec in `/docs/modules/publishing-tools/` for module requirements.

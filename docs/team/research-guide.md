@@ -13,7 +13,6 @@
 
 ### 2. Identify Options (1 hour)
 - Use AI assistants to find 3-5 alternatives
-- Check previous research in `/docs/ai/artifacts/`
 - Look at what similar projects use
 
 ### 3. Evaluate & Compare (2 hours)
@@ -53,7 +52,7 @@ Use multiple for different perspectives:
 "I need to choose a [technology type] for [use case] that:
 - Runs in Docker
 - Integrates with [other module]
-- Can be learned in 1 week
+- Has good learning resources
 - Available as open source or with free tier
 Compare top 5 options with pros/cons"
 ```
@@ -184,19 +183,10 @@ Compare top 5 options with pros/cons"
 
 ---
 
-## Previous Research
-
-Check these for examples:
-- `/docs/ai/artifacts/*research*.md`
-- `/docs/design/user-journeys/` (use cases)
-- `/docs/research/prompts/` (research tools)
-
----
-
 ## Advanced Research Tools
 
 For AI-powered research assistance, see:
-- [Deep Research Prompt Generator](/docs/research/prompts/deep-research-prompt-generator.md) - Generate comprehensive research prompts
+- [Deep Research Prompt Generator](../research/prompts/deep-research-prompt-generator.md) - Generate comprehensive research prompts
 
 ## Need Help?
 

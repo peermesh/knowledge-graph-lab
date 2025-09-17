@@ -1,6 +1,6 @@
-# Phase 1: Research & Discovery
+# Phase 1 Deliverables
 
-**Current Phase** | Due: Friday 5:00 PM
+Research & Discovery Phase
 
 ---
 
@@ -16,7 +16,7 @@ Research and select technologies for your module that will:
 
 ## Deliverables
 
-### 1. Research Brief (2 pages max)
+### 1. Research Brief (5 pages)
 - Technology comparison matrix
 - Selected approach with rationale
 - Risk assessment
@@ -39,10 +39,10 @@ Research and select technologies for your module that will:
 ## Quick Links to Your Research
 
 Jump directly to your module's research assignment:
-- [Backend Architecture Research](/docs/modules/backend-architecture/assignments/phase-1/Backend-Architecture_Phase-1_Research.md)
-- [Frontend Design Research](/docs/modules/frontend-design/assignments/phase-1/Frontend-Design_Phase-1_Research.md)
-- [AI Development Research](/docs/modules/ai-development/assignments/phase-1/AI-Development_Phase-1_Research.md)
-- [Publishing Tools Research](/docs/modules/publishing-tools/assignments/phase-1/Publishing-Tools_Phase-1_Research.md)
+- [Backend Architecture Research](../module-assignments/backend-architecture/02b-phase-1-research-assignment.md)
+- [Frontend Design Research](../module-assignments/frontend-design/02b-phase-1-research-assignment.md)
+- [AI Development Research](../module-assignments/ai-development/02b-phase-1-research-assignment.md)
+- [Publishing Tools Research](../module-assignments/publishing-tools/02b-phase-1-research-assignment.md)
 
 ## Research Focus by Module
 
@@ -76,12 +76,11 @@ Jump directly to your module's research assignment:
 
 ### Use These Tools
 - AI assistants (Claude, ChatGPT, Perplexity)
-- [Research Prompts](/docs/research/prompts/)
-- Previous research in `/docs/ai/artifacts/`
+- [Research Prompts](../../research/prompts/)
 - Module-specific resources in your README
 
 ### Evaluation Criteria
-1. **Feasibility**: Can we build this in 10 weeks?
+1. **Feasibility**: Can we build this within the project phases?
 2. **Cost**: Will it run on student budgets?
 3. **Integration**: Does it work with other modules?
 4. **Scalability**: Can it grow beyond MVP?
@@ -101,11 +100,11 @@ Jump directly to your module's research assignment:
 
 ## Success Criteria
 
-✅ Clear technology recommendation  
-✅ Rationale backed by research  
-✅ Integration points identified  
-✅ Risks acknowledged  
-✅ Submitted by Friday 5pm
+✅ Clear technology recommendation
+✅ Rationale backed by research
+✅ Integration points identified
+✅ Risks acknowledged
+✅ Properly documented and submitted
 
 ---
 
@@ -122,6 +121,5 @@ Jump directly to your module's research assignment:
 ## Questions?
 
 - **Technical**: Ask in #kgl-[your-module]
-- **Integration**: Discuss in #kgl-integration  
+- **Integration**: Discuss in #kgl-integration
 - **Process**: Check with @grig
-- **Examples**: See `/docs/ai/artifacts/`
