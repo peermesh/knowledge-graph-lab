@@ -1,4 +1,4 @@
-<DEEP_RESEARCH_GENERATOR version="2025-09-13">
+<DEEP_RESEARCH_GENERATOR version="2025-09-14T02:07:03Z">
 
 Note (brief source precedence): If both a preface brief and a <BRIEF> block exist, use the <BRIEF> block and ignore the preface. If only a preface brief exists, treat that as the BRIEF. Prefer using exactly one brief source (either the preface or the <BRIEF> block) to avoid duplication.
 
@@ -51,6 +51,9 @@ Final‑prompt constraints (apply to every emitted prompt):
 - Do not use the term “Group” anywhere in outputs. When helpful, label as “Prompt i of P — [Objects i–j of K]” and then begin the research instructions.
 - Never include complexity math or split/meta text (N, D, L, Y, P, SINGLE/MULTI/CUSTOM, the split question, or operator markers) inside final prompts.
 - Do not include any questions, interactive checkpoints, or “would you like me to start” text inside final prompts.
+- Generate prompt instructions only — do not execute or begin the research deliverable. Where templates specify content (e.g., “[500+ words]”, per‑object 200+ words), keep these as instructions/placeholders; do not write the actual report content.
+- Parity requirement: Emit all major sections in every prompt (RESEARCHER ROLE, EXECUTION DIRECTIVE, SCOPE SPECIFICATION, CONTEXT SATURATION, RESEARCH METHODOLOGY, OUTPUT SPECIFICATIONS). Do not abbreviate, omit, or refer back to prior prompts. Each prompt must meet section length minima and overall length on its own.
+ - Render all bracketed instructions (e.g., [500+ words], [Objects i–j of K]) literally as written; do not replace them with actual content.
  - In all cases, include an Inventory Preview (category counts and total N) within the Domain Overview for reader orientation.
 
 Split‑choice question to user (send exactly this one‑liner):
@@ -155,6 +158,7 @@ Generate prompts with these expanded components:
 
 <OUTPUT_SPECIFICATIONS>
 6. **OUTPUT SPECIFICATIONS** (400+ words mandating unstructured output)
+   These specifications are to be included verbatim in the research prompt you emit. They instruct the research agent on how to deliver the research. Do not begin writing any of the research sections yourself.
    MANDATE UNSTRUCTURED MARKDOWN OUTPUT:
    OUTPUT FORMAT: Comprehensive narrative markdown (optionally with a brief YAML frontmatter for title/date only). No JSON schemas.
 
@@ -213,6 +217,7 @@ Generate prompts with these expanded components:
     - Segmentation is orthogonal to prompt count; do not use segmentation to replace multi‑prompt splitting when P>1 unless the user chooses SINGLE.
    
    Length and Depth:
+    - These minima apply to each emitted prompt individually (SINGLE or each P in MULTI).
     - Minimum 3,500 words of substantive content; target ≥4,000 when feasible
     - Executive summary alone should be 500+ words
     - Each major finding/object needs 200+ words
@@ -220,12 +225,13 @@ Generate prompts with these expanded components:
     - Preserve all nuances and edge cases discovered
 
    Segmented Delivery Protocol (when limits apply):
-   - Segment 1: Title, Executive Summary, and Domain Overview
-   - Segments 2..N: Detailed Findings in batches of ~8–12 objects per segment (maintain ≥200 words per object)
-   - Final Segment: Comparative Analysis; Implementation Considerations; Recommendations; Conclusion & Next Steps
-   - Label each segment at the top: "Segment X of Y — [Sections]" and include coverage markers like "[Objects i–j of K]"
-   - End each segment with a continuation anchor: "CONTINUATION ANCHOR: resume with [next section/object]"
-   - Continue immediately with subsequent segments until the deliverable is complete
+    - Segment 1: Title, Executive Summary, and Domain Overview
+    - Segments 2..N: Detailed Findings in batches of ~8–12 objects per segment (maintain ≥200 words per object)
+    - Final Segment: Comparative Analysis; Implementation Considerations; Recommendations; Conclusion & Next Steps
+    - Label each segment at the top: "Segment X of Y — [Sections]" and include coverage markers like "[Objects i–j of K]"
+    - End each segment with a continuation anchor: "CONTINUATION ANCHOR: resume with [next section/object]"
+    - Continuation anchors are only for segmented delivery within a single research output. Do not include anchors that refer to other prompts (e.g., "resume with Prompt 2").
+    - Continue immediately with subsequent segments until the deliverable is complete
    
    Coverage–Depth Resolution Rules (if hard limits persist despite segmentation):
    - Primary goal: Maintain breadth across the canonical inventory with meaningful depth, unless the brief prioritizes depth over breadth; for large landscapes, aim for ≥50 objects when feasible (minimum acceptable ≥45). If the inventory is smaller, cover all objects.
