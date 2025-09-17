@@ -42,8 +42,9 @@ The project has four core modules. You'll be assigned to one:
 
 ## Success Criteria
 
-✅ You know which module you own and what it covers
-✅ You have access to repository and communication channels
-✅ You understand Phase 1 deliverables
-✅ You've completed your first research tasks
-✅ You know how to get help when blocked
+- ✅ You know which module you own and what it covers
+- ✅ You have access to repository and communication channels
+- ✅ You understand Phase 1 deliverables
+- ✅ You've completed your first research tasks
+- ✅ You know how to get help when blocked
+
