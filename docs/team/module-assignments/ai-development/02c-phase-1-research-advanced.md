@@ -1,6 +1,6 @@
 # AI Development Phase 1 Deep Dive
 
-← Back to [Phase 1 Overview](02a-phase-1-overview.md)
+← Back to [Phase 1 Overview](02a-phase-1-research-overview.md)
 
 **Purpose**: This document provides advanced AI/ML research topics that extend beyond Phase 1 requirements. Use these resources to deepen understanding of knowledge graph systems, retrieval-augmented generation, and enterprise AI architectures. The topics here inform long-term technical decisions and help build expertise for Phases 2-3.
 
@@ -192,4 +192,4 @@ These advanced topics support Phase 1 research by:
 
 ---
 
-**Navigation**: This document extends [02b-phase-1-assignment.md](02b-phase-1-assignment.md) with advanced context. Complete core Phase 1 deliverables first, then return here for deeper exploration of enterprise-scale patterns and research methodologies.
+**Navigation**: This document extends [02b-phase-1-research-assignment.md](02b-phase-1-research-assignment.md) with advanced context. Complete core Phase 1 deliverables first, then return here for deeper exploration of enterprise-scale patterns and research methodologies.

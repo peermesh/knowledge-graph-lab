@@ -19,7 +19,7 @@ Document the full spectrum of solutions - from basic email APIs to enterprise-sc
 
 ### \ud83d\udcda Research Process
 
-**Follow the complete research methodology**: See [Research Guide](/docs/team/research-guide.md) for the 6-step process including how to use AI tools and organize findings.
+**Follow the complete research methodology**: See [Research Guide](../../research-guide.md) for the 6-step process including how to use AI tools and organize findings.
 
 ---
 
@@ -465,7 +465,7 @@ As you research, create:
 2. **Architecture Proposal**: Your recommended tech stack with justification based on research
 3. **Infrastructure Model**: Detailed requirements for different audience scales
 4. **Engagement Strategy**: How to achieve Morning Brew-level metrics with specific tactics
-5. **Implementation Roadmap**: Week-by-week development plan with priority questions answered
+5. **Implementation Roadmap**: Phase-based development plan with priority questions answered
 
 ### Include in Your Research
 - **Proof of Concepts**: Email send tests, personalization demos

@@ -1,8 +1,8 @@
-# Module Specifications
+# Module Ownership
 
 Complete specifications for all four modules. Each module has full ownership of their domain.
 
-## Module Specifications
+## Module Ownership Table
 
 | Module | Team Member | Detailed Specification |
 |--------|-------------|----------------------|
@@ -28,12 +28,12 @@ Each specification includes:
 
 All team members work through the same phases:
 - **Phase 1**: Research & Technology Selection
-- **Phase 2**: Core Implementation
-- **Phase 3**: Integration
+- **Phase 2**: Planning
+- **Phase 3**: MVP Development
 - **Phase 4**: Enhancement
-- **Phase 5**: Demo Preparation
+- **Phase 5**: Integration
 
-For specific phase assignments, see: `/docs/modules/[your-module]/assignments/phase-[N]/`
+For specific phase assignments, see: `module-assignments/[your-module]/`
 
 ### Communication Channels
 

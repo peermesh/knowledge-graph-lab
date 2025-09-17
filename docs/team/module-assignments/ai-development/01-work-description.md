@@ -2,7 +2,7 @@
 
 **Role**: AI Development Team Member  
 **Project**: Knowledge Graph Lab  
-**Timeline**: 10 weeks (flexible based on progress)
+**Timeline**: 5 phases (flexible based on progress)
 
 ## 🎯 Your Mission
 

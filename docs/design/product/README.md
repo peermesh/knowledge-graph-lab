@@ -19,7 +19,7 @@ When ready, this directory will have:
 ## In the Meantime
 
 Check these locations for current information:
-- Module specifications: `/docs/team/modules/`
+- Module assignments: `/docs/team/module-assignments/`
 - System architecture: `/docs/design/system/`
 - Project vision: `/docs/design/strategy/`
 

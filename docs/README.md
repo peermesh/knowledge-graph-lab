@@ -40,11 +40,11 @@ Find documentation in three main sections:
 
 ### Team Resources (team/)
 **Everything for productivity:**
-- [Start Here](team/README.md) - Module assignments and current tasks
-- [Timeline](team/timeline.md) - 5 project phases with deadlines
+- [Start Here](team/README.md) - Module assignments and navigation
+- [Project Plan](team/project-plan/overview.md) - 5 project phases with deliverables
 - [Onboarding](team/onboarding.md) - Day 1 setup checklist
-- [Communication](team/communication.md) - Channels and meeting schedules
-- Module specifications in team/modules/
+- [Module Ownership](team/module-ownership.md) - Who owns what
+- Module assignments in team/module-assignments/
 
 ### Research Tools (research/)
 - Deep research prompt generator (research/prompts/deep-research-prompt-generator.md)

@@ -1,6 +1,6 @@
 # Frontend Design: Phase 1 Research
 
-Optional Deep Dive: see [02c-phase-1-advanced.md](02c-phase-1-advanced.md)
+Optional Deep Dive: see [02c-phase-1-research-advanced.md](02c-phase-1-research-advanced.md)
 
 ## Research Dependencies
 **Required Before Starting**: System architecture requirements, user journey analysis

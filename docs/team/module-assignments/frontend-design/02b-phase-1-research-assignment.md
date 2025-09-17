@@ -18,7 +18,7 @@ Document the full spectrum of solutions - from basic implementations to enterpri
 
 ### \ud83d\udcda Research Process
 
-**Follow the complete research methodology**: See [Research Guide](/docs/team/research-guide.md) for the 6-step process including how to use AI tools and organize findings.
+**Follow the complete research methodology**: See [Research Guide](../../research-guide.md) for the 6-step process including how to use AI tools and organize findings.
 
 ---
 
@@ -1045,4 +1045,4 @@ Look at these tools for inspiration:
 
 **Remember**: You're designing the face of our platform. Study how Linear achieves their legendary performance, how Figma enables magical collaboration, and how Obsidian makes complex knowledge feel tangible. Make it beautiful, fast, and accessible. The interface should make complex AI systems feel approachable and powerful research feel effortless.
 
-**Don't Limit Yourself**: If you discover that the best solution involves WebGPU, quantum computing concepts, or distributed systems, document it. Even if we can't implement it in 8 weeks, understanding the ceiling helps us build a better floor.
+**Don't Limit Yourself**: If you discover that the best solution involves WebGPU, quantum computing concepts, or distributed systems, document it. Even if we can't implement it during this project, understanding the ceiling helps us build a better floor.

@@ -15,8 +15,8 @@ The project has four core modules. You'll be assigned to one:
 
 ### Find Your Assignment
 - [ ] Check [team/README.md](README.md) to find your module assignment
-- [ ] Go to your module directory: `team/modules/[your-module]/`
-- [ ] Open `02a-phase-1-overview.md` to see your research overview
+- [ ] Go to your module directory: `team/module-assignments/[your-module]/`
+- [ ] Open `02a-phase-1-research-overview.md` to see your research overview
 - [ ] Read your module specification document
 
 ### Set Up Access
@@ -29,11 +29,11 @@ The project has four core modules. You'll be assigned to one:
 ### Understand the Project
 - [ ] Read [Project Overview](../design/system/architecture.md) - What we're building
 - [ ] Skim [Project Vision](../design/strategy/vision.md) - Why it matters
-- [ ] Review [Timeline](timeline.md) - Phase milestones and deliverables
+- [ ] Review [Project Plan](project-plan/overview.md) - Phase milestones and deliverables
 
 ### Start Research Work
 - [ ] Review [Research Methodology](../design/research/methodology.md)
-- [ ] Complete 3-5 research tasks from your `02b-phase-1-assignment.md`
+- [ ] Complete 3-5 research tasks from your `02b-phase-1-research-assignment.md`
 - [ ] Submit research brief when you complete Phase 1 milestones
 
 ## Getting Help

@@ -2,7 +2,7 @@
 
 **Role**: Backend Architecture Team Member  
 **Project**: Knowledge Graph Lab  
-**Timeline**: 10 weeks (flexible based on progress)
+**Timeline**: 5 phases (flexible based on progress)
 
 ## 🎯 Your Mission
 
@@ -211,4 +211,4 @@ This role offers deep experience in:
 - DevOps and containerization
 - Real-world integration challenges
 
-By the end of 10 weeks, you'll have built a complete backend system that could power a real startup.
+By the end of the project, you'll have built a complete backend system that could power a real startup.

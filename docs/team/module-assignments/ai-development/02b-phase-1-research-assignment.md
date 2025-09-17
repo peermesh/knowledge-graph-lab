@@ -20,7 +20,7 @@ Explore everything from basic implementations to cutting-edge enterprise solutio
 
 ### 📚 Research Process
 
-**Follow the complete research methodology**: See [Research Guide](/docs/team/research-guide.md) for the 6-step process including how to use AI tools, organize findings, and synthesize results.
+**Follow the complete research methodology**: See [Research Guide](../../research-guide.md) for the 6-step process including how to use AI tools, organize findings, and synthesize results.
 
 **Remember**: Research broadly (from rule-based to neural networks), implement pragmatically (what runs locally in Docker).
 
@@ -702,7 +702,7 @@ As you research, create:
 1. **Start Broad**: Research everything, even systems you can't build
 2. **Document Everything**: Record all findings, from basic to advanced
 3. **Extract Patterns**: What architectural decisions transcend specific implementations?
-4. **Find Your Level**: Identify what's achievable in 8 weeks
+4. **Find Your Level**: Identify what's achievable within the project phases
 5. **Learn from Giants**: Understand why Google/Netflix made certain choices
 
 ### Questions for Each System

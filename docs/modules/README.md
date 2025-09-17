@@ -2,7 +2,7 @@
 
 This directory contains the implementation documentation for each module when the work is complete and ready for use.
 
-For team documentation, assignments, and work instructions, see `/docs/team/modules/`.
+For team documentation, assignments, and work instructions, see `/docs/team/module-assignments/`.
 
 ## Core Modules
 
