@@ -460,6 +460,8 @@ As you research, create:
 
 ## Research Deliverables
 
+**Submit to**: `/docs/team/module-assignments/publishing-tools/deliverables/phase-1-research/`
+
 ### By Thursday, September 12
 1. **Platform Evaluation Matrix**: Compare all publishing tools/services with answers to key questions
 2. **Architecture Proposal**: Your recommended tech stack with justification based on research

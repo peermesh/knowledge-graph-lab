@@ -154,7 +154,7 @@ Build the distribution system that delivers personalized insights through every 
 5. Create basic newsletter sender
 
 ### Key Resources
-- **Research Assignment**: `/docs/modules/publishing-tools/assignments/phase-1/Publishing-Tools_Phase-1_Research.md`
+- **Research Assignment**: See `02b-phase-1-research-assignment.md` in this directory
 - **Email Best Practices**: [Really Good Emails](https://reallygoodemails.com)
 - **Deliverability Guide**: [Mail Tester](https://www.mail-tester.com)
 - **MJML Framework**: [mjml.io](https://mjml.io)
