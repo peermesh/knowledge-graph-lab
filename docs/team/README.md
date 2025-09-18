@@ -13,6 +13,8 @@ Welcome! You're here to build a module. Let's get you to the right place.
 
 ## Quick Links
 
+- **Git Workflow**: [git-workflow.md](git-workflow.md) - How to submit your work
+- **SpecKit Guide**: [speckit-guide.md](speckit-guide.md) - Phase 2 PRD requirements for code generation
 - **Project Plan**: [project-plan/overview.md](project-plan/overview.md) - All phases and deliverables
 - **Module Ownership**: [module-ownership.md](module-ownership.md) - Who owns what and communication channels
 - **Research Guide**: [research-guide.md](research-guide.md) - How to conduct research

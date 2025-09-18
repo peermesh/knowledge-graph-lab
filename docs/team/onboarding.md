@@ -20,10 +20,11 @@ The project has four core modules. You'll be assigned to one:
 - [ ] Read your module specification document
 
 ### Set Up Access
-- [ ] GitHub - Get repository access
+- [ ] GitHub - Get repository access (check invite email)
+- [ ] Set up Git and GitHub CLI - Follow [git-workflow.md](git-workflow.md)
 - [ ] Team communication platform - Get invite link from team lead
 - [ ] Find your module channel and post introduction
-- [ ] Create free acounts for: OpenAI, Claude, Perplexity, and 
+- [ ] Create free accounts for: OpenAI, Claude, Perplexity
 - [ ] AWS Free Tier (if testing deployment)
 
 ### Understand the Project
@@ -34,7 +35,7 @@ The project has four core modules. You'll be assigned to one:
 ### Start Research Work
 - [ ] Review [Research Methodology](../design/research/methodology.md)
 - [ ] Complete 3-5 research tasks from your `02b-phase-1-research-assignment.md`
-- [ ] Submit research brief when you complete Phase 1 milestones
+- [ ] Submit research brief via pull request - See [git-workflow.md](git-workflow.md)
 
 ## Getting Help
 

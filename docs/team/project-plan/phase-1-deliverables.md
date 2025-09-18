@@ -93,7 +93,7 @@ Jump directly to your module's research assignment:
 1. **Create** your research brief
 2. **Save** to `/docs/team/module-assignments/[your-module]/deliverables/phase-1-research/`
 3. **Name** as `phase-1-research-brief.md`
-4. **Submit** via pull request
+4. **Submit** via pull request - Follow [Git Workflow Guide](../git-workflow.md)
 5. **Notify** in Discord when complete
 
 ---
