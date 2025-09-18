@@ -1027,6 +1027,8 @@ Look at these tools for inspiration:
 
 ## Research Deliverables
 
+**Submit to**: `/docs/team/module-assignments/frontend-design/deliverables/phase-1-research/`
+
 ### By Thursday, September 12
 1. **Technology Evaluation Matrix**: Compare all researched tools/libraries
 2. **Architecture Proposal**: Your recommended tech stack with justification

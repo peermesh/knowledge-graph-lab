@@ -154,7 +154,7 @@ Build the intelligence layer that transforms raw information into actionable ins
 5. Design embedding pipeline
 
 ### Key Resources
-- **Research Assignment**: `/docs/modules/ai-development/assignments/phase-1/AI-Development_Phase-1_Research.md`
+- **Research Assignment**: See `02b-phase-1-research-assignment.md` in this directory
 - **LangChain Docs**: [python.langchain.com](https://python.langchain.com)
 - **OpenAI Cookbook**: [cookbook.openai.com](https://cookbook.openai.com)
 - **Papers With Code**: [paperswithcode.com](https://paperswithcode.com)

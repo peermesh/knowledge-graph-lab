@@ -130,4 +130,4 @@ Use this document for optional advanced topics and enterprise-scale references f
 
 **Take Action**: Complete [02b-phase-1-research-assignment.md](02b-phase-1-research-assignment.md) for your immediate Phase 1 deliverables first. Return to this deep-dive material when you need advanced patterns or enterprise-scale solutions for future phases.
 
-**Phase Connections**: This document supports Phase 2+ implementation planning. Refer to the Publishing Tools Spec in `/docs/modules/publishing-tools/` for module requirements.
+**Phase Connections**: This document supports Phase 2+ implementation planning. Refer to the Publishing Tools Spec in `../../../modules/publishing-tools/` for module requirements.
