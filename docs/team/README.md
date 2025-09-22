@@ -2,25 +2,37 @@
 
 Welcome! You're here to build a module. Let's get you to the right place.
 
+## System Architecture
+
+![Knowledge Graph Lab Architecture](../images/Knowledge-Graph-Lab.png)
+
+*The Knowledge Graph Lab consists of interconnected modules that work together through a central Core Module. Each team member will be building one of these specialized modules.*
+
 ## Module Assignment Table
 
 | Your Role | Your Module Directory | Assignment File | Example Focus |
 |-----------|----------------------|--------------|---------------|
-| Backend Engineer | module-assignments/backend-architecture/ | 02b-phase-1-research-assignment.md | PostgreSQL vs MongoDB comparison matrix |
-| Frontend Developer | module-assignments/frontend-design/ | 02b-phase-1-research-assignment.md | React vs Vue framework evaluation |
-| AI/ML Engineer | module-assignments/ai-development/ | 02b-phase-1-research-assignment.md | LangChain vs LlamaIndex implementation guide |
-| Content Systems | module-assignments/publishing-tools/ | 02b-phase-1-research-assignment.md | Multi-channel API integration analysis |
+| Backend Engineer | module-assignments/backend-architecture/ | 02-phase-1-research/02b-phase-1-research-assignment.md | PostgreSQL vs MongoDB comparison matrix |
+| Frontend Developer | module-assignments/frontend-design/ | 02-phase-1-research/02b-phase-1-research-assignment.md | React vs Vue framework evaluation |
+| AI/ML Engineer | module-assignments/ai-development/ | 02-phase-1-research/02b-phase-1-research-assignment.md | LangChain vs LlamaIndex implementation guide |
+| Content Systems | module-assignments/publishing-tools/ | 02-phase-1-research/02b-phase-1-research-assignment.md | Multi-channel API integration analysis |
 
 ## Quick Links
 
-- **Deliverables Guide**: [deliverables-guide.md](deliverables-guide.md) - What to submit, where, and when (BOOKMARK THIS)
+- **System Overview**: [../design/product/system-overview.md](../design/product/system-overview.md) - What we're building and how modules connect (READ FIRST)
 - **Git Workflow**: [git-workflow.md](git-workflow.md) - How to submit your work
-- **SpecKit Guide**: [speckit-guide.md](speckit-guide.md) - Phase 2 PRD requirements for code generation
+- **[Phase 2 Deliverables (SpecKit)](project-plan/phase-2-deliverables.md)** - PRD requirements for code generation
 - **Project Plan**: [project-plan/overview.md](project-plan/overview.md) - All phases and deliverables
 - **Module Ownership**: [module-ownership.md](module-ownership.md) - Who owns what and communication channels
-- **Research Guide**: [research-guide.md](research-guide.md) - How to conduct research
+- **Research Methodology**: [../design/research/methodology.md](../design/research/methodology.md) - How to conduct research
 - **New team member?**: [onboarding.md](onboarding.md) - Complete setup guide
 - **Project vision**: [../design/strategy/vision.md](../design/strategy/vision.md) - Core mission and objectives
+
+## Development Roadmap
+
+![Knowledge Graph Lab Roadmap](../images/Knowledge-Graph-Lab-roadmap.png)
+
+*This roadmap shows the 5-phase development process you'll follow: from initial research through to final integration. Each phase builds upon the previous one, culminating in a connected, publicly available system.*
 
 ## Your Next Steps
 
@@ -33,6 +45,11 @@ Welcome! You're here to build a module. Let's get you to the right place.
 
 Each module directory contains:
 - `01-work-description.md` - Your module's complete scope
-- `02a-phase-1-research-overview.md` - Phase 1 research context
-- `02b-phase-1-research-assignment.md` - Phase 1 specific tasks
-- `02c-phase-1-research-advanced.md` - Additional resources
+- `02-phase-1-research/` - Phase 1 research documents
+  - `02a-phase-1-research-overview.md` - Phase 1 research context
+  - `02b-phase-1-research-assignment.md` - Phase 1 specific tasks
+  - `02c-phase-1-research-advanced.md` - Additional resources
+- `03-phase-2-prd+plan/` - Phase 2 PRD and implementation documents
+  - `03a-phase-2-prd-overview.md` - Phase 2 PRD context
+  - `03b-phase-2-prd-assignment.md` - Phase 2 specific tasks
+  - `03c-phase-2-prd-advanced.md` - Advanced implementation guidance

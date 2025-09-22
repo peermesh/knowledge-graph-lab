@@ -39,10 +39,10 @@ Research and select technologies for your module that will:
 ## Quick Links to Your Research
 
 Jump directly to your module's research assignment:
-- [Backend Architecture Research](../module-assignments/backend-architecture/02b-phase-1-research-assignment.md)
-- [Frontend Design Research](../module-assignments/frontend-design/02b-phase-1-research-assignment.md)
-- [AI Development Research](../module-assignments/ai-development/02b-phase-1-research-assignment.md)
-- [Publishing Tools Research](../module-assignments/publishing-tools/02b-phase-1-research-assignment.md)
+- [Backend Architecture Research](../module-assignments/backend-architecture/02-phase-1-research/02b-phase-1-research-assignment.md)
+- [Frontend Design Research](../module-assignments/frontend-design/02-phase-1-research/02b-phase-1-research-assignment.md)
+- [AI Development Research](../module-assignments/ai-development/02-phase-1-research/02b-phase-1-research-assignment.md)
+- [Publishing Tools Research](../module-assignments/publishing-tools/02-phase-1-research/02b-phase-1-research-assignment.md)
 
 ## Research Focus by Module
 

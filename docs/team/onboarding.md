@@ -16,7 +16,7 @@ The project has four core modules. You'll be assigned to one:
 ### Find Your Assignment
 - [ ] Check [team/README.md](README.md) to find your module assignment
 - [ ] Go to your module directory: `team/module-assignments/[your-module]/`
-- [ ] Open `02a-phase-1-research-overview.md` to see your research overview
+- [ ] Open `02-phase-1-research/02a-phase-1-research-overview.md` to see your research overview
 - [ ] Read your module specification document
 
 ### Set Up Access
@@ -34,8 +34,14 @@ The project has four core modules. You'll be assigned to one:
 
 ### Start Research Work
 - [ ] Review [Research Methodology](../design/research/methodology.md)
-- [ ] Complete 3-5 research tasks from your `02b-phase-1-research-assignment.md`
+- [ ] Complete 3-5 research tasks from your `02-phase-1-research/02b-phase-1-research-assignment.md`
 - [ ] Submit research brief via pull request - See [git-workflow.md](git-workflow.md)
+
+### Progress to Phase 2 (After Phase 1 Completion)
+- [ ] Review Phase 1 feedback and approvals
+- [ ] Access your Phase 2 PRD documents in `03-phase-2-prd+plan/`
+- [ ] Complete cross-module coordination tasks per `03b-phase-2-prd-assignment.md`
+- [ ] Begin SpecKit-ready implementation planning
 
 ## Getting Help
 
@@ -47,5 +53,6 @@ The project has four core modules. You'll be assigned to one:
 - ✅ You have access to repository and communication channels
 - ✅ You understand Phase 1 deliverables
 - ✅ You've completed your first research tasks
+- ✅ You're ready to progress to Phase 2 PRD work when approved
 - ✅ You know how to get help when blocked
 

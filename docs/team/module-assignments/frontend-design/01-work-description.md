@@ -151,7 +151,8 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 5. Design authentication flow UI
 
 ### Key Resources
-- **Research Assignment**: See `02b-phase-1-research-assignment.md` in this directory
+- **Phase 1 Research**: See `02-phase-1-research/02b-phase-1-research-assignment.md` in this directory
+- **Phase 2 PRD**: See `03-phase-2-prd+plan/03b-phase-2-prd-assignment.md` in this directory
 - **D3.js Gallery**: [Observable D3 Gallery](https://observablehq.com/@d3/gallery)
 - **React Patterns**: [patterns.dev](https://patterns.dev)
 - **Accessibility Guide**: [WebAIM](https://webaim.org)
