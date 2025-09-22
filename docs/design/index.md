@@ -20,7 +20,7 @@ Strategic vision and success criteria
 ### Research Methodology
 Research approach and practical guides
 
-- **[Research Methodology](../team/research-guide.md)** - Depth-First Distillation approach and practical guide for team members
+- **[Research Methodology](research/methodology.md)** - Depth-First Distillation approach and practical guide for team members
 
 ### User Journeys
 Comprehensive user journey documentation

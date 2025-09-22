@@ -154,7 +154,8 @@ Build the distribution system that delivers personalized insights through every 
 5. Create basic newsletter sender
 
 ### Key Resources
-- **Research Assignment**: See `02b-phase-1-research-assignment.md` in this directory
+- **Phase 1 Research**: See `02-phase-1-research/02b-phase-1-research-assignment.md` in this directory
+- **Phase 2 PRD**: See `03-phase-2-prd+plan/03b-phase-2-prd-assignment.md` in this directory
 - **Email Best Practices**: [Really Good Emails](https://reallygoodemails.com)
 - **Deliverability Guide**: [Mail Tester](https://www.mail-tester.com)
 - **MJML Framework**: [mjml.io](https://mjml.io)

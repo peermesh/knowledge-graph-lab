@@ -19,7 +19,7 @@ Create comprehensive Product Requirements Documents (PRDs) that will:
 
 ### 1. Product Requirements Document (10-15 pages)
 
-Your PRD MUST follow the SpecKit-compatible format from [../../speckit-guide.md](../../speckit-guide.md):
+Your PRD MUST follow the SpecKit-compatible format:
 
 #### Required Sections:
 1. **System Overview** - Purpose, users, integration points
@@ -75,6 +75,16 @@ Your PRD must be ready for code generation:
 
 ---
 
+## Quick Links to Your PRD Assignment
+
+Jump directly to your module's Phase 2 PRD assignment:
+- [Backend Architecture PRD](../module-assignments/backend-architecture/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
+- [Frontend Design PRD](../module-assignments/frontend-design/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
+- [AI Development PRD](../module-assignments/ai-development/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
+- [Publishing Tools PRD](../module-assignments/publishing-tools/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
+
+---
+
 ## Module-Specific Requirements
 
 ### Backend Architecture
@@ -111,12 +121,24 @@ Focus on:
 
 ---
 
+## Integration Outreach (All Modules)
+
+Each module must actively coordinate with Backend to confirm contracts.
+
+Requirements
+- Schedule a working session with the Backend owner (see ../module-ownership.md)
+- Validate data shapes, endpoints, and error handling
+- Document decisions and open questions in your PRD
+- Obtain an explicit sign‑off from the Backend owner
+
+---
+
 ## Submission Process
 
 1. **Write** your PRD following the SpecKit structure
-2. **Validate** using the checklist in [speckit-guide.md](../../speckit-guide.md)
+2. **Validate** using the SpecKit checklist (see SpecKit Preparation below)
 3. **Save** to `/docs/team/module-assignments/[your-module]/deliverables/phase-2-planning/PRD.md`
-4. **Submit** via pull request - See [Git Workflow](../../git-workflow.md)
+4. **Submit** via pull request - See [Git Workflow](../git-workflow.md)
 5. **Notify** in Discord when complete
 
 ---
@@ -159,9 +181,9 @@ Your Phase 2 is complete when:
 ## Resources
 
 ### Essential Guides
-- **SpecKit Guide**: [../../speckit-guide.md](../../speckit-guide.md) - MUST READ
-- **Git Workflow**: [../../git-workflow.md](../../git-workflow.md)
-- **Phase 2 Quick Start**: [../../PHASE-2-QUICK-START.md](../../PHASE-2-QUICK-START.md)
+- **SpecKit Requirements**: See the SpecKit Preparation section in this document
+- **Git Workflow**: [../git-workflow.md](../git-workflow.md)
+- **Phase 2 Quick Start**: Refer to your module’s 03a Overview (to be prepared in each module’s Phase 2 directory)
 
 ### Examples
 - **Publishing PRD Example**: `../module-assignments/publishing-tools/deliverables/phase-2-planning/examples/PRD-example.md`

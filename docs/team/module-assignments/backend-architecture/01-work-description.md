@@ -139,7 +139,8 @@ Design and implement the core backend infrastructure that powers the entire Know
 5. Implement basic authentication
 
 ### Key Resources
-- **Research Assignment**: See `02b-phase-1-research-assignment.md` in this directory
+- **Phase 1 Research**: See `02-phase-1-research/02b-phase-1-research-assignment.md` in this directory
+- **Phase 2 PRD**: See `03-phase-2-prd+plan/03b-phase-2-prd-assignment.md` in this directory
 - **Docker Best Practices**: [Docker Documentation](https://docs.docker.com/develop/dev-best-practices/)
 - **Database Comparison**: Research different database types for different use cases
 - **API Design Patterns**: Compare REST, GraphQL, and other API approaches

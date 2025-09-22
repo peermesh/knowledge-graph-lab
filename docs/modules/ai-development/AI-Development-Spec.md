@@ -47,6 +47,59 @@ Transform raw text into knowledge:
 5. **Error Handling**: Retry failed extractions with fallback approaches
 6. **Output**: Structured JSON with entities, relationships, and confidence scores
 
+### News Report Generation & Synthesis
+Transform extracted knowledge into standalone news-style reports:
+- **Prompt-Driven Generation**: Use configurable prompts to generate news reports in specific styles
+- **Content Synthesis**: Aggregate and analyze findings from multiple sources into coherent narratives
+- **Report Types**: Generate different report formats based on content type:
+  - Breaking news (urgent developments)
+  - Analysis pieces (trends and patterns)
+  - Market updates (financial/funding news)
+  - Research summaries (academic/technical findings)
+- **Standalone Reports**: Each report is a complete, independent article:
+  - Has unique ID and URL
+  - Self-contained with all context
+  - Written in journalistic style
+  - Includes headline, lead, body, and conclusion
+- **Tagging & Metadata**: Apply comprehensive categorization:
+  - Topic tags (technology, healthcare, finance)
+  - Priority levels (breaking, important, standard)
+  - Entity tags (companies, people, products mentioned)
+  - Relevance scoring for discovery
+- **Report Structure**:
+  ```json
+  {
+    "report_id": "uuid",
+    "url": "/reports/2025-09-22/openai-funding-round",
+    "generated_at": "timestamp",
+    "headline": "OpenAI Raises $10B in Historic Funding Round",
+    "lead": "In a landmark deal that reshapes the AI landscape...",
+    "body": [
+      {
+        "type": "paragraph",
+        "content": "Full news article text..."
+      },
+      {
+        "type": "quote",
+        "content": "This represents a paradigm shift...",
+        "attribution": "Industry Expert"
+      }
+    ],
+    "metadata": {
+      "report_type": "breaking_news",
+      "entities": ["OpenAI", "Microsoft", "Sam Altman"],
+      "topics": ["AI", "venture_capital", "technology"],
+      "priority": "high",
+      "relevance_scores": {
+        "ai_industry": 0.98,
+        "venture_capital": 0.95,
+        "tech_general": 0.82
+      }
+    },
+    "source_references": ["doc_id_1", "doc_id_2"]
+  }
+  ```
+
 ### Quality Assurance
 - **Validation Rules**: Check entity formats (dates, amounts, names)
 - **Duplicate Detection**: Identify and merge duplicate entities
@@ -111,6 +164,64 @@ Investigate error response patterns:
 - How to provide actionable error messages?
 - What information aids in debugging and root cause analysis?
 - How to communicate retry strategies and fallback options?
+
+### To Backend for Storage
+**What you send**:
+- Generated news reports with unique IDs and URLs
+- Report metadata for indexing and discovery
+- Entity and topic tags for search/filtering
+- Relevance scores by category
+
+**Storage Structure**:
+```json
+{
+  "report": {
+    "id": "uuid",
+    "url": "/reports/2025-09-22/report-slug",
+    "headline": "string",
+    "content": "full_article_text",
+    "metadata": {
+      "entities": ["array"],
+      "topics": ["array"],
+      "priority": "string",
+      "type": "breaking|analysis|update|summary"
+    }
+  }
+}
+```
+
+### Available for Publishing Module
+**What Publishing can query**:
+- All stored reports by date range
+- Reports filtered by tags/topics/entities
+- Reports sorted by relevance scores
+- Report metadata for custom email assembly
+
+**Query Interface**:
+```json
+{
+  "get_reports": {
+    "date_range": {"from": "date", "to": "date"},
+    "topics": ["AI", "funding"],
+    "min_relevance": 0.7,
+    "limit": 10
+  }
+}
+```
+
+**Publishing Independence**:
+- Publishing module decides which reports to include in emails
+- Publishing handles all personalization for subscribers
+- Publishing manages delivery timing and formatting
+- AI module has no knowledge of email distribution
+
+### To Frontend Module
+**What you send**:
+- Extracted entities for graph visualization
+- Relationship data for network displays
+- Confidence scores for visual encoding
+- Timeline data for temporal views
+- Search embeddings for similarity queries
 
 ### Configuration Requirements
 - **API Configuration**: LLM API keys (OpenAI, Anthropic) with rate limit settings
@@ -211,7 +322,7 @@ The system must:
 ### Module Dependencies
 - **Backend Architecture Module**: Provides document queue, storage APIs, vector database access
 - **Frontend Design Module**: Receives extracted entities for visualization and user interaction
-- **Publishing Tools Module**: Consumes structured insights for multi-channel distribution
+- **Publishing Tools Module**: Consumes synthesized reports, personalization scores, and tagged content for targeted distribution
 
 ### Shared Data Models
 - **Entity Schema**: Standardized across modules for consistent data representation

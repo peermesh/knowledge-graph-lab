@@ -171,4 +171,4 @@ The difference between a novice and an expert isn't that the expert knows less -
 
 ## Related Documents
 
-- [Research Guide](./guide.md) - Practical research process and tools
+- [Research Methodology](./methodology.md) - Practical research process and tools
