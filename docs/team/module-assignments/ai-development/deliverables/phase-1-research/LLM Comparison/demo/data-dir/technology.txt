@@ -1,0 +1,4 @@
+Artificial intelligence is a branch of computer science focused on 
+building systems that can learn, reason, and adapt. 
+Modern AI uses neural networks, deep learning, and reinforcement learning 
+to power applications from self-driving cars to recommendation engines.

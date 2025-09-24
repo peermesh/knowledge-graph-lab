@@ -1,0 +1,4 @@
+Physics is the study of matter, energy, and the fundamental forces of nature. 
+Newton's laws describe motion and forces, while Einstein's theory of relativity 
+explains gravity as the curvature of spacetime. Quantum mechanics deals with 
+particles at very small scales, where probabilities dominate.

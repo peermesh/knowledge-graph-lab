@@ -1,0 +1,489 @@
+{
+  "documents": [
+    "ans.txt",
+    "chemistry-of-cooking.txt",
+    "cooking.txt",
+    "history.txt",
+    "physics.txt",
+    "technology.txt"
+  ],
+  "concepts": [
+    "acid",
+    "acids",
+    "ai",
+    "artificial intelligence",
+    "baking",
+    "boiling",
+    "chemistry",
+    "cooking",
+    "denature",
+    "flavor",
+    "flavors",
+    "frying",
+    "grilling",
+    "heat",
+    "humanism",
+    "maillard reaction",
+    "neural networks",
+    "ph",
+    "physics",
+    "protein",
+    "proteins",
+    "quantum",
+    "recipe",
+    "relativity",
+    "renaissance",
+    "salty",
+    "sour",
+    "sugar",
+    "sugars",
+    "sweet",
+    "tenderize",
+    "umami"
+  ],
+  "doc_concept_edges": [
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "recipe"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "proteins"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "maillard reaction"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "acid"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "ai"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "denature"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "flavor"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "sugars"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "sugar"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "chemistry"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "flavors"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "protein"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "tenderize"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "cooking"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "acids"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "heat"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "flavor"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "grilling"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "flavors"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "salty"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "sour"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "baking"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "boiling"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "frying"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "cooking"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "sweet"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "umami"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "ph"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "renaissance"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "ai"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "humanism"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "physics"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "relativity"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "quantum"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "ph"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "ai"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "artificial intelligence"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "ai"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "neural networks"
+    }
+  ],
+  "concept_concept_edges": [
+    {
+      "a": "chemistry",
+      "b": "cooking",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "heat",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "protein",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "proteins",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "sugar",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "heat",
+      "b": "protein",
+      "weight": 1
+    },
+    {
+      "a": "heat",
+      "b": "proteins",
+      "weight": 1
+    },
+    {
+      "a": "heat",
+      "b": "sugar",
+      "weight": 1
+    },
+    {
+      "a": "heat",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "protein",
+      "b": "proteins",
+      "weight": 1
+    },
+    {
+      "a": "protein",
+      "b": "sugar",
+      "weight": 1
+    },
+    {
+      "a": "protein",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "proteins",
+      "b": "sugar",
+      "weight": 1
+    },
+    {
+      "a": "proteins",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "sugar",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "ai",
+      "b": "flavor",
+      "weight": 1
+    },
+    {
+      "a": "ai",
+      "b": "maillard reaction",
+      "weight": 1
+    },
+    {
+      "a": "flavor",
+      "b": "maillard reaction",
+      "weight": 1
+    },
+    {
+      "a": "acid",
+      "b": "acids",
+      "weight": 1
+    },
+    {
+      "a": "acid",
+      "b": "flavor",
+      "weight": 1
+    },
+    {
+      "a": "acid",
+      "b": "flavors",
+      "weight": 1
+    },
+    {
+      "a": "acid",
+      "b": "tenderize",
+      "weight": 1
+    },
+    {
+      "a": "acids",
+      "b": "flavor",
+      "weight": 1
+    },
+    {
+      "a": "acids",
+      "b": "flavors",
+      "weight": 1
+    },
+    {
+      "a": "acids",
+      "b": "tenderize",
+      "weight": 1
+    },
+    {
+      "a": "flavor",
+      "b": "flavors",
+      "weight": 2
+    },
+    {
+      "a": "flavor",
+      "b": "tenderize",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "tenderize",
+      "weight": 1
+    },
+    {
+      "a": "ai",
+      "b": "cooking",
+      "weight": 1
+    },
+    {
+      "a": "ai",
+      "b": "recipe",
+      "weight": 1
+    },
+    {
+      "a": "cooking",
+      "b": "recipe",
+      "weight": 1
+    },
+    {
+      "a": "baking",
+      "b": "boiling",
+      "weight": 1
+    },
+    {
+      "a": "baking",
+      "b": "frying",
+      "weight": 1
+    },
+    {
+      "a": "baking",
+      "b": "grilling",
+      "weight": 1
+    },
+    {
+      "a": "boiling",
+      "b": "frying",
+      "weight": 1
+    },
+    {
+      "a": "boiling",
+      "b": "grilling",
+      "weight": 1
+    },
+    {
+      "a": "frying",
+      "b": "grilling",
+      "weight": 1
+    },
+    {
+      "a": "flavor",
+      "b": "salty",
+      "weight": 1
+    },
+    {
+      "a": "flavor",
+      "b": "sour",
+      "weight": 1
+    },
+    {
+      "a": "flavor",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "flavor",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "salty",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "sour",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "salty",
+      "b": "sour",
+      "weight": 1
+    },
+    {
+      "a": "salty",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "salty",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "sour",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "sour",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "sweet",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "ai",
+      "b": "renaissance",
+      "weight": 1
+    },
+    {
+      "a": "humanism",
+      "b": "ph",
+      "weight": 1
+    },
+    {
+      "a": "ph",
+      "b": "physics",
+      "weight": 1
+    },
+    {
+      "a": "ai",
+      "b": "relativity",
+      "weight": 1
+    },
+    {
+      "a": "ai",
+      "b": "neural networks",
+      "weight": 1
+    }
+  ]
+}

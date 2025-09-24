@@ -1,0 +1,24 @@
+12.
+null: treatment and nontreatment are of equal and any other result yielded is due to chance
+
+alt: they're not equal
+
+test stat: abs(overall treatment % - overall non treatment %)
+
+13.
+null: super soda and their rival are preferred equally amongst people any otherwise is due to chance
+
+alt: super soda is less liked
+
+test: # of people that liked super soda
+
+p-value direction: towards the left
+
+code = stats.binomial.cvs(200, .5)
+
+emp p: np.count_zero(code <= observed) / 200
+
+21.
+null:
+
+alt:

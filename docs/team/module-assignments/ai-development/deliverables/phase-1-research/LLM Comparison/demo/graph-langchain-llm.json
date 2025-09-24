@@ -1,0 +1,1443 @@
+{
+  "documents": [
+    "ans.txt",
+    "chemistry-of-cooking.txt",
+    "cooking.txt",
+    "history.txt",
+    "physics.txt",
+    "technology.txt"
+  ],
+  "concepts": [
+    "14th century",
+    "17th century",
+    "acids",
+    "adaptive systems",
+    "art",
+    "artificial intelligence",
+    "baked bread",
+    "baking",
+    "balance flavors",
+    "binomial",
+    "boiling",
+    "brown color",
+    "caramelize",
+    "chance",
+    "chemistry",
+    "chroma",
+    "classical knowledge",
+    "computer science",
+    "cooking",
+    "cooking techniques",
+    "cultural movement",
+    "curvature of spacetime",
+    "deep learning",
+    "delicious meals",
+    "denature",
+    "einstein's theory of relativity",
+    "empirical probability",
+    "energy",
+    "europe",
+    "faiss",
+    "flavors",
+    "food",
+    "forces",
+    "frying",
+    "fundamental forces",
+    "galileo galilei",
+    "gravity",
+    "grilled meat",
+    "grilling",
+    "heat",
+    "humanism",
+    "ingredients",
+    "langchain",
+    "langgraph",
+    "langsmith",
+    "lcel",
+    "learning systems",
+    "lemon juice",
+    "leonardo da vinci",
+    "maillard reaction",
+    "matter",
+    "michelangelo",
+    "motion",
+    "nature",
+    "neural networks",
+    "newton's laws",
+    "nontreatment",
+    "observed",
+    "overall non treatment percentage",
+    "overall treatment percentage",
+    "p-value",
+    "particles",
+    "probabilities",
+    "proteins",
+    "quantum mechanics",
+    "rag",
+    "reasoning",
+    "recipes",
+    "recommendation engines",
+    "reinforcement learning",
+    "renaissance",
+    "retriever",
+    "rich flavor",
+    "salty",
+    "science",
+    "scientific cooking",
+    "self-driving cars",
+    "small scales",
+    "sour",
+    "sugars",
+    "super soda",
+    "sweet",
+    "tenderize meat",
+    "test statistic",
+    "tool calling",
+    "treatment",
+    "umami",
+    "vinegar"
+  ],
+  "doc_concept_edges": [
+    {
+      "doc": "ans.txt",
+      "concept": "test statistic"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "retriever"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "lcel"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "p-value"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "rag"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "tool calling"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "binomial"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "langgraph"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "super soda"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "langchain"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "overall treatment percentage"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "overall non treatment percentage"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "faiss"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "chroma"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "treatment"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "empirical probability"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "chance"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "langsmith"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "observed"
+    },
+    {
+      "doc": "ans.txt",
+      "concept": "nontreatment"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "denature"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "recipes"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "balance flavors"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "sugars"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "food"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "baked bread"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "rich flavor"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "brown color"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "vinegar"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "proteins"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "heat"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "tenderize meat"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "maillard reaction"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "cooking techniques"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "acids"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "chemistry"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "scientific cooking"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "lemon juice"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "grilled meat"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "cooking"
+    },
+    {
+      "doc": "chemistry-of-cooking.txt",
+      "concept": "caramelize"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "delicious meals"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "umami"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "baking"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "frying"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "art"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "ingredients"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "salty"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "grilling"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "sour"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "flavors"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "boiling"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "cooking"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "science"
+    },
+    {
+      "doc": "cooking.txt",
+      "concept": "sweet"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "europe"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "renaissance"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "michelangelo"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "14th century"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "cultural movement"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "art"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "galileo galilei"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "science"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "17th century"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "leonardo da vinci"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "classical knowledge"
+    },
+    {
+      "doc": "history.txt",
+      "concept": "humanism"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "newton's laws"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "nature"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "matter"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "forces"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "einstein's theory of relativity"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "particles"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "small scales"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "energy"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "probabilities"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "curvature of spacetime"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "motion"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "quantum mechanics"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "fundamental forces"
+    },
+    {
+      "doc": "physics.txt",
+      "concept": "gravity"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "self-driving cars"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "learning systems"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "adaptive systems"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "reasoning"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "computer science"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "reinforcement learning"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "deep learning"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "neural networks"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "artificial intelligence"
+    },
+    {
+      "doc": "technology.txt",
+      "concept": "recommendation engines"
+    }
+  ],
+  "concept_concept_edges": [
+    {
+      "a": "chroma",
+      "b": "faiss",
+      "weight": 2
+    },
+    {
+      "a": "chroma",
+      "b": "langchain",
+      "weight": 2
+    },
+    {
+      "a": "chroma",
+      "b": "langgraph",
+      "weight": 2
+    },
+    {
+      "a": "chroma",
+      "b": "langsmith",
+      "weight": 2
+    },
+    {
+      "a": "chroma",
+      "b": "lcel",
+      "weight": 2
+    },
+    {
+      "a": "chroma",
+      "b": "rag",
+      "weight": 2
+    },
+    {
+      "a": "chroma",
+      "b": "retriever",
+      "weight": 2
+    },
+    {
+      "a": "chroma",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "faiss",
+      "b": "langchain",
+      "weight": 2
+    },
+    {
+      "a": "faiss",
+      "b": "langgraph",
+      "weight": 2
+    },
+    {
+      "a": "faiss",
+      "b": "langsmith",
+      "weight": 2
+    },
+    {
+      "a": "faiss",
+      "b": "lcel",
+      "weight": 2
+    },
+    {
+      "a": "faiss",
+      "b": "rag",
+      "weight": 2
+    },
+    {
+      "a": "faiss",
+      "b": "retriever",
+      "weight": 2
+    },
+    {
+      "a": "faiss",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "langchain",
+      "b": "langgraph",
+      "weight": 2
+    },
+    {
+      "a": "langchain",
+      "b": "langsmith",
+      "weight": 2
+    },
+    {
+      "a": "langchain",
+      "b": "lcel",
+      "weight": 2
+    },
+    {
+      "a": "langchain",
+      "b": "rag",
+      "weight": 2
+    },
+    {
+      "a": "langchain",
+      "b": "retriever",
+      "weight": 2
+    },
+    {
+      "a": "langchain",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "langgraph",
+      "b": "langsmith",
+      "weight": 2
+    },
+    {
+      "a": "langgraph",
+      "b": "lcel",
+      "weight": 2
+    },
+    {
+      "a": "langgraph",
+      "b": "rag",
+      "weight": 2
+    },
+    {
+      "a": "langgraph",
+      "b": "retriever",
+      "weight": 2
+    },
+    {
+      "a": "langgraph",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "langsmith",
+      "b": "lcel",
+      "weight": 2
+    },
+    {
+      "a": "langsmith",
+      "b": "rag",
+      "weight": 2
+    },
+    {
+      "a": "langsmith",
+      "b": "retriever",
+      "weight": 2
+    },
+    {
+      "a": "langsmith",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "lcel",
+      "b": "rag",
+      "weight": 2
+    },
+    {
+      "a": "lcel",
+      "b": "retriever",
+      "weight": 2
+    },
+    {
+      "a": "lcel",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "rag",
+      "b": "retriever",
+      "weight": 2
+    },
+    {
+      "a": "rag",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "retriever",
+      "b": "tool calling",
+      "weight": 2
+    },
+    {
+      "a": "chance",
+      "b": "nontreatment",
+      "weight": 1
+    },
+    {
+      "a": "chance",
+      "b": "overall non treatment percentage",
+      "weight": 1
+    },
+    {
+      "a": "chance",
+      "b": "overall treatment percentage",
+      "weight": 1
+    },
+    {
+      "a": "chance",
+      "b": "test statistic",
+      "weight": 1
+    },
+    {
+      "a": "chance",
+      "b": "treatment",
+      "weight": 1
+    },
+    {
+      "a": "nontreatment",
+      "b": "overall non treatment percentage",
+      "weight": 1
+    },
+    {
+      "a": "nontreatment",
+      "b": "overall treatment percentage",
+      "weight": 1
+    },
+    {
+      "a": "nontreatment",
+      "b": "test statistic",
+      "weight": 1
+    },
+    {
+      "a": "nontreatment",
+      "b": "treatment",
+      "weight": 1
+    },
+    {
+      "a": "overall non treatment percentage",
+      "b": "overall treatment percentage",
+      "weight": 1
+    },
+    {
+      "a": "overall non treatment percentage",
+      "b": "test statistic",
+      "weight": 1
+    },
+    {
+      "a": "overall non treatment percentage",
+      "b": "treatment",
+      "weight": 1
+    },
+    {
+      "a": "overall treatment percentage",
+      "b": "test statistic",
+      "weight": 1
+    },
+    {
+      "a": "overall treatment percentage",
+      "b": "treatment",
+      "weight": 1
+    },
+    {
+      "a": "test statistic",
+      "b": "treatment",
+      "weight": 1
+    },
+    {
+      "a": "binomial",
+      "b": "empirical probability",
+      "weight": 1
+    },
+    {
+      "a": "binomial",
+      "b": "observed",
+      "weight": 1
+    },
+    {
+      "a": "binomial",
+      "b": "p-value",
+      "weight": 1
+    },
+    {
+      "a": "binomial",
+      "b": "super soda",
+      "weight": 1
+    },
+    {
+      "a": "empirical probability",
+      "b": "observed",
+      "weight": 1
+    },
+    {
+      "a": "empirical probability",
+      "b": "p-value",
+      "weight": 1
+    },
+    {
+      "a": "empirical probability",
+      "b": "super soda",
+      "weight": 1
+    },
+    {
+      "a": "observed",
+      "b": "p-value",
+      "weight": 1
+    },
+    {
+      "a": "observed",
+      "b": "super soda",
+      "weight": 1
+    },
+    {
+      "a": "p-value",
+      "b": "super soda",
+      "weight": 1
+    },
+    {
+      "a": "chemistry",
+      "b": "cooking",
+      "weight": 1
+    },
+    {
+      "a": "caramelize",
+      "b": "denature",
+      "weight": 1
+    },
+    {
+      "a": "caramelize",
+      "b": "food",
+      "weight": 1
+    },
+    {
+      "a": "caramelize",
+      "b": "heat",
+      "weight": 1
+    },
+    {
+      "a": "caramelize",
+      "b": "proteins",
+      "weight": 1
+    },
+    {
+      "a": "caramelize",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "food",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "heat",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "proteins",
+      "weight": 1
+    },
+    {
+      "a": "denature",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "food",
+      "b": "heat",
+      "weight": 1
+    },
+    {
+      "a": "food",
+      "b": "proteins",
+      "weight": 1
+    },
+    {
+      "a": "food",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "heat",
+      "b": "proteins",
+      "weight": 1
+    },
+    {
+      "a": "heat",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "proteins",
+      "b": "sugars",
+      "weight": 1
+    },
+    {
+      "a": "baked bread",
+      "b": "brown color",
+      "weight": 1
+    },
+    {
+      "a": "baked bread",
+      "b": "grilled meat",
+      "weight": 1
+    },
+    {
+      "a": "baked bread",
+      "b": "maillard reaction",
+      "weight": 1
+    },
+    {
+      "a": "baked bread",
+      "b": "rich flavor",
+      "weight": 1
+    },
+    {
+      "a": "brown color",
+      "b": "grilled meat",
+      "weight": 1
+    },
+    {
+      "a": "brown color",
+      "b": "maillard reaction",
+      "weight": 1
+    },
+    {
+      "a": "brown color",
+      "b": "rich flavor",
+      "weight": 1
+    },
+    {
+      "a": "grilled meat",
+      "b": "maillard reaction",
+      "weight": 1
+    },
+    {
+      "a": "grilled meat",
+      "b": "rich flavor",
+      "weight": 1
+    },
+    {
+      "a": "maillard reaction",
+      "b": "rich flavor",
+      "weight": 1
+    },
+    {
+      "a": "acids",
+      "b": "balance flavors",
+      "weight": 1
+    },
+    {
+      "a": "acids",
+      "b": "lemon juice",
+      "weight": 1
+    },
+    {
+      "a": "acids",
+      "b": "tenderize meat",
+      "weight": 1
+    },
+    {
+      "a": "acids",
+      "b": "vinegar",
+      "weight": 1
+    },
+    {
+      "a": "balance flavors",
+      "b": "lemon juice",
+      "weight": 1
+    },
+    {
+      "a": "balance flavors",
+      "b": "tenderize meat",
+      "weight": 1
+    },
+    {
+      "a": "balance flavors",
+      "b": "vinegar",
+      "weight": 1
+    },
+    {
+      "a": "lemon juice",
+      "b": "tenderize meat",
+      "weight": 1
+    },
+    {
+      "a": "lemon juice",
+      "b": "vinegar",
+      "weight": 1
+    },
+    {
+      "a": "tenderize meat",
+      "b": "vinegar",
+      "weight": 1
+    },
+    {
+      "a": "cooking techniques",
+      "b": "recipes",
+      "weight": 1
+    },
+    {
+      "a": "cooking techniques",
+      "b": "scientific cooking",
+      "weight": 1
+    },
+    {
+      "a": "recipes",
+      "b": "scientific cooking",
+      "weight": 1
+    },
+    {
+      "a": "art",
+      "b": "cooking",
+      "weight": 1
+    },
+    {
+      "a": "art",
+      "b": "science",
+      "weight": 2
+    },
+    {
+      "a": "cooking",
+      "b": "science",
+      "weight": 1
+    },
+    {
+      "a": "baking",
+      "b": "boiling",
+      "weight": 1
+    },
+    {
+      "a": "baking",
+      "b": "frying",
+      "weight": 1
+    },
+    {
+      "a": "baking",
+      "b": "grilling",
+      "weight": 1
+    },
+    {
+      "a": "boiling",
+      "b": "frying",
+      "weight": 1
+    },
+    {
+      "a": "boiling",
+      "b": "grilling",
+      "weight": 1
+    },
+    {
+      "a": "frying",
+      "b": "grilling",
+      "weight": 1
+    },
+    {
+      "a": "delicious meals",
+      "b": "flavors",
+      "weight": 1
+    },
+    {
+      "a": "delicious meals",
+      "b": "ingredients",
+      "weight": 1
+    },
+    {
+      "a": "delicious meals",
+      "b": "salty",
+      "weight": 1
+    },
+    {
+      "a": "delicious meals",
+      "b": "sour",
+      "weight": 1
+    },
+    {
+      "a": "delicious meals",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "delicious meals",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "ingredients",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "salty",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "sour",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "flavors",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "ingredients",
+      "b": "salty",
+      "weight": 1
+    },
+    {
+      "a": "ingredients",
+      "b": "sour",
+      "weight": 1
+    },
+    {
+      "a": "ingredients",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "ingredients",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "salty",
+      "b": "sour",
+      "weight": 1
+    },
+    {
+      "a": "salty",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "salty",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "sour",
+      "b": "sweet",
+      "weight": 1
+    },
+    {
+      "a": "sour",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "sweet",
+      "b": "umami",
+      "weight": 1
+    },
+    {
+      "a": "14th century",
+      "b": "17th century",
+      "weight": 1
+    },
+    {
+      "a": "14th century",
+      "b": "cultural movement",
+      "weight": 1
+    },
+    {
+      "a": "14th century",
+      "b": "europe",
+      "weight": 1
+    },
+    {
+      "a": "14th century",
+      "b": "renaissance",
+      "weight": 1
+    },
+    {
+      "a": "17th century",
+      "b": "cultural movement",
+      "weight": 1
+    },
+    {
+      "a": "17th century",
+      "b": "europe",
+      "weight": 1
+    },
+    {
+      "a": "17th century",
+      "b": "renaissance",
+      "weight": 1
+    },
+    {
+      "a": "cultural movement",
+      "b": "europe",
+      "weight": 1
+    },
+    {
+      "a": "cultural movement",
+      "b": "renaissance",
+      "weight": 1
+    },
+    {
+      "a": "europe",
+      "b": "renaissance",
+      "weight": 1
+    },
+    {
+      "a": "art",
+      "b": "classical knowledge",
+      "weight": 1
+    },
+    {
+      "a": "art",
+      "b": "humanism",
+      "weight": 1
+    },
+    {
+      "a": "classical knowledge",
+      "b": "humanism",
+      "weight": 1
+    },
+    {
+      "a": "classical knowledge",
+      "b": "science",
+      "weight": 1
+    },
+    {
+      "a": "humanism",
+      "b": "science",
+      "weight": 1
+    },
+    {
+      "a": "galileo galilei",
+      "b": "leonardo da vinci",
+      "weight": 1
+    },
+    {
+      "a": "galileo galilei",
+      "b": "michelangelo",
+      "weight": 1
+    },
+    {
+      "a": "leonardo da vinci",
+      "b": "michelangelo",
+      "weight": 1
+    },
+    {
+      "a": "energy",
+      "b": "fundamental forces",
+      "weight": 1
+    },
+    {
+      "a": "energy",
+      "b": "matter",
+      "weight": 1
+    },
+    {
+      "a": "energy",
+      "b": "nature",
+      "weight": 1
+    },
+    {
+      "a": "fundamental forces",
+      "b": "matter",
+      "weight": 1
+    },
+    {
+      "a": "fundamental forces",
+      "b": "nature",
+      "weight": 1
+    },
+    {
+      "a": "matter",
+      "b": "nature",
+      "weight": 1
+    },
+    {
+      "a": "curvature of spacetime",
+      "b": "einstein's theory of relativity",
+      "weight": 1
+    },
+    {
+      "a": "curvature of spacetime",
+      "b": "forces",
+      "weight": 1
+    },
+    {
+      "a": "curvature of spacetime",
+      "b": "gravity",
+      "weight": 1
+    },
+    {
+      "a": "curvature of spacetime",
+      "b": "motion",
+      "weight": 1
+    },
+    {
+      "a": "curvature of spacetime",
+      "b": "newton's laws",
+      "weight": 1
+    },
+    {
+      "a": "einstein's theory of relativity",
+      "b": "forces",
+      "weight": 1
+    },
+    {
+      "a": "einstein's theory of relativity",
+      "b": "gravity",
+      "weight": 1
+    },
+    {
+      "a": "einstein's theory of relativity",
+      "b": "motion",
+      "weight": 1
+    },
+    {
+      "a": "einstein's theory of relativity",
+      "b": "newton's laws",
+      "weight": 1
+    },
+    {
+      "a": "forces",
+      "b": "gravity",
+      "weight": 1
+    },
+    {
+      "a": "forces",
+      "b": "motion",
+      "weight": 1
+    },
+    {
+      "a": "forces",
+      "b": "newton's laws",
+      "weight": 1
+    },
+    {
+      "a": "gravity",
+      "b": "motion",
+      "weight": 1
+    },
+    {
+      "a": "gravity",
+      "b": "newton's laws",
+      "weight": 1
+    },
+    {
+      "a": "motion",
+      "b": "newton's laws",
+      "weight": 1
+    },
+    {
+      "a": "particles",
+      "b": "probabilities",
+      "weight": 1
+    },
+    {
+      "a": "particles",
+      "b": "quantum mechanics",
+      "weight": 1
+    },
+    {
+      "a": "particles",
+      "b": "small scales",
+      "weight": 1
+    },
+    {
+      "a": "probabilities",
+      "b": "quantum mechanics",
+      "weight": 1
+    },
+    {
+      "a": "probabilities",
+      "b": "small scales",
+      "weight": 1
+    },
+    {
+      "a": "quantum mechanics",
+      "b": "small scales",
+      "weight": 1
+    },
+    {
+      "a": "adaptive systems",
+      "b": "artificial intelligence",
+      "weight": 1
+    },
+    {
+      "a": "adaptive systems",
+      "b": "computer science",
+      "weight": 1
+    },
+    {
+      "a": "adaptive systems",
+      "b": "learning systems",
+      "weight": 1
+    },
+    {
+      "a": "adaptive systems",
+      "b": "reasoning",
+      "weight": 1
+    },
+    {
+      "a": "artificial intelligence",
+      "b": "computer science",
+      "weight": 1
+    },
+    {
+      "a": "artificial intelligence",
+      "b": "learning systems",
+      "weight": 1
+    },
+    {
+      "a": "artificial intelligence",
+      "b": "reasoning",
+      "weight": 1
+    },
+    {
+      "a": "computer science",
+      "b": "learning systems",
+      "weight": 1
+    },
+    {
+      "a": "computer science",
+      "b": "reasoning",
+      "weight": 1
+    },
+    {
+      "a": "learning systems",
+      "b": "reasoning",
+      "weight": 1
+    },
+    {
+      "a": "deep learning",
+      "b": "neural networks",
+      "weight": 1
+    },
+    {
+      "a": "deep learning",
+      "b": "recommendation engines",
+      "weight": 1
+    },
+    {
+      "a": "deep learning",
+      "b": "reinforcement learning",
+      "weight": 1
+    },
+    {
+      "a": "deep learning",
+      "b": "self-driving cars",
+      "weight": 1
+    },
+    {
+      "a": "neural networks",
+      "b": "recommendation engines",
+      "weight": 1
+    },
+    {
+      "a": "neural networks",
+      "b": "reinforcement learning",
+      "weight": 1
+    },
+    {
+      "a": "neural networks",
+      "b": "self-driving cars",
+      "weight": 1
+    },
+    {
+      "a": "recommendation engines",
+      "b": "reinforcement learning",
+      "weight": 1
+    },
+    {
+      "a": "recommendation engines",
+      "b": "self-driving cars",
+      "weight": 1
+    },
+    {
+      "a": "reinforcement learning",
+      "b": "self-driving cars",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+Got it — let’s turn the comparisons into tables so you can scan them quickly.
+
+---
+
+## 1. Simple Semantic Search vs. Hybrid Retrieval
+
+| Aspect             | Simple Semantic (Dense)                                              | Hybrid (Dense + Keyword)                                                  |
+| ------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Strengths**      | Captures meaning beyond exact words, robust to paraphrasing          | Balances semantic meaning with exact matches; better for rare terms/names |
+| **Weaknesses**     | Misses rare terms/numbers; risk of irrelevant but “similar” passages | More complex infra (vector DB + inverted index); higher latency           |
+| **Infrastructure** | Vector database (ANN search)                                         | Vector DB + traditional search index                                      |
+| **Latency**        | Lower (fewer steps)                                                  | Higher (needs fusion/reranking)                                           |
+| **Best for**       | General Q\&A, consumer chatbots                                      | Technical/legal/code retrieval, enterprise systems                        |
+
+---
+
+## 2. Chunking Strategies
+
+| Chunking Style                | Pros                         | Cons                                                   | Use Case                               |
+| ----------------------------- | ---------------------------- | ------------------------------------------------------ | -------------------------------------- |
+| **Long (1k–2k tokens)**       | Keeps context, fewer splits  | Embeddings blur detail; may retrieve irrelevant extras | Research papers, narrative docs        |
+| **Short (100–300 tokens)**    | Precise retrieval            | Loses context, may need multiple hops                  | APIs, legal contracts, code            |
+| **Overlapping**               | Handles boundary issues      | Larger index, more storage/query cost                  | Any domain where queries span sections |
+| **Semantic/structure-based**  | Aligns with natural sections | Harder to automate                                     | Documents with headings, FAQs, papers  |
+| **Adaptive (dynamic sizing)** | Optimizes per domain         | More engineering effort                                | Multi-domain platforms                 |
+
+---
+
+## 3. Optimal Chunk Size & Overlap by Content Type
+
+| Content Type                       | Optimal Size     | Overlap       | Rationale                   |
+| ---------------------------------- | ---------------- | ------------- | --------------------------- |
+| Narrative (articles, essays)       | 300–500 tokens   | \~50 tokens   | Preserves flow + detail     |
+| Technical docs (APIs, code, legal) | 100–200 tokens   | Minimal       | Queries target specifics    |
+| Research/scientific papers         | 500–1,000 tokens | Section-based | Arguments span paragraphs   |
+| Conversational logs                | Semantic turns   | N/A           | Better by dialogue segments |
+
+---
+
+## 4. Retrieval Accuracy vs. Latency (How Platforms Balance)
+
+| Stage              | Purpose                                                 | Typical Size   | Latency Budget    |
+| ------------------ | ------------------------------------------------------- | -------------- | ----------------- |
+| **Initial Recall** | Fast candidate retrieval                                | Top-100 to 200 | <50ms             |
+| **Reranking**      | Apply more accurate models (cross-encoders, small LLMs) | Top-20         | 100–300ms         |
+| **Fusion**         | Merge dense + keyword hits                              | —              | Small overhead    |
+| **Caching**        | Serve frequent queries instantly                        | —              | Near-zero         |
+| **Overall Goal**   | Sub-second response (consumer) or <2s (enterprise)      | —              | 200–400ms typical |
+
+---
+
+Do you want me to **add one more “Final Takeaways” table** that condenses *all* of this into a single cheat-sheet (like a one-pager for study/reference)?
