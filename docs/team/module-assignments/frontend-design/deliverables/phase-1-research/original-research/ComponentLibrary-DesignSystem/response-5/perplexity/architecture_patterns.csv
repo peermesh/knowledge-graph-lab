@@ -1,0 +1,9 @@
+Pattern,Examples,Pros,Cons,Best_For,Usage_Count
+Monorepo,"Carbon, Atlassian, Primer","Unified versioning, shared tooling, atomic commits","Build complexity, large codebase, tooling overhead","Large orgs, tight coordination, shared infrastructure",6
+Multi-repo,"Material Design, Bootstrap","Independent versioning, team autonomy, smaller repos","Version drift, integration complexity, duplication","Distributed teams, different release cycles",4
+Component-centric,"Ant Design, Chakra UI","Rich UI library, rapid development","Framework lock-in, bundle size concerns","Rapid prototyping, component-heavy UIs",5
+Token-first,Material Design 3,"Design consistency, theming flexibility","Complex token system, learning curve","Multi-brand, design system maturity",1
+Platform-specific,"Shopify Polaris, Lightning","Deep platform integration, optimized UX","Platform limitation, reduced reusability","Platform-specific apps, native feel",2
+Framework-specific,"Angular Material, React Spectrum","Framework-optimized, type safety","Framework lock-in, limited scope","Single framework shops, type safety needs",2
+CSS Framework,"Bootstrap, Foundation","Lightweight, fast setup, wide compatibility","Limited components, customization constraints","Simple sites, quick implementations",3
+Full-stack Modular,"Mantine, Chakra UI","Comprehensive solution, integrated DX","Opinionated choices, potential bloat","Full-stack teams, modern tech stack",2

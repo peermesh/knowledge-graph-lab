@@ -1,0 +1,7 @@
+SPDX_ID,Commercial_Use,Modify,Distribute,Private_Use,Patent_Grant,Attribution_Required,Copyleft,Source_Disclosure,Network_Use_Disclosure,License_Compatibility,Enterprise_Risk,Usage_Count_DS
+MIT,Yes,Yes,Yes,Yes,No,Yes,No,No,No,High,Low,12
+Apache-2.0,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,High,Low,7
+BSD-3-Clause,Yes,Yes,Yes,Yes,No,Yes,No,No,No,High,Low,1
+GPL-2.0-only,Yes,Yes,Yes*,Yes,No,Yes,Strong,Required,No,Low,High,0
+LGPL-2.1-only,Yes,Yes,Yes*,Yes,No,Yes,Weak,Library only,No,Medium,Medium,0
+Custom/Proprietary,Restricted,Restricted,Restricted,Yes,Varies,Varies,N/A,N/A,N/A,Low,High,1
