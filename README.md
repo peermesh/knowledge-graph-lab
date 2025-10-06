@@ -4,7 +4,7 @@ An AI-powered research platform that transforms information chaos into actionabl
 
 ## What We're Building
 
-A system that discovers opportunities, understands relationships, and delivers personalized insights for the creator economy.
+A system that discovers opportunities, understands relationships, and delivers personalized insights.
 
 ### Core Capabilities
 - **Discovers** - Continuously monitors hundreds of sources
