@@ -173,6 +173,9 @@
 - Mid-phase sync
 - Phase review and handoff
 
+### Meeting Schedule
+See [../schedule.md](../schedule.md) for the complete meeting schedule, including in-person and virtual meeting patterns, locations, and all scheduled dates.
+
 ---
 
 ## Key Requirements

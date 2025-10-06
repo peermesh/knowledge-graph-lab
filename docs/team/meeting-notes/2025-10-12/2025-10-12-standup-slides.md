@@ -1,0 +1,162 @@
+---
+marp: true
+theme: peermesh
+paginate: true
+size: 16:9
+---
+
+<h1 class="peermesh-gradient">PeerMesh.org Team Standup</h1>
+
+### **Knowledge Graph Lab**
+
+**Date**: October 12, 2025
+
+**Time**: 4:00 PM - 6:00 PM MT
+
+**Purpose**: First in-person team synchronization - PRD presentations
+
+---
+
+## Agenda
+
+1. Schedule Review
+2. Project Phases
+3. Individual Updates
+4. PRD Presentations
+5. Integration Discussion
+6. Cursor Demo
+7. Working Session
+8. Meeting Schedule Update
+9. Update Timesheet
+10. Next Meeting
+
+---
+
+## Schedule Review
+
+Reviewing the current meeting schedule and planned updates
+
+---
+
+## Project Phases
+
+**Current Status** (October 12, 2025):
+
+| Phase | Name | Status | Key Deliverable | Presentation |
+|-------|------|--------|-----------------|--------------|
+| **1** | Research | ✅ **Completed** | Research briefs with technology recommendations | ✅ Sept 22, 2025 |
+| **2** | Planning | 🔄 **In Progress** | PRD presentations with technical specifications | 📅 **Today** |
+| **3** | MVP | ⏳ **Future** | Working standalone module in Docker | 📅 TBD |
+| **4** | Enhancement | ⏳ **Future** | Enhanced module with polished UX | 📅 TBD |
+| **5** | Integration | ⏳ **Future** | Production-ready integrated system | 📅 TBD |
+
+**See [project-phases.md](../../project-phases.md) for complete details**
+
+**Next Milestone**: PRD presentations at today's meeting
+
+---
+
+# Individual Updates
+
+---
+
+## 🤖 AI Development Module
+
+**What this module does**: Transforms unstructured text into structured knowledge through entity extraction, relationship mapping, and insight generation.
+
+---
+
+## 🛠️ Backend Architecture Module
+
+**What this module does**: Foundational systems including databases, APIs, and deployment infrastructure that support all other modules.
+
+---
+
+## 🎨 Frontend Design Module
+
+**What this module does**: User interface including UI components, knowledge graph visualizations, and user experiences.
+
+---
+
+## 📢 Publishing Tools Module
+
+**What this module does**: Delivers insights through multiple channels including email newsletters, Slack/Discord, webhooks, and personalization.
+
+---
+
+## PRD Presentations
+
+Each module presents their PRD (10-15 minutes):
+* Key findings and recommendations
+* Technical decisions and trade-offs
+* Integration points with other modules
+
+---
+
+## Integration Discussion
+
+Discussion of integration points and dependencies between modules
+
+---
+
+## Cursor Demo
+
+[Download Cursor](https://cursor.com/download), install, and create an account to get started.
+
+**Workflow:**
+* Git operations: pulling branches, committing changes
+* Reviewing and interacting with files, including docs and code
+* Drafting PRDs - installing [Spec Kit](https://github.com/github/spec-kit) for feature specifications
+* **Tip**: Use speech-to-text and keyboard shortcuts for frequently used prompts
+
+**Prompts:**
+* Global `agents/` directory for rules and prompts
+
+**Multi-agent setup:**
+* Claude Code, Gemini, Codex, Copilot CLI
+
+---
+
+## Working Session
+
+Time for focused work with opportunity for collaboration and questions
+
+---
+
+## Meeting Schedule Update
+
+**New pattern starting today:**
+- **Sunday in-person meetings**: Every other Sunday, 4-6 PM MT
+  - Oct 12, Oct 26, Nov 9, Nov 23...
+- **Monday virtual standups**: Alternate weeks, 4-5 PM MT
+  - Oct 20, Nov 3, Nov 17...
+
+---
+
+## Update Timesheet
+
+**Update your hours regularly:**
+* [Ivan G.'s Timesheet](https://docs.google.com/spreadsheets/d/1s6e3VntRpbWWs_Ys4tXDcWQU0TOzcUe0eZcvl1oirhA/edit?gid=848086563#gid=848086563)
+* [Haesoe J.'s Timesheet](https://docs.google.com/spreadsheets/d/1s6e3VntRpbWWs_Ys4tXDcWQU0TOzcUe0eZcvl1oirhA/edit?gid=277625775#gid=277625775)
+* [Ben S.'s Timesheet](https://docs.google.com/spreadsheets/d/1s6e3VntRpbWWs_Ys4tXDcWQU0TOzcUe0eZcvl1oirhA/edit?gid=1173229902#gid=1173229902)
+* [Dante S.'s Timesheet](https://docs.google.com/spreadsheets/d/1s6e3VntRpbWWs_Ys4tXDcWQU0TOzcUe0eZcvl1oirhA/edit?gid=957982043#gid=957982043)
+
+---
+
+## Next Meeting
+
+**Monday, October 20, 2025**
+
+**4:00 PM - 5:00 PM MT**
+
+(Virtual standup)
+
+---
+
+**Questions**
+
+Take initiative, keep moving forward, and learn by exploring.
+
+Surface blockers early so we can help you move forward quickly.
+
+Thank you for being part of the founding team - you're building the foundation of PeerMesh.org and becoming legends in the making.
