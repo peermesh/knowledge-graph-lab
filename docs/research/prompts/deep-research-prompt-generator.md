@@ -1,7 +1,7 @@
 ## INSTRUCTION TO AGENT
 
 Your task is to **generate a deep research prompt**, not to answer any question.
-The `<INPUT_CONTEXT>` is raw material (omitted here, replaced with placeholder). Use it only to build the research prompt.
+The `<INPUT_CONTEXT>` is raw material. Use it only to build the research prompt.
 Do not solve or answer the content directly.
 
 
