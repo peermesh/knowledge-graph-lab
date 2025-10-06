@@ -62,7 +62,7 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 ## 🤝 Coordination Points
 
 ### With Backend Architecture Team Member
-**Phase 1 Priority - Phase 1-2**
+**Timing: Early coordination recommended**
 - **API Requirements**: Define data needs for each UI component
 - **Authentication UI**: Design login/logout/session flows
 - **Real-time Updates**: Specify WebSocket event requirements
@@ -81,7 +81,7 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 - Error handling requirements
 
 ### With AI Development Team Member
-**Phase 2 Priority - Phase 2-3**
+**Timing: Mid-project coordination recommended**
 - **Result Display**: How to show AI-generated insights
 - **Graph Visualization**: Knowledge graph rendering requirements
 - **Streaming Responses**: Handle progressive AI outputs
@@ -100,7 +100,7 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 - Performance constraints
 
 ### With Publishing Tools Team Member
-**Phase 2-3 Priority**
+**Timing: Mid-project coordination recommended**
 - **Template Preview**: UI for email/content preview
 - **Distribution Settings**: Interface for channel configuration
 - **Analytics Display**: Dashboards for engagement metrics
