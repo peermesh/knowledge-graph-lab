@@ -65,7 +65,7 @@ Build the intelligence layer that transforms raw information into actionable ins
 ## 🤝 Coordination Points
 
 ### With Backend Architecture Team Member
-**Phase 1-2 Priority**
+**Timing: Early coordination recommended**
 - **Vector Database**: Requirements for embedding storage
 - **Processing Pipeline**: Queue system for AI workloads
 - **API Design**: Endpoints for AI operations
@@ -84,7 +84,7 @@ Build the intelligence layer that transforms raw information into actionable ins
 - API specifications
 
 ### With Frontend Design Team Member
-**Phase 2-3 Priority**
+**Timing: Mid-project coordination recommended**
 - **Result Formatting**: Structure AI outputs for display
 - **Streaming**: Progressive response rendering
 - **Confidence Display**: Uncertainty visualization

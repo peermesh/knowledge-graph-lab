@@ -53,7 +53,7 @@ Design and implement the core backend infrastructure that powers the entire Know
 ## 🤝 Coordination Points
 
 ### With AI Development Team Member
-**Phase 2 Priority - Phase 2-3**
+**Timing: Mid-project coordination recommended**
 - **Vector Database Research**: Which vector database best fits our embeddings needs?
 - **Data Pipeline Integration**: How should backend connect to AI processing?
 - **Performance Requirements**: What are bottleneck risks with AI operations?
@@ -71,11 +71,11 @@ Design and implement the core backend infrastructure that powers the entire Know
 - Knowledge graph construction rules
 
 ### With Frontend Design Team Member
-**Phase 1 Priority - Phase 1-2**
+**Timing: Early coordination recommended**
 - **API Contract Definition**: Agree on REST endpoints and responses
 - **Swagger Documentation**: Comprehensive API docs for frontend consumption
 - **Authentication Flow**: Login/logout/session management endpoints
-- **Real-time Updates**: WebSocket setup for live data (Phase 2)
+- **Real-time Updates**: WebSocket setup for live data
 
 **What You Provide:**
 - Well-documented REST APIs
@@ -89,7 +89,7 @@ Design and implement the core backend infrastructure that powers the entire Know
 - Performance requirements from frontend perspective
 
 ### With Publishing Tools Team Member
-**Phase 2 Priority - Phase 3-4**
+**Timing: Later in project recommended**
 - **User Data Management**: Store preferences and subscriptions
 - **Content Storage**: Efficient storage for generated content
 - **Queue Systems**: Async processing for distribution
@@ -108,21 +108,21 @@ Design and implement the core backend infrastructure that powers the entire Know
 
 ## 📋 Success Metrics
 
-### Phase 1 (Phases 1-2)
+### Research & Planning Stage
 - ✅ Research-driven technology choices documented with rationale
 - ✅ Database strategy defined (single vs multiple, what types for what data)
 - ✅ Authentication approach selected and basic implementation working
 - ✅ API design pattern chosen with 5+ endpoints documented
 - ✅ File processing pipeline architecture defined and basic version functional
 
-### Phase 2 (Phases 3-4)
-- ✅ AI data storage solution integrated (based on Phase 1-2 research)
+### Development Stage
+- ✅ AI data storage solution integrated (based on earlier research)
 - ✅ Authorization system implemented (roles, permissions)
 - ✅ Async processing system operational (queue research implemented)
 - ✅ Monitoring and logging infrastructure deployed
 - ✅ Performance testing shows system meets requirements
 
-### Phase 3 (Phases 5+)
+### Integration Stage
 - ✅ Module integration architecture finalized
 - ✅ API abstraction layer implemented
 - ✅ Horizontal scaling demonstrated
@@ -131,16 +131,15 @@ Design and implement the core backend infrastructure that powers the entire Know
 
 ## 🚀 Getting Started
 
-### Phase 1 Focus
-1. Review your research assignment in `assignments/phase-1/`
+### Initial Steps
+1. Review your current assignment (ask team lead which phase you're in)
 2. Set up local development environment
 3. Create initial Docker Compose configuration
 4. Design database schema v1
 5. Implement basic authentication
 
 ### Key Resources
-- **Phase 1 Research**: See `02-phase-1-research/02b-phase-1-research-assignment.md` in this directory
-- **Phase 2 PRD**: See `03-phase-2-prd+plan/03b-phase-2-prd-assignment.md` in this directory
+- **Your Assignments**: Phase-specific assignments are in numbered folders in this directory (e.g., `02-phase-1-research/`, `03-phase-2-prd+plan/`)
 - **Docker Best Practices**: [Docker Documentation](https://docs.docker.com/develop/dev-best-practices/)
 - **Database Comparison**: Research different database types for different use cases
 - **API Design Patterns**: Compare REST, GraphQL, and other API approaches
