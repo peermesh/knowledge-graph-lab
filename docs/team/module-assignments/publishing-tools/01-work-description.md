@@ -65,7 +65,7 @@ Build the distribution system that delivers personalized insights through every 
 ## 🤝 Coordination Points
 
 ### With AI Development Team Member
-**Phase 2-3 Priority**
+**Timing: Mid-project coordination recommended**
 - **Content Generation**: Receiving AI-generated content
 - **Personalization**: User-specific content variants
 - **Quality Scores**: Content confidence metrics
@@ -84,7 +84,7 @@ Build the distribution system that delivers personalized insights through every 
 - Channel limitations
 
 ### With Backend Architecture Team Member
-**Phase 1-2 Priority**
+**Timing: Early coordination recommended**
 - **User Data**: Subscriber information storage
 - **Queue Systems**: Async email sending
 - **Analytics Storage**: Engagement data
