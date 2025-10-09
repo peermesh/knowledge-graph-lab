@@ -8,7 +8,7 @@ Planning & Design Phase
 
 Create comprehensive Product Requirements Documents (PRDs) that will:
 - Define exactly what each module will build
-- Ensure SpecKit compatibility for automated code generation
+- Be implementation-ready using **[RequirementsKit methodology](../methodologies/requirements-kit/)**
 - Establish clear API contracts between modules
 - Document all integration points
 - Provide complete specifications for Phase 3 development
@@ -19,7 +19,12 @@ Create comprehensive Product Requirements Documents (PRDs) that will:
 
 ### 1. Product Requirements Document (10-15 pages)
 
-Your PRD MUST follow the SpecKit-compatible format:
+Your PRD MUST be comprehensive and implementation-ready. Use **[RequirementsKit](../methodologies/requirements-kit/)** which provides templates and a systematic workflow for developing specifications:
+
+**Getting Started:**
+- **[Quick Start Guide](../methodologies/requirements-kit/guides/quickstart.md)** - 5-minute overview
+- **[Simple Template](../methodologies/requirements-kit/templates/simple-template.md)** - Start here
+- **[Workflow Guide](../methodologies/requirements-kit/guides/workflow.md)** - Complete 5-phase process
 
 #### Required Sections:
 1. **System Overview** - Purpose, users, integration points
@@ -55,9 +60,9 @@ Document key choices from your Phase 1 research:
 
 ---
 
-## SpecKit Preparation
+## Implementation Readiness
 
-Your PRD must be ready for code generation:
+Your PRD must be complete and ready for Phase 3 development:
 
 ### Validation Checklist:
 - [ ] All 8 required sections complete
@@ -135,8 +140,8 @@ Requirements
 
 ## Submission Process
 
-1. **Write** your PRD following the SpecKit structure
-2. **Validate** using the SpecKit checklist (see SpecKit Preparation below)
+1. **Write** your PRD following the **[RequirementsKit workflow](../methodologies/requirements-kit/guides/workflow.md)**
+2. **Validate** using the RequirementsKit checklist
 3. **Save** to `/docs/team/module-assignments/[your-module]/deliverables/phase-2-planning/PRD.md`
 4. **Submit** via pull request - See [Git Workflow](../git-workflow.md)
 5. **Notify** in Discord when complete
@@ -147,7 +152,7 @@ Requirements
 
 Your Phase 2 is complete when:
 
-✅ **PRD is SpecKit-ready**
+✅ **PRD is RequirementsKit-ready**
 - All required sections present
 - Types and schemas specified
 - Ready for code generation
@@ -174,16 +179,16 @@ Your Phase 2 is complete when:
 - **Start**: After Phase 1 research approval
 - **Duration**: Flexible based on completeness
 - **Review**: Team lead reviews before Phase 3
-- **Gate**: PRD must pass SpecKit validation
+- **Gate**: PRD must pass RequirementsKit validation
 
 ---
 
 ## Resources
 
 ### Essential Guides
-- **SpecKit Requirements**: See the SpecKit Preparation section in this document
+- **RequirementsKit**: [RequirementsKit](../methodologies/requirements-kit/) - Complete methodology for Phase 2
 - **Git Workflow**: [../git-workflow.md](../git-workflow.md)
-- **Phase 2 Quick Start**: Refer to your module’s 03a Overview (to be prepared in each module’s Phase 2 directory)
+- **Phase 2 Quick Start**: Refer to your module's 03a Overview (to be prepared in each module's Phase 2 directory)
 
 ### Examples
 - **Publishing PRD Example**: `../module-assignments/publishing-tools/deliverables/phase-2-planning/examples/PRD-example.md`
@@ -217,7 +222,7 @@ A: Discuss in #kgl-integration channel. Document agreements in your PRD.
 ## Next Phase
 
 After Phase 2 approval, Phase 3 will:
-1. Run SpecKit on your PRD to generate initial code
+1. Run SpecKit's /specify command on your PRD to generate initial code
 2. Use AI agents to refine and complete the implementation
 3. Build your MVP based on these specifications
 

@@ -449,9 +449,9 @@ PUT /api/v1/preferences/{token}
 
 ## Quality Standards
 
-### SpecKit Compatibility Requirements
+### PRD Quality Standards
 
-Your PRD must include:
+Use the [SpecKit templates](../../../../speckit/README.md) to create your comprehensive PRD. Your PRD must include:
 - [ ] **Complete Data Types**: All fields specify exact types (VARCHAR(255), JSONB, etc.)
 - [ ] **API Schemas**: Full request/response examples with status codes
 - [ ] **Error Handling**: Specific error scenarios with handling procedures

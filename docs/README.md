@@ -46,6 +46,12 @@ Find documentation in three main sections:
 - [Module Ownership](team/module-ownership.md) - Who owns what
 - Module assignments in team/module-assignments/
 
+### SpecKit - PRD Creation System (speckit/)
+**Create implementation-ready specifications:**
+- [SpecKit Overview](speckit/README.md) - Simple templates for comprehensive PRDs
+- [Quick Start](speckit/guides/quickstart.md) - 5-minute introduction
+- [Simple Template](speckit/templates/simple-template.md) - Start creating your PRD here
+
 ### Research Tools (research/)
 - Deep research prompt generator (research/prompts/deep-research-prompt-generator.md)
 

@@ -550,7 +550,7 @@ Legend:
 - **AI**: Processing pipeline design, entity schemas, confidence scoring system
 - **Publishing**: Template design, personalization logic, analytics specification
 
-**Deliverables**: Product Requirements Documents (PRDs) ready for SpecKit code generation
+**Deliverables**: Product Requirements Documents (PRDs) ready for implementation (created using [SpecKit templates](../../speckit/README.md))
 
 ### Phase 3: MVP Development (Weeks 5-8)
 **Focus**: Independent module development with basic integration
