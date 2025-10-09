@@ -784,9 +784,9 @@ function ArticleStructuredData({ article }: { article: Article }) {
 
 ## Quality Standards
 
-### SpecKit Compatibility Requirements
+### PRD Quality Standards
 
-Your PRD must include:
+Use the [SpecKit templates](../../../../speckit/README.md) to create your comprehensive PRD. Your PRD must include:
 - [ ] **Complete Component Specs**: All components with TypeScript interfaces
 - [ ] **State Management**: Full Redux store structure with actions
 - [ ] **API Integration**: Complete HTTP client with error handling

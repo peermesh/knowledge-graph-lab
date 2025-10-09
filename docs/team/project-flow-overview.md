@@ -178,7 +178,7 @@ The system consists of four modules that work together: Backend Architecture, Fr
 PHASE 1: Research (Weeks 1-X)
     ↓ Research briefs with tech recommendations
 PHASE 2: Planning (Weeks X-Y)
-    ↓ PRDs with complete specifications (SpecKit-ready)
+    ↓ PRDs with complete specifications (implementation-ready)
 PHASE 3: MVP Development (Weeks Y-Z)
     ↓ Working standalone modules in Docker
 PHASE 4: Enhancement (Weeks Z-W)
@@ -195,7 +195,7 @@ PRODUCTION: Live deployment
 | Phase | Duration | Key Deliverable | Gate Requirement |
 |-------|----------|-----------------|------------------|
 | **1: Research** | Flexible | 5-page research brief | Technology recommendations with rationale |
-| **2: Planning** | Flexible | 10-15 page PRD | SpecKit validation passes |
+| **2: Planning** | Flexible | 10-15 page PRD | Implementation readiness validation passes |
 | **3: MVP** | ~6 weeks | Working Docker module | Module runs independently, core features work |
 | **4: Enhancement** | ~4 weeks | Polished module | Demo-ready presentation |
 | **5: Integration** | ~2 weeks | Unified system | All modules connected, end-to-end tests pass |
@@ -272,7 +272,7 @@ PRODUCTION: Live deployment
 
 #### 1. Product Requirements Document (10-15 pages)
 
-**MUST follow SpecKit-compatible format with these sections**:
+**MUST be comprehensive and implementation-ready. Use the [SpecKit templates](../speckit/README.md) with these sections**:
 
 1. **System Overview** - Purpose, users, integration points
 2. **Functional Requirements** - What each feature does
@@ -283,7 +283,7 @@ PRODUCTION: Live deployment
 7. **Acceptance Criteria** - Testable success conditions
 8. **Technical Constraints** - Performance, security, scalability
 
-**Key Requirements for SpecKit Compatibility**:
+**Key Requirements for Implementation Readiness**:
 
 - Be specific about types: `string(255)` not just "text"
 - Include complete JSON schemas
@@ -318,7 +318,7 @@ Document key choices from Phase 1 research:
 
 **Success Criteria**:
 
-✅ **PRD is SpecKit-ready**: All required sections present, types and schemas specified
+✅ **PRD is implementation-ready**: All required sections present, types and schemas specified
 
 ✅ **Integration defined**: API contracts documented, shared data formats agreed
 
@@ -326,7 +326,7 @@ Document key choices from Phase 1 research:
 
 ✅ **Quality verified**: Peer reviewed, no missing information, uncertainties clearly marked
 
-**SpecKit Validation Checklist**:
+**Implementation Readiness Checklist**:
 
 - [ ] All 8 required sections complete
 - [ ] Data types specified for every field
@@ -565,7 +565,7 @@ Response:
 ### 1. Documentation-First Approach
 
 - All specifications written before code
-- PRDs are SpecKit-compatible for code generation
+- PRDs are implementation-ready and comprehensive
 - Clear API contracts documented upfront
 - Changes tracked through git and PRs
 

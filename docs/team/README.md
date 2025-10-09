@@ -30,6 +30,17 @@ Welcome! You're here to build a module. Let's get you to the right place.
 - **New team member?**: [onboarding.md](onboarding.md) - Complete setup guide
 - **Project vision**: [../design/strategy/vision.md](../design/strategy/vision.md) - Core mission and objectives
 
+## Development Methodologies
+
+**[RequirementsKit](methodologies/requirements-kit/)** - Requirements development system for Phase 2
+
+Use this systematic approach to create comprehensive requirements documentation:
+- **[Quick Start Guide](methodologies/requirements-kit/guides/quickstart.md)** - 5-minute overview
+- **[Templates](methodologies/requirements-kit/templates/)** - Simple starter + comprehensive format
+- **[Workflow](methodologies/requirements-kit/guides/workflow.md)** - Official 5-phase process
+
+**When to use**: During Phase 2 (Planning) to create your module's PRD
+
 ## Development Roadmap
 
 ![Knowledge Graph Lab Roadmap](../images/Knowledge-Graph-Lab-roadmap.png)
