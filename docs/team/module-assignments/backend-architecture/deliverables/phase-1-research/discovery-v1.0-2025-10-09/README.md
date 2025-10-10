@@ -7,6 +7,10 @@
 
 > **📖 Version Information:** See `VERSION.md` for complete details on how this bundle was created, source inventory, and Discovery Kit methodology.
 
+> **🗂️ Document Index:** See `DOCUMENT-INDEX.md` for a complete quick reference to all 16 files in this bundle.
+
+> **📚 Topic Guides:** See `guides/` directory for curated reading paths on specific topics (Modular Architecture, MVP vs Future, Technology Migrations).
+
 ---
 
 ## 📋 Quick Start for Developers
