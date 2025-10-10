@@ -33,7 +33,6 @@
 
 ### New Files
 - **Created**: `docs/team/methodologies/requirements-kit/reference/changelog.md` (this file)
-- **Created**: `.dev/ai/prompts/README.md` - Documents multi-model quality review strategy
 
 ### Known Issues
 - None currently identified
