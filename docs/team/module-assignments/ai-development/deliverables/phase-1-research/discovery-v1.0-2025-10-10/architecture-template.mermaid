@@ -1,0 +1,58 @@
+flowchart TB
+    %% External Sources
+    Sources[("External Sources | RSS, APIs, Web")]
+
+    %% Module 1: Data Ingestion
+    Ingestion["Module 1: Data Ingestion :8001"]
+
+    %% Module 2: AI Processing (OUR MODULE)
+    subgraph AIModule["AI Processing Service :8002"]
+        API["FastAPI API Layer"]
+        Pipeline["Processing Pipeline"]
+        LLM["LLM Integration"]
+    end
+
+    %% Storage Layer
+    Cache[("Redis Cache")]
+    VectorDB[("Vector DB | Embeddings")]
+    GraphDB[("Graph DB | Entities & Relations")]
+
+    %% Module 3: Backend
+    Backend["Module 3: Backend Services"]
+
+    %% Module 4: Publishing
+    Publishing["Module 4: Publishing :8003"]
+
+    %% Event Bus
+    EventBus{{"RabbitMQ Event Bus"}}
+
+    %% Users
+    Users["End Users"]
+
+    %% Data Flow
+    Sources -->|Raw Content| Ingestion
+    Ingestion -->|Normalized Docs| EventBus
+    EventBus -->|document.normalized| API
+    API --> Pipeline
+    Pipeline --> LLM
+    LLM -->|Entities/Relations| Pipeline
+    Pipeline -->|Cache Results| Cache
+    Pipeline -->|Store Embeddings| VectorDB
+    Pipeline -->|Store Entities| GraphDB
+    Pipeline -->|Generated Reports| Backend
+    Pipeline -->|Events| EventBus
+    Backend -->|Query| GraphDB
+    Backend -->|Query| VectorDB
+    Backend <-->|Reports API| Publishing
+    Publishing -->|Email/Web| Users
+
+    %% Styling
+    classDef aiModule fill:#e1f5fe,stroke:#01579b,stroke-width:3px
+    classDef storage fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef external fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef bus fill:#ffebee,stroke:#c62828,stroke-width:2px
+
+    class AIModule,API,Pipeline,LLM aiModule
+    class Cache,VectorDB,GraphDB storage
+    class Sources,Users external
+    class EventBus bus
