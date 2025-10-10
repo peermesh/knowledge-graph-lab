@@ -11,7 +11,6 @@
 # Read entry points
 Read: guides/quickstart.md
 Read: STRATEGY.md
-# See .dev/requirements-kit/case-studies/ for development examples
 ```
 
 ### Phase 2: Information Gathering (4-6 hours)
@@ -46,8 +45,7 @@ cp templates/comprehensive-template.md tests/[module-name]/[module]-comprehensiv
 
 ### Phase 4: SpecKit Processing (3-5 hours)
 ```bash
-# Compare to case study
-# See .dev/requirements-kit/case-studies/ for quality benchmarks
+# Quality check
 Use: checklists/quality-comparison-checklist.md
 
 # Refine spec
@@ -94,9 +92,6 @@ Create: 12-LEARNINGS-FOR-UNIVERSAL-SYSTEM.md
 - `checklists/validation-checklist-template.md` - WO-5 validation
 - `checklists/technical-accuracy-checklist.md` - Technical validation
 - `checklists/when-to-use-specify-guide.md` - When to use /specify
-
-**Case Studies (Quality Benchmarks):**
-- See `.dev/requirements-kit/case-studies/` for development examples
 
 **Working directory setup:**
 ```bash

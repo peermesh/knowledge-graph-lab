@@ -62,6 +62,14 @@
 - Naming conventions
 - Project-specific definitions
 
+### Examples (1 complete case study)
+
+**[publishing-tools/](examples/publishing-tools/)** - Complete working example
+- Real-world application of RequirementsKit
+- 625-line implementation-ready PRD
+- MVP scoping decisions and rationale
+- Shows what "good" looks like
+
 ---
 
 ## How It Works
@@ -83,62 +91,43 @@ With RequirementsKit: SpecKit produces 500+ line implementation-ready specs
 ## Quick Start
 
 1. **Read** [guides/quickstart.md](guides/quickstart.md) (5 minutes)
-2. **Copy** [templates/simple-template.md](templates/simple-template.md) to your project
-3. **Fill it out** with your requirements
-4. **Get help** from [guides/quick-reference-card.md](guides/quick-reference-card.md) if needed
+2. **See example** [examples/publishing-tools/](examples/publishing-tools/) to understand what "good" looks like
+3. **Copy** [templates/simple-template.md](templates/simple-template.md) to your project
+4. **Fill it out** with your requirements
+5. **Get help** from [guides/quick-reference-card.md](guides/quick-reference-card.md) if needed
 
 ---
 
-## Quality Assurance
+## Examples
 
-### Reviewing Documentation Quality
+### Publishing Tools Module
 
-To validate and improve RequirementsKit documentation quality:
+See a complete working example of RequirementsKit in action:
 
-**Quality Review Prompt**: [`.dev/ai/prompts/requirements-kit-quality-review-prompt.md`](../../.dev/ai/prompts/requirements-kit-quality-review-prompt.md)
+**[Publishing Tools Example](examples/publishing-tools/)** - Complete case study
+- **[Overview](examples/publishing-tools/README.md)** - Case study summary and results
+- **[Module Decisions](examples/publishing-tools/decisions.md)** - MVP scoping and decisions (194 lines)
+- **[Final Specification](examples/publishing-tools/final-spec.md)** - Implementation-ready PRD (625 lines)
 
-**How to use**:
-1. Provide this prompt to AI models (Claude, GPT-4, Gemini, etc.)
-2. Reviews are saved to `.dev/ai/audits/[timestamp]-[model]-speckit-quality-review.md`
-3. Run reviews before major releases, after significant changes, or quarterly
+**What you'll learn:**
+- How to scope an MVP (5 features, well-defined exclusions)
+- How to make module-specific decisions
+- What a complete, implementation-ready PRD looks like
+- Real-world application of RequirementsKit workflow
 
-**Multi-model strategy**: Running the prompt with different AI models provides:
-- **Cross-validation**: Different perspectives catch different issues
-- **Bias detection**: Where models disagree often reveals assumptions
-- **Comprehensive coverage**: Each model has strengths (precision, vision, balance)
-- **High confidence**: Consensus across models = reliable findings
-
-**Recent reviews** (2025-10-09):
-- `2025-10-09-04-00-gemini-speckit-quality-review.md` - Strategic consolidation perspective
-- `2025-10-09-07-28-sonnet-4-5-speckit-quality-review.md` - Comprehensive systematic analysis
-- `2025-10-09-07-30-codex-cli-speckit-quality-review.md` - Forensic precision with line numbers
-
-**Results from multi-model review**:
-- Identified terminology conflicts (now resolved)
-- Found broken links (now fixed)
-- Recommended redundancy reduction (in progress)
-- Established quality improvement roadmap
-
-**When to run quality reviews**:
-- Before releasing new RequirementsKit versions
-- After major documentation restructuring
-- Quarterly documentation health checks
-- When user feedback suggests documentation issues
-- When onboarding new documentation maintainers
-
-**Quality metrics** (after Phase 1 improvements):
-- Broken links: 0 (from 3+)
-- Terminology consistency: 100% (canonical established)
-- Guide accuracy: 100% (counts and listings correct)
-- Documentation coverage: Complete
+**Results from this example:**
+- Created 625-line implementation-ready specification
+- GO recommendation for development
+- 100% validation pass
+- Ready for Phase 3 implementation
 
 ---
 
-## Need More Help?
+## Need Help?
 
-- **System development files**: See `.dev/requirements-kit/` for examples, checklists, and workflows
-- **Case studies**: See `.dev/requirements-kit/case-studies/` for complete examples
-- **Extraction guide**: See `.dev/requirements-kit/package-extraction.md` to use this in other projects
+- **Questions?** Ask in the #kgl-general Discord channel
+- **Phase 2 deliverables**: See [../../project-plan/phase-2-deliverables.md](../../project-plan/phase-2-deliverables.md)
+- **Module assignments**: See [../../module-assignments/](../../module-assignments/)
 
 ---
 

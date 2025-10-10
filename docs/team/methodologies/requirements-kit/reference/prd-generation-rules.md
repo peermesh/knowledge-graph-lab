@@ -830,11 +830,10 @@ Before considering PRD complete, verify:
 
 **Correct WO-4 Process**:
 1. Read comprehensive spec (from WO-3)
-2. Read case study examples (quality benchmarks at `.dev/requirements-kit/case-studies/` - development reference)
-3. Compare section-by-section (use `../../checklists/quality-comparison-checklist.md`)
-4. Identify over-specifications (implementation details, redundancy)
-5. Refine manually to match case study quality
-6. Create final spec (500-700 lines)
+2. Compare section-by-section using quality guidelines
+3. Identify over-specifications (implementation details, redundancy)
+4. Refine manually to achieve production quality
+5. Create final spec (500-700 lines)
 
 **Next Step After Final Spec**: Use `/plan` command for implementation planning
 
