@@ -158,12 +158,14 @@ interface ArticleListResponse {
 **Purpose**: Let users discover and browse available articles
 
 **Key Components**:
+
 - Article grid with responsive cards
 - Filter sidebar (topics, dates, types)
 - Search functionality
 - Pagination controls
 
 **User Stories**:
+
 - As a reader, I want to see recent articles so I can find interesting content
 - As a reader, I want to filter by topic so I can find relevant articles
 - As a reader, I want to search by keywords so I can find specific information
@@ -172,12 +174,14 @@ interface ArticleListResponse {
 **Purpose**: Display full articles with rich formatting
 
 **Key Components**:
+
 - Full article header with metadata
 - Formatted article body with proper typography
 - Share buttons and article actions
 - Related articles suggestions
 
 **User Stories**:
+
 - As a reader, I want to read full articles with clear formatting
 - As a reader, I want to see article metadata like topics and publish date
 - As a reader, I want to find related articles on similar topics
@@ -195,6 +199,7 @@ interface ArticleListResponse {
 ```
 
 **Navigation Components**:
+
 - Header with main navigation
 - Breadcrumb navigation
 - Topic-based menu
@@ -204,11 +209,13 @@ interface ArticleListResponse {
 **Purpose**: Ensure great experience across all devices
 
 **Breakpoints**:
+
 - Mobile: 320px - 768px (single column, stack filters)
 - Tablet: 768px - 1024px (two columns, sidebar filters)
 - Desktop: 1024px+ (multi-column grid, full sidebar)
 
 **Responsive Behavior**:
+
 - Article grid adapts from 1-3 columns based on screen size
 - Navigation collapses to hamburger menu on mobile
 - Filter sidebar converts to dropdown on mobile
@@ -217,12 +224,14 @@ interface ArticleListResponse {
 **Purpose**: Fast, accessible experience for all users
 
 **Performance Features**:
+
 - Lazy loading for article images
 - Virtual scrolling for long article lists
 - Optimistic UI updates
 - Smart caching of article data
 
 **Accessibility Features**:
+
 - ARIA labels for screen readers
 - Keyboard navigation support
 - High contrast mode support
@@ -234,23 +243,27 @@ interface ArticleListResponse {
 
 ### With Backend Module
 **API Integration**:
+
 - Article list endpoint with filtering and pagination
 - Individual article endpoint by ID or slug
 - Search endpoint for keyword queries
 - Topic listing endpoint for navigation
 
 **Performance Requirements**:
+
 - Article list loads in <500ms
 - Individual articles load in <300ms
 - Search results return in <800ms
 
 **Error Handling**:
+
 - Graceful degradation when Backend is unavailable
 - User-friendly error messages
 - Retry mechanisms for failed requests
 
 ### With Publishing Module (Indirect)
 **Email Link Integration**:
+
 - Handle traffic from newsletter links
 - Consistent URL structure between email and website
 - Track article views from email referrals

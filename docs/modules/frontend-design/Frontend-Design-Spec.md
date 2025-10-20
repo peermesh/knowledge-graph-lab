@@ -1,5 +1,23 @@
 # Frontend Design Module Specification
 
+## Compliance with Shared Module Requirements
+
+**This module specification is governed by the Shared Module Requirements and must comply with all universal standards established therein.**
+
+**OVERRIDING REQUIREMENT:** The Frontend module must implement both shared module specifications:
+
+### 📋 Standalone Module (Immediate Implementation)
+**REQUIRED:** Basic interoperability for immediate team handover
+- [Standalone Module](./shared/standalone-modules/README.md) - Container architecture, database, API standards
+- **Handover Ready** - What teams implement immediately
+
+### 🔬 PeerMesh Module (Advanced Features)
+**FUTURE:** Advanced features building into PeerMesh Abstraction Program
+- [PeerMesh Module](./shared/peermesh-modules/README.md) - Parallel search, event-driven architecture, dual authorization
+- **Phase 2+** - Advanced interoperability features
+
+**Any conflicts between this specification and shared requirements will be resolved in favor of the shared requirements.**
+
 ## Module Mission
 
 The Frontend Design module creates the user interface that makes the Knowledge Graph Lab accessible and valuable to users. They own all user-facing components, interactions, and experiences.
@@ -8,6 +26,7 @@ The Frontend Design module creates the user interface that makes the Knowledge G
 
 ### UI Components
 Build React components for:
+
 - Search interface with autocomplete and filters
 - Results display in both list and graph views
 - User profiles and preference settings
@@ -16,6 +35,7 @@ Build React components for:
 
 ### State Management
 Use Redux for complex state management:
+
 - Application state across components
 - User session management
 - Cached search results and filters
@@ -23,6 +43,7 @@ Use Redux for complex state management:
 - Offline capability
 
 Research state management requirements:
+
 - What state needs to be managed across the application?
 - How to structure state for optimal performance and maintainability?
 - What patterns support time-travel debugging and optimistic updates?
@@ -30,6 +51,7 @@ Research state management requirements:
 
 ### Data Visualization
 Create interactive visualizations using:
+
 - Graph visualizations showing entity relationships (D3.js recommended)
 - Charts and metrics dashboards
 - Timeline views for opportunities
@@ -37,6 +59,7 @@ Create interactive visualizations using:
 - Heat maps for activity patterns
 
 Research graph visualization approaches:
+
 - What libraries and techniques best handle large-scale knowledge graphs?
 - How to implement force-directed layouts that remain performant with 1000+ nodes?
 - What interaction patterns make graph exploration intuitive for users?
@@ -44,6 +67,7 @@ Research graph visualization approaches:
 
 ### Responsive Design
 Ensure the interface works across devices:
+
 - Desktop layouts using CSS Grid
 - Mobile-first responsive design
 - Touch-friendly interactions
@@ -52,6 +76,7 @@ Ensure the interface works across devices:
 
 ### User Workflows
 Build complete user journeys:
+
 - Search flow from query to results
 - Saved search management
 - Alert configuration and preferences
@@ -60,6 +85,7 @@ Build complete user journeys:
 
 ### API Integration
 Connect to backend services:
+
 - REST API endpoints for CRUD operations
 - GraphQL for complex queries
 - WebSocket connections for real-time updates
@@ -67,6 +93,7 @@ Connect to backend services:
 - Implement retry logic and offline queuing
 
 Research API integration patterns:
+
 - What are effective patterns for organizing API calls in frontend applications?
 - How to handle loading states, errors, and retries gracefully?
 - What strategies work best for real-time updates via WebSockets?
@@ -74,6 +101,7 @@ Research API integration patterns:
 
 ### Performance Optimization
 Ensure fast, smooth interactions:
+
 - Lazy loading for large datasets
 - Code splitting by route
 - Browser caching strategies

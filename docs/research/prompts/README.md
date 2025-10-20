@@ -14,6 +14,7 @@ Your research question or requirements here
 
 ### 1. Deep Research Prompt Generator (`deep-research-prompt-generator.md`)
 Transforms research briefs into comprehensive prompts.
+
 - Intelligently handles both simple and complex multi-topic briefs
 - Can generate single comprehensive prompts or multiple focused prompts
 - Includes complexity assessment and user interaction
@@ -36,6 +37,7 @@ Transforms research briefs into comprehensive prompts.
 
 #### Mode A: Automated (For Claude Code Agents)
 If you are a Claude Code agent:
+
 1. **Create directory structure** with `claude-cli.md` placeholder
 2. **Read all research-prompt.md** files (batch reads)
 3. **Launch Task agents IN PARALLEL** (up to 10 at once):

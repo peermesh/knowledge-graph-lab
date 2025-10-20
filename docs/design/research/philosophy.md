@@ -1,8 +1,8 @@
 # Research Philosophy: Depth-First Distillation
 
-**Version**: 1.0  
-**Date**: September 9, 2025  
-**Status**: Core Project Philosophy
+- **Version**: 1.0  
+- **Date**: September 9, 2025  
+- **Status**: Core Project Philosophy
 
 ---
 
@@ -151,6 +151,7 @@ This approach mirrors how experts actually develop mastery:
 ### Expected Outcomes
 
 Researchers who:
+
 - Understand knowledge graphs from theory to practice
 - Can evaluate technologies against requirements
 - Make informed architectural decisions

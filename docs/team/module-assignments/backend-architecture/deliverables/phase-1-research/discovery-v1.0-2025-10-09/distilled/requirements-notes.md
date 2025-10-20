@@ -1,6 +1,7 @@
 # Backend Module - Requirements
 
 **Date:** 2025-10-09
+
 **Distilled from:** PRD.md, Backend-Architecture-Spec.md, BASIC-RESEARCH.md, fall-2025-backend-architecture-phase-1-review.md
 
 ---
@@ -11,6 +12,7 @@
 
 #### FR-1: RSS Feed Management
 **Requirement:** System must fetch content from RSS feeds automatically
+
 - Add RSS feed URLs (admin function)
 - List all configured sources
 - Fetch feeds on schedule (hourly)
@@ -23,6 +25,7 @@
 
 #### FR-2: Content Storage
 **Requirement:** System must store and retrieve content
+
 - Store sources (URL, type, status, last_checked)
 - Store content (title, text, URL, fetched_at, source_id)
 - Store entities (mock data for MVP)
@@ -35,6 +38,7 @@
 
 #### FR-3: REST API Endpoints
 **Requirement:** Provide 5 REST API endpoints for module integration
+
 1. `POST /api/sources` - Add a source
 2. `GET /api/sources` - List sources
 3. `GET /api/content?limit=10` - Get latest content
@@ -47,6 +51,7 @@
 
 #### FR-4: Scheduled Tasks
 **Requirement:** Execute periodic background jobs
+
 - Fetch RSS feeds every hour
 - Update last_checked timestamps
 - Handle failures with retry logic
@@ -58,6 +63,7 @@
 
 #### FR-5: Docker Deployment
 **Requirement:** Run as containerized service
+
 - Single `docker run` command to start
 - Docker Compose for local development
 - Environment variable configuration
@@ -72,6 +78,7 @@
 
 #### UI-1: AI Module Can Retrieve Content
 **As the AI module, I can:**
+
 - Query content via REST API
 - Receive JSON responses
 - Filter by date, source, type
@@ -85,6 +92,7 @@
 
 #### UI-2: Frontend Can Display Data
 **As the frontend module, I can:**
+
 - List all sources
 - Display latest content
 - Show dashboard statistics
@@ -98,6 +106,7 @@
 
 #### UI-3: Admin Can Manage Sources
 **As an admin, I can:**
+
 - Add new RSS feed URLs
 - View list of configured sources
 - See fetch status and timestamps
@@ -114,6 +123,7 @@
 
 #### NFR-1: API Response Time
 **Requirement:** API endpoints respond within acceptable time
+
 - Dashboard: < 500ms
 - Content list: < 1 second
 - Source operations: < 200ms
@@ -128,6 +138,7 @@
 
 #### NFR-2: Fetch Performance
 **Requirement:** RSS fetching completes efficiently
+
 - Process 5 feeds within 5 minutes
 - Parallel fetching where possible
 - Timeout handling for slow feeds
@@ -140,6 +151,7 @@
 
 #### NFR-3: Data Volume
 **Requirement:** Handle expected MVP data load
+
 - 5 RSS feeds
 - 100+ content items stored
 - 100 items per feed retention
@@ -153,6 +165,7 @@
 
 #### NFR-4: Concurrent Users
 **Requirement:** Support small team usage
+
 - 5-10 concurrent API requests
 - No complex load balancing required
 - Single container sufficient
@@ -165,6 +178,7 @@
 
 #### NFR-5: Basic Authentication
 **Requirement:** Implement JWT-based auth
+
 - Token-based authentication
 - Stateless design
 - Refresh token support (desirable)
@@ -177,6 +191,7 @@
 
 #### NFR-6: Docker Security
 **Requirement:** Follow Docker security best practices
+
 - Non-root user execution
 - No hardcoded secrets
 - Environment variable configuration
@@ -190,6 +205,7 @@
 
 #### NFR-7: API Key Management
 **Requirement:** Secure external service authentication
+
 - API keys for integrations
 - Rotation support
 - Encrypted storage
@@ -204,6 +220,7 @@
 
 #### NFR-8: Error Handling
 **Requirement:** Graceful degradation and error recovery
+
 - RSS fetch failures don't crash system
 - Invalid data handled gracefully
 - Retry logic for transient failures
@@ -215,6 +232,7 @@
 
 #### NFR-9: Uptime
 **Requirement:** System remains operational
+
 - No crashes during 1-hour operation
 - Restarts after failures
 - Health check endpoint
@@ -225,6 +243,7 @@
 
 #### NFR-10: Data Integrity
 **Requirement:** Data remains consistent and valid
+
 - Foreign key constraints
 - Duplicate detection (URL-based)
 - Transaction support
@@ -239,6 +258,7 @@
 
 #### INT-1: REST API Contract
 **Requirement:** Provide OpenAPI-documented REST APIs
+
 - OpenAPI/Swagger specification
 - JSON response format
 - Standard HTTP status codes
@@ -252,6 +272,7 @@
 
 #### INT-2: Authentication Integration
 **Requirement:** JWT tokens for frontend requests
+
 - Token validation
 - Authorization headers
 - Token expiration handling
@@ -266,6 +287,7 @@
 
 #### INT-3: Content Access API
 **Requirement:** AI module can retrieve content for processing
+
 - Batch content retrieval
 - Filter by processing status
 - Mark content as processed
@@ -278,6 +300,7 @@
 
 #### INT-4: Message Queue (Future)
 **Requirement:** Async job processing support
+
 - Queue for processing jobs
 - Job status tracking
 - Result storage
@@ -292,6 +315,7 @@
 
 #### INT-5: User Preferences API
 **Requirement:** Store and retrieve user preferences
+
 - Preference CRUD operations
 - Digest content queries
 
@@ -358,6 +382,7 @@ CREATE TABLE entities (
 
 #### DATA-4: Database Migrations
 **Requirement:** Version-controlled schema changes
+
 - Migration scripts for schema updates
 - Rollback capability
 - CI/CD integration (production)
@@ -370,6 +395,7 @@ CREATE TABLE entities (
 
 #### DATA-5: SQLite → PostgreSQL Path
 **Requirement:** Plan for production database upgrade
+
 - Schema compatibility design
 - Migration script from SQLite to PostgreSQL
 - Data export/import process
@@ -446,7 +472,9 @@ CREATE TABLE entities (
 
 #### CONFLICT-1: Database Choice
 **Source A (PRD.md):** SQLite for MVP simplicity
+
 **Source B (Backend-Architecture-Spec.md):** PostgreSQL + Neo4j for production
+
 **Source C (BASIC-RESEARCH.md):** Recommends PostgreSQL + pgvector
 
 **Resolution:** ✅ Use SQLite for MVP (simpler, faster start), design schema compatible with PostgreSQL migration
@@ -457,6 +485,7 @@ CREATE TABLE entities (
 
 #### CONFLICT-2: Real vs Mock AI Integration
 **Source A (PRD.md):** "Work with mock AI responses" (line 15)
+
 **Source B (Backend-Architecture-Spec.md):** "Message queue for processing jobs" (line 89)
 
 **Resolution:** ✅ Mock for MVP, design API contract for real integration later
@@ -469,31 +498,42 @@ CREATE TABLE entities (
 
 #### QUESTION-1: Fetch Frequency
 **Question:** How often to fetch RSS feeds?
+
 **Default:** Hourly (PRD.md line 189)
+
 **Consideration:** Some feeds update more/less frequently
+
 **Needs:** Configuration per-source?
 
 ---
 
 #### QUESTION-2: Content Retention
 **Question:** How many items to store per feed?
+
 **Default:** 100 (PRD.md line 190)
+
 **Consideration:** Storage limits, query performance
+
 **Needs:** Cleanup strategy?
 
 ---
 
 #### QUESTION-3: Duplicate Handling
 **Question:** How to handle duplicate content?
+
 **Default:** URL-based deduplication (PRD.md line 192)
+
 **Consideration:** Same content, different URLs?
+
 **Needs:** Content hashing?
 
 ---
 
 #### QUESTION-4: Integration Testing Approach
 **Question:** How to test module integration without other modules ready?
+
 **Consideration:** Mock other modules? Postman collections?
+
 **Needs:** Integration test strategy
 
 **Source:** PRD.md lines 115-117 mentions integration testing but no approach defined
@@ -505,26 +545,31 @@ CREATE TABLE entities (
 ### Deferred to Phase 2+
 
 **Database:**
+
 - PostgreSQL with pgvector
 - Neo4j graph database
 - Complex indexing strategies
 
 **APIs:**
+
 - GraphQL endpoint
 - WebSocket real-time updates
 - Advanced query filtering
 
 **Authentication:**
+
 - Keycloak/Auth0 integration
 - OAuth2 flows
 - Advanced RBAC
 
 **Deployment:**
+
 - Kubernetes manifests
 - Production monitoring (Prometheus/Grafana)
 - Auto-scaling
 
 **Integration:**
+
 - Real AI module connection
 - Multi-module orchestration
 - Event-driven architecture
@@ -539,6 +584,7 @@ CREATE TABLE entities (
 
 ### GAP-1: Integration Architecture
 ❌ **No documentation** of how Backend connects to AI, Frontend, Publishing modules
+
 - No integration diagram
 - No API contract specifics
 - No data flow documentation
@@ -552,6 +598,7 @@ CREATE TABLE entities (
 
 ### GAP-2: Database Schema Detail
 ❌ **Basic schema exists but missing:**
+
 - Entity-Relationship Diagram (ERD)
 - Index design
 - Migration strategy
@@ -565,6 +612,7 @@ CREATE TABLE entities (
 
 ### GAP-3: Performance Benchmarks
 ❌ **No performance analysis:**
+
 - No load testing
 - No API response time targets
 - No database query benchmarks
@@ -578,6 +626,7 @@ CREATE TABLE entities (
 
 ### GAP-4: Security Implementation
 ❌ **JWT mentioned but no implementation details:**
+
 - Token generation/validation
 - Secret management
 - Token expiration/refresh
@@ -592,14 +641,18 @@ CREATE TABLE entities (
 ## Sources Consulted
 
 **Requirements Specifications:**
+
 1. `docs/modules/backend-architecture/PRD.md` - MVP requirements, user stories, API endpoints, database schema
 2. `docs/modules/backend-architecture/Backend-Architecture-Spec.md` - Module responsibilities, interfaces, non-functional requirements
 
 **Technical Research:**
+
 3. `00-context-intake/sources/pr-1-backend-research/BASIC-RESEARCH.md` - Docker patterns, database selection, security practices
 
 **Gaps Analysis:**
+
 4. `.dev/team/intern-management/pr-reviews/fall-2025-backend-architecture-phase-1-review.md` - Critical gaps in deliverables
 
 **Vision Context:**
+
 5. `01-distilled/vision-statement.md` - Overall product vision, success metrics

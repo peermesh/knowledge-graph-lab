@@ -2,7 +2,9 @@
 
 ## Context
 [Describe user authentication requirements]
+
 [Security and compliance needs]
+
 [Integration with frontend and external services]
 
 ## Requirements (Criteria, Not Brands)
@@ -25,6 +27,7 @@
 Find ALL production-ready authentication solutions meeting criteria above.
 
 For each option, document:
+
 - Security features and best practices
 - Integration complexity with chosen API framework
 - Scalability and performance characteristics

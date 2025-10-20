@@ -124,6 +124,7 @@ After 18 months, care variation dropped from 23% to 7% across locations. New res
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Consumer-facing patient portals or apps
 - Basic electronic health records functionality (they have Epic)
 - Simple search tools (they need intelligent knowledge synthesis)

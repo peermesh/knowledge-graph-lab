@@ -1,6 +1,7 @@
 # Vision Statement - AI Module
 
 **Distilled from:** vision.md, overview.md, AI-Development-Spec.md
+
 **Date:** 2025-10-10
 
 ---
@@ -12,9 +13,11 @@
 The creator economy has exploded over the past 15 years, with millions creating content on platforms like YouTube, TikTok, Instagram, and Twitch. Yet the infrastructure supporting creators remains **fragmented and chaotic**.
 
 **The Core Problem:**
+
 Information about opportunities, grants, platform changes, and partnerships exists across hundreds of sources with **no central intelligence layer** to make sense of it all.
 
 **Real Impact:**
+
 - Creators spend 10+ hours/week searching for opportunities in noise
 - Investors spend 20+ hours/week tracking emerging platforms
 - Researchers spend 40+ hours/week gathering complete data
@@ -56,12 +59,14 @@ We're building an **AI-powered intelligence layer** that:
 ### AI Module's Role in the System
 
 The complete system has 4 modules:
+
 1. **Data Ingestion** - Collects raw information from sources
 2. **AI Module (This)** - **Transforms chaos into knowledge**
 3. **Backend** - Stores structured knowledge
 4. **Publishing** - Distributes insights to users
 
 **What AI Does:**
+
 - **Module 2: Knowledge Graph Construction** - Extracts entities, maps relationships, builds knowledge graph
 - **Module 3: Reasoning & Intelligence** - Analyzes patterns, generates insights, creates content
 
@@ -74,6 +79,7 @@ Without AI, we'd have raw text. With AI, we have **actionable intelligence**.
 ### 1. LLMs Can Extract Structured Data from Unstructured Text
 
 Modern AI models can read a blog post about a grant program and extract:
+
 - Grant details and eligibility criteria
 - Specific creator requirements
 - Application deadlines
@@ -98,11 +104,13 @@ Processing capabilities that were expensive a decade ago are now accessible and 
 ### For Users
 
 **Before Knowledge Graph Lab:**
+
 - 10+ hours/week searching for opportunities
 - Miss critical deadlines buried in noise
 - No understanding of hidden connections
 
 **After Knowledge Graph Lab:**
+
 - <1 hour/week reviewing curated insights
 - Never miss relevant opportunities
 - Discover non-obvious connections
@@ -112,12 +120,14 @@ Processing capabilities that were expensive a decade ago are now accessible and 
 ### For the AI Module
 
 **Technical Success:**
+
 - Process 10,000+ sources daily
 - Maintain 95% extraction accuracy
 - Sub-2 second query response times
 - $0.05 cost per document (Phase 5 target)
 
 **Intelligence Success:**
+
 - Identify relationships humans miss
 - Generate coherent, valuable insights
 - Learn from feedback continuously

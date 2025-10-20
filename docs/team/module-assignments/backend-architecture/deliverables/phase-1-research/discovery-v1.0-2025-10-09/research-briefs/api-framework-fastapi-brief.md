@@ -2,7 +2,9 @@
 
 ## Context
 [Describe the API requirements and complexity]
+
 [Expected traffic patterns and scale]
+
 [Integration requirements with other services]
 
 ## Requirements (Criteria, Not Brands)
@@ -25,6 +27,7 @@
 Find ALL production-ready API frameworks meeting criteria above.
 
 For each option, document:
+
 - Feature completeness vs requirements
 - Performance benchmarks
 - Developer experience and learning curve

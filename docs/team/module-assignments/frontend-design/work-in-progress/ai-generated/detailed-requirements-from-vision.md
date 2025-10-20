@@ -1,9 +1,9 @@
 # Knowledge Graph Labs: Detailed Frontend Requirements
 ## Vision Capture & Product Requirements Document
 
-**Date**: 2025-09-30
-**Source**: Product Vision Discussion
-**Status**: Research Phase - Requirements Definition
+- **Date**: 2025-09-30
+- **Source**: Product Vision Discussion
+- **Status**: Research Phase - Requirements Definition
 
 ---
 
@@ -33,6 +33,7 @@ Users must be able to configure:
 | **Text Messages** | Enable/disable, frequency interval | SMS/messaging gateway |
 
 **UI Requirements**:
+
 - Toggle switches for each channel
 - Interval selectors (real-time, hourly, daily, weekly)
 - Per-topic channel assignment (different topics → different channels)
@@ -43,6 +44,7 @@ Users must be able to configure:
 **Purpose**: Exploratory, visual way to define interests without cognitive overload
 
 **Flow**:
+
 1. Start with empty canvas + single circle with "+" button
 2. User clicks "+" → types initial interest (e.g., "creator economy")
 3. System sends to backend: `GET /api/related-topics?seed="creator economy"&count=5`
@@ -55,6 +57,7 @@ Users must be able to configure:
 7. Build interest graph organically through exploration
 
 **UI/UX Considerations**:
+
 - Smooth animations (fade in/out, orbit motion)
 - Visual feedback (color changes, size scaling)
 - Undo/reset functionality
@@ -62,6 +65,7 @@ Users must be able to configure:
 
 #### Text-Based Alternative
 For "pedantic" users who prefer direct input:
+
 - Search/autocomplete field
 - Hierarchical category browser
 - Import from list/file
@@ -117,6 +121,7 @@ For "pedantic" users who prefer direct input:
 **Inspiration**: TikTok/Instagram-style infinite scroll with modern UX patterns
 
 **Core Mechanics**:
+
 - **Infinite scroll** with lazy loading (10 items per batch)
 - **Swipe/snap** interaction (optional, desktop uses scroll wheel)
 - **Pull-to-refresh** at top
@@ -142,6 +147,7 @@ For "pedantic" users who prefer direct input:
 ```
 
 **Side Controls** (appear on hover/tap):
+
 - Share
 - Save/Bookmark
 - Reactions (like/dislike for AI feedback)
@@ -170,11 +176,13 @@ GET /api/feed?user_id={id}&offset=10&limit=10
 **Purpose**: Visual representation of concept relationships
 
 **Example Data**:
+
 - Nodes: "Bees", "Flowers", "Pollination", "Ecosystems"
 - Edges: "Bees --[gets nectar from]--> Flowers"
 - Edge labels show relationship type
 
 **UI Requirements**:
+
 - Pan/zoom controls
 - Node search/filter
 - Click node → highlight connections
@@ -183,6 +191,7 @@ GET /api/feed?user_id={id}&offset=10&limit=10
 - Color coding by topic category
 
 **Technology Considerations** (from existing research doc):
+
 - D3.js vs Cytoscape vs vis.js
 - Must handle 10K+ nodes
 - Target: 60fps during pan/zoom
@@ -209,6 +218,7 @@ Creator Economy
 ```
 
 **Interaction Model**:
+
 - Checkbox = add to "My Topics"
 - Click text = drill down (expand children)
 - Breadcrumb navigation
@@ -295,21 +305,30 @@ Creator Economy
 1. **Topic Selection Events**
    ```javascript
    POST /api/user/interests
+
    {
+
      "action": "add",
+
      "topic": "R&B mixed with country music",
+
      "source": "bubble_interface",
+
      "weight": 5 // how deep they drilled
+
    }
    ```
 
 2. **Engagement Metrics**
    ```javascript
    POST /api/engagement
+
    {
+
      "content_id": "uuid",
      "action": "viewed" | "saved" | "shared" | "dismissed",
      "duration_seconds": 45
+
    }
    ```
 
@@ -350,6 +369,7 @@ Creator Economy
 ### 4.2 Recommended Visual Direction
 
 **Constraints**:
+
 - Avoid overly skeuomorphic (no 3D buttons, fake textures)
 - Avoid ultra-minimal (needs enough visual hierarchy for complex data)
 - Must support both "lab" (experimental) and "feed" (familiar) modes
@@ -362,6 +382,7 @@ Creator Economy
 - **Subtle animations**: Transitions for state changes, no gratuitous motion
 
 **Accessibility Requirements**:
+
 - WCAG 2.1 AA compliance (from existing research doc)
 - Keyboard navigation for all features
 - Screen reader support for graph data (challenging!)
@@ -384,22 +405,27 @@ Based on existing research doc, need to finalize:
 ### 5.2 Additional Stack Considerations
 
 **Feed Component**:
+
 - Use off-the-shelf React infinite scroll library
 - Candidates: `react-virtualized`, `react-window`, `@tanstack/react-virtual`
 - Must support view recycling (memory management)
 
 **Animations**:
+
 - Framer Motion for bubble interface animations
 - CSS transitions for simple interactions
 
 **Data Fetching**:
+
 - React Query (TanStack Query) for caching + state
 - Handles pagination, refetching, optimistic updates
 
 **Routing**:
+
 - React Router v6 (standard choice)
 
 **Testing**:
+
 - Jest (unit tests)
 - Playwright (e2e tests per existing doc)
 
@@ -412,6 +438,7 @@ Based on existing research doc, need to finalize:
 **Philosophy**: Use AI to accelerate initial prototype, then refine
 
 **Process**:
+
 1. **Constitution Phase** (Project-wide rules)
    - Define coding standards
    - Database choices
@@ -470,6 +497,7 @@ Based on existing research doc, need to finalize:
 ### 6.3 Cursor + Predictive Coding
 
 **For implementation refinement**:
+
 - Cursor understands full file context
 - Predicts next code based on patterns
 - Speeds up: renaming, refactoring, repetitive structure creation
@@ -633,7 +661,7 @@ Based on existing research doc, need to finalize:
 
 ---
 
-**Document Status**: Draft for review
-**Next Review**: After initial research phase completion
-**Owner**: Frontend Design Team
-**Last Updated**: 2025-09-30
+- **Document Status**: Draft for review
+- **Next Review**: After initial research phase completion
+- **Owner**: Frontend Design Team
+- **Last Updated**: 2025-09-30

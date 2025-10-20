@@ -1,9 +1,9 @@
 # Product Requirements Document: Publishing Tools Module
 
-**Module**: Publishing Tools
-**Author**: Publishing Team Lead
-**Date**: 2025-01-19
-**Status**: Example/Template
+- **Module**: Publishing Tools
+- **Author**: Publishing Team Lead
+- **Date**: 2025-01-19
+- **Status**: Example/Template
 
 ## 1. Module Overview
 
@@ -70,22 +70,30 @@ As a content creator, I want to automatically distribute my knowledge insights t
 
 ### Scenario 1: Email Newsletter Distribution
 **Given** a creator has 1000 subscribers and new knowledge insights
+
 **When** they schedule a newsletter for 9 AM tomorrow
+
 **Then** all active subscribers receive the formatted email at the scheduled time
 
 ### Scenario 2: Webhook Delivery
 **Given** an API consumer has registered a webhook endpoint
+
 **When** new insights matching their criteria are available
+
 **Then** the system sends a properly formatted JSON payload to their endpoint
 
 ### Scenario 3: Failed Delivery Handling
 **Given** an email delivery fails due to a temporary error
+
 **When** the system detects the failure
+
 **Then** it retries delivery up to 3 times with exponential backoff
 
 ### Scenario 4: Subscriber Preferences
 **Given** a subscriber has set preferences for weekly digests only
+
 **When** daily content is available
+
 **Then** the system aggregates content and sends only on their preferred schedule
 
 ## 7. Non-Functional Requirements

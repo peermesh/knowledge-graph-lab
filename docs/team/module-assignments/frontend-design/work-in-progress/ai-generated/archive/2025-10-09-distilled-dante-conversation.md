@@ -53,11 +53,13 @@
 ### Scope Notes
 
 **Lab Views Priority:**
+
 - One lab view (graph visualization) is MVP
 - Additional views are stretch goals
 - Framework should support adding more views later
 
 **Onboarding:**
+
 - Bubble interface is MVP
 - Can be returned to later, not just first-time
 - Provides exploratory way to build interest profile
@@ -117,6 +119,7 @@
 **What was decided:** Standard IDE-style layout with left sidebar, main content, right sidebar
 
 **Layout:**
+
 - **Left column:** Menu/navigation, user's refined choices, lab view selection
 - **Center column:** Main content (feed, bubble onboarding, or active lab view)
 - **Right column:** Filters and settings for selected content
@@ -139,6 +142,7 @@
 > "We'll find a off the shelf probably a react based component that does that whole feed thing for us"
 
 **Feed Mechanics:**
+
 - Paginated API calls (request 10 items at a time)
 - Load next batch as user nears end
 - Recycle views to prevent memory overload
@@ -161,6 +165,7 @@
 > "We want to do, and maybe I mentioned this, is we know what we want to build kind of right. And now I've got this transcript of what it is. We'll distill that into like a very, like lots of information. It's going to be very useful. And what we're going to do is try to find projects and products and platforms that are on the market that do exactly this"
 
 **Process:**
+
 - Find 10+ competitors
 - Screenshot interfaces
 - Review app store ratings for pain points
@@ -175,6 +180,7 @@
 **What was decided:** Create visual lookbook, use AI tools (V0, Lovable, Cursor) with image inputs for design generation
 
 **Process:**
+
 1. Collect design inspiration (competitors, Webby Awards, design trends)
 2. Build lookbook in Figma
 3. Use AI tools with visual inputs to generate UI variations
@@ -184,6 +190,7 @@
 > "You can drop in images along with your description of the interface and it will use the images, like the color schemes, the shapes as influence for the design"
 
 **Tools mentioned:**
+
 - V0
 - Lovable
 - Cursor
@@ -208,12 +215,14 @@
 **Direction:** Bi-directional (Frontend ↔ Backend)
 
 **What Frontend Needs from Backend:**
+
 - User authentication/session management
 - User preference data (topics, publishing settings)
 - Content feed API (paginated)
 - Publishing configuration storage
 
 **Feed API (Inferred Structure):**
+
 - Request: `{ offset: number, limit: 10 }`
 - Response: `{ items: [...], has_more: boolean, next_offset: number }`
 
@@ -232,6 +241,7 @@
 **Direction:** Frontend → AI (request/response)
 
 **Related Topics API:**
+
 - User types/selects seed topic
 - Frontend requests ~4-5 related topics from AI
 - AI returns related concepts
@@ -241,6 +251,7 @@
 > "The AI, we send a message to the backend saying, get me some research results or no, better. It won't be research results at this point. It'll be get me related ideas to the thing that we're sending back. And I'll, I want about four or five of them"
 
 **Ontology Graph Data:**
+
 - JSON format with hierarchical structure
 - Contains: nodes (topics/concepts), edges (relationships), labels (relationship types)
 - Supports drill-down navigation
@@ -249,11 +260,13 @@
 > "So it's all going to be coming in in a JSON file. And what we really want is an interface that is dynamic. So whatever the JSON file gives us, we display. and so I'm going to imagine that's probably some sort of hierarchy of content"
 
 **Ontology Example Structure (from conversation):**
+
 - Top level: "creator economy", "open source"
 - Second level: "venues and musicians" (under creator economy), "GitHub, recent open source" (under open source)
 - Each level clickable for further drill-down
 
 **User Feedback to AI:**
+
 - User selections (checked topics) sent back to Backend/AI
 - Creates weights for AI research priorities
 - Feedback loop: more users interested = higher research priority
@@ -273,6 +286,7 @@
 ### Workflow: Onboarding (Bubble Interface)
 
 **Steps:**
+
 1. User arrives at blank page
 2. Single circle in middle with "+" sign
 3. User clicks "+", prompted to enter first interest
@@ -302,6 +316,7 @@
 ### Workflow: Hierarchical Topic Exploration
 
 **Steps:**
+
 1. User selects hierarchical browser view (from left sidebar lab section)
 2. Frontend requests ontology data from AI (JSON)
 3. Frontend displays top-level topics (e.g., "creator economy", "open source")
@@ -324,6 +339,7 @@
 ### Workflow: Content Feed Consumption
 
 **Steps:**
+
 1. User navigates to feed view (center panel, default after onboarding)
 2. Frontend requests initial content batch (10 items) from Backend
 3. Feed displays content (format TBD, likely cards or list items)
@@ -348,6 +364,7 @@
 ### Workflow: Publishing Configuration
 
 **Steps:**
+
 1. User navigates to publishing settings (location TBD, likely left sidebar or dedicated section)
 2. UI displays available channels:
    - Email (toggle on/off)
@@ -375,6 +392,7 @@
 ### Component Architecture
 
 **Left Sidebar (Menu/Navigation):**
+
 - Top section: Major content sections
 - "Your" section: Liked topics, watched content, selected interests
 - "Lab" section: Lab view selector (graph viz, future views)
@@ -384,12 +402,14 @@
 > "Maybe the left-hand side would be like the things that you have refined. So maybe like if you've been on YouTube, the left-hand column is like broken into subsections of this top part is like major subsections of their content... And then underneath that is the Your section, which has the things that you've liked"
 
 **Center Panel (Main Content):**
+
 - Default: Content feed
 - Alternative: Bubble onboarding interface
 - Alternative: Active lab view (graph, hierarchy browser, future views)
 - Changes based on left sidebar selection
 
 **Right Sidebar (Filters/Settings):**
+
 - Contextual to main content selection
 - Fine-tune results for selected item
 - Similar to video editor property panels
@@ -400,18 +420,21 @@
 ### State Management
 
 **Client-Side State:**
+
 - Current view (feed, bubbles, lab view)
 - Selected topics/interests (temporary before save)
 - Feed scroll position
 - Filter settings
 
 **Server-Side State:**
+
 - User authentication
 - Saved topic preferences
 - Publishing channel configuration
 - User profile data
 
 **Synchronization:**
+
 - Topic selections sent to Backend when user saves/confirms
 - Publishing preferences persisted to Backend
 - Feed data fetched from Backend API
@@ -421,15 +444,18 @@
 ### Performance Requirements
 
 **Graph Visualization:**
+
 - Must handle 10K+ nodes
 - Cytoscape.js chosen for performance balance
 
 **Feed:**
+
 - Must recycle views to prevent memory issues
 - Paginated loading (10 items at a time)
 - Smooth infinite scroll
 
 **UI Responsiveness:**
+
 - "Fast build" mentioned as reason for Vite
 - No specific performance metrics discussed
 
@@ -588,6 +614,7 @@ None identified - conversation was exploratory and visionary, but consistent in 
 ### Follow-up Needed
 
 **Technical Research:**
+
 - Competitive product analysis (10+ apps)
 - Design trends research
 - Best React infinite scroll components
@@ -595,11 +622,13 @@ None identified - conversation was exploratory and visionary, but consistent in 
 - Authentication patterns for React apps
 
 **Clarification Conversations:**
+
 - Backend team: API contracts for feed, user data, preferences
 - AI team: Related topics API schema, ontology graph JSON format
 - Design: Color scheme, typography, specific UI component designs
 
 **Design Work:**
+
 - Create lookbook from competitive analysis
 - Generate UI mockups using AI tools (V0, Lovable, Cursor)
 - Iterate on designs based on team feedback

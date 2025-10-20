@@ -15,6 +15,7 @@ A system that discovers opportunities, understands relationships, and delivers p
 ## Architecture Overview
 
 The platform consists of four integrated modules:
+
 - **Backend Infrastructure** - Docker, databases, APIs, authentication
 - **Frontend Interface** - React UI, visualizations, user experience
 - **AI Intelligence** - LLMs, knowledge graphs, RAG, entity extraction
@@ -25,17 +26,20 @@ The platform consists of four integrated modules:
 This repository includes **RequirementsKit**, a production-ready system for creating comprehensive requirements documentation that feeds into SpecKit's `/specify` command for implementation-ready specifications.
 
 **Quick Start:**
-- **Documentation:** [docs/team/methodologies/requirements-kit/README.md](docs/team/methodologies/requirements-kit/README.md)
-- **5-Step Guide:** [docs/team/methodologies/requirements-kit/guides/quickstart.md](docs/team/methodologies/requirements-kit/guides/quickstart.md)
+
+- **Documentation:** [.dev/kits/requirements-kit/README.md](.dev/kits/requirements-kit/README.md)
+- **5-Step Guide:** [.dev/kits/requirements-kit/guides/quickstart.md](.dev/kits/requirements-kit/guides/quickstart.md)
 - **Extract to Your Project:** [.dev/pre-spec-kit/package-extraction.md](.dev/pre-spec-kit/package-extraction.md)
 
 **What You Get:**
+
 - 2 templates (simple starter + comprehensive format)
 - AI expansion rules (transforms simple → comprehensive)
 - Quick reference guides (quickstart + cheat sheet)
 - Project terminology and conventions
 
 **Proven Results:**
+
 - Publishing Tools module: 625-line PRD, GO recommendation, 100% validation pass
 - Clean, minimal interface (7 essential files)
 - Development artifacts available in `.dev/pre-spec-kit/` for advanced users
@@ -84,9 +88,11 @@ knowledge-graph-lab/
 - **workorders/**: Detailed task breakdowns and implementation instructions
 
 **Note**: These are development artifacts created during project development.
+
 **End users should focus on the `docs/` directory** for production documentation.
 
 **Why .dev/ai/ exists**:
+
 - Preserves development process transparency
 - Enables quality assurance through AI reviews
 - Maintains session continuity across multiple agents

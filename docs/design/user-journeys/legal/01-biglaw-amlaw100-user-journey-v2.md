@@ -131,6 +131,7 @@ Research becomes proactive instead of reactive. The system alerts teams about ne
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Consumer-grade simplicity that sacrifices power user features
 - Generic legal research that doesn't understand firm-specific strategies
 - Social features or collaboration tools that create compliance risks

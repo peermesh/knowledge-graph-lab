@@ -126,6 +126,7 @@ After 18 months, institutions operate as truly connected knowledge ecosystems. R
 ## Anti-Requirements
 
 **What education leaders explicitly do NOT need:**
+
 - Another standalone platform that creates more silos
 - Complex interfaces that require extensive training for faculty and staff
 - Systems that prioritize flashy features over actual educational outcomes

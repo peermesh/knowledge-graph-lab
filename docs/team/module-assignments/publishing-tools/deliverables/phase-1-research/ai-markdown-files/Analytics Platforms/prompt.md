@@ -23,12 +23,14 @@ Your writing combines technical depth with practical implementation guidance, fo
 **Deliverable Form:** Single inline markdown output with comprehensive technical analysis. If runtime limits prevent single-chunk delivery, use Segmented Delivery Protocol without reducing analytical depth.
 
 **Assumptions to Apply:**
+
 - Prioritize current platform capabilities, official API documentation, and independently verifiable pricing and feature information from 2024-2025
 - When sources conflict on analytics capabilities or integration features, present both perspectives with confidence scoring and verification methodology  
 - For implementation complexity estimates lacking public documentation, clearly mark as "requires direct consultation" and provide estimated timelines based on comparable platform implementations
 - Include both cloud-based analytics services and self-hosted solutions with equal analytical rigor
 
 **Objectivity Requirements:**
+
 - For each analytics platform and service, provide balanced analysis including measurement strengths, implementation limitations, and operational risks
 - Highlight vendor lock-in concerns, data export capabilities, and scalability limitations with specific examples
 - Separate verified technical specifications from vendor marketing claims, using confidence levels (High/Medium/Low) for each major finding
@@ -43,6 +45,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 **Geographic Scope:** Global analytics platform availability with specific attention to privacy regulation compliance requirements across major markets (US, EU, Asia-Pacific). Include platform availability, data residency requirements, and compliance certification differences affecting global content distribution analytics strategies.
 
 **Seed Expansion Policy:** The specified analytics platforms (Mixpanel, Amplitude, Segment) represent core coverage. Automatically expand to include credible adjacent solutions including:
+
 - Email marketing platforms with advanced analytics (Klaviyo, Mailchimp, SendGrid, ConvertKit)
 - Content-specific analytics tools (Chartbeat, Parse.ly, Google Analytics 4)
 - Customer data platforms with engagement focus (mParticle, RudderStack, Snowplow)
@@ -86,6 +89,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 **Search Strategy:** Begin with official vendor documentation, feature comparison matrices, and pricing information for major analytics platforms. Expand through content industry case studies, digital publishing analytics implementations, and verified user experience reports from newsletter publishers, content marketing agencies, and media organizations implementing engagement analytics.
 
 **Evaluation Framework:** Assess each solution across twelve primary dimensions:
+
 1. **Engagement Tracking Capabilities:** Event tracking depth, user journey mapping, content interaction measurement
 2. **Email Analytics Features:** Newsletter performance, subscriber behavior, deliverability insights, automation analytics
 3. **Cross-Channel Integration:** Multi-platform data consolidation, attribution modeling, unified audience profiles
@@ -104,6 +108,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 **Evidence Standards:** Prioritize official platform documentation, verified pricing information, and independent user reviews. Mark vendor marketing claims separately from verified capabilities. Include confidence levels (High/Medium/Low) for all major findings based on source quality and technical verification methods.
 
 **Candidate Discovery Strategy:** Start with specified core platforms (Mixpanel, Amplitude, Segment) and expand through:
+
 - Content industry analyst reports and technology landscape analyses  
 - Digital publishing conference presentations and case studies
 - Newsletter platform ecosystem documentation and integration directories
@@ -128,44 +133,59 @@ Your writing combines technical depth with practical implementation guidance, fo
 **[Analytics Services for Content Distribution User Engagement Monitoring]**
 
 **Executive Summary**
+
 [500+ words synthesizing key findings, technical recommendations, and strategic insights across analytics platforms, integration patterns, and implementation considerations for content distribution services]
 
 **Comprehensive Analytics Market Overview** 
+
 [Context about current engagement analytics landscape, major technology shifts, privacy regulation impacts, and market dynamics affecting content distribution analytics decisions]
 
 **Detailed Platform Analysis**
 
 **[Product Analytics Platforms]**
+
 [Mixpanel Analysis] - [200+ words covering engagement tracking capabilities, content analytics features, implementation requirements, and suitability for content distribution use cases]
+
 [Amplitude Analysis] - [200+ words with same depth]
+
 [Additional product analytics platforms analysis]
 
 **[Email Marketing Analytics]**
+
 [Platform-specific email analytics analysis covering newsletter performance tracking, subscriber behavior analytics, automation insights, and integration capabilities]
 
 **[Customer Data Platforms]**
+
 [Segment Analysis] - [200+ words covering data unification capabilities, audience segmentation features, integration ecosystem, and content distribution applications]
+
 [Additional CDP analysis]
 
 **[Content-Specific Analytics Tools]**
+
 [Specialized content analytics platforms analysis]
 
 **Critical Implementation Questions Analysis**
+
 [Detailed examination of key questions covering cross-channel attribution, audience segmentation strategies, real-time optimization capabilities, privacy compliance, and platform integration approaches]
 
 **Comparative Analysis**
+
 [Comprehensive comparison matrices, technical trade-offs, use case-appropriate recommendations, and decision frameworks]
 
 **Implementation Considerations**
+
 [Practical guidance for different organizational scales, integration strategies, common pitfalls, and technical implementation approaches]
 
 **Strategic Recommendations**
+
 [Evidence-based recommendations segmented by content distribution scale, technical capabilities, and growth requirements]
 
 **Conclusion and Next Steps**
+
 [Summary of key insights, technology trends, and suggested evaluation approaches]
 
 **Content Requirements:**
+
 - Begin immediately with title and executive summary
 - Use specific platform names, technical specifications, and capability metrics throughout
 - Include relevant implementation details and complexity assessments
@@ -174,6 +194,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 - Address all critical analytics implementation questions with detailed, evidence-based responses
 
 **Per-Platform Template:** For each platform and analytics solution, cover:
+
 - Identity/positioning and primary content distribution use cases
 - Engagement tracking capabilities including event systems, user journey analysis, and content interaction measurement
 - Integration capabilities with email platforms, content management systems, and other content distribution tools
@@ -186,6 +207,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 - Evidence quality and confidence levels with sources and verification methodology
 
 **Quality Standards:**
+
 - Professional tone suitable for content strategists, technical decision-makers, and business stakeholders
 - Technical accuracy with accessible explanations of complex analytics concepts
 - Balanced perspective highlighting both capabilities and limitations for content use cases
@@ -194,6 +216,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 - Output language: English with global platform considerations included
 
 **Length and Depth Requirements:**
+
 - Minimum 3,500 words of substantive analysis, target 4,000+ words when feasible
 - Executive summary alone: 500+ words
 - Each major platform/solution analysis: 200+ words minimum
@@ -202,6 +225,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 - Preserve all discovered nuances, implementation considerations, and capability variations
 
 **Segmented Delivery Protocol (if limits require):**
+
 - Segment 1: Title, Executive Summary, Analytics Market Overview
 - Segment 2: Product Analytics Platforms and Email Marketing Analytics Analysis
 - Segment 3: Customer Data Platforms and Content-Specific Analytics Tools
@@ -211,6 +235,7 @@ Your writing combines technical depth with practical implementation guidance, fo
 - Continue immediately with subsequent segments until complete
 
 **Output Enforcement:**
+
 - Deliver single inline markdown output (or segmented inline when limits require)
 - Do not attach files, create download links, or reference external hosting
 - No CSV code blocks; render tabular data as markdown tables with sample rows for large datasets

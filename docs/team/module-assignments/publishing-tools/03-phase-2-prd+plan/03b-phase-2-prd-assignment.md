@@ -9,6 +9,7 @@ Create a comprehensive PRD that specifies exactly how to build a newsletter publ
 ## Before You Start
 
 Prerequisites:
+
 - [ ] Read the overview document (`03a-phase-2-prd-overview.md`)
 - [ ] Review your Phase 1 research on email services and template engines
 - [ ] Understand the corrected architecture: AI creates articles → Backend stores → You query and assemble
@@ -23,6 +24,7 @@ Prerequisites:
 Schedule a working session with the Backend module owner to define:
 
 **Article Query Requirements:**
+
 - Endpoint specifications with complete request/response schemas
 - Filter parameters you need (date, topics, quality, article type)
 - Sorting options (recency, quality score, relevance)
@@ -30,6 +32,7 @@ Schedule a working session with the Backend module owner to define:
 - Performance requirements (<200ms response time)
 
 **Required Article Data Fields:**
+
 Document exactly what data you need for newsletter assembly:
 ```json
 {
@@ -140,6 +143,7 @@ CREATE TABLE newsletter_deliveries (
 ### Selection Criteria
 
 **Ranking Algorithm:**
+
 Define a scoring system for article selection:
 ```python
 def calculate_article_score(article, subscriber_preferences, current_time):
@@ -167,6 +171,7 @@ def calculate_article_score(article, subscriber_preferences, current_time):
 **Selection Rules by Newsletter Type:**
 
 **Daily Digest:**
+
 - Query articles from last 24 hours
 - Minimum quality score: 0.7
 - Maximum 8 articles
@@ -174,6 +179,7 @@ def calculate_article_score(article, subscriber_preferences, current_time):
 - Balance across topic categories
 
 **Weekly Roundup:**
+
 - Query articles from last 7 days
 - Minimum quality score: 0.8
 - Maximum 15 articles
@@ -181,6 +187,7 @@ def calculate_article_score(article, subscriber_preferences, current_time):
 - Include top performers by engagement
 
 **Breaking News Alert:**
+
 - Query articles from last 2 hours
 - Only breaking_news type
 - Minimum quality score: 0.9
@@ -262,6 +269,7 @@ def calculate_article_score(article, subscriber_preferences, current_time):
 ```
 
 **Template Variables:**
+
 Document all available template variables:
 ```python
 template_context = {
@@ -329,6 +337,7 @@ class EmailDeliveryService:
 ```
 
 **Error Handling Strategy:**
+
 - Temporary failures: Retry with exponential backoff (max 3 attempts)
 - Permanent failures: Mark subscriber as bounced, require reconfirmation
 - Rate limiting: Implement queue with throttling
@@ -361,6 +370,7 @@ class DeliveryAnalytics:
 ### Subscription Flow
 
 **Double Opt-in Process:**
+
 1. User submits email and preferences
 2. System sends confirmation email with unique token
 3. User clicks confirmation link
@@ -394,6 +404,7 @@ PUT /api/v1/preferences/{token}
 ```
 
 **Preference Management:**
+
 - Topic-based segmentation
 - Frequency preferences (daily/weekly/breaking only)
 - Unsubscribe categories (all vs specific types)
@@ -410,11 +421,13 @@ PUT /api/v1/preferences/{token}
 ### PRD Structure
 
 **Section 1: System Overview (1-2 pages)**
+
 - Publishing module purpose and scope
 - Architecture overview with module interactions
 - Success metrics and performance requirements
 
 **Section 2: Functional Requirements (3-4 pages)**
+
 - Feature 1: Article Query & Selection
 - Feature 2: Newsletter Assembly
 - Feature 3: Template Management
@@ -422,24 +435,28 @@ PUT /api/v1/preferences/{token}
 - Feature 5: Email Delivery & Tracking
 
 **Section 3: Technical Specifications (4-5 pages)**
+
 - Database schemas with complete DDL
 - API specifications with request/response examples
 - Integration contracts with Backend module
 - Email service provider integration
 
 **Section 4: Newsletter Templates (2-3 pages)**
+
 - Template engine specification
 - HTML/text template examples
 - Variable substitution system
 - Responsive design requirements
 
 **Section 5: Operational Requirements (2-3 pages)**
+
 - Delivery performance requirements
 - Error handling and retry logic
 - Monitoring and alerting specifications
 - Privacy compliance (GDPR, CAN-SPAM)
 
 **Section 6: Testing & Quality Assurance (1-2 pages)**
+
 - Unit testing requirements for selection algorithms
 - Integration testing with Backend APIs
 - Email delivery testing procedures
@@ -452,6 +469,7 @@ PUT /api/v1/preferences/{token}
 ### PRD Quality Standards
 
 Use the [SpecKit templates](../../../../speckit/README.md) to create your comprehensive PRD. Your PRD must include:
+
 - [ ] **Complete Data Types**: All fields specify exact types (VARCHAR(255), JSONB, etc.)
 - [ ] **API Schemas**: Full request/response examples with status codes
 - [ ] **Error Handling**: Specific error scenarios with handling procedures
@@ -492,6 +510,7 @@ deliverables/
 ### Quality Checklist
 
 Before submission:
+
 - [ ] All backend integration points documented with examples
 - [ ] Complete database schema with proper indexes and constraints
 - [ ] Email templates tested with sample data
@@ -505,11 +524,13 @@ Before submission:
 ## Timeline
 
 **Week 1:**
+
 - Days 1-2: Backend coordination and API contract definition
 - Days 3-4: Database schema design and article selection algorithms
 - Day 5: Email template design and delivery system specification
 
 **Week 2:**
+
 - Days 1-3: Complete PRD writing and technical specifications
 - Day 4: Internal review and testing with mock data
 - Day 5: Final refinements and submission
@@ -519,6 +540,7 @@ Before submission:
 ## Success Criteria
 
 Your PRD enables Phase 3 developers to:
+
 - Implement the complete publishing system from specifications
 - Integrate seamlessly with Backend APIs using provided contracts
 - Deploy email delivery with proper error handling and monitoring

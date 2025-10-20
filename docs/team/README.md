@@ -35,6 +35,7 @@ Welcome! You're here to build a module. Let's get you to the right place.
 **[RequirementsKit](methodologies/requirements-kit/)** - Requirements development system for Phase 2
 
 Use this systematic approach to create comprehensive requirements documentation:
+
 - **[Quick Start Guide](methodologies/requirements-kit/guides/quickstart.md)** - 5-minute overview
 - **[Templates](methodologies/requirements-kit/templates/)** - Simple starter + comprehensive format
 - **[Workflow](methodologies/requirements-kit/guides/workflow.md)** - Official 5-phase process
@@ -81,11 +82,13 @@ module-assignments/[your-module]/
 ```
 
 **File naming pattern**:
+
 - **`a` files** (e.g., `02a-*`): Overview and context
 - **`b` files** (e.g., `02b-*`): Your assignment (start here)
 - **`c` files** (e.g., `02c-*`): Advanced topics and references
 
 **Your workflow**:
+
 1. Your team lead tells you which phase to work on (e.g., "Phase 2")
 2. Open that phase's folder in your module (e.g., `03-phase-2-prd+plan/`)
 3. Start with the `b` file (e.g., `03b-phase-2-prd-assignment.md`)

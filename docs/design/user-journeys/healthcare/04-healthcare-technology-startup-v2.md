@@ -129,6 +129,7 @@ Global regulatory intelligence covering European CE marking requirements and oth
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Consumer health data analytics or patient-facing features
 - General medical research beyond their specific neurodegenerative disease focus
 - Financial trading or investment analysis capabilities

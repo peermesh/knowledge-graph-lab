@@ -1,8 +1,11 @@
 # MVP vs Future Scope Guide
 
 **Topic:** What to Build Now vs. What to Defer
+
 **Reading Time:** 15 minutes
+
 **Skill Level:** All levels
+
 **Version:** 1.0 (2025-10-09)
 
 ---
@@ -10,6 +13,7 @@
 ## 🎯 What You'll Learn
 
 After reading this guide, you'll understand:
+
 - **What** 10 components are in MVP scope (must build)
 - **What** 10 components are future scope (defer/document only)
 - **Why** certain features are explicitly out of scope
@@ -29,6 +33,7 @@ This guide curates content across **4 different files** to clearly separate MVP 
 **Understanding the Budget**
 
 📄 **File:** `distilled/constraints.md`
+
 **Lines:** 8-25
 
 **Read This Section:**
@@ -57,6 +62,7 @@ Skill Level Constraint:
 **The 10 Must-Build Components**
 
 📄 **File:** `component-map.md`
+
 **Lines:** 9-86
 
 **Read This Section (all 10 components):**
@@ -83,6 +89,7 @@ Skill Level Constraint:
 **Detailed MVP Scope**
 
 📄 **File:** `distilled/vision-statement.md`
+
 **Lines:** 82-147
 
 **Read This Section:**
@@ -109,6 +116,7 @@ Minimal Scope:
 **The 10 Must-NOT-Build Components**
 
 📄 **File:** `component-map.md`
+
 **Lines:** 89-162
 
 **Read This Section (all 10 future components):**
@@ -133,6 +141,7 @@ Minimal Scope:
 **Explicitly Out of Scope**
 
 📄 **File:** `distilled/vision-statement.md`
+
 **Lines:** 187-215
 
 **Read This Section:**
@@ -169,23 +178,28 @@ Technology Scope:
 **FIRM, TENTATIVE, OPEN, REJECTED**
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 8-240
 
 **FIRM Decisions (Build These - Lines 8-123):**
+
 - SQLite, FastAPI, JWT, Docker, REST, Python `schedule`, Health checks, Environment vars, OpenAPI, Logging
 - **Status:** ✅ FIRM - proceed with this
 
 **TENTATIVE Decisions (Document, Don't Build - Lines 126-196):**
+
 - PostgreSQL, Neo4j, Redis, Keycloak, Kubernetes
 - **Status:** ⏳ TENTATIVE - validate during production planning
 - **Action for MVP:** Document in spec/ADRs, don't implement
 
 **OPEN Decisions (Needs Team Input - Lines 199-240):**
+
 - GraphQL?, Message Queue?, CRDT?, Authorization model?, Vector DB scaling?
 - **Status:** ❓ OPEN - needs discovery or team decision
 - **Action for MVP:** Flag for discussion, defer to v2.0
 
 **REJECTED Approaches (Never Build - Lines 243-335):**
+
 - Django, Monolith, Hardcoded config, Sessions, Social login only, Flask, SQLAlchemy-only
 - **Status:** ❌ REJECTED - don't reconsider
 - **Action for MVP:** Avoid these patterns
@@ -225,12 +239,14 @@ Q4: Can it be done in <5 hours AND is it critical for MVP?
 ## 📅 Version Roadmap: When Deferred Items Return
 
 📄 **File:** `VERSION.md`
+
 **Lines:** 147-174
 
 ### Version 2.0 (Expected: After MVP Implementation, 2-4 weeks)
 **Scope:** Post-MVP retrospective and refinements
 
 **What Gets Added:**
+
 - Answers to OPEN decisions (GraphQL?, Message queue?, CRDT?)
 - Performance benchmarks from MVP testing
 - Updated constraints based on real timeline/effort data
@@ -239,6 +255,7 @@ Q4: Can it be done in <5 hours AND is it critical for MVP?
 - Redis caching (if MVP shows bottlenecks)
 
 **What's Still Deferred:**
+
 - Kubernetes (not needed until production scale)
 - PostgreSQL (SQLite sufficient until multi-user)
 - Neo4j (no complex graph queries yet)
@@ -249,6 +266,7 @@ Q4: Can it be done in <5 hours AND is it critical for MVP?
 **Scope:** Production-scale architecture discovery
 
 **What Gets Added:**
+
 - PostgreSQL + pgvector migration (multi-user, ACID compliance)
 - Neo4j graph database integration (complex relationship queries)
 - Redis caching strategy (measured performance optimization)
@@ -258,6 +276,7 @@ Q4: Can it be done in <5 hours AND is it critical for MVP?
 - Advanced auth (Keycloak/OAuth2/RBAC)
 
 **What Might Still Be Deferred:**
+
 - Full P2P distributed sync (depends on product roadmap)
 - Permission propagation layer (depends on multi-tenancy needs)
 - Event-driven architecture (depends on scale requirements)
@@ -289,18 +308,23 @@ Watch for these patterns during implementation:
 ## 💡 Common Questions
 
 **Q: Why SQLite? It's not production-ready.**
+
 A: MVP doesn't need production scale. SQLite validates the data model and API design. PostgreSQL migration is documented for v3.0 (when production scale is needed).
 
 **Q: Why not build Kubernetes configs now?**
+
 A: MVP runs locally in Docker. Kubernetes is for production deployment (v3.0). Docker Compose → Kubernetes migration is well-documented and low-risk.
 
 **Q: What if we discover we need caching during MVP?**
+
 A: Measure first. If response times exceed 200ms target, add to v2.0 scope. Don't pre-optimize.
 
 **Q: Can I add a "nice-to-have" feature if it only takes 2 hours?**
+
 A: No. The 25-hour buffer is for testing/debugging, not new features. Defer to v2.0 backlog.
 
 **Q: What if the 10 MVP components take longer than 75 hours?**
+
 A: Reduce scope within MVP components (e.g., 3 REST endpoints instead of 5). Don't add time.
 
 ---
@@ -315,6 +339,7 @@ A: Reduce scope within MVP components (e.g., 3 REST endpoints instead of 5). Don
 ## 📚 Full Reading List
 
 If you followed this guide, you read:
+
 1. `constraints.md` (lines 8-25)
 2. `component-map.md` (lines 9-86, 89-162)
 3. `vision-statement.md` (lines 82-147, 187-215)
@@ -326,5 +351,7 @@ If you followed this guide, you read:
 ---
 
 **Last Updated:** 2025-10-09
+
 **Bundle Version:** v1.0
+
 **Guide Version:** 1.0

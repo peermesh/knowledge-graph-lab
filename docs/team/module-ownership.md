@@ -12,6 +12,7 @@ Complete specifications for all four modules. Each module has full ownership of 
 | **Publishing Tools** | Publishing Team Member | [View Complete Spec](../modules/publishing-tools/Publishing-Tools-Spec.md) |
 
 Each specification includes:
+
 - Mission and objectives
 - Ownership boundaries 
 - Coordination requirements
@@ -47,6 +48,7 @@ For specific phase assignments, see: `module-assignments/[your-module]/`
 ### Success Framework
 
 Each phase has specific deliverables and success metrics. Focus on:
+
 1. Research-driven decisions with documentation
 2. Progressive implementation (simple → complex)
 3. Integration with other modules

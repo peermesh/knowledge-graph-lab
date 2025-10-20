@@ -1,5 +1,23 @@
 # Backend Architecture Module Specification
 
+## Compliance with Shared Module Requirements
+
+**This module specification is governed by the Shared Module Requirements and must comply with all universal standards established therein.**
+
+**OVERRIDING REQUIREMENT:** The Backend module must implement both shared module specifications:
+
+### 📋 Standalone Module (Immediate Implementation)
+**REQUIRED:** Basic interoperability for immediate team handover
+- [Standalone Module](./shared/standalone-modules/README.md) - Container architecture, database, API standards
+- **Handover Ready** - What teams implement immediately
+
+### 🔬 PeerMesh Module (Advanced Features)
+**FUTURE:** Advanced features building into PeerMesh Abstraction Program
+- [PeerMesh Module](./shared/peermesh-modules/README.md) - Parallel search, event-driven architecture, dual authorization
+- **Phase 2+** - Advanced interoperability features
+
+**Any conflicts between this specification and shared requirements will be resolved in favor of the shared requirements.**
+
 ## Module Mission
 
 The Backend Architecture module builds and maintains the foundational systems that support all other modules. They own the servers, databases, APIs, and deployment pipeline that keep the system running reliably.
@@ -73,34 +91,40 @@ The Backend Architecture module builds and maintains the foundational systems th
 
 ### To Frontend Module
 **What Backend Provides:**
+
 - REST API endpoints with OpenAPI documentation
 - WebSocket connections for real-time updates
 - JWT tokens for authentication
 - CORS configuration and pagination
 
 **Expected from Frontend:**
+
 - API requests following OpenAPI spec
 - JWT tokens in Authorization headers
 - WebSocket subscription management
 
 ### To AI Module
 **What Backend Provides:**
+
 - Database connection layer and ORMs
 - Message queue for processing jobs
 - Storage APIs for embeddings and results
 
 **Expected from AI:**
+
 - Structured entity and relationship data
 - Processing status updates
 - Error handling for failed extractions
 
 ### To Publishing Module
 **What Backend Provides:**
+
 - User preference storage APIs
 - Content storage and retrieval
 - Message queue for distribution jobs
 
 **Expected from Publishing:**
+
 - Distribution job specifications
 - Delivery status callbacks
 - Engagement metrics data
@@ -151,6 +175,7 @@ The Backend Architecture module builds and maintains the foundational systems th
 ## Technical Context
 
 The system must:
+
 - Process 5,000+ information sources daily without manual intervention
 - Store 10M+ entity relationships with <500ms query performance
 - Serve insights to 1,000+ concurrent users in real-time

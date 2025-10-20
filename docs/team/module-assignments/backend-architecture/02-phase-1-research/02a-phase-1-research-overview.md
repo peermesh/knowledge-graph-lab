@@ -9,6 +9,7 @@ You'll design and build the core backend infrastructure that powers the entire K
 ## Critical Requirement: Local-First Development
 
 **The entire system MUST run locally in Docker containers on a developer's machine**
+
 - No cloud services required for core functionality
 - Optional cloud deployment for production
 - All dependencies included in Docker setup
@@ -88,6 +89,7 @@ You need to research and make recommendations for:
 ## MVP Implementation Focus
 
 **MVP Technical Specifications:**
+
 1. **File upload**: POST /api/v1/files, accepts multipart/form-data, max 10MB, returns job ID
 2. **Queue system**: PostgreSQL table with status enum (pending/processing/completed/failed), worker polls every 5s
 3. **Supported formats**: PDF (text extraction), Markdown (parsing), Plain text (direct), JSON (validation)
@@ -108,6 +110,7 @@ You need to research and make recommendations for:
 ### Required Research Brief Sections
 
 **Format**: Markdown document with working code examples
+
 1. **Executive Summary** (1 page) - Final architecture recommendation with 3 key decisions and rationale
 2. **Decision Matrix** - Scoring table (1-5) for each technology across criteria: performance, complexity, cost, learning curve
 3. **Architecture Diagram** - Docker containers + data flow diagram, exportable as PNG

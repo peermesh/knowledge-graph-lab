@@ -126,6 +126,7 @@ After 18 months, Maria's team identifies 94% of competitor milestones within 30 
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Consumer-facing features or patient engagement tools - they work B2B only
 - Social media integration or public content sharing - everything must stay confidential
 - Real-time collaboration features like Google Docs - they prefer structured workflows with approval processes

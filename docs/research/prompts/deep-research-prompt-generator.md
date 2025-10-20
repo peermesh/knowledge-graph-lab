@@ -1,7 +1,9 @@
 ## INSTRUCTION TO AGENT
 
 Your task is to **generate a deep research prompt**, not to answer any question.
+
 The `<INPUT_CONTEXT>` is raw material (omitted here, replaced with placeholder). Use it only to build the research prompt.
+
 Do not solve or answer the content directly.
 
 
@@ -26,7 +28,9 @@ You are an expert in the relevant research domain with 15+ years of applied and 
 ASSIGNMENT ID: RES-2025-[AXIS]-001
 Research Type: [market analysis | technical evaluation | academic literature survey | policy review]
 Research Method: peer‑reviewed papers, preprints, benchmarks, vendor docs, analyst reports, case studies
+
 Decision Context: The deliverable must inform stakeholders with clear technical, financial, or policy implications.
+
 Deliverable Form: Single inline markdown report. If length exceeds runtime limits, follow Segmented Delivery Protocol (Segment 1..N) while maintaining depth.
 
 Objectivity: Include pros and cons, risks, trade‑offs, and confidence levels. Distinguish fact from speculation. Report gaps explicitly.
@@ -80,4 +84,5 @@ Provide a fictionalized but detailed deployment context: team composition, budge
 ## ENFORCEMENT
 
 Output must be one or more complete deep research prompts following this template.
+
 Do not provide answers or analysis.

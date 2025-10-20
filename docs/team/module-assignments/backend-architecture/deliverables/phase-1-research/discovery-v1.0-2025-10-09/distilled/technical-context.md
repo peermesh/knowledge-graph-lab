@@ -1,6 +1,7 @@
 # Backend Module - Technical Context
 
 **Date:** 2025-10-09
+
 **Distilled from:** BASIC-RESEARCH.md, WHAT-SERVICES-TO-CHOOSE.md, my-docker-app-test/, Backend-Architecture-Spec.md
 
 ---
@@ -11,6 +12,7 @@
 **Discussed in:** PRD.md, intern research summary
 
 **Description:**
+
 - Single Python/FastAPI service
 - SQLite database
 - Docker container
@@ -18,6 +20,7 @@
 - Mock integrations
 
 **Pros:**
+
 - Fastest path to working system
 - Junior developer buildable (100 hours)
 - Low operational complexity
@@ -25,6 +28,7 @@
 - Validates core patterns
 
 **Cons:**
+
 - Not production-scale
 - SQLite limits (concurrent writes, size)
 - Mock AI integration (needs replacement later)
@@ -32,6 +36,7 @@
 - No redundancy/HA
 
 **Status:** ✅ Recommended for MVP
+
 **Source:** PRD.md Executive Summary, lines 7-8
 
 ---
@@ -40,6 +45,7 @@
 **Discussed in:** Backend-Architecture-Spec.md, BASIC-RESEARCH.md
 
 **Description:**
+
 - PostgreSQL for structured data + pgvector for embeddings
 - Neo4j for graph relationships
 - Redis for caching
@@ -47,12 +53,14 @@
 - Complex data synchronization
 
 **Pros:**
+
 - Production-scale capable
 - Specialized databases for specific use cases
 - Graph traversal performance (Neo4j)
 - Vector similarity search (pgvector)
 
 **Cons:**
+
 - Operational complexity (3 databases)
 - Data consistency challenges
 - Higher infra costs
@@ -60,6 +68,7 @@
 - Longer development time
 
 **Status:** ⏸️ Considered but deferred to Phase 2+
+
 **Source:** Backend-Architecture-Spec.md lines 10-11, BASIC-RESEARCH.md lines 153-200
 
 ---
@@ -68,18 +77,21 @@
 **Discussed in:** Backend-Architecture-Spec.md, abstraction scaffold
 
 **Description:**
+
 - Separate services: API, Ingestion, Processing
 - Message queue (RabbitMQ or Redis) for async work
 - Event-driven architecture
 - Service mesh for inter-service communication
 
 **Pros:**
+
 - Scalable independently
 - Fault isolation
 - Technology flexibility per service
 - Async processing patterns
 
 **Cons:**
+
 - Distributed system complexity
 - Network latency between services
 - Monitoring challenges
@@ -87,6 +99,7 @@
 - Overkill for MVP
 
 **Status:** ❌ Rejected for MVP (too complex)
+
 **Source:** Backend-Architecture-Spec.md lines 89-90, abstraction scaffold (future vision)
 
 ---
@@ -96,6 +109,7 @@
 ### Category: Database
 
 **Options Mentioned:**
+
 1. **SQLite** (MVP choice)
 2. **PostgreSQL + pgvector** (production)
 3. **Neo4j** (graph relationships)
@@ -105,6 +119,7 @@
 **Discussion Summary:**
 
 **SQLite:**
+
 - ✅ Zero-config, single file, perfect for MVP
 - ✅ No server setup required
 - ❌ Limited concurrent writes
@@ -113,6 +128,7 @@
 - **Source:** PRD.md line 37, BASIC-RESEARCH.md lines 183-189
 
 **PostgreSQL + pgvector:**
+
 - ✅ ACID compliance, mature SQL
 - ✅ `pgvector` extension for embeddings
 - ✅ Handles medium-scale vector workloads
@@ -122,6 +138,7 @@
 - **Source:** WHAT-SERVICES-TO-CHOOSE.md lines 3-10, Backend-Architecture-Spec.md line 10
 
 **Neo4j:**
+
 - ✅ Optimized graph traversals (Cypher query language)
 - ✅ Graph algorithms built-in
 - ❌ Slower bulk inserts (transactional mode)
@@ -136,6 +153,7 @@
 ### Category: API Framework
 
 **Options Mentioned:**
+
 1. **FastAPI** (async, modern)
 2. **Django REST Framework** (batteries-included)
 3. **Flask** (lightweight)
@@ -143,6 +161,7 @@
 **Discussion Summary:**
 
 **FastAPI:**
+
 - ✅ Async-first design (high performance)
 - ✅ Automatic OpenAPI/Swagger docs (0-1 manual steps)
 - ✅ Type hints → automatic validation
@@ -151,6 +170,7 @@
 - **Source:** WHAT-SERVICES-TO-CHOOSE.md lines 40-45, PRD.md line 36
 
 **Django REST Framework:**
+
 - ✅ Full-stack features (auth, admin, ORM)
 - ✅ Mature ecosystem, battle-tested
 - ✅ Opinionated structure (faster prototyping)
@@ -160,6 +180,7 @@
 - **Source:** WHAT-SERVICES-TO-CHOOSE.md lines 49-54
 
 **Flask:**
+
 - ✅ Lightweight, minimal boilerplate
 - ✅ Maximum flexibility
 - ❌ No built-in async
@@ -174,6 +195,7 @@
 ### Category: Deployment & Orchestration
 
 **Options Mentioned:**
+
 1. **Docker Compose** (local dev)
 2. **Kubernetes** (production scale)
 3. **Docker Swarm** (simple clustering)
@@ -181,6 +203,7 @@
 **Discussion Summary:**
 
 **Docker Compose:**
+
 - ✅ Extremely simple (`docker-compose.yml`)
 - ✅ One command to start everything (`docker compose up`)
 - ✅ Perfect for dev/test
@@ -190,6 +213,7 @@
 - **Source:** WHAT-SERVICES-TO-CHOOSE.md lines 81-86, PRD.md lines 92-95
 
 **Kubernetes:**
+
 - ✅ Production-grade orchestration
 - ✅ Auto-scaling, self-healing
 - ✅ Cloud-native ecosystem
@@ -206,6 +230,7 @@
 ### Category: Authentication
 
 **Options Mentioned:**
+
 1. **JWT** (stateless)
 2. **Session Cookies** (server state)
 3. **OAuth** (third-party)
@@ -213,6 +238,7 @@
 **Discussion Summary:**
 
 **JWT:**
+
 - ✅ Stateless (no server storage)
 - ✅ Easy horizontal scaling
 - ✅ Works across microservices
@@ -222,6 +248,7 @@
 - **Source:** WHAT-SERVICES-TO-CHOOSE.md lines 121-126, Backend-Architecture-Spec.md line 39
 
 **OAuth:**
+
 - ✅ Standardized, secure delegation
 - ✅ Social login + enterprise SSO
 - ❌ Implementation complexity
@@ -236,6 +263,7 @@
 ### Category: Message Queue
 
 **Options Mentioned:**
+
 1. **Redis** (simple, fast)
 2. **RabbitMQ** (reliable, enterprise)
 3. **Database Table** (MVP minimal)
@@ -243,6 +271,7 @@
 **Discussion Summary:**
 
 **Redis:**
+
 - ✅ Extremely fast (in-memory)
 - ✅ Simple commands (`LPUSH`/`BRPOP`)
 - ❌ Persistence optional (may lose jobs)
@@ -250,6 +279,7 @@
 - **Source:** WHAT-SERVICES-TO-CHOOSE.md lines 161-166
 
 **RabbitMQ:**
+
 - ✅ Guaranteed delivery, acknowledgments
 - ✅ Battle-tested, durable queues
 - ❌ More operational complexity
@@ -258,6 +288,7 @@
 - **Source:** WHAT-SERVICES-TO-CHOOSE.md lines 170-175
 
 **Database Table:**
+
 - ✅ Leverages existing infra
 - ✅ Easy to implement (just a table)
 - ❌ Poor performance at scale
@@ -274,21 +305,26 @@
 ### Trade-off 1: Simplicity vs Future-Proofing
 
 **Discussion:**
+
 Do we build for current needs (SQLite, simple stack) or design for future scale (PostgreSQL, multiple databases, queues)?
 
 **Arguments for Simplicity:**
+
 - Get to working system faster (100-hour constraint)
 - Validate assumptions before investing in complexity
 - Junior developer can complete
 - Easier to debug/test
 
 **Arguments for Future-Proofing:**
+
 - Avoid costly migrations later
 - Design decisions matter (schema compatibility)
 - Some complexity is unavoidable (will need PostgreSQL eventually)
 
 **Resolution:**
+
 ✅ **Simplicity for MVP, with migration path designed**
+
 - Use SQLite now
 - Design schema compatible with PostgreSQL
 - Plan migration strategy (documented, not implemented)
@@ -301,21 +337,26 @@ Do we build for current needs (SQLite, simple stack) or design for future scale 
 ### Trade-off 2: Real Integration vs Mocking
 
 **Discussion:**
+
 Should MVP integrate with real AI module or use mock responses?
 
 **Arguments for Real Integration:**
+
 - Tests integration patterns early
 - More realistic demo
 - Less throwaway work
 
 **Arguments for Mocking:**
+
 - Enables parallel development (doesn't wait for AI module)
 - Reduces complexity
 - Faster MVP completion
 - Clear API contract (forces interface design)
 
 **Resolution:**
+
 ✅ **Mock for MVP, design API contract carefully**
+
 - Return placeholder/mock data from `/api/entities`
 - Document expected API contract
 - Design for real integration later (queues, webhooks)
@@ -327,26 +368,32 @@ Should MVP integrate with real AI module or use mock responses?
 ### Trade-off 3: Docker Security vs Development Speed
 
 **Discussion:**
+
 Intern's Docker POC has security issues (hardcoded secrets, no non-root user). Fix now or later?
 
 **Security Concerns:**
+
 - Hardcoded database passwords in docker-compose.yml
 - Running as root user
 - No health checks
 - No resource limits
 
 **Arguments for Fixing Now:**
+
 - Security should be default
 - Good habits early
 - Not significantly slower
 
 **Arguments for Later:**
+
 - MVP is local dev only
 - Can fix before production
 - Don't over-engineer
 
 **Resolution:**
+
 ⚠️ **Fix critical issues now, defer advanced security**
+
 - ✅ Use `.env` file for secrets (don't hardcode)
 - ✅ Non-root user in Dockerfile
 - ⏸️ Defer: Vault/secret managers, advanced network isolation
@@ -362,6 +409,7 @@ Intern's Docker POC has security issues (hardcoded secrets, no non-root user). F
 **Mentioned in:** BASIC-RESEARCH.md, PRD.md
 
 **Pattern Description:**
+
 - Use Python `schedule` library for periodic tasks
 - Hourly fetch schedule
 - Simple cron-like syntax
@@ -395,6 +443,7 @@ while True:
 **Mentioned in:** BASIC-RESEARCH.md Docker patterns
 
 **Pattern Description:**
+
 - Separate build stage from runtime stage
 - Smaller final image (only runtime dependencies)
 - Security benefit (no build tools in production image)
@@ -412,11 +461,13 @@ while True:
 **Mentioned in:** BASIC-RESEARCH.md lines 130-150
 
 **Pattern Description:**
+
 - Option 1: Dedicated migration container
 - Option 2: Run migrations at app startup
 - Option 3: CI/CD pipeline integration
 
 **Discussion:**
+
 - **Dev:** Auto-run migrations for convenience
 - **Prod:** Separate migration step for safety/rollback
 
@@ -432,7 +483,9 @@ while True:
 
 ### Question 1: RSS Feed Parsing Robustness
 **Question:** How to handle malformed RSS feeds?
+
 **Considerations:**
+
 - Different RSS/Atom formats
 - Invalid XML
 - Encoding issues
@@ -446,12 +499,15 @@ while True:
 
 ### Question 2: Duplicate Content Detection
 **Question:** What algorithm for detecting duplicates?
+
 **Options Discussed:**
+
 - URL-based (simple, PRD default)
 - Content hashing (more robust)
 - Title + date matching
 
 **Considerations:**
+
 - Same content, different URLs?
 - URL variations (http vs https, query params)?
 - Performance implications?
@@ -464,12 +520,15 @@ while True:
 
 ### Question 3: Vector Embedding Strategy
 **Question:** When to add vector embeddings?
+
 **Context:**
+
 - pgvector mentioned in spec
 - Not in MVP scope
 - But schema design matters now
 
 **Considerations:**
+
 - Add embedding column to content table later?
 - Separate embeddings table?
 - How to backfill existing content?
@@ -482,11 +541,14 @@ while True:
 
 ### Question 4: API Versioning Strategy
 **Question:** How to handle API changes?
+
 **Context:**
+
 - `/api/v1/` prefix suggested
 - But no versioning strategy defined
 
 **Considerations:**
+
 - URL versioning vs header versioning?
 - Deprecation policy?
 - Breaking vs non-breaking changes?
@@ -534,15 +596,18 @@ while True:
 ### Intern's Docker POC
 
 **Files Reviewed:**
+
 - `my-docker-app-test/docker-compose.yml`
 - `my-docker-app-test/api/` (incomplete)
 
 **What Works:**
+
 - ✅ Basic multi-service setup (PostgreSQL, Redis, API)
 - ✅ Includes pgvector extension
 - ✅ Service dependencies defined
 
 **Security Issues Found (PR Review):**
+
 - ❌ Hardcoded secrets in docker-compose.yml
 - ❌ No health checks
 - ❌ No restart policies
@@ -551,6 +616,7 @@ while True:
 - ❌ No network isolation
 
 **Operational Issues:**
+
 - ❌ Missing volume backups
 - ❌ No environment separation (dev/prod)
 - ❌ Over-commented (style issue)
@@ -564,13 +630,16 @@ while True:
 ## Sources Consulted
 
 **Technology Research:**
+
 1. `00-context-intake/sources/pr-1-backend-research/BASIC-RESEARCH.md` - Docker patterns, database selection, security, migrations
 2. `00-context-intake/sources/pr-1-backend-research/WHAT-SERVICES-TO-CHOOSE.md` - Technology comparisons, recommendations
 3. `00-context-intake/sources/pr-1-backend-research/my-docker-app-test/` - Docker POC example
 
 **Architecture References:**
+
 4. `docs/modules/backend-architecture/Backend-Architecture-Spec.md` - Production architecture vision
 5. `docs/modules/backend-architecture/PRD.md` - MVP technical stack
 
 **Gap Analysis:**
+
 6. `.dev/team/intern-management/pr-reviews/fall-2025-backend-architecture-phase-1-review.md` - Technical gaps identified

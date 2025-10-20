@@ -1,8 +1,8 @@
 # AI Development
 
-**Role**: AI Development Team Member  
-**Project**: Knowledge Graph Lab  
-**Timeline**: 5 phases (flexible based on progress)
+- **Role**: AI Development Team Member  
+- **Project**: Knowledge Graph Lab  
+- **Timeline**: 5 phases (flexible based on progress)
 
 ## 🎯 Your Mission
 
@@ -72,12 +72,14 @@ Build the intelligence layer that transforms raw information into actionable ins
 - **Performance**: Latency and throughput requirements
 
 **What You Need:**
+
 - Vector database connection
 - Queue infrastructure
 - Storage for results
 - API endpoints
 
 **What You Provide:**
+
 - Embedding dimensions and formats
 - Processing time estimates
 - Storage requirements
@@ -91,12 +93,14 @@ Build the intelligence layer that transforms raw information into actionable ins
 - **Feedback Loop**: User corrections and ratings
 
 **What You Need:**
+
 - Display requirements
 - Interaction patterns
 - Performance constraints
 - Feedback mechanisms
 
 **What You Provide:**
+
 - Result data structures
 - Streaming protocols
 - Confidence scores
@@ -110,12 +114,14 @@ Build the intelligence layer that transforms raw information into actionable ins
 - **Summarization**: Multi-length summaries
 
 **What You Need:**
+
 - Content requirements
 - Personalization parameters
 - Distribution constraints
 - Format specifications
 
 **What You Provide:**
+
 - Generated content
 - Quality scores
 - Personalization logic
@@ -181,24 +187,28 @@ Build the intelligence layer that transforms raw information into actionable ins
 ## 📚 Learning Path
 
 **RAG Fundamentals:**
+
 - Document chunking strategies
 - Embedding models comparison
 - Retrieval algorithms
 - Re-ranking techniques
 
 **LLM Engineering:**
+
 - Prompt engineering patterns
 - Few-shot learning
 - Chain-of-thought reasoning
 - Tool use and function calling
 
 **Knowledge Graphs:**
+
 - Graph databases
 - Ontology design
 - SPARQL queries
 - Graph algorithms
 
 **Research Automation:**
+
 - Web scraping ethics and techniques
 - API integration patterns
 - Content synthesis
@@ -224,6 +234,7 @@ Build the intelligence layer that transforms raw information into actionable ins
 ## 🎓 Your Growth Opportunity
 
 This role offers deep experience in:
+
 - Production LLM systems
 - RAG architecture design
 - Knowledge graph engineering

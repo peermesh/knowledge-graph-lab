@@ -22,6 +22,7 @@ Research and recommend optimal technology choices for:
 ## Success Criteria
 
 Research is complete when you deliver:
+
 - Clear technology recommendation for each category
 - Proof of concept demonstrating 10K node graph rendering
 - Performance benchmarks meeting system requirements

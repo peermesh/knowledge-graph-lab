@@ -57,24 +57,31 @@ Quick reference to all files in this bundle.
 ## Quick Navigation
 
 **"I'm starting to build"**
+
 → `guides/AI-MODULE-2-WEEK-MVP.md`
 
 **"What technologies do I use?"**
+
 → `component-map.md` + `distilled/decisions-made.md`
 
 **"What exactly do I need to build?"**
+
 → `distilled/requirements-notes.md`
 
 **"What are the limits?"**
+
 → `distilled/constraints.md`
 
 **"Why does this module exist?"**
+
 → `distilled/vision-statement.md`
 
 **"What's the long-term plan?"**
+
 → `guides/AI-MODULE-DISCOVERY-REPORT.md`
 
 **"Where are the original source documents?"**
+
 → `process-docs/intake.md`
 
 ---
@@ -82,6 +89,7 @@ Quick reference to all files in this bundle.
 ## File Count Summary
 
 **Total Files:** 12
+
 - Core deliverables: 5
 - Guides: 2
 - Process docs: 4
@@ -92,4 +100,5 @@ Quick reference to all files in this bundle.
 ---
 
 **Index Version:** 1.0
+
 **Last Updated:** 2025-10-10

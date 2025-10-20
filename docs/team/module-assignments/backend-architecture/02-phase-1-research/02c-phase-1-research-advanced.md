@@ -11,6 +11,7 @@
 - **Kafka, RabbitMQ, Redis Streams**: Enable event-driven architectures, async job processing, and dead letter queues
 
 Research message queue integration patterns:
+
 - When do applications benefit from adding message queuing?
 - What are the trade-offs between different queuing systems (Redis, RabbitMQ, Kafka)?
 - How to determine if async processing is necessary for your use case?
@@ -60,6 +61,7 @@ Research message queue integration patterns:
 - **Dynamic loading**: External modules, hot-reload, automatic dependency resolution
 
 Research component architecture patterns:
+
 - How do successful plugin systems define component boundaries?
 - What metadata is essential for component registration and discovery?
 - How to handle component dependencies and version conflicts?
@@ -84,6 +86,7 @@ Research component architecture patterns:
 Modules use cryptographic hashes for identification, enabling immutable references, deduplication, and trustless verification.
 
 Investigate content-addressable storage concepts:
+
 - How do systems like Git and IPFS use content addressing?
 - What are the benefits of cryptographic hashes for module identification?
 - How does content addressing enable trustless verification?
@@ -107,6 +110,7 @@ Investigate content-addressable storage concepts:
 - **Versioned interfaces**: Backward-compatible API evolution
 
 Research service communication patterns:
+
 - What are the best practices for inter-service authentication?
 - How to design API contracts between services?
 - What are effective patterns for service versioning?
@@ -124,6 +128,7 @@ Research service communication patterns:
 - **Protocol translation**: Convert between REST, GraphQL, gRPC
 
 Investigate API gateway configuration strategies:
+
 - How do API gateways handle request routing and load balancing?
 - What are effective patterns for authentication and rate limiting at the gateway level?
 - How to implement smart routing based on request characteristics?
@@ -143,6 +148,7 @@ Investigate API gateway configuration strategies:
 - **Circuit Breaker**: Fault tolerance
 
 Research event-driven architecture patterns:
+
 - How do successful platforms implement publish-subscribe patterns?
 - What are the best practices for event naming and payload design?
 - How to ensure event delivery reliability and ordering?
@@ -175,6 +181,7 @@ Research event-driven architecture patterns:
 - **Graph/Vector**: Neo4j and vector databases covered in Phase 2
 
 Research time-series database patterns:
+
 - When do applications need specialized time-series databases?
 - What are the trade-offs between PostgreSQL extensions and dedicated time-series databases?
 - How to design effective schemas for time-series data?

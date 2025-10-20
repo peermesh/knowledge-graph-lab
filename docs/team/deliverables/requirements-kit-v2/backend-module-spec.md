@@ -1,8 +1,8 @@
 # Product Requirements Document (PRD) Template
 
-**Module Name**: Backend Architecture
-**Version**: 1.0.0
-**Owner(s)**: Backend Development Team
+- **Module Name**: Backend Architecture
+- **Version**: 1.0.0
+- **Owner(s)**: Backend Development Team
 
 ---
 
@@ -19,16 +19,19 @@
 ## Important: Length and Detail Guidance
 
 **Comprehensive Spec (Phase 3 - WO-3):**
+
 - Expected: 800-1,500 lines (detailed, implementation-focused)
 - Purpose: Provide rich input for quality refinement
 - Don't worry about length - capture all necessary detail
 
 **Final Spec (Phase 4 - WO-4):**
+
 - Target: 500-700 lines (refined, requirements-focused)
 - Purpose: Implementation-ready PRD matching case study quality
 - Achieved by: Removing implementation details, tightening language, eliminating redundancy
 
 **What This Means:**
+
 - It's NORMAL for this template to produce 1,000+ lines initially
 - Quality refinement (WO-4) will reduce it to 500-700 lines
 - Focus on completeness here, refinement comes later
@@ -57,6 +60,7 @@ Without this module, the system would experience:
 **Secondary Users**: All module development teams (AI, Frontend, Publishing) who depend on backend APIs, authentication, and data storage capabilities.
 
 **Scale Expectations**:
+
 - 5,000+ API requests daily from integrated modules
 - 10M+ database operations monthly across all entities and relationships
 - 1,000+ concurrent users served by the backend infrastructure
@@ -68,6 +72,7 @@ Without this module, the system would experience:
 The Backend Architecture module will establish a robust, scalable foundation that enables seamless integration between all system modules while maintaining security, performance, and reliability standards.
 
 **Measurable Outcomes**:
+
 1. **API Performance**: All endpoints respond in under 200ms for 95% of requests, supporting 500+ requests/second
 2. **Data Integrity**: Zero data corruption incidents due to authentication or authorization failures
 3. **System Reliability**: 99.9% uptime with automated failover capabilities for all backend services
@@ -93,10 +98,13 @@ The Backend Architecture module will establish a robust, scalable foundation tha
 **US-1: Database Schema Management**
 
 As a backend developer implementing data storage for knowledge graph entities,
+
 I need to deploy and manage PostgreSQL database schemas with proper relationships,
+
 So that all modules can reliably store and query entity data with data integrity.
 
 **Acceptance**:
+
 - Schema deployment completes in under 5 minutes across all environments
 - Complex relationship queries return results in under 500ms
 - Data consistency maintained across 1,000+ concurrent operations
@@ -105,10 +113,13 @@ So that all modules can reliably store and query entity data with data integrity
 **US-2: API Endpoint Development**
 
 As an API developer building interfaces for entity extraction and storage,
+
 I need FastAPI endpoints that handle CRUD operations for entities and relationships,
+
 So that the AI module can extract entities and the Frontend can display knowledge graphs.
 
 **Acceptance**:
+
 - All CRUD endpoints respond in under 200ms for 95% of requests
 - API handles 500+ requests per second under normal load
 - OpenAPI documentation auto-generated and accessible
@@ -117,10 +128,13 @@ So that the AI module can extract entities and the Frontend can display knowledg
 **US-3: Authentication System Management**
 
 As a security engineer implementing access control for the entire system,
+
 I need JWT-based authentication with role-based permissions,
+
 So that users and modules can securely access appropriate resources.
 
 **Acceptance**:
+
 - User authentication completes in under 100ms
 - Token refresh maintains session continuity seamlessly
 - Role assignments updated within 2 seconds across all services
@@ -129,10 +143,13 @@ So that users and modules can securely access appropriate resources.
 **US-4: Message Queue Infrastructure**
 
 As a system architect coordinating async processing between modules,
+
 I need RabbitMQ message queues for reliable inter-module communication,
+
 So that entity extraction and content processing happen asynchronously.
 
 **Acceptance**:
+
 - Messages delivered within 100ms of publishing
 - Queue processing handles 1,000+ messages per minute
 - Failed message retry with exponential backoff succeeds for 95% of transient failures
@@ -141,10 +158,13 @@ So that entity extraction and content processing happen asynchronously.
 **US-5: Deployment and Monitoring**
 
 As a DevOps engineer maintaining production infrastructure,
+
 I need containerized deployment with health checks and monitoring,
+
 So that the backend services run reliably and issues are detected proactively.
 
 **Acceptance**:
+
 - Container deployment completes in under 10 minutes
 - Health checks pass within 30 seconds of service startup
 - System maintains 99.9% uptime with automated recovery
@@ -155,10 +175,13 @@ So that the backend services run reliably and issues are detected proactively.
 **US-6: AI Module Integration**
 
 As an AI engineer developing entity extraction capabilities,
+
 I need backend APIs for submitting content and retrieving extracted entities,
+
 So that the AI module can process content and store results in the knowledge graph.
 
 **Acceptance**:
+
 - Entity extraction requests processed in under 2 seconds
 - Batch processing handles up to 100 documents concurrently
 - Entity confidence scores calculated and stored accurately
@@ -167,10 +190,13 @@ So that the AI module can process content and store results in the knowledge gra
 **US-7: Frontend Module Integration**
 
 As a frontend developer building the user interface,
+
 I need REST APIs and WebSocket connections for real-time data access,
+
 So that users can interact with the knowledge graph and receive live updates.
 
 **Acceptance**:
+
 - API responses include pagination for large datasets
 - WebSocket connections maintain 99.9% uptime during active sessions
 - Real-time updates delivered within 100ms of data changes
@@ -179,10 +205,13 @@ So that users can interact with the knowledge graph and receive live updates.
 **US-8: Publishing Module Integration**
 
 As a publishing engineer managing content distribution,
+
 I need backend APIs for content storage and engagement tracking,
+
 So that published content can be stored and user interactions monitored.
 
 **Acceptance**:
+
 - Content publishing API accepts up to 10MB content packages
 - Engagement metrics collected and aggregated within 5 seconds
 - Content retrieval supports filtering by multiple criteria
@@ -198,10 +227,11 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 
 ### Core Entity Tables
 
-**Table: users**
-**Purpose**: Manages authentication and authorization for all system users and API access
+- **Table: users**
+- **Purpose**: Manages authentication and authorization for all system users and API access
 
 **Columns**:
+
 - `id` (UUID, primary key, auto-generated) - Unique identifier for each user
 - `email` (VARCHAR(255), unique, not null) - User's email address for authentication
 - `password_hash` (VARCHAR(255), not null) - Bcrypt-hashed password for secure authentication
@@ -214,23 +244,27 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `last_login` (TIMESTAMP, null) - Last successful login timestamp
 
 **Foreign keys**: None
+
 **Indexes**:
+
 - `email` (unique index for fast authentication lookups)
 - `role` (index for role-based filtering)
 - `created_at` (index for user analytics and reporting)
 - `last_login` (index for active user identification)
 
 **Constraints**:
+
 - Email must match valid email pattern using CHECK constraint
 - Role must be one of: 'user', 'admin', 'moderator'
 - Password hash cannot be empty
 
 ---
 
-**Table: entities**
-**Purpose**: Stores extracted entities from AI processing for knowledge graph construction
+- **Table: entities**
+- **Purpose**: Stores extracted entities from AI processing for knowledge graph construction
 
 **Columns**:
+
 - `id` (UUID, primary key, auto-generated) - Unique identifier for each entity
 - `name` (TEXT, not null) - The extracted entity name or text
 - `type` (VARCHAR(100), not null) - Entity type (person, organization, location, concept, etc.)
@@ -244,9 +278,11 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `is_active` (BOOLEAN, not null, default true) - Entity active status
 
 **Foreign keys**:
+
 - `created_by` → `users.id` (many-to-one relationship for audit trail)
 
 **Indexes**:
+
 - `type` (index for entity type filtering and queries)
 - `source` (index for source-based entity retrieval)
 - `confidence` (index for confidence-based filtering)
@@ -255,16 +291,18 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `(type, confidence)` (composite index for type-confidence filtering)
 
 **Constraints**:
+
 - Confidence score must be between 0.00 and 1.00
 - Entity type must be one of predefined valid types
 - Name cannot be empty or null
 
 ---
 
-**Table: entity_relationships**
-**Purpose**: Defines relationships between entities in the knowledge graph
+- **Table: entity_relationships**
+- **Purpose**: Defines relationships between entities in the knowledge graph
 
 **Columns**:
+
 - `id` (UUID, primary key, auto-generated) - Unique identifier for each relationship
 - `source_entity_id` (UUID, not null) - References entities.id for relationship source
 - `target_entity_id` (UUID, not null) - References entities.id for relationship target
@@ -276,11 +314,13 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `is_active` (BOOLEAN, not null, default true) - Relationship active status
 
 **Foreign keys**:
+
 - `source_entity_id` → `entities.id` (many-to-one for relationship source)
 - `target_entity_id` → `entities.id` (many-to-one for relationship target)
 - `created_by` → `users.id` (many-to-one for audit trail)
 
 **Indexes**:
+
 - `source_entity_id` (index for source-based relationship queries)
 - `target_entity_id` (index for target-based relationship queries)
 - `relationship_type` (index for relationship type filtering)
@@ -289,6 +329,7 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `(target_entity_id, relationship_type)` (composite index for target-relationship queries)
 
 **Constraints**:
+
 - Source and target entity IDs must be different (no self-relationships)
 - Confidence score must be between 0.00 and 1.00
 - Relationship type must be one of predefined valid types
@@ -297,10 +338,11 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 
 ### Operational Tables
 
-**Table: api_access_logs**
-**Purpose**: Tracks API usage patterns, performance monitoring, and security auditing
+- **Table: api_access_logs**
+- **Purpose**: Tracks API usage patterns, performance monitoring, and security auditing
 
 **Columns**:
+
 - `id` (UUID, primary key, auto-generated) - Unique identifier for each API request
 - `user_id` (UUID, null) - References users.id (null for unauthenticated requests)
 - `endpoint` (VARCHAR(500), not null) - API endpoint path that was accessed
@@ -315,9 +357,11 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `error_message` (TEXT, null) - Error message if request failed
 
 **Foreign keys**:
+
 - `user_id` → `users.id` (many-to-one, optional for unauthenticated requests)
 
 **Indexes**:
+
 - `endpoint` (index for endpoint-based analytics)
 - `status_code` (index for error rate monitoring)
 - `user_id` (index for user activity tracking)
@@ -327,16 +371,18 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `(status_code, timestamp)` (composite index for error rate trends)
 
 **Constraints**:
+
 - Response time must be positive integer
 - Status code must be valid HTTP status code (100-599)
 - Request and response sizes must be non-negative
 
 ---
 
-**Table: database_schemas**
-**Purpose**: Version control for database schema changes and rollback capabilities
+- **Table: database_schemas**
+- **Purpose**: Version control for database schema changes and rollback capabilities
 
 **Columns**:
+
 - `id` (UUID, primary key, auto-generated) - Unique identifier for each schema version
 - `version` (VARCHAR(50), not null) - Schema version identifier (e.g., "1.0.0", "1.1.0")
 - `name` (VARCHAR(255), not null) - Descriptive name for the schema version
@@ -350,15 +396,18 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `is_rollback` (BOOLEAN, not null, default false) - Whether this is a rollback operation
 
 **Foreign keys**:
+
 - `applied_by` → `users.id` (many-to-one for audit trail)
 
 **Indexes**:
+
 - `version` (unique index for version lookup)
 - `applied_at` (index for migration history queries)
 - `applied_by` (index for user migration tracking)
 - `is_rollback` (index for rollback operation filtering)
 
 **Constraints**:
+
 - Version must follow semantic versioning pattern (e.g., "1.2.3")
 - Checksum must be valid SHA-256 hash
 - DDL and rollback statements cannot be empty arrays
@@ -367,10 +416,11 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 
 ### Integration and Configuration Tables
 
-**Table: module_integrations**
-**Purpose**: Tracks integration status and configuration between Backend and other modules
+- **Table: module_integrations**
+- **Purpose**: Tracks integration status and configuration between Backend and other modules
 
 **Columns**:
+
 - `id` (UUID, primary key, auto-generated) - Unique identifier for each integration
 - `module_name` (VARCHAR(100), not null) - Name of the integrated module (ai, frontend, publishing)
 - `integration_type` (VARCHAR(100), not null) - Type of integration (api, websocket, message_queue)
@@ -385,6 +435,7 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 **Foreign keys**: None
 
 **Indexes**:
+
 - `module_name` (index for module-specific integration queries)
 - `status` (index for active integration filtering)
 - `last_health_check` (index for health check monitoring)
@@ -392,16 +443,18 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `(module_name, integration_type)` (composite index for specific integration lookups)
 
 **Constraints**:
+
 - Module name must be one of: 'ai', 'frontend', 'publishing'
 - Integration type must be one of: 'api', 'websocket', 'message_queue'
 - Status must be one of: 'active', 'inactive', 'error', 'maintenance'
 
 ---
 
-**Table: system_configuration**
-**Purpose**: Stores system-wide configuration parameters and feature flags
+- **Table: system_configuration**
+- **Purpose**: Stores system-wide configuration parameters and feature flags
 
 **Columns**:
+
 - `id` (UUID, primary key, auto-generated) - Unique identifier for each configuration
 - `key` (VARCHAR(255), not null) - Configuration parameter key
 - `value` (JSONB, not null) - Configuration parameter value (JSON for complex types)
@@ -415,9 +468,11 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `updated_by` (UUID, not null) - References users.id for audit trail
 
 **Foreign keys**:
+
 - `updated_by` → `users.id` (many-to-one for audit trail)
 
 **Indexes**:
+
 - `key` (unique index for configuration key lookups)
 - `module_scope` (index for module-specific configuration)
 - `environment` (index for environment-specific configuration)
@@ -425,6 +480,7 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `(module_scope, environment)` (composite index for scoped configuration)
 
 **Constraints**:
+
 - Configuration key must be unique
 - Data type must be one of: 'string', 'number', 'boolean', 'json'
 - Environment must be one of: 'development', 'staging', 'production', 'all'
@@ -434,6 +490,7 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 ### Data Relationships Summary
 
 **Entity Relationships**:
+
 - `users` (1) → `entities` (many): One user can create many entities (audit trail)
 - `users` (1) → `entity_relationships` (many): One user can create many relationships (audit trail)
 - `users` (1) → `api_access_logs` (many): One user can make many API requests (activity tracking)
@@ -442,12 +499,14 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - `entities` (1) → `entities` (many): Many-to-many relationships through entity_relationships table
 
 **Operational Data Flow**:
+
 - API requests logged to `api_access_logs` for monitoring and security
 - Schema changes tracked in `database_schemas` for version control
 - Module integrations monitored through `module_integrations` table
 - System configuration managed through `system_configuration` table
 
 **Data Integrity Measures**:
+
 - All timestamp fields automatically managed with triggers
 - UUID primary keys ensure global uniqueness across distributed systems
 - Foreign key constraints maintain referential integrity
@@ -463,16 +522,19 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 ### Scenario 1: Database Schema Deployment (Validates US-1)
 
 **Given** a new entity relationship schema version 1.2.0 with updated relationship types
+
 - Database is at version 1.1.0 with existing entity data
 - Migration script includes DDL for new relationship constraints
 - Development team has tested migration on staging environment
 
 **When** the migration is deployed to production database
+
 - Migration script executes against production PostgreSQL instance
 - Schema changes applied with proper transaction handling
 - Existing data validated against new constraints
 
 **Then** schema deployment completes successfully
+
 - All tables updated to version 1.2.0 within 5 minutes
 - Complex relationship queries return results in under 500ms
 - Data consistency maintained across 1,000+ concurrent operations
@@ -485,16 +547,19 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 ### Scenario 2: API Endpoint Response (Validates US-2)
 
 **Given** an AI module request to extract entities from content
+
 - FastAPI server running with entity extraction endpoints
 - Authentication headers include valid JWT token
 - Request payload contains content text and extraction parameters
 
 **When** POST request submitted to /api/v1/entities/extract
+
 - Endpoint validates authentication and request format
 - Entity extraction processing begins asynchronously
 - Response returned with processing job identifier
 
 **Then** API responds successfully within performance targets
+
 - HTTP 202 response returned in under 200ms
 - Response includes job ID for status tracking
 - Processing completes within 2 seconds for standard content
@@ -507,16 +572,19 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 ### Scenario 3: Authentication System (Validates US-3)
 
 **Given** a user attempting to access protected API endpoints
+
 - User has valid email and password credentials
 - JWT authentication system configured and running
 - Role-based permissions set for different endpoint access
 
 **When** user submits login request with credentials
+
 - Authentication service validates email and password
 - JWT tokens generated with appropriate role claims
 - Subsequent API requests include valid access token
 
 **Then** authentication and authorization work correctly
+
 - Login completes in under 100ms with valid credentials
 - JWT tokens include correct user ID and role information
 - Protected endpoints return 401 for invalid tokens
@@ -529,16 +597,19 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 ### Scenario 4: Message Queue Processing (Validates US-4)
 
 **Given** entity extraction results ready for storage
+
 - RabbitMQ broker running with entity processing queues
 - AI module publishes extraction results to message queue
 - Backend consumer processes entity storage messages
 
 **When** AI module publishes entity extraction results
+
 - Message published to "ai.entity_extraction" queue
 - Backend consumer receives and processes message
 - Entity data stored in PostgreSQL with relationship links
 
 **Then** message queue processes entities reliably
+
 - Message delivered within 100ms of publishing
 - Entity storage completes within 200ms of message receipt
 - Failed processing retried with exponential backoff
@@ -551,16 +622,19 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 ### Scenario 5: Production Deployment (Validates US-5)
 
 **Given** new backend version ready for deployment
+
 - Docker containers built and tested in staging
 - Health check endpoints configured for all services
 - Monitoring and alerting systems ready for new version
 
 **When** deployment pipeline executes for production
+
 - New containers deployed across production infrastructure
 - Health checks performed on all services
 - Traffic gradually routed to new version
 
 **Then** deployment completes successfully with zero downtime
+
 - All containers start within 30 seconds of deployment
 - Health checks pass for database, API, and queue services
 - System maintains 99.9% uptime during deployment
@@ -575,6 +649,7 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 3-5 scenarios covering main user stories from Section 2
 - ✅ Each scenario follows Given/When/Then format (BDD style)
 - ✅ Given conditions include specific example data (not placeholders)
@@ -585,6 +660,7 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 - ✅ Scenarios validate acceptance criteria from user stories
 
 **This section is INCOMPLETE if:**
+
 - ❌ Fewer than 3 scenarios (insufficient coverage)
 - ❌ Scenarios don't follow Given/When/Then structure
 - ❌ Given conditions use placeholders ("[user]") instead of examples ("user@example.com")
@@ -599,30 +675,43 @@ The Backend module uses PostgreSQL as its primary data store with comprehensive 
 #### Scenario [N]: [Descriptive Title matching a User Story]
 
 **Given** [specific starting conditions with actual data values]
+
 - [Condition 1, e.g., A user with email "test@example.com" exists]
 
 **When** [a specific action is taken with actual parameters]
+
 - [e.g., The user submits a POST request to /login with email "test@example.com" and password "password123"]
 
 **Then** [specific, measurable, and observable outcomes]
+
 - [Assertion 1, e.g., The system returns an HTTP 200 status code]
 
 **Measurement**: [How to verify - specific metric]
 
 ### What to Include (Requirements Focus):
 ✅ Given/When/Then format (BDD style)
+
 ✅ Specific starting conditions with example data
+
 ✅ Observable actions and outcomes
+
 ✅ Measurable success criteria
+
 ✅ 3-5 scenarios covering main workflows
+
 ✅ 15-20 lines max per scenario
 
 ### What to Exclude (Implementation Details):
 ❌ Complete test code or test frameworks
+
 ❌ SQL queries or database operations
+
 ❌ API endpoint implementations
+
 ❌ Error handling code
+
 ❌ Retry logic or circuit breakers
+
 ❌ 60+ line scenarios with SQL setup
 
 ### Level of Detail (Example):
@@ -683,6 +772,7 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Response times quantified with percentiles (p50, p95, p99)
 - ✅ Throughput targets with units (requests/second, records/minute)
 - ✅ Scalability limits specified (max users, max records, max concurrency)
@@ -692,6 +782,7 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 - ✅ Targets are realistic for expected usage patterns
 
 **This section is INCOMPLETE if:**
+
 - ❌ Targets use qualitative terms ("fast", "responsive", "scalable")
 - ❌ No percentiles specified for response times (p50/p95/p99)
 - ❌ Throughput without units ("500" instead of "500 requests/second")
@@ -704,28 +795,41 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 ### What to include:
 
 **Response Times**:
+
 *   API endpoint latency: e.g., `< 200ms for 95th percentile`
 
 **Throughput**:
+
 *   Requests per second: e.g., `Handles 500 requests/sec`
 
 **Scalability Limits**:
+
 *   Maximum records/documents: e.g., `Scales to 10 million documents`
 
 ### What to Include (Requirements Focus):
 ✅ Quantified response times (with percentiles)
+
 ✅ Throughput targets (requests/second, records/minute)
+
 ✅ Scalability limits (max users, max records)
+
 ✅ Resource constraints (memory, CPU, storage)
+
 ✅ Concurrency requirements
+
 ✅ Availability targets (uptime %)
 
 ### What to Exclude (Implementation Details):
 ❌ Benchmark results or load test output
+
 ❌ Server specifications (CPU cores, RAM GB)
+
 ❌ Database tuning parameters
+
 ❌ Caching strategies (Redis config, TTL values)
+
 ❌ Network configuration details
+
 ❌ Infrastructure sizing calculations
 
 ### Level of Detail (Example):
@@ -774,6 +878,7 @@ Throughput:
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 3-5 high-level phases (milestones, not day-by-day tasks)
 - ✅ Each phase has clear goal (what it achieves)
 - ✅ Deliverables are specific and testable per phase
@@ -783,6 +888,7 @@ Throughput:
 - ✅ No time estimates or schedules (focus on WHAT not WHEN)
 
 **This section is INCOMPLETE if:**
+
 - ❌ More than 5 phases (too granular, should be high-level milestones)
 - ❌ Phases include day-by-day or hour-by-hour schedules
 - ❌ Deliverables are vague ("make progress", "work on feature")
@@ -801,26 +907,38 @@ For each phase (aim for 3-5 phases):
 **Goal**: [What this phase achieves - the outcome, not the process]
 
 **Deliverables**:
+
 - [Specific output 1, e.g., "Complete database schema committed"]
 - [Specific output 2, e.g., "API endpoints functional"]
 
 **Dependencies**:
+
 - [What must be complete before starting this phase]
 
 ### What to Include (Requirements Focus):
 ✅ 3-5 high-level milestones
+
 ✅ What each phase delivers (outcomes)
+
 ✅ Dependencies between phases
+
 ✅ Logical grouping of deliverables
+
 ✅ MVP-focused sequence
+
 ✅ Phase goals (not durations)
 
 ### What to Exclude (Implementation Details):
 ❌ Day-by-day or hour-by-hour schedules
+
 ❌ Individual developer assignments
+
 ❌ Sprint planning or story points
+
 ❌ Detailed task breakdowns (save for `/plan`)
+
 ❌ Technology evaluation criteria
+
 ❌ Team coordination logistics
 
 ### Level of Detail (Example):
@@ -863,17 +981,21 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 
 ### Example
 
-**Phase 1: Core Infrastructure**
-**Goal**: Establish foundational data storage and job scheduling
+- **Phase 1: Core Infrastructure**
+- **Goal**: Establish foundational data storage and job scheduling
+
 **Deliverables**:
+
 - Database schema deployed
 - Basic CRUD API endpoints
 - Job scheduler (Celery) configured
 **Dependencies**: None
 
-**Phase 2: Digest Generation Logic**
-**Goal**: Implement content matching and email composition
+- **Phase 2: Digest Generation Logic**
+- **Goal**: Implement content matching and email composition
+
 **Deliverables**:
+
 - Article matching algorithm
 - Email template system
 - Content ranking logic
@@ -890,6 +1012,7 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 10-15 edge cases covering main scenarios
 - ✅ Each edge case in format "EC-N: [Situation] → [Expected behavior]"
 - ✅ Each edge case is 2-3 lines (not 15+ lines with code)
@@ -900,6 +1023,7 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 - ✅ Edge cases are realistic (not theoretical "what if aliens attack?")
 
 **This section is INCOMPLETE if:**
+
 - ❌ Fewer than 10 edge cases (insufficient coverage)
 - ❌ Edge cases include detailed error handling code or retry logic
 - ❌ Edge cases exceed 3 lines (too detailed, implementation-focused)
@@ -916,31 +1040,45 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 ### What to include:
 
 **Failure Scenarios** - External dependencies fail:
+
 - API timeouts, service outages, network errors
 
 **Boundary Conditions** - Empty or extreme data:
+
 - No matching records, maximum limits reached, null values
 
 **Concurrency Issues** - Race conditions or conflicts:
+
 - Simultaneous updates, overlapping jobs
 
 **Data Quality Issues** - Invalid or malformed data:
+
 - Missing required fields, type mismatches
 
 ### What to Include (Requirements Focus):
 ✅ Situation description (what happens)
+
 ✅ Expected behavior (what system does)
+
 ✅ 10-15 edge cases covering main scenarios
+
 ✅ 2-3 lines per edge case
+
 ✅ Failure modes and boundary conditions
+
 ✅ Concurrency and data quality issues
 
 ### What to Exclude (Implementation Details):
 ❌ Complete error handling code
+
 ❌ Retry logic specifics (exponential backoff algorithms)
+
 ❌ Exception class hierarchies
+
 ❌ Logging implementation details
+
 ❌ Circuit breaker configurations
+
 ❌ Detailed recovery procedures
 
 ### Level of Detail (Example):
@@ -1004,6 +1142,7 @@ When the AWS SES API times out during email sending:
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Required language and version specified (e.g., "Python 3.11+")
 - ✅ Required database and version specified (e.g., "PostgreSQL 15+")
 - ✅ Required external services/APIs listed (e.g., "AWS SES for email")
@@ -1013,6 +1152,7 @@ When the AWS SES API times out during email sending:
 - ✅ Constraints are requirements, not preferences
 
 **This section is INCOMPLETE if:**
+
 - ❌ Technology choices explained (WHY instead of WHAT)
 - ❌ Includes comparison matrices or evaluation criteria
 - ❌ Alternative options listed (should only state requirements, not alternatives)
@@ -1025,28 +1165,41 @@ When the AWS SES API times out during email sending:
 ### What to include:
 
 **Required Technologies**:
+
 *   Primary technologies that MUST be used (e.g., "Language: Python 3.11+", "Database: PostgreSQL 15+").
 
 **External Dependencies**:
+
 *   Required external services or libraries (e.g., "Requires access to the Stripe API v3," "Must use the `requests` library v2.28+").
 
 **Constraints**:
+
 *   Things the system MUST or MUST NOT do (e.g., "Must be deployable as a Docker container," "Cannot write to the local filesystem").
 
 ### What to Include (Requirements Focus):
 ✅ Required language and version
+
 ✅ Required database and version
+
 ✅ Required external services/APIs
+
 ✅ Required libraries (with version constraints)
+
 ✅ Deployment constraints (Docker, serverless, etc.)
+
 ✅ Platform constraints (cloud provider, OS)
 
 ### What to Exclude (Implementation Details):
 ❌ Technology comparison matrices
+
 ❌ Why technology was chosen (evaluation criteria)
+
 ❌ Alternative options considered
+
 ❌ Detailed library configuration
+
 ❌ Performance benchmarks comparing options
+
 ❌ Team skill assessments
 
 ### Level of Detail (Example):
@@ -1061,9 +1214,18 @@ Required Libraries:
 - psycopg2>=2.9.0 (database driver)
 
 Constraints:
-- Must be deployable as Docker container
-- Cannot write to local filesystem (use S3 for storage)
-- Must run on AWS ECS
+- Must be deployable as Docker container for consistent development and production environments
+  - Rationale: Enables consistent deployment across environments and simplifies scaling
+  - Technical: Standard containerization for development and production parity
+  - Business Impact: Simplifies deployment and scaling operations, reduces environment inconsistencies
+- Must support local filesystem access for temporary processing and file handling
+  - Rationale: Backend services require temporary file storage for uploads, processing, and caching
+  - Technical: Docker volumes for container filesystem access with proper volume management
+  - Business Impact: Enables efficient file processing workflows and API functionality
+- Must support deployment on standard VPS infrastructure
+  - Rationale: Cost-effective deployment without cloud lock-in, suitable for startup environments
+  - Technical: Compatible with major VPS providers (DigitalOcean, Linode, Hetzner, etc.)
+  - Business Impact: Reduces operational costs while maintaining deployment flexibility
 ```
 
 **Too detailed** (implementation-focused):
@@ -1096,6 +1258,7 @@ Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Unit test approach defined (what modules/functions to test)
 - ✅ Integration test approach defined (what workflows to test end-to-end)
 - ✅ Performance test approach defined (what operations to test under load)
@@ -1105,6 +1268,7 @@ Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 - ✅ Success criteria for test suite defined
 
 **This section is INCOMPLETE if:**
+
 - ❌ Includes complete test suite with individual test names
 - ❌ Includes specific test code or pseudo-code
 - ❌ Test framework configuration details (Jest config, pytest fixtures)
@@ -1117,35 +1281,49 @@ Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 ### What to include:
 
 **Unit Tests**:
+
 *   What key modules/functions require unit tests (not specific test cases)
 *   Target coverage (e.g., ">80% line coverage for business logic")
 
 **Integration Tests**:
+
 *   What workflows to test end-to-end (e.g., "User signup through first digest delivery")
 *   What external integrations to test (e.g., "SES email delivery, database transactions")
 
 **Load/Performance Tests**:
+
 *   What operations to test under load (reference Section 5 targets)
 *   Expected scale (e.g., "1000 concurrent digest generations")
 
 **Acceptance Tests**:
+
 *   How to validate Acceptance Scenarios from Section 4
 *   Success criteria (e.g., "All scenarios pass in staging environment")
 
 ### What to Include (Requirements Focus):
 ✅ Testing approach for each layer (unit, integration, acceptance)
+
 ✅ Coverage targets (percentage or scope)
+
 ✅ What to test (modules, workflows, integrations)
+
 ✅ Performance test targets (from Section 5)
+
 ✅ Success criteria for test suite
+
 ✅ Acceptance scenario validation approach
 
 ### What to Exclude (Implementation Details):
 ❌ Complete test suite with individual test names
+
 ❌ Specific test code or pseudo-code
+
 ❌ Test framework configuration (Jest config, pytest fixtures)
+
 ❌ Mocking strategies or stub implementations
+
 ❌ CI/CD pipeline configuration
+
 ❌ Test data generation scripts
 
 ### Level of Detail (Example):
@@ -1210,6 +1388,7 @@ Integration Tests (Supertest + testcontainers):
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ All open questions listed with resolution path
 - ✅ All assumptions documented with rationale
 - ✅ Assumptions categorized by type (business logic, integration, technical)
@@ -1219,6 +1398,7 @@ Integration Tests (Supertest + testcontainers):
 - ✅ Validation plan for assumptions (how/when to verify)
 
 **This section is INCOMPLETE if:**
+
 - ❌ Open questions without resolution path or owner
 - ❌ Assumptions made but not documented (hidden assumptions are dangerous)
 - ❌ Assumptions without rationale (why was this assumption necessary?)
@@ -1237,6 +1417,7 @@ Integration Tests (Supertest + testcontainers):
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ User-facing metrics with target values (completion rates, satisfaction scores)
 - ✅ Technical metrics with target values (error rates, response times, uptime)
 - ✅ Measurement methods specified for each metric
@@ -1246,6 +1427,7 @@ Integration Tests (Supertest + testcontainers):
 - ✅ All metrics align with Section 1 goals and Section 5 performance targets
 
 **This section is INCOMPLETE if:**
+
 - ❌ Metrics without target values ("improve completion rate" vs ">90%")
 - ❌ Vague measurement methods ("we'll track it somehow")
 - ❌ No user-facing success metrics (only technical metrics)
@@ -1258,17 +1440,20 @@ Integration Tests (Supertest + testcontainers):
 ### User-Facing Success
 
 **Metrics with Target Values**:
+
 *   [Metric 1]: [Target value with units]
     - Example: "User signup completion rate: >90%"
 *   [Metric 2]: [Target value with units]
     - Example: "Digest open rate: >25%"
 
 **Measurement Method**:
+
 *   How will these metrics be tracked? (e.g., "Analytics dashboard, weekly reports")
 
 ### Technical Success
 
 **Metrics with Target Values**:
+
 *   [Metric 1]: [Target value with units]
     - Example: "API error rate: <0.1%"
 *   [Metric 2]: [Target value with units]
@@ -1277,11 +1462,13 @@ Integration Tests (Supertest + testcontainers):
     - Example: "System uptime: >99.9%"
 
 **Measurement Method**:
+
 *   How will these metrics be monitored? (e.g., "CloudWatch dashboards, PagerDuty alerts")
 
 ### Completion Criteria
 
 The module is considered DONE when:
+
 *   [ ] All user stories from Section 2 implemented and demonstrated
 *   [ ] All acceptance scenarios from Section 4 pass in staging
 *   [ ] All performance targets from Section 5 validated under load
@@ -1293,18 +1480,28 @@ The module is considered DONE when:
 
 ### What to Include (Requirements Focus):
 ✅ Quantified user-facing metrics (completion rates, satisfaction scores)
+
 ✅ Quantified technical metrics (error rates, response times, uptime)
+
 ✅ Measurement methods for each metric
+
 ✅ Completion checklist (from other sections)
+
 ✅ Launch readiness criteria
+
 ✅ MVP success definition
 
 ### What to Exclude (Implementation Details):
 ❌ Specific measurement tools (Datadog vs New Relic)
+
 ❌ Dashboard JSON configurations
+
 ❌ Alert threshold tuning details
+
 ❌ Monitoring infrastructure setup
+
 ❌ Analytics implementation code
+
 ❌ Metric collection pipeline architecture
 
 ### Level of Detail (Example):
@@ -1388,18 +1585,28 @@ Before submitting this PRD to SpecKit, verify:
 
 ### What to Include (Requirements Focus):
 ✅ All sections complete and substantive
+
 ✅ All checklists filled with concrete verification
+
 ✅ Cross-section consistency verified
+
 ✅ Requirements-focused throughout (WHAT not HOW)
+
 ✅ No placeholders or TBD markers
+
 ✅ Module owner sign-off
 
 ### What to Exclude (Implementation Details):
 ❌ Premature validation of implementation approach
+
 ❌ Technology evaluation details
+
 ❌ Team capacity or resource planning
+
 ❌ Project management artifacts
+
 ❌ Cost estimates or budgets
+
 ❌ Stakeholder approval workflows
 
 ### Level of Detail (Example):
@@ -1435,18 +1642,21 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Response Time Requirements
 
 **API Endpoints**:
+
 - Entity CRUD operations: <200ms (p95), <500ms (p99)
 - Authentication requests: <100ms (p95), <250ms (p99)  
 - Complex relationship queries: <500ms (p95), <1s (p99)
 - Health check endpoints: <50ms (p95), <100ms (p99)
 
 **Database Operations**:
+
 - Simple entity lookups: <50ms (p95), <100ms (p99)
 - Complex relationship traversals: <500ms (p95), <1s (p99)
 - Batch entity operations: <2s for 100 entities (p95)
 - Schema migration execution: <5 minutes for full migration
 
 **Message Queue Performance**:
+
 - Message publishing latency: <10ms (p95), <50ms (p99)
 - Message processing throughput: 1,000+ messages/minute
 - End-to-end processing: <200ms from publish to storage
@@ -1454,16 +1664,19 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Throughput Requirements
 
 **API Throughput**:
+
 - Sustained request rate: 500 requests/second
 - Peak request rate: 1,000 requests/second (5-minute burst)
 - Concurrent connection limit: 10,000 active connections
 
 **Data Processing**:
+
 - Entity extraction throughput: 100 entities/second
 - Relationship creation rate: 500 relationships/second
 - Database write throughput: 2,000 operations/second
 
 **System Scale**:
+
 - Maximum entities in database: 10 million records
 - Maximum relationships: 50 million relationships
 - Maximum concurrent users: 1,000 active sessions
@@ -1472,16 +1685,19 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Resource Constraints
 
 **Memory Usage**:
+
 - API service memory footprint: <512MB per instance
 - Database connection pool: <100 connections per service
 - Message queue buffer: <1GB in-memory cache
 
 **Storage Requirements**:
+
 - Database storage growth: <100GB per month
 - Log retention: 30 days of operational logs
 - Backup storage: <500GB for full system backup
 
 **Network Performance**:
+
 - Inter-service communication: <50ms latency
 - External API calls: <2s timeout with retry logic
 - WebSocket connection overhead: <10KB per connection
@@ -1489,16 +1705,19 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Availability Targets
 
 **System Uptime**:
+
 - Overall system availability: 99.9% monthly uptime
 - Database availability: 99.95% with automated failover
 - API service availability: 99.9% with load balancing
 
 **Recovery Objectives**:
+
 - Mean time to recovery (MTTR): <5 minutes for service failures
 - Recovery point objective (RPO): <1 minute of data loss
 - Recovery time objective (RTO): <2 minutes for critical services
 
 **Measurement Methods**:
+
 - Response times tracked via distributed tracing
 - Throughput monitored through application metrics
 - Availability tracked via health check success rates
@@ -1514,14 +1733,15 @@ for Phase 4 (WO-4) quality comparison against case study.
 **Goal**: Establish core backend services and data storage foundation
 
 **Deliverables**:
+
 - PostgreSQL database deployed with initial schema
 - FastAPI application framework configured
 - JWT authentication system implemented
 - Docker containerization completed
 - Basic monitoring and health checks deployed
 
-**Dependencies**: None
-**Estimated Scope**: Core infrastructure for all modules to build upon
+- **Dependencies**: None
+- **Estimated Scope**: Core infrastructure for all modules to build upon
 
 ---
 
@@ -1529,14 +1749,15 @@ for Phase 4 (WO-4) quality comparison against case study.
 **Goal**: Implement entity extraction, storage, and relationship management
 
 **Deliverables**:
+
 - Entity CRUD API endpoints functional
 - Relationship creation and querying APIs
 - Entity extraction integration with AI module
 - Database schema supporting 10M+ entities
 - Entity search and filtering capabilities
 
-**Dependencies**: Phase 1 complete
-**Estimated Scope**: Full entity lifecycle management for knowledge graph
+- **Dependencies**: Phase 1 complete
+- **Estimated Scope**: Full entity lifecycle management for knowledge graph
 
 ---
 
@@ -1544,14 +1765,15 @@ for Phase 4 (WO-4) quality comparison against case study.
 **Goal**: Enable seamless integration with other system modules
 
 **Deliverables**:
+
 - Message queue infrastructure for async processing
 - WebSocket connections for real-time updates
 - Module integration APIs fully functional
 - Cross-module authentication and authorization
 - Integration testing and validation completed
 
-**Dependencies**: Phase 2 complete
-**Estimated Scope**: Reliable inter-module communication and data flow
+- **Dependencies**: Phase 2 complete
+- **Estimated Scope**: Reliable inter-module communication and data flow
 
 ---
 
@@ -1559,14 +1781,15 @@ for Phase 4 (WO-4) quality comparison against case study.
 **Goal**: Optimize performance and establish comprehensive monitoring
 
 **Deliverables**:
+
 - Performance optimization for 1,000+ concurrent users
 - Comprehensive monitoring dashboard implemented
 - Automated alerting and notification systems
 - Load testing and capacity planning completed
 - Database query optimization and caching
 
-**Dependencies**: Phase 3 complete
-**Estimated Scope**: Production-ready performance and observability
+- **Dependencies**: Phase 3 complete
+- **Estimated Scope**: Production-ready performance and observability
 
 ---
 
@@ -1574,14 +1797,15 @@ for Phase 4 (WO-4) quality comparison against case study.
 **Goal**: Ensure production reliability and security compliance
 
 **Deliverables**:
+
 - Security audit and hardening completed
 - Backup and disaster recovery procedures tested
 - Production deployment pipeline automated
 - Documentation and runbooks completed
 - Performance benchmarks validated in production
 
-**Dependencies**: Phase 4 complete
-**Estimated Scope**: Enterprise-ready backend infrastructure
+- **Dependencies**: Phase 4 complete
+- **Estimated Scope**: Enterprise-ready backend infrastructure
 
 ---
 
@@ -1628,22 +1852,26 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Required Technologies
 
 **Core Framework**:
+
 - FastAPI 0.100+ (Python web framework for API development)
 - Python 3.11+ (Programming language for backend services)
 - PostgreSQL 15+ (Primary database for structured data storage)
 - RabbitMQ 3.12+ (Message queue for asynchronous communication)
 
 **Infrastructure**:
+
 - Docker 24+ (Containerization platform for deployment)
 - Redis 7+ (Caching and session storage)
 - Nginx 1.24+ (Reverse proxy and load balancer)
 
 **Authentication & Security**:
+
 - JWT (JSON Web Tokens for stateless authentication)
 - bcrypt (Password hashing for secure credential storage)
 - OpenSSL (TLS/SSL certificate management)
 
 **Monitoring & Observability**:
+
 - Prometheus (Metrics collection and monitoring)
 - Grafana (Visualization and alerting dashboard)
 - ELK Stack (Centralized logging and analysis)
@@ -1651,16 +1879,19 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### External Dependencies
 
 **Cloud Services**:
+
 - AWS S3 (File storage for backups and assets)
 - AWS SES (Email delivery for notifications)
 - AWS CloudWatch (Infrastructure monitoring)
 
 **API Integrations**:
+
 - AI Module APIs (Entity extraction and knowledge graph operations)
 - Frontend Module APIs (User interface data requirements)
 - Publishing Module APIs (Content distribution and engagement)
 
 **Development Tools**:
+
 - Git (Version control system)
 - Docker Compose (Local development environment)
 - pytest (Testing framework for API validation)
@@ -1668,24 +1899,28 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Deployment Constraints
 
 **Container Requirements**:
+
 - All services must run as Docker containers
 - Images must be based on official Python 3.11+ base image
 - Maximum image size: 1GB per service container
 - Health check endpoints required for all services
 
 **Environment Management**:
+
 - Separate configurations for development, staging, production
 - Environment variables for all sensitive configuration
 - Configuration validation before service startup
 - Zero-downtime deployment capability required
 
 **Security Constraints**:
+
 - HTTPS/TLS 1.3 required for all external communications
 - API keys and secrets must use AWS Secrets Manager
 - Database connections must use SSL encryption
 - Authentication tokens must expire within 24 hours
 
 **Performance Constraints**:
+
 - Response times must meet targets under specified load
 - Memory usage must not exceed 512MB per container
 - CPU utilization must remain under 80% during normal operation
@@ -1700,18 +1935,21 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Unit Testing Approach
 
 **Database Operations**:
+
 - Schema migration and rollback functionality
 - Entity CRUD operations with data validation
 - Relationship creation and query performance
 - Connection pool management under load
 
 **API Endpoints**:
+
 - Request/response handling for all endpoints
 - Authentication middleware validation
 - Error handling and status code responses
 - Input validation and sanitization
 
 **Business Logic**:
+
 - Entity extraction result processing
 - Relationship confidence scoring
 - Message queue publishing and consumption
@@ -1724,18 +1962,21 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Integration Testing Approach
 
 **End-to-End Workflows**:
+
 - Entity extraction from AI module to database storage
 - User authentication through complete API flows
 - Message queue processing with error scenarios
 - Database schema migration with data integrity
 
 **Module Integration**:
+
 - Backend ↔ AI module entity processing
 - Backend ↔ Frontend module real-time updates
 - Backend ↔ Publishing module content workflows
 - Cross-module authentication and authorization
 
 **External Dependencies**:
+
 - Database connectivity and transaction handling
 - Message queue broker availability and failover
 - External API integrations and error handling
@@ -1748,18 +1989,21 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Performance Testing Approach
 
 **Load Testing**:
+
 - API endpoints under 1,000 concurrent users
 - Database operations with 10M+ record datasets
 - Message queue processing at 1,000+ messages/second
 - Memory and CPU usage under sustained load
 
 **Stress Testing**:
+
 - System behavior at 150% of normal load
 - Database connection pool exhaustion scenarios
 - Message queue backlog and recovery
 - Resource constraint violation handling
 
 **Scalability Testing**:
+
 - Horizontal scaling with multiple service instances
 - Database read replica performance
 - Load balancer distribution and failover
@@ -1772,18 +2016,21 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Acceptance Testing Approach
 
 **User Story Validation**:
+
 - All acceptance scenarios from Section 4 pass in staging
 - User story acceptance criteria met in production
 - Edge case handling verified through automated tests
 - Integration contracts validated across modules
 
 **Business Process Testing**:
+
 - Complete entity lifecycle from extraction to storage
 - Authentication and authorization workflows
 - Message queue processing and error recovery
 - Monitoring and alerting system validation
 
 **Regression Testing**:
+
 - Existing functionality preserved across updates
 - Database schema changes don't break existing APIs
 - Integration contracts maintained across versions
@@ -1800,18 +2047,21 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Critical Open Questions
 
 **Q1: Detailed API Specifications**
+
 - What specific OpenAPI schemas are needed for all endpoints?
 - How should pagination and filtering be standardized across APIs?
 - What error response formats should be used consistently?
 - Owner: API Development Team | Priority: High | Resolution: WO-4
 
 **Q2: Database Performance Optimization**
+
 - What specific indexes are needed for complex relationship queries?
 - How should query performance be monitored in production?
 - What caching strategies should be implemented for frequently accessed data?
 - Owner: Database Team | Priority: High | Resolution: WO-4
 
 **Q3: Security Hardening Requirements**
+
 - What specific security headers and CORS policies are required?
 - How should API rate limiting be implemented and configured?
 - What authentication audit logging is needed for compliance?
@@ -1820,24 +2070,28 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Implementation Assumptions
 
 **A1: Technology Stack Stability**
+
 - Assumes FastAPI, PostgreSQL, and RabbitMQ will remain stable
 - Assumes Docker containerization will work across all environments
 - Assumes current technology choices won't require major changes
 - Impact if wrong: May require significant re-architecture
 
 **A2: Integration Contract Stability**
+
 - Assumes other modules will implement integration contracts as specified
 - Assumes API contracts won't change significantly during development
 - Assumes message queue patterns will remain consistent
 - Impact if wrong: Integration failures and communication breakdowns
 
 **A3: Performance Requirements Achievability**
+
 - Assumes 500+ requests/second is achievable with current architecture
 - Assumes database can handle 10M+ entities with specified performance
 - Assumes message queue can process 1,000+ messages/minute reliably
 - Impact if wrong: May require additional infrastructure or optimization
 
 **A4: Security Assumptions**
+
 - Assumes JWT authentication provides sufficient security for APIs
 - Assumes current role-based access control meets all requirements
 - Assumes current encryption standards are sufficient
@@ -1846,16 +2100,19 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Validation Strategy
 
 **Technology Validation**:
+
 - Performance testing in Phase 4 will validate technology assumptions
 - Integration testing will verify contract stability
 - Security testing will validate security assumptions
 
 **Scale Validation**:
+
 - Load testing will verify performance requirements achievability
 - Monitoring implementation will validate observability assumptions
 - Production deployment will validate deployment assumptions
 
 **Risk Mitigation**:
+
 - Regular architecture reviews to catch technology drift
 - Integration testing at each phase boundary
 - Security review before production deployment
@@ -1869,16 +2126,19 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### User-Facing Success Metrics
 
 **Module Integration**:
+
 - Successful integration with 3 other modules within 30 days: 100% achievement
 - Zero integration-related production incidents in first 90 days: Target 0 incidents
 - Cross-module API contracts maintained and validated: 100% contract compliance
 
 **Performance Reliability**:
+
 - API response time under 200ms for 95% of requests: Target 95% achievement
 - Database query performance under 500ms for complex operations: Target 100% compliance
 - Message queue processing reliability: Target 99.9% message delivery success
 
 **System Availability**:
+
 - Backend services uptime: Target 99.9% monthly availability
 - Database availability with automated failover: Target 99.95% uptime
 - Zero data loss incidents in production: Target 0 incidents
@@ -1886,16 +2146,19 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Technical Success Metrics
 
 **Scalability Achievement**:
+
 - Support for 1,000+ concurrent users: Target 100% capacity utilization
 - Handle 10M+ entities in database: Target 100% data capacity
 - Process 5,000+ API requests daily: Target 100% throughput achievement
 
 **Security Compliance**:
+
 - Authentication and authorization requirements met: Target 100% compliance
 - Zero security incidents in first 90 days: Target 0 incidents
 - Security audit passed before production deployment: Target 100% pass rate
 
 **Operational Excellence**:
+
 - Deployment automation functional: Target 100% automated deployments
 - Monitoring and alerting comprehensive: Target 100% coverage
 - Backup and recovery procedures tested: Target 100% success rate
@@ -1903,6 +2166,7 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Completion Verification
 
 **Phase 1 Success Criteria**:
+
 - [ ] PostgreSQL database deployed and accessible
 - [ ] FastAPI application framework operational
 - [ ] JWT authentication system functional
@@ -1910,6 +2174,7 @@ for Phase 4 (WO-4) quality comparison against case study.
 - [ ] Basic health checks and monitoring active
 
 **Phase 2 Success Criteria**:
+
 - [ ] Entity CRUD operations functional via API
 - [ ] Relationship management system operational
 - [ ] AI module integration APIs working
@@ -1917,6 +2182,7 @@ for Phase 4 (WO-4) quality comparison against case study.
 - [ ] Entity search and filtering implemented
 
 **Phase 3 Success Criteria**:
+
 - [ ] Message queue infrastructure operational
 - [ ] WebSocket connections for real-time updates
 - [ ] Module integration APIs fully functional
@@ -1924,6 +2190,7 @@ for Phase 4 (WO-4) quality comparison against case study.
 - [ ] Integration testing completed successfully
 
 **Phase 4 Success Criteria**:
+
 - [ ] Performance optimization completed
 - [ ] Monitoring dashboard implemented
 - [ ] Load testing validated all targets
@@ -1931,6 +2198,7 @@ for Phase 4 (WO-4) quality comparison against case study.
 - [ ] Caching strategies implemented
 
 **Phase 5 Success Criteria**:
+
 - [ ] Security audit passed
 - [ ] Backup and recovery tested
 - [ ] Production deployment automated
@@ -1940,24 +2208,28 @@ for Phase 4 (WO-4) quality comparison against case study.
 ### Measurement and Validation
 
 **Performance Measurement**:
+
 - Response times tracked via distributed tracing
 - Throughput monitored through application metrics
 - Database performance measured via query execution times
 - Message queue performance tracked via delivery metrics
 
 **Reliability Measurement**:
+
 - Uptime calculated from health check success rates
 - Error rates monitored through application logs
 - Recovery time measured during incident response
 - Data integrity validated through consistency checks
 
 **Security Measurement**:
+
 - Authentication success rates tracked
 - Authorization violations logged and monitored
 - Security scan results validated regularly
 - Compliance requirements verified through audits
 
 **Final Acceptance**:
+
 - All user stories from Section 2 implemented and demonstrated
 - All acceptance scenarios from Section 4 pass in production
 - All performance targets from Section 5 validated under load

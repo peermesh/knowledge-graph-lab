@@ -19,6 +19,7 @@ Use this document for optional advanced topics and enterprise-scale references f
 
 
 **Technology Platforms**
+
 - **Netflix** (2024): 200M unique homepages with personalization at scale
 - **Spotify** (2024): 40M users receiving ML-powered Discover Weekly
 - **Amazon** (2024): Highly effective recommendation systems
@@ -26,6 +27,7 @@ Use this document for optional advanced topics and enterprise-scale references f
 - **LinkedIn** (2024): Feed algorithm optimized for 800M users
 
 **Media Organizations**
+
 - **Morning Brew** (2024): Real-time segmentation for large audiences
 - **Substack** (2024): Architecture supporting thousands of simultaneous sends
 - **The Information** (2024): Specialized content delivery infrastructure

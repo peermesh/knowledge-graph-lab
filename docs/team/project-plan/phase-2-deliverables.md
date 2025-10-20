@@ -7,6 +7,7 @@ Planning & Design Phase
 ## Objectives
 
 Create comprehensive Product Requirements Documents (PRDs) that will:
+
 - Define exactly what each module will build
 - Be implementation-ready using **[RequirementsKit methodology](../methodologies/requirements-kit/)**
 - Establish clear API contracts between modules
@@ -22,6 +23,7 @@ Create comprehensive Product Requirements Documents (PRDs) that will:
 Your PRD MUST be comprehensive and implementation-ready. Use **[RequirementsKit](../methodologies/requirements-kit/)** which provides templates and a systematic workflow for developing specifications:
 
 **Getting Started:**
+
 - **[Quick Start Guide](../methodologies/requirements-kit/guides/quickstart.md)** - 5-minute overview
 - **[Simple Template](../methodologies/requirements-kit/templates/simple-template.md)** - Start here
 - **[Workflow Guide](../methodologies/requirements-kit/guides/workflow.md)** - Complete 5-phase process
@@ -45,6 +47,7 @@ Your PRD MUST be comprehensive and implementation-ready. Use **[RequirementsKit]
 ### 2. Integration Contracts
 
 Document how your module connects with others:
+
 - **Shared data formats** - Exact schemas
 - **API endpoints** - Your module provides/consumes
 - **Events** - Published/subscribed events
@@ -53,6 +56,7 @@ Document how your module connects with others:
 ### 3. Technical Decisions
 
 Document key choices from your Phase 1 research:
+
 - **Technology stack** - Languages, frameworks, libraries
 - **Database design** - Schema, indexes, relationships
 - **Architecture patterns** - Design patterns to follow
@@ -83,6 +87,7 @@ Your PRD must be complete and ready for Phase 3 development:
 ## Quick Links to Your PRD Assignment
 
 Jump directly to your module's Phase 2 PRD assignment:
+
 - [Backend Architecture PRD](../module-assignments/backend-architecture/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
 - [Frontend Design PRD](../module-assignments/frontend-design/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
 - [AI Development PRD](../module-assignments/ai-development/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
@@ -94,6 +99,7 @@ Jump directly to your module's Phase 2 PRD assignment:
 
 ### Backend Architecture
 Focus on:
+
 - Complete API specifications (all endpoints)
 - Database schema with relationships
 - Authentication/authorization rules
@@ -102,6 +108,7 @@ Focus on:
 
 ### Frontend Design
 Focus on:
+
 - Page layouts and navigation flows
 - Component hierarchy and props
 - Form validations and error states
@@ -110,6 +117,7 @@ Focus on:
 
 ### AI Development
 Focus on:
+
 - Input/output data formats
 - Processing pipeline stages
 - Model integration specifications
@@ -118,6 +126,7 @@ Focus on:
 
 ### Publishing Tools
 Focus on:
+
 - Content format transformations
 - Distribution channel APIs
 - Template specifications
@@ -131,6 +140,7 @@ Focus on:
 Each module must actively coordinate with Backend to confirm contracts.
 
 Requirements
+
 - Schedule a working session with the Backend owner (see ../module-ownership.md)
 - Validate data shapes, endpoints, and error handling
 - Document decisions and open questions in your PRD
@@ -153,21 +163,25 @@ Requirements
 Your Phase 2 is complete when:
 
 ✅ **PRD is RequirementsKit-ready**
+
 - All required sections present
 - Types and schemas specified
 - Ready for code generation
 
 ✅ **Integration defined**
+
 - API contracts documented
 - Shared data formats agreed
 - Dependencies identified
 
 ✅ **Decisions documented**
+
 - Technology choices explained
 - Architecture patterns selected
 - Trade-offs acknowledged
 
 ✅ **Quality verified**
+
 - Peer reviewed by team
 - No missing information
 - Uncertainties clearly marked
@@ -203,18 +217,23 @@ Your Phase 2 is complete when:
 ## Common Questions
 
 **Q: How detailed should my PRD be?**
+
 A: Detailed enough that SpecKit can generate working code. Every data field needs a type, every API needs schemas.
 
 **Q: What if I'm unsure about something?**
+
 A: Mark it with `[NEEDS CLARIFICATION: your question]` and continue. Don't leave sections blank.
 
 **Q: Can I include diagrams?**
+
 A: Yes! Architecture diagrams, flowcharts, and mockups are helpful. Use Mermaid or ASCII art.
 
 **Q: What if my module doesn't have a UI?**
+
 A: Skip the UI Specifications section and note "Not applicable - backend service only"
 
 **Q: How do I coordinate integration points?**
+
 A: Discuss in #kgl-integration channel. Document agreements in your PRD.
 
 ---
@@ -222,6 +241,7 @@ A: Discuss in #kgl-integration channel. Document agreements in your PRD.
 ## Next Phase
 
 After Phase 2 approval, Phase 3 will:
+
 1. Run SpecKit's /specify command on your PRD to generate initial code
 2. Use AI agents to refine and complete the implementation
 3. Build your MVP based on these specifications

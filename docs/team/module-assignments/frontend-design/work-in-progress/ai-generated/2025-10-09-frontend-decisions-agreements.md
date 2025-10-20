@@ -1,8 +1,11 @@
 # Frontend Module: Decisions & Agreements
 
 **Source:** docs/team/module-assignments/frontend-design/work-in-progress/raw/2025-09-30-spark-grig+dante.md
+
 **Distilled:** 2025-10-09
+
 **Status:** Awaiting Human Review
+
 **Module:** frontend-design
 
 ---
@@ -283,17 +286,20 @@
 **Check these indicators:**
 
 ✅ **Ready for Implementation:**
+
 - All 🔴 Blocker Open Questions resolved (see Open Questions section)
 - All Integration Contracts either ✓ Defined OR have documented workaround plan
 - All MVP Features confirmed (no ⚠️ Unclear items remaining)
 - Team consensus documented (synthesis stage complete)
 
 ⚠️ **Partially Ready (can start some work):**
+
 - Some 🔴 Blockers resolved, others documented with mitigation
 - Foundation work can proceed (Phase 0: Research & Setup in Implementation Guide)
 - Integration-dependent work blocked until contracts defined
 
 ❌ **Not Ready:**
+
 - Multiple 🔴 Blockers unresolved
 - Integration Contracts mostly 🔴 TBD
 - MVP scope still has ⚠️ Unclear items
@@ -307,6 +313,7 @@
 **What it means:** Integration mentioned in conversation but no schema/contract discussed
 
 **Resolution process:**
+
 1. **Review conversation context** (see "Known Structure" column and related Open Questions)
 2. **Identify decision maker** (see "Who Can Answer" in Open Questions)
 3. **Gather requirements:**
@@ -330,6 +337,7 @@
 ```
 
 **Resolution artifacts created:**
+
 - `docs/integrations/backend-api-spec.json` - Full API specification (OpenAPI/Swagger)
 - `docs/integrations/backend-integration-guide.md` - Integration documentation
 - Updated Integration Contracts table in this document
@@ -343,6 +351,7 @@
 **IMPORTANT:** Check the "Known Structure" column - don't ignore this!
 
 **Resolution process:**
+
 1. **Start with known structure** (extract from Known Structure column)
 2. **Identify gaps** (see "Unknown/TBD" column or Open Questions)
 3. **Fill gaps through:**
@@ -355,17 +364,20 @@
 **Example: AI Module Integration Resolution**
 
 **What we know (from conversation):**
+
 - Single JSON file format
 - Ontology structure: nodes + relationships
 - Example: bees → "gets nectar from" → flowers
 - Related topics: "four or five" per request
 
 **What's unknown:**
+
 - Exact JSON schema for graph data
 - Node/edge field names
 - Related topics API endpoint
 
 **Resolution action:**
+
 1. Use ontology example as starting point
 2. Design JSON schema: `{ nodes: [{id, label, type}], edges: [{source, target, relationship}] }`
 3. Prototype related topics API endpoint: `POST /api/related-topics { topic: string, count: number }`
@@ -379,16 +391,19 @@
 **Resolution Order (by Priority):**
 
 **1️⃣ All 🔴 Blockers First** (Implementation cannot proceed)
+
 - These block multiple phases of development
 - Usually API schemas, auth mechanisms, core architectural decisions
 - **Action:** Schedule resolution meetings ASAP, assign DRIs (Directly Responsible Individuals)
 
 **2️⃣ 🟡 Important Next** (Affects design but has workarounds)
+
 - Can stub these initially but need real answers before production
 - Examples: Component library selection, design system, state management
 - **Action:** Document workaround approach, add to technical debt log
 
 **3️⃣ ⚠️ Nice-to-Know Last** (Optimization or edge cases)
+
 - Doesn't block MVP implementation
 - Can be addressed in post-MVP iterations
 - **Action:** Add to backlog, prioritize after MVP launch
@@ -396,6 +411,7 @@
 **Resolution Workflow:**
 
 For each Open Question:
+
 1. **Check "Who Can Answer"** column → Contact that person/team
 2. **Review "Context from Conversation"** → Understand what triggered the question
 3. **Determine resolution type:**
@@ -419,11 +435,13 @@ For each Open Question:
 **What they are:** Missing API contracts, undefined schemas, fundamental unknowns
 
 **Resolution approach:**
+
 - **Technical design session** with backend/AI teams
 - **API contract definition** workshops
 - **Document in:** Integration contracts, API specs, OpenAPI/Swagger docs
 
 **Example gaps from this document:**
+
 - Backend API schema → API specification needed (Open Question #1)
 - AI data format → JSON schema definition needed (Open Question #2)
 - Authentication mechanism → Auth design doc needed (Open Question #3)
@@ -437,11 +455,13 @@ For each Open Question:
 **What they are:** Production requirements not discussed but standard for this system type
 
 **Resolution approach:**
+
 - **Engineering team discussion** on approach
 - **Industry best practices research** (how do similar systems handle this?)
 - **Document in:** Component library decisions, design system docs, architecture decisions
 
 **Example gaps from this document:**
+
 - Component library selection → Research and evaluate options (Open Question #5)
 - Design system choice → Design research and trend analysis (Open Question #6)
 - State management → Architecture pattern decision (Open Question #13)
@@ -455,11 +475,13 @@ For each Open Question:
 **What they are:** Assumed requirements for production systems (testing, accessibility, performance, etc.)
 
 **Resolution approach:**
+
 - **Reference architecture patterns** from similar projects
 - **Existing implementation review** (what do we already do for other modules?)
 - **Document in:** Testing strategy, accessibility guidelines, performance benchmarks
 
 **Example gaps from this document:**
+
 - Error handling and loading states → Standard React patterns
 - Responsive design strategy → Mobile-first approach
 - Accessibility standards → WCAG 2.1 AA compliance
@@ -472,30 +494,35 @@ For each Open Question:
 ### Workflow: From TBDs to Implementation-Ready
 
 **Step 1: Audit Current State**
+
 - [ ] Count 🔴 Blockers in Open Questions (Currently: 5 blockers - #1, #2, #3, #4, #7)
 - [ ] Count 🔴 TBD in Integration Contracts (Currently: 4 TBD - all integrations)
 - [ ] Count 🔴 Blockers in Gaps Identified (Currently: 5 blockers)
 - [ ] Total blockers = sum of above
 
 **Step 2: Prioritize Blocker Resolution**
+
 - [ ] Create resolution task for each 🔴 Blocker
 - [ ] Assign DRI (Directly Responsible Individuals)
 - [ ] Set deadlines (Phase 0 completion target)
 - [ ] Track in project management tool
 
 **Step 3: Execute Resolution**
+
 - [ ] Hold design sessions, stakeholder meetings, research spikes
 - [ ] Document all decisions with rationale
 - [ ] Create integration contracts, API specs, design docs
 - [ ] Update this document as items resolve
 
 **Step 4: Validate Readiness**
+
 - [ ] All MVP-critical 🔴 Blockers → ✅ Resolved
 - [ ] All Integration Contracts → ✓ Defined (or documented workaround)
 - [ ] All ⚠️ Unclear MVP Features → ✓ Confirmed or 🟡 Post-MVP
 - [ ] Team consensus: "We can start implementation"
 
 **Step 5: Handoff to Implementation**
+
 - [ ] Mark document status: "Ready for Implementation"
 - [ ] Reference in Implementation Guide (Document 2)
 - [ ] Begin Phase 0: Research & Setup
@@ -507,16 +534,19 @@ For each Open Question:
 **Starting State (from this document):**
 
 **Open Question #1:** What is the exact backend API schema for feed content and user data?
+
 - **Status:** 🔴 Blocker
 - **Who:** Backend developer
 - **Context:** "calling our server backend API" - mentioned but undefined
 
 **Integration Contract - Backend/Core:**
+
 - **Status:** 🔴 TBD
 - **Known:** JSON format, pagination "10 at a time"
 - **Unknown:** Schema, endpoints, auth
 
 **Gap - Backend API Schema:**
+
 - **Category:** 🔴 Blocker
 - **Description:** Cannot fetch/display content without API contract
 
@@ -525,17 +555,22 @@ For each Open Question:
 **Resolution Process:**
 
 1️⃣ **Identify DRI:** Backend developer (Alex)
+
 2️⃣ **Schedule meeting:** Frontend lead + Alex API design session
+
 3️⃣ **Design session output:**
+
    - REST API: `/api/feed`, `/api/user/preferences`, `/api/topics/related`
    - Pagination: cursor-based with `nextCursor` field
    - Schema defined: OpenAPI 3.0 spec created
    - Auth: JWT tokens in Authorization header
 4️⃣ **Update this document:**
+
    - Open Question #1: ✅ Resolved (reference: docs/integrations/backend-api-spec.yaml)
    - Integration Contract - Backend/Core: ✓ Defined (API spec documented)
    - Gap removed from Blockers section
 5️⃣ **Implementation Guide updated:**
+
    - Phase 1 blocker removed
    - Task P1.4 updated with API reference
 
@@ -553,6 +588,7 @@ For each Open Question:
 **Gaps Identified - Blockers:** 4 remaining ← was 5
 
 **Implementation Guide - Phase 1:**
+
 - ✅ Can proceed (blocker resolved)
 - All API integration tasks reference backend-api-spec.yaml
 
@@ -561,6 +597,7 @@ For each Open Question:
 ### Quick Reference: Resolution Checklist
 
 **For each 🔴 TBD Integration Contract:**
+
 - [ ] Review conversation context (Known Structure column, Open Questions)
 - [ ] Identify who can define schema (backend/AI module owner)
 - [ ] Extract any discussed structure (don't ignore partial info!)
@@ -569,6 +606,7 @@ For each Open Question:
 - [ ] Update Integration Contracts table: 🔴 → ✓
 
 **For each 🔴 Blocker Open Question:**
+
 - [ ] Check "Who Can Answer"
 - [ ] Understand "Context from Conversation"
 - [ ] Determine resolution type (meeting, research, design)
@@ -577,6 +615,7 @@ For each Open Question:
 - [ ] Mark question as ✅ Resolved
 
 **For each ⚠️ Unclear MVP Feature:**
+
 - [ ] Schedule product/stakeholder clarification
 - [ ] Get explicit in/out decision
 - [ ] Update MVP Features table: ⚠️ → ✓ MVP or 🟡 Post-MVP
@@ -595,6 +634,7 @@ For each Open Question:
 5. **Synthesis Stage:** Human validation complete, team consensus documented
 
 **Deliverables when complete:**
+
 - This document (updated with resolutions)
 - Integration contract docs (API specs for Backend, AI, Publishing modules)
 - Technical design docs (for architectural decisions: component libraries, state management, auth)

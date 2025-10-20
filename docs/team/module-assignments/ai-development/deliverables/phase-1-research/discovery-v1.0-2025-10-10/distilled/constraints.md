@@ -1,6 +1,7 @@
 # Constraints - AI Module
 
 **Distilled from:** AI-Development-Spec.md, PRD.md, work-description.md
+
 **Date:** 2025-10-10
 
 ---
@@ -38,11 +39,13 @@
 | Phase 5 | 1000 | 10x improvement |
 
 **Constraints:**
+
 - Must process documents within SLA timeframes
 - Cannot exceed daily processing quotas
 - Must handle traffic spikes (2x baseline)
 
 **Bottlenecks:**
+
 - LLM API rate limits (60 requests/minute typical)
 - Network latency to external APIs (100-500ms per call)
 - Token processing limits (varies by model)
@@ -54,12 +57,14 @@
 ### Latency Requirements
 
 **Response Time Targets:**
+
 - **Synchronous Extraction:** < 2 seconds per document (goal)
 - **Batch Processing:** < 5 minutes per batch (100 documents)
 - **Report Generation:** < 10 minutes per report
 - **Embedding Generation:** < 1 second per document
 
 **User Experience Impact:**
+
 - Frontend queries need sub-second responses
 - Publishing needs reports within digest window (30 minutes)
 - Real-time extraction for urgent content
@@ -79,11 +84,13 @@
 | Overall Average | $0.10/doc | $0.05/doc | 50% |
 
 **Daily Budget Caps:**
+
 - Development: $50/day
 - Staging: $200/day
 - Production: $1000/day (scales with usage)
 
 **Cost Optimization Strategies:**
+
 - Use cheaper models for simple tasks
 - Implement aggressive caching
 - Batch API calls where possible
@@ -97,16 +104,19 @@
 ### Token Usage Limits
 
 **LLM Provider Limits:**
+
 - **OpenAI GPT-4:** 8k context window (GPT-4 Turbo: 128k)
 - **Anthropic Claude:** 100k context window
 - **Rate Limits:** 60-200 requests/minute (varies by tier)
 
 **Document Chunking Required:**
+
 - Documents > 2000 tokens must be split
 - Maintain context across chunks
 - Reassemble results coherently
 
 **Prompt Engineering:**
+
 - Keep prompts concise to save tokens
 - Balance detail vs. cost
 - A/B test prompt efficiency
@@ -129,15 +139,18 @@
 | Phase 3 | Weeks 11-12 | Demo Prep | Integration testing, optimization, demo preparation |
 
 **Phase 1 Details (Weeks 1-6):**
+
 - Week 1-2: Setup (Docker, FastAPI, mock system)
 - Week 3-4: Mock logic (entity detector, mock database)
 - Week 5-6: Enhanced mocks (relationships, summarization)
 
 **Phase 2 Details (Weeks 7-10):**
+
 - Week 7-8: Real AI integration (OpenAI API, testing)
 - Week 9-10: Optimization (prompt improvement, caching, cost reduction)
 
 **Constraint Impact:**
+
 - Limited time for experimentation
 - Must prioritize MVP features
 - Mock-first enables parallel Backend work
@@ -149,18 +162,21 @@
 ### Delivery Milestones
 
 **Phase 3 Deliverables (MVP):**
+
 - 15-page technical comparison report
 - Working prototype on 50 test documents
 - Performance analysis with accuracy curves
 - Architecture recommendation
 
 **Phase 4 Deliverables (Enhanced):**
+
 - Advanced entity extraction operational
 - Relationship extraction with confidence
 - Multi-model ensemble working
 - Automated quality dashboard
 
 **Phase 5 Deliverables (Production):**
+
 - 95% accuracy achieved
 - 1000 docs/hour throughput
 - Self-improving system active
@@ -175,6 +191,7 @@
 ### Module Boundaries - What AI OWNS
 
 **In Scope:**
+
 - Entity extraction and relationship mapping
 - Confidence score generation
 - AI/ML pipeline processing
@@ -184,6 +201,7 @@
 - Model selection and management
 
 **Deliverables:**
+
 - Extracted entities with types and confidence
 - Relationships between entities
 - Document embeddings (768-1536 dimensions)
@@ -198,6 +216,7 @@
 ### Module Boundaries - What AI DOES NOT OWN
 
 **Out of Scope:**
+
 - **Data Fetching:** Backend fetches from sources (not AI)
 - **Database Storage:** Backend stores extracted data (not AI)
 - **User Interface:** Frontend displays results (not AI)
@@ -208,12 +227,14 @@
 - **Email Generation:** Publishing handles email composition (not AI)
 
 **Rationale for Boundaries:**
+
 - Clear separation enables parallel development
 - Prevents scope creep and overlap
 - Maintains loose coupling between services
 - Each module can scale independently
 
 **Integration Points:**
+
 - AI receives documents from Backend
 - AI sends results to Backend
 - Frontend queries Backend (not AI directly)
@@ -228,16 +249,19 @@
 ### Infrastructure Limits
 
 **Development Environment:**
+
 - Local Docker containers
 - Limited CPU/memory on developer machines
 - No GPU access (use cloud APIs)
 
 **Staging Environment:**
+
 - Kubernetes cluster (shared)
 - 4 CPU cores, 16GB RAM per pod
 - Limited to 3 replicas
 
 **Production Environment:**
+
 - Kubernetes cluster (dedicated)
 - Auto-scaling 2-20 replicas
 - 8 CPU cores, 32GB RAM per pod
@@ -257,6 +281,7 @@
 | Pinecone | 1 index free | $70+/month | 100-1000 req/sec |
 
 **Mitigation Strategies:**
+
 - Implement request queuing
 - Use exponential backoff on rate limit errors
 - Distribute load across multiple API keys
@@ -270,15 +295,18 @@
 ### Processing Quotas
 
 **Daily Limits:**
+
 - **API Calls:** Based on budget cap ($1000/day = ~10,000 docs at $0.10/doc)
 - **Token Usage:** Track and alert at 80% of daily quota
 - **Storage:** No hard limits but monitor growth
 
 **Monthly Limits:**
+
 - **API Budget:** $30,000/month for production
 - **Storage:** 1TB for vectors, 100GB for reports
 
 **Monitoring Required:**
+
 - Real-time usage tracking
 - Alert at 70%, 85%, 95% of quota
 - Auto-throttle at 98% to prevent overrun
@@ -292,22 +320,26 @@
 ### Input Format Requirements
 
 **Supported Formats:**
+
 - HTML (primary)
 - PDF (secondary)
 - Plain text (tertiary)
 - JSON (structured data)
 
 **Language Support:**
+
 - English (primary, 95% accuracy target)
 - Spanish (secondary, 85% accuracy target)
 - French (tertiary, 85% accuracy target)
 
 **Document Size Limits:**
+
 - Maximum: 100,000 tokens (chunking required above 2000)
 - Minimum: 100 tokens (below this, quality degrades)
 - Optimal: 1000-5000 tokens
 
 **Unsupported Formats:**
+
 - Images (no OCR in Phase 3-4)
 - Audio/Video transcripts (Phase 5+)
 - Scanned PDFs (no OCR in Phase 3-4)
@@ -319,18 +351,21 @@
 ### Data Quality Requirements
 
 **Input Quality:**
+
 - Must be UTF-8 encoded
 - HTML must be valid (or parseable)
 - PDFs must have extractable text
 - No corrupted or malformed content
 
 **Output Quality:**
+
 - All entities must have confidence scores
 - All relationships must reference valid entities
 - JSON output must be schema-compliant
 - Reports must pass grammar/style checks
 
 **Validation Rules:**
+
 - Dates must be valid ISO-8601
 - Amounts must be positive numbers
 - Names must not be empty
@@ -354,6 +389,7 @@
 | Llama | Self-hosted | Setup complexity | Cost-sensitive ops |
 
 **Selection Criteria:**
+
 - Cost vs. accuracy tradeoffs
 - Context window requirements
 - Rate limit availability
@@ -366,18 +402,21 @@
 ### Integration Constraints
 
 **Backend Dependencies:**
+
 - Requires job queue (RabbitMQ) operational
 - Needs vector database (Pinecone/Qdrant) deployed
 - Depends on graph database (Neo4j) running
 - Requires Redis for caching
 
 **API Contract Constraints:**
+
 - Must adhere to agreed JSON schemas
 - Cannot change response format without versioning
 - Must maintain backward compatibility
 - Health check endpoints required
 
 **Event Schema Constraints:**
+
 - Events must follow CloudEvents spec
 - Correlation IDs required for tracing
 - Timestamps must be ISO-8601 UTC
@@ -391,6 +430,7 @@
 ### Team Dependencies
 
 **With Backend Architecture Team:**
+
 - **Timing:** Early coordination required
 - **Dependencies:**
   - Vector database connection details
@@ -399,6 +439,7 @@
 - **Blockers:** AI cannot start until queue operational
 
 **With Frontend Design Team:**
+
 - **Timing:** Mid-project coordination
 - **Dependencies:**
   - Result data structure requirements
@@ -407,6 +448,7 @@
 - **Blockers:** Minor (can mock frontend needs)
 
 **With Publishing Tools Team:**
+
 - **Timing:** Phase 3-4 priority
 - **Dependencies:**
   - Report format specifications
@@ -421,12 +463,14 @@
 ### Communication Constraints
 
 **Meeting Requirements:**
+
 - Daily standups: 10 AM via Discord
 - Weekly sync with Backend team
 - Bi-weekly demos to stakeholders
 - Code reviews within 24 hours
 
 **Documentation Requirements:**
+
 - API changes must be documented before implementation
 - Prompt templates must be versioned
 - Model selection logic must be explained
@@ -441,16 +485,19 @@
 ### Accuracy Thresholds
 
 **Minimum Viable Accuracy:**
+
 - Entity extraction: 80% precision (Phase 3)
 - Relationship extraction: 75% precision (Phase 4)
 - Below these thresholds: System not ready for users
 
 **Confidence Calibration:**
+
 - High confidence (≥85): Should be 90%+ accurate
 - Medium confidence (70-84): Should be 75-85% accurate
 - Low confidence (<70): Should be flagged for review
 
 **Validation Method:**
+
 - Manual review of random sample (100 documents)
 - Precision/recall calculation
 - Confusion matrix analysis
@@ -463,12 +510,14 @@
 ### Hallucination Prevention
 
 **Constraints:**
+
 - Hallucination rate must be < 5% (Phase 5)
 - High-confidence extractions must cite source positions
 - Synthetic entities must be flagged
 - Contradictory information must be reconciled
 
 **Detection Methods:**
+
 - Cross-reference with source text
 - Entity grounding in original document
 - Relationship validation against known facts
@@ -483,12 +532,14 @@
 ### Deployment Constraints
 
 **Rollback Requirements:**
+
 - Must maintain 3 previous model versions
 - One-click rollback capability < 2 minutes
 - Gradual traffic shifting (10% → 50% → 100%)
 - Automated health checks during deployment
 
 **Testing Requirements:**
+
 - Integration tests must pass before deployment
 - A/B testing on 10% traffic for new models
 - Performance benchmarks must not regress
@@ -501,6 +552,7 @@
 ### Monitoring Constraints
 
 **Required Metrics:**
+
 - Extraction accuracy (by entity type)
 - Processing speed (docs/hour)
 - API cost per document
@@ -508,12 +560,14 @@
 - Confidence score distribution
 
 **Alert Thresholds:**
+
 - Error rate > 5%: Page on-call engineer
 - Accuracy drop > 5%: Email team lead
 - Cost per doc > target: Alert finance
 - Queue depth > 1000: Auto-scale
 
 **Retention:**
+
 - Metrics: 90 days (Prometheus)
 - Logs: 30 days (Elasticsearch)
 - Traces: 7 days (Jaeger)
@@ -527,12 +581,14 @@
 ### Data Privacy
 
 **Requirements:**
+
 - Must not log PII in plain text
 - API keys must be encrypted at rest
 - Sensitive entities must be redacted in logs
 - GDPR compliance for EU users (future)
 
 **Handling:**
+
 - Detect and redact: emails, phone numbers, addresses
 - Hash user IDs in logs
 - Encrypt data in transit (TLS 1.3)
@@ -545,12 +601,14 @@
 ### Model Bias
 
 **Constraints:**
+
 - Must test for demographic bias in entity extraction
 - Avoid over-representation of certain entity types
 - Balance training data across domains
 - Regular bias audits (quarterly)
 
 **Mitigation:**
+
 - Diverse training data
 - Fairness metrics tracking
 - User feedback for bias reporting
@@ -563,6 +621,7 @@
 ## Summary of Critical Constraints
 
 **Must-Have (Phase 3):**
+
 - ✅ 80% entity extraction accuracy
 - ✅ 100 docs/hour throughput
 - ✅ $0.10 cost per document
@@ -570,6 +629,7 @@
 - ✅ 100-hour development timeline met
 
 **Must-Have (Phase 5):**
+
 - ✅ 95% entity extraction accuracy
 - ✅ 85% relationship extraction accuracy
 - ✅ 1000 docs/hour throughput
@@ -577,6 +637,7 @@
 - ✅ < 5% hallucination rate
 
 **Cannot Compromise:**
+
 - Module boundaries (no scope creep)
 - Data privacy (no PII leaks)
 - API contract compatibility (no breaking changes)

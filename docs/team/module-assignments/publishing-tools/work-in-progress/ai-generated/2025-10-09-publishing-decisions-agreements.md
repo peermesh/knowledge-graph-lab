@@ -1,8 +1,11 @@
 # Publishing Module: Decisions & Agreements
 
 **Source:** docs/team/module-assignments/publishing-tools/work-in-progress/raw/2025-10-01-spark-chat-ben+grig.md
+
 **Distilled:** 2025-10-09
+
 **Status:** Awaiting Human Review
+
 **Module:** publishing-tools
 
 ---
@@ -330,17 +333,20 @@
 **Check these indicators:**
 
 ✅ **Ready for Implementation:**
+
 - All 🔴 Blocker Open Questions resolved (see Open Questions section)
 - All Integration Contracts either ✓ Defined OR have documented workaround plan
 - All MVP Features confirmed (no ⚠️ Unclear items remaining)
 - Team consensus documented (synthesis stage complete)
 
 ⚠️ **Partially Ready (can start some work):**
+
 - Some 🔴 Blockers resolved, others documented with mitigation
 - Foundation work can proceed (Phase 0 in Implementation Guide)
 - Integration-dependent work blocked until contracts defined
 
 ❌ **Not Ready:**
+
 - Multiple 🔴 Blockers unresolved
 - Integration Contracts mostly 🔴 TBD
 - MVP scope still has ⚠️ Unclear items
@@ -354,6 +360,7 @@
 **What it means:** Integration mentioned in conversation but no schema/contract discussed
 
 **Resolution process:**
+
 1. **Review conversation context** (see "Known Structure" column and related Open Questions)
 2. **Identify decision maker** (see "Who Can Answer" in Open Questions)
 3. **Gather requirements:**
@@ -377,6 +384,7 @@
 ```
 
 **Resolution artifacts created:**
+
 - `docs/integrations/ai-article-schema.json` - Full JSON schema
 - `docs/integrations/ai-module-contract.md` - Integration contract doc
 - Updated Integration Contracts table in this document
@@ -390,6 +398,7 @@
 **IMPORTANT:** Check the "Known Structure" column - don't ignore this!
 
 **Resolution process:**
+
 1. **Start with known structure** (extract from Known Structure column)
 2. **Identify gaps** (see "Unknown/TBD" column or Open Questions)
 3. **Fill gaps through:**
@@ -402,16 +411,19 @@
 **Example: Core Module Integration Resolution**
 
 **What we know (from conversation):**
+
 - State flags: "in progress", "published"
 - JSON format for user requests
 - doPublish() trigger method exists
 
 **What's unknown:**
+
 - Exact JSON schema fields
 - Trigger timing/frequency
 - Error state handling
 
 **Resolution action:**
+
 1. Use known state flags as starting point
 2. Design JSON schema around "user request" concept mentioned
 3. Prototype doPublish() signature based on described behavior
@@ -425,16 +437,19 @@
 **Resolution Order (by Priority):**
 
 **1️⃣ All 🔴 Blockers First** (Implementation cannot proceed)
+
 - These block multiple phases of development
 - Usually integration schemas, auth mechanisms, core architectural decisions
 - **Action:** Schedule resolution meetings ASAP, assign DRIs (Directly Responsible Individuals)
 
 **2️⃣ 🟡 Important Next** (Affects design but has workarounds)
+
 - Can stub these initially but need real answers before production
 - Examples: Storage limits, email size thresholds, error retry logic
 - **Action:** Document workaround approach, add to technical debt log
 
 **3️⃣ ⚠️ Nice-to-Know Last** (Optimization or edge cases)
+
 - Doesn't block MVP implementation
 - Can be addressed in post-MVP iterations
 - **Action:** Add to backlog, prioritize after MVP launch
@@ -442,6 +457,7 @@
 **Resolution Workflow:**
 
 For each Open Question:
+
 1. **Check "Who Can Answer"** column → Contact that person/team
 2. **Review "Context from Conversation"** → Understand what triggered the question
 3. **Determine resolution type:**
@@ -465,11 +481,13 @@ For each Open Question:
 **What they are:** Missing architectural decisions, undefined contracts, fundamental unknowns
 
 **Resolution approach:**
+
 - **Technical design session** with engineering team
 - **Stakeholder alignment** for product decisions
 - **Document in:** Integration contracts, technical design docs, architectural decision records (ADRs)
 
 **Example gaps from this document:**
+
 - AI article schema definition → Integration contract needed (Open Question #1)
 - Authentication between modules → Security design doc needed (Open Question #5)
 - Database query API contract → Backend API spec needed (Open Question #6)
@@ -483,11 +501,13 @@ For each Open Question:
 **What they are:** Production requirements not discussed but standard for this system type
 
 **Resolution approach:**
+
 - **Engineering team discussion** on approach
 - **Industry best practices research** (how do similar systems handle this?)
 - **Document in:** Non-functional requirements, system design, deployment guide
 
 **Example gaps from this document:**
+
 - Error handling and retry logic → Standard microservices pattern (Open Question #11)
 - Storage limits and cleanup policy → Capacity planning doc (Open Question #4)
 - Rate limiting and throttling → API gateway configuration
@@ -501,11 +521,13 @@ For each Open Question:
 **What they are:** Assumed requirements for production systems (logging, monitoring, backups, etc.)
 
 **Resolution approach:**
+
 - **Reference architecture patterns** from similar projects
 - **Existing implementation review** (what do we already do for other modules?)
 - **Document in:** Operational runbook, deployment guide, monitoring setup
 
 **Example gaps from this document:**
+
 - Logging and monitoring → Adopt project-wide observability standards
 - Backup and disaster recovery → Use existing backup infrastructure
 - Configuration management → Standard environment variable approach
@@ -518,30 +540,35 @@ For each Open Question:
 ### Workflow: From TBDs to Implementation-Ready
 
 **Step 1: Audit Current State**
+
 - [ ] Count 🔴 Blockers in Open Questions (Currently: 4 blockers - #1, #3, #5, #6)
 - [ ] Count 🔴 TBD in Integration Contracts (Currently: 2 TBD - AI Module, Frontend)
 - [ ] Count 🔴 Blockers in Gaps Identified (Currently: 4 blockers)
 - [ ] Total blockers = sum of above
 
 **Step 2: Prioritize Blocker Resolution**
+
 - [ ] Create resolution task for each 🔴 Blocker
 - [ ] Assign DRI (Directly Responsible Individuals)
 - [ ] Set deadlines (Phase 0 completion target)
 - [ ] Track in project management tool
 
 **Step 3: Execute Resolution**
+
 - [ ] Hold design sessions, stakeholder meetings, research spikes
 - [ ] Document all decisions with rationale
 - [ ] Create integration contracts, schemas, design docs
 - [ ] Update this document as items resolve
 
 **Step 4: Validate Readiness**
+
 - [ ] All MVP-critical 🔴 Blockers → ✅ Resolved
 - [ ] All Integration Contracts → ✓ Defined (or documented workaround)
 - [ ] All ⚠️ Unclear MVP Features → ✓ Confirmed or 🟡 Post-MVP
 - [ ] Team consensus: "We can start implementation"
 
 **Step 5: Handoff to Implementation**
+
 - [ ] Mark document status: "Ready for Implementation"
 - [ ] Reference in Implementation Guide (Document 2)
 - [ ] Begin Phase 0: Foundation & Learning
@@ -553,15 +580,18 @@ For each Open Question:
 **Starting State (from this document):**
 
 **Open Question #1:** What is exact schema for AI-generated articles?
+
 - **Status:** 🔴 Blocker
 - **Who:** AI module owner
 - **Context:** "markdown file" mentioned, structure undefined
 
 **Integration Contract - AI Module:**
+
 - **Status:** 🔴 TBD
 - **Notes:** Format vague, schema undefined
 
 **Gap - AI Article Schema:**
+
 - **Category:** 🔴 Blocker
 - **Description:** Cannot parse/template articles without schema
 
@@ -570,16 +600,21 @@ For each Open Question:
 **Resolution Process:**
 
 1️⃣ **Identify DRI:** AI module owner (Alice)
+
 2️⃣ **Schedule meeting:** Grig + Alice design session
+
 3️⃣ **Design session output:**
+
    - AI provides markdown files with frontmatter metadata
    - Schema defined: `{ article_id, title, content_markdown, summary, url, tags[], created_at, image_url? }`
    - Contract documented: `docs/integrations/ai-article-schema.json`
 4️⃣ **Update this document:**
+
    - Open Question #1: ✅ Resolved (reference: ai-article-schema.json)
    - Integration Contract - AI Module: ✓ Defined (schema documented)
    - Gap removed from Blockers section
 5️⃣ **Implementation Guide updated:**
+
    - Phase 1 blocker removed
    - Task P1.2 updated with schema reference
 
@@ -597,6 +632,7 @@ For each Open Question:
 **Gaps Identified - Blockers:** 3 remaining ← was 4
 
 **Implementation Guide - Phase 1:**
+
 - ✅ Can proceed (blocker resolved)
 - Task P1.2 now references ai-article-schema.json
 
@@ -605,6 +641,7 @@ For each Open Question:
 ### Quick Reference: Resolution Checklist
 
 **For each 🔴 TBD Integration Contract:**
+
 - [ ] Review conversation context (Known Structure column, Open Questions)
 - [ ] Identify who can define schema (module owner)
 - [ ] Extract any discussed structure (don't ignore partial info!)
@@ -613,6 +650,7 @@ For each Open Question:
 - [ ] Update Integration Contracts table: 🔴 → ✓
 
 **For each 🔴 Blocker Open Question:**
+
 - [ ] Check "Who Can Answer"
 - [ ] Understand "Context from Conversation"
 - [ ] Determine resolution type (meeting, research, design)
@@ -621,6 +659,7 @@ For each Open Question:
 - [ ] Mark question as ✅ Resolved
 
 **For each ⚠️ Unclear MVP Feature:**
+
 - [ ] Schedule product/stakeholder clarification
 - [ ] Get explicit in/out decision
 - [ ] Update MVP Features table: ⚠️ → ✓ MVP or 🟡 Post-MVP
@@ -639,6 +678,7 @@ For each Open Question:
 5. **Synthesis Stage:** Human validation complete, team consensus documented
 
 **Deliverables when complete:**
+
 - This document (updated with resolutions)
 - Integration contract docs (one per integration)
 - Technical design docs (for architectural decisions)
