@@ -1,7 +1,7 @@
 # Documentation Audit: Knowledge Graph Lab Team Documentation
-**Date**: October 6, 2025
-**Auditor**: Documentation Review Specialist
-**Scope**: `/docs` directory only (team-facing documentation)
+- **Date**: October 6, 2025
+- **Auditor**: Documentation Review Specialist
+- **Scope**: `/docs` directory only (team-facing documentation)
 
 ---
 
@@ -23,6 +23,7 @@ A new team member following the official entry points will be told to complete P
 **Problem**: Every onboarding path directs users to Phase 1 work, but Phase 1 is complete and Phase 2 is current.
 
 **Evidence**:
+
 - `docs/README.md:24` → Points to `team/README.md` for "development"
 - `docs/team/README.md:15-18` → Table directs ALL roles to `02-phase-1-research/02b-phase-1-research-assignment.md`
 - `docs/team/onboarding.md:19` → Tells new members to open Phase 1 research overview
@@ -30,13 +31,16 @@ A new team member following the official entry points will be told to complete P
 - `docs/team/README.md:40-42` → "Your Next Steps" section lists Phase 1 as the active phase
 
 **Impact**:
+
 - **100% of new team members will be misdirected** to complete work that's already done
 - Wastes hours before someone realizes the documentation is outdated
 - Creates confusion about project status and timeline
 - Undermines trust in documentation accuracy
 
 **Fix**:
+
 Update ALL entry points to reflect current phase:
+
 - Change "Module Assignment Table" in `team/README.md` to point to Phase 2 assignments (`03-phase-2-prd+plan/03b-phase-2-prd-assignment.md`)
 - Update onboarding checklist to Phase 2 tasks
 - Add a "Current Phase" banner at the top of `team/README.md` that updates as phases progress
@@ -48,7 +52,9 @@ Update ALL entry points to reflect current phase:
 **Problem**: PRDs and deliverables have three different homes with no explanation of which is authoritative or how they relate.
 
 **Evidence**:
+
 Three locations exist for the same content:
+
 1. **`docs/modules/[module]/PRD.md`** - Contains actual PRDs with technical specs
 2. **`docs/team/module-assignments/[module]/deliverables/phase-2-planning/`** - Where instructions say to submit
 3. **`.dev/peermesh-canvases/`** - Referenced in PRD.md as "authoritative conceptual PRDs" (outside /docs)
@@ -64,12 +70,14 @@ But `docs/team/project-plan/phase-2-deliverables.md:140` says:
 ```
 
 **Impact**:
+
 - Team members don't know where to submit work (3 conflicting locations)
 - Reviewers don't know where to find latest work
 - Risk of duplicate/conflicting versions
 - Wasted time resolving "which file is correct?"
 
 **Fix**:
+
 1. **Pick ONE authoritative location**: Recommend `docs/modules/[module]/` as the single source of truth
 2. **Remove or redirect other locations**:
    - Make `deliverables/` directories simple submission checkpoints with symlinks to canonical files
@@ -83,6 +91,7 @@ But `docs/team/project-plan/phase-2-deliverables.md:140` says:
 **Problem**: Files are named 02a, 02b, 02c, 03a, 03b, 03c with no legend explaining the pattern.
 
 **Evidence**:
+
 From `docs/team/README.md:47-56`:
 ```markdown
 Each module directory contains:
@@ -98,6 +107,7 @@ Each module directory contains:
 ```
 
 After reading for 10+ minutes, the pattern becomes clear:
+
 - `0Xa` = Overview/Introduction
 - `0Xb` = Assignment/Tasks
 - `0Xc` = Advanced/Optional Deep Dive
@@ -105,12 +115,14 @@ After reading for 10+ minutes, the pattern becomes clear:
 But this is **never stated explicitly anywhere**.
 
 **Impact**:
+
 - New team members waste time figuring out which file to open
 - Leads to opening wrong files first (02a when they need 02b)
 - Creates unnecessary cognitive load
 - Feels like insider knowledge vs accessible documentation
 
 **Fix**:
+
 Add a "File Naming Convention" section to `team/README.md`:
 ```markdown
 ## File Naming Convention
@@ -129,17 +141,20 @@ Module assignment files follow this pattern:
 **Problem**: Different guidance documents point to different starting files for the same task.
 
 **Evidence**:
+
 - `docs/team/README.md:15` (Assignment Table) → Points to `02b-phase-1-research-assignment.md`
 - `docs/team/onboarding.md:19` (Day 1 Checklist) → Points to `02a-phase-1-research-overview.md`
 
 Both are for "Phase 1 research" but recommend different entry points.
 
 **Impact**:
+
 - Confusion about which file to open first
 - Some team members miss key information depending on which path they follow
 - Inconsistent onboarding experience across team
 
 **Fix**:
+
 1. Standardize entry points: Always start with overview (02a), then assignment (02b)
 2. Update all references to follow this sequence
 3. Add directional links within docs: "After reading this overview, proceed to [02b-assignment.md]"
@@ -150,16 +165,19 @@ Both are for "Phase 1 research" but recommend different entry points.
 **Problem**: No visual indicator of current phase or completion status across the project.
 
 **Evidence**:
+
 - `docs/team/project-plan/overview.md` lists all 5 phases equally with no "YOU ARE HERE" marker
 - `docs/team/README.md` doesn't show current phase
 - Phase deliverable files don't indicate if they're active, complete, or future
 
 **Impact**:
+
 - Cannot quickly determine project status
 - New members don't know if old docs are historical or current
 - No way to tell if a phase's documentation is aspirational or actionable
 
 **Fix**:
+
 Add phase indicators:
 ```markdown
 # Team Start Here
@@ -187,23 +205,27 @@ docs/modules/ai-development/
 ```
 
 No documentation explains:
+
 - What's the difference between a "PRD" and a "Spec"?
 - Which should team members read first?
 - Which is authoritative?
 - Do they serve different purposes or are they drafts of the same thing?
 
 **Impact**:
+
 - Confusion about which document to follow
 - Risk of outdated information if only one is updated
 - Wasted time reading duplicate content
 - Unclear which document to submit for Phase 2
 
 **Fix**:
+
 1. **Add a README** in `docs/modules/` explaining:
    ```markdown
    # Module Documentation Structure
 
    Each module contains:
+
    - **PRD.md** - Product Requirements Document (created in Phase 2, defines WHAT to build)
    - **[Module]-Spec.md** - Technical Specification (created in Phase 3, defines HOW to build)
 
@@ -223,6 +245,7 @@ docs/team/module-assignments/publishing-tools/deliverables/phase-1-research/ai-m
 That's a 7-level deep path!
 
 File count by type:
+
 - Module assignment files: 4 modules × 10 files each = 40 files
 - Deliverable directories: 4 modules × 5 phases × 1 README = 20 files
 - User journey docs: 20+ files
@@ -231,12 +254,14 @@ File count by type:
 - **Total: 100+ markdown files**
 
 **Impact**:
+
 - Overwhelming file tree in editors
 - Difficult to find specific documents
 - Many files are empty templates (just READMEs)
 - Can't see the forest for the trees
 
 **Fix**:
+
 1. **Consolidate empty templates**: Remove empty deliverable READMEs until needed
 2. **Create navigation index**: Add `docs/team/FILE-INDEX.md` listing all key files by purpose
 3. **Flatten structure where possible**: Move user journeys to separate repo or archive
@@ -247,8 +272,8 @@ File count by type:
 ## Quick Wins (Immediate Improvements)
 
 ### 1. Add "Current Phase" Banner
-**Effort**: 10 minutes
-**Impact**: High
+- **Effort**: 10 minutes
+- **Impact**: High
 
 Add to top of `docs/team/README.md`:
 ```markdown
@@ -262,8 +287,8 @@ Add to top of `docs/team/README.md`:
 ```
 
 ### 2. Fix Module Assignment Table
-**Effort**: 5 minutes
-**Impact**: Critical
+- **Effort**: 5 minutes
+- **Impact**: Critical
 
 Change `docs/team/README.md:12-19` from Phase 1 links to:
 ```markdown
@@ -274,8 +299,8 @@ Change `docs/team/README.md:12-19` from Phase 1 links to:
 ```
 
 ### 3. Add File Naming Legend
-**Effort**: 15 minutes
-**Impact**: Medium
+- **Effort**: 15 minutes
+- **Impact**: Medium
 
 Add new section to `docs/team/README.md` after line 10:
 ```markdown
@@ -290,8 +315,8 @@ Assignment files follow this pattern:
 ```
 
 ### 4. Create Single-Source-of-Truth Table
-**Effort**: 20 minutes
-**Impact**: High
+- **Effort**: 20 minutes
+- **Impact**: High
 
 Add to `docs/team/README.md`:
 ```markdown
@@ -307,8 +332,8 @@ Add to `docs/team/README.md`:
 ```
 
 ### 5. Update Onboarding First Line
-**Effort**: 2 minutes
-**Impact**: High
+- **Effort**: 2 minutes
+- **Impact**: High
 
 Change `docs/team/onboarding.md:1-3` to:
 ```markdown
@@ -411,6 +436,7 @@ docs/team/module-assignments/*/deliverables/phase-X-*/README.md
 **Issue**: These are valuable but not needed for day-to-day development
 
 **Proposal**:
+
 - Move to separate `docs/research/` directory or external wiki
 - Keep single `user-journeys-summary.md` in design/
 - Link to full docs if needed
@@ -567,9 +593,9 @@ team/module-assignments/backend/02-phase-1-research/02b-assignment.md
     ↓ ❌ **DEAD END**: Phase 1 is complete!
 ```
 
-**Time to realize error**: 30-60 minutes
-**Frustration level**: High
-**Success rate**: 0%
+- **Time to realize error**: 30-60 minutes
+- **Frustration level**: High
+- **Success rate**: 0%
 
 ### Proposed Navigation Flow (Fixed)
 
@@ -586,9 +612,9 @@ docs/modules/backend/PRD.md
     ↓ ✅ Submit work here
 ```
 
-**Time to start work**: 5-10 minutes
-**Frustration level**: Low
-**Success rate**: 95%+
+- **Time to start work**: 5-10 minutes
+- **Frustration level**: Low
+- **Success rate**: 95%+
 
 ---
 
@@ -620,6 +646,7 @@ docs/modules/backend/PRD.md
 ### Issue: Broken Cross-References
 
 **Examples**:
+
 1. `docs/team/project-plan/phase-1-deliverables.md:94` says:
    ```
    Save to `/docs/team/module-assignments/[your-module]/deliverables/phase-1-research/`

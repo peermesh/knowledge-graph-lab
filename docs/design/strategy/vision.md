@@ -39,6 +39,7 @@ The system continuously monitors RSS feeds, APIs, websites, newsletters, and soc
 
 ### Understands Relationships Between Entities
 Using AI and graph databases, we map connections that humans miss. For example, a "Digital Arts Grant" might actually be perfect for gaming creators because:
+
 - The grant is offered by TechArts Foundation
 - TechArts Foundation partners with Twitch
 - Twitch featured 3 gaming creators who won this grant
@@ -59,6 +60,7 @@ Three converging factors make this the perfect moment:
 ### 1. LLMs Can Extract Structured Data from Unstructured Text
 
 Modern AI models can read a blog post about a grant program and extract:
+
 - Grant details and eligibility criteria
 - Specific creator requirements
 - Application deadlines
@@ -111,6 +113,7 @@ A typical creator's transformation:
 
 ### For the System
 Technical success metrics:
+
 - Processing 10,000+ sources daily
 - Maintaining 95% relevance rate for recommendations
 - Sub-2 second query response times
@@ -118,6 +121,7 @@ Technical success metrics:
 
 ### For the Project
 Research impact goals:
+
 - Becoming a comprehensive intelligence layer for the creator economy
 - Reducing time-to-opportunity discovery significantly
 - Improving creator success rates through better information access
@@ -126,6 +130,7 @@ Research impact goals:
 ## Next Steps
 
 Ready to dive deeper? Explore:
+
 - [Architecture](../system/architecture.md) - How the system works technically
 - [Success Metrics](success-metrics.md) - Detailed measurement criteria
 - [Team Start Here](../../team/README.md) - For team members building this vision

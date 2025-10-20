@@ -1,7 +1,9 @@
 # Context Intake Index - AI Module Discovery
 
 **Generated:** 2025-10-10
+
 **Method:** [x] Auto-discovery [ ] Manual [x] Hybrid
+
 **Status:** [x] Ready for distillation [ ] Needs review [ ] Incomplete
 
 ---
@@ -11,6 +13,7 @@
 This document indexes all context sources for AI Module discovery. Auto-discovery analyzed 100+ project files and identified 15 high-relevance sources across vision, requirements, technical, constraints, and decisions categories.
 
 **Scan Results:**
+
 - Files scanned: 100+
 - Relevant documents: 15 (high priority)
 - Categories covered: 5/5
@@ -22,8 +25,11 @@ This document indexes all context sources for AI Module discovery. Auto-discover
 
 ### Source 1: Project Vision Document
 **Path:** `docs/design/strategy/vision.md`
+
 **Relevance:** [x] Critical [ ] High [ ] Medium [ ] Low
+
 **Key Topics:** Creator economy intelligence, knowledge graphs, LLM-powered extraction, problem statement, market opportunity
+
 **Summary:** Comprehensive project vision explaining why Knowledge Graph Lab exists, the creator economy fragmentation problem, and how AI-powered knowledge graphs solve it. Includes user value propositions and market validation.
 
 **Content Preview:**
@@ -51,8 +57,11 @@ We're building an intelligent research system that:
 
 ### Source 2: System Overview & User Journeys
 **Path:** `docs/design/system/overview.md`
+
 **Relevance:** [x] Critical [ ] High [ ] Medium [ ] Low
+
 **Key Topics:** System architecture, 4 core modules, knowledge graphs explanation, user journeys (creators, researchers, consultants)
+
 **Summary:** Complete system overview explaining the 4-module architecture, how knowledge graphs work, and detailed user journeys showing how different personas interact with the platform. Critical for understanding AI module's role in the larger system.
 
 **Content Preview:**
@@ -67,6 +76,7 @@ Using Natural Language Processing (NLP), the module identifies important entitie
 ```
 
 **Include in distillation?** [x] Yes [ ] No [ ] Partial
+
 **If partial, specify:** Focus on Module 2 (Graph Construction) and Module 3 (Intelligence) sections, AI-related components
 
 ---
@@ -75,8 +85,11 @@ Using Natural Language Processing (NLP), the module identifies important entitie
 
 ### Source 1: AI Development Module Specification
 **Path:** `docs/modules/ai-development/AI-Development-Spec.md`
+
 **Relevance:** [x] Critical [ ] High [ ] Medium [ ] Low
+
 **Key Topics:** Entity extraction, relationship mapping, confidence scoring, prompt engineering, model management, data pipeline, news report generation, module boundaries, interfaces, success criteria, metrics
+
 **Summary:** PRIMARY specification document for AI module. Defines all core responsibilities: NER, relationship extraction, knowledge graph construction, confidence scoring (0-100 scale), multi-model management, data pipeline (chunking → extraction → validation), news report generation, and integration points with Backend, Frontend, and Publishing modules.
 
 **Content Preview:**
@@ -106,8 +119,11 @@ relationship mapping, and insight generation.
 
 ### Source 2: AI Module PRD (MVP Version)
 **Path:** `docs/modules/ai-development/PRD.md`
+
 **Relevance:** [x] High [ ] Medium [ ] Low
+
 **Key Topics:** Python/FastAPI implementation, mock-first approach, 3 core endpoints (extract, embed, summarize), Docker containerization, phased rollout, 100-hour timeline
+
 **Summary:** Implementation-focused PRD detailing MVP approach: start with mock responses to save API costs, then integrate real AI in Phase 2. Defines exact API endpoints, tech stack (Python 3.11, FastAPI, spaCy, OpenAI), and week-by-week implementation plan.
 
 **Content Preview:**
@@ -132,14 +148,18 @@ POST /api/summarize - Content summarization
 ```
 
 **Include in distillation?** [x] Yes [ ] No [ ] Partial
+
 **If partial, specify:** Exclude detailed week-by-week implementation schedule, focus on architecture and technical approach
 
 ---
 
 ### Source 3: AI Development Team Work Description
 **Path:** `docs/team/module-assignments/ai-development/01-work-description.md`
+
 **Relevance:** [x] High [ ] Medium [ ] Low
+
 **Key Topics:** Core responsibilities, module boundaries, coordination points, success metrics, research focus areas
+
 **Summary:** Team member onboarding document defining what AI team owns vs. doesn't own. Critical for understanding module boundaries: AI creates intelligence, Backend stores it, Frontend displays it, Publishing distributes it.
 
 **Content Preview:**
@@ -163,6 +183,7 @@ Build the intelligence layer that transforms raw information into actionable ins
 ```
 
 **Include in distillation?** [x] Yes [ ] No [ ] Partial
+
 **If partial, specify:** Focus on "Core AI Systems" and "Coordination Points" sections
 
 ---
@@ -171,8 +192,11 @@ Build the intelligence layer that transforms raw information into actionable ins
 
 ### Source 1: System Architecture Document
 **Path:** `docs/design/system/architecture.md`
+
 **Relevance:** [x] Critical [ ] High [ ] Medium [ ] Low
+
 **Key Topics:** Microservices architecture, 5 core services, event-driven communication, data flow pipeline, technology categories, resilience patterns
+
 **Summary:** Complete system architecture showing how AI Processing Service fits into larger system. Defines communication patterns (REST, GraphQL, event bus), data storage strategy (graph DB, vector DB, caching), and resilience patterns (circuit breakers, retries, health checks).
 
 **Content Preview:**
@@ -198,14 +222,18 @@ Event-driven architecture enables:
 ```
 
 **Include in distillation?** [x] Yes [ ] No [ ] Partial
+
 **If partial, specify:** Focus on AI Processing Service section and integration patterns
 
 ---
 
 ### Source 2: AI-Publishing Integration Specification
 **Path:** `docs/design/system/ai-publishing-integration.md`
+
 **Relevance:** [x] Critical [ ] High [ ] Medium [ ] Low
+
 **Key Topics:** News report generation, standalone article structure, metadata & tagging, Backend storage interface, Publishing query API, separation of concerns
+
 **Summary:** Detailed integration spec showing how AI module generates standalone news reports, Backend stores them with URLs, and Publishing module queries/distributes them. Includes complete JSON schemas, API contracts, and error handling patterns.
 
 **Content Preview:**
@@ -243,15 +271,19 @@ Event-driven architecture enables:
 
 ### Constraint 1: Performance & Accuracy Targets
 **Sources:** `docs/modules/ai-development/AI-Development-Spec.md` (lines 13-20, 256-294)
+
 **Category:** Quality Metrics
+
 **Details:**
 
 **Accuracy Requirements:**
+
 - Phase 3: Entity extraction 80% accuracy, $0.10/document
 - Phase 4: 90% entity accuracy, 80% relationship accuracy, $0.07/document
 - Phase 5: 95% entity accuracy, 85% relationship accuracy, $0.05/document, 1000 docs/hour
 
 **Confidence Scoring:**
+
 - 0-100 scale
 - Validation thresholds: 70 (medium), 85 (high)
 - Formula: (source_score * 0.3) + (context_score * 0.4) + (model_confidence * 0.3)
@@ -277,12 +309,17 @@ Event-driven architecture enables:
 
 ### Constraint 2: Timeline & Phasing
 **Sources:** `docs/modules/ai-development/PRD.md` (lines 8, 19-31, 72-107)
+
 **Category:** Project Timeline
+
 **Details:**
 
 **Total Effort:** 100 hours
+
 **Phase 1 (Weeks 1-6):** Mock implementation - no AI costs, testing infrastructure
+
 **Phase 2 (Weeks 7-10):** Real AI integration - OpenAI API, entity extraction
+
 **Phase 3+ (Weeks 11-12):** Demo prep, optimization, integration testing
 
 **Rationale:** Start with mocks to build and test infrastructure without API costs, then add real AI once architecture is validated.
@@ -308,16 +345,20 @@ Event-driven architecture enables:
 
 ### Constraint 3: Module Boundaries & Dependencies
 **Sources:** `docs/modules/ai-development/AI-Development-Spec.md` (lines 110-124), `docs/team/module-assignments/ai-development/01-work-description.md` (lines 49-63)
+
 **Category:** Scope & Responsibilities
+
 **Details:**
 
 **AI Module OWNS:**
+
 - Entity extraction and relationship mapping
 - Confidence scoring algorithms
 - AI/ML pipeline processing
 - Structured data generation
 
 **AI Module DOES NOT OWN:**
+
 - Data fetching (Backend responsibility)
 - Database storage (Backend responsibility)
 - User interface (Frontend responsibility)
@@ -347,15 +388,19 @@ Event-driven architecture enables:
 
 ### Constraint 4: Technology & Resource Limits
 **Sources:** `docs/modules/ai-development/AI-Development-Spec.md` (lines 226-233, 307-313)
+
 **Category:** Technical Constraints
+
 **Details:**
 
 **Model Selection:**
+
 - Multi-model strategy: GPT-4, Claude, Llama
 - Cost-performance tradeoffs required
 - Fine-tuning for domain-specific tasks
 
 **Resource Limits:**
+
 - Daily budget caps
 - Processing quotas
 - API rate limits
@@ -384,8 +429,11 @@ The system must:
 
 ### Decision 1: Tech Stack - Python/FastAPI
 **Sources:** `docs/modules/ai-development/PRD.md` (lines 32-39)
+
 **Decision:** Python 3.11 + FastAPI + spaCy + OpenAI API + Docker
+
 **Rationale:** FastAPI provides fast, modern async API development. Python has best AI/ML library ecosystem. Docker ensures consistent deployment.
+
 **Status:** [x] Firm [ ] Tentative [ ] Needs validation
 
 **Evidence:**
@@ -402,8 +450,11 @@ The system must:
 
 ### Decision 2: Mock-First Implementation Strategy
 **Sources:** `docs/modules/ai-development/PRD.md` (lines 10-11, 109-132)
+
 **Decision:** Build with mock responses first (Phase 1), add real AI later (Phase 2)
+
 **Rationale:** Saves API costs during development, allows infrastructure testing without AI dependency, enables parallel work by Backend team
+
 **Status:** [x] Firm [ ] Tentative [ ] Needs validation
 
 **Evidence:**
@@ -425,8 +476,11 @@ OpenAI integration for actual entity extraction
 
 ### Decision 3: Microservices Architecture
 **Sources:** `docs/design/system/architecture.md` (lines 5-40)
+
 **Decision:** Microservices architecture with 5 independent services including dedicated AI Processing Service
+
 **Rationale:** Enables parallel development, service isolation, independent scaling, resilience through loose coupling
+
 **Status:** [x] Firm [ ] Tentative [ ] Needs validation
 
 **Evidence:**
@@ -448,8 +502,11 @@ and maintainability:
 
 ### Decision 4: Event-Driven Communication
 **Sources:** `docs/design/system/architecture.md` (lines 88-107)
+
 **Decision:** Event bus (RabbitMQ) for inter-service communication with async processing
+
 **Rationale:** Loose coupling, retry mechanisms, audit trails, service resilience, asynchronous processing for better performance
+
 **Status:** [x] Firm [ ] Tentative [ ] Needs validation
 
 **Evidence:**
@@ -467,8 +524,11 @@ Services communicate through an event bus that enables:
 
 ### Decision 5: Separation of Concerns - AI generates, Backend stores, Publishing distributes
 **Sources:** `docs/design/system/ai-publishing-integration.md` (lines 115-133)
+
 **Decision:** Clean separation: AI generates standalone reports with URLs, Backend stores them, Publishing queries and distributes
+
 **Rationale:** Prevents tight coupling, enables independent scaling, clear responsibility boundaries, supports multiple distribution channels
+
 **Status:** [x] Firm [ ] Tentative [ ] Needs validation
 
 **Evidence:**
@@ -494,8 +554,11 @@ Services communicate through an event bus that enables:
 
 ### Decision 6: Multi-Model Strategy
 **Sources:** `docs/modules/ai-development/AI-Development-Spec.md` (lines 35-40), `docs/team/module-assignments/ai-development/01-work-description.md` (lines 176-180)
+
 **Decision:** Use multiple LLM providers (OpenAI, Anthropic, open models) with selection logic based on task requirements
+
 **Rationale:** Avoids vendor lock-in, enables cost optimization (use cheaper models for simple tasks), provides fallback options, allows A/B testing
+
 **Status:** [x] Firm [ ] Tentative [ ] Needs validation
 
 **Evidence:**
@@ -514,11 +577,15 @@ Services communicate through an event bus that enables:
 ## Auto-Discovery Summary
 
 **Scan Date:** 2025-10-10
+
 **Directories Scanned:** 4 (docs/, docs/design/, docs/modules/ai-development/, .dev/)
+
 **Files Analyzed:** 100+
+
 **Relevant Documents Identified:** 15 high-priority sources
 
 **Coverage by Category:**
+
 - [x] Vision & Strategy (2 sources - complete)
 - [x] Requirements (3 sources - complete)
 - [x] Technical Discussions (2 sources - complete)
@@ -526,15 +593,18 @@ Services communicate through an event bus that enables:
 - [x] Decisions Made (6 sources - complete)
 
 **Gaps Identified:**
+
 - [x] No gaps - comprehensive coverage achieved
 - Note: Additional phase-specific research documents exist but are lower priority for initial discovery
 
 **Contradictions Found:**
+
 - [ ] None identified - documentation is consistent across sources
 
 **Confidence Score:** 9/10
 
 **Notes:**
+
 - PRD marked as "non-canonical" but provides valuable MVP implementation detail
 - Extensive user journey documentation exists (61+ journeys) but not AI-module specific
 - Phase-specific team assignments available for deeper research context if needed
@@ -552,22 +622,27 @@ Services communicate through an event bus that enables:
 Files available in project (not copied to avoid duplication):
 
 **Vision:**
+
 - [x] docs/design/strategy/vision.md
 - [x] docs/design/system/overview.md
 
 **Requirements:**
+
 - [x] docs/modules/ai-development/AI-Development-Spec.md
 - [x] docs/modules/ai-development/PRD.md
 - [x] docs/team/module-assignments/ai-development/01-work-description.md
 
 **Technical:**
+
 - [x] docs/design/system/architecture.md
 - [x] docs/design/system/ai-publishing-integration.md
 
 **Constraints:**
+
 - [x] Documented inline above (extracted from specs)
 
 **Decisions:**
+
 - [x] Documented inline above (extracted from multiple sources)
 
 ---
@@ -597,18 +672,22 @@ Before proceeding to distillation (WO-0), verify:
 **Auto-Discovery Success:** The scan achieved comprehensive coverage with high confidence (9/10). All five content categories are well-represented with authoritative sources.
 
 **Primary Sources Identified:**
+
 1. AI-Development-Spec.md - The authoritative specification document
 2. vision.md - Complete project vision and problem statement
 3. architecture.md - System-level technical architecture
 
 **Recommended Distillation Priority:**
+
 1. Start with vision & constraints (sets context)
 2. Extract requirements from spec (defines what to build)
 3. Synthesize technical decisions (guides how to build)
 4. Document decisions made (establishes boundaries)
 
 **Context for Next Steps:**
+
 This intake provides sufficient context for creating accurate:
+
 - Component map (technology primitives)
 - Architecture diagram (Mermaid, ≤15 nodes)
 - Research briefs (criteria-based, no brand names in requirements)

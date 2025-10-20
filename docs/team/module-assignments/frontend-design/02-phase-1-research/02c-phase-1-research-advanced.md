@@ -5,11 +5,13 @@ Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-res
 ## When to Use This Document
 
 **Use this when you need**:
+
 - Advanced implementation guidance beyond Phase 1 basics
 - Enterprise-scale solutions for complex requirements
 - Deep technical research on specific frontend challenges
 
 **Skip this if you're**:
+
 - Just starting Phase 1 (focus on 02a-phase-1-research-overview.md first)
 - Looking for basic implementation patterns
 - Need immediate development guidance
@@ -27,17 +29,20 @@ Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-res
 ### Performance Research Areas
 
 **Response Time Optimization**
+
 - Study Linear's <50ms response architecture and event handling patterns
 - Research RAIL performance model implementation (Response, Animation, Idle, Load)
 - Analyze 60fps scroll maintenance techniques and optimization strategies
 
 **Rendering & Bundle Optimization**
+
 - Study Virtual DOM alternatives (Svelte, SolidJS compilation strategies)
 - Research bundle splitting strategies for 100+ routes with examples
 - Analyze React reconciliation costs and optimization opportunities
 - Study infinite scroll implementation patterns for 1M+ items
 
 **Advanced Performance Techniques**
+
 - Research Netflix's predictive prefetching algorithms and implementation
 - Study WebAssembly use cases for compute-intensive frontend tasks
 - Research edge computing strategies with Cloudflare Workers
@@ -46,6 +51,7 @@ Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-res
 - Research GPU acceleration opportunities with WebGL/WebGPU
 
 **Optimization & Monitoring**
+
 - Study third-party script impact on Core Web Vitals
 - Research optimization techniques for low-end devices and slow networks
 - Compare localStorage vs IndexedDB performance characteristics
@@ -156,23 +162,27 @@ Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-res
 ### Deep Collaboration Research Areas
 
 **Concurrent User Management**
+
 - Study Figma's architecture for handling 100+ concurrent cursors without lag
 - Research presence system implementation: cursors, selections, avatars
 - Analyze "follow mode" implementation patterns like Figma's
 
 **Conflict Resolution & Sync**
+
 - Research Operational Transformation vs CRDTs trade-offs with implementation examples
 - Study conflict resolution patterns that avoid user intervention
 - Research collaborative undo/redo implementation strategies
 - Analyze event sourcing patterns for collaboration systems
 
 **Network & Performance**
+
 - Study WebRTC limits and optimization for peer-to-peer collaboration
 - Research network partition handling in collaborative applications
 - Analyze storage costs and optimization for maintaining full collaboration history
 - Study browser-based collaboration limits and workarounds
 
 **Advanced Integration**
+
 - Research "local-first" architecture principles (Ink & Switch research)
 - Study game-inspired real-time collaboration patterns
 - Research voice/video integration patterns in collaborative tools
@@ -223,24 +233,28 @@ Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-res
 ### Testing Research Areas
 
 **Enterprise Quality Strategies**
+
 - Study Google's quality maintenance strategies with thousands of engineers
 - Research visual regression testing tools and implementation strategies
 - Analyze testing value across different levels (unit, integration, e2e)
 - Study contract testing patterns for frontend-backend integration
 
 **Complex Feature Testing**
+
 - Research testing strategies for complex animations and interactions
 - Study property-based testing applications for UI components
 - Research patterns for testing AI-generated UI components
 - Study accessibility testing automation strategies and tools
 
 **Scale & Performance Testing**
+
 - Research Netflix's cross-device testing strategies for thousands of devices
 - Study performance testing integration in CI/CD pipelines
 - Research chaos engineering implementation for frontend systems
 - Analyze snapshot testing benefits and controversies
 
 **Specialized Testing Areas**
+
 - Study error boundary testing strategies and patterns
 - Research testing patterns for real-time collaborative features
 - Analyze optimal balance of unit vs integration tests for different project types
@@ -248,11 +262,13 @@ Back to Phase 1 Research: see [02a-phase-1-research-overview.md](02a-phase-1-res
 ### Developer Experience Research Areas
 
 **Deployment & Development Speed**
+
 - Study Vercel's instant preview deployment architecture
 - Research hot module replacement implementation techniques
 - Research time-travel debugging implementation patterns
 
 **Error Handling & Debugging**
+
 - Study patterns for creating effective error messages
 - Research debugging tool ergonomics and user experience
 - Study progressive disclosure patterns in DevTools

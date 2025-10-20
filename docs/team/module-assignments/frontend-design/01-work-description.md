@@ -1,8 +1,8 @@
 # Frontend Design
 
-**Role**: Frontend Design Team Member  
-**Project**: Knowledge Graph Lab  
-**Timeline**: 5 phases (flexible based on progress)
+- **Role**: Frontend Design Team Member  
+- **Project**: Knowledge Graph Lab  
+- **Timeline**: 5 phases (flexible based on progress)
 
 ## 🎯 Your Mission
 
@@ -69,12 +69,14 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 - **Performance Needs**: Define acceptable latency for different operations
 
 **What You Need:**
+
 - REST API documentation
 - Authentication endpoints
 - WebSocket events specification
 - CORS configuration
 
 **What You Provide:**
+
 - UI mockups with data requirements
 - Performance benchmarks
 - User flow diagrams
@@ -88,12 +90,14 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 - **Confidence Indicators**: Display uncertainty/confidence scores
 
 **What You Need:**
+
 - Result data structures
 - Graph data formats
 - Streaming protocols
 - Confidence metrics
 
 **What You Provide:**
+
 - Visualization requirements
 - Interaction patterns
 - Feedback mechanisms
@@ -107,12 +111,14 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 - **Subscriber Management**: UI for audience segments
 
 **What You Need:**
+
 - Template formats
 - Channel specifications
 - Analytics data structure
 - Subscriber schemas
 
 **What You Provide:**
+
 - Preview components
 - Settings interfaces
 - Dashboard layouts
@@ -178,24 +184,28 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 ## 📚 Learning Path
 
 **Graph Visualization:**
+
 - Start with D3.js basics
 - Learn force-directed layouts
 - Study interaction patterns
 - Explore WebGL options (three.js)
 
 **React Advanced Patterns:**
+
 - Custom hooks
 - Render props
 - Compound components
 - Performance optimization
 
 **Design Systems:**
+
 - Component composition
 - Theme architecture
 - Design tokens
 - Documentation practices
 
 **Accessibility:**
+
 - Screen reader testing
 - Keyboard navigation
 - Color contrast
@@ -221,6 +231,7 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 ## 🎓 Your Growth Opportunity
 
 This role offers deep experience in:
+
 - Advanced data visualization
 - Complex state management
 - Performance optimization

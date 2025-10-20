@@ -1,59 +1,108 @@
 ---
 marp: true
+
 theme: default
+
 paginate: true
+
 backgroundColor: #fff
+
 backgroundImage: url('../../../images/slidesbg.jpg')
+
 size: 16:9
 style: |
   @keyframes shimmer {
+
     0%, 100% { background-position: 0% center; }
+
     50% { background-position: 100% center; }
+
   }
 
   .peermesh-gradient {
+
     background: linear-gradient(to right, #facc15, #ff4e00, #eab308, #ff4e00, #facc15);
+
     background-size: 300% 100%;
+
     -webkit-background-clip: text;
+
     background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
     animation: shimmer 25s linear infinite;
+
   }
 
   section {
+
     font-size: 24px;
+
   }
+
   h1 {
+
     color: #1e40af;
+
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
   }
+
   h2 {
+
     color: #2563eb;
+
     text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.12);
+
   }
+
   h3 {
+
     color: #3b82f6;
+
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+
   }
+
   h4 {
+
     color: #60a5fa;
+
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+
   }
+
   h5 {
+
     color: #60a5fa;
+
     text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.06);
+
   }
+
   h6 {
+
     color: #60a5fa;
+
     text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.05);
+
   }
+
   img {
+
     max-width: 100%;
+
     max-height: 500px;
+
     object-fit: contain;
+
   }
+
   section::after {
+
     color: #000;
+
   }
 ---
 
@@ -127,6 +176,7 @@ Each person shares:
 **What this module does**: Transforms unstructured text into structured knowledge through entity extraction, relationship mapping, and insight generation.
 
 **Update (3-5 min):**
+
 - Completed since last standup
 - Currently working on
 - What's next
@@ -139,6 +189,7 @@ Each person shares:
 **What this module does**: Foundational systems including databases, APIs, and deployment infrastructure that support all other modules.
 
 **Update (3-5 min):**
+
 - Completed since last standup
 - Currently working on
 - What's next
@@ -151,6 +202,7 @@ Each person shares:
 **What this module does**: User interface including UI components, knowledge graph visualizations, and user experiences.
 
 **Update (3-5 min):**
+
 - Completed since last standup
 - Currently working on
 - What's next
@@ -163,6 +215,7 @@ Each person shares:
 **What this module does**: Delivers insights through multiple channels including email newsletters, Slack/Discord, webhooks, and personalization.
 
 **Update (3-5 min):**
+
 - Completed since last standup
 - Currently working on
 - What's next

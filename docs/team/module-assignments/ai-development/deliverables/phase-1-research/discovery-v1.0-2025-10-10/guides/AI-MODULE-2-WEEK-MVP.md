@@ -1,8 +1,11 @@
 # AI Module - 2 Week MVP Plan
 
 **Developer:** 1 person
+
 **Timeline:** 10 working days (80 hours)
+
 **Goal:** Self-contained Docker module with working entity extraction
+
 **Deliverable:** Docker container that accepts text and returns entities
 
 ---
@@ -10,6 +13,7 @@
 # What This Is
 
 A **self-contained AI module** that:
+
 - Runs in a single Docker container
 - Accepts HTTP requests (text in, entities out)
 - Uses real entity extraction (not mocks)
@@ -25,6 +29,7 @@ A **self-contained AI module** that:
 ## In Scope (2 Weeks)
 
 **Core Functionality:**
+
 - FastAPI web server
 - Entity extraction endpoint (`POST /extract`)
 - Basic entity types: organizations, people, amounts, dates
@@ -34,6 +39,7 @@ A **self-contained AI module** that:
 - Health check endpoint
 
 **Technology Stack:**
+
 - Python 3.11
 - FastAPI
 - spaCy (local NER - no API costs)
@@ -41,6 +47,7 @@ A **self-contained AI module** that:
 - Basic logging (stdout)
 
 **Testing:**
+
 - Manual testing with curl/Postman
 - 10-20 test documents
 - Verify entity extraction works
@@ -48,6 +55,7 @@ A **self-contained AI module** that:
 ## Out of Scope (Not in 2 Weeks)
 
 **Excluded:**
+
 - ❌ Vector databases
 - ❌ Graph databases
 - ❌ RabbitMQ / event bus
@@ -169,10 +177,12 @@ A **self-contained AI module** that:
 
 ## Decision 1: Python + FastAPI
 **Why:** Fast to build, FastAPI auto-generates docs, async support
+
 **Alternative:** Could use Flask, but FastAPI is modern and better
 
 ## Decision 2: spaCy Only (No OpenAI)
 **Why:**
+
 - No API costs (free)
 - Fast inference (<100ms)
 - Works offline
@@ -182,6 +192,7 @@ A **self-contained AI module** that:
 
 ## Decision 3: Rule-Based Confidence
 **Why:** Simple formula based on entity type and text patterns
+
 **Formula:**
 ```python
 confidence = base_score  # 90 for dates, 80 for orgs, 70 for money
@@ -194,6 +205,7 @@ return min(100, max(0, confidence))
 
 ## Decision 4: Standalone Docker Container
 **Why:**
+
 - No external dependencies
 - Easy to test
 - Easy to deploy anywhere
@@ -300,6 +312,7 @@ ai-module/
 # Success Criteria
 
 **Must Have:**
+
 - ✅ Docker container builds and runs
 - ✅ `/extract` endpoint works
 - ✅ Extracts: organizations, people, money, dates
@@ -309,12 +322,14 @@ ai-module/
 - ✅ Complete documentation
 
 **Nice to Have (if time):**
+
 - ⚠️ Handle multiple languages
 - ⚠️ More entity types (locations, events)
 - ⚠️ Better confidence scoring
 - ⚠️ Batch processing endpoint
 
 **Explicitly NOT Required:**
+
 - ❌ 90%+ accuracy (that's Phase 2+)
 - ❌ Integration with other modules
 - ❌ Production monitoring
@@ -349,8 +364,11 @@ ai-module/
 
 ### 1. Entity Extraction
 **Input:** Text (string, max 10,000 characters)
+
 **Output:** List of entities with type, confidence, position
+
 **Supported Types:**
+
 - `organization` (YouTube, Google, Meta)
 - `person` (MrBeast, creators)
 - `money` ($100M, €50K)
@@ -360,25 +378,34 @@ ai-module/
 
 ### 2. Confidence Scoring
 **Method:** Rule-based
+
 **Score Range:** 0-100
+
 **Factors:**
+
 - Entity type (dates = high, orgs = medium)
 - Capitalization (proper nouns = higher)
 - Common entity list (YouTube, Google = higher)
 
 ### 3. API Response
 **Format:** JSON
+
 **Max Response Time:** 2 seconds
+
 **Include:** Entity list, stats, processing time
 
 ### 4. Error Handling
 **Invalid Input:** Return 400 with error message
+
 **Processing Error:** Return 500 with error details
+
 **Timeout:** Return 504 if processing takes >5 seconds
 
 ### 5. Health Check
 **Endpoint:** GET /health
+
 **Purpose:** Verify service is running
+
 **Response:** Status, version, model name
 
 ## Non-Functional Requirements
@@ -429,6 +456,7 @@ ai-module/
 ## Manual Testing (Primary)
 
 **Test Documents (10-20 examples):**
+
 1. "YouTube announced a $100M creator fund."
 2. "MrBeast partnered with Google in January 2024."
 3. "TikTok launched a €50M program for European creators."
@@ -452,6 +480,7 @@ curl http://localhost:8002/health
 ```
 
 **Validation:**
+
 - Does it extract YouTube? ✓
 - Does it extract $100M? ✓
 - Are confidence scores reasonable? ✓
@@ -542,6 +571,7 @@ docker-compose up
 
 ## Risk 2: Takes Longer Than 2 Weeks
 **Mitigation:** Cut scope further:
+
 - Remove tests
 - Remove documentation polish
 - Simplify confidence scoring
@@ -558,12 +588,14 @@ docker-compose up
 # What Happens After 2 Weeks
 
 **You'll Have:**
+
 - Working Docker container
 - Basic entity extraction
 - Demonstrable MVP
 - Foundation for future work
 
 **Next Steps (Post-MVP):**
+
 - Add OpenAI integration for higher accuracy (Phase 2)
 - Add relationship extraction
 - Integrate with vector database
@@ -609,4 +641,5 @@ curl -X POST http://localhost:8002/extract \
 This is the realistic plan. The full discovery report (`AI-MODULE-DISCOVERY-REPORT.md`) describes the eventual vision, but is NOT achievable in 2 weeks by one developer.
 
 **Use this document** for the 2-week MVP.
+
 **Reference the full report** for understanding the eventual architecture.

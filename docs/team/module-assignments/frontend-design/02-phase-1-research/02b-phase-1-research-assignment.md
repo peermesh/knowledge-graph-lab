@@ -14,6 +14,7 @@ You'll be creating the user interface and experience for the Knowledge Graph Lab
 Your research should explore the full spectrum of frontend development - from basic React components to how Linear achieves sub-50ms interactions, how Figma handles real-time collaboration with 100+ concurrent users, and how Obsidian renders graphs with 10,000+ nodes. Understanding enterprise-scale implementations will inform your architectural decisions, even if your initial implementation is simpler.
 
 **Research Approach:**
+
 Document the full spectrum of solutions - from basic implementations to enterprise-scale systems. Understanding how companies like Linear, Figma, and Obsidian handle these challenges will inform your architectural decisions, even if your initial implementation is simpler.
 
 ### \ud83d\udcda Research Process
@@ -890,6 +891,7 @@ Evaluate for data-heavy applications:
 ## Research Summary Focus
 
 As you research, create:
+
 1. **A component hierarchy diagram** for the main views
 2. **Mockups or wireframes** of key interfaces  
 3. **Performance benchmarks** for graph libraries

@@ -13,14 +13,17 @@ This guide helps you set up Git, create your personal branch, and submit your wo
 ## Quick Start (Pick your OS)
 
 **macOS:**
+
 * Install **GitHub Desktop** (includes Git) and **GitHub CLI** (for easy authentication)
 * Use Terminal for all commands
 
 **Windows:**
+
 * Install **Git for Windows** (includes Git Bash) and **GitHub CLI**
 * Use **Git Bash** for all commands
 
 **Linux (Debian/Ubuntu):**
+
 * `sudo apt install git` and install **GitHub CLI**
 * Use your normal shell
 

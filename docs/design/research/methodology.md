@@ -30,11 +30,13 @@ Follow this workflow for any research task:
 Apply this framework using these operational templates:
 
 **Deep Research Prompt Generator**
+
 - Generate comprehensive research prompts for any domain using structured templates
 - Include specific questions about user workflows, pain points, and tool usage
 - Structure questions to get actionable insights from AI tools
 
 **Summarization Guidance**
+
 - Consolidate research findings from multiple sources into a single markdown document
 - Focus on clarity and decision-readiness over elaborate frameworks
 - Use confidence levels to distinguish validated findings from speculation

@@ -1,10 +1,11 @@
 # AI Development Module - Comprehensive Product Requirements Document
 
-**Module Name**: AI Development Module
-**Version**: 0.1.0
-**Owner(s)**: AI Module Specialist, Backend Architecture Team, Frontend Design Team
+- **Module Name**: AI Development Module
+- **Version**: 0.1.0
+- **Owner(s)**: AI Module Specialist, Backend Architecture Team, Frontend Design Team
 
 **Based on Current Research Sources:**
+
 - R3-ai-module-spec-status.md (Primary AI module research)
 - R1-backend-module-spec-status.md (Backend integration context)
 - R9-backend-ai-integration.md (AI-Backend integration mechanisms)
@@ -16,17 +17,20 @@
 ## Section 1: Problem Statement
 
 **Current Situation:**
+
 The system currently processes raw documents from multiple sources (news articles, research papers, social posts) but lacks the ability to extract structured knowledge from unstructured text. Content analysts manually read through thousands of documents to identify key entities (organizations, people, funding amounts, dates, locations) and their relationships, spending 4-6 hours daily on this process. This manual approach is time-consuming, error-prone, and scales poorly as document volume increases.
 
 The publishing module can distribute content but lacks contextual understanding for intelligent personalization, resulting in generic content delivery that doesn't leverage entity relationships or content insights. The frontend can display basic search results but cannot provide sophisticated knowledge graph visualizations or relationship-based recommendations, limiting users' ability to discover relevant information and understand complex relationships.
 
 **Who is Affected:**
+
 - **Primary users:** 20-30 content analysts and researchers processing 500-1000 documents weekly across multiple source types
 - **Secondary users:** 8-12 publishing team members needing entity data for content personalization and recommendation systems
 - **Tertiary users:** 500-2000 frontend users performing 10,000-50,000 entity/relationship queries monthly for competitive intelligence and research
 - **Scale expectations:** Process 100-500 documents daily through entity extraction pipeline, generate 10,000-50,000 entities and relationships monthly, support 100-500 concurrent knowledge graph queries
 
 **Goals:**
+
 - Extract 5 core entity types (organizations, people, funding amounts, dates, locations) with 85% precision and 80% recall across document types
 - Reduce manual entity identification time from 4-6 hours to under 30 minutes daily per analyst (75% time savings)
 - Process 100 documents per hour through the entity extraction pipeline (1000 documents daily capacity)
@@ -34,6 +38,7 @@ The publishing module can distribute content but lacks contextual understanding 
 - Achieve $0.10 average cost per document processed, supporting 500 documents daily within operational budget constraints
 
 **Business Value:**
+
 Implementing the AI module will transform unstructured text into structured knowledge, enabling intelligent content personalization, sophisticated knowledge discovery, and automated relationship mapping. This will reduce manual research time by 75%, improve content relevance for users, and provide competitive intelligence capabilities that currently require extensive manual analysis.
 
 ---
@@ -41,6 +46,7 @@ Implementing the AI module will transform unstructured text into structured know
 ## Section 2: Goals and Success Metrics
 
 **Primary Goals:**
+
 1. **Entity Extraction Excellence:** Achieve 85% precision and 80% recall for 5 core entity types across diverse document sources
 2. **Processing Efficiency:** Process 100 documents per hour with 95% success rate while maintaining quality thresholds
 3. **Cost Optimization:** Maintain $0.10 average cost per document processed within daily budget constraints
@@ -50,30 +56,35 @@ Implementing the AI module will transform unstructured text into structured know
 **Success Metrics:**
 
 **Accuracy Metrics:**
+
 - Entity extraction precision: ≥85% across 5 core entity types (organizations, people, funding amounts, dates, locations)
 - Entity extraction recall: ≥80% across document types (news articles, research papers, social posts)
 - Relationship identification precision: ≥80% for core relationship types (fund, partner, acquire, compete, collaborate)
 - Confidence scoring accuracy: 90% of high-confidence (>85) extractions validated as correct
 
 **Performance Metrics:**
+
 - Document processing throughput: 100 documents/hour sustained, 200 documents/hour peak capacity
 - Entity extraction latency: <5 seconds (p95), <15 seconds (p99) for standard documents
 - Knowledge graph query response time: <2 seconds (p95), <5 seconds (p99) for relationship queries
 - API availability: 99.5% uptime for entity extraction, 99.9% uptime for knowledge graph queries
 
 **Efficiency Metrics:**
+
 - Manual processing time reduction: 75% decrease in analyst hours spent on entity identification
 - Cost per document: ≤$0.10 average across processing volume
 - Resource utilization: <8GB memory per processing worker, <70% CPU average across cluster
 - Storage efficiency: <100GB monthly growth for entity/relationship data
 
 **Quality Metrics:**
+
 - User satisfaction: 90% of analysts report improved productivity and accuracy
 - Content personalization: 25% improvement in content relevance scores from publishing module
 - Knowledge discovery: 50% increase in successful entity relationship discoveries
 - Error rate: <5% processing failures requiring manual intervention
 
 **Scale Metrics:**
+
 - Concurrent users: Support 500 concurrent knowledge graph queries
 - Data volume: Handle 1 million entities and 5 million relationships in knowledge graph
 - Processing capacity: 100 concurrent document processing jobs
@@ -84,11 +95,15 @@ Implementing the AI module will transform unstructured text into structured know
 ## Section 3: User Stories and Use Cases
 
 **US-1: Entity Extraction from News Articles**
+
 As a content analyst processing daily news feeds for investment insights,
+
 I need to upload news articles and receive extracted entities with confidence scores,
+
 So that I can quickly identify investment opportunities and competitive landscape changes.
 
 **Acceptance Criteria:**
+
 - Extracted entities returned within 5 minutes of upload
 - 90% of key entities correctly identified with confidence scores
 - 80% of relationships between entities properly mapped
@@ -97,11 +112,15 @@ So that I can quickly identify investment opportunities and competitive landscap
 - Entity types include organizations, people, funding amounts, dates, locations
 
 **US-2: Knowledge Graph Relationship Queries**
+
 As a publishing team member curating personalized content feeds,
+
 I need to query the knowledge graph for entity relationships and patterns,
+
 So that I can create targeted content recommendations based on current market dynamics.
 
 **Acceptance Criteria:**
+
 - Query results returned within 2 seconds for entity searches
 - Knowledge graph shows 3+ degrees of entity relationships
 - Results filtered by confidence scores and relationship types
@@ -110,11 +129,15 @@ So that I can create targeted content recommendations based on current market dy
 - Query interface supports date range and entity type filtering
 
 **US-3: Interactive Knowledge Exploration**
+
 As a frontend user exploring competitive intelligence through knowledge graph interface,
+
 I need to search for specific entities and visualize their relationships,
+
 So that I can understand competitive landscapes and market dynamics for strategic decisions.
 
 **Acceptance Criteria:**
+
 - Entity search results displayed within 2 seconds
 - Interactive graph shows related connections and filtering options
 - Supports exploration of 3+ degrees of entity relationships
@@ -123,11 +146,15 @@ So that I can understand competitive landscapes and market dynamics for strategi
 - Supports export of relationship data for further analysis
 
 **US-4: Confidence-Based Quality Review**
+
 As an AI system administrator monitoring extraction quality,
+
 I need to review confidence scores and identify patterns requiring model improvements,
+
 So that I can maintain high-quality entity extraction and catch accuracy degradation.
 
 **Acceptance Criteria:**
+
 - Daily reports identify entities with confidence below 70%
 - Automated alerts triggered for accuracy drops below 80% threshold
 - Performance metrics available for different entity types and document sources
@@ -136,11 +163,15 @@ So that I can maintain high-quality entity extraction and catch accuracy degrada
 - Enables model retraining recommendations based on quality trends
 
 **US-5: Automated Document Processing**
+
 As a backend system processing document ingestion pipeline,
+
 I need to automatically extract entities and update knowledge graphs from new documents,
+
 So that the system maintains current and accurate relationship data for all modules.
 
 **Acceptance Criteria:**
+
 - Processes 500 new documents daily through entity extraction pipeline
 - Updates knowledge graph with 10,000+ new entities and relationships
 - Maintains 85% relationship accuracy across all processed content
@@ -149,11 +180,15 @@ So that the system maintains current and accurate relationship data for all modu
 - Supports priority-based processing (high, normal, low priority jobs)
 
 **US-6: Multi-language Entity Processing**
+
 As a global content analyst working with international news sources,
+
 I need to process documents in multiple languages with accurate entity extraction,
+
 So that I can maintain comprehensive global knowledge coverage.
 
 **Acceptance Criteria:**
+
 - Processes English, Spanish, French, and Chinese documents
 - Maintains 85% accuracy across all supported languages
 - Preserves language metadata in entity records
@@ -166,10 +201,13 @@ So that I can maintain comprehensive global knowledge coverage.
 ## Section 4: Functional Requirements
 
 **FR-1: Entity Extraction Pipeline**
+
 **Description:** Transform unstructured text into structured entity data with confidence scoring
+
 **Priority:** Critical (Core functionality)
 
 **Requirements:**
+
 - Extract 5 core entity types: organizations, people, funding amounts, dates, locations
 - Process multiple document formats: HTML, PDF, plain text
 - Generate confidence scores (0-100 scale) for all extracted entities
@@ -179,10 +217,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Enable entity deduplication based on similarity matching
 
 **FR-2: Relationship Mapping Engine**
+
 **Description:** Identify and map relationships between extracted entities
+
 **Priority:** Critical (Core intelligence)
 
 **Requirements:**
+
 - Identify 6 core relationship types: fund, partner, acquire, compete, collaborate, mention
 - Generate relationship confidence scores based on evidence strength
 - Track temporal context for relationship evolution
@@ -191,10 +232,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Provide relationship metadata including evidence text and source references
 
 **FR-3: Knowledge Graph Management**
+
 **Description:** Construct and maintain knowledge graphs from extracted entities and relationships
+
 **Priority:** Critical (Data structure)
 
 **Requirements:**
+
 - Create knowledge graph nodes for each unique entity
 - Establish graph edges representing entity relationships
 - Support graph traversal for relationship discovery
@@ -203,10 +247,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Provide graph export capabilities for external analysis
 
 **FR-4: Vector Similarity Search**
+
 **Description:** Enable semantic search and similarity matching using vector embeddings
+
 **Priority:** High (Discovery capability)
 
 **Requirements:**
+
 - Generate 768-dimensional vector embeddings for entities
 - Support similarity search across entity vectors
 - Enable semantic query expansion using embedding similarity
@@ -215,10 +262,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Maintain embedding index for efficient similarity operations
 
 **FR-5: Confidence Scoring System**
+
 **Description:** Calculate and maintain confidence scores for all extractions and relationships
+
 **Priority:** High (Quality assurance)
 
 **Requirements:**
+
 - Implement weighted confidence formula: (source_score × 0.3) + (context_score × 0.4) + (model_confidence × 0.3)
 - Score source reliability (official sites = high, social media = medium)
 - Analyze context frequency and co-occurrence patterns
@@ -227,10 +277,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Provide confidence trend analysis over time
 
 **FR-6: Multi-language Processing**
+
 **Description:** Handle entity extraction across multiple languages and formats
+
 **Priority:** High (Global coverage)
 
 **Requirements:**
+
 - Support English, Spanish, French, and Chinese language processing
 - Maintain language-specific entity type variations
 - Provide transliteration for non-Latin script entities
@@ -239,10 +292,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Apply language-appropriate confidence scoring adjustments
 
 **FR-7: Real-time Processing**
+
 **Description:** Support streaming and real-time document processing
+
 **Priority:** Medium (Future capability)
 
 **Requirements:**
+
 - Enable streaming document processing for live feeds
 - Support incremental knowledge graph updates
 - Provide real-time relationship discovery
@@ -250,10 +306,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Enable priority-based processing queue management
 
 **FR-8: Quality Monitoring and Reporting**
+
 **Description:** Monitor and report on extraction quality and system performance
+
 **Priority:** Medium (Operational excellence)
 
 **Requirements:**
+
 - Generate daily quality reports by entity type and document source
 - Track accuracy trends and alert on degradation
 - Provide performance metrics (latency, throughput, error rates)
@@ -265,10 +324,13 @@ So that I can maintain comprehensive global knowledge coverage.
 ## Section 5: Technical Requirements
 
 **TR-1: AI Framework and Model Management**
+
 **Description:** Select and manage AI models for entity extraction and relationship mapping
+
 **Technology:** LangChain framework for LLM orchestration
 
 **Requirements:**
+
 - Support multiple LLM providers (OpenAI GPT-4, Anthropic Claude, open-source alternatives)
 - Implement model selection based on task requirements and performance characteristics
 - Enable model versioning and performance tracking
@@ -277,10 +339,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Track model performance metrics (accuracy, latency, cost)
 
 **TR-2: Vector Database Operations**
+
 **Description:** Manage vector embeddings and similarity search operations
+
 **Technology:** Qdrant vector database
 
 **Requirements:**
+
 - Generate 768-dimensional vector embeddings for entities
 - Support similarity search with configurable thresholds
 - Enable vector index management for performance optimization
@@ -289,10 +354,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Provide embedding-based entity deduplication
 
 **TR-3: Structured Data Storage**
+
 **Description:** Store entities, relationships, and metadata in relational database
+
 **Technology:** PostgreSQL for structured data storage
 
 **Requirements:**
+
 - Implement ACID-compliant entity and relationship storage
 - Support complex relationship queries with joins and aggregations
 - Enable efficient indexing for common query patterns
@@ -301,10 +369,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Support database transactions for consistency
 
 **TR-4: Asynchronous Processing**
+
 **Description:** Handle document processing and knowledge graph updates asynchronously
+
 **Technology:** RabbitMQ message queue
 
 **Requirements:**
+
 - Support priority-based job queuing (high, normal, low)
 - Enable job retry mechanisms with exponential backoff
 - Implement job status tracking and progress reporting
@@ -313,10 +384,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Support batch job processing for efficiency
 
 **TR-5: API Design and Integration**
+
 **Description:** Provide REST APIs for entity extraction and knowledge graph operations
+
 **Technology:** FastAPI with async processing
 
 **Requirements:**
+
 - Implement RESTful API design with OpenAPI documentation
 - Support synchronous and asynchronous API endpoints
 - Enable API rate limiting and throttling
@@ -325,10 +399,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - Enable request/response validation and serialization
 
 **TR-6: Authentication and Authorization**
+
 **Description:** Secure access to AI module APIs and data
+
 **Technology:** JWT-based authentication with RBAC
 
 **Requirements:**
+
 - Implement JWT token validation for API access
 - Support role-based access control (RBAC) for different user types
 - Enable service-to-service authentication for internal APIs
@@ -341,7 +418,9 @@ So that I can maintain comprehensive global knowledge coverage.
 ## Section 6: Data Models and Schemas
 
 **6.1 Entity Data Model**
+
 **Table: extracted_entities**
+
 - **id** (UUID, Primary Key): Unique identifier for each extracted entity
 - **text** (VARCHAR(500), NOT NULL): The entity text value
 - **entity_type** (VARCHAR(50), NOT NULL): Type (organization, person, funding_amount, date, location)
@@ -355,12 +434,15 @@ So that I can maintain comprehensive global knowledge coverage.
 - **updated_at** (TIMESTAMP, NOT NULL): Last update timestamp
 
 **Constraints:**
+
 - Confidence between 0.00 and 1.00
 - Entity_type in allowed values
 - Vector embedding must be 768 dimensions
 
 **6.2 Relationship Data Model**
+
 **Table: entity_relationships**
+
 - **id** (UUID, Primary Key): Unique identifier for each relationship
 - **source_entity_id** (UUID, NOT NULL): Entity that initiates the relationship
 - **target_entity_id** (UUID, NOT NULL): Entity that receives the relationship
@@ -374,11 +456,14 @@ So that I can maintain comprehensive global knowledge coverage.
 - **updated_at** (TIMESTAMP, NOT NULL): Last update timestamp
 
 **Constraints:**
+
 - Confidence between 0.00 and 1.00
 - Source_entity_id != target_entity_id
 
 **6.3 Knowledge Graph Data Model**
+
 **Table: knowledge_graph_nodes**
+
 - **id** (UUID, Primary Key): Unique identifier for each graph node
 - **entity_id** (UUID, NOT NULL, UNIQUE): Reference to extracted entity
 - **node_type** (VARCHAR(50), NOT NULL): Type (entity, concept, event)
@@ -389,6 +474,7 @@ So that I can maintain comprehensive global knowledge coverage.
 - **updated_at** (TIMESTAMP, NOT NULL): Last update timestamp
 
 **Table: knowledge_graph_edges**
+
 - **id** (UUID, Primary Key): Unique identifier for each graph edge
 - **source_node_id** (UUID, NOT NULL): Source node in relationship
 - **target_node_id** (UUID, NOT NULL): Target node in relationship
@@ -399,7 +485,9 @@ So that I can maintain comprehensive global knowledge coverage.
 - **updated_at** (TIMESTAMP, NOT NULL): Last update timestamp
 
 **6.4 Processing Job Data Model**
+
 **Table: document_processing_jobs**
+
 - **id** (UUID, Primary Key): Unique identifier for each processing job
 - **document_id** (UUID, NOT NULL): Reference to source document
 - **status** (VARCHAR(20), NOT NULL): Status (pending, processing, completed, failed)
@@ -415,7 +503,9 @@ So that I can maintain comprehensive global knowledge coverage.
 - **created_at** (TIMESTAMP, NOT NULL): Job creation timestamp
 
 **6.5 Quality Metrics Data Model**
+
 **Table: processing_quality_metrics**
+
 - **id** (UUID, Primary Key): Unique identifier for each metric
 - **job_id** (UUID, NOT NULL): Reference to processing job
 - **metric_type** (VARCHAR(50), NOT NULL): Type (accuracy, precision, recall, latency, cost)
@@ -427,6 +517,7 @@ So that I can maintain comprehensive global knowledge coverage.
 - **metadata** (JSONB): Additional metric context
 
 **6.6 Data Relationships**
+
 - **extracted_entities** (1) → **document_processing_jobs** (many): One job processes many entities
 - **entity_relationships** (many) → **extracted_entities** (many): Many-to-many entity relationships
 - **knowledge_graph_nodes** (1) → **extracted_entities** (1): One node per entity
@@ -438,7 +529,9 @@ So that I can maintain comprehensive global knowledge coverage.
 ## Section 7: API Specifications
 
 **7.1 Entity Extraction API**
+
 **Endpoint:** `POST /api/ai/extract-entities`
+
 **Purpose:** Extract entities from document content
 
 **Request Format:**
@@ -490,7 +583,9 @@ So that I can maintain comprehensive global knowledge coverage.
 ```
 
 **7.2 Knowledge Graph Query API**
+
 **Endpoint:** `GET /api/ai/graph/query`
+
 **Purpose:** Query knowledge graph for entity relationships
 
 **Request Format:**
@@ -544,7 +639,9 @@ So that I can maintain comprehensive global knowledge coverage.
 ```
 
 **7.3 Content Analysis API**
+
 **Endpoint:** `POST /api/ai/analyze-content`
+
 **Purpose:** Analyze content for insights and patterns
 
 **Request Format:**
@@ -576,7 +673,9 @@ So that I can maintain comprehensive global knowledge coverage.
 ```
 
 **7.4 Status and Health APIs**
+
 **Endpoint:** `GET /api/ai/health`
+
 **Purpose:** Check AI module health and status
 
 **Response Format:**
@@ -594,6 +693,7 @@ So that I can maintain comprehensive global knowledge coverage.
 ```
 
 **7.5 Error Handling**
+
 - **HTTP Status Codes:** 200 (success), 400 (bad request), 401 (unauthorized), 429 (rate limited), 500 (server error)
 - **Error Response Format:** Consistent error structure with code, message, and retry information
 - **Rate Limiting:** API rate limiting based on user authentication and request patterns
@@ -603,10 +703,13 @@ So that I can maintain comprehensive global knowledge coverage.
 ## Section 8: Integration Requirements
 
 **8.1 Backend Module Integration**
+
 **Integration Pattern:** REST API + RabbitMQ message queue
+
 **Data Flow:** Backend triggers AI processing, AI returns results for storage
 
 **Requirements:**
+
 - **Document Submission:** Backend submits documents via POST /api/ai/extract-entities
 - **Result Consumption:** Backend consumes AI results via RabbitMQ queues
 - **Status Updates:** AI provides processing status via WebSocket connections
@@ -614,36 +717,46 @@ So that I can maintain comprehensive global knowledge coverage.
 - **Authentication:** JWT token validation for all API requests
 
 **Message Queue Integration:**
+
 - **Job Queue:** `ai.jobs` - Document processing jobs from Backend
 - **Results Queue:** `ai.results.{job_id}` - Processing results to Backend
 - **Error Queue:** `ai.errors` - Processing failure notifications
 - **Broadcast Queue:** `ai.broadcast` - General system notifications
 
 **8.2 Frontend Module Integration**
+
 **Integration Pattern:** REST API for data operations, WebSocket for real-time updates
+
 **Data Flow:** Frontend requests data from Backend, receives real-time updates
 
 **Requirements:**
+
 - **Entity Queries:** Frontend queries entities via GET /api/ai/graph/query
 - **Real-time Updates:** WebSocket connection for live knowledge graph updates
 - **Authentication:** JWT token management for API access and session handling
 - **Error Handling:** Graceful degradation when Backend APIs are unavailable
 
 **8.3 Database Integration**
+
 **Integration Pattern:** Direct database connections with connection pooling
+
 **Data Storage:** PostgreSQL for structured data, Qdrant for vector operations
 
 **Requirements:**
+
 - **Connection Management:** Database connection pooling and retry logic
 - **Schema Management:** Version-controlled schema migrations
 - **Data Consistency:** Transaction management across entity and relationship updates
 - **Performance:** Efficient indexing for common query patterns
 
 **8.4 External Service Integration**
+
 **Integration Pattern:** HTTP APIs with rate limiting and error handling
+
 **External Services:** LLM providers (OpenAI, Anthropic), vector services
 
 **Requirements:**
+
 - **API Management:** Rate limiting, retry logic, and failover mechanisms
 - **Cost Management:** Usage tracking and budget monitoring for LLM APIs
 - **Security:** Secure API key management and credential storage
@@ -654,34 +767,43 @@ So that I can maintain comprehensive global knowledge coverage.
 ## Section 9: Performance Requirements
 
 **9.1 Response Time Requirements**
+
 **Entity Extraction API:**
+
 - P50: <3 seconds for standard documents
 - P95: <5 seconds for complex documents
 - P99: <15 seconds for maximum document size
 
 **Knowledge Graph Queries:**
+
 - P50: <1 second for simple queries
 - P95: <2 seconds for complex relationship queries
 - P99: <5 seconds for large result sets
 
 **Similarity Search Operations:**
+
 - P50: <200ms for vector similarity searches
 - P95: <500ms for complex embedding operations
 - P99: <2 seconds for batch operations
 
 **9.2 Throughput Requirements**
+
 **Document Processing:**
+
 - Sustained: 100 documents per hour
 - Peak: 200 documents per hour (15-minute burst)
 - Batch: 1000 entity extractions per hour
 
 **Query Operations:**
+
 - Entity queries: 500 per minute sustained
 - Relationship queries: 100 per minute sustained
 - Similarity searches: 100 per second sustained
 
 **9.3 Scalability Requirements**
+
 **Concurrent Operations:**
+
 - 10,000 concurrent knowledge graph queries
 - 1 million entities in knowledge graph
 - 5 million entity relationships stored
@@ -689,19 +811,23 @@ So that I can maintain comprehensive global knowledge coverage.
 - 50,000 vector embeddings in similarity index
 
 **Resource Constraints:**
+
 - Memory usage: <8GB per processing worker
 - Storage growth: <100GB per month for entity data
 - CPU utilization: <70% average across processing cluster
 - Network I/O: <50MB/s per processing node
 
 **9.4 Availability Requirements**
+
 **Service Availability:**
+
 - Entity extraction APIs: 99.5% uptime
 - Knowledge graph queries: 99.9% uptime
 - Database operations: 99.9% uptime
 - Message queue: 99.5% uptime
 
 **Downtime Tolerance:**
+
 - Planned maintenance: <4 hours per month
 - Unplanned downtime: <1 hour per month
 - Automatic failover for critical operations
@@ -711,10 +837,13 @@ So that I can maintain comprehensive global knowledge coverage.
 ## Section 10: Security and Compliance
 
 **10.1 Authentication and Authorization**
+
 **Authentication Framework:** JWT-based stateless authentication
+
 **Authorization Model:** Role-based access control (RBAC)
 
 **Requirements:**
+
 - **User Authentication:** JWT token validation for all API endpoints
 - **Service Authentication:** Module-to-module authentication for internal APIs
 - **Role Management:** Support for user, admin, and moderator roles
@@ -722,10 +851,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - **Session Management:** Secure token storage and automatic refresh
 
 **10.2 Data Security**
+
 **Data Protection:** Encryption at rest and in transit
+
 **Access Control:** Least privilege principle for data access
 
 **Requirements:**
+
 - **Data Encryption:** All sensitive entity data encrypted in storage
 - **API Security:** HTTPS-only communication with certificate validation
 - **Input Validation:** Comprehensive input sanitization and validation
@@ -733,10 +865,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - **Data Retention:** Configurable data retention policies for compliance
 
 **10.3 Privacy and Compliance**
+
 **Privacy Framework:** GDPR compliance for user data handling
+
 **Compliance Standards:** Data protection and privacy regulations
 
 **Requirements:**
+
 - **Data Minimization:** Collect only necessary entity and relationship data
 - **User Consent:** Clear consent mechanisms for data processing
 - **Data Portability:** Export capabilities for user data
@@ -744,10 +879,13 @@ So that I can maintain comprehensive global knowledge coverage.
 - **Privacy Impact:** Regular privacy impact assessments
 
 **10.4 Operational Security**
+
 **Security Monitoring:** Continuous security monitoring and alerting
+
 **Incident Response:** Defined security incident response procedures
 
 **Requirements:**
+
 - **Security Monitoring:** Real-time monitoring for security events
 - **Vulnerability Management:** Regular security assessments and patching
 - **Access Logging:** Comprehensive logging of all access attempts
@@ -757,6 +895,7 @@ So that I can maintain comprehensive global knowledge coverage.
 ---
 
 **Total Lines:** 1,287
+
 **Status:** ✅ COMPLETE - Comprehensive specification ready for implementation planning
 
 **Good** (requirements-focused):
@@ -789,6 +928,7 @@ tools (Jira, Asana, Linear, ...) with feature matrices and cost projections.
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 5-10 user stories covering all major workflows
 - ✅ Each story follows "As a... I need... So that..." format
 - ✅ User roles are specific with context (not just "user")
@@ -798,6 +938,7 @@ tools (Jira, Asana, Linear, ...) with feature matrices and cost projections.
 - ✅ Edge cases mentioned in acceptance criteria where relevant
 
 **This section is INCOMPLETE if:**
+
 - ❌ Fewer than 5 stories (insufficient coverage of workflows)
 - ❌ Stories lack quantified acceptance criteria ("fast" instead of "<2 seconds")
 - ❌ Stories describe implementation ("using React form") instead of capability
@@ -811,25 +952,37 @@ tools (Jira, Asana, Linear, ...) with feature matrices and cost projections.
 **US-[N]: [Short Descriptive Title]**
 
 As a [specific user type with context],
+
 I need [specific capability or feature],
+
 So that [measurable benefit or value].
 
 **Acceptance**: [Quantified success criteria with specific numbers, times, or counts]
 
 ### What to Include (Requirements Focus):
 ✅ User role with specific context
+
 ✅ Capability or feature needed (WHAT, not HOW)
+
 ✅ Measurable benefit or value
+
 ✅ Quantified acceptance criteria
+
 ✅ 5-10 stories covering main workflows
+
 ✅ Given/When/Then format for acceptance
 
 ### What to Exclude (Implementation Details):
 ❌ UI mockups or wireframes
+
 ❌ Button labels or screen layouts
+
 ❌ Database queries or API calls
+
 ❌ Technology-specific implementation
+
 ❌ Internal system architecture
+
 ❌ Code structure or module organization
 
 ### Level of Detail (Example):
@@ -925,6 +1078,7 @@ Acceptance:
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ All tables/collections listed with descriptions
 - ✅ All columns/fields with data types specified
 - ✅ Primary keys identified for all tables
@@ -935,6 +1089,7 @@ Acceptance:
 - ✅ If stateless: Explicitly stated "No persistent data model"
 
 **This section is INCOMPLETE if:**
+
 - ❌ Tables listed without column definitions
 - ❌ Data types missing or vague ("string" instead of "VARCHAR(255)")
 - ❌ Primary keys not identified
@@ -952,18 +1107,28 @@ Acceptance:
 
 ### What to Include (Requirements Focus):
 ✅ Table names and brief descriptions
+
 ✅ Column names with data types
+
 ✅ Primary keys and foreign keys (which columns)
+
 ✅ Major constraints (UNIQUE, NOT NULL, CHECK)
+
 ✅ Integration schemas (JSON examples with field types)
+
 ✅ Relationships between entities (1-to-many, many-to-many)
 
 ### What to Exclude (Implementation Details):
 ❌ Complete CREATE TABLE statements with all syntax
+
 ❌ Index creation statements (mention indexes exist, not full DDL)
+
 ❌ Database migration scripts
+
 ❌ Query optimization details (EXPLAIN ANALYZE output)
+
 ❌ Backup and restore procedures
+
 ❌ Performance tuning parameters
 
 ### Level of Detail (Example):
@@ -1112,6 +1277,7 @@ ANALYZE users;
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 3-5 scenarios covering main user stories from Section 2
 - ✅ Each scenario follows Given/When/Then format (BDD style)
 - ✅ Given conditions include specific example data (not placeholders)
@@ -1122,6 +1288,7 @@ ANALYZE users;
 - ✅ Scenarios validate acceptance criteria from user stories
 
 **This section is INCOMPLETE if:**
+
 - ❌ Fewer than 3 scenarios (insufficient coverage)
 - ❌ Scenarios don't follow Given/When/Then structure
 - ❌ Given conditions use placeholders ("[user]") instead of examples ("user@example.com")
@@ -1136,30 +1303,43 @@ ANALYZE users;
 #### Scenario [N]: [Descriptive Title matching a User Story]
 
 **Given** [specific starting conditions with actual data values]
+
 - [Condition 1, e.g., A user with email "test@example.com" exists]
 
 **When** [a specific action is taken with actual parameters]
+
 - [e.g., The user submits a POST request to /login with email "test@example.com" and password "password123"]
 
 **Then** [specific, measurable, and observable outcomes]
+
 - [Assertion 1, e.g., The system returns an HTTP 200 status code]
 
 **Measurement**: [How to verify - specific metric]
 
 ### What to Include (Requirements Focus):
 ✅ Given/When/Then format (BDD style)
+
 ✅ Specific starting conditions with example data
+
 ✅ Observable actions and outcomes
+
 ✅ Measurable success criteria
+
 ✅ 3-5 scenarios covering main workflows
+
 ✅ 15-20 lines max per scenario
 
 ### What to Exclude (Implementation Details):
 ❌ Complete test code or test frameworks
+
 ❌ SQL queries or database operations
+
 ❌ API endpoint implementations
+
 ❌ Error handling code
+
 ❌ Retry logic or circuit breakers
+
 ❌ 60+ line scenarios with SQL setup
 
 ### Level of Detail (Example):
@@ -1167,15 +1347,18 @@ ANALYZE users;
 #### Scenario 1: Entity Extraction from News Article
 
 **Given** A news article containing mentions of OpenAI, Microsoft, and $10B funding
+
 - Article uploaded with entity types: organization, person, funding_amount
 - Processing job created with normal priority
 
 **When** Entity extraction pipeline processes the document
+
 - Document chunked into 1000-2000 token segments
 - Each segment processed through NER models
 - Entities validated and confidence scores calculated
 
 **Then** Extracted entities returned with metadata
+
 - OpenAI identified as organization with 95% confidence
 - Microsoft identified as organization with 92% confidence
 - $10B identified as funding_amount with 98% confidence
@@ -1186,15 +1369,18 @@ ANALYZE users;
 #### Scenario 2: Knowledge Graph Similarity Search
 
 **Given** Knowledge graph contains 50,000+ entities and relationships
+
 - User searches for "OpenAI funding" query
 - Query converted to vector embedding for similarity search
 
 **When** Similarity search executed against knowledge graph
+
 - Qdrant vector database finds similar entities within 3 degrees
 - Results filtered by confidence scores above 80%
 - Response formatted with entity details and relationships
 
 **Then** Search results displayed with relevant connections
+
 - OpenAI entity returned with funding relationships
 - Microsoft shown as funding source with relationship strength
 - Related AI companies displayed within 2 degrees
@@ -1205,15 +1391,18 @@ ANALYZE users;
 #### Scenario 3: Document Processing Pipeline Integration
 
 **Given** Backend module submits 100 new documents for processing
+
 - Documents queued with mixed priority levels (high/normal/low)
 - Each document contains 5-10 entities and relationships
 
 **When** Processing pipeline executes continuously
+
 - Jobs picked up by available processing workers
 - Entity extraction performed on each document
 - Knowledge graph updated with new entities and relationships
 
 **Then** All documents processed successfully
+
 - 100 documents processed within 1 hour
 - 500-1000 entities extracted with confidence scores
 - Knowledge graph updated with new nodes and edges
@@ -1224,15 +1413,18 @@ ANALYZE users;
 #### Scenario 4: Quality Monitoring and Alerting
 
 **Given** Entity extraction system processes 1000 documents daily
+
 - Quality metrics tracked for accuracy, precision, and recall
 - Confidence score thresholds set at 70% (medium) and 85% (high)
 
 **When** Daily quality analysis executed
+
 - Extraction accuracy calculated across entity types
 - Low-confidence extractions identified for review
 - Performance trends analyzed for model drift detection
 
 **Then** Quality reports generated and alerts triggered
+
 - Daily report shows accuracy metrics by entity type
 - Entities below 70% confidence flagged for manual review
 - Alerts sent when accuracy drops below 80% threshold
@@ -1243,15 +1435,18 @@ ANALYZE users;
 #### Scenario 5: Multi-language Entity Processing
 
 **Given** Mixed-language document containing English and Chinese text
+
 - Document submitted for entity extraction processing
 - Language detection identifies content sections
 
 **When** Multi-language processing pipeline executes
+
 - English sections processed with standard NER models
 - Chinese sections processed with appropriate language models
 - Results combined with language metadata preserved
 
 **Then** Entities extracted from all language sections
+
 - English entities (OpenAI, Microsoft) extracted normally
 - Chinese entities properly identified and transliterated
 - Language metadata preserved in entity records
@@ -1313,6 +1508,7 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Response times quantified with percentiles (p50, p95, p99)
 - ✅ Throughput targets with units (requests/second, records/minute)
 - ✅ Scalability limits specified (max users, max records, max concurrency)
@@ -1322,6 +1518,7 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 - ✅ Targets are realistic for expected usage patterns
 
 **This section is INCOMPLETE if:**
+
 - ❌ Targets use qualitative terms ("fast", "responsive", "scalable")
 - ❌ No percentiles specified for response times (p50/p95/p99)
 - ❌ Throughput without units ("500" instead of "500 requests/second")
@@ -1334,39 +1531,54 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 ### What to include:
 
 **Response Times**:
+
 *   API endpoint latency: e.g., `< 200ms for 95th percentile`
 
 **Throughput**:
+
 *   Requests per second: e.g., `Handles 500 requests/sec`
 
 **Scalability Limits**:
+
 *   Maximum records/documents: e.g., `Scales to 10 million documents`
 
 ### What to Include (Requirements Focus):
 ✅ Quantified response times (with percentiles)
+
 ✅ Throughput targets (requests/second, records/minute)
+
 ✅ Scalability limits (max users, max records)
+
 ✅ Resource constraints (memory, CPU, storage)
+
 ✅ Concurrency requirements
+
 ✅ Availability targets (uptime %)
 
 ### What to Exclude (Implementation Details):
 ❌ Benchmark results or load test output
+
 ❌ Server specifications (CPU cores, RAM GB)
+
 ❌ Database tuning parameters
+
 ❌ Caching strategies (Redis config, TTL values)
+
 ❌ Network configuration details
+
 ❌ Infrastructure sizing calculations
 
 ### Level of Detail (Example):
 
 **Response Times:
+
 - Entity extraction API: <5 seconds (p95), <15 seconds (p99)
 - Knowledge graph queries: <2 seconds (p95), <5 seconds (p99)
 - Similarity search operations: <500ms (p95), <2 seconds (p99)
 - Document processing jobs: <5 minutes (p95) for 1000-token documents
 
 Throughput:
+
 - 100 documents processed per hour sustained
 - 200 documents processed per hour peak (15-minute burst)
 - 1000 entity extractions per hour
@@ -1374,6 +1586,7 @@ Throughput:
 - 100 similarity search operations per second
 
 Scalability:
+
 - 10,000 concurrent knowledge graph queries
 - 1 million entities in knowledge graph
 - 5 million entity relationships stored
@@ -1381,12 +1594,14 @@ Scalability:
 - 50,000 vector embeddings in similarity index
 
 Resource Constraints:
+
 - Memory usage: <8GB per processing worker
 - Storage growth: <100GB per month for entity/relationship data
 - CPU utilization: <70% average across processing cluster
 - Network I/O: <50MB/s per processing node
 
 Availability:
+
 - 99.5% uptime for entity extraction APIs
 - 99.9% uptime for knowledge graph query APIs
 - <4 hours planned downtime per month
@@ -1421,6 +1636,7 @@ Throughput:
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 3-5 high-level phases (milestones, not day-by-day tasks)
 - ✅ Each phase has clear goal (what it achieves)
 - ✅ Deliverables are specific and testable per phase
@@ -1430,6 +1646,7 @@ Throughput:
 - ✅ No time estimates or schedules (focus on WHAT not WHEN)
 
 **This section is INCOMPLETE if:**
+
 - ❌ More than 5 phases (too granular, should be high-level milestones)
 - ❌ Phases include day-by-day or hour-by-hour schedules
 - ❌ Deliverables are vague ("make progress", "work on feature")
@@ -1448,103 +1665,134 @@ For each phase (aim for 3-5 phases):
 **Goal**: [What this phase achieves - the outcome, not the process]
 
 **Deliverables**:
+
 - [Specific output 1, e.g., "Complete database schema committed"]
 - [Specific output 2, e.g., "API endpoints functional"]
 
 **Dependencies**:
+
 - [What must be complete before starting this phase]
 
 ### What to Include (Requirements Focus):
 ✅ 3-5 high-level milestones
+
 ✅ What each phase delivers (outcomes)
+
 ✅ Dependencies between phases
+
 ✅ Logical grouping of deliverables
+
 ✅ MVP-focused sequence
+
 ✅ Phase goals (not durations)
 
 ### What to Exclude (Implementation Details):
 ❌ Day-by-day or hour-by-hour schedules
+
 ❌ Individual developer assignments
+
 ❌ Sprint planning or story points
+
 ❌ Detailed task breakdowns (save for `/plan`)
+
 ❌ Technology evaluation criteria
+
 ❌ Team coordination logistics
 
 ### Level of Detail (Example):
 
 **Phase 1: Foundation & Core Processing
+
 Goal: Establish entity extraction and knowledge graph foundation
 
 Deliverables:
+
 - Entity extraction API endpoints functional
 - Knowledge graph storage schema implemented
 - Basic confidence scoring system operational
 - Integration with Backend document queue
 
 Dependencies:
+
 - Backend module document processing APIs available
 - PostgreSQL and Qdrant databases accessible
 
 Phase 2: Advanced Intelligence Features
+
 Goal: Implement relationship extraction and similarity search capabilities
 
 Deliverables:
+
 - Relationship identification between entities functional
 - Vector similarity search operational
 - Multi-language entity processing implemented
 - Knowledge graph query APIs available
 
 Dependencies:
+
 - Phase 1 entity extraction working correctly
 - Qdrant vector database populated with embeddings
 
 Phase 3: Performance & Quality Optimization
+
 Goal: Achieve production performance targets and quality monitoring
 
 Deliverables:
+
 - Processing throughput meets 100 documents/hour target
 - Entity extraction accuracy exceeds 85% precision/recall
 - Quality monitoring and alerting system operational
 - Cost optimization within $0.10 per document budget
 
 Dependencies:
+
 - Phase 2 similarity search and relationship extraction functional
 - Performance monitoring infrastructure available
 
 Phase 4: Integration & Scale Testing
+
 Goal: Validate cross-module integration and production scaling
 
 Deliverables:
+
 - Frontend knowledge graph visualization integrated
 - Publishing module content personalization functional
 - System handles 500 concurrent users and 1000 documents/day
 - Production deployment procedures established
 
 Dependencies:
+
 - All previous phases functional and tested
 - Frontend and Publishing modules ready for integration
 
 Phase 5: Enhancement & Growth
+
 Goal: Expand capabilities and optimize for growth
 
 Deliverables:
+
 - Advanced entity types (grants, partnerships, events) supported
 - Real-time processing capabilities implemented
 - Automated model retraining pipeline operational
 - Enhanced multi-language support beyond English/Chinese
 
 Dependencies:
+
 - Phase 4 production deployment successful
 - Growth metrics indicate need for advanced features
 Deliverables:
+
 - Database schema deployed
 - Basic CRUD API endpoints
 - Job scheduler configured
 Dependencies: None
 
 Phase 2: Digest Generation Logic
+
 Goal: Implement content matching and email composition
+
 Deliverables:
+
 - Article matching algorithm
 - Email template system
 - Content ranking logic
@@ -1554,15 +1802,20 @@ Dependencies: Phase 1 complete
 **Too detailed** (implementation-focused):
 ```
 Phase 1: Core Infrastructure (Sprint 1-2, Days 1-10)
+
 Goal: Establish foundational data storage using PostgreSQL 14 with Prisma ORM
+
 Deliverables:
+
 - Day 1-2: Developer environment setup with Docker Compose
 - Day 3-4: Database schema (migrations written in Prisma DSL)
 - Day 5-6: CRUD endpoints (Express router with Joi validation)
 - Day 7-8: Celery setup (RabbitMQ message broker, 4 worker processes)
 - Day 9-10: Testing and code review
 Team: 2 backend developers (Alice on DB, Bob on API)
+
 Technology evaluation: Considered Bull vs Celery (Celery chosen for Python integration)
+
 Dependencies: AWS RDS instance provisioned, VPC configured
 ```
 
@@ -1683,17 +1936,24 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 **Good** (requirements-focused):
 ```
 EC-1: SES API timeout → Retry 3x with backoff, mark failed if all attempts fail, alert admin
+
 EC-2: No matching articles for user's tags → Skip user this cycle, log INFO, don't increment schedule
+
 EC-3: User changes interval during processing → Lock row, update takes effect next cycle
+
 EC-4: Article URL returns 404 → Exclude from digest, log WARNING, mark article inactive
+
 EC-5: Email template rendering fails → Use plain text fallback, alert admin
+
 EC-6: Database connection lost → Pause job, retry connection 5x, fail job if persistent
 ```
 
 **Too detailed** (implementation-focused):
 ```
 EC-1: SES API Timeout Handling
+
 When the AWS SES API times out during email sending:
+
 1. Catch the boto3.exceptions.ReadTimeoutError exception
 2. Implement exponential backoff: retry after 1s, 2s, 4s
 3. Log each retry attempt with timestamp and error details
@@ -1710,7 +1970,9 @@ When the AWS SES API times out during email sending:
 ❌ **TOO MUCH** (Implementation details and code):
 ```
 EC-1: SES API Timeout Handling
+
 When the AWS SES API times out during email sending:
+
 1. Catch the boto3.exceptions.ReadTimeoutError exception
 2. Implement exponential backoff: retry after 1s, 2s, 4s
 3. Log each retry attempt with timestamp and error details
@@ -1722,12 +1984,12 @@ When the AWS SES API times out during email sending:
 
 ✅ **JUST RIGHT** (Situation → behavior, 2-3 lines):
 ```
-**EC-1**: SES API timeout → Retry 3x with backoff, mark failed if all attempts fail, alert admin
-**EC-2**: No matching articles for user's tags → Skip user this cycle, log INFO, don't increment schedule
-**EC-3**: User changes interval during processing → Lock row, update takes effect next cycle
-**EC-4**: Article URL returns 404 → Exclude from digest, log WARNING, mark article inactive
-**EC-5**: Email template rendering fails → Use plain text fallback, alert admin
-**EC-6**: Database connection lost → Pause job, retry connection 5x, fail job if persistent
+- **EC-1**: SES API timeout → Retry 3x with backoff, mark failed if all attempts fail, alert admin
+- **EC-2**: No matching articles for user's tags → Skip user this cycle, log INFO, don't increment schedule
+- **EC-3**: User changes interval during processing → Lock row, update takes effect next cycle
+- **EC-4**: Article URL returns 404 → Exclude from digest, log WARNING, mark article inactive
+- **EC-5**: Email template rendering fails → Use plain text fallback, alert admin
+- **EC-6**: Database connection lost → Pause job, retry connection 5x, fail job if persistent
 ```
 
 ---
@@ -1789,25 +2051,42 @@ When the AWS SES API times out during email sending:
 **Good** (requirements-focused):
 ```
 Language: Python 3.11+
+
 Database: PostgreSQL 15+
+
 External Services: AWS SES for email delivery
+
 Required Libraries:
+
 - celery>=5.3.0 (job scheduling)
 - psycopg2>=2.9.0 (database driver)
 
 Constraints:
-- Must be deployable as Docker container
-- Cannot write to local filesystem (use S3 for storage)
-- Must run on AWS ECS
+
+- Must be deployable as Docker container for consistent development and production environments
+  - Rationale: Enables consistent deployment across environments and simplifies scaling
+  - Technical: Standard containerization for development and production parity
+  - Business Impact: Simplifies deployment and scaling operations, reduces environment inconsistencies
+- Must support local filesystem access for temporary processing of large documents
+  - Rationale: AI processing requires temporary file storage for large documents and intermediate results
+  - Technical: Docker volumes for container filesystem access with proper cleanup
+  - Business Impact: Enables efficient document processing workflows without external storage dependencies
+- Must support deployment on standard VPS infrastructure
+  - Rationale: Cost-effective deployment without cloud lock-in, suitable for startup environments
+  - Technical: Compatible with major VPS providers (DigitalOcean, Linode, Hetzner, etc.)
+  - Business Impact: Reduces operational costs while maintaining deployment flexibility
 ```
 
 **Too detailed** (implementation-focused):
 ```
 Language: Python 3.11+ (chosen over Node.js and Go)
+
 Evaluation: Python scored 8/10 (Node.js 6/10, Go 7/10)
+
 Criteria: Team expertise (5 Python devs, 2 Node devs), library ecosystem, AI integration
 
 Database: PostgreSQL 15+ (chosen over MySQL and MongoDB)
+
 Comparison matrix:
 | Feature | PostgreSQL | MySQL | MongoDB |
 |---------|-----------|-------|---------|
@@ -1817,6 +2096,7 @@ Comparison matrix:
 Benchmark: pgbench results show 9,847 TPS on m5.xlarge
 
 External Services: AWS SES (evaluated vs SendGrid, Mailgun)
+
 Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 ```
 
@@ -1888,22 +2168,26 @@ Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 **Good** (requirements-focused):
 ```
 Unit Tests:
+
 - Article matching algorithm
 - Email template rendering
 - Content ranking logic
 - Target: >80% line coverage for business logic
 
 Integration Tests:
+
 - End-to-end: User signup → preference setting → first digest delivery
 - External: SES email delivery, PostgreSQL transactions
 - Target: All critical workflows covered
 
 Performance Tests:
+
 - 500 requests/sec sustained (per Section 5)
 - 1000 concurrent digest generations
 - Target: Meet all Section 5 performance targets
 
 Acceptance Tests:
+
 - Validate all scenarios from Section 4
 - Success: All scenarios pass in staging environment
 ```
@@ -1911,17 +2195,23 @@ Acceptance Tests:
 **Too detailed** (implementation-focused):
 ```
 Unit Tests (Jest framework):
+
 - describe('ArticleMatcher', () => {
     test('should match articles by tag', async () => { ... })
+
     test('should handle empty tag array', async () => { ... })
+
     test('should respect date filters', async () => { ... })
+
   })
+
 - Mock implementation: jest.mock('../services/database')
 - Fixtures: __fixtures__/articles.json (127 test records)
 - Coverage: nyc --reporter=html --reporter=text
 - CI: Run on every PR via GitHub Actions workflow
 
 Integration Tests (Supertest + testcontainers):
+
 - beforeAll(): Start PostgreSQL container, seed database
 - Test 1: POST /signup → GET /preferences → Celery job triggers → SES sends email
 - Test 2: PUT /preferences → Immediate reschedule → Next digest uses new tags
@@ -2047,18 +2337,21 @@ The module is considered DONE when:
 **Good** (requirements-focused):
 ```
 User-Facing Success:
+
 - User signup completion: >90%
 - Digest open rate: >25%
 - User retention (30 days): >60%
-Measurement: Analytics dashboard, weekly reports
+- Measurement: Analytics dashboard, weekly reports
 
 Technical Success:
+
 - API error rate: <0.1%
 - P95 response time: <200ms
 - System uptime: >99.9%
-Measurement: Monitoring dashboard, automated alerts
+- Measurement: Monitoring dashboard, automated alerts
 
 Completion Criteria:
+
 - All user stories implemented
 - All acceptance scenarios pass
 - All performance targets met
@@ -2068,6 +2361,7 @@ Completion Criteria:
 **Too detailed** (implementation-focused):
 ```
 User-Facing Success:
+
 - User signup completion: >90% (tracked via Google Analytics 4)
   - Event: signup_complete (custom dimension: source_channel)
   - Dashboard: https://analytics.google.com/dashboard/xyz123
@@ -2079,6 +2373,7 @@ User-Facing Success:
   - Storage: Redshift table email_events with 90-day TTL
 
 Technical Success:
+
 - API error rate: <0.1% (Datadog APM + custom instrumentation)
   - Metric: aws.apigateway.5xxError / aws.apigateway.count
   - Alert: PagerDuty P2 if error rate >0.5% for 5 minutes
@@ -2142,18 +2437,21 @@ Before submitting this PRD to SpecKit, verify:
 **Good** (requirements-focused checklist):
 ```
 Completeness:
+
 - All 10 sections filled (Section 10 is placeholder)
 - 625 lines total (within 600-800 target)
 - No TBD or [NEEDS CLARIFICATION] markers
 - Module: Publishing, Owner: Backend team
 
 Quality:
+
 - All 7 user stories have quantified acceptance criteria
 - All 5 acceptance scenarios use Given/When/Then
 - 12 edge cases in EC-N format (2-3 lines each)
 - Performance targets: All have numbers and units
 
 Consistency:
+
 - User stories US-2, US-3, US-5 map to Scenarios 1, 2, 3
 - Performance targets reference scale from Problem Statement
 - Testing strategy covers all acceptance scenarios
@@ -2162,6 +2460,8 @@ Consistency:
 **Too detailed** (implementation-focused):
 ```
 Not applicable - validation checklist should be quick yes/no checks,
+
 not detailed implementation validation. Save implementation validation
+
 for Phase 4 (WO-4) quality comparison against case study.
 ```

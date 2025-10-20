@@ -134,6 +134,7 @@ Expand to include workforce intelligence and transfer pathway optimization. Conn
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Complex research analytics that take weeks to understand
 - Student-facing applications that require training
 - Integration with systems they don't already use

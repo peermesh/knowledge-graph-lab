@@ -2,7 +2,9 @@
 
 ## Context
 [Describe deployment and orchestration requirements]
+
 [Expected scale and environment complexity]
+
 [Development vs production needs]
 
 ## Requirements (Criteria, Not Brands)
@@ -25,6 +27,7 @@
 Find ALL production-ready container platforms meeting criteria above.
 
 For each option, document:
+
 - Feature completeness for requirements
 - Operational complexity
 - Cost analysis (development + production)

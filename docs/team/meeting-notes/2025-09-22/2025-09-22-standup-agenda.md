@@ -1,6 +1,6 @@
 # Phase 1 Research Review Stand-Up Agenda
-**Date**: September 22, 2025
-**Duration**: 45 minutes
+- **Date**: September 22, 2025
+- **Duration**: 45 minutes
 
 ---
 
@@ -9,6 +9,7 @@
 
 ### Sharing What You Need
 When reaching out about a blocker, it's helpful to include:
+
 1. **What you're trying to find or build** - the specific piece you need
 2. **Which module should provide it** - your best guess on the source
 3. **How you expect it to work** - the format or structure you're anticipating
@@ -17,12 +18,14 @@ When reaching out about a blocker, it's helpful to include:
 
 ### Navigating Our Integration Phase
 As we connect our modules, remember:
+
 - **Mock data keeps you moving** - create placeholders when needed
 - **Document your thinking** - note your assumptions for the team
 - **Build adaptable interfaces** - we'll iterate as we learn
 - **Communicate often** - share expectations with other modules early
 
 Questions we're all figuring out together:
+
 - How will our APIs communicate?
 - What's the best authentication flow?
 - Which events should trigger updates?
@@ -34,7 +37,9 @@ Questions we're all figuring out together:
 ## 0:00–0:02 — Meeting Setup
 
 **Zoom Display Names**
+
 "Please update your Zoom display name to your full name for clarity.
+
 - Desktop: Participants → hover your name → More → Rename
 - Mobile: Participants → tap your name → Rename
 Taking 20 seconds for everyone to update."
@@ -44,6 +49,7 @@ Taking 20 seconds for everyone to update."
 ## 0:02–0:03 — Agenda Overview
 
 "Today we'll:
+
 - Review research outputs
 - Identify and address blockers
 - Assign next 48-hour deliverables
@@ -63,12 +69,14 @@ Taking 20 seconds for everyone to update."
 
 ### B) Pull Requests
 Search filters:
+
 - Merged: `is:pr is:merged merged:>=YYYY-MM-DD sort:updated-desc`
 - Open: `is:pr is:open updated:>=YYYY-MM-DD sort:updated-desc`
 - By author: add `author:github-username`
 
 ### C) Issues & Decisions
 Filter by:
+
 - Decisions: `label:decision updated:>=YYYY-MM-DD`
 - Blockers: `label:blocker is:open`
 - Phase: `label:"phase:1"`
@@ -129,6 +137,7 @@ Filter by:
 ## 0:43–0:45 — Capture Decisions & Actions
 
 "Creating GitHub issues for:
+
 - All decisions (labeled 'decision') with owner and due date
 - Blockers requiring follow-up
 - Deep-dive topics for separate sessions"
@@ -138,6 +147,7 @@ Filter by:
 ## 0:45 — Closing
 
 **Action Items:**
+
 1. Log time in timesheet today (link in #notices)
 2. Post in #notices before next stand-up:
    - Your 1-line objective

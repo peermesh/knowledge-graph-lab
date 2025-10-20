@@ -16,6 +16,7 @@
 ## 📋 **What This Command Does**
 
 **SpecKit v0.0.62 Features Demonstrated:**
+
 - **`/specify` command** - Process comprehensive specification
 - **Constitutional compliance** - Validate against 9 articles
 - **TDD enforcement** - Require test-first development
@@ -33,6 +34,7 @@
 ## 📊 **Expected Results**
 
 **Output Generated:**
+
 - **Implementation Plan** - Detailed development roadmap
 - **Code Structure** - Generated API endpoints and data models
 - **Test Suite** - Contract and integration tests

@@ -1,8 +1,11 @@
 # Publishing Module: Implementation Guide
 
 **Purpose:** Actionable implementation roadmap for Publishing module
+
 **Derived From:** 2025-10-09-publishing-decisions-agreements.md (Document 1)
+
 **Created:** 2025-10-09
+
 **Status:** Draft - Awaiting Blocker Resolution
 
 ---
@@ -14,6 +17,7 @@
 Email publishing module that takes AI-generated content and distributes it via customizable templates, with full tracking and legal compliance.
 
 **Core Functionality:**
+
 - Email publishing with AWS SES integration ✓ Extracted (from Doc 1 MVP Features)
 - Two-template system (plain text + formatted) ✓ Extracted (from Doc 1 Technical Decision #7)
 - Unsubscribe flow with legal compliance ✓ Extracted (from Doc 1 MVP Features)
@@ -21,6 +25,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - Event-triggered publishing (doPublish() method) ✓ Extracted (from Doc 1 MVP Features)
 
 **Out of Scope (this phase):**
+
 - Blog publishing integration ⚠️ Unclear (from Doc 1 - mentioned but not confirmed MVP)
 - Push notifications 🟡 Post-MVP (from Doc 1 - explicitly deferred)
 - Text message delivery 🟡 Post-MVP (from Doc 1 - explicitly deferred)
@@ -32,6 +37,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Total Estimated Time:** 40-60 hours
 
 **Phase Breakdown:**
+
 - Phase 0 (Foundation & Learning): 6-8 hours
 - Phase 1 (Core Pipeline): 12-16 hours
 - Phase 2 (Email Publishing): 10-14 hours
@@ -45,6 +51,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 ### Pre-Implementation Checklist
 
 **Environment Setup:**
+
 - [ ] Docker installed and running (`docker --version`)
 - [ ] Node.js installed (v16+ recommended) (`node --version`)
 - [ ] Code editor configured (VS Code or preferred IDE)
@@ -53,6 +60,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Access to: AWS account, test email accounts, database instance (if available)
 
 **Document Review:**
+
 - [ ] Document 1 (Decisions & Agreements) read completely
 - [ ] All Technical Decisions understood (especially Docker, file-based assembly, SES, templates)
 - [ ] All Integration Contracts reviewed (Core, AI, Database, Frontend)
@@ -61,6 +69,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Section 8: "Using This Document" reviewed (understand resolution workflow)
 
 **Blocker Resolution Status:**
+
 - [ ] Open Question #1 (AI article schema): [✅ Resolved / ⚠️ In Progress / ❌ Not Started]
 - [ ] Open Question #3 (doPublish() trigger): [✅ Resolved / ⚠️ In Progress / ❌ Not Started]
 - [ ] Open Question #5 (Auth between modules): [✅ Resolved / ⚠️ In Progress / ❌ Not Started]
@@ -68,10 +77,13 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Frontend request data schema: [✅ Resolved / ⚠️ In Progress / ❌ Not Started]
 
 **If any blocker is ❌ Not Started or ⚠️ In Progress:**
+
 → **STOP:** Resolve blockers before proceeding to Phase 1
+
 → **OK to start:** Phase 0 (Foundation & Learning) and Phase 3 (Template System) only
 
 **Team Alignment:**
+
 - [ ] Kickoff meeting held (roles, timeline, communication channels)
 - [ ] Technical lead assigned for Publishing module
 - [ ] Code review process defined
@@ -79,18 +91,21 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Integration points identified: contacts for AI module, Backend, Frontend, Database teams
 
 **Communication Setup:**
+
 - [ ] Slack/Discord channel for Publishing module
 - [ ] Access to: AI module team, Backend team, Frontend team, Database team
 - [ ] Escalation path defined (who to ask when stuck)
 - [ ] Weekly sync meeting scheduled (if applicable)
 
 **AWS SES Prerequisites (for Phase 0):**
+
 - [ ] AWS account credentials available
 - [ ] Permission to create SES resources
 - [ ] Test email domain/address identified
 - [ ] Budget approved for SES usage (if required)
 
 **Ready to Begin:**
+
 - [ ] All above items checked
 - [ ] Phase 0 can start immediately (no blockers)
 - [ ] Phase 1+ awaiting blocker resolution per Implementation Readiness Matrix
@@ -98,6 +113,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 ### Critical Path Overview
 
 **Dependency Flow:**
+
 1. **Phase 0: Foundation** → Docker setup, learn email standards, project structure
 2. **Phase 1: Core Pipeline** → Request ingestion, file assembly, basic dispatch (depends on Phase 0)
 3. **Phase 2: Email Publishing** → SES integration, error handling (depends on Phase 1)
@@ -105,6 +121,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 5. **Phase 4: Integration** → Connect to AI/DB modules, end-to-end testing (depends on all previous)
 
 **Blockers to Watch:**
+
 - 🔴 AI article schema - Blocks Phase 1 (file assembly needs schema) - Doc 1 Open Question #1
 - 🔴 Database query API - Blocks Phase 1 & 4 (content retrieval, integration) - Doc 1 Open Question #6
 - 🔴 doPublish() trigger mechanism - Blocks Phase 1 (pipeline entry point) - Doc 1 Open Question #3
@@ -125,11 +142,13 @@ Email publishing module that takes AI-generated content and distributes it via c
 | **Phase 4: Integration** | ❌ No | - All Phase 1 blockers<br>- Auth mechanism (OQ #5) | All prior phases | **Low** - Cannot integrate until contracts defined |
 
 **Key Takeaways:**
+
 - ✅ **Can start immediately:** Phase 0 (Foundation & Learning), Phase 3 (Template System in parallel)
 - ⚠️ **Requires planning:** Phase 2 (Email Publishing) can be partially designed but needs Phase 1 complete
 - ❌ **Fully blocked:** Phase 1 (Core Pipeline), Phase 4 (Integration) - resolve Document 1 Open Questions first
 
 **Recommended Sequence:**
+
 1. Start Phase 0 immediately (no blockers)
 2. Work on Phase 3 templates in parallel (independent of Phase 1)
 3. Resolve all 🔴 blockers (Open Questions #1, #3, #5, #6, Frontend schema)
@@ -145,13 +164,16 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Time Estimate:** 6-8 hours
 
 **Provenance Summary:**
+
 - ✓ Extracted: 2 tasks (Docker from Tech Decision #1, Research from Critical Quote)
 - ⚠️ Inferred: 2 tasks (Project structure, AWS SES setup - standard practice)
 - 🔴 Unknown: 0 tasks (no blockers)
 - **Total tasks:** 4 (50% extracted, 50% inferred)
 
 **Dependencies:** None
+
 **Blockers:** None - can start immediately
+
 **Confidence:** High - Standard setup and research tasks
 
 ---
@@ -161,6 +183,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Create Docker container structure for publishing module
 
 **Tasks:**
+
 - [ ] Install Docker (if not present) ⚠️ Inferred (standard setup)
 - [ ] Create Dockerfile for Node.js environment ✓ Extracted (Docker decision in Doc 1 Tech Decision #1)
 - [ ] Set up docker-compose for local development ⚠️ Inferred (standard practice)
@@ -173,12 +196,14 @@ Email publishing module that takes AI-generated content and distributes it via c
 "Create a Dockerfile for a Node.js publishing module that will run as part of a microservices architecture. Include environment variables for AWS SES credentials and database connection. Also create a docker-compose.yml for local development with volume mounts for code."
 
 **Expected output:**
+
 - `Dockerfile` with Node.js base image (node:16-alpine or similar)
 - Environment variables: `AWS_SES_ACCESS_KEY`, `AWS_SES_SECRET_KEY`, `DB_CONNECTION_STRING`
 - `docker-compose.yml` with service definition, volume mounts for `/src`, environment file reference
 - `.env.example` with credential placeholders
 
 **Validation checklist:**
+
 - [ ] Can build Docker image: `docker build -t publishing-module .`
 - [ ] Can run locally: `docker-compose up`
 - [ ] Environment variables accessible in container (`docker exec <container> env`)
@@ -195,12 +220,14 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Understand email HTML standards, compliance requirements, and industry best practices
 
 **Learning Objectives:**
+
 - Understand email HTML/CSS limitations (client compatibility)
 - Learn legal requirements (CAN-SPAM, GDPR unsubscribe rules)
 - Identify minimum vs. enterprise-level features
 - Understand AWS SES quotas, limits, bounce handling
 
 **Resources:**
+
 - Email HTML best practices: litmus.com, email on acid
 - CAN-SPAM compliance: FTC guidelines
 - AWS SES documentation: docs.aws.amazon.com/ses
@@ -219,6 +246,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Set up code directory structure and initial files
 
 **Tasks:**
+
 - [ ] Create `/src` for application code ⚠️ Inferred
 - [ ] Create `/templates` for email templates ✓ Extracted (template system in Doc 1)
 - [ ] Create `/temp` for file assembly ✓ Extracted (temp file decision in Doc 1 Tech Decision #3)
@@ -233,12 +261,14 @@ Email publishing module that takes AI-generated content and distributes it via c
 "Create a Node.js project structure for an email publishing module. Include directories for: email templates, temporary file assembly, dispatch logs. Initialize package.json with dependencies: nodemailer (AWS SES), mustache (templating), and standard utilities. Create a README with setup instructions."
 
 **Expected output:**
+
 - Directory structure: `/src`, `/templates`, `/temp`, `/logs`, `/tests`
 - `package.json` with dependencies: `nodemailer`, `@aws-sdk/client-ses`, `mustache`, `dotenv`, dev dependencies: `jest`, `eslint`
 - `README.md` with setup instructions (install, configure, run)
 - `.gitignore` excluding `node_modules/`, `/temp/*`, `/logs/*`, `.env`
 
 **Validation checklist:**
+
 - [ ] Directory structure created correctly
 - [ ] `npm install` runs without errors
 - [ ] Dependencies match requirements (check package.json)
@@ -255,6 +285,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Configure AWS Simple Email Service for email dispatch
 
 **Tasks:**
+
 - [ ] Create/access AWS account ⚠️ Inferred
 - [ ] Set up SES in appropriate region ⚠️ Inferred
 - [ ] Verify sender email domain/address ⚠️ Inferred (SES requirement)
@@ -277,18 +308,21 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Time Estimate:** 12-16 hours
 
 **Provenance Summary:**
+
 - ✓ Extracted: 6 tasks (doPublish(), request parsing, content retrieval, file assembly from Doc 1)
 - ⚠️ Inferred: 4 tasks (validation, error handling, edge cases - standard practice)
 - 🔴 Unknown: 3 tasks (BLOCKED - need OQ #1, #3, #6 resolved)
 - **Total tasks:** 13 (46% extracted, 31% inferred, 23% blocked)
 
 **Dependencies:**
+
 - Phase 0 complete (environment ready)
 - 🔴 BLOCKER MUST RESOLVE: AI article schema defined (Reference: Document 1 Open Question #1)
 - 🔴 BLOCKER MUST RESOLVE: doPublish() trigger mechanism specified (Reference: Document 1 Open Question #3)
 - 🔴 BLOCKER MUST RESOLVE: Database API defined (Reference: Document 1 Open Question #6)
 
 **Blockers:** 3 critical - cannot start Phase 1 until all resolved
+
 **Confidence:** Low - Multiple unresolved integration contracts
 
 ---
@@ -298,22 +332,26 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Implement doPublish() method that receives trigger and loads user request data
 
 **Tasks:**
+
 - [ ] Create doPublish() entry point method 🔴 BLOCKED (trigger mechanism undefined - Doc 1 Open Question #3)
 - [ ] Parse incoming request data (JSON format) ✓ Extracted (JSON format from Doc 1 Tech Decision #2)
 - [ ] Implement request validation ⚠️ Inferred (standard input validation)
 - [ ] Set request flag to "in-progress" ✓ Extracted (state tracking from Doc 1 Integration Contracts)
 
 **Provenance:**
+
 - doPublish() trigger: Document 1 Integration Contracts (Core Module row) - mechanism described conceptually but implementation TBD
 - JSON format: Document 1 Technical Decision #2
 - State flags: Document 1 Integration Contracts notes ("in progress", "published")
 
 **Implementation Notes:**
+
 - Request JSON contains: user preferences, topics, frequency, delivery methods (from Doc 1 Integration Contracts)
 - State update must persist to database (API TBD - see Doc 1 Open Question #6)
 - Interval logic: "do publish method knows the interval that it's going to be called at" - need to handle timing
 
 **Success Criteria:**
+
 - [ ] Method accepts trigger input (format TBD)
 - [ ] Successfully parses JSON request data
 - [ ] Updates request status to "in-progress"
@@ -326,26 +364,31 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Query database for AI-generated content matching user tags, filter out previously sent items
 
 **Tasks:**
+
 - [ ] Make API call to database module 🔴 BLOCKED (Reference: Document 1 Open Question #6)
 - [ ] Build query: match user tags, exclude sent items ✓ Extracted (logic from Doc 1)
 - [ ] Handle empty results (no new content) ⚠️ Inferred (edge case handling)
 - [ ] Parse AI article response 🔴 BLOCKED (Reference: Document 1 Open Question #1)
 
 **Provenance:**
+
 - Query logic: Document 1 Integration Contracts (Database row): "request to the other database for any available stuff that matches those tags that isn't in the list of things we've already sent them"
 - AI article format: Document 1 Open Question #1 - "markdown file" mentioned but structure undefined
 
 **Implementation Notes:**
+
 - Tracking "already sent" items: mechanism mentioned but not detailed
 - Article format: "probably just be like a markdown file" - assume markdown text, but metadata/images unknown
 
 **Blockers:**
+
 - 🔴 Database query API contract undefined (Reference: Document 1 Open Question #6)
 - 🔴 AI article schema undefined (Reference: Document 1 Open Question #1)
 - **Impact:** Cannot implement until both blockers resolved
 - **Resolution needed before:** Phase 1 start
 
 **Success Criteria:**
+
 - [ ] (BLOCKED) Successfully queries database
 - [ ] (BLOCKED) Correctly filters previously sent content
 - [ ] (BLOCKED) Parses article data into usable format
@@ -357,12 +400,14 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Copy retrieved articles to temporary folder for email assembly
 
 **Tasks:**
+
 - [ ] Create temporary folder per publish job ✓ Extracted (temp file approach from Doc 1 Tech Decision #3)
 - [ ] Copy article files to temp location ⚠️ Inferred (file operations)
 - [ ] Organize files by user/request ID ⚠️ Inferred (tracking/audit trail)
 - [ ] Implement cleanup on completion/failure ⚠️ Inferred (temp file management)
 
 **Provenance:**
+
 - Temp file approach: Document 1 Technical Decision #3 - "assemble the template, like copy of the template and then we'll copy these chunks of content in after we've formatted them and we'll have this version of what we're about to send locally in a temporary file"
 - Memory constraint: Doc 1 Critical Quote - "don't want to do this all in memory because that means that the server has to have a larger amount of RAM"
 
@@ -371,12 +416,14 @@ Email publishing module that takes AI-generated content and distributes it via c
 "Implement a file assembly system that copies AI article files to a temporary folder structure organized by publish job ID. Include cleanup logic to delete temp files after successful dispatch or on failure. Use Node.js fs module with async/await."
 
 **Expected output:**
+
 - Module: `src/fileAssembly.js` with functions: `createTempFolder(jobId)`, `copyArticles(jobId, articles[])`, `cleanup(jobId, success)`
 - Temp folder pattern: `/temp/[jobId]/` with article files inside
 - Error handling for file I/O failures
 - Cleanup function called from Phase 2 dispatch success/failure
 
 **Validation checklist:**
+
 - [ ] Temp folder created with unique ID: `/temp/job-12345/`
 - [ ] Articles copied successfully to temp location
 - [ ] Cleanup removes folder after success
@@ -384,6 +431,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] No memory leaks (check with multiple runs)
 
 **Implementation Notes:**
+
 - Temp folder location: consider using `/temp/[job-id]/` pattern
 - Cleanup timing: after dispatch complete (Phase 2) or on error
 - File size considerations: mentioned storage concerns in Doc 1 Gaps
@@ -391,6 +439,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning trade-off:** Low (file operations are routine - agent saves 1-2 hours)
 
 **Success Criteria:**
+
 - [ ] Creates unique temp folder per job
 - [ ] Successfully copies article files
 - [ ] Cleanup executes on completion
@@ -405,22 +454,26 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Format markdown articles for email (truncation, HTML conversion prep)
 
 **Tasks:**
+
 - [ ] Determine content length and apply truncation ✓ Extracted (truncation logic from Doc 1)
 - [ ] Implement "show more" link insertion ✓ Extracted (truncation UX from Doc 1)
 - [ ] Format markdown to email-compatible HTML ⚠️ Inferred (email requires HTML)
 - [ ] Handle edge cases (very short articles, no content) ⚠️ Inferred
 
 **Provenance:**
+
 - Truncation: Document 1 Open Question #2: "if you've got an article that's hundreds of pages long, you just want the first paragraph or... 200 words or something"
 - Show more link: Doc 1 - "then so if something's larger than 200 words, we'll have a click here for more button"
 - HTML conversion: Inferred (emails need HTML, markdown mentioned as source)
 
 **Implementation Notes:**
+
 - Truncation limit: ~200 words suggested but NOT finalized (see Doc 1 Open Question #2)
 - "Show more" links to dynamically rendered page (Doc 1 Tech Decision #6)
 - Email HTML standards: research from P0.2 should inform approach
 
 **Success Criteria:**
+
 - [ ] Articles truncated at configured limit
 - [ ] "Show more" links inserted correctly
 - [ ] Markdown converted to email-safe HTML
@@ -435,16 +488,19 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Time Estimate:** 10-14 hours
 
 **Provenance Summary:**
+
 - ✓ Extracted: 5 tasks (Template application, SES dispatch, dispatch logging from Doc 1)
 - ⚠️ Inferred: 3 tasks (Error handling, email formatting, edge cases - standard practice)
 - 🔴 Unknown: 1 task (Error retry logic details - see OQ #11)
 - **Total tasks:** 9 (56% extracted, 33% inferred, 11% unknown)
 
 **Dependencies:**
+
 - Phase 1 complete (assembled content ready)
 - Phase 0.4 complete (AWS SES configured)
 
 **Blockers:** 1 minor - error handling details (workaround: use standard retry pattern)
+
 **Confidence:** Medium - Core functionality clear, some error handling TBD
 
 ---
@@ -454,21 +510,25 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Apply template to content using shortcode system
 
 **Tasks:**
+
 - [ ] Load template file ✓ Extracted (template system from Doc 1 Tech Decision #5)
 - [ ] Replace shortcodes with user data (name, etc.) ✓ Extracted (shortcode system from Doc 1 Tech Decision #5)
 - [ ] Insert article content blocks ⚠️ Inferred (template application)
 - [ ] Generate final email HTML ⚠️ Inferred
 
 **Provenance:**
+
 - Template system: Document 1 Technical Decision #5 - "templates use shortcodes... insert the user's first name or insert their last name"
 - Shortcodes: Doc 1 - "anything that's like custom code or custom text to not be hard coded, right? That's a basic requirement of a templating system"
 
 **Implementation Notes:**
+
 - Two templates required (plain text + formatted) - from Doc 1 Critical Quote about interchangeability
 - Shortcodes needed: user first name, last name, article blocks, unsubscribe link (inferred)
 - Template location: `/templates/` directory from P0.3
 
 **Success Criteria:**
+
 - [ ] Template loaded successfully
 - [ ] Shortcodes replaced with actual data
 - [ ] Content inserted into template
@@ -481,6 +541,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Send email via AWS SES API and capture response
 
 **Tasks:**
+
 - [ ] Initialize SES client with credentials ⚠️ Inferred (AWS SDK standard)
 - [ ] Format email for SES API (to, from, subject, body) ⚠️ Inferred
 - [ ] Send email via SES ✓ Extracted (SES decision from Doc 1 Tech Decision #4)
@@ -488,6 +549,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Handle SES errors (quota, bounce, invalid email) ⚠️ Inferred
 
 **Provenance:**
+
 - SES usage: Document 1 Technical Decision #4 - "SES by Amazon, the simple email service"
 - Error responses: Document 1 Gap - "The email one's also got... the potential be bounced back. So that needs to be added to the log"
 
@@ -496,6 +558,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 "Implement AWS SES email sending in Node.js. Use AWS SDK to send HTML emails with error handling for: quota exceeded, bounced emails, invalid addresses. Return detailed response object with message ID and status. Include retry logic for transient failures."
 
 **Expected output:**
+
 - Module: `src/emailDispatch.js` with function: `sendEmail(to, from, subject, htmlBody, textBody)`
 - AWS SDK v3 (@aws-sdk/client-ses) integration
 - Error handling for: QuotaExceededException, MessageRejected, InvalidParameterValue
@@ -503,6 +566,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - Return object: `{ success: boolean, messageId: string, error?: string }`
 
 **Validation checklist:**
+
 - [ ] Successfully sends test email via SES
 - [ ] Returns SES message ID in response
 - [ ] Handles quota exceeded gracefully (logs error, doesn't crash)
@@ -511,6 +575,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] All attempts logged to dispatch log
 
 **Implementation Notes:**
+
 - SES credentials: from P0.4 setup (environment variables: AWS_SES_ACCESS_KEY, AWS_SES_SECRET_KEY)
 - From address: must be verified in SES (from P0.4)
 - Bounce handling: log for now, full handling TBD (Reference: Document 1 Open Question #11)
@@ -518,6 +583,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning trade-off:** Medium (SES integration is learned skill, but agent handles boilerplate - saves 2-3 hours, moderate learning loss)
 
 **Success Criteria:**
+
 - [ ] Successfully sends email via SES
 - [ ] Captures message ID from response
 - [ ] Handles common errors gracefully
@@ -532,22 +598,26 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Record all dispatch events to database with full pipeline context
 
 **Tasks:**
+
 - [ ] Create log entry structure ✓ Extracted (dispatch log from Doc 1)
 - [ ] Capture: request ID, timestamp, API response, errors ✓ Extracted (from Doc 1)
 - [ ] Store dispatch log to database ⚠️ Inferred (persistence)
 - [ ] Link log to original request ✓ Extracted (audit trail from Doc 1)
 
 **Provenance:**
+
 - Logging requirement: Document 1 MVP Features - "Dispatch Logging" confirmed in MVP
 - Log contents: Document 1 - "That dispatch log will also have the details of the whole pipeline from the moment it was requested, the moment it entered the system... the moment it was processed, what logic was used for processing, what templates were used... when it was sent"
 - Per-request logs: Doc 1 - "each log entry is specific to that one request to that one API"
 
 **Implementation Notes:**
+
 - Log must track: entire pipeline (request → process → template → dispatch)
 - Include: templates used, processing logic version, SES response
 - Future: handle post-dispatch updates (bounces, unsubscribes) - see Doc 1 Gaps
 
 **Success Criteria:**
+
 - [ ] Log entry created for every dispatch
 - [ ] Contains all pipeline details
 - [ ] Persisted to database
@@ -562,16 +632,19 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Time Estimate:** 8-10 hours
 
 **Provenance Summary:**
+
 - ✓ Extracted: 4 tasks (Shortcode system, 2 templates from Doc 1 Tech Decision #5, #7)
 - ⚠️ Inferred: 2 tasks (Template engine choice, testing - standard practice)
 - 🔴 Unknown: 0 tasks (no blockers)
 - **Total tasks:** 6 (67% extracted, 33% inferred)
 
 **Dependencies:**
+
 - Phase 0.2 complete (email standards research)
 - Phase 1 complete (know content structure - can also work in parallel)
 
 **Blockers:** None - can start independently of Phase 1
+
 **Confidence:** High - Template approach fully defined in Document 1
 
 ---
@@ -581,12 +654,14 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Build shortcode replacement system for templates
 
 **Tasks:**
+
 - [ ] Choose/implement templating library (Mustache, Handlebars, etc.) ⚠️ Inferred (standard practice)
 - [ ] Define shortcode syntax (e.g., {{first_name}}) ⚠️ Inferred
 - [ ] Implement shortcode replacement logic ✓ Extracted (shortcode system from Doc 1 Tech Decision #5)
 - [ ] Handle missing data gracefully ⚠️ Inferred
 
 **Provenance:**
+
 - Shortcode system: Document 1 Technical Decision #5 - "using shortcodes, which is a way of saying insert the user's first name... anything that's like custom code or custom text to not be hard coded"
 
 **Could ask agent:** 📋 **Copy-paste ready**
@@ -594,6 +669,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 "Create a template engine for email publishing that supports shortcodes like {{first_name}}, {{article_content}}, {{unsubscribe_link}}. Use Mustache.js or similar. Include error handling for missing data (fallback to empty or default). Support nested content blocks for article lists."
 
 **Expected output:**
+
 - Module: `src/templateEngine.js` with function: `renderTemplate(templatePath, data)`
 - Library: Mustache.js (or Handlebars.js) integration
 - Shortcodes supported: `{{first_name}}`, `{{last_name}}`, `{{article_content}}`, `{{unsubscribe_link}}`, `{{#articles}}...{{/articles}}` (loop)
@@ -601,6 +677,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - Template validation function to check for required shortcodes
 
 **Validation checklist:**
+
 - [ ] Template loads from `/templates/` directory
 - [ ] Shortcodes replaced correctly with provided data
 - [ ] Missing data doesn't crash (defaults to empty/fallback)
@@ -610,6 +687,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning trade-off:** Low (templating is common pattern - agent saves 1-2 hours)
 
 **Success Criteria:**
+
 - [ ] Shortcodes correctly replaced
 - [ ] Missing data handled
 - [ ] Supports nested blocks (article lists)
@@ -624,23 +702,27 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Create simple plain text email template (Template 1 of 2 required)
 
 **Tasks:**
+
 - [ ] Design text layout structure ✓ Extracted (two templates required from Doc 1 Tech Decision #7)
 - [ ] Define shortcodes needed ⚠️ Inferred
 - [ ] Add unsubscribe section ✓ Extracted (legal requirement from Doc 1 Critical Quote)
 - [ ] Test readability ⚠️ Inferred
 
 **Provenance:**
+
 - Two templates required: Document 1 Critical Quote - "I've found if you do something where you have at least two of something that's supposed to be interchangeable, you can check to make sure it really works for more than the one thing"
 - Unsubscribe: Document 1 Critical Quote - "to be compliant with law, we should have the unsubscribe button"
 
 **Why human:** Design decisions (layout, tone, readability) require judgment and UX thinking
 
 **Implementation Notes:**
+
 - Shortcodes needed (minimum): user first_name, article blocks, unsubscribe_link
 - Structure: greeting, article list, unsubscribe footer
 - Content limit per article: ~200 words (see Doc 1 Open Question #2 for final decision)
 
 **Success Criteria:**
+
 - [ ] Template created and saved to `/templates/plain.txt`
 - [ ] All required shortcodes included
 - [ ] Unsubscribe section compliant
@@ -655,6 +737,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Create formatted email template with colors, images, styling (Template 2 of 2)
 
 **Tasks:**
+
 - [ ] Design HTML/CSS layout ✓ Extracted (formatted template required from Doc 1)
 - [ ] Ensure cross-client compatibility ⚠️ Inferred (email HTML standards from P0.2)
 - [ ] Add visual elements (colors, images per description) ✓ Extracted (from Doc 1)
@@ -662,12 +745,14 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Test in multiple email clients ⚠️ Inferred
 
 **Provenance:**
+
 - Two templates with one formatted: Document 1 suggested "fancy with like a customized color scheme and some images that need to go with it and links to at the bottom to the socials or something"
 - Visual quality: Document 1 Critical Quote - "where us as humans will have to look at it and make a lot of tweaks and changes to make it look good and look professional. That's where the rubber hits the road"
 
 **Why human:** Visual design, brand consistency, UX quality require human judgment. This is "where the rubber hits the road" per Doc 1 - iterative refinement critical.
 
 **Implementation Notes:**
+
 - Use email HTML standards from P0.2 research
 - Test clients: Gmail, Outlook, Apple Mail minimum
 - Images: hosting strategy TBD (inline vs. external links)
@@ -675,6 +760,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - Expect iteration: plan time for "tweaks and changes to make it look good"
 
 **Success Criteria:**
+
 - [ ] Template created and saved to `/templates/formatted.html`
 - [ ] Works in major email clients
 - [ ] Visually professional
@@ -692,16 +778,19 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Time Estimate:** 4-6 hours
 
 **Provenance Summary:**
+
 - ✓ Extracted: 6 tasks (Module integrations, unsubscribe flow, testing from Doc 1)
 - ⚠️ Inferred: 3 tasks (Testing scenarios, Docker validation - standard practice)
 - 🔴 Unknown: 4 tasks (All blocked - need OQ #1, #3, #5, #6 resolved)
 - **Total tasks:** 13 (46% extracted, 23% inferred, 31% blocked)
 
 **Dependencies:**
+
 - All previous phases complete
 - 🔴 ALL BLOCKERS RESOLVED (Reference: Document 1 Open Questions #1, #3, #5, #6, and Frontend schema)
 
 **Blockers:** 4 critical - cannot start Phase 4 until all integration contracts defined
+
 **Confidence:** Low - Fully blocked until Document 1 resolutions complete
 
 ---
@@ -711,6 +800,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Connect to Core, AI, Database, Frontend modules
 
 **Tasks:**
+
 - [ ] Implement Core module API calls (doPublish trigger) 🔴 BLOCKED (Reference: Document 1 Open Question #3)
 - [ ] Implement AI module content fetching 🔴 BLOCKED (Reference: Document 1 Open Questions #1, #6)
 - [ ] Implement Database queries 🔴 BLOCKED (Reference: Document 1 Open Question #6)
@@ -718,10 +808,12 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Add authentication/authorization 🔴 BLOCKED (Reference: Document 1 Open Question #5)
 
 **Provenance:**
+
 - Integration points: Document 1 Integration Contracts section (all rows except SES)
 - Blockers: Document 1 Open Questions #1, #3, #5, #6, #7
 
 **Blockers:**
+
 - 🔴 Core doPublish() trigger undefined (Reference: Document 1 Open Question #3)
 - 🔴 AI article schema undefined (Reference: Document 1 Open Question #1)
 - 🔴 Database query API undefined (Reference: Document 1 Open Question #6)
@@ -731,6 +823,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 - **Resolution needed before:** Phase 4 start
 
 **Success Criteria:**
+
 - [ ] (BLOCKED) All module APIs connected
 - [ ] (BLOCKED) Auth working between modules
 - [ ] (BLOCKED) Data flows end-to-end
@@ -742,6 +835,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Implement complete unsubscribe process
 
 **Tasks:**
+
 - [ ] Create unsubscribe confirmation page ✓ Extracted (unsubscribe flow from Doc 1 MVP Features)
 - [ ] Display user's subscription details ✓ Extracted (from Doc 1)
 - [ ] Handle cancellation confirmation ✓ Extracted (from Doc 1)
@@ -749,15 +843,18 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Respect unsubscribe in future publishes ✓ Extracted (from Doc 1)
 
 **Provenance:**
+
 - Unsubscribe flow: Document 1 MVP Features and Critical Quote - full flow described
 - Flow steps: Doc 1 - "user has clicked the unsubscribe button. That'll take them to a page that says... this is what you asked for. Remember, are you sure you want this to be canceled? And then if they hit cancel, it'll show something on the screen there saying that it's now not going to send any more messages"
 
 **Implementation Notes:**
+
 - Confirmation page shows: subscription summary, cancel confirmation
 - API call to backend: mark subscription as canceled
 - Publishing check: skip unsubscribed records in doPublish()
 
 **Success Criteria:**
+
 - [ ] Unsubscribe link works
 - [ ] Confirmation page displays correctly
 - [ ] State updated in backend
@@ -770,6 +867,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Test full pipeline from trigger to email delivery
 
 **Tasks:**
+
 - [ ] Create test user request data ⚠️ Inferred
 - [ ] Create test AI article content ⚠️ Inferred
 - [ ] Execute full pipeline ⚠️ Inferred
@@ -779,11 +877,13 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Verify dispatch logging ✓ Extracted (logging in Doc 1 MVP)
 
 **Provenance:**
+
 - Unsubscribe testing: Document 1 MVP Features - unsubscribe flow required
 - Logging verification: Document 1 MVP Features - dispatch logging required
 - General testing: ⚠️ Inferred (standard practice)
 
 **Success Criteria:**
+
 - [ ] Pipeline executes without errors
 - [ ] Email delivered to test account
 - [ ] Unsubscribe flow works correctly
@@ -797,6 +897,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **What:** Ensure module runs correctly in Docker container
 
 **Tasks:**
+
 - [ ] Build Docker image ✓ Extracted (Docker containerization from Doc 1 Tech Decision #1)
 - [ ] Test container startup ⚠️ Inferred
 - [ ] Verify environment variables ⚠️ Inferred
@@ -804,10 +905,12 @@ Email publishing module that takes AI-generated content and distributes it via c
 - [ ] Document deployment process ⚠️ Inferred
 
 **Provenance:**
+
 - Docker deployment: Document 1 Technical Decision #1 - "Publishing module will be a standalone Docker container"
 - Module connection: Doc 1 - "when we're done, we're going to be connecting that to the other Docker containers"
 
 **Success Criteria:**
+
 - [ ] Container builds successfully
 - [ ] Module runs in container
 - [ ] Connects to other modules
@@ -818,6 +921,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 ## Automation Opportunities
 
 **How to Use This Section:**
+
 - Tasks marked 🤖 Agent-ready in phases above can be delegated
 - Below are high-value automation targets with example prompts
 - Consider learning trade-offs before delegating
@@ -831,6 +935,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning Trade-off:** Low (routine setup, one-time task)
 
 **Could ask agent:**
+
 "Create a Dockerfile for a Node.js publishing module that will run as part of a microservices architecture. Include environment variables for AWS SES credentials and database connection. Also create a docker-compose.yml for local development with volume mounts for code."
 
 **Why automate:** Boilerplate configuration, standard Docker patterns
@@ -846,6 +951,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning Trade-off:** Low (standard project scaffolding)
 
 **Could ask agent:**
+
 "Create a Node.js project structure for an email publishing module. Include directories for: email templates, temporary file assembly, dispatch logs. Initialize package.json with dependencies: nodemailer (AWS SES), mustache (templating), and standard utilities. Create a README with setup instructions."
 
 **Why automate:** Routine scaffolding, saves manual setup time
@@ -861,6 +967,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning Trade-off:** Low (standard file operations)
 
 **Could ask agent:**
+
 "Implement a file assembly system that copies AI article files to a temporary folder structure organized by publish job ID. Include cleanup logic to delete temp files after successful dispatch or on failure. Use Node.js fs module with async/await."
 
 **Why automate:** Routine file operations, standard patterns
@@ -876,6 +983,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning Trade-off:** Medium (SES integration is learned skill, but boilerplate heavy)
 
 **Could ask agent:**
+
 "Implement AWS SES email sending in Node.js. Use AWS SDK to send HTML emails with error handling for: quota exceeded, bounced emails, invalid addresses. Return detailed response object with message ID and status. Include retry logic for transient failures."
 
 **Why automate:** Well-defined integration, AWS SDK boilerplate
@@ -891,6 +999,7 @@ Email publishing module that takes AI-generated content and distributes it via c
 **Learning Trade-off:** Low (common templating pattern)
 
 **Could ask agent:**
+
 "Create a template engine for email publishing that supports shortcodes like {{first_name}}, {{article_content}}, {{unsubscribe_link}}. Use Mustache.js or similar. Include error handling for missing data (fallback to empty or default). Support nested content blocks for article lists."
 
 **Why automate:** Standard templating implementation, library-based

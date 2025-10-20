@@ -129,6 +129,7 @@ David's morning routine changes completely. Instead of scrambling to react to co
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Social media scheduling tools (they already have Sprinklr)
 - Basic analytics dashboards (Adobe Analytics covers web traffic)
 - Simple keyword monitoring (looking for deeper competitive intelligence)

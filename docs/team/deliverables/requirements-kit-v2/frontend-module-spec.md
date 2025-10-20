@@ -1,8 +1,8 @@
 # Frontend Design Module - Product Requirements Document (PRD)
 
-**Module Name**: Frontend Design
-**Version**: 0.1.0
-**Owner(s)**: Frontend Module Specialist, UI/UX Team
+- **Module Name**: Frontend Design
+- **Version**: 0.1.0
+- **Owner(s)**: Frontend Module Specialist, UI/UX Team
 
 ---
 
@@ -19,16 +19,19 @@
 ## Important: Length and Detail Guidance
 
 **Comprehensive Spec (Phase 3 - WO-3):**
+
 - Expected: 800-1,500 lines (detailed, implementation-focused)
 - Purpose: Provide rich input for quality refinement
 - Don't worry about length - capture all necessary detail
 
 **Final Spec (Phase 4 - WO-4):**
+
 - Target: 500-700 lines (refined, requirements-focused)
 - Purpose: Implementation-ready PRD matching case study quality
 - Achieved by: Removing implementation details, tightening language, eliminating redundancy
 
 **What This Means:**
+
 - It's NORMAL for this template to produce 1,000+ lines initially
 - Quality refinement (WO-4) will reduce it to 500-700 lines
 - Focus on completeness here, refinement comes later
@@ -42,6 +45,7 @@
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Current situation described with quantified pain points (e.g., "2 hours/day wasted", "20% failure rate")
 - ✅ Who is affected identified (specific user roles, scale expectations)
 - ✅ Goals stated with measurable outcomes (e.g., "reduce time by 90%", "increase success to 99.9%")
@@ -50,6 +54,7 @@
 - ✅ Scale context provided (number of users, records, requests)
 
 **This section is INCOMPLETE if:**
+
 - ❌ Problem is vague or generic ("users want better experience")
 - ❌ No quantified metrics (no numbers, percentages, or time estimates)
 - ❌ Who is affected is unclear (just "users" without specificity)
@@ -60,34 +65,47 @@
 ### What to include:
 
 **Current Situation**:
+
 *   What exists today (or doesn't exist) that necessitates this module.
 *   Why the current approach is inadequate.
 *   What specific pain points users or the system face.
 *   Quantify the problem where possible (e.g., "developers waste 2 hours per day manually syncing data," "20% of requests fail due to...").
 
 **Who is Affected**:
+
 *   Primary users of this module (e.g., "backend developers," "content editors," "end-users on mobile").
 *   Their environment and constraints.
 *   Scale expectations (e.g., "10,000 daily active users," "1 million records," "20+ concurrent agents").
 
 **Goals**:
+
 *   What success looks like for the module.
 *   Measurable outcomes (e.g., "reduce data sync time by 90%," "increase request success rate to 99.9%," "decrease dashboard load time to <500ms").
 
 ### What to Include (Requirements Focus):
 ✅ User pain points with quantified impact
+
 ✅ Current workflow and why it's inadequate
+
 ✅ Who is affected and their constraints
+
 ✅ Measurable goals and success metrics
+
 ✅ Scale expectations (users, records, concurrency)
+
 ✅ Business value and rationale
 
 ### What to Exclude (Implementation Details):
 ❌ Market research and competitive analysis
+
 ❌ Detailed cost-benefit calculations
+
 ❌ Historical context beyond immediate problem
+
 ❌ Team structure or organizational charts
+
 ❌ Project management methodology
+
 ❌ Technology selection rationale (save for Section 8)
 
 ### Level of Detail (Example):
@@ -119,6 +137,7 @@ tools (Jira, Asana, Linear, ...) with feature matrices and cost projections.
 Currently, knowledge workers and researchers interact with the Knowledge Graph Lab through fragmented, inefficient interfaces that severely limit their ability to extract insights from entity relationships and data patterns. The existing approach requires users to navigate multiple disconnected systems, manually correlate data across different views, and struggle with outdated or incomplete information displays.
 
 **Quantified Pain Points:**
+
 - Users spend 20-30 minutes daily switching between 3-5 different tools to complete basic knowledge graph workflows
 - Entity relationship exploration requires manual correlation across separate list views, graph views, and detail pages
 - Real-time updates are missed because users must manually refresh multiple interfaces to see current data
@@ -126,6 +145,7 @@ Currently, knowledge workers and researchers interact with the Knowledge Graph L
 - Mobile users are severely limited, with 80% of desktop features unavailable on mobile devices
 
 **Current Manual Processes:**
+
 1. **Data Discovery**: Users manually search across multiple APIs and databases to find relevant entities
 2. **Relationship Mapping**: Manual correlation of entity connections using spreadsheets or basic list views
 3. **Pattern Analysis**: Limited visualization capabilities force users to mentally map complex relationships
@@ -133,6 +153,7 @@ Currently, knowledge workers and researchers interact with the Knowledge Graph L
 5. **Cross-device Access**: Inconsistent experiences across desktop, tablet, and mobile platforms
 
 **Technical Limitations:**
+
 - No unified dashboard for comprehensive entity overview and relationship exploration
 - Limited graph visualization capabilities for large-scale knowledge graphs (1000+ nodes)
 - Inefficient real-time update mechanisms causing data staleness issues
@@ -142,11 +163,13 @@ Currently, knowledge workers and researchers interact with the Knowledge Graph L
 ### 1.2 Users Affected
 
 **Primary Users (Core Knowledge Workers):**
+
 - **Researchers** (50-100 people): Daily users conducting entity relationship analysis and pattern discovery
 - **Data Analysts** (20-40 people): Regular users creating reports and insights from knowledge graph data
 - **Product Managers** (10-20 people): Weekly users making decisions based on entity relationship insights
 
 **Secondary Users (Supporting Roles):**
+
 - **System Administrators** (5-10 people): Weekly users configuring dashboards and managing user permissions
 - **Content Creators** (15-25 people): Monthly users exploring entity relationships for content development
 - **External Partners** (variable): Occasional users accessing shared knowledge graphs
@@ -165,6 +188,7 @@ Currently, knowledge workers and researchers interact with the Knowledge Graph L
 ### 1.3 Goals and Success Metrics
 
 **Primary Goals:**
+
 1. **Unified Experience**: Single dashboard interface eliminating need for multiple tool switching
 2. **Efficient Exploration**: Enable complex entity relationship discovery in under 5 minutes
 3. **Real-time Awareness**: Live updates with sub-second latency for collaborative work
@@ -172,6 +196,7 @@ Currently, knowledge workers and researchers interact with the Knowledge Graph L
 5. **Performance Excellence**: Sub-2-second load times for 1000+ node graph visualizations
 
 **Measurable Success Metrics:**
+
 1. **Task Completion Time**: Reduce entity relationship discovery from 20-30 minutes to under 5 minutes (75% improvement)
 2. **Context Switching**: Eliminate manual tool switching, reducing workflow time by 60%
 3. **Real-time Updates**: Achieve 500ms latency for WebSocket updates (current: manual refresh only)
@@ -189,12 +214,15 @@ Currently, knowledge workers and researchers interact with the Knowledge Graph L
 ### 1.4 Business Value
 
 **Operational Efficiency:**
+
 Solving the fragmented interface problem will enable knowledge workers to complete research tasks 60% faster, reducing total research time from 25-35 hours to 10-14 hours per week per user. This efficiency gain across 85-165 users represents 2,000-4,000 hours of reclaimed productivity annually.
 
 **Decision Quality:**
+
 Real-time entity relationship visibility will improve decision-making speed and accuracy by providing immediate access to current data patterns. Product managers will make decisions 3x faster with 25% higher confidence, leading to better product outcomes and faster time-to-market for data-driven features.
 
 **Collaborative Impact:**
+
 Unified real-time interfaces will enable better cross-team collaboration on knowledge graph analysis. Teams will identify patterns and insights 40% faster through shared exploration sessions, reducing duplicate work and improving knowledge sharing across the organization.
 
 **Technical Benefits:**
@@ -204,6 +232,7 @@ Unified real-time interfaces will enable better cross-team collaboration on know
 - **Mobile Reach**: Enable field research capabilities previously impossible
 
 **Strategic Value:**
+
 The unified frontend will become the primary interface for all knowledge graph interactions, establishing the Knowledge Graph Lab as the central hub for organizational intelligence and research activities. This positions the platform as the go-to tool for entity relationship analysis and pattern discovery across all departments.
 
 ---
@@ -217,6 +246,7 @@ The unified frontend will become the primary interface for all knowledge graph i
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 5-10 user stories covering all major workflows
 - ✅ Each story follows "As a... I need... So that..." format
 - ✅ User roles are specific with context (not just "user")
@@ -226,6 +256,7 @@ The unified frontend will become the primary interface for all knowledge graph i
 - ✅ Edge cases mentioned in acceptance criteria where relevant
 
 **This section is INCOMPLETE if:**
+
 - ❌ Fewer than 5 stories (insufficient coverage of workflows)
 - ❌ Stories lack quantified acceptance criteria ("fast" instead of "<2 seconds")
 - ❌ Stories describe implementation ("using React form") instead of capability
@@ -239,25 +270,37 @@ The unified frontend will become the primary interface for all knowledge graph i
 **US-[N]: [Short Descriptive Title]**
 
 As a [specific user type with context],
+
 I need [specific capability or feature],
+
 So that [measurable benefit or value].
 
 **Acceptance**: [Quantified success criteria with specific numbers, times, or counts]
 
 ### What to Include (Requirements Focus):
 ✅ User role with specific context
+
 ✅ Capability or feature needed (WHAT, not HOW)
+
 ✅ Measurable benefit or value
+
 ✅ Quantified acceptance criteria
+
 ✅ 5-10 stories covering main workflows
+
 ✅ Given/When/Then format for acceptance
 
 ### What to Exclude (Implementation Details):
 ❌ UI mockups or wireframes
+
 ❌ Button labels or screen layouts
+
 ❌ Database queries or API calls
+
 ❌ Technology-specific implementation
+
 ❌ Internal system architecture
+
 ❌ Code structure or module organization
 
 ### Level of Detail (Example):
@@ -298,10 +341,13 @@ Acceptance:
 **US-1: Dashboard Overview Access**
 
 As a knowledge worker starting my daily research session,
+
 I need to view a personalized dashboard showing recent entity activity and key insights,
+
 So that I can quickly orient myself to current data patterns and identify areas needing attention.
 
 **Acceptance**:
+
 - Dashboard loads in under 2 seconds showing personalized content
 - Displays 5-10 most relevant recent entities based on my usage patterns
 - Shows real-time activity indicators for entities updated in last 24 hours
@@ -311,10 +357,13 @@ So that I can quickly orient myself to current data patterns and identify areas 
 **US-2: Entity Relationship Exploration**
 
 As a researcher investigating complex entity connections,
+
 I need to explore entity relationships through interactive graph visualization,
+
 So that I can discover hidden patterns and insights in knowledge graph data.
 
 **Acceptance**:
+
 - Graph visualization renders complex relationships (1000+ nodes) in under 3 seconds
 - Supports interactive filtering by relationship strength, entity types, and date ranges
 - Enables drill-down into specific relationship details with metadata display
@@ -324,10 +373,13 @@ So that I can discover hidden patterns and insights in knowledge graph data.
 **US-3: Real-time Collaboration**
 
 As a data analyst working with team members on entity analysis,
+
 I need to see real-time updates to entity data and relationships,
+
 So that collaborative research sessions remain synchronized and productive.
 
 **Acceptance**:
+
 - WebSocket connection maintains real-time synchronization with 500ms latency
 - Shows other users currently viewing the same entities or relationships
 - Displays live updates to entity metadata and connection changes
@@ -337,10 +389,13 @@ So that collaborative research sessions remain synchronized and productive.
 **US-4: Mobile Entity Access**
 
 As a field researcher using mobile devices for on-site data collection,
+
 I need full access to entity exploration and relationship mapping capabilities,
+
 So that I can conduct research and analysis anywhere without desktop limitations.
 
 **Acceptance**:
+
 - Mobile interface provides 95% feature parity with desktop experience
 - Touch-optimized graph interactions work smoothly on iOS and Android devices
 - Responsive design adapts to phone, tablet, and desktop screen sizes
@@ -350,10 +405,13 @@ So that I can conduct research and analysis anywhere without desktop limitations
 **US-5: Advanced Search and Filtering**
 
 As a product manager researching market trends and competitive landscapes,
+
 I need advanced search and filtering capabilities across entity data,
+
 So that I can quickly identify relevant patterns and make data-driven decisions.
 
 **Acceptance**:
+
 - Search interface supports complex queries with multiple filter criteria
 - Autocomplete suggests relevant entities and relationship types during search
 - Advanced filters include date ranges, confidence scores, and entity types
@@ -363,10 +421,13 @@ So that I can quickly identify relevant patterns and make data-driven decisions.
 **US-6: Dashboard Customization**
 
 As a system administrator managing user experiences across the organization,
+
 I need to configure dashboard layouts and visualization preferences,
+
 So that different user roles see relevant information in optimal formats.
 
 **Acceptance**:
+
 - Dashboard layout supports customizable widget arrangements and sizing
 - Role-based permission system controls access to different dashboard features
 - Visualization preferences (colors, layouts, interaction styles) are configurable
@@ -376,10 +437,13 @@ So that different user roles see relevant information in optimal formats.
 **US-7: Data Export and Integration**
 
 As a content creator developing reports and presentations from entity insights,
+
 I need to export entity data and visualizations in multiple formats,
+
 So that I can integrate findings into documents, presentations, and external systems.
 
 **Acceptance**:
+
 - Export functionality supports JSON, CSV, PDF, and image formats
 - Large datasets (10,000+ entities) export progressively without blocking UI
 - Maintains data relationships and metadata in exported formats
@@ -389,10 +453,13 @@ So that I can integrate findings into documents, presentations, and external sys
 **US-8: Performance Monitoring**
 
 As a technical lead ensuring system reliability and user experience,
+
 I need visibility into frontend performance and user interaction patterns,
+
 So that I can optimize the interface and address performance issues proactively.
 
 **Acceptance**:
+
 - Real-time performance metrics display for dashboard load times and interactions
 - Error tracking captures and categorizes frontend failures and slow operations
 - User engagement analytics show feature utilization and interaction patterns
@@ -410,6 +477,7 @@ So that I can optimize the interface and address performance issues proactively.
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ All tables/collections listed with descriptions
 - ✅ All columns/fields with data types specified
 - ✅ Primary keys identified for all tables
@@ -420,6 +488,7 @@ So that I can optimize the interface and address performance issues proactively.
 - ✅ If stateless: Explicitly stated "No persistent data model"
 
 **This section is INCOMPLETE if:**
+
 - ❌ Tables listed without column definitions
 - ❌ Data types missing or vague ("string" instead of "VARCHAR(255)")
 - ❌ Primary keys not identified
@@ -437,18 +506,28 @@ So that I can optimize the interface and address performance issues proactively.
 
 ### What to Include (Requirements Focus):
 ✅ Table names and brief descriptions
+
 ✅ Column names with data types
+
 ✅ Primary keys and foreign keys (which columns)
+
 ✅ Major constraints (UNIQUE, NOT NULL, CHECK)
+
 ✅ Integration schemas (JSON examples with field types)
+
 ✅ Relationships between entities (1-to-many, many-to-many)
 
 ### What to Exclude (Implementation Details):
 ❌ Complete CREATE TABLE statements with all syntax
+
 ❌ Index creation statements (mention indexes exist, not full DDL)
+
 ❌ Database migration scripts
+
 ❌ Query optimization details (EXPLAIN ANALYZE output)
+
 ❌ Backup and restore procedures
+
 ❌ Performance tuning parameters
 
 ### Level of Detail (Example):
@@ -758,6 +837,7 @@ This data model ensures efficient state management, optimal performance, and sea
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 3-5 scenarios covering main user stories from Section 2
 - ✅ Each scenario follows Given/When/Then format (BDD style)
 - ✅ Given conditions include specific example data (not placeholders)
@@ -768,6 +848,7 @@ This data model ensures efficient state management, optimal performance, and sea
 - ✅ Scenarios validate acceptance criteria from user stories
 
 **This section is INCOMPLETE if:**
+
 - ❌ Fewer than 3 scenarios (insufficient coverage)
 - ❌ Scenarios don't follow Given/When/Then structure
 - ❌ Given conditions use placeholders ("[user]") instead of examples ("user@example.com")
@@ -782,30 +863,43 @@ This data model ensures efficient state management, optimal performance, and sea
 #### Scenario [N]: [Descriptive Title matching a User Story]
 
 **Given** [specific starting conditions with actual data values]
+
 - [Condition 1, e.g., A user with email "test@example.com" exists]
 
 **When** [a specific action is taken with actual parameters]
+
 - [e.g., The user submits a POST request to /login with email "test@example.com" and password "password123"]
 
 **Then** [specific, measurable, and observable outcomes]
+
 - [Assertion 1, e.g., The system returns an HTTP 200 status code]
 
 **Measurement**: [How to verify - specific metric]
 
 ### What to Include (Requirements Focus):
 ✅ Given/When/Then format (BDD style)
+
 ✅ Specific starting conditions with example data
+
 ✅ Observable actions and outcomes
+
 ✅ Measurable success criteria
+
 ✅ 3-5 scenarios covering main workflows
+
 ✅ 15-20 lines max per scenario
 
 ### What to Exclude (Implementation Details):
 ❌ Complete test code or test frameworks
+
 ❌ SQL queries or database operations
+
 ❌ API endpoint implementations
+
 ❌ Error handling code
+
 ❌ Retry logic or circuit breakers
+
 ❌ 60+ line scenarios with SQL setup
 
 ### Level of Detail (Example):
@@ -866,6 +960,7 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Response times quantified with percentiles (p50, p95, p99)
 - ✅ Throughput targets with units (requests/second, records/minute)
 - ✅ Scalability limits specified (max users, max records, max concurrency)
@@ -875,6 +970,7 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 - ✅ Targets are realistic for expected usage patterns
 
 **This section is INCOMPLETE if:**
+
 - ❌ Targets use qualitative terms ("fast", "responsive", "scalable")
 - ❌ No percentiles specified for response times (p50/p95/p99)
 - ❌ Throughput without units ("500" instead of "500 requests/second")
@@ -887,28 +983,41 @@ Measurement: 95% of digests delivered within 15 minutes of scheduled time
 ### What to include:
 
 **Response Times**:
+
 *   API endpoint latency: e.g., `< 200ms for 95th percentile`
 
 **Throughput**:
+
 *   Requests per second: e.g., `Handles 500 requests/sec`
 
 **Scalability Limits**:
+
 *   Maximum records/documents: e.g., `Scales to 10 million documents`
 
 ### What to Include (Requirements Focus):
 ✅ Quantified response times (with percentiles)
+
 ✅ Throughput targets (requests/second, records/minute)
+
 ✅ Scalability limits (max users, max records)
+
 ✅ Resource constraints (memory, CPU, storage)
+
 ✅ Concurrency requirements
+
 ✅ Availability targets (uptime %)
 
 ### What to Exclude (Implementation Details):
 ❌ Benchmark results or load test output
+
 ❌ Server specifications (CPU cores, RAM GB)
+
 ❌ Database tuning parameters
+
 ❌ Caching strategies (Redis config, TTL values)
+
 ❌ Network configuration details
+
 ❌ Infrastructure sizing calculations
 
 ### Level of Detail (Example):
@@ -957,6 +1066,7 @@ Throughput:
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 3-5 high-level phases (milestones, not day-by-day tasks)
 - ✅ Each phase has clear goal (what it achieves)
 - ✅ Deliverables are specific and testable per phase
@@ -966,6 +1076,7 @@ Throughput:
 - ✅ No time estimates or schedules (focus on WHAT not WHEN)
 
 **This section is INCOMPLETE if:**
+
 - ❌ More than 5 phases (too granular, should be high-level milestones)
 - ❌ Phases include day-by-day or hour-by-hour schedules
 - ❌ Deliverables are vague ("make progress", "work on feature")
@@ -984,26 +1095,38 @@ For each phase (aim for 3-5 phases):
 **Goal**: [What this phase achieves - the outcome, not the process]
 
 **Deliverables**:
+
 - [Specific output 1, e.g., "Complete database schema committed"]
 - [Specific output 2, e.g., "API endpoints functional"]
 
 **Dependencies**:
+
 - [What must be complete before starting this phase]
 
 ### What to Include (Requirements Focus):
 ✅ 3-5 high-level milestones
+
 ✅ What each phase delivers (outcomes)
+
 ✅ Dependencies between phases
+
 ✅ Logical grouping of deliverables
+
 ✅ MVP-focused sequence
+
 ✅ Phase goals (not durations)
 
 ### What to Exclude (Implementation Details):
 ❌ Day-by-day or hour-by-hour schedules
+
 ❌ Individual developer assignments
+
 ❌ Sprint planning or story points
+
 ❌ Detailed task breakdowns (save for `/plan`)
+
 ❌ Technology evaluation criteria
+
 ❌ Team coordination logistics
 
 ### Level of Detail (Example):
@@ -1046,17 +1169,21 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 
 ### Example
 
-**Phase 1: Core Infrastructure**
-**Goal**: Establish foundational data storage and job scheduling
+- **Phase 1: Core Infrastructure**
+- **Goal**: Establish foundational data storage and job scheduling
+
 **Deliverables**:
+
 - Database schema deployed
 - Basic CRUD API endpoints
 - Job scheduler (Celery) configured
 **Dependencies**: None
 
-**Phase 2: Digest Generation Logic**
-**Goal**: Implement content matching and email composition
+- **Phase 2: Digest Generation Logic**
+- **Goal**: Implement content matching and email composition
+
 **Deliverables**:
+
 - Article matching algorithm
 - Email template system
 - Content ranking logic
@@ -1073,6 +1200,7 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ 10-15 edge cases covering main scenarios
 - ✅ Each edge case in format "EC-N: [Situation] → [Expected behavior]"
 - ✅ Each edge case is 2-3 lines (not 15+ lines with code)
@@ -1083,6 +1211,7 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 - ✅ Edge cases are realistic (not theoretical "what if aliens attack?")
 
 **This section is INCOMPLETE if:**
+
 - ❌ Fewer than 10 edge cases (insufficient coverage)
 - ❌ Edge cases include detailed error handling code or retry logic
 - ❌ Edge cases exceed 3 lines (too detailed, implementation-focused)
@@ -1099,31 +1228,45 @@ Dependencies: AWS RDS instance provisioned, VPC configured
 ### What to include:
 
 **Failure Scenarios** - External dependencies fail:
+
 - API timeouts, service outages, network errors
 
 **Boundary Conditions** - Empty or extreme data:
+
 - No matching records, maximum limits reached, null values
 
 **Concurrency Issues** - Race conditions or conflicts:
+
 - Simultaneous updates, overlapping jobs
 
 **Data Quality Issues** - Invalid or malformed data:
+
 - Missing required fields, type mismatches
 
 ### What to Include (Requirements Focus):
 ✅ Situation description (what happens)
+
 ✅ Expected behavior (what system does)
+
 ✅ 10-15 edge cases covering main scenarios
+
 ✅ 2-3 lines per edge case
+
 ✅ Failure modes and boundary conditions
+
 ✅ Concurrency and data quality issues
 
 ### What to Exclude (Implementation Details):
 ❌ Complete error handling code
+
 ❌ Retry logic specifics (exponential backoff algorithms)
+
 ❌ Exception class hierarchies
+
 ❌ Logging implementation details
+
 ❌ Circuit breaker configurations
+
 ❌ Detailed recovery procedures
 
 ### Level of Detail (Example):
@@ -1187,6 +1330,7 @@ When the AWS SES API times out during email sending:
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Required language and version specified (e.g., "Python 3.11+")
 - ✅ Required database and version specified (e.g., "PostgreSQL 15+")
 - ✅ Required external services/APIs listed (e.g., "AWS SES for email")
@@ -1196,6 +1340,7 @@ When the AWS SES API times out during email sending:
 - ✅ Constraints are requirements, not preferences
 
 **This section is INCOMPLETE if:**
+
 - ❌ Technology choices explained (WHY instead of WHAT)
 - ❌ Includes comparison matrices or evaluation criteria
 - ❌ Alternative options listed (should only state requirements, not alternatives)
@@ -1208,28 +1353,41 @@ When the AWS SES API times out during email sending:
 ### What to include:
 
 **Required Technologies**:
+
 *   Primary technologies that MUST be used (e.g., "Language: Python 3.11+", "Database: PostgreSQL 15+").
 
 **External Dependencies**:
+
 *   Required external services or libraries (e.g., "Requires access to the Stripe API v3," "Must use the `requests` library v2.28+").
 
 **Constraints**:
+
 *   Things the system MUST or MUST NOT do (e.g., "Must be deployable as a Docker container," "Cannot write to the local filesystem").
 
 ### What to Include (Requirements Focus):
 ✅ Required language and version
+
 ✅ Required database and version
+
 ✅ Required external services/APIs
+
 ✅ Required libraries (with version constraints)
+
 ✅ Deployment constraints (Docker, serverless, etc.)
+
 ✅ Platform constraints (cloud provider, OS)
 
 ### What to Exclude (Implementation Details):
 ❌ Technology comparison matrices
+
 ❌ Why technology was chosen (evaluation criteria)
+
 ❌ Alternative options considered
+
 ❌ Detailed library configuration
+
 ❌ Performance benchmarks comparing options
+
 ❌ Team skill assessments
 
 ### Level of Detail (Example):
@@ -1244,9 +1402,18 @@ Required Libraries:
 - psycopg2>=2.9.0 (database driver)
 
 Constraints:
-- Must be deployable as Docker container
-- Cannot write to local filesystem (use S3 for storage)
-- Must run on AWS ECS
+- Must be deployable as Docker container for consistent development and production environments
+  - Rationale: Enables consistent deployment across environments and simplifies scaling
+  - Technical: Standard containerization for development and production parity
+  - Business Impact: Simplifies deployment and scaling operations, reduces environment inconsistencies
+- Must support local filesystem access for temporary processing and caching
+  - Rationale: Frontend applications require temporary file storage for assets, caching, and user uploads
+  - Technical: Docker volumes for container filesystem access with proper volume management
+  - Business Impact: Enables efficient asset handling and user experience features
+- Must support deployment on standard VPS infrastructure
+  - Rationale: Cost-effective deployment without cloud lock-in, suitable for startup environments
+  - Technical: Compatible with major VPS providers (DigitalOcean, Linode, Hetzner, etc.)
+  - Business Impact: Reduces operational costs while maintaining deployment flexibility
 ```
 
 **Too detailed** (implementation-focused):
@@ -1279,6 +1446,7 @@ Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ Unit test approach defined (what modules/functions to test)
 - ✅ Integration test approach defined (what workflows to test end-to-end)
 - ✅ Performance test approach defined (what operations to test under load)
@@ -1288,6 +1456,7 @@ Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 - ✅ Success criteria for test suite defined
 
 **This section is INCOMPLETE if:**
+
 - ❌ Includes complete test suite with individual test names
 - ❌ Includes specific test code or pseudo-code
 - ❌ Test framework configuration details (Jest config, pytest fixtures)
@@ -1300,35 +1469,49 @@ Cost analysis: SES $0.10/1000 emails, SendGrid $0.85/1000
 ### What to include:
 
 **Unit Tests**:
+
 *   What key modules/functions require unit tests (not specific test cases)
 *   Target coverage (e.g., ">80% line coverage for business logic")
 
 **Integration Tests**:
+
 *   What workflows to test end-to-end (e.g., "User signup through first digest delivery")
 *   What external integrations to test (e.g., "SES email delivery, database transactions")
 
 **Load/Performance Tests**:
+
 *   What operations to test under load (reference Section 5 targets)
 *   Expected scale (e.g., "1000 concurrent digest generations")
 
 **Acceptance Tests**:
+
 *   How to validate Acceptance Scenarios from Section 4
 *   Success criteria (e.g., "All scenarios pass in staging environment")
 
 ### What to Include (Requirements Focus):
 ✅ Testing approach for each layer (unit, integration, acceptance)
+
 ✅ Coverage targets (percentage or scope)
+
 ✅ What to test (modules, workflows, integrations)
+
 ✅ Performance test targets (from Section 5)
+
 ✅ Success criteria for test suite
+
 ✅ Acceptance scenario validation approach
 
 ### What to Exclude (Implementation Details):
 ❌ Complete test suite with individual test names
+
 ❌ Specific test code or pseudo-code
+
 ❌ Test framework configuration (Jest config, pytest fixtures)
+
 ❌ Mocking strategies or stub implementations
+
 ❌ CI/CD pipeline configuration
+
 ❌ Test data generation scripts
 
 ### Level of Detail (Example):
@@ -1393,6 +1576,7 @@ Integration Tests (Supertest + testcontainers):
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ All open questions listed with resolution path
 - ✅ All assumptions documented with rationale
 - ✅ Assumptions categorized by type (business logic, integration, technical)
@@ -1402,6 +1586,7 @@ Integration Tests (Supertest + testcontainers):
 - ✅ Validation plan for assumptions (how/when to verify)
 
 **This section is INCOMPLETE if:**
+
 - ❌ Open questions without resolution path or owner
 - ❌ Assumptions made but not documented (hidden assumptions are dangerous)
 - ❌ Assumptions without rationale (why was this assumption necessary?)
@@ -1420,6 +1605,7 @@ Integration Tests (Supertest + testcontainers):
 ### Completeness Guidance
 
 **This section is COMPLETE when it includes:**
+
 - ✅ User-facing metrics with target values (completion rates, satisfaction scores)
 - ✅ Technical metrics with target values (error rates, response times, uptime)
 - ✅ Measurement methods specified for each metric
@@ -1429,6 +1615,7 @@ Integration Tests (Supertest + testcontainers):
 - ✅ All metrics align with Section 1 goals and Section 5 performance targets
 
 **This section is INCOMPLETE if:**
+
 - ❌ Metrics without target values ("improve completion rate" vs ">90%")
 - ❌ Vague measurement methods ("we'll track it somehow")
 - ❌ No user-facing success metrics (only technical metrics)
@@ -1441,17 +1628,20 @@ Integration Tests (Supertest + testcontainers):
 ### User-Facing Success
 
 **Metrics with Target Values**:
+
 *   [Metric 1]: [Target value with units]
     - Example: "User signup completion rate: >90%"
 *   [Metric 2]: [Target value with units]
     - Example: "Digest open rate: >25%"
 
 **Measurement Method**:
+
 *   How will these metrics be tracked? (e.g., "Analytics dashboard, weekly reports")
 
 ### Technical Success
 
 **Metrics with Target Values**:
+
 *   [Metric 1]: [Target value with units]
     - Example: "API error rate: <0.1%"
 *   [Metric 2]: [Target value with units]
@@ -1460,11 +1650,13 @@ Integration Tests (Supertest + testcontainers):
     - Example: "System uptime: >99.9%"
 
 **Measurement Method**:
+
 *   How will these metrics be monitored? (e.g., "CloudWatch dashboards, PagerDuty alerts")
 
 ### Completion Criteria
 
 The module is considered DONE when:
+
 *   [ ] All user stories from Section 2 implemented and demonstrated
 *   [ ] All acceptance scenarios from Section 4 pass in staging
 *   [ ] All performance targets from Section 5 validated under load
@@ -1476,18 +1668,28 @@ The module is considered DONE when:
 
 ### What to Include (Requirements Focus):
 ✅ Quantified user-facing metrics (completion rates, satisfaction scores)
+
 ✅ Quantified technical metrics (error rates, response times, uptime)
+
 ✅ Measurement methods for each metric
+
 ✅ Completion checklist (from other sections)
+
 ✅ Launch readiness criteria
+
 ✅ MVP success definition
 
 ### What to Exclude (Implementation Details):
 ❌ Specific measurement tools (Datadog vs New Relic)
+
 ❌ Dashboard JSON configurations
+
 ❌ Alert threshold tuning details
+
 ❌ Monitoring infrastructure setup
+
 ❌ Analytics implementation code
+
 ❌ Metric collection pipeline architecture
 
 ### Level of Detail (Example):
@@ -1571,18 +1773,28 @@ Before submitting this PRD to SpecKit, verify:
 
 ### What to Include (Requirements Focus):
 ✅ All sections complete and substantive
+
 ✅ All checklists filled with concrete verification
+
 ✅ Cross-section consistency verified
+
 ✅ Requirements-focused throughout (WHAT not HOW)
+
 ✅ No placeholders or TBD markers
+
 ✅ Module owner sign-off
 
 ### What to Exclude (Implementation Details):
 ❌ Premature validation of implementation approach
+
 ❌ Technology evaluation details
+
 ❌ Team capacity or resource planning
+
 ❌ Project management artifacts
+
 ❌ Cost estimates or budgets
+
 ❌ Stakeholder approval workflows
 
 ### Level of Detail (Example):

@@ -16,6 +16,7 @@ You'll be implementing the intelligence layer of the Knowledge Graph Lab, includ
 Your research should explore the full spectrum of AI development - from simple regex patterns to how OpenAI serves ChatGPT to 100M users, how Google's PaLM handles trillion-parameter models, and how Anthropic ensures AI safety at scale. Understanding these cutting-edge implementations will inform your architectural decisions, even if your initial implementation uses smaller models.
 
 **Research Scope**:
+
 Explore everything from basic implementations to cutting-edge enterprise solutions. Document all findings comprehensively; your research summary will help determine what's achievable within our timeline while maintaining awareness of best-in-class approaches.
 
 ### 📚 Research Process
@@ -30,6 +31,7 @@ Explore everything from basic implementations to cutting-edge enterprise solutio
 
 ### Phase 1: Foundation (Phase 1-2)
 **Goal**: Get a basic AI system running locally in Docker
+
 - Simple RAG for document Q&A
 - Basic LLM chains with LangChain
 - Entity extraction from text
@@ -37,6 +39,7 @@ Explore everything from basic implementations to cutting-edge enterprise solutio
 
 ### Phase 2: Intelligence Layer (Phase 2-3)
 **Goal**: Add research automation and advanced capabilities
+
 - Cost-effective research tools (Perplexity alternatives)
 - Prompt optimization and management
 - Knowledge validation and fact-checking
@@ -44,6 +47,7 @@ Explore everything from basic implementations to cutting-edge enterprise solutio
 
 ### Phase 3: Production Optimization (If time permits)
 **Goal**: Scale, optimize, and deploy advanced features
+
 - Local model deployment
 - Advanced orchestration patterns**
 - Multi-modal capabilities**
@@ -55,6 +59,7 @@ Explore everything from basic implementations to cutting-edge enterprise solutio
 
 ### CRITICAL REQUIREMENT: Local-First Development
 **The entire AI system MUST run locally in Docker containers on a developer's machine**
+
 - No cloud APIs required for Phase 1 functionality
 - OpenAI/Anthropic APIs optional for Phase 2
 - All core features work offline
@@ -101,6 +106,7 @@ Explore everything from basic implementations to cutting-edge enterprise solutio
 
 ### Phase 1 Research Objectives
 Investigate approaches to building RAG pipelines:
+
 - What are the trade-offs between simple semantic search and hybrid retrieval methods?
 - How do different chunking strategies affect retrieval quality?
 - What determines optimal chunk size and overlap for various content types?
@@ -162,6 +168,7 @@ Investigate approaches to building RAG pipelines:
 
 ### Basic Agent Research Focus
 Investigate agent implementation patterns:
+
 - What tools and capabilities should agents have access to?
 - How do different frameworks implement the ReAct pattern?
 - What are effective strategies for handling agent failures and recovery?
@@ -309,6 +316,7 @@ Investigate agent implementation patterns:
 
 ### Building Custom Research Agents
 Research tiered approach strategies:
+
 - How to implement effective caching for research queries?
 - What are the quality trade-offs between different search sources?
 - How to intelligently route queries based on complexity and requirements?
@@ -374,6 +382,7 @@ Research tiered approach strategies:
 
 ### Prompt Management System
 Research prompt organization strategies:
+
 - How do successful AI applications organize and version their prompts?
 - What are effective patterns for prompt reusability and composition?
 - How to track prompt performance and iterate based on results?
@@ -424,6 +433,7 @@ Research prompt organization strategies:
 
 ### Basic Fact-Checking
 Research validation pipeline approaches:
+
 - How to identify and extract verifiable claims from content?
 - What methods exist for finding and evaluating supporting sources?
 - How do platforms calculate confidence and agreement scores?
@@ -489,6 +499,7 @@ Research validation pipeline approaches:
 
 ### Deployment Stack Research
 Investigate local model deployment approaches:
+
 - What are the containerization options for ML models?
 - How do different deployment tools (Ollama, vLLM, TGI) compare?
 - What are the resource requirements for various model sizes?
@@ -557,6 +568,7 @@ Investigate local model deployment approaches:
 ## Synthesis Focus
 
 As you research, create:
+
 1. **Cost comparison matrix** for different approaches
 2. **Architecture diagram** for the AI pipeline
 3. **Prompt library** for common tasks
@@ -717,6 +729,7 @@ As you research, create:
 ### Synthesis Guidelines
 
 After researching these systems:
+
 1. **Identify Common Patterns**: What do successful systems share?
 2. **Understand Trade-offs**: Speed vs accuracy, resources vs quality
 3. **Find Your MVP**: What's the minimum that delivers value?

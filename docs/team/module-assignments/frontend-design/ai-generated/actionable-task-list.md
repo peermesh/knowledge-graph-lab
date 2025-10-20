@@ -1,14 +1,17 @@
 # Frontend Implementation: Complete Actionable Task List
-**Status**: Ready to Execute
-**Last Updated**: 2025-09-30
+- **Status**: Ready to Execute
+- **Last Updated**: 2025-09-30
 
 ---
 
 ## How to Use This List
 
 ✅ **Mark tasks complete as you finish them**
+
 📌 **Dependencies are clearly marked** - do tasks in order within each phase
+
 🎯 **Each task is small and specific** - no expert knowledge needed
+
 ⏱️ **Time estimates included** - plan your work sessions
 
 ---
@@ -41,6 +44,7 @@
 - [ ] **Create frontend folder structure**
   ```bash
   mkdir -p frontend/src/{components,pages,hooks,utils,styles,assets}
+
   mkdir -p frontend/public
   ```
   - Time: 5 min
@@ -49,7 +53,9 @@
 - [ ] **Initialize React + Vite project**
   ```bash
   cd frontend
+
   npm create vite@latest . -- --template react-ts
+
   npm install
   ```
   - Time: 10 min
@@ -59,7 +65,9 @@
 - [ ] **Install essential dependencies**
   ```bash
   npm install react-router-dom @tanstack/react-query axios zustand
+
   npm install -D tailwindcss postcss autoprefixer
+
   npx tailwindcss init -p
   ```
   - Time: 5 min
@@ -77,9 +85,13 @@
 - [ ] **Create .gitignore file**
   ```
   node_modules/
+
   dist/
+
   .env
+
   .env.local
+
   *.log
   ```
   - Time: 2 min
@@ -164,6 +176,7 @@
 - [ ] **Create AppLayout component** - File: `src/components/layout/AppLayout.tsx`
   ```tsx
   // Three-panel layout with header
+
   // Left panel, center panel, right panel
   ```
   - Time: 30 min
@@ -328,6 +341,7 @@
 - [ ] **Install Cytoscape.js**
   ```bash
   npm install cytoscape
+
   npm install @types/cytoscape
   ```
   - Time: 5 min
@@ -785,6 +799,7 @@
 - [ ] **Install Playwright**
   ```bash
   npm install -D @playwright/test
+
   npx playwright install
   ```
   - Time: 10 min
@@ -940,8 +955,8 @@
 
 ## Progress Tracking
 
-**Total Tasks**: 200+
-**Estimated Time**: 7-8 weeks (full-time)
+- **Total Tasks**: 200+
+- **Estimated Time**: 7-8 weeks (full-time)
 
 ### Weekly Goals
 - **Week 1**: Setup + Research complete
@@ -976,6 +991,7 @@ Phase 11: [ ] Not started [ ] In progress [ ] Complete
 ## Next Steps
 
 **START HERE**:
+
 1. Do Phase 0, Task 0.1 - Install Node.js
 2. Check the box when done
 3. Move to next task

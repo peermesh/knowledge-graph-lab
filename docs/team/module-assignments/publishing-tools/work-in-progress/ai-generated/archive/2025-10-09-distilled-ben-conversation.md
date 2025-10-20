@@ -93,6 +93,7 @@
 **Rationale:** Avoid hard-coding text, support multiple templates, allow personalization
 
 **Implementation notes:**
+
 - At least one template required, ideally two (plain text + styled)
 - Shortcodes for user personalization (first name, last name, etc.)
 - Templates include header, body sections, footer with unsubscribe
@@ -110,6 +111,7 @@
 **Rationale:** Keep emails scannable, avoid overwhelming users with long articles
 
 **Implementation notes:**
+
 - ~200 words maximum in email excerpt
 - "Click here for more" button links to full content on server
 - Full content rendered dynamically when accessed
@@ -152,6 +154,7 @@
 **Rationale:** Avoid keeping everything in RAM, allow file-based processing
 
 **Implementation notes:**
+
 - Copy markdown files to temporary folder
 - Apply templates
 - Render final email
@@ -168,6 +171,7 @@
 **Rationale:** Single source of truth for audit trail, status tracking, error logging
 
 **Implementation notes:**
+
 - User request data structure evolves over time
 - Contains: user ID, interests/tags, publishing preferences, intervals, channels
 - Adds: processing status, delivery logs, error messages, timestamps
@@ -190,6 +194,7 @@
 **Direction:** Publishing → AI (request/response)
 
 **What Publishing Needs from AI:**
+
 - Markdown files with article content
 - Tagged/categorized by topics
 - Filtered by user's interest tags
@@ -218,6 +223,7 @@
 **Direction:** Publishing → Backend (request/response)
 
 **What Publishing Needs from Backend:**
+
 - User's request data (interests, tags, topics)
 - Publishing preferences (channels, intervals, subscription status)
 - User identification
@@ -240,6 +246,7 @@
 **Direction:** Bi-directional (Frontend → Backend → Publishing for config; Publishing → Backend → Frontend for status)
 
 **Unsubscribe Flow Integration:**
+
 - User clicks unsubscribe in email
 - Takes to page (Frontend) showing subscription summary
 - User confirms cancellation
@@ -258,6 +265,7 @@
 ### Workflow: Email Publishing Pipeline
 
 **Steps:**
+
 1. Server triggers `doPublish()` at regular interval
 2. Publishing module queries Backend for active user requests (not unsubscribed)
 3. For each user, check if publishing interval has elapsed
@@ -280,6 +288,7 @@
 ### Workflow: Unsubscribe Process
 
 **Steps:**
+
 1. User receives email with unsubscribe link (token-based, likely)
 2. User clicks unsubscribe link
 3. Frontend displays confirmation page:
@@ -303,6 +312,7 @@
 ### Workflow: "Read More" Web View
 
 **Steps:**
+
 1. User clicks "Click here for more" button in email
 2. Link directs to server-hosted page (unique URL per user/digest)
 3. Server dynamically renders full content on-demand:
@@ -328,6 +338,7 @@
 ### Database / Data Persistence
 
 **User Request Data (Evolving Structure):**
+
 - User ID
 - Research interests (tags/topics as list/array)
 - Publishing preferences:
@@ -349,6 +360,7 @@
 **Purpose:** Track every publishing action, API call, and response
 
 **Log Entry Per API Call:**
+
 - Request timestamp (when triggered)
 - Processing details:
   - User request ID processed
@@ -379,6 +391,7 @@
 ### Environment / Configuration
 
 **Template System:**
+
 - At least one template required, ideally two
 - Templates stored as files (location TBD)
 - Shortcode/placeholder support for personalization
@@ -390,6 +403,7 @@
 > "We'll have probably some restrictions on how much of the text gets shown in the email... And then we probably need a secondary template which will be what each report would be"
 
 **Configuration Needed:**
+
 - Maximum reports per email (configurable)
 - Content length limit (~200 words)
 - SES credentials/API keys
@@ -404,6 +418,7 @@
 ### File Management
 
 **Temporary Assembly Folder:**
+
 - Location for staging content before send
 - Stores markdown files for current publishing batch
 - Assembles template + content
@@ -521,12 +536,14 @@ None identified - conversation was exploratory but consistent in direction.
 ### Follow-up Needed
 
 **Technical Research:**
+
 - Email markup languages/formats (MJML, Foundation for Emails, etc.)
 - Email publishing system best practices
 - Amazon SES integration specifics
 - Template engine options (Jinja2, Handlebars, Mustache)
 
 **Clarification Conversations:**
+
 - AI module integration contract (JSON schemas)
 - Backend module integration contract (JSON schemas)
 - Exact MVP channel scope (email only, or email + blog?)
@@ -534,6 +551,7 @@ None identified - conversation was exploratory but consistent in direction.
 - Error handling and retry strategy
 
 **Alignment Meetings:**
+
 - Frontend team: unsubscribe flow UI/UX
 - Backend team: user request data schema
 - AI team: article generation format and deduplication

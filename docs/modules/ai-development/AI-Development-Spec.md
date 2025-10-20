@@ -1,5 +1,23 @@
 # AI Development Module Specification
 
+## Compliance with Shared Module Requirements
+
+**This module specification is governed by the Shared Module Requirements and must comply with all universal standards established therein.**
+
+**OVERRIDING REQUIREMENT:** The AI module must implement both shared module specifications:
+
+### 📋 Standalone Module (Immediate Implementation)
+**REQUIRED:** Basic interoperability for immediate team handover
+- [Standalone Module](./shared/standalone-modules/README.md) - Container architecture, database, API standards
+- **Handover Ready** - What teams implement immediately
+
+### 🔬 PeerMesh Module (Advanced Features)
+**FUTURE:** Advanced features building into PeerMesh Abstraction Program
+- [PeerMesh Module](./shared/peermesh-modules/README.md) - Parallel search, event-driven architecture, dual authorization
+- **Phase 2+** - Advanced interoperability features
+
+**Any conflicts between this specification and shared requirements will be resolved in favor of the shared requirements.**
+
 ## Module Mission
 
 The AI Development module builds the intelligence layer that transforms unstructured text into structured knowledge. They own all AI/ML components for entity extraction, relationship mapping, and insight generation.
@@ -40,6 +58,7 @@ The AI Development module builds the intelligence layer that transforms unstruct
 
 ### Data Pipeline
 Transform raw text into knowledge:
+
 1. **Input**: Raw documents from Backend (HTML, PDF, text)
 2. **Chunking**: Split into processable segments (1000-2000 tokens)
 3. **Extraction**: Pull entities and relationships from chunks
@@ -69,34 +88,63 @@ Transform extracted knowledge into standalone news-style reports:
 - **Report Structure**:
   ```json
   {
+
     "report_id": "uuid",
+
     "url": "/reports/2025-09-22/openai-funding-round",
+
     "generated_at": "timestamp",
+
     "headline": "OpenAI Raises $10B in Historic Funding Round",
+
     "lead": "In a landmark deal that reshapes the AI landscape...",
+
     "body": [
+
       {
+
         "type": "paragraph",
+
         "content": "Full news article text..."
+
       },
+
       {
+
         "type": "quote",
+
         "content": "This represents a paradigm shift...",
+
         "attribution": "Industry Expert"
+
       }
+
     ],
+
     "metadata": {
+
       "report_type": "breaking_news",
+
       "entities": ["OpenAI", "Microsoft", "Sam Altman"],
+
       "topics": ["AI", "venture_capital", "technology"],
+
       "priority": "high",
+
       "relevance_scores": {
+
         "ai_industry": 0.98,
+
         "venture_capital": 0.95,
+
         "tech_general": 0.82
+
       }
+
     },
+
     "source_references": ["doc_id_1", "doc_id_2"]
+
   }
   ```
 
@@ -126,32 +174,39 @@ Transform extracted knowledge into standalone news-style reports:
 
 ### From Backend Architecture
 **What you receive**:
+
 - Raw documents in queue (HTML, PDF, plain text)
 - Processing job requests with document IDs
 - Vector database connection details
 - Storage API endpoints
 
 **Format Research**:
+
 Investigate job queue message formats:
+
 - What fields are essential for asynchronous job processing?
 - How to handle priority and retry logic effectively?
 - What metadata helps with debugging and monitoring?
 - How to design messages that are extensible and backward-compatible?
 
 **Error Handling**:
+
 - Timeout errors: Retry with exponential backoff (max 3 attempts)
 - Invalid document format: Log error and skip processing
 - Rate limit exceeded: Queue for delayed processing
 
 ### To Backend Architecture
 **What you send**:
+
 - Extracted entities with types and confidence
 - Relationships between entities
 - Document embeddings (768-dimensional vectors)
 - Processing status updates
 
 **Response Format Research**:
+
 Explore structured extraction output patterns:
+
 - How should entities and relationships be represented?
 - What metadata is crucial for downstream processing?
 - How to communicate confidence and provenance?
@@ -159,7 +214,9 @@ Explore structured extraction output patterns:
 - How to design formats that support various entity and relationship types?
 
 **Error Handling Research**:
+
 Investigate error response patterns:
+
 - What error categorization helps with automated recovery?
 - How to provide actionable error messages?
 - What information aids in debugging and root cause analysis?
@@ -167,6 +224,7 @@ Investigate error response patterns:
 
 ### To Backend for Storage
 **What you send**:
+
 - Generated news reports with unique IDs and URLs
 - Report metadata for indexing and discovery
 - Entity and topic tags for search/filtering
@@ -192,6 +250,7 @@ Investigate error response patterns:
 
 ### Available for Publishing Module
 **What Publishing can query**:
+
 - All stored reports by date range
 - Reports filtered by tags/topics/entities
 - Reports sorted by relevance scores
@@ -210,6 +269,7 @@ Investigate error response patterns:
 ```
 
 **Publishing Independence**:
+
 - Publishing module decides which reports to include in emails
 - Publishing handles all personalization for subscribers
 - Publishing manages delivery timing and formatting
@@ -217,6 +277,7 @@ Investigate error response patterns:
 
 ### To Frontend Module
 **What you send**:
+
 - Extracted entities for graph visualization
 - Relationship data for network displays
 - Confidence scores for visual encoding
@@ -303,6 +364,7 @@ Investigate error response patterns:
 ## Technical Context
 
 The system must:
+
 - Process thousands of diverse documents daily (news articles, research papers, social posts)
 - Extract relationships like funding patterns, partnership networks, and competitive landscapes
 - Provide confidence scores for all assertions using validated algorithms

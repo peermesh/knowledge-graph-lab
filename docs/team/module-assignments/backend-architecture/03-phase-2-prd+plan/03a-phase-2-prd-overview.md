@@ -98,6 +98,7 @@ These are the only things you need to build for Phase 2:
 ## What Makes This Simple (MVP Focus)
 
 **You DON'T need to worry about:**
+
 - Advanced search features
 - Complex analytics
 - Multiple servers
@@ -105,6 +106,7 @@ These are the only things you need to build for Phase 2:
 - Real-time updates
 
 **You DO need to focus on:**
+
 - Storing and finding articles reliably
 - Simple web commands that work
 - Basic security (passwords)

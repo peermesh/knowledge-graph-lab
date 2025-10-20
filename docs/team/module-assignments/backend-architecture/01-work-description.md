@@ -1,8 +1,8 @@
 # Backend Architecture
 
-**Role**: Backend Architecture Team Member  
-**Project**: Knowledge Graph Lab  
-**Timeline**: 5 phases (flexible based on progress)
+- **Role**: Backend Architecture Team Member  
+- **Project**: Knowledge Graph Lab  
+- **Timeline**: 5 phases (flexible based on progress)
 
 ## 🎯 Your Mission
 
@@ -60,12 +60,14 @@ Design and implement the core backend infrastructure that powers the entire Know
 - **Async Processing**: What queue system handles AI workloads effectively?
 
 **What You Provide:**
+
 - Database connections and schemas
 - Storage for embeddings and results
 - API endpoints for AI operations
 - Background job infrastructure
 
 **What They Provide:**
+
 - Embedding generation logic
 - Entity extraction algorithms
 - Knowledge graph construction rules
@@ -78,12 +80,14 @@ Design and implement the core backend infrastructure that powers the entire Know
 - **Real-time Updates**: WebSocket setup for live data
 
 **What You Provide:**
+
 - Well-documented REST APIs
 - Authentication tokens and session management
 - CORS configuration
 - WebSocket infrastructure (Phase 2)
 
 **What They Provide:**
+
 - UI mockups showing data requirements
 - Authentication UI flow
 - Performance requirements from frontend perspective
@@ -96,12 +100,14 @@ Design and implement the core backend infrastructure that powers the entire Know
 - **Analytics Data**: Store engagement metrics
 
 **What You Provide:**
+
 - User preference database schemas
 - Content storage APIs
 - Message queue infrastructure
 - Analytics data storage
 
 **What They Provide:**
+
 - Distribution requirements
 - Content format specifications
 - Analytics tracking needs
@@ -165,21 +171,25 @@ Design and implement the core backend infrastructure that powers the entire Know
 ## 📚 Learning Path
 
 **Docker & Containerization:**
+
 - Start with Docker Compose basics
 - Focus on multi-container applications
 - Learn volume management and networking
 
 **API Design:**
+
 - Study RESTful principles
 - Learn about API versioning
 - Understand authentication patterns
 
 **Database Architecture:**
+
 - Compare database types for different data requirements
 - Schema design principles across database types
 - Migration and integration strategies for multi-database systems
 
 **System Architecture:**
+
 - Microservices vs Monolith trade-offs
 - Message queue patterns
 - Caching strategies
@@ -204,6 +214,7 @@ Design and implement the core backend infrastructure that powers the entire Know
 ## 🎓 Your Growth Opportunity
 
 This role offers deep experience in:
+
 - Production-grade system architecture
 - Scalable infrastructure design
 - API design and documentation

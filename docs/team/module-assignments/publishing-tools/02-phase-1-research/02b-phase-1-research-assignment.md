@@ -1,6 +1,6 @@
 # Publishing Tools Developer Research Topics - Enhanced Edition
-**For**: Publishing Tools Team Member
-**Enhanced**: With 100+ specific research questions extracted from 24 prompt files
+- **For**: Publishing Tools Team Member
+- **Enhanced**: With 100+ specific research questions extracted from 24 prompt files
 
 ---
 
@@ -15,6 +15,7 @@ You'll be building the distribution and engagement layer of the Knowledge Graph 
 Your research should explore the full spectrum of publishing technology - from basic email APIs to how established platforms personalize content for large audiences, how publishing platforms handle thousands of content creators, and how major news organizations deliver millions of notifications daily. Understanding these enterprise-scale operations will inform your architectural decisions, even if your initial implementation is simpler.
 
 **Research Approach:**
+
 Document the full spectrum of solutions - from basic email APIs to enterprise-scale systems. Understanding how companies like Morning Brew, Substack, and The New York Times handle publishing at scale will inform your architectural decisions.
 
 ### \ud83d\udcda Research Process
@@ -381,6 +382,7 @@ Study successful implementations:
 ## Research Summary Focus
 
 As you research, create:
+
 1. **Channel comparison matrix** with pros/cons for each platform
 2. **Architecture diagram** for complete publishing pipeline
 3. **Personalization algorithm** pseudocode with performance metrics

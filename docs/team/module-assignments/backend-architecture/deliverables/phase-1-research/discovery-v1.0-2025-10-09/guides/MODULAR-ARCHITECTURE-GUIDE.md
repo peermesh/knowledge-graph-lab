@@ -1,8 +1,11 @@
 # Modular Architecture Guide
 
 **Topic:** How to Design the Backend Modularly
+
 **Reading Time:** 30 minutes
+
 **Skill Level:** Intermediate to Advanced
+
 **Version:** 1.0 (2025-10-09)
 
 ---
@@ -10,6 +13,7 @@
 ## 🎯 What You'll Learn
 
 After reading this guide, you'll understand:
+
 - **Why** the backend must be modular (not monolithic)
 - **What** modules exist and how they interact
 - **How** to design for modularity (6 key patterns)
@@ -29,6 +33,7 @@ This guide curates content across **5 different files** to tell a coherent story
 **Philosophy: Why Monolith Was Rejected**
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 278-295
 
 **Read This Section:**
@@ -49,6 +54,7 @@ Why Rejected:
 **Supporting Decision: Why JWT Over Sessions**
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 303-309
 
 **Read This Section:**
@@ -71,6 +77,7 @@ Why Rejected:
 **Module Inventory and Integration Requirements**
 
 📄 **File:** `distilled/constraints.md`
+
 **Lines:** 116-139
 
 **Read This Section:**
@@ -100,6 +107,7 @@ Data Exchange:
 **Six Key Architectural Patterns**
 
 📄 **File:** `distilled/vision-statement.md`
+
 **Lines:** 218-350
 
 This is the most important section. Read ALL six subsections in order:
@@ -117,6 +125,7 @@ This is the most important section. Read ALL six subsections in order:
 ```
 
 **MVP Implication for You:**
+
 - Design REST APIs with future GraphQL compatibility (clear resource boundaries)
 - Use stateless JWT tokens (compatible with event-driven systems)
 - Keep data access logic separate from business logic (enables pluggable drivers later)
@@ -137,6 +146,7 @@ This is the most important section. Read ALL six subsections in order:
 ```
 
 **MVP Implication for You:**
+
 - Local-first Docker deployment validates this pattern (everything runs on developer machine)
 - Design data models with sync in mind (timestamps, version tracking)
 - Keep services modular (easier to distribute later)
@@ -156,6 +166,7 @@ This is the most important section. Read ALL six subsections in order:
 ```
 
 **MVP Implication for You:**
+
 - Design database schema with user/ownership columns from start
 - Implement basic auth/authorization (JWT + user context)
 - Document which endpoints need permission checks (even if simple for MVP)
@@ -176,6 +187,7 @@ This is the most important section. Read ALL six subsections in order:
 ```
 
 **MVP Implication for You:**
+
 - Design database schema with graph-compatible relationships (even in SQLite)
 - Use foreign keys and join tables (easier migration to Neo4j later)
 - Keep business logic separate from storage details
@@ -196,6 +208,7 @@ This is the most important section. Read ALL six subsections in order:
 ```
 
 **MVP Implication for You:**
+
 - Keep API endpoints stateless (easier to add event publishing later)
 - Use clear resource actions (POST/PUT/DELETE map cleanly to events)
 - Document "what happened" semantics for each endpoint
@@ -216,6 +229,7 @@ This is the most important section. Read ALL six subsections in order:
 ```
 
 **MVP Implication for You:**
+
 - Use abstraction layer for database access (SQLAlchemy ORM, repository pattern)
 - Keep queries simple and standard (avoid database-specific features)
 - Test with SQLite but design for PostgreSQL compatibility
@@ -230,6 +244,7 @@ This is the most important section. Read ALL six subsections in order:
 **Trade-Offs: Pragmatic Abstraction vs. Over-Engineering**
 
 📄 **File:** `distilled/technical-context.md`
+
 **Lines:** 274-318
 
 **Read This Section:**
@@ -259,6 +274,7 @@ Resolution:
 ---
 
 📄 **File:** `distilled/technical-context.md`
+
 **Lines:** 319-339
 
 **Read This Section:**
@@ -283,6 +299,7 @@ Resolution:
 **Concrete Requirements for Each Module**
 
 📄 **File:** `distilled/requirements-notes.md`
+
 **Lines:** 85-155
 
 **Read These Three Sections:**
@@ -375,18 +392,23 @@ After reading all sections above, here are the actionable principles:
 ## ❓ Common Questions
 
 **Q: Should I build microservices for MVP?**
+
 A: No. Build modular components within a single service. The modularity is in code organization and API design, not deployment architecture.
 
 **Q: Should I use Neo4j for MVP?**
+
 A: No. Use SQLite with graph-friendly schema (foreign keys, join tables). Migrate to Neo4j when graph queries become bottleneck.
 
 **Q: Should I implement event-driven architecture?**
+
 A: Not yet. Design REST endpoints with future event semantics in mind. Use synchronous processing for MVP.
 
 **Q: How much abstraction is too much?**
+
 A: Use standard patterns (ORM, repository). Don't create custom abstraction frameworks. If it's in SQLAlchemy or FastAPI, use it. If you have to build it yourself, defer it.
 
 **Q: What if I find the patterns too complex?**
+
 A: Focus on Part 5 (concrete requirements). Build what's specified, use SQLAlchemy ORM, document entity relationships. The patterns inform design but don't dictate implementation.
 
 ---
@@ -401,6 +423,7 @@ A: Focus on Part 5 (concrete requirements). Build what's specified, use SQLAlche
 ## 📚 Full Reading List
 
 If you followed this guide, you read:
+
 1. `decisions-made.md` (lines 278-317)
 2. `constraints.md` (lines 116-139)
 3. `vision-statement.md` (lines 218-350)
@@ -412,5 +435,7 @@ If you followed this guide, you read:
 ---
 
 **Last Updated:** 2025-10-09
+
 **Bundle Version:** v1.0
+
 **Guide Version:** 1.0

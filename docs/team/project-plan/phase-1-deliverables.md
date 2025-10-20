@@ -7,6 +7,7 @@ Research & Discovery Phase
 ## Objectives
 
 Research and select technologies for your module that will:
+
 - Meet project requirements
 - Integrate with other modules
 - Be implementable in remaining timeline
@@ -39,6 +40,7 @@ Research and select technologies for your module that will:
 ## Quick Links to Your Research
 
 Jump directly to your module's research assignment:
+
 - [Backend Architecture Research](../module-assignments/backend-architecture/02-phase-1-research/02b-phase-1-research-assignment.md)
 - [Frontend Design Research](../module-assignments/frontend-design/02-phase-1-research/02b-phase-1-research-assignment.md)
 - [AI Development Research](../module-assignments/ai-development/02-phase-1-research/02b-phase-1-research-assignment.md)
@@ -101,9 +103,13 @@ Jump directly to your module's research assignment:
 ## Success Criteria
 
 ✅ Clear technology recommendation
+
 ✅ Rationale backed by research
+
 ✅ Integration points identified
+
 ✅ Risks acknowledged
+
 ✅ Properly documented and submitted
 
 ---
@@ -111,9 +117,13 @@ Jump directly to your module's research assignment:
 ## Common Pitfalls
 
 ❌ Over-engineering for Phase 1  
+
 ❌ Choosing tech you can't implement  
+
 ❌ Ignoring integration requirements  
+
 ❌ Missing Docker compatibility  
+
 ❌ No cost consideration
 
 ---

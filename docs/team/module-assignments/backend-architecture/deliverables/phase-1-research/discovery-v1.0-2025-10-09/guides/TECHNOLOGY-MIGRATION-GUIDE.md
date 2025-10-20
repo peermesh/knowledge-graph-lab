@@ -1,8 +1,11 @@
 # Technology Migration Guide
 
 **Topic:** Upgrade Paths from MVP to Production
+
 **Reading Time:** 20 minutes
+
 **Skill Level:** Intermediate to Advanced
+
 **Version:** 1.0 (2025-10-09)
 
 ---
@@ -10,6 +13,7 @@
 ## 🎯 What You'll Learn
 
 After reading this guide, you'll understand:
+
 - **What** technology migrations are planned (SQLite→PostgreSQL, Docker→K8s, etc.)
 - **When** each migration should happen (v2.0, v3.0, production)
 - **Why** MVP choices were made with migration in mind
@@ -47,6 +51,7 @@ This guide curates content across **4 different files** to explain upgrade paths
 ### Current State (MVP)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 11-21
 
 **Read This Section:**
@@ -68,6 +73,7 @@ Why:
 ### Future State (Production)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 131-143
 
 **Read This Section:**
@@ -93,6 +99,7 @@ Timeline: After MVP validates data model
 ### Migration Considerations (Design for Compatibility NOW)
 
 📄 **File:** `distilled/technical-context.md`
+
 **Lines:** 274-296
 
 **Read This Section:**
@@ -108,6 +115,7 @@ Resolution:
 ```
 
 **What to Do in MVP:**
+
 1. **Use SQLAlchemy ORM** (not raw SQL) - makes engine swap trivial
 2. **Avoid SQLite-specific features** (like `datetime('now', 'localtime')`)
 3. **Use standard SQL types** (INTEGER, TEXT, REAL, BLOB)
@@ -115,6 +123,7 @@ Resolution:
 5. **Document schema migrations** using Alembic from day one
 
 **Migration Process (v3.0):**
+
 1. Export SQLite data to CSV/JSON
 2. Create PostgreSQL database with same schema (via Alembic)
 3. Import data using PostgreSQL COPY
@@ -130,6 +139,7 @@ Resolution:
 ### Current State (MVP)
 
 📄 **File:** `distilled/vision-statement.md`
+
 **Lines:** 278-295
 
 **Read This Section:**
@@ -150,6 +160,7 @@ MVP Implication:
 ### Future State (Production)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 145-159
 
 **Read This Section:**
@@ -168,6 +179,7 @@ Timeline: After MVP validates graph use cases
 ```
 
 **What to Do in MVP:**
+
 1. **Design entity relationships explicitly** (creator → opportunity, source → feed)
 2. **Use many-to-many tables** for relationships (not JSON arrays)
 3. **Document graph patterns** in comments (e.g., "this will be Neo4j relationship")
@@ -175,6 +187,7 @@ Timeline: After MVP validates graph use cases
 5. **Log slow queries** (>100ms) to identify future graph migration candidates
 
 **Migration Process (v3.0):**
+
 1. Analyze which queries are slow (multi-hop traversals)
 2. Migrate those entities/relationships to Neo4j
 3. Keep transactional data in PostgreSQL
@@ -190,6 +203,7 @@ Timeline: After MVP validates graph use cases
 ### Current State (MVP)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 48-58
 
 **Read This Section:**
@@ -211,6 +225,7 @@ Why:
 ### Future State (Production)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 185-197
 
 **Read This Section:**
@@ -229,6 +244,7 @@ When: Production deployment phase (after MVP validation)
 ```
 
 **What to Do in MVP:**
+
 1. **Use environment variables** (not hardcoded config) - K8s ConfigMaps compatible
 2. **Implement health checks** (/health endpoint) - K8s liveness/readiness probes use these
 3. **Log to stdout** (not files) - K8s captures stdout automatically
@@ -236,6 +252,7 @@ When: Production deployment phase (after MVP validation)
 5. **Stateless services** - K8s scales stateless pods easily
 
 **Migration Process (v3.0):**
+
 1. Convert docker-compose.yml to Kubernetes manifests (use kompose or manual)
 2. Create Deployment, Service, ConfigMap, Secret resources
 3. Configure HorizontalPodAutoscaler for auto-scaling
@@ -251,6 +268,7 @@ When: Production deployment phase (after MVP validation)
 ### Current State (MVP)
 
 📄 **File:** `distilled/vision-statement.md`
+
 **Lines:** 198-199
 
 **Read This Section:**
@@ -266,6 +284,7 @@ Out of Scope:
 ### Future State (When Needed)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 161-171
 
 **Read This Section:**
@@ -284,12 +303,14 @@ Timeline: Add when P95 response time exceeds 200ms target
 ```
 
 **What to Do in MVP:**
+
 1. **Log all query times** (use middleware to measure endpoint latency)
 2. **Identify hot paths** (which endpoints are called most frequently?)
 3. **Design cache-friendly APIs** (GET endpoints should be idempotent)
 4. **Avoid premature caching** (don't add Redis until measured need)
 
 **Migration Process (v2.0 or v3.0):**
+
 1. Analyze logs to find slow endpoints (P95 >200ms)
 2. Add Redis container to docker-compose.yml
 3. Implement cache-aside pattern (check cache, fallback to DB)
@@ -305,6 +326,7 @@ Timeline: Add when P95 response time exceeds 200ms target
 ### Current State (MVP)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 33-44
 
 **Read This Section:**
@@ -326,6 +348,7 @@ Why:
 ### Future State (Production)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 173-183
 
 **Read This Section:**
@@ -344,12 +367,14 @@ When: Production deployment (multi-tenant requirements)
 ```
 
 **What to Do in MVP:**
+
 1. **Use standard JWT claims** (sub, iat, exp, aud) - Keycloak compatible
 2. **Implement token refresh** (short-lived access tokens) - OAuth2 pattern
 3. **Add user context to requests** (user ID in JWT payload)
 4. **Design APIs with auth in mind** (which endpoints need auth?)
 
 **Migration Process (v2.0 or v3.0):**
+
 1. Deploy Keycloak instance
 2. Configure realm and clients (backend, frontend, AI module)
 3. Migrate users from SQLite to Keycloak
@@ -365,6 +390,7 @@ When: Production deployment (multi-tenant requirements)
 ### Current State (MVP)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 60-72
 
 **Read This Section:**
@@ -387,6 +413,7 @@ Why:
 ### Future State (If Needed)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 199-214
 
 **Read This Section:**
@@ -406,12 +433,14 @@ Why Defer:
 ```
 
 **What to Do in MVP:**
+
 1. **Design REST resources clearly** (GET /api/entities, GET /api/sources) - maps to GraphQL types
 2. **Use structured responses** (JSON with clear schema) - GraphQL schema compatible
 3. **Avoid deep nesting** (flat resources, use IDs for relationships) - GraphQL-friendly
 4. **Log slow queries** (identify candidates for GraphQL optimization)
 
 **Migration Process (v2.0, if needed):**
+
 1. Analyze REST usage patterns (are clients making multiple requests to build one view?)
 2. Define GraphQL schema (maps from REST resources)
 3. Add GraphQL endpoint alongside REST (don't remove REST)
@@ -426,6 +455,7 @@ Why Defer:
 ### Current State (MVP)
 
 📄 **File:** `distilled/decisions-made.md`
+
 **Lines:** 106-114
 
 **Read This Section:**
@@ -447,6 +477,7 @@ Why:
 ### Future State (Production)
 
 📄 **File:** `component-map.md`
+
 **Lines:** 144-153
 
 **Read This Section:**
@@ -464,12 +495,14 @@ When: Production deployment (operational visibility)
 ```
 
 **What to Do in MVP:**
+
 1. **Log structured data** (JSON format: `{"timestamp": "...", "level": "INFO", "message": "..."}`)
 2. **Include request IDs** (correlation across services)
 3. **Log key metrics** (query time, feed fetch duration, API response time)
 4. **Use log levels correctly** (DEBUG/INFO/WARNING/ERROR)
 
 **Migration Process (v3.0):**
+
 1. Add Prometheus exporter to application (`prometheus_client` Python library)
 2. Instrument code with metrics (counters, histograms, gauges)
 3. Deploy Prometheus to scrape metrics
@@ -514,6 +547,7 @@ When: Production deployment (operational visibility)
 ## 📚 Full Reading List
 
 If you followed this guide, you read:
+
 1. `decisions-made.md` (lines 11-21, 33-44, 48-58, 60-72, 106-114, 131-143, 145-159, 161-171, 173-183, 185-197, 199-214)
 2. `vision-statement.md` (lines 198-199, 278-295)
 3. `technical-context.md` (lines 274-296)
@@ -524,5 +558,7 @@ If you followed this guide, you read:
 ---
 
 **Last Updated:** 2025-10-09
+
 **Bundle Version:** v1.0
+
 **Guide Version:** 1.0

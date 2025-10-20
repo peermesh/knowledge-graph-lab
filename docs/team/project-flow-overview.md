@@ -1,8 +1,8 @@
 # Knowledge Graph Lab: Complete Project Flow
 
-**Version**: 1.0
-**Date**: October 6, 2025
-**Status**: Source of Truth for Project Process
+- **Version**: 1.0
+- **Date**: October 6, 2025
+- **Status**: Source of Truth for Project Process
 
 ## Document Purpose
 

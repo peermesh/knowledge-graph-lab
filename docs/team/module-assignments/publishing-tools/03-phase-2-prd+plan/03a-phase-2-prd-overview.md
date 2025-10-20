@@ -160,17 +160,20 @@ Specify exact template format:
 
 ### With Backend Module
 **Your Requirements:**
+
 - Article query API with filtering, sorting, pagination
 - Article metadata: headlines, summaries, topics, quality scores
 - Stable article URLs for email links
 - Performance: <200ms for typical queries
 
 **Your Outputs:**
+
 - Query patterns and expected load
 - Required article fields for newsletter assembly
 
 ### With Email Service Provider
 **Your Integrations:**
+
 - SendGrid API for email delivery
 - Webhook handling for delivery status
 - Template management and personalization
@@ -178,6 +181,7 @@ Specify exact template format:
 
 ### With Frontend Module (Indirect)
 **Coordination Needed:**
+
 - Email links point to Frontend article pages
 - Consistent article URL patterns
 - Tracking pixel integration for analytics

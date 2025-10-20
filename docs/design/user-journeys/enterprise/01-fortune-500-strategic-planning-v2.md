@@ -128,6 +128,7 @@ Strategic planning cycles shrink from 6 months to 4 months while delivering high
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Social media monitoring tools for brand sentiment
 - Customer service integration or support ticket systems
 - Marketing automation or lead generation features

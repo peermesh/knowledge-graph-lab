@@ -9,6 +9,7 @@ Write a complete plan for the AI module that explains exactly how to build a sys
 ## Before You Start
 
 Make sure you have:
+
 - [ ] Read the overview document (`03a-phase-2-prd-overview.md`)
 - [ ] Reviewed your Phase 1 research about AI tools and APIs
 - [ ] Understood that you create complete articles, NOT emails
@@ -225,6 +226,7 @@ Put everything together into one comprehensive document:
 - Feature 6: Simple admin tools
 
 For each feature, explain:
+
 - What it does
 - How it works
 - Examples of using it
@@ -268,9 +270,13 @@ Before submitting, make sure:
 ## Common Mistakes to Avoid
 
 ❌ **Mixing Up Outputs**: Don't confuse news articles with email content
+
 ❌ **Too Complex**: Don't plan overly sophisticated AI features
+
 ❌ **Vague Process**: Be specific about each step in article creation
+
 ❌ **Missing Quality Control**: Always plan how to check article quality
+
 ❌ **Ignoring Backend**: Make sure you understand how to send articles
 
 ---
@@ -288,11 +294,13 @@ Before submitting, make sure:
 ## Timeline
 
 **Week 1**:
+
 - Day 1-2: Talk to Backend owner, study article examples
 - Day 3-4: Plan article format and writing process
 - Day 5: Plan quality control and error handling
 
 **Week 2**:
+
 - Day 1-3: Write complete PRD
 - Day 4: Review and test with example articles
 - Day 5: Final version and submit
@@ -302,6 +310,7 @@ Before submitting, make sure:
 ## Submission
 
 When your PRD is complete:
+
 1. Save it as `deliverables/PRD.md` in your module directory
 2. Create a pull request with your changes
 3. Ask the Backend module owner to review the integration parts
