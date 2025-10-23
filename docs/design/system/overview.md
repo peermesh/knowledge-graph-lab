@@ -1,9 +1,14 @@
 ---
 title: "Project Overview: What We're Building"
+
 status: "Approved"
+
 updated: 2025-09-09
+
 author: "@project-lead"
+
 version: "v1.0"
+
 doc_id: "project-overview"
 ---
 
@@ -45,9 +50,11 @@ Knowledge Graph Lab is an end-to-end intelligent research platform that discover
 A **knowledge graph** is a way of storing information that emphasizes relationships between things rather than just listing facts. If traditional databases are like filing cabinets (organized but isolated), knowledge graphs are like mind maps (interconnected and revealing patterns).
 
 **Traditional Database Approach:**
+
 Information is stored in isolated tables with limited connections between different types of data. Platforms, grants, and organizations exist as separate records with minimal relationship mapping.
 
 **Knowledge Graph Approach:**
+
 Information is stored as interconnected entities with explicit relationships. Platforms connect to their competitors, grants link to their funding organizations, and ownership structures create deeper relationship webs.
 
 These relationships reveal non-obvious insights. For instance, when a major tech company increases funding for creator programs, the system can predict related platform changes and identify cascade opportunities across the ecosystem.
@@ -57,6 +64,7 @@ These relationships reveal non-obvious insights. For instance, when a major tech
 Above the knowledge graph sits an intelligence layer that continuously analyzes patterns, identifies opportunities, and generates insights. This isn't just storage—it's active reasoning about the data.
 
 When a new platform launches, the system:
+
 1. **Identifies** its category and features
 2. **Compares** it to existing platforms
 3. **Predicts** which creators might benefit
@@ -79,11 +87,17 @@ Users interact with this intelligence through channels optimized for different n
 *Table 1: Multi-channel delivery system for different user needs*
 
 <!-- DAB
+
 id: system-overview
+
 title: Knowledge Graph Lab System Architecture
+
 type: architecture
+
 show: data-sources, four-modules, knowledge-graph, intelligence-layer, delivery-channels
+
 notes: Show data flow from raw sources through processing to user value
+
 -->
 
 ```mermaid
@@ -180,6 +194,7 @@ The ingestion module is like a multilingual translator at the United Nations. In
 **1. Intelligent Source Management**
 
 The module doesn't blindly scrape everything. It maintains a priority queue of sources based on:
+
 - Historical value (sources that provided good information before)
 - User interest (sources relevant to active users)
 - Freshness requirements (time-sensitive information gets priority)
@@ -200,6 +215,7 @@ Raw content goes through a sophisticated pipeline:
 **3. Provenance Preservation**
 
 Every piece of information maintains its ancestry:
+
 - Original source URL
 - Fetch timestamp
 - Processing version
@@ -301,18 +317,21 @@ The interface adapts to user behavior and preferences by prioritizing frequently
 Different channels require different approaches:
 
 **Email Digests:**
+
 - Personalized subject lines based on content
 - Scannable format with clear sections
 - Progressive disclosure (summary → details)
 - One-click actions for opportunities
 
 **API Responses:**
+
 - RESTful design for predictability
 - GraphQL for flexible queries
 - Webhooks for real-time updates
 - Rate limiting for fairness
 
 **Social Media:**
+
 - Platform-optimized formatting
 - Hashtag intelligence
 - Engagement tracking
@@ -332,11 +351,17 @@ User feedback directly improves the system:
 - **System learning**: Adjusting algorithms based on outcomes
 
 <!-- DAB
+
 id: module-interaction
+
 title: Module Interaction and Data Flow
+
 type: flowchart
+
 show: module-connections, data-transformation, feedback-loops
+
 notes: Show how modules work together with example data flowing through
+
 -->
 
 ```mermaid
@@ -468,6 +493,7 @@ To understand the system's value, let's follow three distinct users through thei
 **Onboarding Experience**
 
 Users connect their accounts and the system:
+
 - Analyzes content niche and focus areas
 - Identifies audience demographics
 - Benchmarks metrics against similar creators
@@ -502,6 +528,7 @@ Subject: New opportunities matched to your profile
 **Learning and Adaptation**
 
 As users interact with recommendations, the system learns:
+
 - Content and opportunity preferences
 - Timing and communication preferences
 - Success criteria and priorities
@@ -512,12 +539,14 @@ The recommendations evolve accordingly.
 **Expected Outcomes**
 
 System aims to help users:
+
 - Reduce time spent on opportunity research
 - Increase discovery of relevant opportunities
 - Improve application success rates
 - Build valuable professional connections
 
 **Key Success Factors:**
+
 - Personalization makes opportunities relevant
 - Timing alerts prevent missed deadlines
 - Social proof builds confidence in opportunities
@@ -555,6 +584,7 @@ What previously took weeks now takes hours:
 **Contribution Back**
 
 Researchers can identify data quality issues and suggest improvements:
+
 - Correct misclassified platform categories
 - Propose new relationship types for the ontology
 - Validate entity resolution accuracy
@@ -607,12 +637,19 @@ Based on system analysis, consultants can provide data-driven recommendations in
 - Data-driven outcome projections
 
 <!-- DAB
+
 id: user-interaction-flow
+
 title: User Interaction Sequence
+
 type: sequence
+
 actors: User, WebUI, API, IntelligenceModule, KnowledgeGraph
+
 show: query-flow, processing, response-generation
+
 notes: Show complete interaction from user query to insight delivery
+
 -->
 
 ```mermaid
@@ -682,9 +719,11 @@ Understanding how modules connect is crucial for development success. Each integ
 ### Module 1 → Module 2: Raw to Normalized
 
 **Data Contract:**
+
 Normalized data includes source identification, timestamps, content type classification, structured content extraction, entity mentions, and metadata preservation.
 
 **Error Handling:**
+
 - Malformed data: Log and skip
 - Source unavailable: Retry with backoff
 - Rate limited: Queue for later
@@ -692,11 +731,13 @@ Normalized data includes source identification, timestamps, content type classif
 ### Module 2 → Module 3: Knowledge to Intelligence
 
 **Graph Query Interface:**
+
 The intelligence module queries the knowledge graph using pattern matching to find grants that match user platforms, follower requirements, and timing constraints, returning results ordered by relevance and deadline proximity.
 
 ### Module 3 → Module 4: Intelligence to Users
 
 **Content Delivery Format:**
+
 Insights are delivered with user identification, opportunity classification, priority levels, descriptive titles, summaries, available actions, and personalization explanations.
 
 ### Feedback Loops

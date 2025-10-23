@@ -162,6 +162,7 @@ CREATE TABLE sent_digests(id, subscriber_id, sent_at);
 **During concept phase, authoritative constitutional and core PRD content lives at /.dev/peermesh-canvases/ (see 00_MASTER_INDEX.md).**
 
 Constitutional Decisions:
+
 - [DECISION#1 - Module Manifest Policy](/.dev/peermesh-canvases/01_CONSTITUTION_SKELETON.md#decision1-module-manifest-policy)
 - [DECISION#2 - Interaction Model](/.dev/peermesh-canvases/01_CONSTITUTION_SKELETON.md#decision2-interaction-model)
 - [DECISION#3 - Abstraction Intents](/.dev/peermesh-canvases/01_CONSTITUTION_SKELETON.md#decision3-abstraction-intents)
@@ -176,6 +177,7 @@ Constitutional Decisions:
 Core PRD: [02_CORE_PRD_SKELETON.md](/.dev/peermesh-canvases/02_CORE_PRD_SKELETON.md)
 
 Purpose
+
 - Central source of truth for how modules interact. Tune here; PRDs and trackers reference these sections. Avoid tool/vendor specifics.
 
 #### IA-01 Standard Envelope
@@ -205,6 +207,7 @@ Required: correlation_id, route, attempt; metrics (intent.count, status, latency
 
 #### IA-09 Security & Scopes
 Least‑privilege; deny-by-default outbound; minimal scope set:
+
 data:read, data:write, event:publish, event:subscribe, config:read, config:write, secret:read, net:egress.
 
 #### IA-10 Config Precedence

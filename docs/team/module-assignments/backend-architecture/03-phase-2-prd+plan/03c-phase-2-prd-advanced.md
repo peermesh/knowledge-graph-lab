@@ -15,11 +15,13 @@ This document contains optional advanced features for developers who complete th
 Beyond basic filtering, add:
 
 **Text Search Within Articles**
+
 - Let users search for specific words inside articles
 - Example: Find all articles mentioning "artificial intelligence"
 - Simple keyword matching (no complex search needed)
 
 **Related Articles**
+
 - When showing one article, suggest similar ones
 - Match by topics or keywords
 - Limit to 3-5 suggestions to keep it simple
@@ -27,11 +29,13 @@ Beyond basic filtering, add:
 ### Advanced Feature 2: Article Performance Tracking
 
 **Basic Analytics**
+
 - Count how many times each article is viewed
 - Track which topics are most popular
 - Simple daily/weekly statistics
 
 **Popular Content Lists**
+
 - "Most viewed this week"
 - "Trending topics today"
 - Help Publishing module prioritize content
@@ -39,11 +43,13 @@ Beyond basic filtering, add:
 ### Advanced Feature 3: Content Management
 
 **Article Updates**
+
 - Allow editing article content after publishing
 - Keep track of changes (who changed what when)
 - Simple version history
 
 **Article Organization**
+
 - Group articles into collections or series
 - Tag articles with custom labels
 - Archive old articles without deleting them
@@ -51,11 +57,13 @@ Beyond basic filtering, add:
 ### Advanced Feature 4: Better Data Organization
 
 **Backup System**
+
 - Automatic daily backups of all articles
 - Simple restore process if data is lost
 - Store backups in different location
 
 **Data Cleanup**
+
 - Remove duplicate articles automatically
 - Clean up old temporary data
 - Optimize database performance
@@ -63,11 +71,13 @@ Beyond basic filtering, add:
 ### Advanced Feature 5: Enhanced Security
 
 **Better Access Control**
+
 - Different permission levels (read-only, editor, admin)
 - Audit log of who did what when
 - Automatic logout after inactive time
 
 **Data Protection**
+
 - Encrypt sensitive article content
 - Secure backup storage
 - Rate limiting to prevent overuse
@@ -137,6 +147,7 @@ If you're interested in learning new technologies:
 
 ### Keep It Simple
 Even for advanced features:
+
 - Add one feature at a time
 - Test thoroughly before adding the next
 - Document everything clearly
@@ -190,9 +201,13 @@ Your advanced work is successful when:
 ## Common Advanced Mistakes to Avoid
 
 ❌ **Over-Engineering**: Adding complex features that aren't needed
+
 ❌ **Breaking Basics**: Making the simple features harder to use
+
 ❌ **No Clear Benefit**: Building features just because they're interesting
+
 ❌ **Poor Documentation**: Not explaining how advanced features work
+
 ❌ **Ignoring Maintenance**: Not considering long-term upkeep
 
 ---

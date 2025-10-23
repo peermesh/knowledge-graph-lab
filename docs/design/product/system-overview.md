@@ -85,12 +85,14 @@ Legend:
 - **Queue Management**: Handle asynchronous processing jobs for AI and publishing workflows
 
 **Inputs**:
+
 - Content from external sources (RSS feeds, website APIs, document uploads)
 - API requests from frontend for data retrieval and user management
 - Processed data from AI module (entities, relationships, confidence scores)
 - Publishing status updates from publishing tools module
 
 **Outputs**:
+
 - Structured data via REST APIs for frontend consumption
 - Raw content queued for AI processing
 - User preference data for publishing personalization
@@ -98,6 +100,7 @@ Legend:
 - Real-time updates via WebSocket connections
 
 **MVP Scope (Phase 3)**:
+
 - REST API with CRUD operations for users, content, and entities
 - JWT authentication system
 - PostgreSQL database with core schemas
@@ -129,12 +132,14 @@ Legend:
 - **Semantic Search**: Generate embeddings and enable similarity-based content discovery
 
 **Inputs**:
+
 - Raw documents from backend (HTML, PDF, plain text) via processing queues
 - Processing job requests with document IDs and metadata
 - User feedback on entity accuracy for model improvement
 - Vector database connection for embedding storage
 
 **Outputs**:
+
 - Structured JSON with extracted entities, relationships, and confidence scores
 - Knowledge graph updates with new entities and relationship mappings
 - Document embeddings for semantic search capabilities
@@ -142,6 +147,7 @@ Legend:
 - Insights and patterns discovered from relationship analysis
 
 **MVP Scope (Phase 3)**:
+
 - Extract 5 core entity types (organizations, people, amounts, dates, locations) with 80% accuracy
 - Process 100 documents per hour
 - Basic confidence scoring (high/medium/low)
@@ -173,6 +179,7 @@ Legend:
 - **Responsive Design**: Ensure usability across desktop, tablet, and mobile devices
 
 **Inputs**:
+
 - Entity and relationship data from backend APIs
 - User authentication tokens and session data
 - Real-time updates via WebSocket connections
@@ -180,6 +187,7 @@ Legend:
 - Published content and analytics data
 
 **Outputs**:
+
 - User interface interactions and form submissions
 - Search queries and filter parameters to backend
 - User preference updates for personalization
@@ -187,6 +195,7 @@ Legend:
 - Authentication requests and session management
 
 **MVP Scope (Phase 3)**:
+
 - Basic search interface for entities and opportunities
 - Simple knowledge graph visualization (network diagram)
 - User registration, login, and preference management
@@ -218,6 +227,7 @@ Legend:
 - **Content Scheduling**: Automate delivery timing based on user preferences and optimal engagement windows
 
 **Inputs**:
+
 - User preference data and profiles from backend
 - Processed insights and opportunities from AI module
 - Content metadata and analytics from backend
@@ -225,6 +235,7 @@ Legend:
 - Scheduling triggers and automation rules
 
 **Outputs**:
+
 - Formatted email content sent via Email Service Provider (ESP)
 - Engagement analytics and performance metrics
 - User behavior data for backend storage
@@ -232,6 +243,7 @@ Legend:
 - Personalized content recommendations
 
 **MVP Scope (Phase 3)**:
+
 - Send templated emails via chosen ESP (SendGrid/Mailgun)
 - Track email opens and clicks for basic analytics
 - Store web-viewable copies of sent emails
@@ -301,6 +313,7 @@ Legend:
 - **Relationship JSON**: `{"from": "entity_id", "to": "entity_id", "type": "funds", "confidence": 0.72}`
 
 **Performance Requirements**:
+
 - Process 100 documents/hour
 - Entity extraction: < 30 seconds per document
 - Knowledge graph update: < 5 seconds per entity batch
@@ -407,6 +420,7 @@ Legend:
 ### Phase 3 Deliverables
 
 **Backend Architecture MVP**:
+
 - ✅ REST API with user authentication (JWT)
 - ✅ PostgreSQL database with core schemas (users, content, entities)
 - ✅ Content ingestion from 5+ RSS feeds (automated monitoring)
@@ -414,6 +428,7 @@ Legend:
 - ✅ Docker containerization for local development
 
 **AI Development MVP**:
+
 - ✅ Entity extraction for organizations, people, amounts, dates, locations
 - ✅ Basic relationship mapping (funding, partnership, mention)
 - ✅ Confidence scoring (high/medium/low categories)
@@ -421,6 +436,7 @@ Legend:
 - ✅ Integration with backend job queue
 
 **Frontend Design MVP**:
+
 - ✅ User registration and authentication interface
 - ✅ Basic search functionality for entities and opportunities
 - ✅ Simple list view of search results with filtering
@@ -428,6 +444,7 @@ Legend:
 - ✅ Responsive design for desktop and mobile
 
 **Publishing Tools MVP**:
+
 - ✅ Email template system using MJML
 - ✅ Integration with ESP (SendGrid or Mailgun)
 - ✅ Weekly digest generation and sending
@@ -449,30 +466,35 @@ Legend:
 ### Explicitly OUT of Scope (Phase 2+ Features)
 
 **Content Sources**:
+
 - ❌ Social media APIs (Twitter, LinkedIn, Instagram)
 - ❌ Complex document parsing (academic papers, presentations)
 - ❌ Real-time news feeds
 - ❌ User-generated content submission
 
 **AI Capabilities**:
+
 - ❌ Advanced NLP (sentiment analysis, topic modeling)
 - ❌ Predictive analytics and trend forecasting
 - ❌ Multi-language support beyond English
 - ❌ Custom model fine-tuning
 
 **Publishing Features**:
+
 - ❌ Social media posting and distribution
 - ❌ Advanced email templates with dynamic content
 - ❌ A/B testing for email optimization
 - ❌ SMS or push notification delivery
 
 **Frontend Features**:
+
 - ❌ Advanced graph visualization (3D, interactive layouts)
 - ❌ Collaborative features (sharing, commenting)
 - ❌ Advanced analytics dashboards
 - ❌ Mobile application (web-only for MVP)
 
 **Infrastructure**:
+
 - ❌ Production deployment and scaling
 - ❌ Advanced monitoring and alerting
 - ❌ Multi-tenant architecture
@@ -529,8 +551,8 @@ Legend:
 ## Development Phases
 
 ### Phase 1: Research & Discovery (Weeks 1-2)
-**Status**: Current phase
-**Focus**: Technology evaluation and architectural decisions
+- **Status**: Current phase
+- **Focus**: Technology evaluation and architectural decisions
 
 **Module Activities**:
 - **Backend**: Evaluate FastAPI vs Flask, PostgreSQL schemas, Docker setup
@@ -541,8 +563,8 @@ Legend:
 **Deliverables**: Research briefs with technology recommendations, cost analysis, integration plans
 
 ### Phase 2: Planning & Design (Weeks 3-4)
-**Focus**: Detailed specifications and API design
-**Integration Requirements**: Cross-module API contracts, data format agreements
+- **Focus**: Detailed specifications and API design
+- **Integration Requirements**: Cross-module API contracts, data format agreements
 
 **Module Activities**:
 - **Backend**: Complete API specification, database schema design, authentication flow
@@ -550,11 +572,11 @@ Legend:
 - **AI**: Processing pipeline design, entity schemas, confidence scoring system
 - **Publishing**: Template design, personalization logic, analytics specification
 
-**Deliverables**: Product Requirements Documents (PRDs) ready for SpecKit code generation
+**Deliverables**: Product Requirements Documents (PRDs) ready for implementation (created using [SpecKit templates](../../speckit/README.md))
 
 ### Phase 3: MVP Development (Weeks 5-8)
-**Focus**: Independent module development with basic integration
-**Integration Milestones**: Week 6 (API contracts), Week 7 (data flow), Week 8 (end-to-end testing)
+- **Focus**: Independent module development with basic integration
+- **Integration Milestones**: Week 6 (API contracts), Week 7 (data flow), Week 8 (end-to-end testing)
 
 **Module Activities**:
 - **Backend**: Core API implementation, database setup, basic ingestion
@@ -565,8 +587,8 @@ Legend:
 **Success Criteria**: Each module works independently, basic cross-module integration functional
 
 ### Phase 4: Enhancement & Optimization (Weeks 9-12)
-**Focus**: Feature completion, performance optimization, user experience polish
-**Integration Requirements**: Advanced features requiring cross-module coordination
+- **Focus**: Feature completion, performance optimization, user experience polish
+- **Integration Requirements**: Advanced features requiring cross-module coordination
 
 **Module Activities**:
 - **Backend**: Performance optimization, advanced API features, monitoring
@@ -577,8 +599,8 @@ Legend:
 **Deliverables**: Demo-ready system with enhanced features and optimized performance
 
 ### Phase 5: Integration & Production (Weeks 13-16)
-**Focus**: Full system integration, production deployment, comprehensive testing
-**Integration Requirements**: End-to-end workflows, shared infrastructure, unified monitoring
+- **Focus**: Full system integration, production deployment, comprehensive testing
+- **Integration Requirements**: End-to-end workflows, shared infrastructure, unified monitoring
 
 **Team Collaboration**:
 - **Week 13**: Integration planning and API finalization
@@ -591,21 +613,25 @@ Legend:
 ### Integration Dependencies
 
 **Phase 2 Dependencies**:
+
 - AI needs backend API specifications for job queue integration
 - Frontend needs backend API contracts for component development
 - Publishing needs user preference schemas from backend
 
 **Phase 3 Dependencies**:
+
 - AI processing depends on backend job queue implementation
 - Frontend display depends on backend API data formats
 - Publishing personalization depends on AI entity/relationship data
 
 **Phase 4 Dependencies**:
+
 - Advanced frontend features require real-time backend updates
 - AI improvements need user feedback integration from frontend
 - Publishing optimization requires engagement analytics from all modules
 
 **Phase 5 Dependencies**:
+
 - All modules must be feature-complete before integration
 - Shared infrastructure decisions require team coordination
 - Production deployment needs all modules containerized and tested

@@ -22,21 +22,25 @@ These mid-size firms are exactly who we're building for. They're smart, they han
 ### What's Broken Right Now
 
 **Solo and Small Firms (1-10 lawyers)**:
+
 - Stuck with free tools like Google Scholar that miss half the important cases
 - No way to build institutional knowledge when everyone works alone
 - Can't compete on research depth with bigger firms
 
 **Mid-Size Regional Firms (50-200 lawyers)**:
+
 - Pay for decent tools but still way behind what BigLaw has
 - Knowledge lives in people's heads - when someone leaves, it's gone
 - Can't afford enterprise solutions but need better than basic tools
 
 **BigLaw Firms (500+ lawyers)**:
+
 - Have the best tools but terrible at sharing knowledge between practice areas
 - Junior associates reinvent the wheel constantly
 - Partners hoard knowledge instead of teaching
 
 **Corporate Legal Teams**:
+
 - Drowning in compliance requirements across different jurisdictions
 - Can't track risk patterns across the whole organization
 - Outside counsel bills are out of control but no visibility into what they're actually doing
@@ -147,6 +151,7 @@ Start predicting outcomes, identifying case strategy patterns, flagging risks be
 ## Anti-Requirements
 
 **What legal professionals explicitly do NOT need:**
+
 - Another separate tool that doesn't work with their existing workflow
 - AI that tries to practice law instead of helping lawyers practice better
 - Solutions that can't guarantee attorney-client privilege protection

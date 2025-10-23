@@ -1,8 +1,8 @@
 # Frontend Design
 
-**Role**: Frontend Design Team Member  
-**Project**: Knowledge Graph Lab  
-**Timeline**: 5 phases (flexible based on progress)
+- **Role**: Frontend Design Team Member  
+- **Project**: Knowledge Graph Lab  
+- **Timeline**: 5 phases (flexible based on progress)
 
 ## 🎯 Your Mission
 
@@ -62,57 +62,63 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 ## 🤝 Coordination Points
 
 ### With Backend Architecture Team Member
-**Phase 1 Priority - Phase 1-2**
+**Timing: Early coordination recommended**
 - **API Requirements**: Define data needs for each UI component
 - **Authentication UI**: Design login/logout/session flows
 - **Real-time Updates**: Specify WebSocket event requirements
 - **Performance Needs**: Define acceptable latency for different operations
 
 **What You Need:**
+
 - REST API documentation
 - Authentication endpoints
 - WebSocket events specification
 - CORS configuration
 
 **What You Provide:**
+
 - UI mockups with data requirements
 - Performance benchmarks
 - User flow diagrams
 - Error handling requirements
 
 ### With AI Development Team Member
-**Phase 2 Priority - Phase 2-3**
+**Timing: Mid-project coordination recommended**
 - **Result Display**: How to show AI-generated insights
 - **Graph Visualization**: Knowledge graph rendering requirements
 - **Streaming Responses**: Handle progressive AI outputs
 - **Confidence Indicators**: Display uncertainty/confidence scores
 
 **What You Need:**
+
 - Result data structures
 - Graph data formats
 - Streaming protocols
 - Confidence metrics
 
 **What You Provide:**
+
 - Visualization requirements
 - Interaction patterns
 - Feedback mechanisms
 - Performance constraints
 
 ### With Publishing Tools Team Member
-**Phase 2-3 Priority**
+**Timing: Mid-project coordination recommended**
 - **Template Preview**: UI for email/content preview
 - **Distribution Settings**: Interface for channel configuration
 - **Analytics Display**: Dashboards for engagement metrics
 - **Subscriber Management**: UI for audience segments
 
 **What You Need:**
+
 - Template formats
 - Channel specifications
 - Analytics data structure
 - Subscriber schemas
 
 **What You Provide:**
+
 - Preview components
 - Settings interfaces
 - Dashboard layouts
@@ -178,24 +184,28 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 ## 📚 Learning Path
 
 **Graph Visualization:**
+
 - Start with D3.js basics
 - Learn force-directed layouts
 - Study interaction patterns
 - Explore WebGL options (three.js)
 
 **React Advanced Patterns:**
+
 - Custom hooks
 - Render props
 - Compound components
 - Performance optimization
 
 **Design Systems:**
+
 - Component composition
 - Theme architecture
 - Design tokens
 - Documentation practices
 
 **Accessibility:**
+
 - Screen reader testing
 - Keyboard navigation
 - Color contrast
@@ -221,6 +231,7 @@ Create the user interface that makes complex knowledge graphs intuitive and acti
 ## 🎓 Your Growth Opportunity
 
 This role offers deep experience in:
+
 - Advanced data visualization
 - Complex state management
 - Performance optimization

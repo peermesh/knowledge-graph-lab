@@ -19,9 +19,9 @@ Knowledge Graph Lab delivers four main capabilities to help users navigate the c
 
 ## Quick Start
 
-**For new team members**: Start with [team onboarding](team/onboarding.md)
-**For system overview**: Read the [vision](design/strategy/vision.md) and [architecture](design/system/architecture.md)
-**For development**: Check your [module assignment](team/README.md)
+- **For new team members**: Start with [team onboarding](team/onboarding.md)
+- **For system overview**: Read the [vision](design/strategy/vision.md) and [architecture](design/system/architecture.md)
+- **For development**: Check your [module assignment](team/README.md)
 
 ## Documentation Structure
 
@@ -29,22 +29,32 @@ Find documentation in three main sections:
 
 ### System Design & Strategy (design/)
 **Start here to understand the system:**
+
 - [Vision](design/strategy/vision.md) - Why we're building this and the problem we're solving
 - [Architecture](design/system/architecture.md) - Technical components and data flow
 - [Success Metrics](design/strategy/success-metrics.md) - Measurable targets and KPIs
 
 **Implementation details:**
+
 - [Deployment](design/system/deployment.md) - Production deployment instructions
 - [Research Methodology](design/research/methodology.md) - Depth-First Distillation approach
 - [User Journeys](design/user-journeys/) - 61 use cases across 6 domains
 
 ### Team Resources (team/)
 **Everything for productivity:**
+
 - [Start Here](team/README.md) - Module assignments and navigation
 - [Project Plan](team/project-plan/overview.md) - 5 project phases with deliverables
 - [Onboarding](team/onboarding.md) - Day 1 setup checklist
 - [Module Ownership](team/module-ownership.md) - Who owns what
 - Module assignments in team/module-assignments/
+
+### SpecKit - PRD Creation System (speckit/)
+**Create implementation-ready specifications:**
+
+- [SpecKit Overview](speckit/README.md) - Simple templates for comprehensive PRDs
+- [Quick Start](speckit/guides/quickstart.md) - 5-minute introduction
+- [Simple Template](speckit/templates/simple-template.md) - Start creating your PRD here
 
 ### Research Tools (research/)
 - Deep research prompt generator (research/prompts/deep-research-prompt-generator.md)

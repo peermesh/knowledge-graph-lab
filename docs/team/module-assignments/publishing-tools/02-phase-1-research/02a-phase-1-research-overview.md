@@ -140,6 +140,7 @@ Create a research brief by [PROJECT_DEADLINE] with:
 ## Success Criteria for Phase 1
 
 Your Phase 1 research is complete when you have:
+
 - Clear recommendation for email service provider with cost justification
 - Working proof-of-concept for sending templated emails
 - Architecture diagram for publishing pipeline

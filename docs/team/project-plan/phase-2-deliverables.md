@@ -7,8 +7,9 @@ Planning & Design Phase
 ## Objectives
 
 Create comprehensive Product Requirements Documents (PRDs) that will:
+
 - Define exactly what each module will build
-- Ensure SpecKit compatibility for automated code generation
+- Be implementation-ready using **[RequirementsKit methodology](../methodologies/requirements-kit/)**
 - Establish clear API contracts between modules
 - Document all integration points
 - Provide complete specifications for Phase 3 development
@@ -19,7 +20,13 @@ Create comprehensive Product Requirements Documents (PRDs) that will:
 
 ### 1. Product Requirements Document (10-15 pages)
 
-Your PRD MUST follow the SpecKit-compatible format:
+Your PRD MUST be comprehensive and implementation-ready. Use **[RequirementsKit](../methodologies/requirements-kit/)** which provides templates and a systematic workflow for developing specifications:
+
+**Getting Started:**
+
+- **[Quick Start Guide](../methodologies/requirements-kit/guides/quickstart.md)** - 5-minute overview
+- **[Simple Template](../methodologies/requirements-kit/templates/simple-template.md)** - Start here
+- **[Workflow Guide](../methodologies/requirements-kit/guides/workflow.md)** - Complete 5-phase process
 
 #### Required Sections:
 1. **System Overview** - Purpose, users, integration points
@@ -40,6 +47,7 @@ Your PRD MUST follow the SpecKit-compatible format:
 ### 2. Integration Contracts
 
 Document how your module connects with others:
+
 - **Shared data formats** - Exact schemas
 - **API endpoints** - Your module provides/consumes
 - **Events** - Published/subscribed events
@@ -48,6 +56,7 @@ Document how your module connects with others:
 ### 3. Technical Decisions
 
 Document key choices from your Phase 1 research:
+
 - **Technology stack** - Languages, frameworks, libraries
 - **Database design** - Schema, indexes, relationships
 - **Architecture patterns** - Design patterns to follow
@@ -55,9 +64,9 @@ Document key choices from your Phase 1 research:
 
 ---
 
-## SpecKit Preparation
+## Implementation Readiness
 
-Your PRD must be ready for code generation:
+Your PRD must be complete and ready for Phase 3 development:
 
 ### Validation Checklist:
 - [ ] All 8 required sections complete
@@ -78,6 +87,7 @@ Your PRD must be ready for code generation:
 ## Quick Links to Your PRD Assignment
 
 Jump directly to your module's Phase 2 PRD assignment:
+
 - [Backend Architecture PRD](../module-assignments/backend-architecture/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
 - [Frontend Design PRD](../module-assignments/frontend-design/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
 - [AI Development PRD](../module-assignments/ai-development/03-phase-2-prd+plan/03b-phase-2-prd-assignment.md)
@@ -89,6 +99,7 @@ Jump directly to your module's Phase 2 PRD assignment:
 
 ### Backend Architecture
 Focus on:
+
 - Complete API specifications (all endpoints)
 - Database schema with relationships
 - Authentication/authorization rules
@@ -97,6 +108,7 @@ Focus on:
 
 ### Frontend Design
 Focus on:
+
 - Page layouts and navigation flows
 - Component hierarchy and props
 - Form validations and error states
@@ -105,6 +117,7 @@ Focus on:
 
 ### AI Development
 Focus on:
+
 - Input/output data formats
 - Processing pipeline stages
 - Model integration specifications
@@ -113,6 +126,7 @@ Focus on:
 
 ### Publishing Tools
 Focus on:
+
 - Content format transformations
 - Distribution channel APIs
 - Template specifications
@@ -126,6 +140,7 @@ Focus on:
 Each module must actively coordinate with Backend to confirm contracts.
 
 Requirements
+
 - Schedule a working session with the Backend owner (see ../module-ownership.md)
 - Validate data shapes, endpoints, and error handling
 - Document decisions and open questions in your PRD
@@ -135,8 +150,8 @@ Requirements
 
 ## Submission Process
 
-1. **Write** your PRD following the SpecKit structure
-2. **Validate** using the SpecKit checklist (see SpecKit Preparation below)
+1. **Write** your PRD following the **[RequirementsKit workflow](../methodologies/requirements-kit/guides/workflow.md)**
+2. **Validate** using the RequirementsKit checklist
 3. **Save** to `/docs/team/module-assignments/[your-module]/deliverables/phase-2-planning/PRD.md`
 4. **Submit** via pull request - See [Git Workflow](../git-workflow.md)
 5. **Notify** in Discord when complete
@@ -147,22 +162,26 @@ Requirements
 
 Your Phase 2 is complete when:
 
-✅ **PRD is SpecKit-ready**
+✅ **PRD is RequirementsKit-ready**
+
 - All required sections present
 - Types and schemas specified
 - Ready for code generation
 
 ✅ **Integration defined**
+
 - API contracts documented
 - Shared data formats agreed
 - Dependencies identified
 
 ✅ **Decisions documented**
+
 - Technology choices explained
 - Architecture patterns selected
 - Trade-offs acknowledged
 
 ✅ **Quality verified**
+
 - Peer reviewed by team
 - No missing information
 - Uncertainties clearly marked
@@ -174,16 +193,16 @@ Your Phase 2 is complete when:
 - **Start**: After Phase 1 research approval
 - **Duration**: Flexible based on completeness
 - **Review**: Team lead reviews before Phase 3
-- **Gate**: PRD must pass SpecKit validation
+- **Gate**: PRD must pass RequirementsKit validation
 
 ---
 
 ## Resources
 
 ### Essential Guides
-- **SpecKit Requirements**: See the SpecKit Preparation section in this document
+- **RequirementsKit**: [RequirementsKit](../methodologies/requirements-kit/) - Complete methodology for Phase 2
 - **Git Workflow**: [../git-workflow.md](../git-workflow.md)
-- **Phase 2 Quick Start**: Refer to your module’s 03a Overview (to be prepared in each module’s Phase 2 directory)
+- **Phase 2 Quick Start**: Refer to your module's 03a Overview (to be prepared in each module's Phase 2 directory)
 
 ### Examples
 - **Publishing PRD Example**: `../module-assignments/publishing-tools/deliverables/phase-2-planning/examples/PRD-example.md`
@@ -198,18 +217,23 @@ Your Phase 2 is complete when:
 ## Common Questions
 
 **Q: How detailed should my PRD be?**
+
 A: Detailed enough that SpecKit can generate working code. Every data field needs a type, every API needs schemas.
 
 **Q: What if I'm unsure about something?**
+
 A: Mark it with `[NEEDS CLARIFICATION: your question]` and continue. Don't leave sections blank.
 
 **Q: Can I include diagrams?**
+
 A: Yes! Architecture diagrams, flowcharts, and mockups are helpful. Use Mermaid or ASCII art.
 
 **Q: What if my module doesn't have a UI?**
+
 A: Skip the UI Specifications section and note "Not applicable - backend service only"
 
 **Q: How do I coordinate integration points?**
+
 A: Discuss in #kgl-integration channel. Document agreements in your PRD.
 
 ---
@@ -217,7 +241,8 @@ A: Discuss in #kgl-integration channel. Document agreements in your PRD.
 ## Next Phase
 
 After Phase 2 approval, Phase 3 will:
-1. Run SpecKit on your PRD to generate initial code
+
+1. Run SpecKit's /specify command on your PRD to generate initial code
 2. Use AI agents to refine and complete the implementation
 3. Build your MVP based on these specifications
 

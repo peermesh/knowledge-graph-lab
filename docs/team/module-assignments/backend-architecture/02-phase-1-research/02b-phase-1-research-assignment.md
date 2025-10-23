@@ -16,6 +16,7 @@ You'll be designing and implementing the core backend infrastructure that powers
 Your research should explore the full spectrum of backend architecture - from simple Express servers to how Discord handles 15 million concurrent users, how Uber processes 100+ petabytes of data, and how Netflix achieves 99.99% uptime. Understanding these enterprise-scale implementations will inform your architectural decisions, even if your initial implementation is simpler.
 
 **Research Organization**:
+
 Your research will naturally span from basic implementations to enterprise-scale systems. Document everything you find - from simple tutorials to how major tech companies solve these problems at scale. Your research summary will help determine what's achievable within our timeline.
 
 ### 📚 Research Process
@@ -30,6 +31,7 @@ Your research will naturally span from basic implementations to enterprise-scale
 
 ### Phase 1: Foundation (Phase 1-2) 
 **Goal**: Get a working system running locally in Docker
+
 - Basic Docker setup with all services
 - PostgreSQL + Redis for data
 - Simple authentication (OAuth/social login)
@@ -39,6 +41,7 @@ Your research will naturally span from basic implementations to enterprise-scale
 
 ### Phase 2: Intelligence Layer (Phase 2-3)
 **Goal**: Add AI capabilities and advanced data handling
+
 - Vector database integration (for RAG)
 - Graph database if needed (Neo4j or PostgreSQL with recursive queries)
 - Connect with AI team member's embedding pipeline
@@ -46,6 +49,7 @@ Your research will naturally span from basic implementations to enterprise-scale
 
 ### Phase 3: Modular Architecture (Important to PeerMesh integration - If time permits)
 **Goal**: Transform into plugin-based system
+
 - API abstraction layer
 - Modular component system
 - Dynamic module loading
@@ -55,6 +59,7 @@ Your research will naturally span from basic implementations to enterprise-scale
 
 ### CRITICAL REQUIREMENT: Local-First Development
 **The entire system MUST run locally in Docker containers on a developer's machine**
+
 - No cloud services required for core functionality
 - Optional cloud deployment for production
 - All dependencies included in Docker setup
@@ -111,6 +116,7 @@ Research minimum and recommended specs:
 ## How to Read This Document
 
 **Complexity Indicators**: 
+
 - Items marked with * are potentially complex for the timeline
 - Items marked with ** are definitely advanced features
 - Unmarked items are achievable for initial phases
@@ -204,6 +210,7 @@ Remember: We'll have AI assistance and will scope appropriately after research. 
 
 ### Core Authentication Architecture
 Research different approaches to auth systems:
+
 - **All-in-one solutions**:
   - Supabase (includes database + auth + realtime, open-source available)
   - Firebase Auth (Google ecosystem, has free tier)
@@ -221,6 +228,7 @@ Research different approaches to auth systems:
 **Critical decision**: Should auth be bundled with database or use dedicated auth service?
 
 **Supabase approach (bundled)**:
+
 - **Pros**:
   - Open-source version available (self-hostable)
   - Integrated Row Level Security (RLS)
@@ -233,6 +241,7 @@ Research different approaches to auth systems:
   - Limited to PostgreSQL for RLS benefits
 
 **Separated best-in-class approach**:
+
 - **Pros**:
   - Use most feature-rich auth service (Auth0, Okta)
   - Better enterprise features (SSO, advanced MFA)*
@@ -247,6 +256,7 @@ Research different approaches to auth systems:
 
 ### Standard OAuth & Social Login
 **Focus on practical authentication for Phase 1-2**:
+
 - **Social login providers**:
   - Google Sign-In
   - Apple Sign-In
@@ -326,6 +336,7 @@ Research different approaches to auth systems:
 
 ### Stretch Goals (Extra Credit - Not for MVP)
 **Advanced authentication concepts** to be aware of but not implement initially:
+
 - Hardware attestation and cryptographic proofs**
 - Decentralized identity (DIDs, Verifiable Credentials)**
 - Zero-knowledge authentication**
@@ -402,6 +413,7 @@ Research different approaches to auth systems:
 **Goal**: Design a system that can reliably import research content from multiple sources into our knowledge graph.
 
 The team member needs to research how to build a pipeline that:
+
 1. **Accepts input** from users (file uploads, URLs, API connections)
 2. **Processes content** (extract text, metadata, relationships)
 3. **Stores it properly** in our database for the AI to use
@@ -426,12 +438,14 @@ Research how to handle these data sources:
 
 #### Processing Pipeline Architecture
 **Simple queue-based approach** (recommended for MVP):
+
 - User uploads/submits content → Queue → Processor → Database
 - Use Redis or database queue for job management
 - Process one item at a time initially
 - Add parallel processing later if needed*
 
 **Key decisions to research**:
+
 - Synchronous (wait for result) vs asynchronous (background job)
 - How to show progress to users
 - Error handling and retry strategies
@@ -439,6 +453,7 @@ Research how to handle these data sources:
 
 #### Content Processing Steps
 What happens to each piece of content:
+
 1. **Validation**: Is this a supported format? Is it within size limits?
 2. **Extraction**: Pull out text, metadata, structure
 3. **Enrichment**: Add timestamps, source info, user tags
@@ -447,6 +462,7 @@ What happens to each piece of content:
 
 ### Integration with AI Pipeline
 **Critical**: This connects to the AI team member's work
+
 - Extracted text needs to be ready for embedding generation
 - Metadata must support RAG (Retrieval-Augmented Generation)
 - Consider how to handle updates to existing content
@@ -462,6 +478,7 @@ What happens to each piece of content:
 
 ### MVP Implementation Focus
 Start with:
+
 1. Simple file upload endpoint
 2. Basic queue (can even use database table as queue)
 3. Support for 3-4 common formats (PDF, MD, TXT, JSON)
@@ -520,6 +537,7 @@ Start with:
 ## Topic 7: AI & Graph Database Integration
 
 Coordinate with AI team member on:
+
 - Vector database setup and configuration
 - Embedding pipeline integration
 - Graph database evaluation (Neo4j vs PostgreSQL)
@@ -535,6 +553,7 @@ Coordinate with AI team member on:
 *This might be too complex for MVP but a thrilling addition if there's time for it*
 
 Based on our internal architecture docs, research:
+
 - **Plugin-style installation/removal** (WordPress-like simplicity)
 - **Component boundaries and edges**:
   - Data boundaries (owned vs referenced data)
@@ -582,6 +601,7 @@ From PeerMesh framework:
 *Research goal: Understand how verification works for potential future use*
 
 Research how to build modules that are verifiable and trustworthy:
+
 - **Content-addressed storage** for code:
   - Modules identified by cryptographic hashes
   - Immutable code references
@@ -595,6 +615,7 @@ Research how to build modules that are verifiable and trustworthy:
 
 ### Building Truly Modular Backend Components
 Key principles for creating composable backend services:
+
 - **Service-based modularity**:
   - Single responsibility per module
   - Language-agnostic interfaces (gRPC, REST)
@@ -608,6 +629,7 @@ Key principles for creating composable backend services:
 
 ### Practical Service Implementation
 **Key architectural decisions**:
+
 - **Service boundaries**:
   - Each service owns its data domain
   - No direct database access between services
@@ -622,6 +644,7 @@ Key principles for creating composable backend services:
 
 ### Module Verification & Trust
 **Understanding existing verification systems**:
+
 - **How current tools verify packages**:
   - npm/yarn package checksums
   - Docker image signatures
@@ -678,6 +701,7 @@ Key principles for creating composable backend services:
 
 ### Abstraction Layer Architecture
 Research configuration-driven routing approaches:
+
 - How do modern API gateways handle dynamic routing configuration?
 - What patterns enable runtime module swapping without downtime?
 - How to implement fallback chains for resilience?
@@ -700,6 +724,7 @@ Research how to implement:
 
 ### Inter-Module Contracts
 Research module contract design:
+
 - What elements should module contracts include for effective integration?
 - How do successful plugin systems define capability discovery?
 - What patterns ensure backward compatibility as contracts evolve?
@@ -843,6 +868,7 @@ Research module contract design:
 ## Research Summary Focus
 
 As you research, focus on creating:
+
 1. **A decision matrix** comparing different approaches
 2. **A preliminary architecture diagram** showing component relationships
 3. **A list of must-have vs nice-to-have** features for Phase 1-2
@@ -884,6 +910,7 @@ As you research, focus on creating:
 ---
 
 **Remember**:
+
 - **Phase 1 is mandatory** - Get a working system in local Docker first
 - **Phase 2 enhances** - Add intelligence and graph capabilities
 - **Phase 3 transforms** - Make it modular and production-ready

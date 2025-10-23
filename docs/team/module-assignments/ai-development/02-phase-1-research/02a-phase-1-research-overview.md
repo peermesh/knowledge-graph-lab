@@ -9,6 +9,7 @@ You'll implement the intelligence layer of the Knowledge Graph Lab - the system 
 ## Critical Requirement: Everything Runs Locally
 
 **The entire AI system MUST run locally in Docker containers on a developer's machine**
+
 - No cloud APIs required for Phase 1 functionality
 - OpenAI/Anthropic APIs optional for Phase 2
 - All core features work offline
@@ -109,6 +110,7 @@ Create a research brief with:
 ## Phase 1 Foundation Requirements
 
 Your Phase 1 implementation must:
+
 - Run entirely on local machine in Docker
 - Process documents with basic RAG pipeline
 - Extract entities from text
@@ -142,6 +144,7 @@ Your Phase 1 implementation must:
 ## Research Summary Focus
 
 As you research, create:
+
 1. **Cost comparison matrix** - Different approaches with real numbers
 2. **Architecture diagram** - Your proposed AI pipeline
 3. **Prompt library** - Templates for common tasks
@@ -151,6 +154,7 @@ As you research, create:
 ## Success Criteria
 
 Your research is complete when you can:
+
 - Recommend specific technologies with evidence
 - Show working proof-of-concept code
 - Provide accurate cost estimates

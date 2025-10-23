@@ -23,12 +23,14 @@ Your writing combines architectural depth with practical implementation guidance
 **Deliverable Form:** Single inline markdown output with comprehensive technical analysis. If runtime limits prevent single-chunk delivery, use Segmented Delivery Protocol without reducing analytical depth.
 
 **Assumptions to Apply:**
+
 - Prioritize current platform capabilities, official API documentation, and independently verifiable security certifications from 2024-2025
 - When sources conflict on authentication capabilities or security features, present both perspectives with confidence scoring and verification methodology
 - For enterprise implementations lacking public documentation, clearly mark as "requires direct consultation" and provide estimated capabilities based on comparable systems
 - Include both managed cloud services and on-premises solutions with equal analytical rigor
 
 **Objectivity Requirements:**
+
 - For each authentication platform and credential management system, provide balanced analysis including security strengths, operational limitations, and implementation risks
 - Highlight vendor lock-in concerns, compliance gaps, and technical debt implications with specific examples
 - Separate verified technical specifications from vendor marketing claims, using confidence levels (High/Medium/Low) for each major finding
@@ -43,6 +45,7 @@ Your writing combines architectural depth with practical implementation guidance
 **Geographic Scope:** Global authentication infrastructure with specific attention to regulatory compliance requirements across major markets (US, EU, Asia-Pacific). Include platform availability, data residency requirements, and compliance certification differences affecting global credential management strategies.
 
 **Seed Expansion Policy:** The specified authentication platforms and OAuth patterns represent core coverage. Automatically expand to include credible adjacent solutions including:
+
 - Identity and access management platforms with credential capabilities (Okta, Auth0, Azure AD)
 - DevOps-focused secret management tools (GitHub Secrets, GitLab CI/CD variables)
 - Container orchestration secret management (Kubernetes secrets, Docker secrets)
@@ -86,6 +89,7 @@ Your writing combines architectural depth with practical implementation guidance
 **Search Strategy:** Begin with official vendor documentation, security certifications, and compliance attestations for all major authentication and secret management platforms. Expand through enterprise architecture case studies, security conference presentations, and verified implementation reports from high-security environments including financial services, healthcare, and government agencies.
 
 **Evaluation Framework:** Assess each solution across ten primary dimensions:
+
 1. **Authentication Capabilities:** OAuth support, token management, multi-factor authentication integration
 2. **Secret Management Features:** Storage encryption, rotation automation, access controls, audit trails
 3. **Enterprise Integration:** API sophistication, directory services integration, workflow automation
@@ -102,6 +106,7 @@ Your writing combines architectural depth with practical implementation guidance
 **Evidence Standards:** Prioritize official platform documentation, verified security certifications, and independent security assessments. Mark vendor marketing claims separately from verified capabilities. Include confidence levels (High/Medium/Low) for all major findings based on source quality and technical verification methods.
 
 **Candidate Discovery Strategy:** Start with specified core platforms and expand through:
+
 - Security industry analyst reports and technology landscape analyses
 - OAuth specification documentation and implementation examples
 - Cloud provider authentication service ecosystems
@@ -127,49 +132,71 @@ Your writing combines architectural depth with practical implementation guidance
 **[Authentication & Credential Management Infrastructure Research]**
 
 **Executive Summary**
+
 [500+ words synthesizing key findings, technical recommendations, and strategic insights across authentication platforms, OAuth patterns, and enterprise implementations]
 
 **Comprehensive Authentication Infrastructure Overview** 
+
 [Context about current credential management landscape, major technology shifts, compliance impacts, and market dynamics affecting authentication infrastructure decisions]
 
 **Detailed Platform Analysis**
 
 **[Enterprise Secret Management Platforms]**
+
 [HashiCorp Vault Analysis] - [200+ words covering enterprise capabilities, scaling considerations, security features, and implementation patterns]
+
 [AWS Secrets Manager Analysis] - [200+ words with same depth]
+
 [Azure Key Vault Analysis] - [200+ words with same depth]
+
 [Google Secret Manager Analysis] - [200+ words with same depth]
+
 [CyberArk Conjur Analysis] - [200+ words with same depth]
+
 [Additional enterprise platforms analysis]
 
 **[OAuth Implementation Patterns and Challenges]**
+
 [OAuth 2.0/2.1 Flow Analysis] - [200+ words covering implementation complexity, security considerations, and platform variations]
+
 [Token Management Strategies] - [200+ words with same depth]
+
 [Multi-Platform OAuth Coordination] - [200+ words with same depth]
+
 [Mobile and Desktop OAuth Patterns] - [200+ words with same depth]
+
 [Enterprise OAuth Architecture] - [200+ words with same depth]
 
 **[Enterprise Authentication Architectures]**
+
 [Zero-Trust Implementation Patterns] - [200+ words analyzing technical architecture, implementation challenges, and scaling strategies]
+
 [Multi-Cloud Credential Management] - [200+ words with same depth]
+
 [Compliance-Focused Authentication] - [200+ words with same depth]
 
 **Critical Security Questions Analysis**
+
 [Detailed technical examination of the 15 critical questions covering credential management, OAuth complexity, enterprise scaling patterns, and compliance implementation strategies]
 
 **Comparative Analysis**
+
 [Comprehensive comparison matrices, security trade-offs, scale-appropriate recommendations, and decision frameworks]
 
 **Implementation Considerations**
+
 [Practical guidance for different organizational scales, OAuth implementation strategies, compliance management, and common security pitfalls]
 
 **Strategic Recommendations**
+
 [Evidence-based recommendations segmented by use case, organizational scale, and security requirements]
 
 **Conclusion and Next Steps**
+
 [Summary of key insights, technology trends, and suggested evaluation approaches]
 
 **Content Requirements:**
+
 - Begin immediately with title and executive summary
 - Use specific platform names, technical specifications, and security metrics throughout
 - Include relevant architectural details and implementation complexity assessments
@@ -178,6 +205,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Address all critical authentication questions with detailed, evidence-based responses
 
 **Per-Platform Template:** For each platform and authentication pattern, cover:
+
 - Identity/positioning and primary use cases
 - Authentication capabilities including OAuth support, token management, and multi-factor integration
 - Secret management features including encryption, rotation, and access controls
@@ -191,6 +219,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Evidence quality and confidence levels with sources
 
 **Quality Standards:**
+
 - Professional tone suitable for security architects and technical decision-makers
 - Technical accuracy with accessible explanations of complex authentication concepts
 - Balanced perspective highlighting both capabilities and limitations
@@ -199,6 +228,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Output language: English with global considerations included
 
 **Length and Depth Requirements:**
+
 - Minimum 3,500 words of substantive analysis, target 4,500+ words when feasible
 - Executive summary alone: 500+ words
 - Each major platform/pattern analysis: 200+ words minimum
@@ -207,6 +237,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Preserve all discovered nuances, edge cases, and implementation considerations
 
 **Segmented Delivery Protocol (if limits require):**
+
 - Segment 1: Title, Executive Summary, Authentication Infrastructure Overview
 - Segment 2: Enterprise Secret Management Platforms Analysis
 - Segment 3: OAuth Implementation Patterns and Enterprise Authentication Architectures
@@ -216,6 +247,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Continue immediately with subsequent segments until complete
 
 **Output Enforcement:**
+
 - Deliver single inline markdown output (or segmented inline when limits require)
 - Do not attach files, create download links, or reference external hosting
 - No CSV code blocks; render tabular data as markdown tables with sample rows for large datasets

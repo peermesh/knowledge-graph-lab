@@ -115,6 +115,7 @@ These are the only things you need to build for Phase 2:
 ## What Makes This Simple (MVP Focus)
 
 **You DON'T need to worry about:**
+
 - Advanced machine learning models
 - Complex natural language processing
 - Real-time article generation
@@ -122,6 +123,7 @@ These are the only things you need to build for Phase 2:
 - Advanced analytics or feedback loops
 
 **You DO need to focus on:**
+
 - Creating complete, readable articles
 - Consistent article format and quality
 - Reliable connection to Backend storage

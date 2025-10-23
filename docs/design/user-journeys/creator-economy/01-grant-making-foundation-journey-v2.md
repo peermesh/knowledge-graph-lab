@@ -128,6 +128,7 @@ The foundation shares their creator economy intelligence with other funders thro
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Creator content creation tools or direct creator-facing features
 - Social media management or posting capabilities
 - Individual creator income tracking (they fund organizations, not creators directly)

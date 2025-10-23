@@ -1,5 +1,23 @@
 # Publishing Tools Module Specification
 
+## Compliance with Shared Module Requirements
+
+**This module specification is governed by the Shared Module Requirements and must comply with all universal standards established therein.**
+
+**OVERRIDING REQUIREMENT:** The Publishing module must implement both shared module specifications:
+
+### 📋 Standalone Module (Immediate Implementation)
+**REQUIRED:** Basic interoperability for immediate team handover
+- [Standalone Module](./shared/standalone-modules/README.md) - Container architecture, database, API standards
+- **Handover Ready** - What teams implement immediately
+
+### 🔬 PeerMesh Module (Advanced Features)
+**FUTURE:** Advanced features building into PeerMesh Abstraction Program
+- [PeerMesh Module](./shared/peermesh-modules/README.md) - Parallel search, event-driven architecture, dual authorization
+- **Phase 2+** - Advanced interoperability features
+
+**Any conflicts between this specification and shared requirements will be resolved in favor of the shared requirements.**
+
 ## Module Mission
 
 The Publishing Tools module delivers insights to users through their preferred channels at the right time. This module owns all notification, distribution, and content formatting systems that ensure insights reach users effectively.
@@ -92,6 +110,7 @@ GET /api/reports?date=2025-09-22&topics=AI,funding&min_relevance=0.7
 ```
 
 **Publishing Module Responsibilities**:
+
 - Decide which reports to include based on subscriber preferences
 - Assemble multiple reports into email digests
 - Create personalized selections for each subscriber

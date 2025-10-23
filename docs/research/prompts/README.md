@@ -14,6 +14,7 @@ Your research question or requirements here
 
 ### 1. Deep Research Prompt Generator (`deep-research-prompt-generator.md`)
 Transforms research briefs into comprehensive prompts.
+
 - Intelligently handles both simple and complex multi-topic briefs
 - Can generate single comprehensive prompts or multiple focused prompts
 - Includes complexity assessment and user interaction
@@ -30,7 +31,25 @@ Transforms research briefs into comprehensive prompts.
 6. If multiple prompts are recommended, the agent will present this one-liner: "Complexity: N=[N], D=[D] → L=[L]; threshold Y=[Y] → recommended P=ceil(L/Y)=[P]. Choose one: SINGLE, MULTI (P=[P]), or CUSTOM [number]."
 
 
-### Step 2: Conduct Multi-Model Research
+### Step 2: Execute Research
+
+**TWO EXECUTION MODES:**
+
+#### Mode A: Automated (For Claude Code Agents)
+If you are a Claude Code agent:
+
+1. **Create directory structure** with `claude-cli.md` placeholder
+2. **Read all research-prompt.md** files (batch reads)
+3. **Launch Task agents IN PARALLEL** (up to 10 at once):
+   - Use `subagent_type`: `"deep-research-analyst"`
+   - Add `ultrathink` at end of each prompt for maximum reasoning
+   - Launch ALL agents in ONE message for parallel execution
+4. **Save results** to `claude-cli.md` in each research directory
+5. **Create synthesis** and assessment documents
+
+See `AGENT-EXECUTION-GUIDE.md` (if available in your project) for complete agent instructions.
+
+#### Mode B: Manual (For Users)
 1. Run your generated prompts across multiple AI models (based on testing):
    - **Perplexity** (3-7x more comprehensive)
    - Claude (structured analysis but less comprehensive)
@@ -45,15 +64,19 @@ Organize your research outputs systematically:
 
 ```
 research/[topic]/
-├── brief.md            # Your original research brief
-├── prompt.md           # Generated research prompt(s)
-├── responses/
-│   ├── claude.md      # Claude's response
-│   ├── chatgpt.md     # ChatGPT's response
-│   ├── perplexity.md  # Perplexity's response
-│   └── gemini.md      # Gemini's response
-└── FINAL.md           # Final research document
+├── research-prompt.md      # Generated research prompt
+├── claude-cli.md          # Claude Code agent's automated response
+├── claude.md              # Manual Claude submission (optional)
+├── chatGPT.md             # ChatGPT's response
+├── perplexity.md          # Perplexity's response
+├── gemini.md              # Gemini's response (optional)
+├── grok.md                # Grok's response (optional)
+├── deepseek.md            # DeepSeek's response (optional)
+├── research-summary.md     # Synthesis across all responses
+└── research-assessment.md  # Confidence levels and contradictions
 ```
+
+**Note**: `claude-cli.md` is for automated agent execution, while `claude.md` is for manual submission.
 
 ## Why This System Works
 

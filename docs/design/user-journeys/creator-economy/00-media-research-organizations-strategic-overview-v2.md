@@ -137,6 +137,7 @@ Full integration with organizational workflows, custom analytical models, and th
 ## Anti-Requirements
 
 **What these organizations explicitly do NOT need:**
+
 - Social media management or creator collaboration tools
 - Basic data visualization that doesn't add analytical value
 - Generic business intelligence that isn't creator economy specialized

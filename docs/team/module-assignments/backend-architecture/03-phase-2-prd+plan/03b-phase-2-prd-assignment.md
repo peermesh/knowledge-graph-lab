@@ -9,6 +9,7 @@ Write a complete plan (PRD) for the Backend module that explains exactly how to 
 ## Before You Start
 
 Make sure you have:
+
 - [ ] Read the overview document (`03a-phase-2-prd-overview.md`)
 - [ ] Reviewed your Phase 1 research about databases and web frameworks
 - [ ] Understood that AI creates articles, you store them, and others use them
@@ -21,6 +22,7 @@ Make sure you have:
 
 ### Talk to the AI Module Owner
 Ask them:
+
 - What information will be in each news article?
 - How will they send articles to you?
 - What should happen if an article is missing required information?
@@ -29,6 +31,7 @@ Ask them:
 
 ### Talk to the Publishing Module Owner
 Ask them:
+
 - How do they want to search for articles? (by date, topic, etc.)
 - How many articles do they need at once?
 - What information do they need about each article?
@@ -37,6 +40,7 @@ Ask them:
 
 ### Talk to the Frontend Module Owner
 Ask them:
+
 - How will users view articles on the website?
 - What information should each article show?
 - How should website addresses look?
@@ -112,6 +116,7 @@ Other modules need simple ways to interact with your Backend. Think of these lik
 
 ### Write Simple Examples
 For each command, write:
+
 - What someone sends to your Backend
 - What your Backend sends back
 - What happens if something goes wrong
@@ -153,6 +158,7 @@ Make addresses that are easy to read and remember.
 
 ### Handle Duplicates
 If two articles have similar titles on the same day, add a number:
+
 - `/reports/2025-09-22/tech-news-1`
 - `/reports/2025-09-22/tech-news-2`
 
@@ -175,6 +181,7 @@ Now put everything together into one document. Your plan should have these secti
 - Feature 5: Basic security and setup
 
 For each feature, explain:
+
 - What it does
 - Who uses it
 - How it works
@@ -223,9 +230,13 @@ Before submitting, make sure:
 ## Common Mistakes to Avoid
 
 ❌ **Too Complicated**: Don't add features beyond the basic 5
+
 ❌ **Vague Descriptions**: Instead of "handle data", say "save article in database"
+
 ❌ **Missing Examples**: Always show what the actual data looks like
+
 ❌ **No Error Handling**: Explain what happens when things go wrong
+
 ❌ **Ignoring Other Modules**: Make sure you talked to all module owners
 
 ---
@@ -243,11 +254,13 @@ Before submitting, make sure:
 ## Timeline
 
 **Week 1**:
+
 - Day 1-2: Talk to other module owners
 - Day 3-4: Plan database and APIs
 - Day 5: Plan security and URLs
 
 **Week 2**:
+
 - Day 1-3: Write complete PRD
 - Day 4: Review and get feedback
 - Day 5: Final version and submit
@@ -257,6 +270,7 @@ Before submitting, make sure:
 ## Submission
 
 When your PRD is complete:
+
 1. Save it as `deliverables/PRD.md` in your module directory
 2. Create a pull request with your changes
 3. Ask other module owners to review the parts that affect them

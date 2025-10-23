@@ -135,6 +135,7 @@ Organizations make decisions based on comprehensive creator economy intelligence
 ## Anti-Requirements
 
 **What these organizations explicitly do NOT need:**
+
 - Direct creator management tools (they support organizations, not individual creators)
 - Content creation or publishing features (they analyze, they don't create)
 - Social media management capabilities (they're not running creator accounts)

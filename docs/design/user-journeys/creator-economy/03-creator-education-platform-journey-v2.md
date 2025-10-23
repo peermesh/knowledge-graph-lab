@@ -131,6 +131,7 @@ Platform becomes the go-to data source for course development decisions. Sarah c
 ## Anti-Requirements
 
 **What this persona explicitly does NOT need:**
+
 - Complex academic research tools (they need practical business insights, not peer-reviewed studies)
 - Social media management features (they're focused on education outcomes, not content creation)
 - Direct student communication tools (they work through instructors and support staff)

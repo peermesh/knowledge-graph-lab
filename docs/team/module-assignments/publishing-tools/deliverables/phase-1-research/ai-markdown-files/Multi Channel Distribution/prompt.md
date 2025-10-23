@@ -23,12 +23,14 @@ Your writing combines architectural depth with practical implementation guidance
 **Deliverable Form:** Single inline markdown output with comprehensive technical analysis. If runtime limits prevent single-chunk delivery, use Segmented Delivery Protocol without reducing analytical depth.
 
 **Assumptions to Apply:**
+
 - Prioritize current platform capabilities, official API documentation, and independently verifiable performance metrics from 2024-2025
 - When sources conflict on technical capabilities or rate limits, present both perspectives with confidence scoring and verification methodology
 - For enterprise implementations lacking public documentation, clearly mark as "requires direct consultation" and provide estimated capabilities based on comparable systems
 - Include both managed SaaS platforms and custom-built enterprise solutions with equal analytical rigor
 
 **Objectivity Requirements:**
+
 - For each distribution platform and channel, provide balanced analysis including technical strengths, operational limitations, and strategic risks
 - Highlight vendor lock-in concerns, platform policy risks, and technical debt implications with specific examples
 - Separate verified technical specifications from marketing claims and theoretical capabilities, using confidence levels (High/Medium/Low) for each major finding
@@ -43,6 +45,7 @@ Your writing combines architectural depth with practical implementation guidance
 **Geographic Scope:** Global content distribution infrastructure with specific attention to regulatory compliance requirements across major markets (US, EU, Asia-Pacific). Include platform availability, content policy variations, and technical infrastructure differences affecting global distribution strategies.
 
 **Seed Expansion Policy:** The specified distribution channels and media organizations represent core coverage. Automatically expand to include credible adjacent solutions including:
+
 - Enterprise content management platforms with distribution capabilities (WordPress VIP, Drupal, AEM)
 - Modern headless CMS platforms with multi-channel publishing (Strapi, Contentful, Sanity)
 - Developer-focused automation platforms (n8n, Pipedream, Microsoft Power Automate)
@@ -84,6 +87,7 @@ Your writing combines architectural depth with practical implementation guidance
 **Search Strategy:** Begin with official platform API documentation, technical specifications, and developer resources for all major social media platforms and distribution services. Expand through enterprise case studies, technical conference presentations, and verified implementation reports from high-volume publishing operations. Include analysis of platform policy changes, API evolution, and technical architecture documentation from major media organizations.
 
 **Evaluation Framework:** Assess each solution across nine primary dimensions:
+
 1. **Technical Capabilities:** API sophistication, content transformation features, automation capabilities
 2. **Distribution Coverage:** Platform support breadth, channel-specific optimizations, emerging platform integration
 3. **Scaling Architecture:** Volume handling, performance under load, enterprise infrastructure requirements
@@ -99,6 +103,7 @@ Your writing combines architectural depth with practical implementation guidance
 **Evidence Standards:** Prioritize official platform documentation, verified enterprise case studies, and independent performance testing. Mark vendor marketing claims separately from verified capabilities. Include confidence levels (High/Medium/Low) for all major findings based on source quality and technical verification methods.
 
 **Candidate Discovery Strategy:** Start with specified core platforms and expand through:
+
 - Platform ecosystem documentation and official integration directories
 - Enterprise technology selection guides and RFP vendor lists
 - Technical conference presentations and case study reports
@@ -123,53 +128,79 @@ Your writing combines architectural depth with practical implementation guidance
 **[Multi-Channel Distribution & Syndication Infrastructure Research]**
 
 **Executive Summary**
+
 [500+ words synthesizing key findings, technical recommendations, and strategic insights across distribution channels, platforms, and enterprise implementations]
 
 **Comprehensive Multi-Channel Distribution Overview** 
+
 [Context about current content distribution landscape, major technology shifts, platform policy impacts, and market dynamics affecting distribution infrastructure decisions]
 
 **Detailed Platform Analysis**
 
 **[Distribution Channel Deep-Dive]**
+
 [Email Distribution Analysis] - [200+ words covering technical capabilities, scaling considerations, integration patterns, and enterprise implementations]
+
 [Web Publishing Analysis] - [200+ words with same depth]
+
 [API Distribution Analysis] - [200+ words with same depth]
+
 [RSS/Atom Syndication Analysis] - [200+ words with same depth]
+
 [Social Media Distribution Analysis] - [200+ words with same depth]
+
 [Webhook Systems Analysis] - [200+ words with same depth]
+
 [Push Notification Infrastructure Analysis] - [200+ words with same depth]
 
 **[Distribution Platform Evaluation]**
+
 [Buffer Analysis] - [200+ words covering platform capabilities, enterprise features, technical limitations, and scaling considerations]
+
 [Hootsuite Analysis] - [200+ words with same depth]
+
 [Zapier Analysis] - [200+ words with same depth]
+
 [IFTTT Analysis] - [200+ words with same depth]
+
 [Additional discovered platforms analysis]
 
 **[Enterprise Media Architecture Case Studies]**
+
 [Bloomberg Multi-Channel Infrastructure] - [200+ words analyzing technical architecture, distribution patterns, and scaling strategies]
+
 [New York Times Digital Distribution] - [200+ words with same depth]
+
 [Vox Media Platform Architecture] - [200+ words with same depth]
+
 [NPR Syndication Systems] - [200+ words with same depth]
+
 [Reuters Wire Service Infrastructure] - [200+ words with same depth]
+
 [Associated Press Distribution Architecture] - [200+ words with same depth]
 
 **Critical Infrastructure Questions Analysis**
+
 [Detailed technical examination of the 20 critical questions covering platform coverage, technical challenges, scaling patterns, and enterprise implementation strategies]
 
 **Comparative Analysis**
+
 [Comprehensive comparison matrices, technical trade-offs, scale-appropriate recommendations, and decision frameworks]
 
 **Implementation Considerations**
+
 [Practical guidance for different organizational scales, content transformation strategies, compliance management, and common implementation pitfalls]
 
 **Strategic Recommendations**
+
 [Evidence-based recommendations segmented by use case, organizational scale, and technical requirements]
 
 **Conclusion and Next Steps**
+
 [Summary of key insights, technology trends, and suggested evaluation approaches]
 
 **Content Requirements:**
+
 - Begin immediately with title and executive summary
 - Use specific platform names, technical specifications, and performance metrics throughout
 - Include relevant architectural details and implementation complexity assessments
@@ -178,6 +209,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Address all 20 critical infrastructure questions with detailed, evidence-based responses
 
 **Per-Platform Template:** For each platform and channel, cover:
+
 - Identity/positioning and primary use cases
 - Technical capabilities including APIs, content transformation, and automation features
 - Distribution coverage and platform-specific optimizations
@@ -191,6 +223,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Evidence quality and confidence levels with sources
 
 **Quality Standards:**
+
 - Professional tone suitable for technical decision-makers and enterprise architects
 - Technical accuracy with accessible explanations of complex distribution infrastructure concepts
 - Balanced perspective highlighting both capabilities and limitations
@@ -199,6 +232,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Output language: English with global considerations included
 
 **Length and Depth Requirements:**
+
 - Minimum 3,500 words of substantive analysis, target 4,500+ words when feasible
 - Executive summary alone: 500+ words
 - Each major platform/channel analysis: 200+ words minimum
@@ -207,6 +241,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Preserve all discovered nuances, edge cases, and implementation considerations
 
 **Segmented Delivery Protocol (if limits require):**
+
 - Segment 1: Title, Executive Summary, Multi-Channel Distribution Overview
 - Segment 2: Distribution Channel Deep-Dive Analysis
 - Segment 3: Distribution Platform Evaluation
@@ -217,6 +252,7 @@ Your writing combines architectural depth with practical implementation guidance
 - Continue immediately with subsequent segments until complete
 
 **Output Enforcement:**
+
 - Deliver single inline markdown output (or segmented inline when limits require)
 - Do not attach files, create download links, or reference external hosting
 - No CSV code blocks; render tabular data as markdown tables with sample rows for large datasets

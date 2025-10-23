@@ -1,8 +1,8 @@
 # AI Development
 
-**Role**: AI Development Team Member  
-**Project**: Knowledge Graph Lab  
-**Timeline**: 5 phases (flexible based on progress)
+- **Role**: AI Development Team Member  
+- **Project**: Knowledge Graph Lab  
+- **Timeline**: 5 phases (flexible based on progress)
 
 ## 🎯 Your Mission
 
@@ -65,38 +65,42 @@ Build the intelligence layer that transforms raw information into actionable ins
 ## 🤝 Coordination Points
 
 ### With Backend Architecture Team Member
-**Phase 1-2 Priority**
+**Timing: Early coordination recommended**
 - **Vector Database**: Requirements for embedding storage
 - **Processing Pipeline**: Queue system for AI workloads
 - **API Design**: Endpoints for AI operations
 - **Performance**: Latency and throughput requirements
 
 **What You Need:**
+
 - Vector database connection
 - Queue infrastructure
 - Storage for results
 - API endpoints
 
 **What You Provide:**
+
 - Embedding dimensions and formats
 - Processing time estimates
 - Storage requirements
 - API specifications
 
 ### With Frontend Design Team Member
-**Phase 2-3 Priority**
+**Timing: Mid-project coordination recommended**
 - **Result Formatting**: Structure AI outputs for display
 - **Streaming**: Progressive response rendering
 - **Confidence Display**: Uncertainty visualization
 - **Feedback Loop**: User corrections and ratings
 
 **What You Need:**
+
 - Display requirements
 - Interaction patterns
 - Performance constraints
 - Feedback mechanisms
 
 **What You Provide:**
+
 - Result data structures
 - Streaming protocols
 - Confidence scores
@@ -110,12 +114,14 @@ Build the intelligence layer that transforms raw information into actionable ins
 - **Summarization**: Multi-length summaries
 
 **What You Need:**
+
 - Content requirements
 - Personalization parameters
 - Distribution constraints
 - Format specifications
 
 **What You Provide:**
+
 - Generated content
 - Quality scores
 - Personalization logic
@@ -181,24 +187,28 @@ Build the intelligence layer that transforms raw information into actionable ins
 ## 📚 Learning Path
 
 **RAG Fundamentals:**
+
 - Document chunking strategies
 - Embedding models comparison
 - Retrieval algorithms
 - Re-ranking techniques
 
 **LLM Engineering:**
+
 - Prompt engineering patterns
 - Few-shot learning
 - Chain-of-thought reasoning
 - Tool use and function calling
 
 **Knowledge Graphs:**
+
 - Graph databases
 - Ontology design
 - SPARQL queries
 - Graph algorithms
 
 **Research Automation:**
+
 - Web scraping ethics and techniques
 - API integration patterns
 - Content synthesis
@@ -224,6 +234,7 @@ Build the intelligence layer that transforms raw information into actionable ins
 ## 🎓 Your Growth Opportunity
 
 This role offers deep experience in:
+
 - Production LLM systems
 - RAG architecture design
 - Knowledge graph engineering

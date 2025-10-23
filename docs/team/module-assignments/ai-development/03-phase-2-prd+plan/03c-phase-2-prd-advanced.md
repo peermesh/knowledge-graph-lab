@@ -21,6 +21,7 @@ Beyond basic article writing, add style options:
 - **Brief Style**: Super short, bullet-point like, quick facts only
 
 **How to Implement**
+
 - Create templates for each style
 - Let users choose style when requesting articles
 - Adjust AI prompts based on selected style
@@ -30,11 +31,13 @@ Beyond basic article writing, add style options:
 Make the AI better at identifying important information:
 
 **Improved Topic Detection**
+
 - Recognize related topics (AI, machine learning, automation are related)
 - Suggest additional relevant topics based on content
 - Keep consistent topic names across all articles
 
 **Better Entity Extraction**
+
 - Recognize when "Apple Inc." and "Apple" refer to the same company
 - Identify relationships between people and organizations
 - Track entity mentions across multiple articles
@@ -44,6 +47,7 @@ Make the AI better at identifying important information:
 Help readers understand where information comes from:
 
 **Source Attribution**
+
 - Keep track of which sources contributed to each article
 - Add simple citations within articles
 - Create a "Sources" section at the end of articles
@@ -61,11 +65,13 @@ Sources:
 Make the AI get better over time:
 
 **Article Performance Tracking**
+
 - Track which articles get read most
 - Identify which topics are most popular
 - Learn from successful article patterns
 
 **Writing Improvement**
+
 - Analyze what makes articles successful
 - Adjust writing style based on performance
 - Flag potential quality issues automatically
@@ -80,7 +86,9 @@ Create articles targeted for different audiences:
 - **Business Audience**: Focus on market impact, financial implications
 
 **Example**
+
 Same news but different approaches:
+
 - Technical: "The new API uses REST endpoints with JSON payloads..."
 - General: "The new system makes it easier for apps to share information..."
 - Business: "This technology could reduce development costs by 30%..."
@@ -150,6 +158,7 @@ If you're interested in learning new AI technologies:
 
 ### Keep It Simple
 Even for advanced features:
+
 - Add one feature at a time
 - Test thoroughly with real examples
 - Get feedback from other module owners
@@ -203,9 +212,13 @@ Your advanced work is successful when:
 ## Common Advanced Mistakes to Avoid
 
 ❌ **Over-Complicating**: Adding complex AI features that are hard to maintain
+
 ❌ **Scope Creep**: Building features beyond article generation
+
 ❌ **Performance Impact**: Slowing down basic article creation
+
 ❌ **Poor Documentation**: Not explaining how advanced features work
+
 ❌ **Feature Bloat**: Adding features just because they're possible
 
 ---

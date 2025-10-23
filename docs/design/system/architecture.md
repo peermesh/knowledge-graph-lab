@@ -58,6 +58,7 @@ The system leverages modern programming languages and containerization technolog
 
 ### Data Storage Strategy
 The architecture employs multiple storage technologies optimized for different data patterns:
+
 - Object storage for raw document preservation
 - Graph databases for relationship-centric queries
 - Vector storage for semantic similarity search
@@ -66,6 +67,7 @@ The architecture employs multiple storage technologies optimized for different d
 
 ### Communication Patterns
 Services communicate through various protocols chosen for specific use cases:
+
 - RESTful APIs for standard client interactions
 - Graph query languages for complex data retrieval
 - Real-time protocols for live updates
@@ -73,6 +75,7 @@ Services communicate through various protocols chosen for specific use cases:
 
 ### Intelligence Layer
 The AI/ML capabilities combine multiple approaches:
+
 - Large language models for content understanding
 - Natural language processing for entity extraction
 - Machine learning for pattern recognition
@@ -80,6 +83,7 @@ The AI/ML capabilities combine multiple approaches:
 
 ### User Interface
 The frontend architecture emphasizes:
+
 - Component-based development for maintainability
 - Interactive visualizations for data exploration
 - Centralized state management for consistency
@@ -91,6 +95,7 @@ The architecture uses event-driven communication patterns for loose coupling and
 
 ### Event-Driven Architecture
 Services communicate through an event bus that enables:
+
 - Asynchronous processing for better performance
 - Retry mechanisms for transient failures
 - Dead letter queues for error handling
@@ -99,6 +104,7 @@ Services communicate through an event bus that enables:
 
 ### Resilience Patterns
 The system implements multiple resilience strategies:
+
 - Circuit breakers to prevent cascade failures
 - Exponential backoff for retry logic
 - Health checks for service monitoring
@@ -107,6 +113,7 @@ The system implements multiple resilience strategies:
 
 ### Service Configuration
 Each service maintains:
+
 - Environment-specific configuration
 - Secure credential management
 - Service discovery mechanisms
@@ -123,6 +130,7 @@ The system integrates with various external services:
 
 ### Security and Reliability
 The architecture implements comprehensive security and reliability measures:
+
 - Token-based authentication for secure access
 - Rate limiting to protect external services
 - Circuit breakers for fault tolerance
