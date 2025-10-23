@@ -56,6 +56,7 @@ Find documentation in three main sections:
 - [Quick Start](speckit/guides/quickstart.md) - 5-minute introduction
 - [Simple Template](speckit/templates/simple-template.md) - Start creating your PRD here
 
-### Research Tools (research/)
-- Deep research prompt generator (research/prompts/deep-research-prompt-generator.md)
+### Research Tools
+- Deep research prompt generator (team/prompts/deep-research-prompt-generator.md)
+- All team prompts are now centralized in team/prompts/
 
