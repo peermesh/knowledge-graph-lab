@@ -78,7 +78,7 @@ Jump directly to your module's research assignment:
 
 ### Use These Tools
 - AI assistants (Claude, ChatGPT, Perplexity)
-- [Research Prompts](../../research/prompts/)
+- [Research Prompts](../prompts/)
 - Module-specific resources in your README
 
 ### Evaluation Criteria

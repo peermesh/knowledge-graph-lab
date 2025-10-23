@@ -244,6 +244,8 @@ docs/team/module-assignments/publishing-tools/deliverables/phase-1-research/ai-m
 ```
 That's a 7-level deep path!
 
+**Status**: This file has been moved to `docs/team/prompts/chatgpt.md` as part of the prompt reorganization (see Issue #8).
+
 File count by type:
 
 - Module assignment files: 4 modules × 10 files each = 40 files
