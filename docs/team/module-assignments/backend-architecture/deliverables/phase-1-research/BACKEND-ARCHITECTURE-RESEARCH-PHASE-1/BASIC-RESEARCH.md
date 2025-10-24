@@ -3,9 +3,11 @@
 I will be implementing the entire core backend infastructure that powers the Knowledge Graph Lab System
 
 TOPIC 1: 
+
 Docker Compose Patterns for Multi-Service Applications
 
 Download docker in terminal
+
     - type "sudo dockerd" in terminal
     - this starts docker
 
@@ -68,6 +70,7 @@ Download docker in terminal
 2. Non-root container execution
     - In Dockerfile, set:
         RUN adduser -u 1000 appuser
+
         USER appuser
 
 3. Network isolation* and security groups*
@@ -89,6 +92,7 @@ How do we manage different mounted directories for dev vs production?
     Use bind mounts so code changes on your host machine are reflected inside the container. Example:
 
         volumes:
+
             - ./src:/usr/src/app
 
 2. Production:
@@ -110,6 +114,7 @@ What’s the best approach for secrets that works locally and in cloud?
     - Example:
 
         DB_USER=devuser
+
         DB_PASS=devpass
 
     - Loaded automatically by Docker Compose
@@ -133,10 +138,15 @@ How do we handle database migrations in containerized environments?
     Create a service in docker-compose.yml dedicated to running migrations (one-off job). Example:
 
     services:
+
         migrate:
+
         image: myapp
+
         command: npm run migrate
+
         depends_on:
+
             - db
 
 2. Option 2: Run migrations at startup
@@ -191,6 +201,7 @@ How do we handle database migrations in containerized environments?
 ## 🔹 Phase 2 Databases (For AI/Graph Features)
 
 As the system evolves beyond core features, consider specialized databases for **AI, graph relationships, and analytics**.  
+
 Start with **PostgreSQL** and extend only if a clear performance or feature need arises.
 
 ---
@@ -351,6 +362,7 @@ We want to **avoid monthly fees** and keep flexibility.
 **Critical decision**: Should auth be bundled with database or use dedicated auth service?
 
 **Supabase approach (bundled)**:
+
 - **Pros**:
 - Open-source version available (self-hostable)
 - Integrated Row Level Security (RLS)
@@ -363,6 +375,7 @@ We want to **avoid monthly fees** and keep flexibility.
 - Limited to PostgreSQL for RLS benefits
 
 **Separated best-in-class approach**:
+
 - **Pros**:
 - Use most feature-rich auth service (Auth0, Okta)
 - Better enterprise features (SSO, advanced MFA)*
@@ -383,6 +396,7 @@ We want to **avoid monthly fees** and keep flexibility.
 
 #### 🔹 Social Login Providers
 Enable quick and user-friendly sign-in options:
+
 - **Google Sign-In** → widely used, easy setup, strong user trust
 - **Apple Sign-In** → required for iOS apps with third-party login
 - **GitHub OAuth** → great for developer-focused apps
@@ -393,6 +407,7 @@ Enable quick and user-friendly sign-in options:
 
 #### 🔹 Email Authentication
 Support for users who prefer email-based login:
+
 - **Magic links (passwordless login)** → send sign-in link via email
 - **Email + password** (with secure hashing)  
 - **Password reset flows** → forgot password with tokenized link
@@ -402,6 +417,7 @@ Support for users who prefer email-based login:
 
 #### 🔹 Implementation Considerations
 Core technical flows to handle securely:
+
 - **OAuth 2.0 flow** → authorization code grant with PKCE for web/native apps
 - **Redirect URI handling** → whitelist all expected callback URLs
 - **Token exchange & storage** → securely handle access/refresh tokens
@@ -521,12 +537,15 @@ Core technical flows to handle securely:
 ### Key Questions & Answers
 
 **Q1. Is Supabase’s open-source version truly self-hostable without limitations?**  
+
 ✅ Yes. Supabase’s open-source stack (Postgres + GoTrue for auth + storage + realtime) is fully self-hostable under the Apache 2.0 license.  
+
 ⚠️ Limitations: Hosting it yourself means **you manage scaling, backups, updates, and monitoring**. Supabase’s managed service just removes that overhead.  
 
 ---
 
 **Q2. Which auth service provides the best OAuth provider support?**  
+
 - **Auth0/Okta** → Most complete set of providers, but cost and vendor lock-in are issues.  
 - **Keycloak** → Excellent open-source support for OAuth/SAML/social logins.  
 - **Supabase** → Good built-in OAuth for common providers (Google, GitHub, Apple, etc.), but fewer enterprise connectors than Keycloak/Auth0.  
@@ -535,6 +554,7 @@ Core technical flows to handle securely:
 ---
 
 **Q3. How to implement authorization if using a separated auth service?**  
+
 - Auth service (e.g., Keycloak, Ory, Supabase) issues **JWTs with claims** (user_id, roles, permissions).  
 - Your app verifies JWT and applies **authorization rules** locally:  
   - Example: `user_id` in token must match `user_id` in DB rows.  
@@ -544,6 +564,7 @@ Core technical flows to handle securely:
 ---
 
 **Q4. What’s the simplest path to secure authentication for MVP?**  
+
 1. Pick **Google + GitHub OAuth** (covers 80% of early users).  
 2. Add **email + magic link login** as fallback.  
 3. Store user profiles in **Postgres** with `user_id` as primary key.  
@@ -553,6 +574,7 @@ Core technical flows to handle securely:
 ---
 
 **Q5. How to handle user sessions across multiple services?**  
+
 - Use a **single auth provider** (Supabase, Keycloak, Ory) to issue JWTs.  
 - Each microservice verifies JWT with the shared **public key** (no central DB lookup needed).  
 - For revocation:  
@@ -567,6 +589,7 @@ Core technical flows to handle securely:
 ## API Architecture Choice
 
 **Principle:** Keep it simple → choose one main approach and stick to it for MVP.  
+
 (Complexity comes later, when data access patterns demand it.)
 
 ---
@@ -684,9 +707,13 @@ Core technical flows to handle securely:
   - Standardized error response format:  
     ```json
     {
+
       "error": "InvalidInput",
+
       "message": "Username is required",
+
       "details": { "field": "username" }
+
     }
     ```
 - **Request/Response Validation**
@@ -749,6 +776,7 @@ Core technical flows to handle securely:
 ### Key Questions & Answers
 
 **Q1. REST or GraphQL for our use case?**  
+
 - **REST is recommended for MVP**:
   - Simpler to implement and test.
   - Well-understood by all team members.
@@ -763,6 +791,7 @@ Core technical flows to handle securely:
 ---
 
 **Q2. How to handle API versioning?**  
+
 - **MVP Strategy: URL prefix versioning**
   - Example: `/api/v1/users`, `/api/v1/content`
   - Simple, explicit, easy to manage.
@@ -774,6 +803,7 @@ Core technical flows to handle securely:
 ---
 
 **Q3. What’s the minimum API surface for MVP?**  
+
 - **Core endpoints only**:
   - **Authentication**: `/auth/login`, `/auth/logout`, `/auth/refresh`
   - **User management**: `/users`, `/users/{id}`
@@ -946,31 +976,37 @@ Research and prototype ways to ingest data from multiple sources reliably. Focus
 ### Key Questions & Answers
 
 **Q1: What’s the simplest way to handle file uploads reliably?**  
+
 - Use **multipart HTTP POST endpoints** with validation for type and size.  
 - Store files temporarily in a **staging directory** or Docker volume before processing.  
 - Provide feedback to the user: accepted, rejected, queued for processing.  
 
 **Q2: Should processing be real-time or batch?**  
+
 - **MVP:** synchronous real-time for small files.  
 - **Scaling:** asynchronous batch processing for larger files or high volume.  
 - Job queue allows retries and parallelization without blocking API responses.  
 
 **Q3: How to handle large files (>10MB PDFs)?**  
+
 - Split processing into **chunks** (pages or sections).  
 - Enforce **upload size limits** and provide user guidance for large files.  
 - Use streaming extraction libraries (e.g., `pdfminer.six` or `PyMuPDF`) to reduce memory usage.  
 
 **Q4: What happens when ingestion fails midway?**  
+
 - Implement **retry strategies** with exponential backoff.  
 - Log failure details and notify the user or admin.  
 - Optionally, store **partial results** to avoid complete loss of work.  
 
 **Q5: How to prevent duplicate content?**  
+
 - Calculate **hashes or fingerprints** of text content.  
 - Check existing records in DB/vector store before storing.  
 - Consider versioning for updates rather than overwriting.  
 
 **Q6: How to track where content came from (provenance)?**  
+
 - Store **source metadata**: URL, file name, original repository, or API ID.  
 - Track **user_id** and timestamp of ingestion.  
 - Maintain **version history** for updates to the same content.  
@@ -1078,6 +1114,7 @@ For the initial implementation, prioritize simplicity and reliability to get a w
 ### Key Questions & Answers
 
 **Q1: What monitoring is essential from day one?**  
+
 - **Health check endpoint** (`/health` or `/status`) to confirm API and database are reachable.  
 - **Basic error logging** for API requests and background jobs.  
 - **Uptime alerts** (simple external ping service like UptimeRobot or Healthchecks.io).  
@@ -1086,6 +1123,7 @@ For the initial implementation, prioritize simplicity and reliability to get a w
 ---
 
 **Q2: How to balance local dev simplicity with production similarity?**  
+
 - **Use Docker Compose** to replicate prod-like services locally (database, queue, API).  
 - **Environment variables**: `.env` files for dev vs production.  
 - **Seed data**: provide realistic but lightweight data for dev/testing.  
