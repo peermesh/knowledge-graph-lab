@@ -1,0 +1,9 @@
+trend_category,description,evidence_sources,confidence_level
+Market Growth,"Digital accessibility software market growing 8-11% CAGR, reaching $1.25B+ in 2025","Market research reports, Business Research Insights",High
+Automation Focus,Shift from manual to automated accessibility testing with 30-50% coverage rates,"Academic studies, Equal Entry comparison research",High
+AI Integration,AI-powered remediation and testing emerging in tools like computer vision scanning,"Tool vendor announcements, Gartner accessibility reports",Medium
+Accessibility-First Design,Libraries like React Aria leading accessibility-first component design,"React Aria adoption, Adobe accessibility initiatives",High
+Testing Evolution,Evolution from basic checkers to comprehensive testing frameworks with CI/CD integration,"axe-core integration growth, Testing Library popularity",High
+Regulatory Pressure,"WCAG 2.2, EAA, and ADA driving compliance requirements globally","Legislative updates, WCAG 2.2 adoption rates",High
+Enterprise Adoption,Large enterprises prioritizing accessibility for legal compliance and brand reputation,"Level Access accessibility survey, enterprise tool adoption",High
+Open Source Dominance,Open source tools like axe-core dominating testing ecosystem,"GitHub usage statistics, npm download trends",High
