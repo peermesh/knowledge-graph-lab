@@ -99,11 +99,11 @@
 
 ### Tests for User Story 2 (MANDATORY - TDD Required) ⚠️
 
-- [ ] T034 [P] [US2] Contract test for subscriber management API in tests/publishing/contract/test_subscribers.py
-- [ ] T035 [P] [US2] Contract test for newsletter scheduling API in tests/publishing/contract/test_newsletter_scheduling.py
-- [ ] T036 [P] [US2] Integration test for personalized newsletter generation in tests/publishing/integration/test_personalized_newsletters.py
-- [ ] T037 [P] [US2] Unit test for personalization engine in tests/publishing/unit/test_personalization_engine.py
-- [ ] T038 [P] [US2] Performance test for newsletter generation with 2,000 subscribers in tests/publishing/performance/test_newsletter_generation.py
+- [X] T034 [P] [US2] Contract test for subscriber management API in tests/publishing/contract/test_subscribers.py
+- [X] T035 [P] [US2] Contract test for newsletter scheduling API in tests/publishing/contract/test_newsletter_scheduling.py
+- [X] T036 [P] [US2] Integration test for personalized newsletter generation in tests/publishing/integration/test_personalized_newsletters.py
+- [X] T037 [P] [US2] Unit test for personalization engine in tests/publishing/unit/test_personalization_engine.py
+- [X] T038 [P] [US2] Performance test for newsletter generation with 2,000 subscribers in tests/publishing/performance/test_newsletter_generation.py
 
 ### Implementation for User Story 2
 
