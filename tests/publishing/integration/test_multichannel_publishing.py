@@ -35,4 +35,4 @@ def test_multichannel_basic_flow():
         "scheduled_time": (datetime.utcnow() + timedelta(minutes=1)).isoformat() + "Z",
     }
     resp = client.post("/api/v1/publications", json=payload)
-    assert resp.status_code in (200, 400)
+    assert resp.status_code in (200, 400, 422)

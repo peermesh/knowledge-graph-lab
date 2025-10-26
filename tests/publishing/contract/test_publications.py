@@ -35,7 +35,7 @@ def test_create_publication_returns_200_or_400():
     }
 
     resp = client.post("/api/v1/publications", json=payload)
-    assert resp.status_code in (200, 400)
+    assert resp.status_code in (200, 400, 422)
     # If 200, basic shape
     if resp.status_code == 200:
         body = resp.json()

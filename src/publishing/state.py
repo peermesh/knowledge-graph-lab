@@ -1,0 +1,8 @@
+"""
+In-memory state for DEBUG/testing mode to avoid external dependencies.
+"""
+
+IN_MEMORY_CHANNELS = []
+IN_MEMORY_SUBSCRIBERS = []
+
+
