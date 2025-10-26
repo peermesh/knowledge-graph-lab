@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "publishing-module"
+version = "0.1.0"
+description = "Knowledge Graph Lab Publishing Module (FastAPI microservice)"
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{ name = "Knowledge Graph Lab" }]
+keywords = ["fastapi", "publishing", "celery", "redis", "sqlalchemy", "async"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Framework :: FastAPI",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+# Pydantic v1 to match current config usage
+dependencies = [
+  "fastapi==0.95.2",
+  "uvicorn[standard]>=0.23,<1.0",
+  "pydantic==1.10.13",
+  "sqlalchemy>=2.0,<2.1",
+  "asyncpg>=0.29.0",
+  "redis>=5.0.1",
+  "celery>=5.3.0",
+  "boto3>=1.28.0",
+  "httpx>=0.27.0",
+  "structlog>=24.1.0",
+  "psutil>=5.9.0",
+  "python-dotenv>=1.0.0"
+]
+
+[tool.pytest.ini_options]
+addopts = "-q -ra -s --maxfail=1 --cov=src/publishing --cov-report=term-missing"
+asyncio_mode = "auto"
+testpaths = ["tests/publishing"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+select = ["E","F","I","UP","B"]
+ignore = ["E501"]
+target-version = "py311"
+
+[tool.coverage.run]
+source = ["src/publishing"]
