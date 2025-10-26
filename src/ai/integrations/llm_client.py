@@ -70,21 +70,19 @@ class LLMClient:
     async def extract_entities(
         self,
         text: str,
-        entity_types: List[str],
-        language: str = "en"
+        entity_types: Optional[List[str]] = None
     ) -> Dict[str, Any]:
         """
         Extract entities from text using LLM
-        
+
         Args:
             text: Document text to process
-            entity_types: List of entity types to extract
-            language: Language code (en, es, fr, zh)
-            
+            entity_types: List of entity types to extract (None for all types)
+
         Returns:
             Dictionary with extracted entities and relationships
         """
-        prompt = self._build_extraction_prompt(text, entity_types, language)
+        prompt = self._build_extraction_prompt(text, entity_types)
         
         # Check if LLM clients are available
         if not self.primary_client and not self.fallback_client:
@@ -121,39 +119,29 @@ class LLMClient:
     def _build_extraction_prompt(
         self,
         text: str,
-        entity_types: List[str],
-        language: str
+        entity_types: Optional[List[str]] = None
     ) -> str:
-        """Build prompt for entity extraction with language-specific templates"""
-        entity_types_str = ", ".join(entity_types)
-        
-        # Language-specific prompts
-        prompts = {
-            'en': self._build_english_prompt(text, entity_types_str),
-            'es': self._build_spanish_prompt(text, entity_types_str),
-            'fr': self._build_french_prompt(text, entity_types_str),
-            'zh': self._build_chinese_prompt(text, entity_types_str)
-        }
-        
-        return prompts.get(language, prompts['en'])
-    
-    def _build_english_prompt(self, text: str, entity_types: str) -> str:
-        """English extraction prompt"""
+        """Build prompt for flexible entity extraction"""
+        if entity_types:
+            entity_types_str = ", ".join(entity_types)
+            entity_instruction = f"Focus on these entity types: {entity_types_str}"
+        else:
+            entity_instruction = "Extract all relevant entity types you can identify"
+
         return f"""Extract entities and relationships from the following text.
 
-Entity types to extract: {entity_types}
-Language: English
+{entity_instruction}
 
 For each entity, provide:
 1. The entity text
-2. Entity type (organization, person, funding_amount, date, location)
+2. Entity type (use any relevant type you identify)
 3. Confidence score (0.0-1.0)
 4. Positions in text (start and end character indices)
 
 For relationships between entities, provide:
 1. Source entity
-2. Target entity  
-3. Relationship type (fund, partner, acquire, compete, collaborate, mention)
+2. Target entity
+3. Relationship type (use any relevant relationship type you identify)
 4. Confidence score (0.0-1.0)
 5. Evidence text
 
@@ -161,81 +149,6 @@ Text to analyze:
 {text}
 
 Return the results in JSON format with 'entities' and 'relationships' arrays."""
-    
-    def _build_spanish_prompt(self, text: str, entity_types: str) -> str:
-        """Spanish extraction prompt"""
-        return f"""Extrae entidades y relaciones del siguiente texto.
-
-Tipos de entidades a extraer: {entity_types}
-Idioma: Español
-
-Para cada entidad, proporciona:
-1. El texto de la entidad
-2. Tipo de entidad (organization, person, funding_amount, date, location)
-3. Puntuación de confianza (0.0-1.0)
-4. Posiciones en el texto (índices de inicio y fin)
-
-Para las relaciones entre entidades, proporciona:
-1. Entidad fuente
-2. Entidad destino
-3. Tipo de relación (fund, partner, acquire, compete, collaborate, mention)
-4. Puntuación de confianza (0.0-1.0)
-5. Texto de evidencia
-
-Texto a analizar:
-{text}
-
-Devuelve los resultados en formato JSON con arrays 'entities' y 'relationships'."""
-    
-    def _build_french_prompt(self, text: str, entity_types: str) -> str:
-        """French extraction prompt"""
-        return f"""Extraire les entités et les relations du texte suivant.
-
-Types d'entités à extraire: {entity_types}
-Langue: Français
-
-Pour chaque entité, fournir:
-1. Le texte de l'entité
-2. Type d'entité (organization, person, funding_amount, date, location)
-3. Score de confiance (0.0-1.0)
-4. Positions dans le texte (indices de début et fin)
-
-Pour les relations entre entités, fournir:
-1. Entité source
-2. Entité cible
-3. Type de relation (fund, partner, acquire, compete, collaborate, mention)
-4. Score de confiance (0.0-1.0)
-5. Texte de preuve
-
-Texte à analyser:
-{text}
-
-Retourner les résultats au format JSON avec les tableaux 'entities' et 'relationships'."""
-    
-    def _build_chinese_prompt(self, text: str, entity_types: str) -> str:
-        """Chinese extraction prompt"""
-        return f"""从以下文本中提取实体和关系。
-
-要提取的实体类型: {entity_types}
-语言: 中文
-
-对于每个实体，提供：
-1. 实体文本
-2. 实体类型 (organization, person, funding_amount, date, location)
-3. 置信度分数 (0.0-1.0)
-4. 在文本中的位置（起始和结束字符索引）
-
-对于实体之间的关系，提供：
-1. 源实体
-2. 目标实体
-3. 关系类型 (fund, partner, acquire, compete, collaborate, mention)
-4. 置信度分数 (0.0-1.0)
-5. 证据文本
-
-要分析的文本：
-{text}
-
-以JSON格式返回结果，包含'entities'和'relationships'数组。"""
     
     def _parse_extraction_response(self, response: str) -> Dict[str, Any]:
         """Parse LLM response into structured format"""

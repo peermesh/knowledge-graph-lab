@@ -11,6 +11,7 @@ except ImportError:
     Vector = lambda dim: ARRAY(DECIMAL, dimensions=1)
 
 from .base import Base, TimestampMixin
+from ..config import settings
 
 
 class KnowledgeGraphNode(Base, TimestampMixin):
@@ -27,7 +28,7 @@ class KnowledgeGraphNode(Base, TimestampMixin):
     )
     node_type = Column(String(50), nullable=False, index=True)
     properties = Column(JSONB, nullable=False)
-    vector_embedding = Column(Vector(768), nullable=False)
+    vector_embedding = Column(Vector(settings.embedding_dimensions), nullable=False)
     degree = Column(Integer, nullable=False, default=0, index=True)
     
     # Relationship to ExtractedEntity
@@ -89,10 +90,6 @@ class KnowledgeGraphEdge(Base, TimestampMixin):
         CheckConstraint(
             'source_node_id != target_node_id',
             name='check_no_self_loops'
-        ),
-        CheckConstraint(
-            "relationship_type IN ('fund', 'partner', 'acquire', 'compete', 'collaborate')",
-            name='check_edge_relationship_type'
         ),
     )
     

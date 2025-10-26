@@ -36,12 +36,11 @@ relationship mapping, and knowledge graph construction.
 
 ## Features
 
-- **Entity Extraction**: Extract organizations, people, funding amounts, dates, and locations with confidence scoring
-- **Knowledge Graph**: Query and traverse entity relationships with 3-degree depth
-- **Vector Search**: Find similar entities using semantic embeddings
+- **Entity Extraction**: Extract entities with confidence scoring and dynamic type detection
+- **Knowledge Graph**: Query and traverse entity relationships with flexible relationship types
+- **Vector Search**: Find similar entities using dynamic dimensional embeddings
 - **Real-time Updates**: WebSocket support for live graph updates
 - **Quality Monitoring**: Track extraction accuracy and performance metrics
-- **Multi-language**: Support for English, Spanish, French, and Chinese
 
 ## Performance
 

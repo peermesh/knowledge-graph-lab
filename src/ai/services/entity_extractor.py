@@ -18,8 +18,7 @@ from src.ai.lib.text_processing import (
     clean_text,
     count_entity_mentions,
     extract_positions,
-    normalize_entity_text,
-    detect_language
+    normalize_entity_text
 )
 from src.ai.services.relationship_mapper import relationship_mapper
 
@@ -27,25 +26,8 @@ logger = logging.getLogger(__name__)
 
 
 class EntityExtractor:
-    """Service for extracting entities from documents"""
-    
-    SUPPORTED_ENTITY_TYPES = [
-        'organization',
-        'person',
-        'funding_amount',
-        'date',
-        'location'
-    ]
-    
-    SUPPORTED_RELATIONSHIP_TYPES = [
-        'fund',
-        'partner',
-        'acquire',
-        'compete',
-        'collaborate',
-        'mention'
-    ]
-    
+    """Service for extracting entities from documents with flexible type detection"""
+
     def __init__(self):
         """Initialize entity extractor"""
         self.llm_client = llm_client
@@ -57,41 +39,27 @@ class EntityExtractor:
         entity_types: Optional[List[str]] = None,
         relationship_types: Optional[List[str]] = None,
         confidence_threshold: float = 0.70,
-        source_type: str = 'unknown',
-        language: Optional[str] = None
+        source_type: str = 'unknown'
     ) -> Dict[str, Any]:
         """
         Extract entities and relationships from document content.
-        
+
         Args:
             document_id: UUID of the document
             content: Document text content
-            entity_types: List of entity types to extract (default: all supported)
-            relationship_types: List of relationship types to identify
+            entity_types: List of entity types to extract (default: None for all types)
+            relationship_types: List of relationship types to identify (default: None for all types)
             confidence_threshold: Minimum confidence score (0.0-1.0)
             source_type: Type of document source for reliability scoring
-            language: Language code (auto-detected if None)
-        
+
         Returns:
             Dictionary with extracted entities and relationships
         """
         start_time = datetime.utcnow()
-        
-        # Validate and set defaults
-        if entity_types is None:
-            entity_types = self.SUPPORTED_ENTITY_TYPES
-        
-        if relationship_types is None:
-            relationship_types = self.SUPPORTED_RELATIONSHIP_TYPES
-        
+
         # Clean and prepare text
         cleaned_content = clean_text(content)
-        
-        # Detect language if not provided
-        if language is None:
-            language = detect_language(cleaned_content)
-            logger.info(f"Detected language: {language}")
-        
+
         # Get source reliability score
         source_score = get_source_reliability_score(source_type)
         
@@ -102,7 +70,6 @@ class EntityExtractor:
                 cleaned_content,
                 entity_types,
                 relationship_types,
-                language,
                 source_score
             )
         else:
@@ -110,17 +77,16 @@ class EntityExtractor:
                 cleaned_content,
                 entity_types,
                 relationship_types,
-                language,
                 source_score
             )
-        
+
         # Calculate context scores and filter by confidence
         result = self._enrich_and_filter(
             result,
             cleaned_content,
             confidence_threshold
         )
-        
+
         # Identify relationships between entities
         if len(result['entities']) >= 2:
             logger.info("Identifying relationships between entities")
@@ -129,13 +95,13 @@ class EntityExtractor:
                 text=cleaned_content,
                 relationship_types=relationship_types
             )
-            
+
             # Merge with LLM-identified relationships
             result['relationships'].extend(additional_relationships)
-        
+
         # Calculate processing time
         processing_time = (datetime.utcnow() - start_time).total_seconds()
-        
+
         return {
             'document_id': document_id,
             'entities': result['entities'],
@@ -144,7 +110,6 @@ class EntityExtractor:
                 'entities_extracted': len(result['entities']),
                 'relationships_found': len(result['relationships']),
                 'processing_time_seconds': processing_time,
-                'language': language,
                 'source_type': source_type
             }
         }
@@ -152,9 +117,8 @@ class EntityExtractor:
     async def _extract_from_text(
         self,
         text: str,
-        entity_types: List[str],
-        relationship_types: List[str],
-        language: str,
+        entity_types: Optional[List[str]],
+        relationship_types: Optional[List[str]],
         source_score: float
     ) -> Dict[str, Any]:
         """Extract entities from a single text block"""
@@ -162,8 +126,7 @@ class EntityExtractor:
             # Call LLM for extraction
             llm_result = await self.llm_client.extract_entities(
                 text=text,
-                entity_types=entity_types,
-                language=language
+                entity_types=entity_types
             )
             
             # Process entities
@@ -203,27 +166,25 @@ class EntityExtractor:
     async def _extract_from_chunks(
         self,
         text: str,
-        entity_types: List[str],
-        relationship_types: List[str],
-        language: str,
+        entity_types: Optional[List[str]],
+        relationship_types: Optional[List[str]],
         source_score: float
     ) -> Dict[str, Any]:
         """Extract entities from multiple text chunks"""
         chunks = chunk_text(text, max_tokens=2000, overlap=200)
-        
+
         all_entities = []
         all_relationships = []
-        
+
         # Process chunks in parallel (with concurrency limit)
         sem = asyncio.Semaphore(3)  # Max 3 concurrent requests
-        
+
         async def process_chunk(chunk):
             async with sem:
                 return await self._extract_from_text(
                     chunk['text'],
                     entity_types,
                     relationship_types,
-                    language,
                     source_score
                 )
         
@@ -253,8 +214,8 @@ class EntityExtractor:
             entity_text = normalize_entity_text(entity_data.get('text', ''))
             entity_type = entity_data.get('type', '').lower()
             model_confidence = float(entity_data.get('confidence', 0.5))
-            
-            if not entity_text or entity_type not in self.SUPPORTED_ENTITY_TYPES:
+
+            if not entity_text:
                 return None
             
             # Find all positions of entity in text
@@ -297,7 +258,7 @@ class EntityExtractor:
         """Process and enrich a single relationship"""
         try:
             rel_type = rel_data.get('relationship_type', '').lower()
-            if rel_type not in self.SUPPORTED_RELATIONSHIP_TYPES:
+            if not rel_type:
                 return None
             
             # Find source and target entities

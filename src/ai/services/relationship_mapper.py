@@ -10,18 +10,9 @@ logger = logging.getLogger(__name__)
 
 
 class RelationshipMapper:
-    """Service for identifying relationships between entities"""
-    
-    RELATIONSHIP_TYPES = [
-        'fund',
-        'partner',
-        'acquire',
-        'compete',
-        'collaborate',
-        'mention'
-    ]
-    
-    # Relationship patterns for rule-based detection
+    """Service for identifying relationships between entities with flexible type detection"""
+
+    # Basic relationship patterns for common types (can be extended dynamically)
     RELATIONSHIP_PATTERNS = {
         'fund': [
             r'{source}.*(?:invested|funded|financing).*{target}',
@@ -43,6 +34,14 @@ class RelationshipMapper:
         'collaborate': [
             r'{source}.*(?:work(?:ing)? with|team(?:ed)? up).*{target}',
             r'{source}.*(?:joint|together).*{target}'
+        ],
+        'found': [
+            r'{source}.*(?:founded|created|established).*{target}',
+            r'{target}.*(?:founded by|created by|established by).*{source}'
+        ],
+        'lead': [
+            r'{source}.*(?:ceo|chief|lead|head).*(?:of|at).*{target}',
+            r'{target}.*(?:led by|headed by).*{source}'
         ]
     }
     
@@ -72,7 +71,8 @@ class RelationshipMapper:
             return []
         
         if relationship_types is None:
-            relationship_types = self.RELATIONSHIP_TYPES
+            # Use all available patterns as default
+            relationship_types = list(self.RELATIONSHIP_PATTERNS.keys())
         
         # Use both rule-based and LLM-based approaches
         rule_based_rels = await self._rule_based_mapping(
@@ -163,8 +163,7 @@ class RelationshipMapper:
             # Call LLM to identify relationships
             result = await self.llm_client.extract_entities(
                 text=text,
-                entity_types=[],  # We already have entities
-                language='en'
+                entity_types=[]  # We already have entities
             )
             
             # Process relationship results
@@ -182,7 +181,8 @@ class RelationshipMapper:
                 
                 if source_entity and target_entity:
                     rel_type = rel_data.get('relationship_type', '').lower()
-                    if rel_type in relationship_types:
+                    # Accept any relationship type identified by LLM (more flexible)
+                    if rel_type:  # Just check that a type was provided
                         relationships.append({
                             'source_entity_id': source_entity['id'],
                             'target_entity_id': target_entity['id'],

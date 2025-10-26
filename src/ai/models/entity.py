@@ -10,10 +10,11 @@ try:
     PGVECTOR_AVAILABLE = True
 except ImportError:
     # Fallback to ARRAY type if pgvector not installed
-    Vector = lambda dim: ARRAY(DECIMAL, dimensions=1)
+    Vector = lambda dim: ARRAY(DECIMAL, dimensions=1) if dim is None else ARRAY(DECIMAL, dimensions=dim)
     PGVECTOR_AVAILABLE = False
 
 from .base import Base, TimestampMixin
+from ..config import settings
 
 
 class ExtractedEntity(Base, TimestampMixin):
@@ -40,7 +41,7 @@ class ExtractedEntity(Base, TimestampMixin):
     extraction_method = Column(String(50), nullable=False)
     positions = Column(JSONB, nullable=False)
     entity_metadata = Column(JSONB)
-    vector_embedding = Column(Vector(768), nullable=False)
+    vector_embedding = Column(Vector(settings.embedding_dimensions), nullable=False)
     
     __table_args__ = (
         CheckConstraint(

@@ -27,7 +27,6 @@ pydantic-settings==2.1.0
 
 # Utilities
 python-dotenv==1.0.0
-langdetect==1.0.9
 
 # Testing
 pytest==7.4.3

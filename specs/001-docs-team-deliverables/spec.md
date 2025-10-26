@@ -130,9 +130,9 @@ As an AI system administrator monitoring extraction quality, I need to review co
 
 ### Key Entities *(include if feature involves data)*
 
-- **ExtractedEntity**: Represents an entity extracted from documents with text value, entity type (organization, person, funding_amount, date, location), confidence score (0.00-1.00), source document reference, extraction method (ner_model, rule_based, hybrid), positions in source text, metadata (aliases, description), and vector embedding for similarity search
+- **ExtractedEntity**: Represents an entity extracted from documents with text value, entity type (flexible - any type detected), confidence score (0.00-1.00), source document reference, extraction method (ner_model, rule_based, hybrid), positions in source text, metadata (aliases, description), and vector embedding for similarity search
 
-- **EntityRelationship**: Represents relationships between extracted entities with source/target entity IDs, relationship type (fund, partner, acquire, compete, collaborate, mention), confidence score (0.00-1.00), optional relationship strength (0.00-1.00), evidence text from source document, temporal context (date ranges, duration), and metadata (amount, date, source references)
+- **EntityRelationship**: Represents relationships between extracted entities with source/target entity IDs, relationship type (flexible - any type detected), confidence score (0.00-1.00), optional relationship strength (0.00-1.00), evidence text from source document, temporal context (date ranges, duration), and metadata (amount, date, source references)
 
 - **KnowledgeGraphNode**: Represents nodes in the knowledge graph with entity reference, node type (entity, concept, event), properties (name, aliases, metadata), vector embedding, degree count (number of connections), and timestamps
 

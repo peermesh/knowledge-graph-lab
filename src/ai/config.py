@@ -31,7 +31,10 @@ class Settings(BaseSettings):
     max_concurrent_jobs: int = 100
     entity_extraction_timeout_seconds: int = 300
     graph_query_timeout_seconds: int = 30
-    
+
+    # Vector Embeddings
+    embedding_dimensions: int = 384  # Configurable embedding dimensions
+
     # Confidence Thresholds
     medium_confidence_threshold: float = 0.70
     high_confidence_threshold: float = 0.85
