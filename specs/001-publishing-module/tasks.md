@@ -107,8 +107,8 @@
 
 ### Implementation for User Story 2
 
-- [ ] T039 [P] [US2] Create publishing_subscribers model in src/publishing/models/subscriber.py
-- [ ] T040 [P] [US2] Create publishing_templates model in src/publishing/models/template.py
+- [X] T039 [P] [US2] Create publishing_subscribers model in src/publishing/models/subscriber.py
+- [X] T040 [P] [US2] Create publishing_templates model in src/publishing/models/template.py
 - [X] T041 [US2] Implement SubscriberService for user preference management in src/publishing/services/subscriber_service.py (depends on T039)
 - [ ] T042 [US2] Implement TemplateService for newsletter formatting in src/publishing/services/template_service.py (depends on T040)
 - [ ] T043 [US2] Implement PersonalizationEngine for AI-powered content matching in src/publishing/personalization/preference_engine.py (depends on T039)

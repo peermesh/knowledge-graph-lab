@@ -18,6 +18,7 @@ import structlog
 
 from ..core.config import settings
 from ..core.logging import get_logger, log_publication_event
+from ..state import IN_MEMORY_PUBLICATIONS
 from ..services.publication_service import PublicationService
 from ..services.channel_service import ChannelService
 from ..schemas.publications import (
@@ -67,16 +68,35 @@ async def create_publication(request: CreatePublicationRequest):
                     detail=f"Channel {channel_id} is not active"
                 )
 
-        # Create publication
-        publication = await publication_service.create_publication(
-            content_ids=request.content_ids,
-            channels=request.channels,
-            publication_type=request.publication_type,
-            scheduled_time=request.scheduled_time,
-            personalization_rules=request.personalization_rules,
-            template_id=request.template_id,
-            correlation_id=correlation_id
-        )
+        # Create publication (DEBUG: in-memory to avoid DB dependency)
+        if settings.DEBUG:
+            now = datetime.utcnow()
+            publication = {
+                "id": str(uuid.uuid4()),
+                "content_ids": request.content_ids,
+                "channels": request.channels,
+                "publication_type": request.publication_type,
+                "scheduled_time": request.scheduled_time or now,
+                "published_time": None,
+                "status": "scheduled",
+                "channel_results": {},
+                "engagement_metrics": {},
+                "personalization_applied": {},
+                "error_details": None,
+                "created_at": now,
+                "updated_at": now,
+            }
+            IN_MEMORY_PUBLICATIONS.append(publication)
+        else:
+            publication = await publication_service.create_publication(
+                content_ids=request.content_ids,
+                channels=request.channels,
+                publication_type=request.publication_type,
+                scheduled_time=request.scheduled_time,
+                personalization_rules=request.personalization_rules,
+                template_id=request.template_id,
+                correlation_id=correlation_id
+            )
 
         logger.info(
             "Publication created successfully",
@@ -85,14 +105,24 @@ async def create_publication(request: CreatePublicationRequest):
         )
 
         # Ensure proper response serialization
-        return PublicationResponse(
-            data=publication,  # pydantic orm_mode
-            meta={
-                "timestamp": datetime.utcnow().isoformat(),
-                "request_id": correlation_id
-            },
-            errors=[]
-        )
+        if settings.DEBUG:
+            return {
+                "data": publication,
+                "meta": {
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "request_id": correlation_id
+                },
+                "errors": []
+            }
+        else:
+            return PublicationResponse(
+                data=publication,  # pydantic orm_mode
+                meta={
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "request_id": correlation_id
+                },
+                errors=[]
+            )
 
     except HTTPException:
         raise
