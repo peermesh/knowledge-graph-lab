@@ -133,11 +133,11 @@
 
 ### Tests for User Story 3 (MANDATORY - TDD Required) ⚠️
 
-- [ ] T052 [P] [US3] Contract test for alert creation API in tests/publishing/contract/test_alerts.py
-- [ ] T053 [P] [US3] Integration test for real-time alert delivery in tests/publishing/integration/test_realtime_alerts.py
-- [ ] T054 [P] [US3] Unit test for alert priority queue in tests/publishing/unit/test_alert_priority.py
-- [ ] T055 [P] [US3] Performance test for <30 second alert delivery in tests/publishing/performance/test_alert_delivery_speed.py
-- [ ] T056 [P] [US3] Unit test for Discord integration in tests/publishing/unit/test_discord_service.py
+- [X] T052 [P] [US3] Contract test for alert creation API in tests/publishing/contract/test_alerts.py
+- [X] T053 [P] [US3] Integration test for real-time alert delivery in tests/publishing/integration/test_realtime_alerts.py
+- [X] T054 [P] [US3] Unit test for alert priority queue in tests/publishing/unit/test_alert_priority.py
+- [X] T055 [P] [US3] Performance test for <30 second alert delivery in tests/publishing/performance/test_alert_delivery_speed.py
+- [X] T056 [P] [US3] Unit test for Discord integration in tests/publishing/unit/test_discord_service.py
 
 ### Implementation for User Story 3
 
@@ -145,13 +145,13 @@
 - [X] T058 [US3] Implement PriorityQueue for real-time alert distribution in src/publishing/alerts/priority_queue.py
 - [X] T059 [US3] Implement RealTimeDelivery for instant alert processing in src/publishing/alerts/realtime_delivery.py
 - [X] T060 [US3] Create AlertService for alert lifecycle management in src/publishing/services/alert_service.py (depends on T057, T058)
-- [ ] T061 [US3] Implement Discord channel integration in src/publishing/services/discord_service.py
+- [X] T061 [US3] Implement Discord channel integration in src/publishing/services/discord_service.py
 - [X] T062 [US3] Create real-time alert API endpoints in src/publishing/api/alerts.py (depends on T060)
-- [ ] T063 [US3] Integrate webhook delivery for custom alert channels in src/publishing/services/webhook_service.py
-- [ ] T064 [US3] Implement rate limiting for alert APIs to prevent spam
-- [ ] T065 [US3] Add alert deduplication logic to prevent duplicate notifications
-- [ ] T066 [US3] Implement alert status tracking and delivery confirmation
-- [ ] T067 [US3] Setup Redis pub/sub for real-time alert distribution
+- [X] T063 [US3] Integrate webhook delivery for custom alert channels in src/publishing/services/webhook_service.py
+- [X] T064 [US3] Implement rate limiting for alert APIs to prevent spam
+- [X] T065 [US3] Add alert deduplication logic to prevent duplicate notifications
+- [X] T066 [US3] Implement alert status tracking and delivery confirmation
+- [X] T067 [US3] Setup Redis pub/sub for real-time alert distribution
 
 **Checkpoint**: User Story 3 should be functional - researchers receive high-priority alerts within 30 seconds across Slack and Discord channels
 
