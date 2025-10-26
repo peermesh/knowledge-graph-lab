@@ -20,6 +20,7 @@ import uuid
 
 from ..core.config import settings
 from ..core.logging import get_logger
+from .exceptions import rfc7807_exception_handler
 
 # Import API routers for each domain
 from . import publications, channels, subscribers, analytics
@@ -81,38 +82,8 @@ router.include_router(
 # Global exception handler for consistent error responses
 @router.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
-    """Handle all uncaught exceptions with proper error formatting."""
-
-    correlation_id = getattr(request.state, 'correlation_id', str(uuid.uuid4()))
-
-    # Log the error with full context
-    logger.error(
-        "Unhandled exception",
-        correlation_id=correlation_id,
-        error_type=type(exc).__name__,
-        error_message=str(exc),
-        url=str(request.url),
-        method=request.method
-    )
-
-    # Return RFC7807 Problem Details format
-    return JSONResponse(
-        status_code=500,
-        content={
-            "data": {},
-            "meta": {
-                "timestamp": datetime.utcnow().isoformat(),
-                "request_id": correlation_id
-            },
-            "errors": [{
-                "type": "https://api.knowledge-graph-lab.com/errors/internal-server-error",
-                "title": "Internal Server Error",
-                "status": 500,
-                "detail": "An unexpected error occurred while processing your request",
-                "instance": str(request.url)
-            }]
-        }
-    )
+    """Handle all uncaught exceptions with RFC7807 output."""
+    return await rfc7807_exception_handler(request, exc)
 
 
 # Request validation middleware
