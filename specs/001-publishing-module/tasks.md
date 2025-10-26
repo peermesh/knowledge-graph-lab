@@ -1,540 +1,373 @@
-# Publishing Module - Implementation Tasks
+# Tasks: Publishing Module
 
-**Feature**: Publishing Module
-**Created**: 2025-10-23
-**Status**: Ready for Implementation
+**Input**: Multi-channel publishing system for delivering AI-powered research insights with personalization and comprehensive analytics
+**Prerequisites**: plan.md (technical architecture), spec.md (5 user stories with P1-P3 priorities), data-model.md (5 core entities), contracts/ (15+ API endpoints), research.md (technical decisions)
 
-## Implementation Overview
+**Tests**: MANDATORY - TDD required per Knowledge Graph Lab constitution with ≥85% coverage, unit tests, integration tests, and performance benchmarks
 
-This task breakdown covers the complete implementation of the Publishing Module across 4 phases:
+**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story. Each story delivers complete, testable functionality.
 
-- **Phase 1**: Core Publishing Infrastructure (8 weeks)
-- **Phase 2**: Personalization Engine (6 weeks)
-- **Phase 3**: Advanced Distribution Channels (4 weeks)
-- **Phase 4**: Analytics and Optimization (4 weeks)
+## Format: `[ID] [P?] [Story] Description`
 
-Total estimated timeline: **22 weeks** with parallel execution where possible.
+- **[P]**: Can run in parallel (different files, no dependencies)
+- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
+- Include exact file paths in descriptions
 
-## Task Dependencies
+## Path Conventions
 
+- **Backend API**: `src/publishing/` at repository root (per plan.md)
+- **Tests**: `tests/publishing/` with unit/, integration/, performance/ subdirectories
+- **Database**: PostgreSQL 15+ with `publishing_*` schema naming convention
+- **External Services**: AWS SES, Slack API, Discord API integrations
+
+---
+
+## Phase 1: Setup (Shared Infrastructure)
+
+**Purpose**: Project initialization and basic structure for Publishing Module
+
+- [ ] T001 Create Publishing Module directory structure in src/publishing/ per implementation plan
+- [ ] T002 Initialize FastAPI project with Python 3.11+ and required dependencies (FastAPI, SQLAlchemy, Celery, Redis, AWS SDK)
+- [ ] T003 [P] Configure linting (ruff) and formatting (black) tools for Python codebase
+- [ ] T004 [P] Setup Docker container configuration for publishing-module with health checks
+- [ ] T005 [P] Configure environment variables management for AWS SES, Slack, Discord API credentials
+- [ ] T006 Setup pytest configuration with coverage reporting and async test support
+
+---
+
+## Phase 2: Foundational (Blocking Prerequisites)
+
+**Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
+
+**⚠️ CRITICAL**: No user story work can begin until this phase is complete
+
+- [ ] T007 Setup PostgreSQL database schema framework with publishing_* naming convention
+- [ ] T008 [P] Implement JWT authentication integration with Backend module auth system
+- [ ] T009 [P] Setup Redis connection and configuration for caching and pub/sub messaging
+- [ ] T010 [P] Configure Celery background task system for async publishing operations
+- [ ] T011 [P] Setup FastAPI application with async support and error handling middleware
+- [ ] T012 [P] Configure structured logging with correlation IDs across all services
+- [ ] T013 [P] Setup API routing structure with /api/v1 base path and response format standards
+- [ ] T014 Create base exception classes and error handling for RFC7807 Problem Details format
+- [ ] T015 [P] Setup database connection pooling and async session management
+- [ ] T016 Configure external service clients framework (AWS SES, Slack, Discord APIs)
+
+**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
+
+---
+
+## Phase 3: User Story 1 - Multi-Channel Content Publishing (Priority: P1) 🎯 MVP
+
+**Goal**: Enable content creators to publish insights across multiple channels simultaneously with consistent formatting
+
+**Independent Test**: Create a publishing job with sample content and verify delivery to email and Slack channels, delivering immediate value for content distribution
+
+### Tests for User Story 1 (MANDATORY - TDD Required) ⚠️
+
+> **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
+
+- [ ] T017 [P] [US1] Contract test for publication creation API in tests/publishing/contract/test_publications.py
+- [ ] T018 [P] [US1] Contract test for publication status API in tests/publishing/contract/test_publication_status.py
+- [ ] T019 [P] [US1] Integration test for multi-channel publishing workflow in tests/publishing/integration/test_multichannel_publishing.py
+- [ ] T020 [P] [US1] Unit test for channel delivery service in tests/publishing/unit/test_channel_delivery.py
+- [ ] T021 [P] [US1] Performance test for concurrent publishing operations in tests/publishing/performance/test_publishing_load.py
+
+### Implementation for User Story 1
+
+- [ ] T022 [P] [US1] Create publishing_channels model in src/publishing/models/channel.py
+- [ ] T023 [P] [US1] Create publishing_publications model in src/publishing/models/publication.py
+- [ ] T024 [US1] Implement ChannelService for channel configuration and management in src/publishing/services/channel_service.py (depends on T022)
+- [ ] T025 [US1] Implement PublicationService for content publishing operations in src/publishing/services/publication_service.py (depends on T023)
+- [ ] T026 [US1] Implement email channel integration with AWS SES in src/publishing/integrations/aws_ses.py
+- [ ] T027 [US1] Implement Slack channel integration in src/publishing/services/slack_service.py
+- [ ] T028 [US1] Create publication API endpoints in src/publishing/api/publications.py (depends on T024, T025)
+- [ ] T029 [US1] Create channel configuration API endpoints in src/publishing/api/channels.py (depends on T022)
+- [ ] T030 [US1] Implement circuit breaker pattern for external service failures in src/publishing/services/circuit_breaker.py
+- [ ] T031 [US1] Add comprehensive validation and error handling for publication requests
+- [ ] T032 [US1] Implement logging for multi-channel publishing operations with correlation IDs
+- [ ] T033 [US1] Setup database migrations for publishing_channels and publishing_publications tables
+
+**Checkpoint**: At this point, User Story 1 should be fully functional - content creators can publish to email and Slack channels with consistent formatting and error recovery
+
+---
+
+## Phase 4: User Story 2 - Personalized Newsletter Distribution (Priority: P1)
+
+**Goal**: Enable automated personalized newsletter delivery based on user preferences and engagement history
+
+**Independent Test**: Set up automated newsletter scheduling and verify personalized content selection based on user interests, delivering value through improved content relevance
+
+### Tests for User Story 2 (MANDATORY - TDD Required) ⚠️
+
+- [ ] T034 [P] [US2] Contract test for subscriber management API in tests/publishing/contract/test_subscribers.py
+- [ ] T035 [P] [US2] Contract test for newsletter scheduling API in tests/publishing/contract/test_newsletter_scheduling.py
+- [ ] T036 [P] [US2] Integration test for personalized newsletter generation in tests/publishing/integration/test_personalized_newsletters.py
+- [ ] T037 [P] [US2] Unit test for personalization engine in tests/publishing/unit/test_personalization_engine.py
+- [ ] T038 [P] [US2] Performance test for newsletter generation with 2,000 subscribers in tests/publishing/performance/test_newsletter_generation.py
+
+### Implementation for User Story 2
+
+- [ ] T039 [P] [US2] Create publishing_subscribers model in src/publishing/models/subscriber.py
+- [ ] T040 [P] [US2] Create publishing_templates model in src/publishing/models/template.py
+- [ ] T041 [US2] Implement SubscriberService for user preference management in src/publishing/services/subscriber_service.py (depends on T039)
+- [ ] T042 [US2] Implement TemplateService for newsletter formatting in src/publishing/services/template_service.py (depends on T040)
+- [ ] T043 [US2] Implement PersonalizationEngine for AI-powered content matching in src/publishing/personalization/preference_engine.py (depends on T039)
+- [ ] T044 [US2] Implement NewsletterGenerator for automated newsletter creation in src/publishing/newsletter/generator.py (depends on T041, T043)
+- [ ] T045 [US2] Create subscriber management API endpoints in src/publishing/api/subscribers.py (depends on T041)
+- [ ] T046 [US2] Create newsletter scheduling and delivery API endpoints in src/publishing/api/publications.py (depends on T044)
+- [ ] T047 [US2] Integrate AI module for content quality scoring in src/publishing/ai/content_analyzer.py
+- [ ] T048 [US2] Implement topic-based content filtering in src/publishing/personalization/topic_matcher.py
+- [ ] T049 [US2] Add timezone-aware scheduling for newsletter delivery
+- [ ] T050 [US2] Implement engagement tracking for newsletter opens and clicks
+- [ ] T051 [US2] Setup database migrations for publishing_subscribers and publishing_templates tables
+
+**Checkpoint**: User Story 2 should be functional - administrators can schedule personalized newsletters for 2,000+ subscribers with AI-powered content selection
+
+---
+
+## Phase 5: User Story 3 - Real-Time Alert Management (Priority: P2)
+
+**Goal**: Provide instant alerts for high-priority content matching user interests within 30 seconds
+
+**Independent Test**: Configure alert preferences and verify instant delivery of high-priority content, providing immediate value for urgent research needs
+
+### Tests for User Story 3 (MANDATORY - TDD Required) ⚠️
+
+- [ ] T052 [P] [US3] Contract test for alert creation API in tests/publishing/contract/test_alerts.py
+- [ ] T053 [P] [US3] Integration test for real-time alert delivery in tests/publishing/integration/test_realtime_alerts.py
+- [ ] T054 [P] [US3] Unit test for alert priority queue in tests/publishing/unit/test_alert_priority.py
+- [ ] T055 [P] [US3] Performance test for <30 second alert delivery in tests/publishing/performance/test_alert_delivery_speed.py
+- [ ] T056 [P] [US3] Unit test for Discord integration in tests/publishing/unit/test_discord_service.py
+
+### Implementation for User Story 3
+
+- [ ] T057 [US3] Implement AlertManager for priority-based alert processing in src/publishing/alerts/alert_manager.py
+- [ ] T058 [US3] Implement PriorityQueue for real-time alert distribution in src/publishing/alerts/priority_queue.py
+- [ ] T059 [US3] Implement RealTimeDelivery for instant alert processing in src/publishing/alerts/realtime_delivery.py
+- [ ] T060 [US3] Create AlertService for alert lifecycle management in src/publishing/services/alert_service.py (depends on T057, T058)
+- [ ] T061 [US3] Implement Discord channel integration in src/publishing/services/discord_service.py
+- [ ] T062 [US3] Create real-time alert API endpoints in src/publishing/api/alerts.py (depends on T060)
+- [ ] T063 [US3] Integrate webhook delivery for custom alert channels in src/publishing/services/webhook_service.py
+- [ ] T064 [US3] Implement rate limiting for alert APIs to prevent spam
+- [ ] T065 [US3] Add alert deduplication logic to prevent duplicate notifications
+- [ ] T066 [US3] Implement alert status tracking and delivery confirmation
+- [ ] T067 [US3] Setup Redis pub/sub for real-time alert distribution
+
+**Checkpoint**: User Story 3 should be functional - researchers receive high-priority alerts within 30 seconds across Slack and Discord channels
+
+---
+
+## Phase 6: User Story 4 - Publishing Analytics and Optimization (Priority: P2)
+
+**Goal**: Provide comprehensive engagement analytics and A/B testing for content optimization
+
+**Independent Test**: Track engagement metrics across channels and verify analytics accuracy, providing value through performance insights
+
+### Tests for User Story 4 (MANDATORY - TDD Required) ⚠️
+
+- [ ] T068 [P] [US4] Contract test for analytics API in tests/publishing/contract/test_analytics.py
+- [ ] T069 [P] [US4] Integration test for A/B testing framework in tests/publishing/integration/test_ab_testing.py
+- [ ] T070 [P] [US4] Unit test for engagement metrics collection in tests/publishing/unit/test_engagement_tracker.py
+- [ ] T071 [P] [US4] Performance test for analytics queries in tests/publishing/performance/test_analytics_queries.py
+- [ ] T072 [P] [US4] Unit test for performance optimization algorithms in tests/publishing/unit/test_optimization_algorithms.py
+
+### Implementation for User Story 4
+
+- [ ] T073 [P] [US4] Create publishing_analytics model in src/publishing/models/analytics.py
+- [ ] T074 [US4] Implement EngagementTracker for real-time metrics collection in src/publishing/analytics/engagement_tracker.py (depends on T073)
+- [ ] T075 [US4] Implement MetricsCollector for analytics aggregation in src/publishing/analytics/metrics_collector.py (depends on T074)
+- [ ] T076 [US4] Implement ABTester for A/B testing framework in src/publishing/experiments/ab_tester.py
+- [ ] T077 [US4] Create AnalyticsService for metrics processing in src/publishing/services/analytics_service.py (depends on T074, T075)
+- [ ] T078 [US4] Create analytics API endpoints in src/publishing/api/analytics.py (depends on T077)
+- [ ] T079 [US4] Implement PerformanceAnalyzer for optimization recommendations in src/publishing/optimization/performance_analyzer.py
+- [ ] T080 [US4] Create admin dashboard endpoints for analytics visualization in src/publishing/api/dashboard.py
+- [ ] T081 [US4] Implement data retention policies for analytics data
+- [ ] T082 [US4] Setup analytics data export functionality for reporting
+- [ ] T083 [US4] Add real-time analytics dashboard updates via WebSocket
+- [ ] T084 [US4] Setup database migrations for publishing_analytics table
+
+**Checkpoint**: User Story 4 should be functional - comprehensive analytics dashboard with real-time metrics and A/B testing capabilities
+
+---
+
+## Phase 7: User Story 5 - Subscription Management (Priority: P3)
+
+**Goal**: Enable users to configure delivery preferences and manage subscriptions across multiple channels
+
+**Independent Test**: Update subscription preferences and verify content delivery changes, providing value through user control
+
+### Tests for User Story 5 (MANDATORY - TDD Required) ⚠️
+
+- [ ] T085 [P] [US5] Contract test for subscription preference API in tests/publishing/contract/test_subscription_management.py
+- [ ] T086 [P] [US5] Integration test for preference updates and delivery changes in tests/publishing/integration/test_subscription_workflow.py
+- [ ] T087 [P] [US5] Unit test for preference validation in tests/publishing/unit/test_preference_validation.py
+- [ ] T088 [P] [US5] Performance test for subscriber preference queries in tests/publishing/performance/test_subscriber_queries.py
+
+### Implementation for User Story 5
+
+- [ ] T089 [US5] Implement subscription preference management in SubscriberService (extends T041)
+- [ ] T090 [US5] Create preference validation and sanitization in src/publishing/services/preference_validation.py
+- [ ] T091 [US5] Implement unsubscribe workflow with audit trail in src/publishing/services/unsubscribe_service.py
+- [ ] T092 [US5] Create subscription management API endpoints in src/publishing/api/subscribers.py (extends T045)
+- [ ] T093 [US5] Implement preference change notifications to users
+- [ ] T094 [US5] Add granular topic filtering and frequency settings
+- [ ] T095 [US5] Implement one-click unsubscribe with clear preference management
+- [ ] T096 [US5] Setup audit logging for all preference changes
+- [ ] T097 [US5] Add preference data export for GDPR compliance
+
+**Checkpoint**: User Story 5 should be functional - users can configure preferences in under 2 minutes with granular topic and frequency settings
+
+---
+
+## Phase 8: Cross-Cutting Integration & Testing
+
+**Purpose**: Integration testing across all user stories and performance validation
+
+- [ ] T098 [P] Integration test for complete publishing workflow from content creation to multi-channel delivery
+- [ ] T099 [P] Integration test for end-to-end personalization pipeline with AI module
+- [ ] T100 [P] Performance test for 1,000 concurrent newsletter generations
+- [ ] T101 [P] Performance test for 500 real-time alerts per second
+- [ ] T102 [P] Load test for 10,000 concurrent engagement tracking events
+- [ ] T103 [P] Security test for JWT authentication and authorization across all endpoints
+- [ ] T104 [P] Integration test for circuit breaker recovery during external service outages
+- [ ] T105 [P] Performance benchmark validation for all p95 response time targets
+- [ ] T106 [P] Code coverage validation to ensure ≥85% coverage across all modules
+- [ ] T107 [P] Integration test for data consistency across all publishing_* tables
+
+---
+
+## Phase 9: Polish & Cross-Cutting Concerns
+
+**Purpose**: Improvements that affect multiple user stories and production readiness
+
+- [ ] T108 [P] Documentation updates in docs/ for all API endpoints and integration guides
+- [ ] T109 [P] Code cleanup and refactoring for maintainability
+- [ ] T110 [P] Performance optimization across all user stories (caching, query optimization)
+- [ ] T111 [P] Security hardening with rate limiting and input validation
+- [ ] T112 [P] Run quickstart.md validation scenarios for all integration examples
+- [ ] T113 [P] Container optimization for production deployment
+- [ ] T114 [P] Monitoring and alerting setup for production metrics
+- [ ] T115 [P] Backup and recovery procedures for subscriber data and analytics
+- [ ] T116 [P] API documentation generation and validation
+- [ ] T117 [P] Load testing for 100,000+ subscriber scenarios
+
+---
+
+## Dependencies & Execution Order
+
+### Phase Dependencies
+
+- **Setup (Phase 1)**: No dependencies - can start immediately
+- **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
+- **User Stories (Phase 3+)**: All depend on Foundational phase completion
+  - User stories can then proceed in parallel (if staffed)
+  - Or sequentially in priority order (P1 → P2 → P3)
+- **Integration & Testing (Phase 8)**: Depends on all user stories being complete
+- **Polish (Phase 9)**: Depends on integration testing completion
+
+### User Story Dependencies
+
+- **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
+- **User Story 2 (P1)**: Can start after Foundational (Phase 2) - May share subscriber models with US1 but independently testable
+- **User Story 3 (P2)**: Can start after Foundational (Phase 2) - May integrate with US1 publication system but independently testable
+- **User Story 4 (P2)**: Can start after Foundational (Phase 2) - Depends on US1-US3 for engagement data but independently testable
+- **User Story 5 (P3)**: Can start after Foundational (Phase 2) - Depends on US2 subscriber system but independently testable
+
+### Within Each User Story
+
+- Tests (MANDATORY) MUST be written and FAIL before implementation
+- Models before services that depend on them
+- Services before API endpoints
+- Core implementation before integration
+- Story complete before moving to next priority
+
+### Parallel Opportunities
+
+- All Setup tasks marked [P] can run in parallel
+- All Foundational tasks marked [P] can run in parallel (within Phase 2)
+- Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
+- All tests for a user story marked [P] can run in parallel
+- Models within a story marked [P] can run in parallel (different entities)
+- Different user stories can be worked on in parallel by different team members
+
+---
+
+## Parallel Example: Multi-Channel Publishing (US1)
+
+```bash
+# Launch all tests for User Story 1 together (TDD approach):
+pytest tests/publishing/contract/test_publications.py -v
+pytest tests/publishing/contract/test_publication_status.py -v
+pytest tests/publishing/integration/test_multichannel_publishing.py -v
+
+# Launch all models for User Story 1 together:
+Task: "Create publishing_channels model in src/publishing/models/channel.py"
+Task: "Create publishing_publications model in src/publishing/models/publication.py"
+
+# Launch external service integrations in parallel:
+Task: "Implement email channel integration with AWS SES in src/publishing/integrations/aws_ses.py"
+Task: "Implement Slack channel integration in src/publishing/services/slack_service.py"
 ```
-Phase 1 (Foundation)
-├── Database Setup & Migrations
-├── Core API Endpoints
-├── External Service Integrations
-└── Basic Publishing Scheduler
-
-Phase 2 (Personalization)
-├── AI Integration
-├── User Preference Engine
-├── Content Matching Algorithms
-└── A/B Testing Framework
-
-Phase 3 (Advanced Features)
-├── Discord & Webhook Integration
-├── Real-time Alert System
-├── RSS Feed Generation
-└── Advanced Templates
-
-Phase 4 (Analytics)
-├── Real-time Analytics Dashboard
-├── Performance Optimization
-├── Admin Tools
-└── Quality Assurance Workflows
-```
-
-## Phase 1: Core Publishing Infrastructure
-
-### P1-T1: Database Schema Implementation
-**Priority**: Critical | **Type**: Setup | **Parallel**: No | **TDD**: Yes
-
-**Description**: Implement database migrations for all core entities (channels, subscribers, publications, templates, analytics)
-
-**Files to Create/Modify**:
-- `src/publishing/migrations/001_initial_schema.py`
-- `src/publishing/migrations/002_add_indexes.py`
-- `src/publishing/models/__init__.py`
-- `src/publishing/models/channel.py`
-- `src/publishing/models/subscriber.py`
-- `src/publishing/models/publication.py`
-- `src/publishing/models/template.py`
-- `src/publishing/models/analytics.py`
-
-**Dependencies**: None
-**Acceptance Criteria**:
-- All tables created with proper constraints and indexes
-- Database connection pooling configured
-- Migration rollback tested
-- Performance benchmarks met for basic queries
 
 ---
 
-### P1-T2: Core API Endpoints Implementation
-**Priority**: Critical | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
+## Parallel Example: Team Development Strategy
 
-**Description**: Build REST API endpoints for CRUD operations on publishing resources
+With multiple developers:
 
-**Files to Create/Modify**:
-- `src/publishing/api/__init__.py`
-- `src/publishing/api/publications.py`
-- `src/publishing/api/subscribers.py`
-- `src/publishing/api/channels.py`
-- `src/publishing/api/analytics.py`
-- `src/publishing/schemas/__init__.py`
-- `src/publishing/schemas/publications.py`
-- `src/publishing/schemas/subscribers.py`
-- `src/publishing/schemas/channels.py`
-
-**Dependencies**: P1-T1
-**Acceptance Criteria**:
-- All endpoints respond with correct HTTP status codes
-- Request/response validation working
-- JWT authentication integrated
-- API documentation auto-generated
+1. **Team completes Setup + Foundational together** (Phases 1-2)
+2. **Once Foundational is done:**
+   - Developer A: User Story 1 (Multi-Channel Publishing) + User Story 3 (Real-Time Alerts)
+   - Developer B: User Story 2 (Personalized Newsletters) + User Story 5 (Subscription Management)
+   - Developer C: User Story 4 (Analytics & Optimization) + Integration Testing
+3. **Stories complete and integrate independently** through comprehensive testing
 
 ---
 
-### P1-T3: Channel Integration Services
-**Priority**: Critical | **Type**: Integration | **Parallel**: Yes | **TDD**: Yes
+## Implementation Strategy
 
-**Description**: Implement external service integrations (AWS SES, Slack, Discord) with authentication and error handling
+### MVP First (User Story 1 Only)
 
-**Files to Create/Modify**:
-- `src/publishing/services/__init__.py`
-- `src/publishing/services/email_service.py`
-- `src/publishing/services/slack_service.py`
-- `src/publishing/services/discord_service.py`
-- `src/publishing/services/webhook_service.py`
-- `src/publishing/integrations/__init__.py`
-- `src/publishing/integrations/aws_ses.py`
+1. Complete Phase 1: Setup ✅
+2. Complete Phase 2: Foundational (CRITICAL - blocks all stories) ✅
+3. Complete Phase 3: User Story 1 ✅
+4. **STOP and VALIDATE**: Test User Story 1 independently ✅
+5. Deploy/demo if ready ✅
 
-**Dependencies**: P1-T2
-**Acceptance Criteria**:
-- Channel test endpoints working
-- Authentication configured for all services
-- Circuit breaker pattern implemented
-- Rate limiting working correctly
+### Incremental Delivery
 
----
+1. Complete Setup + Foundational → Foundation ready ✅
+2. Add User Story 1 → Test independently → Deploy/Demo (MVP!) ✅
+3. Add User Story 2 → Test independently → Deploy/Demo ✅
+4. Add User Story 3 → Test independently → Deploy/Demo ✅
+5. Add User Story 4 → Test independently → Deploy/Demo ✅
+6. Add User Story 5 → Test independently → Deploy/Demo ✅
+7. Each story adds value without breaking previous stories ✅
 
-### P1-T4: Publishing Scheduler Implementation
-**Priority**: High | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
+### Parallel Team Strategy
 
-**Description**: Implement background job scheduler for time-based content delivery
+With multiple developers:
 
-**Files to Create/Modify**:
-- `src/publishing/scheduler/__init__.py`
-- `src/publishing/scheduler/publishing_scheduler.py`
-- `src/publishing/tasks/__init__.py`
-- `src/publishing/tasks/publishing_tasks.py`
-- `src/publishing/workers/__init__.py`
-- `src/publishing/workers/celery_app.py`
-
-**Dependencies**: P1-T3
-**Acceptance Criteria**:
-- Scheduled publications execute on time
-- Retry logic working for failed deliveries
-- Queue depth monitoring implemented
-- Worker scaling configured
+1. **Team completes Setup + Foundational together** (Phases 1-2)
+2. **Once Foundational is done:**
+   - Developer A: User Story 1 (Multi-Channel Publishing)
+   - Developer B: User Story 2 (Personalized Newsletters) + User Story 3 (Real-Time Alerts)
+   - Developer C: User Story 4 (Analytics) + User Story 5 (Subscription Management)
+3. **Stories complete and integrate independently** through automated testing
 
 ---
 
-### P1-T5: Basic Analytics Collection
-**Priority**: High | **Type**: Integration | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Implement fundamental engagement tracking for opens, clicks, and basic metrics
-
-**Files to Create/Modify**:
-- `src/publishing/analytics/__init__.py`
-- `src/publishing/analytics/engagement_tracker.py`
-- `src/publishing/analytics/metrics_collector.py`
-- `src/publishing/webhooks/__init__.py`
-- `src/publishing/webhooks/engagement_webhooks.py`
-
-**Dependencies**: P1-T4
-**Acceptance Criteria**:
-- Engagement events tracked in real-time
-- Analytics data stored correctly
-- Basic aggregation queries working
-- Webhook verification implemented
-
-## Phase 2: Personalization Engine
-
-### P2-T1: AI Module Integration
-**Priority**: Critical | **Type**: Integration | **Parallel**: No | **TDD**: Yes
-
-**Description**: Integrate with AI module for content quality scoring and relevance analysis
-
-**Files to Create/Modify**:
-- `src/publishing/ai/__init__.py`
-- `src/publishing/ai/content_analyzer.py`
-- `src/publishing/ai/quality_scorer.py`
-- `src/publishing/ai/relevance_engine.py`
-- `src/publishing/clients/__init__.py`
-- `src/publishing/clients/ai_client.py`
-
-**Dependencies**: P1-T5
-**Acceptance Criteria**:
-- Quality scoring API integration working
-- Content relevance analysis functional
-- Fallback mechanisms for AI service outages
-- Score caching implemented
-
----
-
-### P2-T2: User Preference Engine
-**Priority**: Critical | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Build user preference engine with topic-based filtering and engagement history
-
-**Files to Create/Modify**:
-- `src/publishing/personalization/__init__.py`
-- `src/publishing/personalization/preference_engine.py`
-- `src/publishing/personalization/topic_matcher.py`
-- `src/publishing/personalization/engagement_analyzer.py`
-- `src/publishing/services/personalization_service.py`
-
-**Dependencies**: P2-T1
-**Acceptance Criteria**:
-- User preferences stored and retrieved correctly
-- Topic-based filtering working
-- Engagement history analysis functional
-- Preference updates processed in real-time
-
----
-
-### P2-T3: Content-Channel Matching Algorithm
-**Priority**: Critical | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Implement content-channel matching algorithms with ML-based optimization
-
-**Files to Create/Modify**:
-- `src/publishing/matching/__init__.py`
-- `src/publishing/matching/content_matcher.py`
-- `src/publishing/matching/channel_optimizer.py`
-- `src/publishing/matching/scoring_algorithms.py`
-- `src/publishing/services/matching_service.py`
-
-**Dependencies**: P2-T2
-**Acceptance Criteria**:
-- Content-channel matching working correctly
-- Multiple scoring algorithms implemented
-- Performance benchmarks met for matching queries
-- A/B testing framework integrated
-
----
-
-### P2-T4: Personalized Newsletter Generation
-**Priority**: High | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Develop personalized newsletter generation with dynamic content selection
-
-**Files to Create/Modify**:
-- `src/publishing/newsletter/__init__.py`
-- `src/publishing/newsletter/generator.py`
-- `src/publishing/newsletter/personalizer.py`
-- `src/publishing/newsletter/formatter.py`
-- `src/publishing/templates/newsletter_templates.py`
-
-**Dependencies**: P2-T3
-**Acceptance Criteria**:
-- Dynamic content selection working
-- Newsletter formatting correct
-- Personalization applied successfully
-- Template rendering functional
-
----
-
-### P2-T5: A/B Testing Framework
-**Priority**: High | **Type**: Integration | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Create A/B testing framework for personalization optimization
-
-**Files to Create/Modify**:
-- `src/publishing/experiments/__init__.py`
-- `src/publishing/experiments/ab_tester.py`
-- `src/publishing/experiments/variant_manager.py`
-- `src/publishing/experiments/results_analyzer.py`
-- `src/publishing/services/experiment_service.py`
-
-**Dependencies**: P2-T4
-**Acceptance Criteria**:
-- A/B test creation and management working
-- Variant distribution functional
-- Results analysis and reporting working
-- Statistical significance calculations correct
-
-## Phase 3: Advanced Distribution Channels
-
-### P3-T1: Discord Integration
-**Priority**: High | **Type**: Integration | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Implement Discord API integration with channel management and rate limiting
-
-**Files to Create/Modify**:
-- `src/publishing/services/discord_service.py`
-- `src/publishing/integrations/discord_api.py`
-- `src/publishing/channels/discord_channel.py`
-- `src/publishing/templates/discord_templates.py`
-
-**Dependencies**: P2-T5
-**Acceptance Criteria**:
-- Discord channel configuration working
-- Message delivery functional
-- Rate limiting implemented
-- Rich embed formatting working
-
----
-
-### P3-T2: Webhook Integration Service
-**Priority**: High | **Type**: Integration | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Build webhook service for custom integration endpoints
-
-**Files to Create/Modify**:
-- `src/publishing/services/webhook_service.py`
-- `src/publishing/integrations/webhook_handler.py`
-- `src/publishing/channels/webhook_channel.py`
-- `src/publishing/security/webhook_verification.py`
-
-**Dependencies**: P3-T1
-**Acceptance Criteria**:
-- Webhook delivery working
-- Signature verification implemented
-- Custom payload formatting functional
-- Error handling and retry logic working
-
----
-
-### P3-T3: Real-time Alert System
-**Priority**: Critical | **Type**: Core | **Parallel**: No | **TDD**: Yes
-
-**Description**: Build real-time alert system for high-priority content delivery
-
-**Files to Create/Modify**:
-- `src/publishing/alerts/__init__.py`
-- `src/publishing/alerts/alert_manager.py`
-- `src/publishing/alerts/priority_queue.py`
-- `src/publishing/alerts/realtime_delivery.py`
-- `src/publishing/services/alert_service.py`
-
-**Dependencies**: P3-T2
-**Acceptance Criteria**:
-- Priority-based alert queuing working
-- Sub-30-second delivery for high-priority alerts
-- Channel prioritization functional
-- Alert status tracking implemented
-
----
-
-### P3-T4: RSS Feed Generation
-**Priority**: Medium | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Create RSS feed generation engine with automated updates
-
-**Files to Create/Modify**:
-- `src/publishing/feeds/__init__.py`
-- `src/publishing/feeds/rss_generator.py`
-- `src/publishing/feeds/feed_manager.py`
-- `src/publishing/feeds/content_formatter.py`
-- `src/publishing/channels/rss_channel.py`
-
-**Dependencies**: P3-T3
-**Acceptance Criteria**:
-- RSS feed generation working
-- Automated feed updates functional
-- Content formatting for RSS correct
-- Feed validation and error handling working
-
----
-
-### P3-T5: Advanced Template System
-**Priority**: Medium | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Develop advanced template system with conditional logic and branding
-
-**Files to Create/Modify**:
-- `src/publishing/templates/__init__.py`
-- `src/publishing/templates/template_engine.py`
-- `src/publishing/templates/conditional_logic.py`
-- `src/publishing/templates/branding_manager.py`
-- `src/publishing/templates/custom_variables.py`
-
-**Dependencies**: P3-T4
-**Acceptance Criteria**:
-- Conditional template logic working
-- Custom variable support functional
-- Branding elements integrated
-- Template inheritance working
-
-## Phase 4: Analytics and Optimization
-
-### P4-T1: Real-time Analytics Dashboard
-**Priority**: High | **Type**: Integration | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Build engagement analytics dashboard with real-time metrics
-
-**Files to Create/Modify**:
-- `src/publishing/dashboard/__init__.py`
-- `src/publishing/dashboard/analytics_api.py`
-- `src/publishing/dashboard/metrics_aggregator.py`
-- `src/publishing/dashboard/realtime_updates.py`
-- `src/publishing/analytics/dashboard_metrics.py`
-
-**Dependencies**: P3-T5
-**Acceptance Criteria**:
-- Real-time metrics display working
-- Historical data aggregation functional
-- Performance dashboard loading quickly
-- Export functionality implemented
-
----
-
-### P4-T2: Performance Optimization Engine
-**Priority**: High | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Implement publishing performance optimization algorithms
-
-**Files to Create/Modify**:
-- `src/publishing/optimization/__init__.py`
-- `src/publishing/optimization/performance_analyzer.py`
-- `src/publishing/optimization/timing_optimizer.py`
-- `src/publishing/optimization/channel_optimizer.py`
-- `src/publishing/services/optimization_service.py`
-
-**Dependencies**: P4-T1
-**Acceptance Criteria**:
-- Performance analysis algorithms working
-- Timing optimization recommendations accurate
-- Channel performance optimization functional
-- A/B test results integrated
-
----
-
-### P4-T3: Admin Management Interface
-**Priority**: Medium | **Type**: Integration | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Create admin tools for publishing management and troubleshooting
-
-**Files to Create/Modify**:
-- `src/publishing/admin/__init__.py`
-- `src/publishing/admin/management_api.py`
-- `src/publishing/admin/troubleshooting_tools.py`
-- `src/publishing/admin/channel_monitor.py`
-- `src/publishing/admin/subscriber_manager.py`
-
-**Dependencies**: P4-T2
-**Acceptance Criteria**:
-- Admin API endpoints working
-- Troubleshooting tools functional
-- Channel monitoring dashboard working
-- Subscriber management interface complete
-
----
-
-### P4-T4: Quality Assurance Workflows
-**Priority**: Medium | **Type**: Core | **Parallel**: Yes | **TDD**: Yes
-
-**Description**: Build automated quality assurance and content review workflows
-
-**Files to Create/Modify**:
-- `src/publishing/quality/__init__.py`
-- `src/publishing/quality/content_checker.py`
-- `src/publishing/quality/approval_workflow.py`
-- `src/publishing/quality/automated_review.py`
-- `src/publishing/services/quality_service.py`
-
-**Dependencies**: P4-T3
-**Acceptance Criteria**:
-- Automated content quality checking working
-- Approval workflow functional
-- Quality metrics tracking implemented
-- Admin review interface complete
-
----
-
-### P4-T5: Integration Testing Suite
-**Priority**: Critical | **Type**: Tests | **Parallel**: No | **TDD**: Yes
-
-**Description**: Comprehensive integration tests covering all critical workflows
-
-**Files to Create/Modify**:
-- `tests/publishing/integration/__init__.py`
-- `tests/publishing/integration/test_newsletter_workflow.py`
-- `tests/publishing/integration/test_multichannel_delivery.py`
-- `tests/publishing/integration/test_personalization_engine.py`
-- `tests/publishing/integration/test_analytics_pipeline.py`
-
-**Dependencies**: P4-T4
-**Acceptance Criteria**:
-- All integration tests passing
-- End-to-end workflows validated
-- Performance tests meeting benchmarks
-- Load testing scenarios covered
-
-## Task Execution Guidelines
-
-### TDD Implementation Order
-1. **Write failing tests** for the feature
-2. **Implement minimum code** to make tests pass
-3. **Refactor** for code quality and performance
-4. **Verify** all tests still pass
-
-### Parallel Execution Rules
-- **Setup tasks** (database, infrastructure) must complete before dependent tasks
-- **Integration tasks** can run in parallel if they don't share resources
-- **Test tasks** can run in parallel with development tasks
-- **Critical path tasks** (P1-T1, P2-T1, P3-T3, P4-T5) must complete before dependent phases
-
-### Quality Gates
-- **Unit Test Coverage**: Minimum 85% for all new code
-- **Integration Tests**: All critical workflows covered
-- **Performance Benchmarks**: All p95 targets met
-- **Security Review**: Completed before merging to main
-- **Code Review**: All tasks require peer review
-
-### Success Metrics by Phase
-
-**Phase 1 Completion**:
-- All core APIs responding correctly
-- Database schema deployed and tested
-- External services integrated and tested
-- Basic publishing workflow functional
-
-**Phase 2 Completion**:
-- AI integration working correctly
-- Personalization engine operational
-- Newsletter generation with personalization
-- A/B testing framework functional
-
-**Phase 3 Completion**:
-- All channel types (email, Slack, Discord, webhook, RSS) working
-- Real-time alerts delivering within 30 seconds
-- Advanced template system operational
-- Channel-specific formatting correct
-
-**Phase 4 Completion**:
-- Analytics dashboard providing real-time insights
-- Performance optimization recommendations implemented
-- Admin tools fully functional
-- Quality assurance workflows operational
-
-## Risk Mitigation
-
-**Critical Path Dependencies**:
-- Database availability for all phases
-- AI module integration for Phase 2
-- External service APIs for Phase 3
-- Analytics infrastructure for Phase 4
-
-**Rollback Strategy**:
-- Database migrations include rollback scripts
-- Feature flags for gradual rollout
-- Circuit breakers for external service failures
-- Dead letter queues for failed processing
-
-**Monitoring Points**:
-- API response times and error rates
-- Queue depths and processing times
-- External service integration health
-- Database performance and connection pools
+## Notes
+
+- [P] tasks = different files, no dependencies between them
+- [US1], [US2], etc. labels map tasks to specific user stories for traceability
+- Each user story should be independently completable and testable
+- Verify tests fail before implementing (TDD requirement)
+- Commit after each task or logical group
+- Stop at any checkpoint to validate story independently
+- Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+
+**Total Tasks**: 117 tasks across 9 phases
+**Test Coverage**: 100% of user stories include comprehensive TDD test suites
+**MVP Scope**: User Story 1 (Multi-Channel Content Publishing) - fully functional after Phase 3
+**Constitution Compliance**: ✅ All tasks align with AI-First, Multi-Channel, TDD, Analytics, and Scalable Architecture principles
