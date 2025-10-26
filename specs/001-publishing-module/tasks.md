@@ -174,12 +174,12 @@
 ### Implementation for User Story 4
 
 - [ ] T073 [P] [US4] Create publishing_analytics model in src/publishing/models/analytics.py
-- [ ] T074 [US4] Implement EngagementTracker for real-time metrics collection in src/publishing/analytics/engagement_tracker.py (depends on T073)
-- [ ] T075 [US4] Implement MetricsCollector for analytics aggregation in src/publishing/analytics/metrics_collector.py (depends on T074)
+- [X] T074 [US4] Implement EngagementTracker for real-time metrics collection in src/publishing/analytics/engagement_tracker.py (depends on T073)
+- [X] T075 [US4] Implement MetricsCollector for analytics aggregation in src/publishing/analytics/metrics_collector.py (depends on T074)
 - [ ] T076 [US4] Implement ABTester for A/B testing framework in src/publishing/experiments/ab_tester.py
-- [ ] T077 [US4] Create AnalyticsService for metrics processing in src/publishing/services/analytics_service.py (depends on T074, T075)
-- [ ] T078 [US4] Create analytics API endpoints in src/publishing/api/analytics.py (depends on T077)
-- [ ] T079 [US4] Implement PerformanceAnalyzer for optimization recommendations in src/publishing/optimization/performance_analyzer.py
+- [X] T077 [US4] Create AnalyticsService for metrics processing in src/publishing/services/analytics_service.py (depends on T074, T075)
+- [X] T078 [US4] Create analytics API endpoints in src/publishing/api/analytics.py (depends on T077)
+- [X] T079 [US4] Implement PerformanceAnalyzer for optimization recommendations in src/publishing/optimization/performance_analyzer.py
 - [ ] T080 [US4] Create admin dashboard endpoints for analytics visualization in src/publishing/api/dashboard.py
 - [ ] T081 [US4] Implement data retention policies for analytics data
 - [ ] T082 [US4] Setup analytics data export functionality for reporting
