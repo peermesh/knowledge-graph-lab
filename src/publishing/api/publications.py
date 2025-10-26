@@ -21,6 +21,7 @@ from ..core.logging import get_logger, log_publication_event
 from ..state import IN_MEMORY_PUBLICATIONS
 from ..services.publication_service import PublicationService
 from ..services.channel_service import ChannelService
+from ..services.template_service import TemplateService
 from ..schemas.publications import (
     CreatePublicationRequest,
     PublicationResponse,
@@ -34,6 +35,7 @@ logger = get_logger(__name__)
 # Initialize services
 publication_service = PublicationService()
 channel_service = ChannelService()
+template_service = TemplateService()
 
 # Create router
 router = APIRouter()
