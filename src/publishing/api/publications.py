@@ -22,6 +22,7 @@ from ..state import IN_MEMORY_PUBLICATIONS
 from ..services.publication_service import PublicationService
 from ..services.channel_service import ChannelService
 from ..services.template_service import TemplateService
+from ..newsletter.generator import NewsletterGenerator
 from ..schemas.publications import (
     CreatePublicationRequest,
     PublicationResponse,
@@ -36,6 +37,7 @@ logger = get_logger(__name__)
 publication_service = PublicationService()
 channel_service = ChannelService()
 template_service = TemplateService()
+newsletter_generator = NewsletterGenerator()
 
 # Create router
 router = APIRouter()

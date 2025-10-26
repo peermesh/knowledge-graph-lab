@@ -37,3 +37,11 @@ class TemplateService:
             return list(IN_MEMORY_TEMPLATES)
         raise NotImplementedError
 
+    def render(self, template: Dict[str, Any], context: Dict[str, Any]) -> Dict[str, str]:
+        # Minimal render: return simple merged strings
+        title = context.get("title", "Newsletter")
+        body = context.get("body", "")
+        html = f"<html><body><h1>{title}</h1><div>{body}</div></body></html>"
+        text = f"{title}\n\n{body}"
+        return {"html": html, "text": text}
+
