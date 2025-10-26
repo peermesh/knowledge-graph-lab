@@ -87,72 +87,54 @@ As an AI system administrator monitoring extraction quality, I need to review co
 
 ---
 
-### User Story 6 - Multi-language Entity Processing (Priority: P3)
-
-As a global content analyst working with international news sources, I need to process documents in multiple languages with accurate entity extraction, so that I can maintain comprehensive global knowledge coverage without language barriers.
-
-**Why this priority**: Multi-language support expands platform capabilities to global markets and diverse content sources.
-
-**Independent Test**: Can be fully tested by submitting documents in English, Spanish, French, and Chinese and verifying 85% accuracy maintained across all languages with proper transliteration for non-Latin scripts.
-
-**Acceptance Scenarios**:
-
-1. **Given** mixed-language document with English and Chinese text, **When** processed, **Then** entities extracted from both language sections with language metadata preserved
-2. **Given** non-Latin script entities (Chinese company names), **When** extracted, **Then** proper transliteration provided along with original script
-3. **Given** language-specific entity type variations, **When** processing executes, **Then** appropriate handling applied with confidence score adjustments for language complexity
-
----
-
 ### Edge Cases
 
 - **EC-1**: LLM API rate limit exceeded during processing → Queue job for retry with exponential backoff, switch to fallback model provider if available
-- **EC-2**: Document contains mixed languages (English + Chinese) → Process each language section separately, combine results with language metadata for downstream processing
-- **EC-3**: Entity extraction model returns low confidence (<70%) for critical entities → Flag for manual review, continue processing non-critical entities, log for model retraining
-- **EC-4**: Vector database connectivity lost during similarity search → Fall back to PostgreSQL-based search, queue vector operations for retry when connectivity restored
-- **EC-5**: Document processing job times out after 5 minutes → Cancel job, log timeout reason, retry once with simplified processing pipeline
-- **EC-6**: Multiple similar entities detected (company name variations) → Apply deduplication rules, merge entities with confidence-weighted properties, maintain all name variations
-- **EC-7**: Relationship extraction identifies contradictory information → Store all relationship claims with source attribution, flag conflicts for manual resolution
-- **EC-8**: Knowledge graph update creates circular reference → Detect cycles during validation, break cycle by removing weakest confidence edge, log for review
-- **EC-9**: Memory usage spikes during large document processing → Implement chunked processing with memory limits, spill to disk if needed, monitor and alert on memory patterns
-- **EC-10**: Entity extraction API costs exceed daily budget → Switch to lighter/cheaper models for remaining capacity, queue high-cost documents for next day processing
-- **EC-11**: Empty document submitted for processing → Return appropriate error response, log empty document event, no entities extracted
-- **EC-12**: Concurrent users submit identical entity queries → Cache frequently requested entity lookups, return cached results within 100ms, update cache on entity changes
-- **EC-13**: Vector embedding generation fails for specific entity types → Use fallback embedding strategy, flag entity for manual embedding assignment, continue processing
-- **EC-14**: Knowledge graph reaches maximum node/edge limits → Implement pagination for large result sets, provide partial results with continuation tokens, alert administrators
-- **EC-15**: Scheduled quality monitoring job fails to start → Log critical error, alert ops team, retry on next schedule cycle
+- **EC-2**: Entity extraction model returns low confidence (<70%) for critical entities → Flag for manual review, continue processing non-critical entities, log for model retraining
+- **EC-3**: Vector database connectivity lost during similarity search → Fall back to PostgreSQL-based search, queue vector operations for retry when connectivity restored
+- **EC-4**: Document processing job times out after 5 minutes → Cancel job, log timeout reason, retry once with simplified processing pipeline
+- **EC-5**: Multiple similar entities detected (company name variations) → Apply deduplication rules, merge entities with confidence-weighted properties, maintain all name variations
+- **EC-6**: Relationship extraction identifies contradictory information → Store all relationship claims with source attribution, flag conflicts for manual resolution
+- **EC-7**: Knowledge graph update creates circular reference → Detect cycles during validation, break cycle by removing weakest confidence edge, log for review
+- **EC-8**: Memory usage spikes during large document processing → Implement chunked processing with memory limits, spill to disk if needed, monitor and alert on memory patterns
+- **EC-9**: Entity extraction API costs exceed daily budget → Switch to lighter/cheaper models for remaining capacity, queue high-cost documents for next day processing
+- **EC-10**: Empty document submitted for processing → Return appropriate error response, log empty document event, no entities extracted
+- **EC-11**: Concurrent users submit identical entity queries → Cache frequently requested entity lookups, return cached results within 100ms, update cache on entity changes
+- **EC-12**: Vector embedding generation fails for specific entity types → Use fallback embedding strategy, flag entity for manual embedding assignment, continue processing
+- **EC-13**: Knowledge graph reaches maximum node/edge limits → Implement pagination for large result sets, provide partial results with continuation tokens, alert administrators
+- **EC-14**: Scheduled quality monitoring job fails to start → Log critical error, alert ops team, retry on next schedule cycle
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: System MUST extract 5 core entity types (organizations, people, funding amounts, dates, locations) from unstructured text with confidence scoring
+- **FR-001**: System MUST extract entities from unstructured text with confidence scoring
 - **FR-002**: System MUST process multiple document formats (HTML, PDF, plain text) through entity extraction pipeline
 - **FR-003**: System MUST generate confidence scores (0-100 scale) for all extracted entities using weighted formula: (source_score × 0.3) + (context_score × 0.4) + (model_confidence × 0.3)
-- **FR-004**: System MUST identify 6 core relationship types (fund, partner, acquire, compete, collaborate, mention) between extracted entities
+- **FR-004**: System MUST identify relationship types between extracted entities
 - **FR-005**: System MUST construct and maintain knowledge graphs from extracted entities with graph traversal capabilities
-- **FR-006**: System MUST support vector similarity search using 768-dimensional embeddings for semantic entity matching
+- **FR-006**: System MUST support vector similarity search using dynamic dimensional embeddings for semantic entity matching
 - **FR-007**: System MUST enable batch processing of multiple documents simultaneously with priority-based queue management
 - **FR-008**: System MUST provide entity deduplication based on similarity matching to prevent duplicate entries
 - **FR-009**: System MUST support real-time knowledge graph queries with filtering by entity type, relationship type, and confidence thresholds
-- **FR-010**: System MUST process documents in multiple languages (English, Spanish, French, Chinese) maintaining 85% accuracy across all languages
-- **FR-011**: System MUST generate daily quality reports by entity type and document source with accuracy trend tracking
-- **FR-012**: System MUST trigger automated alerts when extraction accuracy drops below 80% threshold
-- **FR-013**: System MUST support asynchronous processing with job status tracking and progress reporting
-- **FR-014**: System MUST enable manual review workflows for low-confidence extractions (<70% confidence)
-- **FR-015**: System MUST provide RESTful APIs for entity extraction, knowledge graph queries, and content analysis operations
-- **FR-016**: System MUST implement JWT-based authentication with role-based access control (RBAC) for API access
-- **FR-017**: System MUST maintain processing state for interrupted operations with retry mechanisms and exponential backoff
-- **FR-018**: System MUST support graph export capabilities for external analysis and integration
-- **FR-019**: System MUST track temporal context for relationship evolution and provide relationship metadata with evidence text
-- **FR-020**: System MUST enable service-to-service authentication for internal module-to-module API calls
+- **FR-010**: System MUST generate daily quality reports by entity type and document source with accuracy trend tracking
+- **FR-011**: System MUST trigger automated alerts when extraction accuracy drops below 80% threshold
+- **FR-012**: System MUST support asynchronous processing with job status tracking and progress reporting
+- **FR-013**: System MUST enable manual review workflows for low-confidence extractions (<70% confidence)
+- **FR-014**: System MUST provide RESTful APIs for entity extraction, knowledge graph queries, and content analysis operations
+- **FR-015**: System MUST implement JWT-based authentication with role-based access control (RBAC) for API access
+- **FR-016**: System MUST maintain processing state for interrupted operations with retry mechanisms and exponential backoff
+- **FR-017**: System MUST support graph export capabilities for external analysis and integration
+- **FR-018**: System MUST track temporal context for relationship evolution and provide relationship metadata with evidence text
+- **FR-019**: System MUST enable service-to-service authentication for internal module-to-module API calls
 
 ### Key Entities *(include if feature involves data)*
 
-- **ExtractedEntity**: Represents an entity extracted from documents with text value, entity type (organization, person, funding_amount, date, location), confidence score (0.00-1.00), source document reference, extraction method (ner_model, rule_based, hybrid), positions in source text, metadata (aliases, description), and 768-dimensional vector embedding for similarity search
+- **ExtractedEntity**: Represents an entity extracted from documents with text value, entity type (organization, person, funding_amount, date, location), confidence score (0.00-1.00), source document reference, extraction method (ner_model, rule_based, hybrid), positions in source text, metadata (aliases, description), and vector embedding for similarity search
 
 - **EntityRelationship**: Represents relationships between extracted entities with source/target entity IDs, relationship type (fund, partner, acquire, compete, collaborate, mention), confidence score (0.00-1.00), optional relationship strength (0.00-1.00), evidence text from source document, temporal context (date ranges, duration), and metadata (amount, date, source references)
 
-- **KnowledgeGraphNode**: Represents nodes in the knowledge graph with entity reference, node type (entity, concept, event), properties (name, aliases, metadata), vector embedding (768-dimensional), degree count (number of connections), and timestamps
+- **KnowledgeGraphNode**: Represents nodes in the knowledge graph with entity reference, node type (entity, concept, event), properties (name, aliases, metadata), vector embedding, degree count (number of connections), and timestamps
 
 - **KnowledgeGraphEdge**: Represents edges in the knowledge graph connecting nodes with source/target node IDs, relationship type, properties (weight, direction, metadata), confidence score (0.00-1.00), and timestamps
 
@@ -166,8 +148,8 @@ As a global content analyst working with international news sources, I need to p
 
 - **SC-001**: Content analysts reduce manual entity identification time from 4-6 hours to under 30 minutes daily (75% time savings)
 - **SC-002**: System processes 100 documents per hour sustained with 200 documents/hour peak capacity during 15-minute burst periods
-- **SC-003**: Entity extraction achieves 85% precision and 80% recall across 5 core entity types (organizations, people, funding amounts, dates, locations)
-- **SC-004**: Relationship identification achieves 80% precision for core relationship types (fund, partner, acquire, compete, collaborate)
+- **SC-003**: Entity extraction achieves 85% precision and 80% recall
+- **SC-004**: Relationship identification achieves 80% precision
 - **SC-005**: Knowledge graph queries return results within 2 seconds (p95) and 5 seconds (p99) for relationship queries
 - **SC-006**: System supports 500 concurrent knowledge graph queries without degradation
 - **SC-007**: Entity extraction latency remains under 5 seconds (p95) and 15 seconds (p99) for standard documents
@@ -178,4 +160,3 @@ As a global content analyst working with international news sources, I need to p
 - **SC-012**: Knowledge discovery increases by 50% in successful entity relationship discoveries
 - **SC-013**: Processing error rate remains below 5% requiring manual intervention
 - **SC-014**: System handles 1 million entities and 5 million relationships in knowledge graph
-- **SC-015**: Multi-language processing maintains 85% accuracy across English, Spanish, French, and Chinese documents
