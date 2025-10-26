@@ -138,6 +138,9 @@ class ChannelResult(BaseModel):
         description="Channel-specific engagement data"
     )
 
+    class Config:
+        orm_mode = True
+
 
 class PublicationData(BaseModel):
     """Publication data model for API responses."""
@@ -155,6 +158,9 @@ class PublicationData(BaseModel):
     error_details: Optional[str]
     created_at: datetime
     updated_at: datetime
+
+    class Config:
+        orm_mode = True
 
 
 class PublicationResponse(BaseModel):
