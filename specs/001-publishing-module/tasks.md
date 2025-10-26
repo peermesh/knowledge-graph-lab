@@ -198,22 +198,22 @@
 
 ### Tests for User Story 5 (MANDATORY - TDD Required) ⚠️
 
-- [ ] T085 [P] [US5] Contract test for subscription preference API in tests/publishing/contract/test_subscription_management.py
-- [ ] T086 [P] [US5] Integration test for preference updates and delivery changes in tests/publishing/integration/test_subscription_workflow.py
-- [ ] T087 [P] [US5] Unit test for preference validation in tests/publishing/unit/test_preference_validation.py
-- [ ] T088 [P] [US5] Performance test for subscriber preference queries in tests/publishing/performance/test_subscriber_queries.py
+- [X] T085 [P] [US5] Contract test for subscription preference API in tests/publishing/contract/test_subscription_management.py
+- [X] T086 [P] [US5] Integration test for preference updates and delivery changes in tests/publishing/integration/test_subscription_workflow.py
+- [X] T087 [P] [US5] Unit test for preference validation in tests/publishing/unit/test_preference_validation.py
+- [X] T088 [P] [US5] Performance test for subscriber preference queries in tests/publishing/performance/test_subscriber_queries.py
 
 ### Implementation for User Story 5
 
-- [ ] T089 [US5] Implement subscription preference management in SubscriberService (extends T041)
-- [ ] T090 [US5] Create preference validation and sanitization in src/publishing/services/preference_validation.py
-- [ ] T091 [US5] Implement unsubscribe workflow with audit trail in src/publishing/services/unsubscribe_service.py
-- [ ] T092 [US5] Create subscription management API endpoints in src/publishing/api/subscribers.py (extends T045)
-- [ ] T093 [US5] Implement preference change notifications to users
-- [ ] T094 [US5] Add granular topic filtering and frequency settings
-- [ ] T095 [US5] Implement one-click unsubscribe with clear preference management
-- [ ] T096 [US5] Setup audit logging for all preference changes
-- [ ] T097 [US5] Add preference data export for GDPR compliance
+- [X] T089 [US5] Implement subscription preference management in SubscriberService (extends T041)
+- [X] T090 [US5] Create preference validation and sanitization in src/publishing/services/preference_validation.py
+- [X] T091 [US5] Implement unsubscribe workflow with audit trail in src/publishing/services/unsubscribe_service.py
+- [X] T092 [US5] Create subscription management API endpoints in src/publishing/api/subscribers.py (extends T045)
+- [X] T093 [US5] Implement preference change notifications to users
+- [X] T094 [US5] Add granular topic filtering and frequency settings
+- [X] T095 [US5] Implement one-click unsubscribe with clear preference management
+- [X] T096 [US5] Setup audit logging for all preference changes
+- [X] T097 [US5] Add preference data export for GDPR compliance
 
 **Checkpoint**: User Story 5 should be functional - users can configure preferences in under 2 minutes with granular topic and frequency settings
 
