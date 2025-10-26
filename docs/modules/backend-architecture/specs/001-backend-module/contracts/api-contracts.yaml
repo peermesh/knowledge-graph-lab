@@ -1,0 +1,807 @@
+# API Contracts: Backend Architecture
+
+**Feature**: Backend Architecture | **Date**: 2025-10-26
+**Purpose**: Define API contracts and OpenAPI specifications for the Knowledge Graph Backend
+
+## Overview
+
+This document defines the API contracts for the Knowledge Graph Backend implementation. All endpoints follow RESTful design principles with comprehensive request/response validation and OpenAPI documentation.
+
+## Base Configuration
+
+**API Base URL**: `http://localhost:8000/api/v1`
+**Content Type**: `application/json`
+**Authentication**: JWT Bearer tokens
+
+## Authentication Endpoints
+
+### Register User
+```yaml
+POST /auth/register
+Content-Type: application/json
+
+Request Body:
+  type: object
+  required:
+    - email
+    - password
+    - first_name
+    - last_name
+  properties:
+    email:
+      type: string
+      format: email
+      description: User's email address
+    password:
+      type: string
+      minLength: 8
+      description: Password (minimum 8 characters)
+    first_name:
+      type: string
+      minLength: 1
+      maxLength: 100
+      description: User's first name
+    last_name:
+      type: string
+      minLength: 1
+      maxLength: 100
+      description: User's last name
+    role:
+      type: string
+      enum: [user, admin, moderator]
+      default: user
+      description: User role
+
+Response (201):
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: User ID
+    email:
+      type: string
+      format: email
+    first_name:
+      type: string
+    last_name:
+      type: string
+    role:
+      type: string
+      enum: [user, admin, moderator]
+    is_active:
+      type: boolean
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+    last_login:
+      type: string
+      format: date-time
+      nullable: true
+```
+
+### Login User
+```yaml
+POST /auth/login
+Content-Type: application/json
+
+Request Body:
+  type: object
+  required:
+    - email
+    - password
+  properties:
+    email:
+      type: string
+      format: email
+      description: User's email address
+    password:
+      type: string
+      description: User's password
+
+Response (200):
+  type: object
+  properties:
+    access_token:
+      type: string
+      description: JWT access token
+    refresh_token:
+      type: string
+      description: JWT refresh token
+    token_type:
+      type: string
+      enum: [bearer]
+    expires_in:
+      type: integer
+      description: Token expiration time in seconds
+    user:
+      $ref: '#/components/schemas/UserResponse'
+
+Error Response (401):
+  type: object
+  properties:
+    error:
+      type: string
+      example: "Incorrect email or password"
+    message:
+      type: string
+    request_id:
+      type: string
+      nullable: true
+```
+
+### Refresh Token
+```yaml
+POST /auth/refresh
+Content-Type: application/json
+
+Request Body:
+  type: object
+  required:
+    - refresh_token
+  properties:
+    refresh_token:
+      type: string
+      description: Refresh token
+
+Response (200):
+  type: object
+  properties:
+    access_token:
+      type: string
+      description: New JWT access token
+    token_type:
+      type: string
+      enum: [bearer]
+    expires_in:
+      type: integer
+      description: Token expiration time in seconds
+```
+
+### Get Current User
+```yaml
+GET /auth/me
+Authorization: Bearer {access_token}
+
+Response (200):
+  $ref: '#/components/schemas/UserResponse'
+
+Error Response (401):
+  type: object
+  properties:
+    detail:
+      type: string
+      example: "Not authenticated"
+```
+
+## Health Check Endpoints
+
+### Basic Health Check
+```yaml
+GET /health
+
+Response (200):
+  type: object
+  properties:
+    status:
+      type: string
+      enum: [healthy, degraded, unhealthy]
+    timestamp:
+      type: string
+      format: date-time
+    version:
+      type: string
+      description: API version
+    uptime_seconds:
+      type: number
+      description: Service uptime in seconds
+    environment:
+      type: object
+      properties:
+        debug:
+          type: boolean
+        database_url:
+          type: string
+          description: Database URL (password masked)
+```
+
+### Detailed Health Check
+```yaml
+GET /health/detailed
+
+Response (200):
+  type: object
+  properties:
+    status:
+      type: string
+      enum: [healthy, degraded, unhealthy]
+    timestamp:
+      type: string
+      format: date-time
+    version:
+      type: string
+    uptime_seconds:
+      type: number
+    services:
+      type: object
+      properties:
+        database:
+          type: object
+          properties:
+            status:
+              type: string
+              enum: [healthy, unhealthy]
+            timestamp:
+              type: string
+              format: date-time
+            response_time_ms:
+              type: number
+            details:
+              type: string
+        redis:
+          type: object
+          properties:
+            status:
+              type: string
+              enum: [healthy, unhealthy]
+            timestamp:
+              type: string
+              format: date-time
+            response_time_ms:
+              type: number
+            details:
+              type: string
+        rabbitmq:
+          type: object
+          properties:
+            status:
+              type: string
+              enum: [healthy, unhealthy]
+            timestamp:
+              type: string
+              format: date-time
+            response_time_ms:
+              type: number
+            details:
+              type: string
+```
+
+## Entity Management Endpoints
+
+### List Entities
+```yaml
+GET /entities
+Authorization: Bearer {access_token}
+
+Query Parameters:
+  - skip: integer (default: 0) - Number of records to skip
+  - limit: integer (default: 100, max: 1000) - Number of records to return
+  - type: string - Filter by entity type
+  - source: string - Filter by source
+  - confidence_min: number (0.0-1.0) - Minimum confidence score
+  - search: string - Search in entity names
+
+Response (200):
+  type: object
+  properties:
+    entities:
+      type: array
+      items:
+        $ref: '#/components/schemas/EntityResponse'
+    total:
+      type: integer
+      description: Total number of entities
+    skip:
+      type: integer
+    limit:
+      type: integer
+    has_more:
+      type: boolean
+      description: Whether there are more results available
+```
+
+### Get Entity
+```yaml
+GET /entities/{entity_id}
+Authorization: Bearer {access_token}
+
+Path Parameters:
+  - entity_id: string (UUID) - Entity ID
+
+Response (200):
+  $ref: '#/components/schemas/EntityResponse'
+
+Error Response (404):
+  type: object
+  properties:
+    detail:
+      type: string
+      example: "Entity not found"
+```
+
+### Create Entity
+```yaml
+POST /entities
+Authorization: Bearer {access_token}
+Content-Type: application/json
+
+Request Body:
+  type: object
+  required:
+    - name
+    - type
+    - confidence
+    - source
+    - source_type
+  properties:
+    name:
+      type: string
+      description: Entity name
+    type:
+      type: string
+      description: Entity type (person, organization, location, concept, etc.)
+    confidence:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: AI extraction confidence score
+    source:
+      type: string
+      description: Original source identifier
+    source_type:
+      type: string
+      enum: [article, document, web_page, api, manual]
+      description: Type of source
+    metadata:
+      type: object
+      description: Additional entity properties
+      additionalProperties: true
+
+Response (201):
+  $ref: '#/components/schemas/EntityResponse'
+```
+
+### Update Entity
+```yaml
+PUT /entities/{entity_id}
+Authorization: Bearer {access_token}
+Content-Type: application/json
+
+Path Parameters:
+  - entity_id: string (UUID) - Entity ID
+
+Request Body:
+  type: object
+  properties:
+    name:
+      type: string
+      description: Entity name
+    type:
+      type: string
+      description: Entity type
+    confidence:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: Confidence score
+    metadata:
+      type: object
+      description: Additional properties
+      additionalProperties: true
+
+Response (200):
+  $ref: '#/components/schemas/EntityResponse'
+```
+
+### Delete Entity
+```yaml
+DELETE /entities/{entity_id}
+Authorization: Bearer {access_token}
+
+Path Parameters:
+  - entity_id: string (UUID) - Entity ID
+
+Response (204):
+  description: Entity deleted successfully
+```
+
+## Entity Relationships Endpoints
+
+### List Relationships
+```yaml
+GET /entities/{entity_id}/relationships
+Authorization: Bearer {access_token}
+
+Path Parameters:
+  - entity_id: string (UUID) - Source entity ID
+
+Query Parameters:
+  - relationship_type: string - Filter by relationship type
+  - direction: string (enum: incoming, outgoing, both) - Relationship direction
+  - skip: integer (default: 0)
+  - limit: integer (default: 100, max: 1000)
+
+Response (200):
+  type: object
+  properties:
+    relationships:
+      type: array
+      items:
+        $ref: '#/components/schemas/EntityRelationshipResponse'
+    total:
+      type: integer
+    skip:
+      type: integer
+    limit:
+      type: integer
+    has_more:
+      type: boolean
+```
+
+### Create Relationship
+```yaml
+POST /entities/{source_entity_id}/relationships
+Authorization: Bearer {access_token}
+Content-Type: application/json
+
+Path Parameters:
+  - source_entity_id: string (UUID) - Source entity ID
+
+Request Body:
+  type: object
+  required:
+    - target_entity_id
+    - relationship_type
+    - confidence
+  properties:
+    target_entity_id:
+      type: string
+      format: uuid
+      description: Target entity ID
+    relationship_type:
+      type: string
+      description: Type of relationship (works_for, located_in, related_to, etc.)
+    confidence:
+      type: number
+      minimum: 0.0
+      maximum: 1.0
+      description: AI extraction confidence
+    metadata:
+      type: object
+      description: Additional relationship properties
+      additionalProperties: true
+
+Response (201):
+  $ref: '#/components/schemas/EntityRelationshipResponse'
+```
+
+## User Management Endpoints (Admin Only)
+
+### List Users
+```yaml
+GET /users
+Authorization: Bearer {admin_token}
+
+Query Parameters:
+  - skip: integer (default: 0)
+  - limit: integer (default: 100, max: 1000)
+  - role: string (enum: user, admin, moderator) - Filter by role
+  - is_active: boolean - Filter by active status
+  - search: string - Search in names and email
+
+Response (200):
+  type: object
+  properties:
+    users:
+      type: array
+      items:
+        $ref: '#/components/schemas/UserResponse'
+    total:
+      type: integer
+    skip:
+      type: integer
+    limit:
+      type: integer
+    has_more:
+      type: boolean
+
+Error Response (403):
+  type: object
+  properties:
+    detail:
+      type: string
+      example: "Admin privileges required"
+```
+
+### Get User
+```yaml
+GET /users/{user_id}
+Authorization: Bearer {admin_token}
+
+Path Parameters:
+  - user_id: string (UUID) - User ID
+
+Response (200):
+  $ref: '#/components/schemas/UserResponse'
+
+Error Response (403):
+  type: object
+  properties:
+    detail:
+      type: string
+      example: "Admin privileges required"
+```
+
+### Update User
+```yaml
+PUT /users/{user_id}
+Authorization: Bearer {admin_token}
+Content-Type: application/json
+
+Path Parameters:
+  - user_id: string (UUID) - User ID
+
+Request Body:
+  type: object
+  properties:
+    first_name:
+      type: string
+      minLength: 1
+      maxLength: 100
+    last_name:
+      type: string
+      minLength: 1
+      maxLength: 100
+    role:
+      type: string
+      enum: [user, admin, moderator]
+    is_active:
+      type: boolean
+
+Response (200):
+  $ref: '#/components/schemas/UserResponse'
+```
+
+### Deactivate User
+```yaml
+DELETE /users/{user_id}
+Authorization: Bearer {admin_token}
+
+Path Parameters:
+  - user_id: string (UUID) - User ID
+
+Response (204):
+  description: User deactivated successfully
+```
+
+## Common Schemas
+
+### UserResponse
+```yaml
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: User ID
+  email:
+    type: string
+    format: email
+    description: User's email address
+  first_name:
+    type: string
+    description: User's first name
+  last_name:
+    type: string
+    description: User's last name
+  role:
+    type: string
+    enum: [user, admin, moderator]
+    description: User role
+  is_active:
+    type: boolean
+    description: Account active status
+  created_at:
+    type: string
+    format: date-time
+    description: Account creation timestamp
+  updated_at:
+    type: string
+    format: date-time
+    description: Last update timestamp
+  last_login:
+    type: string
+    format: date-time
+    nullable: true
+    description: Last login timestamp
+```
+
+### EntityResponse
+```yaml
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Entity ID
+  name:
+    type: string
+    description: Entity name
+  type:
+    type: string
+    description: Entity type
+  confidence:
+    type: number
+    minimum: 0.0
+    maximum: 1.0
+    description: AI extraction confidence
+  source:
+    type: string
+    description: Source identifier
+  source_type:
+    type: string
+    enum: [article, document, web_page, api, manual]
+    description: Source type
+  metadata:
+    type: object
+    description: Additional properties
+    additionalProperties: true
+  created_at:
+    type: string
+    format: date-time
+    description: Creation timestamp
+  updated_at:
+    type: string
+    format: date-time
+    description: Last update timestamp
+  created_by:
+    type: string
+    format: uuid
+    description: User who created the entity
+  is_active:
+    type: boolean
+    description: Entity active status
+```
+
+### EntityRelationshipResponse
+```yaml
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: Relationship ID
+  source_entity_id:
+    type: string
+    format: uuid
+    description: Source entity ID
+  target_entity_id:
+    type: string
+    format: uuid
+    description: Target entity ID
+  relationship_type:
+    type: string
+    description: Relationship type
+  confidence:
+    type: number
+    minimum: 0.0
+    maximum: 1.0
+    description: AI extraction confidence
+  metadata:
+    type: object
+    description: Additional relationship properties
+    additionalProperties: true
+  created_at:
+    type: string
+    format: date-time
+    description: Creation timestamp
+  created_by:
+    type: string
+    format: uuid
+    description: User who created the relationship
+  is_active:
+    type: boolean
+    description: Relationship active status
+```
+
+## Error Handling
+
+### Standard Error Response
+```yaml
+type: object
+properties:
+  error:
+    type: string
+    description: Error type/category
+  message:
+    type: string
+    description: Human-readable error message
+  details:
+    type: object
+    description: Additional error details
+    additionalProperties: true
+  request_id:
+    type: string
+    nullable: true
+    description: Request ID for debugging
+
+examples:
+  - error: "ValidationError"
+    message: "Invalid input data"
+    details:
+      field: "email"
+      issue: "Invalid email format"
+    request_id: "req_1234567890"
+
+  - error: "NotFound"
+    message: "Entity not found"
+    details:
+      entity_id: "550e8400-e29b-41d4-a716-446655440000"
+    request_id: "req_1234567890"
+
+  - error: "Unauthorized"
+    message: "Authentication required"
+    details:
+      reason: "No valid token provided"
+    request_id: "req_1234567890"
+```
+
+### HTTP Status Codes
+- `200`: Success
+- `201`: Created
+- `204`: No Content (for DELETE operations)
+- `400`: Bad Request (validation errors)
+- `401`: Unauthorized (authentication required/failed)
+- `403`: Forbidden (insufficient permissions)
+- `404`: Not Found (resource doesn't exist)
+- `422`: Unprocessable Entity (validation failed)
+- `500`: Internal Server Error (unexpected errors)
+
+## Rate Limiting
+
+All endpoints are subject to rate limiting:
+- **Per-minute limit**: 1000 requests per IP address
+- **Headers included**:
+  - `X-RateLimit-Limit`: Maximum requests per minute
+  - `X-RateLimit-Remaining`: Remaining requests in current window
+  - `X-RateLimit-Reset`: Time when limit resets (Unix timestamp)
+
+Rate limit exceeded response (429):
+```yaml
+type: object
+properties:
+  error:
+    type: string
+    example: "RateLimitExceeded"
+  message:
+    type: string
+    example: "Rate limit exceeded. Please try again later."
+  retry_after:
+    type: integer
+    description: Seconds to wait before retrying
+```
+
+## Security Considerations
+
+### Authentication
+- All endpoints (except health checks) require valid JWT token
+- Tokens must be included in `Authorization: Bearer {token}` header
+- Access tokens expire after 15 minutes
+- Refresh tokens expire after 7 days
+
+### Authorization
+- Role-based access control implemented
+- Admin endpoints require admin role
+- User data isolation enforced via user_id filtering
+- API access logs maintained for security monitoring
+
+### Data Validation
+- All input validated using Pydantic models
+- SQL injection prevention through parameterized queries
+- XSS protection through input sanitization
+- File upload size limits enforced
+
+This API contract ensures consistent, secure, and well-documented interfaces for the Knowledge Graph Lab System backend architecture.
