@@ -73,10 +73,10 @@ def create_application() -> FastAPI:
         openapi_url="/api/v1/openapi.json"
     )
 
-    # Add security middleware
+    # Add security middleware (allow all in DEBUG to support testclient 'testserver')
     app.add_middleware(
         TrustedHostMiddleware,
-        allowed_hosts=settings.ALLOWED_HOSTS
+        allowed_hosts=["*"] if settings.DEBUG else settings.ALLOWED_HOSTS
     )
 
     # Add CORS middleware for frontend integration
@@ -135,6 +135,10 @@ def create_application() -> FastAPI:
 
     # Include API routes
     app.include_router(api_router, prefix="/api/v1")
+
+    # Register global exception handler on the app
+    from .api import global_exception_handler  # local import to avoid circular
+    app.add_exception_handler(Exception, global_exception_handler)
 
     # Health check endpoint (required for container orchestration)
     @app.get("/health")

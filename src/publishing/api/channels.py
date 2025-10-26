@@ -3,16 +3,23 @@ from datetime import datetime
 import uuid
 from sqlalchemy import select
 
+from ..core.config import settings
 from ..core.database import get_async_session
 from ..models.channel import Channel
 from ..schemas.channels import ChannelCreateRequest, ChannelResponse
+from ..state import IN_MEMORY_CHANNELS
 
 router = APIRouter()
+
+# In-memory channel store is provided by src.publishing.state
 
 
 @router.get("")
 async def list_channels():
-    async with get_async_session() as session:
+    if settings.DEBUG:
+        return {"data": {"channels": IN_MEMORY_CHANNELS}, "meta": {"timestamp": datetime.utcnow().isoformat()}, "errors": []}
+
+    async for session in get_async_session():
         result = await session.execute(select(Channel))
         channels = result.scalars().all()
         data = [
@@ -32,7 +39,21 @@ async def list_channels():
 
 @router.post("")
 async def create_channel(request: ChannelCreateRequest = Body(...)):
-    async with get_async_session() as session:
+    if settings.DEBUG:
+        now = datetime.utcnow().isoformat()
+        channel = {
+            "id": str(uuid.uuid4()),
+            "name": request.name,
+            "channel_type": request.channel_type,
+            "is_active": request.is_active,
+            "configuration": request.configuration,
+            "created_at": now,
+            "updated_at": now,
+        }
+        IN_MEMORY_CHANNELS.append(channel)
+        return {"data": channel, "meta": {"timestamp": now}, "errors": []}
+
+    async for session in get_async_session():
         channel = Channel(
             name=request.name,
             channel_type=request.channel_type,
@@ -42,7 +63,7 @@ async def create_channel(request: ChannelCreateRequest = Body(...)):
         session.add(channel)
         try:
             await session.commit()
-        except Exception as e:
+        except Exception:
             raise HTTPException(status_code=409, detail="Channel creation failed")
 
         return {
