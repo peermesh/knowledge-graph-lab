@@ -17,7 +17,7 @@ import uuid
 import structlog
 
 from ..core.config import settings
-from ..core.logging import get_logger
+from ..core.logging import get_logger, log_publication_event
 from ..services.publication_service import PublicationService
 from ..services.channel_service import ChannelService
 from ..schemas.publications import (
@@ -84,8 +84,9 @@ async def create_publication(request: CreatePublicationRequest):
             publication_id=str(publication.id)
         )
 
+        # Ensure proper response serialization
         return PublicationResponse(
-            data=publication,
+            data=publication,  # pydantic orm_mode
             meta={
                 "timestamp": datetime.utcnow().isoformat(),
                 "request_id": correlation_id
