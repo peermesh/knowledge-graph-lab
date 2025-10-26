@@ -66,11 +66,11 @@
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T017 [P] [US1] Contract test for publication creation API in tests/publishing/contract/test_publications.py
-- [ ] T018 [P] [US1] Contract test for publication status API in tests/publishing/contract/test_publication_status.py
-- [ ] T019 [P] [US1] Integration test for multi-channel publishing workflow in tests/publishing/integration/test_multichannel_publishing.py
-- [ ] T020 [P] [US1] Unit test for channel delivery service in tests/publishing/unit/test_channel_delivery.py
-- [ ] T021 [P] [US1] Performance test for concurrent publishing operations in tests/publishing/performance/test_publishing_load.py
+- [X] T017 [P] [US1] Contract test for publication creation API in tests/publishing/contract/test_publications.py
+- [X] T018 [P] [US1] Contract test for publication status API in tests/publishing/contract/test_publication_status.py
+- [X] T019 [P] [US1] Integration test for multi-channel publishing workflow in tests/publishing/integration/test_multichannel_publishing.py
+- [X] T020 [P] [US1] Unit test for channel delivery service in tests/publishing/unit/test_channel_delivery.py
+- [X] T021 [P] [US1] Performance test for concurrent publishing operations in tests/publishing/performance/test_publishing_load.py
 
 ### Implementation for User Story 1
 
@@ -78,8 +78,8 @@
 - [X] T023 [P] [US1] Create publishing_publications model in src/publishing/models/publication.py
 - [X] T024 [US1] Implement ChannelService for channel configuration and management in src/publishing/services/channel_service.py (depends on T022)
 - [X] T025 [US1] Implement PublicationService for content publishing operations in src/publishing/services/publication_service.py (depends on T023)
-- [ ] T026 [US1] Implement email channel integration with AWS SES in src/publishing/integrations/aws_ses.py
-- [ ] T027 [US1] Implement Slack channel integration in src/publishing/services/slack_service.py
+- [X] T026 [US1] Implement email channel integration with AWS SES in src/publishing/integrations/aws_ses.py
+- [X] T027 [US1] Implement Slack channel integration in src/publishing/services/slack_service.py
 - [X] T028 [US1] Create publication API endpoints in src/publishing/api/publications.py (depends on T024, T025)
 - [X] T029 [US1] Create channel configuration API endpoints in src/publishing/api/channels.py (depends on T022)
 - [X] T030 [US1] Implement circuit breaker pattern for external service failures in src/publishing/services/circuit_breaker.py
