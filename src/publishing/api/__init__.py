@@ -42,7 +42,7 @@ async def validate_request(request: Request):
         )
 
 # Import API routers for each domain
-from . import publications, channels, subscribers, analytics, alerts
+from . import publications, channels, subscribers, analytics, alerts, dashboard, ws
 
 # Create main API router (validation disabled for baseline tests)
 router = APIRouter()
@@ -99,6 +99,20 @@ router.include_router(
     alerts.router,
     prefix="/alerts",
     tags=["alerts"]
+)
+
+# Admin dashboard
+router.include_router(
+    dashboard.router,
+    prefix="/dashboard",
+    tags=["dashboard"]
+)
+
+# Websocket stub
+router.include_router(
+    ws.router,
+    prefix="",
+    tags=["ws"]
 )
 
 # Health endpoints are included in the main app, not here
