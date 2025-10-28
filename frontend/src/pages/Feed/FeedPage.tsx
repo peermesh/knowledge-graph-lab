@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Search, Filter, Plus } from 'lucide-react'
 
 import { Button } from '@/components/Common/Button'
@@ -9,6 +10,7 @@ import { useUIStore } from '@/store/useUIStore'
 import type { ResearchItem } from '@/types'
 
 export function FeedPage() {
+  const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
   const [items, setItems] = useState<ResearchItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -146,9 +148,9 @@ export function FeedPage() {
               <Filter className="w-4 h-4 mr-2" />
               Filters
             </Button>
-            <Button size="sm">
+            <Button size="sm" onClick={() => navigate('/add-topics')}>
               <Plus className="w-4 h-4 mr-2" />
-              New Research
+              Add Topics
             </Button>
           </div>
         </div>
