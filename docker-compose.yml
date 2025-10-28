@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # Publishing Module API
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # DEBUG mode enables in-memory stores (no database needed)
+      - DEBUG=true
+      - PORT=8080
+      - LOG_LEVEL=INFO
+      - CORS_ORIGINS=["http://localhost:3000", "http://127.0.0.1:3000"]
+    command: uvicorn src.publishing.main:app --host 0.0.0.0 --port 8080 --reload
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  # Simple Frontend (Nginx serving demo HTML)
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./demo-frontend.html:/usr/share/nginx/html/index.html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+networks:
+  default:
+    name: publishing-network
+
