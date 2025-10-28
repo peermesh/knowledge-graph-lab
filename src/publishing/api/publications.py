@@ -12,7 +12,7 @@ Constitution Compliance:
 
 from fastapi import APIRouter, HTTPException, Query, Path, Body
 from typing import List, Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 import uuid
 import structlog
 
@@ -41,6 +41,14 @@ newsletter_generator = NewsletterGenerator()
 
 # Create router
 router = APIRouter()
+def _to_utc(dt: Optional[datetime]) -> datetime:
+    """Normalize datetime to timezone-aware UTC (T049)."""
+    if dt is None:
+        return datetime.now(timezone.utc)
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
 
 
 @router.post("", response_model=PublicationResponse)
@@ -74,13 +82,14 @@ async def create_publication(request: CreatePublicationRequest):
 
         # Create publication (DEBUG: in-memory to avoid DB dependency)
         if settings.DEBUG:
-            now = datetime.utcnow()
+            now = datetime.now(timezone.utc)
+            scheduled_time = _to_utc(request.scheduled_time)
             publication = {
                 "id": str(uuid.uuid4()),
                 "content_ids": request.content_ids,
                 "channels": request.channels,
                 "publication_type": request.publication_type,
-                "scheduled_time": request.scheduled_time or now,
+                "scheduled_time": scheduled_time or now,
                 "published_time": None,
                 "status": "scheduled",
                 "channel_results": {},
@@ -96,24 +105,21 @@ async def create_publication(request: CreatePublicationRequest):
                 content_ids=request.content_ids,
                 channels=request.channels,
                 publication_type=request.publication_type,
-                scheduled_time=request.scheduled_time,
+                scheduled_time=_to_utc(request.scheduled_time),
                 personalization_rules=request.personalization_rules,
                 template_id=request.template_id,
                 correlation_id=correlation_id
             )
 
-        logger.info(
-            "Publication created successfully",
-            correlation_id=correlation_id,
-            publication_id=str(publication.id)
-        )
+        pub_id = publication["id"] if settings.DEBUG else str(publication.id)
+        logger.info("Publication created successfully", correlation_id=correlation_id, publication_id=pub_id)
 
         # Ensure proper response serialization
         if settings.DEBUG:
             return {
                 "data": publication,
                 "meta": {
-                    "timestamp": datetime.utcnow().isoformat(),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                     "request_id": correlation_id
                 },
                 "errors": []
@@ -122,7 +128,7 @@ async def create_publication(request: CreatePublicationRequest):
             return PublicationResponse(
                 data=publication,  # pydantic orm_mode
                 meta={
-                    "timestamp": datetime.utcnow().isoformat(),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                     "request_id": correlation_id
                 },
                 errors=[]
@@ -176,13 +182,14 @@ async def schedule_newsletter(request: CreatePublicationRequest):
 
         # Create newsletter publication (DEBUG: in-memory)
         if settings.DEBUG:
-            now = datetime.utcnow()
+            now = datetime.now(timezone.utc)
+            scheduled_time = _to_utc(request.scheduled_time)
             publication = {
                 "id": str(uuid.uuid4()),
                 "content_ids": request.content_ids,
                 "channels": request.channels,
                 "publication_type": "newsletter",
-                "scheduled_time": request.scheduled_time or now,
+                "scheduled_time": scheduled_time or now,
                 "published_time": None,
                 "status": "scheduled",
                 "channel_results": {},
@@ -198,7 +205,7 @@ async def schedule_newsletter(request: CreatePublicationRequest):
                 content_ids=request.content_ids,
                 channels=request.channels,
                 publication_type="newsletter",
-                scheduled_time=request.scheduled_time,
+                scheduled_time=_to_utc(request.scheduled_time),
                 personalization_rules=request.personalization_rules,
                 template_id=request.template_id,
                 correlation_id=correlation_id,
@@ -209,7 +216,7 @@ async def schedule_newsletter(request: CreatePublicationRequest):
             return {
                 "data": publication,
                 "meta": {
-                    "timestamp": datetime.utcnow().isoformat(),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                     "request_id": correlation_id,
                 },
                 "errors": [],
@@ -218,7 +225,7 @@ async def schedule_newsletter(request: CreatePublicationRequest):
             return PublicationResponse(
                 data=publication,
                 meta={
-                    "timestamp": datetime.utcnow().isoformat(),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                     "request_id": correlation_id,
                 },
                 errors=[],

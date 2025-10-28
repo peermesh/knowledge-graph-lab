@@ -117,9 +117,9 @@
 - [X] T046 [US2] Create newsletter scheduling and delivery API endpoints in src/publishing/api/publications.py (depends on T044)
 - [X] T047 [US2] Integrate AI module for content quality scoring in src/publishing/ai/content_analyzer.py
 - [X] T048 [US2] Implement topic-based content filtering in src/publishing/personalization/topic_matcher.py
-- [ ] T049 [US2] Add timezone-aware scheduling for newsletter delivery
-- [ ] T050 [US2] Implement engagement tracking for newsletter opens and clicks
-- [ ] T051 [US2] Setup database migrations for publishing_subscribers and publishing_templates tables
+- [X] T049 [US2] Add timezone-aware scheduling for newsletter delivery
+- [X] T050 [US2] Implement engagement tracking for newsletter opens and clicks
+- [X] T051 [US2] Setup database migrations for publishing_subscribers and publishing_templates tables
 
 **Checkpoint**: User Story 2 should be functional - administrators can schedule personalized newsletters for 2,000+ subscribers with AI-powered content selection
 

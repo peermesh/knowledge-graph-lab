@@ -7,5 +7,8 @@ IN_MEMORY_SUBSCRIBERS = []
 IN_MEMORY_PUBLICATIONS = []
 IN_MEMORY_TEMPLATES = []
 IN_MEMORY_ALERTS = {}
+IN_MEMORY_ENGAGEMENT = {
+    # publication_id: {"open": int, "click": int}
+}
 
 
