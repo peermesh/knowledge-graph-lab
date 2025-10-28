@@ -17,3 +17,9 @@ class AnalyticsService:
     def get_performance(self) -> Dict[str, Any]:
         return self.analyzer.recommendations()
 
+    def track_open(self, publication_id: str, user_id: str = None) -> None:
+        self.tracker.track({"type": "open", "publication_id": publication_id, "user_id": user_id})
+
+    def track_click(self, publication_id: str, url: str = None, user_id: str = None) -> None:
+        self.tracker.track({"type": "click", "publication_id": publication_id, "user_id": user_id, "url": url})
+
