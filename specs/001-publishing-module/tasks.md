@@ -110,13 +110,13 @@
 - [X] T039 [P] [US2] Create publishing_subscribers model in src/publishing/models/subscriber.py
 - [X] T040 [P] [US2] Create publishing_templates model in src/publishing/models/template.py
 - [X] T041 [US2] Implement SubscriberService for user preference management in src/publishing/services/subscriber_service.py (depends on T039)
-- [ ] T042 [US2] Implement TemplateService for newsletter formatting in src/publishing/services/template_service.py (depends on T040)
-- [ ] T043 [US2] Implement PersonalizationEngine for AI-powered content matching in src/publishing/personalization/preference_engine.py (depends on T039)
-- [ ] T044 [US2] Implement NewsletterGenerator for automated newsletter creation in src/publishing/newsletter/generator.py (depends on T041, T043)
+- [X] T042 [US2] Implement TemplateService for newsletter formatting in src/publishing/services/template_service.py (depends on T040)
+- [X] T043 [US2] Implement PersonalizationEngine for AI-powered content matching in src/publishing/personalization/preference_engine.py (depends on T039)
+- [X] T044 [US2] Implement NewsletterGenerator for automated newsletter creation in src/publishing/newsletter/generator.py (depends on T041, T043)
 - [X] T045 [US2] Create subscriber management API endpoints in src/publishing/api/subscribers.py (depends on T041)
-- [ ] T046 [US2] Create newsletter scheduling and delivery API endpoints in src/publishing/api/publications.py (depends on T044)
-- [ ] T047 [US2] Integrate AI module for content quality scoring in src/publishing/ai/content_analyzer.py
-- [ ] T048 [US2] Implement topic-based content filtering in src/publishing/personalization/topic_matcher.py
+- [X] T046 [US2] Create newsletter scheduling and delivery API endpoints in src/publishing/api/publications.py (depends on T044)
+- [X] T047 [US2] Integrate AI module for content quality scoring in src/publishing/ai/content_analyzer.py
+- [X] T048 [US2] Implement topic-based content filtering in src/publishing/personalization/topic_matcher.py
 - [ ] T049 [US2] Add timezone-aware scheduling for newsletter delivery
 - [ ] T050 [US2] Implement engagement tracking for newsletter opens and clicks
 - [ ] T051 [US2] Setup database migrations for publishing_subscribers and publishing_templates tables
