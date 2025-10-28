@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { MainNavigation } from '../Navigation/MainNavigation'
 import { ResizablePanel } from './ResizablePanel'
+import { ContextPanel } from './ContextPanel'
 
 interface ThreePanelLayoutProps {
   children?: React.ReactNode
@@ -45,12 +46,7 @@ export function ThreePanelLayout({ children, className = '' }: ThreePanelLayoutP
           side="right"
           className="border-l border-border bg-card"
         >
-          <div className="p-4">
-            <h3 className="text-lg font-semibold mb-4">Context Panel</h3>
-            <p className="text-muted-foreground">
-              This panel will show contextual information based on the current view.
-            </p>
-          </div>
+          <ContextPanel />
         </ResizablePanel>
       )}
 
