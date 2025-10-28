@@ -142,6 +142,101 @@ async def create_publication(request: CreatePublicationRequest):
         )
 
 
+@router.post("/newsletter/schedule", response_model=PublicationResponse)
+async def schedule_newsletter(request: CreatePublicationRequest):
+    """Schedule a newsletter publication (US2).
+
+    Accepts the standard CreatePublicationRequest and forces publication_type to 'newsletter'.
+    In DEBUG mode, stores the scheduled publication in memory to avoid DB dependency.
+    """
+
+    correlation_id = str(uuid.uuid4())
+
+    try:
+        logger.info(
+            "Scheduling newsletter",
+            correlation_id=correlation_id,
+            content_ids=request.content_ids,
+            channels=request.channels,
+        )
+
+        # Validate channels exist and are active
+        for channel_id in request.channels:
+            channel = await channel_service.get_channel(channel_id)
+            if not channel:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Channel {channel_id} not found"
+                )
+            if not channel.is_active:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Channel {channel_id} is not active"
+                )
+
+        # Create newsletter publication (DEBUG: in-memory)
+        if settings.DEBUG:
+            now = datetime.utcnow()
+            publication = {
+                "id": str(uuid.uuid4()),
+                "content_ids": request.content_ids,
+                "channels": request.channels,
+                "publication_type": "newsletter",
+                "scheduled_time": request.scheduled_time or now,
+                "published_time": None,
+                "status": "scheduled",
+                "channel_results": {},
+                "engagement_metrics": {},
+                "personalization_applied": {},
+                "error_details": None,
+                "created_at": now,
+                "updated_at": now,
+            }
+            IN_MEMORY_PUBLICATIONS.append(publication)
+        else:
+            publication = await publication_service.create_publication(
+                content_ids=request.content_ids,
+                channels=request.channels,
+                publication_type="newsletter",
+                scheduled_time=request.scheduled_time,
+                personalization_rules=request.personalization_rules,
+                template_id=request.template_id,
+                correlation_id=correlation_id,
+            )
+
+        # Response serialization
+        if settings.DEBUG:
+            return {
+                "data": publication,
+                "meta": {
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "request_id": correlation_id,
+                },
+                "errors": [],
+            }
+        else:
+            return PublicationResponse(
+                data=publication,
+                meta={
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "request_id": correlation_id,
+                },
+                errors=[],
+            )
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(
+            "Newsletter scheduling failed",
+            correlation_id=correlation_id,
+            error=str(e),
+        )
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to schedule newsletter: {str(e)}",
+        )
+
 @router.get("/{publication_id}", response_model=PublicationResponse)
 async def get_publication(
     publication_id: str = Path(..., description="Publication ID")
