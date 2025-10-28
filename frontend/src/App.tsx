@@ -4,6 +4,8 @@ import { ThreePanelLayout } from '@/components/Layout/ThreePanelLayout'
 import { FeedPage } from '@/pages/Feed/FeedPage'
 import { GraphLabPage } from '@/pages/Lab/GraphLabPage'
 import { SettingsPage } from '@/pages/Settings/SettingsPage'
+import { AddTopicsPage } from '@/pages/AddTopics/AddTopicsPage'
+import { OnboardingPage } from '@/pages/Onboarding/OnboardingPage'
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/feed" element={<FeedPage />} />
         <Route path="/lab" element={<GraphLabPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="/add-topics" element={<AddTopicsPage mode="add" />} />
         <Route path="*" element={<div className="p-6"><h1>404 - Page Not Found</h1></div>} />
       </Routes>
     </ThreePanelLayout>
