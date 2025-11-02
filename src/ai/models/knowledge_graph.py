@@ -35,10 +35,7 @@ class KnowledgeGraphNode(Base, TimestampMixin):
     entity = orm_relationship("ExtractedEntity", backref="graph_node")
     
     __table_args__ = (
-        CheckConstraint(
-            "node_type IN ('entity', 'concept', 'event')",
-            name='check_node_type'
-        ),
+        # Flexible node types - no hardcoded constraint
         CheckConstraint(
             'degree >= 0',
             name='check_non_negative_degree'

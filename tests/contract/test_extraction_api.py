@@ -149,23 +149,29 @@ class TestEntityExtractionAPIContract:
                 assert 0.0 <= entity["confidence"] <= 1.0
                 assert isinstance(entity["positions"], list)
     
-    def test_entity_types_validation(self):
-        """Test that only valid entity types are accepted"""
-        valid_types = ['organization', 'person', 'funding_amount', 'date', 'location']
+    def test_flexible_entity_types(self):
+        """Test that system accepts flexible entity types (FR-001)"""
+        # Test with various entity types including custom ones
+        test_types = [
+            ['organization', 'person'],
+            ['company', 'product', 'technology'],
+            ['location', 'event', 'concept'],
+            None  # None should extract all types
+        ]
         
-        for entity_type in valid_types:
+        for entity_types in test_types:
             request_data = {
                 "document_id": "550e8400-e29b-41d4-a716-446655440000",
                 "content": "Test content",
                 "document_type": "text",
                 "extraction_config": {
-                    "entity_types": [entity_type]
-                }
+                    "entity_types": entity_types
+                } if entity_types else {}
             }
             
             response = client.post("/ai/v1/extract-entities", json=request_data)
-            # Should not reject valid entity types
-            assert response.status_code in [200, 202, 422]  # 422 only for other validation issues
+            # Should accept any entity types or None
+            assert response.status_code in [200, 202]
     
     def test_priority_levels(self):
         """Test that all priority levels are accepted"""

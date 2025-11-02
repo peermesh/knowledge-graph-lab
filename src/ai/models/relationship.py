@@ -56,10 +56,7 @@ class EntityRelationship(Base, TimestampMixin):
             'source_entity_id != target_entity_id',
             name='check_no_self_relationships'
         ),
-        CheckConstraint(
-            "relationship_type IN ('fund', 'partner', 'acquire', 'compete', 'collaborate', 'mention')",
-            name='check_relationship_type'
-        ),
+        # Flexible relationship types - no hardcoded constraint (FR-004)
     )
     
     def __repr__(self):

@@ -48,10 +48,7 @@ class ExtractedEntity(Base, TimestampMixin):
             'confidence >= 0.00 AND confidence <= 1.00',
             name='check_confidence_range'
         ),
-        CheckConstraint(
-            "entity_type IN ('organization', 'person', 'funding_amount', 'date', 'location')",
-            name='check_entity_type'
-        ),
+        # Flexible entity types - no hardcoded constraint (FR-001)
     )
     
     def __repr__(self):

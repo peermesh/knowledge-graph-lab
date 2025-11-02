@@ -17,13 +17,13 @@ router = APIRouter(prefix="/ai/v1", tags=["entity-extraction"])
 # Request/Response Models
 class ExtractionConfig(BaseModel):
     """Configuration for entity extraction"""
-    entity_types: List[str] = Field(
-        default=['organization', 'person', 'funding_amount', 'date', 'location'],
-        description="Entity types to extract"
+    entity_types: Optional[List[str]] = Field(
+        default=None,
+        description="Entity types to extract (None = extract all types detected)"
     )
-    relationship_types: List[str] = Field(
-        default=['fund', 'partner', 'acquire', 'compete', 'collaborate'],
-        description="Relationship types to identify"
+    relationship_types: Optional[List[str]] = Field(
+        default=None,
+        description="Relationship types to identify (None = identify all types detected)"
     )
     confidence_threshold: float = Field(
         default=0.7,
@@ -31,9 +31,9 @@ class ExtractionConfig(BaseModel):
         le=1.0,
         description="Minimum confidence score"
     )
-    language: Optional[str] = Field(
-        default="en",
-        description="Document language (en, es, fr, zh)"
+    source_type: str = Field(
+        default="unknown",
+        description="Document source type for reliability scoring"
     )
 
 
@@ -225,7 +225,7 @@ async def _extract_entities(
         entity_types=config.entity_types,
         relationship_types=config.relationship_types,
         confidence_threshold=config.confidence_threshold,
-        language=config.language
+        source_type=config.source_type
     )
     
     # Deduplicate entities

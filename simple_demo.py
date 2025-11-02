@@ -46,7 +46,7 @@ def show_improvements():
     ]
 
     for feature, old, new in improvements:
-        logger.info(f"📊 {feature"25"} | ❌ {old"30"} | ✅ {new}")
+        logger.info(f"📊 {feature:25} | ❌ {old:30} | ✅ {new}")
 
     logger.info("")
 

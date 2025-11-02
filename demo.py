@@ -83,7 +83,7 @@ class KnowledgeGraphDemo:
         ]
 
         for entity in sample_entities:
-            print(f"   • {entity['text']} ({entity['type']}) - {entity['confidence']".2f"}")
+            print(f"   • {entity['text']} ({entity['type']}) - {entity['confidence']:.2f}")
 
         print(f"\n   📈 Total: {len(sample_entities)} entities extracted with {len(set(e['type'] for e in sample_entities))} unique types")
         print("")
@@ -120,7 +120,7 @@ class KnowledgeGraphDemo:
         ]
 
         for rel in sample_relationships:
-            print(f"   • {rel['source']} → {rel['target']} ({rel['type']}) - {rel['confidence']".2f"}")
+            print(f"   • {rel['source']} → {rel['target']} ({rel['type']}) - {rel['confidence']:.2f}")
 
         print(f"\n   📈 Total: {len(sample_relationships)} relationships with {len(set(r['type'] for r in sample_relationships))} unique types")
         print("")
