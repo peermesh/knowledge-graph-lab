@@ -4,20 +4,21 @@ services:
   frontend:
     build: .
     ports:
-      - "3000:3000"
+      - "4300:80"
     environment:
       - VITE_API_BASE_URL=http://localhost:8000/api/v1
       - VITE_WEBSOCKET_URL=ws://localhost:8000/ws
       - VITE_DEBUG=true
-    volumes:
-      - ./src:/app/src
-      - /app/node_modules
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 30s
+    
+    # Reserved for: Knowledge Graph Lab Frontend Module
+    # Branch: D-JSimpson/work
+    # Directory: frontend
 
 networks:
   default:
