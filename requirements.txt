@@ -3,12 +3,13 @@ fastapi==0.104.1
 uvicorn[standard]==0.24.0
 python-multipart==0.0.6
 
-# AI/ML
-langchain==0.0.331
-langchain-openai==0.0.2
-langchain-anthropic==0.0.1
+# AI/ML (Updated for Pydantic v2 compatibility)
+langchain==0.1.0
+langchain-openai==0.0.5
+langchain-anthropic==0.1.1
+langchain-core==0.1.23
 openai>=1.6.1,<2.0.0
-anthropic>=0.8.0,<0.9.0
+anthropic>=0.18.0
 
 # Vector Database
 qdrant-client==1.6.4
