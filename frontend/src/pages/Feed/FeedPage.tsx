@@ -7,6 +7,7 @@ import { Input } from '@/components/Common/Input'
 import { ResearchItemCard } from '@/components/Feed/ResearchItemCard'
 import { useGraphStore } from '@/store/useGraphStore'
 import { useUIStore } from '@/store/useUIStore'
+import { api } from '@/services/api'
 import type { ResearchItem } from '@/types'
 
 export function FeedPage() {
@@ -20,68 +21,30 @@ export function FeedPage() {
   const { addNotification } = useUIStore()
   const { addEntity } = useGraphStore()
 
-  // Mock data for demonstration
-  const mockItems: ResearchItem[] = [
-    {
-      id: '1',
-      title: 'AI Breakthrough in Entity Recognition',
-      summary: 'New research shows 95% accuracy in extracting complex entity relationships from unstructured text, revolutionizing knowledge graph construction.',
-      content_type: 'article',
-      quality_score: 0.95,
-      relevance_score: 0.92,
-      entity_tags: ['artificial_intelligence', 'entity_recognition', 'knowledge_graphs'],
-      topics: ['AI', 'Machine Learning', 'NLP'],
-      published_at: '2025-01-23T10:00:00Z',
-      created_at: '2025-01-23T09:00:00Z',
-      updated_at: '2025-01-23T09:00:00Z',
-      created_by: 'ai_system',
-      is_active: true,
-    },
-    {
-      id: '2',
-      title: 'Creator Economy Investment Trends 2025',
-      summary: 'Analysis of $2.3B in creator economy investments shows growing focus on AI-powered content creation and distribution platforms.',
-      content_type: 'insight',
-      quality_score: 0.88,
-      relevance_score: 0.85,
-      entity_tags: ['creator_economy', 'investment', 'ai_content'],
-      topics: ['Finance', 'Investment', 'Creator Economy'],
-      published_at: '2025-01-23T08:30:00Z',
-      created_at: '2025-01-23T08:00:00Z',
-      updated_at: '2025-01-23T08:00:00Z',
-      created_by: 'ai_system',
-      is_active: true,
-    },
-    {
-      id: '3',
-      title: 'Multi-Language Entity Extraction Advances',
-      summary: 'Recent developments in cross-lingual entity recognition achieve 87% accuracy across English, Spanish, French, and Chinese datasets.',
-      content_type: 'article',
-      quality_score: 0.91,
-      relevance_score: 0.89,
-      entity_tags: ['multilingual', 'entity_extraction', 'nlp'],
-      topics: ['AI', 'Natural Language Processing', 'International'],
-      published_at: '2025-01-23T07:15:00Z',
-      created_at: '2025-01-23T07:00:00Z',
-      updated_at: '2025-01-23T07:00:00Z',
-      created_by: 'ai_system',
-      is_active: true,
-    },
-  ]
-
   useEffect(() => {
-    // Simulate API call to fetch feed items
+    // Fetch feed items from mock API
     const loadItems = async () => {
       setIsLoading(true)
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1000))
-
-      setItems(mockItems)
-      setIsLoading(false)
+      try {
+        const response = await api.getFeed({ limit: 20, offset: page * 20 })
+        setItems(prevItems => page === 0 ? response.data : [...prevItems, ...response.data])
+        setHasMore(response.pagination?.has_more || false)
+        setIsLoading(false)
+        
+        console.log(`✓ Loaded ${response.data.length} research items from MSW mock API`)
+      } catch (error: any) {
+        setIsLoading(false)
+        console.error('Failed to load feed:', error)
+        addNotification({
+          type: 'error',
+          message: `Failed to load feed: ${error.message}`,
+          duration: 5000,
+        })
+      }
     }
 
     loadItems()
-  }, [])
+  }, [page])
 
   const handleSaveItem = (itemId: string) => {
     addNotification({

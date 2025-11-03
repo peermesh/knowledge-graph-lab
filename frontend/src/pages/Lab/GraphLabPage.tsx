@@ -13,6 +13,7 @@ import { Button } from '@/components/Common/Button'
 import { SigmaGraph } from '@/components/Graph/SigmaGraph'
 import { useGraphStore } from '@/store/useGraphStore'
 import { useUIStore } from '@/store/useUIStore'
+import { api } from '@/services/api'
 import type { Entity, EntityRelationship } from '@/types'
 
 export function GraphLabPage() {
@@ -35,85 +36,46 @@ export function GraphLabPage() {
 
   const { addNotification } = useUIStore()
 
-  // Mock data for demonstration
-  const mockEntities: Entity[] = [
-    {
-      id: 'org1',
-      name: 'OpenAI',
-      type: 'organization',
-      confidence: 0.95,
-      source: 'article_001',
-      source_type: 'article',
-      extraction_method: 'llm',
-      metadata: { founded: '2015', headquarters: 'San Francisco' },
-      created_at: '2025-01-23T10:00:00Z',
-      updated_at: '2025-01-23T10:00:00Z',
-      is_active: true,
-    },
-    {
-      id: 'person1',
-      name: 'Sam Altman',
-      type: 'person',
-      confidence: 0.92,
-      source: 'article_001',
-      source_type: 'article',
-      extraction_method: 'llm',
-      metadata: { title: 'CEO', company: 'OpenAI' },
-      created_at: '2025-01-23T10:00:00Z',
-      updated_at: '2025-01-23T10:00:00Z',
-      is_active: true,
-    },
-    {
-      id: 'org2',
-      name: 'Microsoft',
-      type: 'organization',
-      confidence: 0.88,
-      source: 'article_002',
-      source_type: 'article',
-      extraction_method: 'llm',
-      metadata: { founded: '1975', headquarters: 'Redmond' },
-      created_at: '2025-01-23T10:00:00Z',
-      updated_at: '2025-01-23T10:00:00Z',
-      is_active: true,
-    },
-  ]
-
-  const mockRelationships: EntityRelationship[] = [
-    {
-      id: 'rel1',
-      source_entity_id: 'org1',
-      target_entity_id: 'person1',
-      relationship_type: 'partner',
-      confidence: 0.87,
-      strength: 0.8,
-      evidence: 'Sam Altman is CEO of OpenAI',
-      temporal_context: { start_date: '2019-01-01' },
-      metadata: { role: 'CEO' },
-      created_at: '2025-01-23T10:00:00Z',
-      updated_at: '2025-01-23T10:00:00Z',
-    },
-    {
-      id: 'rel2',
-      source_entity_id: 'org1',
-      target_entity_id: 'org2',
-      relationship_type: 'fund',
-      confidence: 0.92,
-      strength: 0.9,
-      evidence: 'Microsoft invested $10B in OpenAI',
-      temporal_context: { start_date: '2023-01-01' },
-      metadata: { amount: '$10B', date: '2023' },
-      created_at: '2025-01-23T10:00:00Z',
-      updated_at: '2025-01-23T10:00:00Z',
-    },
-  ]
-
   useEffect(() => {
-    // Initialize graph data
-    if (entities.length === 0) {
-      // Load mock data
-      setEntities(mockEntities)
-      setRelationships(mockRelationships)
+    // Load graph data from mock API
+    const loadGraphData = async () => {
+      if (entities.length > 0) return // Already loaded
+      
+      try {
+        // Fetch entities (limit to 100 for better visualization)
+        const entitiesResponse = await api.getEntities({ limit: 100, confidence_min: 0.6 })
+        setEntities(entitiesResponse.data)
+        
+        // Create entity ID set for filtering relationships
+        const entityIds = new Set(entitiesResponse.data.map(e => e.id))
+        
+        // Fetch relationships for these entities
+        const relationshipsResponse = await api.getRelationships({ limit: 200, confidence_min: 0.6 })
+        
+        // Filter relationships to only include ones where both source and target exist in loaded entities
+        const validRelationships = relationshipsResponse.data.filter(r => 
+          entityIds.has(r.source_entity_id) && entityIds.has(r.target_entity_id)
+        )
+        setRelationships(validRelationships)
+        
+        console.log(`✓ Loaded ${entitiesResponse.data.length} entities and ${validRelationships.length} relationships from MSW mock API (${relationshipsResponse.data.length - validRelationships.length} filtered out)`)
+        
+        addNotification({
+          type: 'success',
+          message: `Loaded ${entitiesResponse.data.length} entities into graph`,
+          duration: 3000,
+        })
+      } catch (error: any) {
+        console.error('Failed to load graph data:', error)
+        addNotification({
+          type: 'error',
+          message: `Failed to load graph: ${error.message}`,
+          duration: 5000,
+        })
+      }
     }
+    
+    loadGraphData()
   }, [entities.length, setEntities, setRelationships])
 
   const handleZoomIn = () => {

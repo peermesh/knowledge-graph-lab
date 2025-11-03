@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "^4.8.2",
+    "@faker-js/faker": "^8.3.1",
     "@tanstack/react-query-devtools": "^5.90.2",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
@@ -65,6 +66,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "jsdom": "^23.0.1",
+    "msw": "^2.0.11",
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
     "tailwindcss": "^3.3.6",
@@ -90,5 +92,10 @@
     "ux"
   ],
   "author": "Knowledge Graph Lab Team",
-  "license": "MIT"
+  "license": "MIT",
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }
