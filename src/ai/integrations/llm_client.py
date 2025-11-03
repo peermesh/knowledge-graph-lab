@@ -46,26 +46,34 @@ class LLMClient:
         if not OPENAI_AVAILABLE or not settings.openai_api_key:
             return None
         
-        return ChatOpenAI(
-            model="gpt-4",
-            temperature=0.1,
-            api_key=settings.openai_api_key,
-            timeout=30,
-            max_retries=3
-        )
+        try:
+            return ChatOpenAI(
+                model="gpt-4",
+                temperature=0.1,
+                api_key=settings.openai_api_key,
+                timeout=30,
+                max_retries=3
+            )
+        except Exception as e:
+            logger.error(f"Failed to create OpenAI client: {e}")
+            return None
     
     def _create_anthropic_client(self):
         """Create Anthropic Claude client as fallback"""
         if not ANTHROPIC_AVAILABLE or not settings.anthropic_api_key:
             return None
         
-        return ChatAnthropic(
-            model="claude-3-opus-20240229",
-            temperature=0.1,
-            api_key=settings.anthropic_api_key,
-            timeout=30,
-            max_retries=3
-        )
+        try:
+            return ChatAnthropic(
+                model="claude-3-5-sonnet-20241022",
+                temperature=0.1,
+                api_key=settings.anthropic_api_key,
+                timeout=30,
+                max_retries=3
+            )
+        except Exception as e:
+            logger.error(f"Failed to create Anthropic client: {e}")
+            return None
     
     async def extract_entities(
         self,
