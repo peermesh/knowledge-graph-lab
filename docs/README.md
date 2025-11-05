@@ -40,6 +40,31 @@ Find documentation in three main sections:
 - [Research Methodology](design/research/methodology.md) - Depth-First Distillation approach
 - [User Journeys](design/user-journeys/) - 61 use cases across 6 domains
 
+### ⚡ Shared Module Requirements (modules/shared/)
+**Two-level interoperability system that all modules must follow:**
+
+#### 🚀 **Standalone Module** (MVP - Required)
+- **[Standalone Module Requirements](modules/shared/standalone-modules/README.md)** - Basic interoperability for immediate team handover
+- ✅ **Docker containers** with standard setup
+- ✅ **Single PostgreSQL** database with module schemas
+- ✅ **Basic REST APIs** with OpenAPI documentation
+- ✅ **JWT authentication** managed by Backend module
+- ✅ **Development environment** with mocks and offline capability
+
+#### 🔬 **PeerMesh Module** (Advanced - Optional)
+- **[PeerMesh Module Requirements](modules/shared/peermesh-modules/README.md)** - Sophisticated features for stretch goals
+- ✅ **Multi-database architecture** (PostgreSQL + Qdrant + OpenSearch + TimescaleDB)
+- ✅ **Parallel search** across specialized backends
+- ✅ **Event-driven architecture** with NATS JetStream
+- ✅ **Dual-layer authorization** (SpiceDB + OPA)
+- ✅ **Advanced observability** (OpenTelemetry, Prometheus, Grafana)
+
+- **[Implementation Guide](modules/shared/README.md)** - Complete guide on how to use both levels of the shared module system
+
+**Quick validation:** `python3 scripts/validate-standalone-compliance.py docs/modules/backend-architecture/Backend-Architecture-Spec.md`
+
+**Quick Reference:** [SHARED-MODULE-REQUIREMENTS-QUICK-REF.md](modules/SHARED-MODULE-REQUIREMENTS-QUICK-REF.md) - Complete checklist and agent prompt
+
 ### Team Resources (team/)
 **Everything for productivity:**
 

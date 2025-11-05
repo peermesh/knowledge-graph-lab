@@ -14,16 +14,33 @@ A system that discovers opportunities, understands relationships, and delivers p
 
 ## Architecture Overview
 
-The platform consists of four integrated modules:
+The platform consists of four integrated modules that must follow shared interoperability standards:
 
 - **Backend Infrastructure** - Docker, databases, APIs, authentication
 - **Frontend Interface** - React UI, visualizations, user experience
 - **AI Intelligence** - LLMs, knowledge graphs, RAG, entity extraction
 - **Publishing System** - Multi-channel distribution, personalization
 
-## RequirementsKit: Requirements Development System
+### ⚡ Shared Module Requirements (Critical)
+All modules follow a two-level interoperability system:
 
-This repository includes **RequirementsKit**, a production-ready system for creating comprehensive requirements documentation that feeds into SpecKit's `/specify` command for implementation-ready specifications.
+**🚀 Standalone Module (MVP - Required):** Basic interoperability for immediate implementation
+**[Standalone Module Requirements](docs/modules/shared/standalone-modules/README.md)** - Docker containers, PostgreSQL, basic APIs
+
+**🔬 PeerMesh Module (Advanced - Optional):** Sophisticated features for stretch goals
+**[PeerMesh Module Requirements](docs/modules/shared/peermesh-modules/README.md)** - Multi-database, parallel search, event-driven architecture
+
+**Quick Reference:** [SHARED-MODULE-REQUIREMENTS-QUICK-REF.md](docs/modules/SHARED-MODULE-REQUIREMENTS-QUICK-REF.md) - Complete checklist and agent prompts
+
+**Quick validation:** `python3 scripts/validate-standalone-compliance.py docs/modules/backend-architecture/Backend-Architecture-Spec.md`
+
+## Development Kits
+
+This repository includes production-ready development kits for specification and design work.
+
+### RequirementsKit: Requirements Development System
+
+**RequirementsKit** creates comprehensive requirements documentation that feeds into SpecKit's `/specify` command for implementation-ready specifications.
 
 **Quick Start:**
 
@@ -31,20 +48,37 @@ This repository includes **RequirementsKit**, a production-ready system for crea
 - **5-Step Guide:** [.dev/kits/requirements-kit/guides/quickstart.md](.dev/kits/requirements-kit/guides/quickstart.md)
 - **Extract to Your Project:** [.dev/pre-spec-kit/package-extraction.md](.dev/pre-spec-kit/package-extraction.md)
 
-**What You Get:**
-
-- 2 templates (simple starter + comprehensive format)
-- AI expansion rules (transforms simple → comprehensive)
-- Quick reference guides (quickstart + cheat sheet)
-- Project terminology and conventions
-
-**Proven Results:**
-
-- Publishing Tools module: 625-line PRD, GO recommendation, 100% validation pass
-- Clean, minimal interface (7 essential files)
-- Development artifacts available in `.dev/pre-spec-kit/` for advanced users
-
 **Version:** 1.0.0 (2025-10-09)
+
+### Design Kit: UX/UI Design Specifications
+
+**Design Kit** generates comprehensive UX/UI design specifications through a 5-phase workflow:
+
+1. Context Intake - Gather project context and requirements
+2. Information Architecture - Design information organization and navigation
+3. Interaction Design - Define interaction patterns and user flows
+4. Visual Design - Create visual design system and component styling
+5. Implementation Guidelines - Generate technical implementation standards
+
+**Quick Start:**
+
+```bash
+.dev/kits/design-kit/scripts/bash/create-design-workspace.sh \
+  --phase context-intake \
+  "Your project description"
+```
+
+- **Documentation:** [.dev/kits/design-kit/README.md](.dev/kits/design-kit/README.md)
+- **Status:** ✅ Production Ready
+- **Size:** ~2,000 lines (simplified from 5,433 lines Python)
+
+### Complete Kit Workflow
+
+The kits work together in sequence:
+
+**Discovery → Requirements → Design → Spec → Validation**
+
+See [.dev/kits/README.md](.dev/kits/README.md) for complete pipeline walkthrough and [.dev/kits/KITS-INDEX.md](.dev/kits/KITS-INDEX.md) for kit descriptions.
 
 ## Learn More
 - [Project Vision](docs/design/strategy/vision.md) - Why we're building this
@@ -59,10 +93,21 @@ knowledge-graph-lab/
 ├── docs/
 │   ├── team/           # Team member guides and resources
 │   ├── modules/        # Module specifications and assignments
+│   │   └── shared/     # ⚡ Shared module requirements (Docker, APIs, auth)
 │   ├── design/         # Architecture and requirements
 │   ├── research/       # Research methodology and tools
+├── scripts/           # ⚡ Validation scripts for shared requirements
 ├── src/               # Source code (Phase 2+)
 └── tests/             # Test suites (Phase 2+)
+```
+
+### 🔧 Quick Commands for Module Compliance
+```bash
+# Validate any module against shared requirements
+python3 scripts/validate-standalone-compliance.py docs/modules/backend-architecture/Backend-Architecture-Spec.md
+
+# Use the agent prompt to apply requirements to any module
+# Copy the prompt from: docs/modules/shared/standalone-modules/README.md (bottom section)
 ```
 
 ## Development Artifacts

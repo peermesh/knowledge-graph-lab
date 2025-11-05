@@ -717,10 +717,161 @@ If AI + Backend done in parallel, then Frontend + Publishing:
 
 **What /tasks creates**:
 - Ordered task list
-- Dependencies
-- Success criteria per task
 
-#### Step 4.4: Implementation
+#### Step 4.4: Sanity Check & Validation
+**Purpose**: Verify SpecKit output matches requirements and follows constitution
+
+**Duration**: 2-3 hours
+
+**Step 4.4.1: File Structure Verification**
+```
+specs/[branch-name]/
+├── spec.md              # Generated specification
+├── plan.md              # Implementation plan
+├── tasks.md             # Task breakdown
+├── contracts/           # API specifications
+└── data-model.md        # Data structures
+```
+
+**Step 4.4.2: Constitution Compliance Check**
+📖 **MUST READ FIRST**: `memory/constitution.md`
+
+**Key Requirements for ALL Modules:**
+
+✅ **Modular Independence** (Constitution Principle II)
+- Each module must function as a complete, standalone system
+- Must run independently in Docker containers
+- No inter-module dependencies until Phase 5 integration
+
+✅ **Quality Gates** (Constitution Principle III)
+- Must pass 5-phase review process
+- Automated validation required
+- Technical feasibility review required
+
+✅ **Performance Standards** (Constitution Principle IV)
+- Container startup under 30 seconds
+- API response times under 500ms
+- 99% uptime success rate
+
+✅ **Development Standards**
+- Docker containerization starting Phase 3
+- Comprehensive automated testing (80%+ coverage)
+- Complete documentation
+
+**Step 4.4.3: Input vs Output Comparison**
+
+**Step 1: Read Your Module Input**
+📖 **Read**: `docs/team/deliverables/requirements-kit-v2/[your-module]-spec.md`
+
+**Step 2: Read SpecKit Output**
+📖 **Read**: `specs/[branch-name]/spec.md`
+
+**Step 3: Create Missing Items List**
+
+Compare the input spec with the output spec and document:
+
+❌ **Missing Requirements**: Things from input that aren't in the output spec
+❌ **Incorrect Implementation**: Requirements that are implemented wrong
+❌ **Missing Universal Compliance**: Things that don't follow the constitution
+❌ **Technical Issues**: Implementation details that don't make sense
+
+**Common Issues to Look For:**
+
+1. **Missing Docker Requirements**
+   - Does the spec mention Docker containerization?
+   - Does it specify container startup time < 30 seconds?
+   - Does it include health checks?
+
+2. **Missing Testing Requirements**
+   - Are there unit tests specified?
+   - Are there integration tests?
+   - Is there 80%+ test coverage requirement?
+
+3. **Missing Performance Requirements**
+   - API response time < 500ms?
+   - 99% uptime requirement?
+   - Resource usage limits?
+
+4. **Missing Documentation Requirements**
+   - API documentation?
+   - Setup instructions?
+   - Troubleshooting guides?
+
+5. **Constitution Violations**
+   - Does it assume inter-module dependencies too early?
+   - Does it skip required quality gates?
+   - Does it ignore evidence-based decision requirements?
+
+**Step 4.4.4: Update the Spec.md File**
+
+**If you find missing items, update the spec.md file:**
+
+```bash
+# Edit the generated spec file
+nano specs/[branch-name]/spec.md
+
+# Add missing sections from your analysis
+# Ensure all requirements from input are covered
+# Ensure constitution compliance is explicit
+
+# Add this section to document issues found:
+## Issues and Gaps Identified
+
+### Missing from SpecKit Output
+- [ ] Requirement from input spec not addressed
+- [ ] Constitution compliance not enforced
+- [ ] Performance requirements missing
+
+### Technical Issues
+- [ ] Docker configuration incomplete
+- [ ] API contracts missing
+- [ ] Testing strategy unclear
+
+### Documentation Gaps
+- [ ] Missing setup instructions
+- [ ] API documentation incomplete
+- [ ] Troubleshooting guides missing
+```
+
+**Step 4.4.5: Docker Integration Validation**
+
+**Verify the spec includes:**
+- ✅ Dockerfile exists and is valid
+- ✅ Starts in under 30 seconds
+- ✅ All dependencies properly declared
+- ✅ Ports properly exposed
+- ✅ Health checks implemented
+
+**Test the Docker setup:**
+```bash
+# If there's a Dockerfile in your module directory
+cd [your-module-directory]
+docker build -t [module-name] .
+docker run -p [port]:[port] [module-name]
+
+# Test endpoints
+curl http://localhost:[port]/health
+```
+
+**Step 4.4.6: Document Issues and Gaps**
+
+**For each gap identified, determine:**
+
+1. **Is this critical?** (Blocks development)
+2. **Is this enhancement?** (Can be added later)
+3. **Who needs to fix it?** (You, team lead, or other developer)
+4. **What's the fix?** (Specific changes needed)
+
+**Step 4.4.7: Final Validation**
+
+**Before proceeding to implementation:**
+- [ ] All requirements from input preserved in output
+- [ ] Constitution compliance verified
+- [ ] Docker integration tested and working
+- [ ] Issues documented with resolution plan
+- [ ] Ready for `/implement` command
+
+#### Step 4.5: Implementation
 **Command**: `/implement`
 **Input**: `tasks.md`
 **Output**: Working code
