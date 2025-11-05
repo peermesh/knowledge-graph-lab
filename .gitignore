@@ -33,7 +33,6 @@ desktop.ini
 ehthumbs.db
 
 # Editor/IDE
-.vscode/
 .idea/
 *.iml
 *.sublime-*
@@ -110,6 +109,5 @@ obj/
 
 # Local tooling (ignored)
 .claude/
-.cursor/
 .dev/
-.specify/
+src/
