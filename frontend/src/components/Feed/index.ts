@@ -1,1 +1,0 @@
-export { ResearchItemCard } from './ResearchItemCard'
