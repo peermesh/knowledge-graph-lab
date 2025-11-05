@@ -1,3 +1,25 @@
+# 🚨 AGENT INSTRUCTIONS - Standalone Module Requirements
+
+**📋 IMMEDIATE ACTION REQUIRED:**
+
+If you are an AI agent working with this specification:
+
+1. **ASK THE USER:** "Which module are you implementing? (backend-architecture, frontend-design, ai-development, or publishing-tools)"
+
+2. **READ THE MODULE SPEC:** Once the user specifies the module, read the corresponding module specification file
+
+3. **COMPARE AGAINST THIS SPEC:** Check the module specification against all requirements in this document
+
+4. **GENERATE CHANGES:** Create a structured list of any missing requirements or conflicts
+
+5. **IMPLEMENT CHANGES:** Update the module specification to comply with these requirements
+
+6. **VALIDATE COMPLIANCE:** Run the validation script to confirm compliance
+
+**Remember:** This specification overrides any conflicting requirements in individual module specs.
+
+---
+
 # Standalone Module Requirements
 
 **Document Version:** 1.0
@@ -221,6 +243,95 @@ All modules must validate against:
 5. **Development Setup** - Local development with mocks
 
 **This specification is complete and self-contained. No external references required.**
+
+---
+
+## 🤖 AGENT PROMPT: Standalone Module Implementation
+
+**Copy and use this prompt when working with the Standalone Module specification:**
+
+```
+## AGENT TASK: Implement Standalone Module Requirements
+
+You are implementing the Standalone Module requirements for the Knowledge Graph Lab platform. This specification is definitive and overrides any conflicting requirements in individual module specifications.
+
+### STEP 1: Identify the Target Module
+**ASK THE USER:** "Which module are you implementing? Please specify one of:
+- backend-architecture (FastAPI backend services)
+- frontend-design (React frontend application)
+- ai-development (AI/ML processing services)
+- publishing-tools (Content distribution services)"
+
+### STEP 2: Read Current Module Specification
+**LOCATIONS:**
+- Backend: `docs/modules/backend-architecture/Backend-Architecture-Spec.md`
+- Frontend: `docs/modules/frontend-design/Frontend-Design-Spec.md`
+- AI: `docs/modules/ai-development/AI-Development-Spec.md`
+- Publishing: `docs/modules/publishing-tools/Publishing-Tools-Spec.md`
+
+### STEP 3: Compare Against Requirements
+Check the module specification against ALL requirements in this document:
+- ✅ Container Architecture (Docker, ports, health checks)
+- ✅ Database Standards (PostgreSQL, schemas, migrations)
+- ✅ API Standards (REST, OpenAPI, error handling)
+- ✅ Authentication Integration (JWT, roles, security)
+- ✅ Basic Observability (logging, health endpoints)
+- ✅ Mock Implementations (development mode, offline capability)
+- ✅ Contract-First Development (API specs before implementation)
+
+### STEP 4: Generate Implementation Plan
+For each missing requirement, create a specific implementation task:
+
+**FORMAT:**
+```
+## IMPLEMENTATION REQUIRED
+
+### [Module Name] - [Requirement Category]
+
+**Missing Element:** [Specific requirement not implemented]
+
+**Implementation:** [How to implement this requirement]
+
+**Files to Modify:** [Specific files that need changes]
+
+**Validation:** [How to verify implementation]
+```
+
+### STEP 5: Implement Changes
+For each requirement:
+1. **Update the module specification** to include the requirement
+2. **Add implementation details** with code examples if applicable
+3. **Update compliance sections** to reference this specification
+4. **Add override authority statements** where conflicts exist
+
+### STEP 6: Validate Implementation
+**REQUIRED VALIDATION:**
+```bash
+# Check compliance
+python3 scripts/validate-standalone-compliance.py docs/modules/backend-architecture/Backend-Architecture-Spec.md
+
+# Verify all requirements are present
+grep -r "Standalone Module" docs/modules/backend-architecture/
+grep -r "override" docs/modules/backend-architecture/
+```
+
+### SUCCESS CRITERIA
+- ✅ Module specification includes compliance section
+- ✅ All requirements from this specification are referenced
+- ✅ Override authority is clearly stated
+- ✅ Validation script passes for the module
+- ✅ No conflicts with individual module requirements
+
+### DELIVERABLES
+1. **Updated Module Specification** - All requirements implemented
+2. **Implementation Details** - Code examples and configuration
+3. **Validation Results** - Confirmation of compliance
+4. **Change Summary** - What was changed and why
+
+**REMEMBER:** This Standalone Module specification is definitive. Any conflicts with individual module specs must be resolved in favor of these requirements.
+```
+
+---
 
 **Next Steps:**
 - Hand this specification to team members for immediate implementation
