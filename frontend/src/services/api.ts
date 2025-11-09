@@ -115,6 +115,14 @@ class ApiClient {
     )
   }
 
+  async register(email: string, password: string, first_name: string, last_name: string) {
+    return this.request<User>(
+      'POST',
+      '/auth/register',
+      { email, password, first_name, last_name }
+    )
+  }
+
   async refreshToken(refreshToken: string) {
     return this.request<{ access_token: string; expires_in: number }>(
       'POST',
@@ -280,6 +288,8 @@ export const apiClient = new ApiClient()
 export const api = {
   // Authentication
   login: (email: string, password: string) => apiClient.login(email, password),
+  register: (email: string, password: string, firstName: string, lastName: string) => 
+    apiClient.register(email, password, firstName, lastName),
   refreshToken: (token: string) => apiClient.refreshToken(token),
   logout: () => apiClient.logout(),
   getCurrentUser: () => apiClient.getCurrentUser(),

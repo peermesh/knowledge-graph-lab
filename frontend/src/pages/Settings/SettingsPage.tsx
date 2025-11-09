@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import { Save, Moon, Sun, Monitor, Bell, Shield, Download, Trash2 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { Save, Moon, Sun, Monitor, Bell, Shield, Download, Trash2, LogOut } from 'lucide-react'
 
 import { Button } from '@/components/Common/Button'
 import { Input } from '@/components/Common/Input'
 import { useUserStore } from '@/store/useUserStore'
 import { useUIStore } from '@/store/useUIStore'
+import { api } from '@/services/api'
 
 export function SettingsPage() {
-  const { user, updateUser } = useUserStore()
+  const { user, updateUser, clearUser } = useUserStore()
   const { theme, setTheme, addNotification } = useUIStore()
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     firstName: user?.first_name || '',
@@ -68,6 +71,34 @@ export function SettingsPage() {
     })
   }
 
+  const handleLogout = async () => {
+    try {
+      await api.logout()
+      
+      // Clear tokens
+      localStorage.removeItem('access_token')
+      localStorage.removeItem('refresh_token')
+      
+      // Clear user state
+      clearUser()
+      
+      addNotification({
+        type: 'success',
+        message: 'Logged out successfully',
+        duration: 3000,
+      })
+      
+      // Navigate to login
+      navigate('/login')
+    } catch (err: any) {
+      addNotification({
+        type: 'error',
+        message: 'Failed to logout',
+        duration: 3000,
+      })
+    }
+  }
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       {/* Header */}
@@ -115,10 +146,17 @@ export function SettingsPage() {
           </div>
         </div>
 
-        <Button onClick={handleSaveProfile} className="flex items-center gap-2">
-          <Save className="w-4 h-4" />
-          Save Profile
-        </Button>
+        <div className="flex items-center justify-between">
+          <Button onClick={handleSaveProfile} className="flex items-center gap-2">
+            <Save className="w-4 h-4" />
+            Save Profile
+          </Button>
+          
+          <Button variant="outline" onClick={handleLogout} className="flex items-center gap-2 text-red-600 border-red-200 hover:bg-red-50">
+            <LogOut className="w-4 h-4" />
+            Logout
+          </Button>
+        </div>
       </div>
 
       {/* Notification Preferences */}

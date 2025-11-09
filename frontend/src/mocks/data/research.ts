@@ -110,3 +110,14 @@ export function getRandomResearchItem(): ResearchItem {
   return faker.helpers.arrayElement(mockResearchItems.filter(r => r.is_active))
 }
 
+
+
+
+
+
+
+
+
+
+
+

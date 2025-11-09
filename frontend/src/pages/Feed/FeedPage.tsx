@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, Filter, Plus } from 'lucide-react'
+import { Search, Filter, Plus, Wifi, WifiOff } from 'lucide-react'
 
 import { Button } from '@/components/Common/Button'
 import { Input } from '@/components/Common/Input'
@@ -8,6 +8,7 @@ import { ResearchItemCard } from '@/components/Feed/ResearchItemCard'
 import { useGraphStore } from '@/store/useGraphStore'
 import { useUIStore } from '@/store/useUIStore'
 import { api } from '@/services/api'
+import { websocketService } from '@/services/websocket'
 import type { ResearchItem } from '@/types'
 
 export function FeedPage() {
@@ -17,6 +18,7 @@ export function FeedPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [hasMore, setHasMore] = useState(true)
   const [page, setPage] = useState(0)
+  const [wsConnected, setWsConnected] = useState(false)
 
   const { addNotification } = useUIStore()
   const { addEntity } = useGraphStore()
@@ -45,6 +47,56 @@ export function FeedPage() {
 
     loadItems()
   }, [page])
+
+  // WebSocket connection and subscriptions
+  useEffect(() => {
+    // Update connection state
+    setWsConnected(websocketService.isConnected)
+    
+    // Subscribe to feed updates
+    const handleFeedUpdate = (data: any) => {
+      console.log('📡 Received feed update:', data)
+      
+      addNotification({
+        type: 'info',
+        message: `${data.new_items} new research ${data.new_items === 1 ? 'item' : 'items'} available`,
+        duration: 5000,
+      })
+      
+      // Optionally refresh first page
+      if (page === 0) {
+        setPage(0) // Trigger reload
+      }
+    }
+    
+    // Subscribe to notifications
+    const handleNotification = (data: any) => {
+      console.log('📡 Received notification:', data)
+      
+      addNotification({
+        type: data.type || 'info',
+        message: data.message,
+        duration: 5000,
+      })
+    }
+    
+    // Subscribe to system notifications
+    const handleSystemNotification = (data: any) => {
+      console.log('📡 Received system notification:', data)
+      setWsConnected(true)
+    }
+    
+    websocketService.subscribe('feed_update', handleFeedUpdate)
+    websocketService.subscribe('notification', handleNotification)
+    websocketService.subscribe('system_notification', handleSystemNotification)
+    
+    // Cleanup subscriptions on unmount
+    return () => {
+      websocketService.unsubscribe('feed_update', handleFeedUpdate)
+      websocketService.unsubscribe('notification', handleNotification)
+      websocketService.unsubscribe('system_notification', handleSystemNotification)
+    }
+  }, [page, addNotification])
 
   const handleSaveItem = (itemId: string) => {
     addNotification({
@@ -106,7 +158,26 @@ export function FeedPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            {/* WebSocket Status Indicator */}
+            <div className={`flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium ${
+              wsConnected 
+                ? 'bg-green-50 text-green-700 border border-green-200' 
+                : 'bg-gray-50 text-gray-500 border border-gray-200'
+            }`}>
+              {wsConnected ? (
+                <>
+                  <Wifi className="w-3 h-3" />
+                  <span>Live</span>
+                </>
+              ) : (
+                <>
+                  <WifiOff className="w-3 h-3" />
+                  <span>Offline</span>
+                </>
+              )}
+            </div>
+            
             <Button variant="outline" size="sm">
               <Filter className="w-4 h-4 mr-2" />
               Filters

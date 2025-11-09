@@ -254,7 +254,15 @@ class WebSocketService {
 }
 
 // Create singleton instance
-export const websocketService = new WebSocketService()
+const realWebSocketService = new WebSocketService()
+
+// Import mock service for development
+import { mockWebSocketService } from './mockWebSocket'
+
+// Use mock in development, real WebSocket in production
+export const websocketService = import.meta.env.DEV 
+  ? mockWebSocketService 
+  : realWebSocketService
 
 // React hook for using WebSocket service
 export function useWebSocket() {

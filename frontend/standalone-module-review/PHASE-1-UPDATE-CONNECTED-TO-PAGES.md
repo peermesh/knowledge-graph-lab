@@ -350,3 +350,14 @@ frontend/src/pages/Lab/GraphLabPage.tsx
 **Phase 1:** NOW 100% complete with pages actually using the data  
 **Ready for:** Phase 2 (Simulated WebSocket + Auth Pages)
 
+
+
+
+
+
+
+
+
+
+
+

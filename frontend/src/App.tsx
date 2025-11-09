@@ -6,6 +6,8 @@ import { GraphLabPage } from '@/pages/Lab/GraphLabPage'
 import { SettingsPage } from '@/pages/Settings/SettingsPage'
 import { AddTopicsPage } from '@/pages/AddTopics/AddTopicsPage'
 import { OnboardingPage } from '@/pages/Onboarding/OnboardingPage'
+import { LoginPage } from '@/pages/Login/LoginPage'
+import { RegisterPage } from '@/pages/Register/RegisterPage'
 
 // Design Iterations
 import { DesignShowcase } from '@/design-iterations/showcase/DesignShowcase'
@@ -22,6 +24,10 @@ import { SettingsPageV3 } from '@/design-iterations/iteration-3/pages/SettingsPa
 function App() {
   return (
     <Routes>
+      {/* Authentication Routes - outside of ThreePanelLayout */}
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      
       {/* Design Showcase - outside of ThreePanelLayout */}
       <Route path="/design-showcase" element={<DesignShowcase />} />
       
