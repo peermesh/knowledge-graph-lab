@@ -83,9 +83,11 @@ def create_application() -> FastAPI:
     )
 
     # Add CORS middleware for frontend integration
+    # In DEBUG mode, allow all origins. In production, use configured origins.
+    cors_origins = ["*"] if settings.DEBUG else settings.CORS_ORIGINS
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.CORS_ORIGINS,
+        allow_origins=cors_origins,
         allow_credentials=True,
         allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allow_headers=["*"],
