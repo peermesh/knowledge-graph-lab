@@ -1,0 +1,11 @@
+Claim,Source_ID,Quote,Confidence
+Design systems improve development velocity,web:285,"Scalable design systems save time, ensure consistency, and grow with your team",High
+Monorepo architecture scales better for design systems,web:100,Monorepos house all frontend code in one repo while maintaining modular boundaries,Medium
+Token-first architecture enables multi-brand theming,web:42,Token-first design systems: architecting scalable multi-platform experiences,High
+MIT license dominates open-source design systems,academic_df,MIT license used by 57% of surveyed design systems vs 33% Apache-2.0,High
+Component-based architecture shows predictable scaling,web:290,Component-based systems show predictable scalability patterns with proper architecture,Medium
+Governance models affect adoption rates,web:285,Design system governance oversees maintenance and evolution to ensure consistency,High
+Documentation quality correlates with system success,web:25,"Clear documentation enables teams to onboard quickly, collaborate better, and align",High
+Micro-frontend patterns complement design systems,web:102,How Microfrontends and Design Systems Work Together for scalable architecture,Medium
+Apache 2.0 provides better patent protection,web:245,Apache License includes explicit patent grant from contributors to users,High
+Bottom-up component development improves quality,web:288,They valued a bottom-up approach for design system creation and maintenance,High

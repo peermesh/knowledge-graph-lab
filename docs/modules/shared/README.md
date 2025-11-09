@@ -128,12 +128,107 @@ python3 scripts/validate-standalone-compliance.py docs/modules/frontend-design/F
 python3 .dev/scripts/check_links.py docs/modules/shared/
 ```
 
-### **Agent Prompt for Specification Updates**
-Use the comprehensive agent prompt in this file to:
-- Review specifications for compliance
-- Identify missing requirements
-- Generate change lists
-- Implement systematic updates
+## 🤖 Agent Prompts for Direct Implementation
+
+**Three complete agent prompts are available for immediate use:**
+
+### 📋 **Standalone Module Implementation Prompt**
+**Location:** `docs/modules/shared/standalone-modules/README.md` (bottom section)
+- **Purpose:** Implement basic interoperability requirements
+- **Scope:** Container architecture, basic APIs, authentication, development setup
+- **Copy the prompt** and give it to any agent for immediate implementation
+
+### 🔬 **PeerMesh Module Implementation Prompt**
+**Location:** `docs/modules/shared/peermesh-modules/README.md` (bottom section)
+- **Purpose:** Implement advanced features and sophisticated interoperability
+- **Scope:** Parallel search, event-driven architecture, dual authorization, observability
+- **Copy the prompt** and give it to any agent for Phase 2+ implementation
+
+### 📚 **General Specification Review Prompt**
+**Use this comprehensive prompt for systematic specification maintenance:**
+
+```
+## AGENT PROMPT: Specification Review and Update
+
+You are an AI agent tasked with reviewing and updating Knowledge Graph Lab module specifications against the shared module requirements.
+
+### STEP 1: Understand Current State
+1. **Read the current specifications:**
+   - Standalone Module: `docs/modules/shared/standalone-modules/README.md`
+   - PeerMesh Module: `docs/modules/shared/peermesh-modules/README.md`
+   - Individual Module Specs: `docs/modules/backend-architecture/`, `docs/modules/frontend-design/`, etc.
+
+2. **Understand the requirements hierarchy:**
+   - **Standalone Module** - Basic interoperability (immediate implementation)
+   - **PeerMesh Module** - Advanced features (Phase 2+ implementation)
+   - **Common Directory** - Detailed reference documentation
+
+### STEP 2: Compare Specifications to Requirements
+For each module specification:
+1. **Check compliance sections** - Ensure proper references to shared modules
+2. **Validate requirements coverage** - Compare against checklists in shared modules
+3. **Identify conflicts** - Find any contradictions between module specs and shared requirements
+4. **Check completeness** - Ensure all required elements are present
+
+### STEP 3: Generate Change List
+For each issue found, create a structured change list:
+
+**FORMAT:**
+```
+## CHANGES REQUIRED
+
+### [Module Name] - [Issue Category]
+
+**Problem:** [Describe the specific issue]
+
+**Required Change:** [Describe what needs to be changed]
+
+**Location:** [File path and section]
+
+**Priority:** [High/Medium/Low]
+```
+
+### STEP 4: Implement Changes
+For each change in the list:
+1. **Make the specific edit** to the identified file
+2. **Verify the change** resolves the identified issue
+3. **Check for side effects** in related files
+4. **Update cross-references** if file locations or content changed
+
+### STEP 5: Validation
+After making changes:
+1. **Run compliance validation:**
+   ```bash
+   python3 scripts/validate-standalone-compliance.py docs/modules/backend-architecture/Backend-Architecture-Spec.md
+   ```
+
+2. **Check for broken links:**
+   ```bash
+   python3 .dev/scripts/check_links.py docs/modules/shared/
+   ```
+
+3. **Verify all modules can work together** based on shared requirements
+
+### SUCCESS CRITERIA
+- All module specifications reference correct shared module paths
+- No conflicts between module specs and shared requirements
+- All required elements from shared modules are present in individual specs
+- Validation script passes for all modules
+- Cross-references are accurate and functional
+
+### DELIVERABLES
+1. **Change List** - Structured list of all issues found and changes needed
+2. **Updated Files** - All modified specification files
+3. **Validation Results** - Confirmation that changes resolve identified issues
+4. **Summary Report** - Overview of what was changed and why
+
+**Remember:** The shared module requirements are definitive and override individual module specifications. Any conflicts must be resolved in favor of the shared requirements.
+```
+
+**Choose the appropriate prompt:**
+- **Standalone Module Prompt** - For basic interoperability implementation
+- **PeerMesh Module Prompt** - For advanced feature implementation
+- **General Review Prompt** - For comprehensive specification maintenance
 
 ## 🎯 **Quick Start Guide**
 

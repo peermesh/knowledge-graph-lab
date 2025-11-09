@@ -1,0 +1,16 @@
+Library,SPDX_ID,Commercial_Use,Distribution,Modification,Patent_Use,Private_Use,Liability,Warranty,Attribution_Required,Risk_Level
+MUI (Material-UI),MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Ant Design,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Chakra UI,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Mantine,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Tailwind CSS + Components,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+shadcn/ui,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+NextUI/HeroUI,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Headless UI,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+React Bootstrap,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Blueprint,Apache-2.0,Permitted,Permitted,Permitted,Permitted,Permitted,Waived,None,Yes,Low
+Radix UI,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+React Suite,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Fluent UI,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+Semantic UI React,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low
+PrimeReact,MIT,Permitted,Permitted,Permitted,Silent,Permitted,Waived,None,Yes,Low

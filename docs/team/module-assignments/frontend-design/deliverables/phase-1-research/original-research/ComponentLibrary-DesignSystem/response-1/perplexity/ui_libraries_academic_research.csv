@@ -1,0 +1,11 @@
+title,year,authors,venue,key_finding
+Evaluating The State of Accessibility in React UI Component Libraries,2021,Karlsson et al.,DIVA Portal,6 React UI libraries showed significant accessibility differences; least popular libraries had most WCAG issues
+ReactJS and Accessibility: Designing Inclusive Web Applications for Broader Social Impact,2025,Gartland et al.,EA Journals,React component architecture with built-in accessibility features reduced WCAG failures by 42.7%
+A React Style Guide Library for MUI Web Apps,2023,IEEE Research,IEEE Xplore,Automated style guide generation for Material UI React projects successfully applied to 5 projects
+ReactAppScan: Mining React Application Vulnerabilities via Component Graph,2024,Guo et al.,ACM CCS,Detected 61 zero-day vulnerabilities in React applications using component graph analysis
+Impact of React component libraries on developer experience,2024,Aalto University,Aalto Document,React component library theming approaches significantly impact customization ease and implementation speed
+Study of web application development methodology for a medical clinic using React,2024,Ukrainian Research,URAN Journals,React enables HIPAA and GDPR compliance through secure architecture and JWT authentication patterns
+Mayall: A Framework for Desktop JavaScript Auditing and Post-Exploitation Analysis,2018,MDPI Research,MDPI,Two-thirds of popular Electron applications contained known vulnerabilities with high CVSS scores
+On the Diversity of Software Package Popularity Metrics: An Empirical Study of npm,2019,arXiv Research,arXiv,Analysis of 175k npm packages shows popularity metrics are context-dependent and unrelated
+Measuring Software Innovation with Open Source Software Development Data,2024,GitHub Research,arXiv,"200,000 unique releases from 28,000 packages show major versions strongly predict one-year adoption"
+Building Accessible React Components with React Aria,2024,WebDev Research,DEV Community,React Aria provides WAI-ARIA compliant hooks that reduce accessibility implementation complexity

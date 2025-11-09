@@ -1,0 +1,11 @@
+name,category,type,maintainer,license,spdx_identifier,github_stars,npm_weekly_downloads,wcag_compliance_level,aria_support,keyboard_navigation,screen_reader_support,testing_utilities,documentation_quality,accessibility_first_design,platform_support,internationalization,component_count,last_updated,community_size,enterprise_support,false_positives_handled,confidence_rating
+React Aria,React Component Library,Headless/Unstyled,Adobe,Apache-2.0,Apache-2.0,12000+,500K+,AA,Full,Full,Extensive,Yes,Excellent,Yes,Web/Mobile/Desktop,Full RTL + 30+ languages,40+,2024,Large,Yes,Yes,High
+Chakra UI,React Component Library,Styled,Segun Adebayo,MIT,MIT,37000+,400K+,AA,Good,Good,Good,Basic,Good,Yes,Web,RTL Support,60+,2024,Large,Community,Partial,High
+Material UI (MUI),React Component Library,Styled,MUI Team,MIT,MIT,93000+,3M+,AA,Good,Good,Good,Basic,Excellent,Partial,Web,Good,80+,2024,Very Large,Yes,Partial,High
+Ant Design,React Component Library,Styled,Ant Group,MIT,MIT,91900+,1.2M+,A/AA,Moderate,Good,Moderate,Basic,Good,No,Web,Good,75+,2024,Very Large,Yes,No,Medium
+React Bootstrap,React Component Library,Styled,React Bootstrap Team,MIT,MIT,22300+,1.1M+,A/AA,Basic,Good,Basic,None,Good,No,Web,Limited,27,2024,Large,Community,No,Medium
+PrimeReact,React Component Library,Styled,PrimeTek,MIT,MIT,6200+,300K+,AA,Full,Full,Good,Basic,Good,Yes,Web,RTL + Localization,80+,2024,Medium,Yes,Partial,High
+Reka UI,Vue Component Library,Headless/Unstyled,Reka UI Team,MIT,MIT,5300+,1.2M+,AA,Full,Full,Full,Yes,Good,Yes,Web,RTL + Localization,40+,2024,Growing,Community,Yes,High
+axe-core,Accessibility Testing Engine,Library,Deque Systems,MPL-2.0,MPL-2.0,5800+,5M+,AA/AAA,Full,N/A,N/A,Core Engine,Excellent,N/A,Web/Node/Browser,N/A,N/A,2024,Large,Yes,Minimal,High
+React Testing Library,Testing Framework,Testing Library,Testing Library Team,MIT,MIT,18900+,7M+,AA (via axe),Good,Testing Support,Query Support,Full Framework,Excellent,Yes,React/Node,N/A,N/A,2024,Very Large,Community,N/A,High
+Lighthouse,Web Auditing Tool,Audit Tool,Google,Apache-2.0,Apache-2.0,28000+,1M+,AA (subset),Basic,Basic,Basic,Audit Engine,Good,No,Web/Chrome,N/A,N/A,2024,Large,Community,Many,Medium

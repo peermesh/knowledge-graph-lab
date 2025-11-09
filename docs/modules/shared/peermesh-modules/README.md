@@ -1,3 +1,25 @@
+# 🚨 AGENT INSTRUCTIONS - PeerMesh Module Requirements
+
+**🔬 IMMEDIATE ACTION REQUIRED:**
+
+If you are an AI agent working with this specification:
+
+1. **ASK THE USER:** "Which module are you implementing? (backend-architecture, frontend-design, ai-development, or publishing-tools)"
+
+2. **READ THE MODULE SPEC:** Once the user specifies the module, read the corresponding module specification file
+
+3. **COMPARE AGAINST THIS SPEC:** Check the module specification against all advanced requirements in this document
+
+4. **GENERATE CHANGES:** Create a structured list of any missing advanced requirements or conflicts
+
+5. **IMPLEMENT CHANGES:** Update the module specification to include advanced PeerMesh features
+
+6. **VALIDATE COMPLIANCE:** Run the validation script and check for advanced feature compatibility
+
+**Remember:** This specification extends the Standalone Module and adds advanced features while maintaining backward compatibility.
+
+---
+
 # PeerMesh Module - Complete Specification
 
 **Document Version:** 1.0
@@ -241,6 +263,101 @@ This **PeerMesh Module specification is completely self-contained** and includes
 - ✅ **Implementation Roadmap** - Phase-by-phase deployment timeline
 
 **This specification can be used independently for PeerMesh module implementation.**
+
+---
+
+## 🤖 AGENT PROMPT: PeerMesh Module Implementation
+
+**Copy and use this prompt when working with the PeerMesh Module specification:**
+
+```
+## AGENT TASK: Implement PeerMesh Module Requirements
+
+You are implementing the PeerMesh Module requirements for the Knowledge Graph Lab platform. This specification extends the Standalone Module with advanced features and is definitive for Phase 2+ implementation.
+
+### STEP 1: Identify the Target Module
+**ASK THE USER:** "Which module are you implementing? Please specify one of:
+- backend-architecture (FastAPI backend with advanced features)
+- frontend-design (React frontend with enhanced capabilities)
+- ai-development (AI/ML processing with parallel search)
+- publishing-tools (Content distribution with event-driven processing)"
+
+### STEP 2: Read Current Module Specification
+**LOCATIONS:**
+- Backend: `docs/modules/backend-architecture/Backend-Architecture-Spec.md`
+- Frontend: `docs/modules/frontend-design/Frontend-Design-Spec.md`
+- AI: `docs/modules/ai-development/AI-Development-Spec.md`
+- Publishing: `docs/modules/publishing-tools/Publishing-Tools-Spec.md`
+
+### STEP 3: Compare Against Advanced Requirements
+Check the module specification against ALL advanced requirements in this document:
+- ✅ Multi-Database Architecture (PostgreSQL, Qdrant, OpenSearch, TimescaleDB)
+- ✅ Parallel Search Implementation (Neo4j, vector search, keyword search)
+- ✅ Event-Driven Architecture (NATS JetStream, message queues)
+- ✅ Dual-Layer Authorization (SpiceDB ReBAC + OPA ABAC)
+- ✅ Advanced Observability (OpenTelemetry, Prometheus, Grafana)
+- ✅ API Gateway Integration (load balancing, rate limiting, SSL)
+- ✅ Development Standards (comprehensive testing, CI/CD)
+
+### STEP 4: Generate Implementation Plan
+For each missing advanced requirement, create a specific implementation task:
+
+**FORMAT:**
+```
+## ADVANCED IMPLEMENTATION REQUIRED
+
+### [Module Name] - [Advanced Feature Category]
+
+**Missing Element:** [Specific advanced requirement not implemented]
+
+**Implementation:** [How to implement this advanced feature]
+
+**Backward Compatibility:** [How to ensure compatibility with standalone module]
+
+**Files to Modify:** [Specific files that need changes]
+
+**Validation:** [How to verify advanced implementation]
+```
+
+### STEP 5: Implement Changes
+For each advanced requirement:
+1. **Update the module specification** to include the advanced requirement
+2. **Add implementation details** with code examples and configuration
+3. **Ensure backward compatibility** with standalone module requirements
+4. **Update compliance sections** to reference both standalone and PeerMesh modules
+5. **Add phase indicators** (Phase 2+ implementation)
+
+### STEP 6: Validate Implementation
+**REQUIRED VALIDATION:**
+```bash
+# Check compliance with both standalone and PeerMesh requirements
+python3 scripts/validate-standalone-compliance.py docs/modules/backend-architecture/Backend-Architecture-Spec.md
+
+# Verify advanced features are properly documented
+grep -r "PeerMesh Module" docs/modules/backend-architecture/
+grep -r "Phase 2" docs/modules/backend-architecture/
+
+# Check backward compatibility
+grep -r "Standalone Module" docs/modules/backend-architecture/
+```
+
+### SUCCESS CRITERIA
+- ✅ Module specification includes both standalone and PeerMesh compliance sections
+- ✅ All advanced requirements from this specification are referenced
+- ✅ Backward compatibility with standalone module is maintained
+- ✅ Phase 2+ implementation timeline is clear
+- ✅ Advanced observability and security requirements are included
+- ✅ No conflicts with basic standalone requirements
+
+### DELIVERABLES
+1. **Updated Module Specification** - All advanced requirements implemented
+2. **Implementation Details** - Advanced feature code examples and configuration
+3. **Backward Compatibility Plan** - How advanced features work with basic modules
+4. **Validation Results** - Confirmation of compliance and compatibility
+5. **Change Summary** - What was changed and why
+
+**REMEMBER:** This PeerMesh Module specification extends the Standalone Module. Advanced features must maintain backward compatibility and not break basic functionality.
+```
 
 ---
 

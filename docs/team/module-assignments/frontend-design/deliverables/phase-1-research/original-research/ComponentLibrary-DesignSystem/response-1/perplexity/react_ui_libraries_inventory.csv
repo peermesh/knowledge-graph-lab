@@ -1,0 +1,16 @@
+name,spdx_license,github_stars,npm_downloads_monthly,component_count,accessibility_score,documentation_score,community_size,security_score,performance_score,enterprise_ready,last_update,commercial_version,dependencies,bundle_size_kb,framework_support
+MUI (Material-UI),MIT,95100,3800000,40,5,5,5,4,4,5,2025-09-15,True,"['@emotion/react', '@emotion/styled']",300,"['React', 'Next.js']"
+Ant Design,MIT,94000,1400000,60,3,5,5,4,3,5,2025-09-01,False,"['rc-*', 'dayjs']",500,"['React', 'Vue', 'Angular']"
+Chakra UI,MIT,38700,590000,35,5,4,4,4,4,3,2025-08-15,False,"['@emotion/react', '@emotion/styled', 'framer-motion']",250,['React']
+Mantine,MIT,28100,500000,134,4,5,3,4,4,4,2025-09-10,False,"['@floating-ui/react', '@mantine/hooks']",200,"['React', 'Next.js']"
+Tailwind CSS + Components,MIT,86400,14800000,0,2,5,5,5,5,3,2025-09-15,True,[],10,['All']
+shadcn/ui,MIT,94800,173000,43,5,4,4,4,5,4,2025-09-15,False,"['@radix-ui/*', 'tailwindcss']",150,"['React', 'Next.js']"
+NextUI/HeroUI,MIT,23500,68800,40,4,4,3,3,4,3,2025-08-01,False,"['framer-motion', 'tailwindcss']",180,"['React', 'Next.js']"
+Headless UI,MIT,27900,2000000,13,5,4,4,5,5,4,2025-07-30,False,[],50,"['React', 'Vue']"
+React Bootstrap,MIT,22500,1000000,30,3,4,4,4,3,4,2025-06-01,False,['bootstrap'],400,['React']
+Blueprint,Apache-2.0,20900,120000,35,3,4,3,4,4,5,2025-05-15,False,"['@types/dom4', 'normalize.css']",350,['React']
+Radix UI,MIT,16700,10300000,29,5,4,4,5,5,4,2025-08-20,False,[],100,['React']
+React Suite,MIT,8500,77500,45,3,4,2,3,3,4,2025-07-01,False,"['date-fns', 'lodash']",450,['React']
+Fluent UI,MIT,19000,1300000,50,5,4,4,5,4,5,2025-09-01,False,['@griffel/react'],320,['React']
+Semantic UI React,MIT,13500,213000,55,2,3,2,3,3,3,2024-12-01,False,['semantic-ui-css'],600,['React']
+PrimeReact,MIT,7500,156500,80,4,4,3,4,3,5,2025-08-30,True,['primeicons'],380,['React']

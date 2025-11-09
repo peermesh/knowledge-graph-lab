@@ -32,6 +32,14 @@ Build React components for:
 - User profiles and preference settings
 - Saved searches and alert configuration
 - Data export functionality
+- **Admin Dashboard** (Admin-only access):
+  - Real-time pipeline monitoring and metrics
+  - System performance and health indicators
+  - AI processing queue status and throughput
+  - Entity extraction accuracy and confidence metrics
+  - Error rates and failure analysis
+  - Configuration management interface
+  - User activity and usage analytics
 
 ### State Management
 Use Redux for complex state management:
@@ -57,6 +65,13 @@ Create interactive visualizations using:
 - Timeline views for opportunities
 - Network diagrams for connections
 - Heat maps for activity patterns
+- **Admin Pipeline Monitoring**:
+  - Real-time throughput charts (entities processed per minute)
+  - Queue depth and processing latency graphs
+  - Error rate trends and failure analysis
+  - System resource utilization (CPU, memory, disk)
+  - AI model performance metrics (confidence scores, accuracy)
+  - Data ingestion pipeline status indicators
 
 Research graph visualization approaches:
 
@@ -82,6 +97,13 @@ Build complete user journeys:
 - Alert configuration and preferences
 - Data export in multiple formats
 - Onboarding and tutorials
+- **Admin Workflows** (Admin-only):
+  - Pipeline monitoring and performance tuning
+  - System configuration and parameter adjustment
+  - User management and access control
+  - Error investigation and troubleshooting
+  - Performance analysis and optimization
+  - Data quality assessment and validation
 
 ### API Integration
 Connect to backend services:
@@ -91,6 +113,13 @@ Connect to backend services:
 - WebSocket connections for real-time updates
 - Handle loading and error states
 - Implement retry logic and offline queuing
+- **Admin API Integration**:
+  - Real-time metrics and monitoring endpoints
+  - System health and performance APIs
+  - Configuration management endpoints
+  - User and access control APIs
+  - Error reporting and diagnostic endpoints
+  - Pipeline status and control APIs
 
 Research API integration patterns:
 
@@ -143,6 +172,9 @@ Ensure fast, smooth interactions:
 - **Confidence scores** - Reliability indicators for each insight
 - **Entity relationships** - Graph data in JSON format
 - **Streaming responses** - Progressive AI output updates
+- **Pipeline metrics** - Processing throughput, accuracy rates, error counts
+- **Model performance data** - Confidence distributions, processing times
+- **Queue status** - Current processing pipeline state and backlogs
 
 ### To Publishing Tools
 - **User preferences** - Notification settings and channels
@@ -171,6 +203,7 @@ Ensure fast, smooth interactions:
 - Mobile-responsive design tested on iOS/Android
 - Full REST API integration with error handling
 - Page load times consistently under 2 seconds
+- **Admin Dashboard MVP**: Real-time pipeline monitoring with basic metrics display
 
 ### Phase 4 Success - Enhancement
 - Advanced visualization features implemented (clustering, filtering)
@@ -180,6 +213,7 @@ Ensure fast, smooth interactions:
 - Advanced search operators and filters
 - Polished animations and transitions
 - Component library documentation complete
+- **Admin Dashboard Enhancement**: Advanced monitoring features, configuration management, user analytics
 
 ### Phase 5 Success - Production
 - Sub-second response times for all user interactions
@@ -187,6 +221,7 @@ Ensure fast, smooth interactions:
 - 95%+ user satisfaction in usability studies
 - Performance tested with 100+ concurrent users
 - 80%+ test coverage with automated CI/CD integration
+- **Admin Dashboard Production**: Full pipeline monitoring suite with alerting, diagnostics, and performance optimization tools
 
 ## Technical Context
 
@@ -206,3 +241,9 @@ Recommended stack based on performance requirements:
 - WebSocket real-time updates for collaborative features
 - Offline support for read operations and search history
 - Export formats: JSON, CSV, PDF with streaming for large datasets
+- **Admin Dashboard Performance**:
+  - Real-time metrics updates: < 2 second refresh cycles
+  - Dashboard load time: < 1 second with full metrics display
+  - WebSocket connections for live pipeline monitoring
+  - Efficient polling for system health indicators
+  - Streaming updates for high-frequency metrics

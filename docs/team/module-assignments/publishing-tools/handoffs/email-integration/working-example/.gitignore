@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment with secrets
+.env
+
+# Logs
+*.log
+npm-debug.log*
