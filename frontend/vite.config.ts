@@ -1,10 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Bundle analyzer (run with ANALYZE=true npm run build)
+    process.env.ANALYZE === 'true' && visualizer({
+      open: true,
+      filename: 'dist/stats.html',
+      gzipSize: true,
+      brotliSize: true,
+    }),
+  ].filter(Boolean),
 
   // Path resolution
   resolve: {
@@ -38,21 +48,50 @@ export default defineConfig({
 
   // Build configuration
   build: {
-    target: 'esnext',
+    target: 'es2015',
     outDir: 'dist',
     sourcemap: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console.logs in production
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.debug', 'console.trace'],
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom'],
-          ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          graph: ['sigma', 'graphology', 'graphology-layout', 'graphology-layout-forceatlas2'],
-          state: ['zustand', '@tanstack/react-query'],
-          animation: ['framer-motion'],
+          // React ecosystem
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          // UI components
+          'ui-components': [
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-toast',
+            '@radix-ui/react-tooltip',
+          ],
+          // Graph libraries (largest dependencies)
+          'graph-vendor': ['sigma', 'graphology', 'graphology-layout', 'graphology-layout-forceatlas2'],
+          // State management
+          'state-vendor': ['zustand', '@tanstack/react-query'],
+          // Utilities
+          'utils-vendor': ['axios', 'date-fns', 'clsx', 'tailwind-merge'],
+          // Animation
+          'animation-vendor': ['framer-motion'],
         },
+        // Optimize chunk names
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
     },
     chunkSizeWarningLimit: 1000,
+    // Enable CSS code splitting
+    cssCodeSplit: true,
+    // Report compressed size
+    reportCompressedSize: true,
   },
 
   // Test configuration

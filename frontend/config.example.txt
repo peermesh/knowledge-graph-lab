@@ -1,0 +1,16 @@
+# Environment Configuration Example
+# For local development, create .env.local
+# For production, create .env.production
+
+# Standalone mode (default)
+VITE_MODE=standalone
+VITE_ENABLE_MOCK_API=true
+
+# Production mode with backend
+# VITE_MODE=production
+# VITE_API_BASE_URL=http://your-api.com/api/v1
+# VITE_WEBSOCKET_URL=ws://your-api.com/ws
+# VITE_ENABLE_MOCK_API=false
+
+
+

@@ -1,0 +1,49 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Build output
+dist
+.vite
+.cache
+
+# Development
+.dev
+.cursor
+.vscode
+.idea
+*.log
+
+# Testing
+coverage
+.nyc_output
+playwright-report
+test-results
+
+# Documentation
+docs
+README.md
+*.md
+!package.json
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+
