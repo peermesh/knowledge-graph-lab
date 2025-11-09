@@ -18,7 +18,6 @@ import structlog
 
 from ..core.config import settings
 from ..core.logging import get_logger, log_publication_event
-from ..state import IN_MEMORY_PUBLICATIONS
 from ..services.publication_service import PublicationService
 from ..services.channel_service import ChannelService
 from ..services.template_service import TemplateService
@@ -80,59 +79,28 @@ async def create_publication(request: CreatePublicationRequest):
                     detail=f"Channel {channel_id} is not active"
                 )
 
-        # Create publication (DEBUG: in-memory to avoid DB dependency)
-        if settings.DEBUG:
-            now = datetime.now(timezone.utc)
-            scheduled_time = _to_utc(request.scheduled_time)
-            publication = {
-                "id": str(uuid.uuid4()),
-                "content_ids": request.content_ids,
-                "channels": request.channels,
-                "publication_type": request.publication_type,
-                "scheduled_time": scheduled_time or now,
-                "published_time": None,
-                "status": "scheduled",
-                "channel_results": {},
-                "engagement_metrics": {},
-                "personalization_applied": {},
-                "error_details": None,
-                "created_at": now,
-                "updated_at": now,
-            }
-            IN_MEMORY_PUBLICATIONS.append(publication)
-        else:
-            publication = await publication_service.create_publication(
-                content_ids=request.content_ids,
-                channels=request.channels,
-                publication_type=request.publication_type,
-                scheduled_time=_to_utc(request.scheduled_time),
-                personalization_rules=request.personalization_rules,
-                template_id=request.template_id,
-                correlation_id=correlation_id
-            )
+        # Create publication
+        publication = await publication_service.create_publication(
+            content_ids=request.content_ids,
+            channels=request.channels,
+            publication_type=request.publication_type,
+            scheduled_time=_to_utc(request.scheduled_time),
+            personalization_rules=request.personalization_rules,
+            template_id=request.template_id,
+            correlation_id=correlation_id
+        )
 
-        pub_id = publication["id"] if settings.DEBUG else str(publication.id)
+        pub_id = str(publication.id)
         logger.info("Publication created successfully", correlation_id=correlation_id, publication_id=pub_id)
 
-        # Ensure proper response serialization
-        if settings.DEBUG:
-            return {
-                "data": publication,
-                "meta": {
-                    "timestamp": datetime.now(timezone.utc).isoformat(),
-                    "request_id": correlation_id
-                },
-                "errors": []
-            }
-        else:
-            return PublicationResponse(
-                data=publication,  # pydantic orm_mode
-                meta={
-                    "timestamp": datetime.now(timezone.utc).isoformat(),
-                    "request_id": correlation_id
-                },
-                errors=[]
-            )
+        return PublicationResponse(
+            data=publication,
+            meta={
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "request_id": correlation_id
+            },
+            errors=[]
+        )
 
     except HTTPException:
         raise
@@ -180,56 +148,25 @@ async def schedule_newsletter(request: CreatePublicationRequest):
                     detail=f"Channel {channel_id} is not active"
                 )
 
-        # Create newsletter publication (DEBUG: in-memory)
-        if settings.DEBUG:
-            now = datetime.now(timezone.utc)
-            scheduled_time = _to_utc(request.scheduled_time)
-            publication = {
-                "id": str(uuid.uuid4()),
-                "content_ids": request.content_ids,
-                "channels": request.channels,
-                "publication_type": "newsletter",
-                "scheduled_time": scheduled_time or now,
-                "published_time": None,
-                "status": "scheduled",
-                "channel_results": {},
-                "engagement_metrics": {},
-                "personalization_applied": {},
-                "error_details": None,
-                "created_at": now,
-                "updated_at": now,
-            }
-            IN_MEMORY_PUBLICATIONS.append(publication)
-        else:
-            publication = await publication_service.create_publication(
-                content_ids=request.content_ids,
-                channels=request.channels,
-                publication_type="newsletter",
-                scheduled_time=_to_utc(request.scheduled_time),
-                personalization_rules=request.personalization_rules,
-                template_id=request.template_id,
-                correlation_id=correlation_id,
-            )
+        # Create newsletter publication
+        publication = await publication_service.create_publication(
+            content_ids=request.content_ids,
+            channels=request.channels,
+            publication_type="newsletter",
+            scheduled_time=_to_utc(request.scheduled_time),
+            personalization_rules=request.personalization_rules,
+            template_id=request.template_id,
+            correlation_id=correlation_id,
+        )
 
-        # Response serialization
-        if settings.DEBUG:
-            return {
-                "data": publication,
-                "meta": {
-                    "timestamp": datetime.now(timezone.utc).isoformat(),
-                    "request_id": correlation_id,
-                },
-                "errors": [],
-            }
-        else:
-            return PublicationResponse(
-                data=publication,
-                meta={
-                    "timestamp": datetime.now(timezone.utc).isoformat(),
-                    "request_id": correlation_id,
-                },
-                errors=[],
-            )
+        return PublicationResponse(
+            data=publication,
+            meta={
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "request_id": correlation_id,
+            },
+            errors=[],
+        )
 
     except HTTPException:
         raise

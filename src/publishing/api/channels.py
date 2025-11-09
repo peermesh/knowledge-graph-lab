@@ -7,7 +7,6 @@ from ..core.config import settings
 from ..core.database import get_async_session
 from ..models.channel import Channel
 from ..schemas.channels import ChannelCreateRequest, ChannelResponse
-from ..state import IN_MEMORY_CHANNELS
 
 router = APIRouter()
 
@@ -16,9 +15,6 @@ router = APIRouter()
 
 @router.get("")
 async def list_channels():
-    if settings.DEBUG:
-        return {"data": {"channels": IN_MEMORY_CHANNELS}, "meta": {"timestamp": datetime.utcnow().isoformat()}, "errors": []}
-
     async for session in get_async_session():
         result = await session.execute(select(Channel))
         channels = result.scalars().all()
@@ -39,20 +35,6 @@ async def list_channels():
 
 @router.post("")
 async def create_channel(request: ChannelCreateRequest = Body(...)):
-    if settings.DEBUG:
-        now = datetime.utcnow().isoformat()
-        channel = {
-            "id": str(uuid.uuid4()),
-            "name": request.name,
-            "channel_type": request.channel_type,
-            "is_active": request.is_active,
-            "configuration": request.configuration,
-            "created_at": now,
-            "updated_at": now,
-        }
-        IN_MEMORY_CHANNELS.append(channel)
-        return {"data": channel, "meta": {"timestamp": now}, "errors": []}
-
     async for session in get_async_session():
         channel = Channel(
             name=request.name,
