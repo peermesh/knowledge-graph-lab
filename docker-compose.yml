@@ -52,10 +52,9 @@ services:
       - REDIS_PORT=6379
       
       # Application Settings
-      - DEBUG=false
-      - PORT=8080
-      - LOG_LEVEL=INFO
-      - CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+      - DEBUG=${DEBUG:-false}
+      - PORT=${PORT:-8080}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
       
       # AWS SES Placeholder (set in .env file)
       - AWS_REGION=${AWS_REGION:-us-east-1}

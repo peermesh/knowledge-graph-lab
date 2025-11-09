@@ -38,11 +38,14 @@ logger = structlog.get_logger(__name__)
 async def lifespan(app: FastAPI):
     """Application lifespan manager for startup and shutdown events."""
     # Startup
-    logger.info("Starting Publishing Module", version=settings.VERSION)
+    logger.info("Starting Publishing Module", version=settings.VERSION, debug_mode=settings.DEBUG)
 
-    # Initialize database
-    await create_db_and_tables()
-    logger.info("Database initialized successfully")
+    # Initialize database (skip in DEBUG mode - uses in-memory stores)
+    if not settings.DEBUG:
+        await create_db_and_tables()
+        logger.info("Database initialized successfully")
+    else:
+        logger.info("DEBUG mode: Skipping database initialization (using in-memory stores)")
 
     # Start health monitoring
     await health_service.start_monitoring()
