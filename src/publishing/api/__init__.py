@@ -42,7 +42,7 @@ async def validate_request(request: Request):
         )
 
 # Import API routers for each domain
-from . import publications, channels, subscribers, analytics, alerts, dashboard, ws
+from . import publications, channels, subscribers, analytics, alerts, dashboard, ws, email_test
 
 # Create main API router (validation disabled for baseline tests)
 router = APIRouter()
@@ -106,6 +106,13 @@ router.include_router(
     dashboard.router,
     prefix="/dashboard",
     tags=["dashboard"]
+)
+
+# Email testing endpoints
+router.include_router(
+    email_test.router,
+    prefix="",
+    tags=["email"]
 )
 
 # Websocket stub
