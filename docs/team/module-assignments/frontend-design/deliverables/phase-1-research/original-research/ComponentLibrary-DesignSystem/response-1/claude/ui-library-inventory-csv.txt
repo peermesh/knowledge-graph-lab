@@ -1,0 +1,26 @@
+name,type,framework_support,license_spdx,github_stars,npm_weekly,first_release,maturity,enterprise_ready,accessibility_score,bundle_size,commercial_variant,deployment_models,primary_use_case,maintenance_status
+MUI,Component Library,React,MIT,92000,3000000,2014,Mature,Yes,4/5,Large,MUI Pro/Premium,Self-hosted/CDN/NPM,Enterprise Material Design,Active
+Ant Design,Component Library,React/Vue/Angular,MIT,90000,1500000,2015,Mature,Yes,4/5,Large,Ant Design Pro,Self-hosted/NPM,Enterprise B2B,Active
+Chakra UI,Component Library,React,MIT,34700,500000,2019,Mature,Partial,5/5,Medium,Chakra UI Pro,Self-hosted/NPM,Modern Web Apps,Active
+Mantine,Component Library,React,MIT,25000,300000,2021,Growing,Yes,4/5,Medium,None,Self-hosted/NPM,Full-stack Apps,Active
+Tailwind CSS,Utility Framework,Framework-agnostic,MIT,78000,8000000,2017,Mature,Partial,3/5,Small,Tailwind UI,Self-hosted/CDN/NPM,Custom Design Systems,Active
+shadcn/ui,Copy-paste Components,React,MIT,66000,N/A,2023,Emerging,No,4/5,Minimal,None,Copy-paste,Customizable Components,Active
+React Bootstrap,Component Library,React,MIT,22000,2500000,2013,Mature,Yes,4/5,Medium,None,Self-hosted/CDN/NPM,Bootstrap-based Apps,Active
+Semantic UI React,Component Library,React,MIT,13000,200000,2016,Mature,Yes,3/5,Large,None,Self-hosted/NPM,Semantic Web Design,Maintenance
+Headless UI,Unstyled Components,React/Vue,MIT,24000,1000000,2020,Growing,Partial,5/5,Small,None,Self-hosted/NPM,Accessible Base Components,Active
+Arco Design,Component Library,React/Vue,MIT,4500,50000,2021,Growing,Yes,4/5,Large,Arco Pro,Self-hosted/NPM,Enterprise Apps,Active
+PrimeReact,Component Library,React,MIT,5000,150000,2017,Mature,Yes,4/5,Large,PrimeReact Pro,Self-hosted/NPM,Enterprise UI,Active
+NextUI,Component Library,React,MIT,20000,250000,2021,Growing,No,4/5,Medium,NextUI Pro,Self-hosted/NPM,Modern Applications,Active
+Park UI,Component Library,React/Vue/Solid,MIT,1800,10000,2024,Emerging,No,4/5,Small,None,Self-hosted/NPM,Modern Design,Active
+Fluent UI,Component Library,React,MIT,17000,500000,2017,Mature,Yes,4/5,Large,None,Self-hosted/NPM,Microsoft Design Language,Active
+Carbon Design,Component Library,React/Vue/Angular,Apache-2.0,7500,100000,2016,Mature,Yes,5/5,Large,None,Self-hosted/NPM,IBM Enterprise,Active
+Vuetify,Component Library,Vue,MIT,39000,500000,2016,Mature,Yes,4/5,Large,Vuetify Pro,Self-hosted/CDN/NPM,Vue Material Design,Active
+Element Plus,Component Library,Vue,MIT,23000,400000,2020,Mature,Yes,3/5,Large,None,Self-hosted/NPM,Vue Enterprise,Active
+Quasar,Framework,Vue,MIT,25000,150000,2016,Mature,Yes,4/5,Large,None,Self-hosted/NPM/CLI,Cross-platform Vue,Active
+DaisyUI,Component Library,Tailwind-based,MIT,30000,600000,2021,Growing,No,3/5,Small,None,Self-hosted/NPM,Tailwind Components,Active
+Flowbite,Component Library,Tailwind-based,MIT,7000,200000,2021,Growing,Partial,3/5,Small,Flowbite Pro,Self-hosted/NPM,Tailwind Templates,Active
+ReExt,Component Library,React,Commercial,500,5000,2023,Emerging,Yes,4/5,Large,ReExt Enterprise,Self-hosted,Enterprise Grids,Active
+Radix UI,Primitive Components,React,MIT,14000,2000000,2020,Growing,No,5/5,Small,None,Self-hosted/NPM,Unstyled Primitives,Active
+Tremor,Component Library,React,Apache-2.0,15000,100000,2022,Growing,Partial,3/5,Medium,None,Self-hosted/NPM,Data Visualization,Active
+React Spectrum,Component Library,React,Apache-2.0,11000,50000,2020,Growing,Yes,5/5,Medium,None,Self-hosted/NPM,Adobe Design System,Active
+Geist UI,Component Library,React,MIT,4000,20000,2020,Growing,No,3/5,Small,None,Self-hosted/NPM,Minimalist Design,Maintenance
