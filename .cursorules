@@ -1,0 +1,84 @@
+# Cursor AI Development Rules for Knowledge Graph Lab
+
+## Docker-First Development Policy
+
+**MANDATORY**: All development work MUST be done inside Docker containers.
+
+### Core Rules
+
+1. **Always use Docker Compose**
+   - Start services: `docker compose up --build`
+   - NEVER run `uvicorn`, `python`, or similar commands directly on host
+   - NEVER install dependencies with `pip install` on host
+
+2. **Before Starting ANY Work**
+   ```bash
+   # Verify Docker is running
+   docker info
+   
+   # Check container status
+   cd /Users/benschreiber/Desktop/knowledge-graph-lab
+   docker compose ps
+   
+   # Start services if not running
+   docker compose up --build -d
+   ```
+
+3. **Standard Commands**
+   ```bash
+   # Start everything
+   docker compose up --build
+   
+   # Start in background
+   docker compose up -d
+   
+   # View logs
+   docker compose logs -f api
+   
+   # Run tests
+   docker compose exec api pytest
+   
+   # Stop services
+   docker compose down
+   ```
+
+4. **Prohibited Actions**
+   - ❌ Running `uvicorn src.publishing.main:app` on host
+   - ❌ Running `pip install` on host for project dependencies
+   - ❌ Using `python -m http.server` on host for project files
+   - ❌ Installing/running Redis, PostgreSQL on host
+
+5. **Service URLs**
+   - Frontend: http://localhost:3000
+   - API: http://localhost:8080
+   - Swagger UI: http://localhost:8080/docs
+   - Health Check: http://localhost:8080/health
+
+6. **Troubleshooting**
+   ```bash
+   # Port conflicts
+   lsof -ti:8080 | xargs kill -9
+   lsof -ti:3000 | xargs kill -9
+   
+   # Clean rebuild
+   docker compose down -v
+   docker compose build --no-cache
+   docker compose up
+   ```
+
+### Important Notes
+
+- In DEBUG mode, the health endpoint shows "degraded" because external services (Redis, PostgreSQL, AWS SES) aren't configured
+- This is NORMAL and EXPECTED for demo mode with in-memory stores
+- The API endpoints work perfectly despite the "unhealthy" health status
+- All data is stored in-memory and lost when containers stop
+
+### For Reference
+
+See [DOCKER-FIRST-POLICY.md](./DOCKER-FIRST-POLICY.md) for complete documentation.
+
+---
+
+**Remember**: If it's not in a container, it's not part of this project! 🐳
+
+
