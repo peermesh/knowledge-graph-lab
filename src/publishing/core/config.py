@@ -30,17 +30,17 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
     # Database (PostgreSQL 15+ with JSONB support)
-    DATABASE_URL: str = ""
     DATABASE_HOST: str = "localhost"
     DATABASE_PORT: int = 5432
     DATABASE_NAME: str = "publishing"
     DATABASE_USER: str = "postgres"
     DATABASE_PASSWORD: str = "postgres"
+    DATABASE_URL: str = ""
 
     # Redis (7.0+ for caching and pub/sub)
-    REDIS_URL: str = ""
     REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
+    REDIS_URL: str = ""
     REDIS_PASSWORD: Optional[str] = None
 
     # Celery (5.3.0+ for background tasks)

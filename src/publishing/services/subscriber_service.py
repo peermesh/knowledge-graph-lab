@@ -1,7 +1,7 @@
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 from sqlalchemy import select, desc
-from ..core.database import get_async_session
+from ..core.database import async_session_factory
 from ..models.subscriber import Subscriber
 from .preference_validation import PreferenceValidationService
 from .unsubscribe_service import UnsubscribeService
@@ -21,7 +21,7 @@ class SubscriberService:
         topic_interests = topic_interests or {}
         frequency_settings = frequency_settings or {}
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             subscriber = Subscriber(
                 email=email,
                 user_id=user_id,
@@ -35,7 +35,7 @@ class SubscriberService:
             return subscriber
 
     async def list_subscribers(self, limit: int = 50, offset: int = 0) -> List[Subscriber]:
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             result = await session.execute(
                 select(Subscriber).order_by(desc(Subscriber.created_at)).limit(limit).offset(offset)
             )
@@ -58,7 +58,7 @@ class SubscriberService:
         if not self.validator.validate(payload):
             return None
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             subscriber = await session.get(Subscriber, subscriber_id)
             if not subscriber:
                 return None
@@ -79,7 +79,7 @@ class SubscriberService:
         # Workflow stub: call service, then update status
         if not self.unsub_service.unsubscribe(email):
             return False
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             result = await session.execute(select(Subscriber).where(Subscriber.email == email))
             subscriber = result.scalars().first()
             if not subscriber:
