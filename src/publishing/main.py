@@ -40,12 +40,15 @@ async def lifespan(app: FastAPI):
     # Startup
     logger.info("Starting Publishing Module", version=settings.VERSION, debug_mode=settings.DEBUG)
 
-    # Initialize database (skip in DEBUG mode - uses in-memory stores)
-    if not settings.DEBUG:
+    # Initialize database
+    try:
         await create_db_and_tables()
         logger.info("Database initialized successfully")
-    else:
-        logger.info("DEBUG mode: Skipping database initialization (using in-memory stores)")
+    except Exception as e:
+        if settings.DEBUG:
+            logger.warning("DEBUG mode: Database init failed, using in-memory stores", error=str(e))
+        else:
+            raise
 
     # Start health monitoring
     await health_service.start_monitoring()
