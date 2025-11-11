@@ -159,27 +159,126 @@ Text to analyze:
 Return the results in JSON format with 'entities' and 'relationships' arrays."""
     
     def _parse_extraction_response(self, response: str) -> Dict[str, Any]:
-        """Parse LLM response into structured format"""
+        """Parse LLM response into structured format and normalize keys"""
         import json
-        
+        import re
+
+        data: Dict[str, Any] = {"entities": [], "relationships": []}
+
         try:
-            # Try to parse as JSON
             data = json.loads(response)
-            return data
         except json.JSONDecodeError:
             # If not valid JSON, try to extract JSON from response
-            import re
             json_match = re.search(r'\{.*\}', response, re.DOTALL)
             if json_match:
                 try:
                     data = json.loads(json_match.group())
-                    return data
-                except:
-                    pass
-            
-            # Return empty result if parsing fails
-            logger.error(f"Failed to parse LLM response: {response[:200]}")
-            return {"entities": [], "relationships": []}
+                except Exception:
+                    logger.error(f"Failed to parse LLM response: {response[:200]}")
+                    return {"entities": [], "relationships": []}
+            else:
+                logger.error(f"Failed to parse LLM response: {response[:200]}")
+                return {"entities": [], "relationships": []}
+
+        return self._normalize_extraction_payload(data)
+
+    def _normalize_extraction_payload(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Normalize LLM payload keys to match downstream expectations."""
+
+        def normalize_positions(raw_positions: Any) -> List[List[int]]:
+            positions: List[List[int]] = []
+            if isinstance(raw_positions, list):
+                if all(isinstance(item, (int, float)) for item in raw_positions):
+                    # List of bare indices -> assume pairs
+                    it = iter(raw_positions)
+                    for start in it:
+                        end = next(it, start)
+                        positions.append([int(start), int(end)])
+                else:
+                    for item in raw_positions:
+                        if isinstance(item, dict):
+                            start = item.get("start") or item.get("begin")
+                            end = item.get("end") or item.get("finish")
+                            if start is not None and end is not None:
+                                positions.append([int(start), int(end)])
+                        elif isinstance(item, (list, tuple)) and len(item) == 2:
+                            positions.append([int(item[0]), int(item[1])])
+                        elif isinstance(item, (int, float)):
+                            # Single index provided – we can't infer span length, skip.
+                            continue
+            return positions
+
+        normalized_entities: List[Dict[str, Any]] = []
+        for entity in data.get("entities", []) or []:
+            text = (
+                entity.get("text")
+                or entity.get("entity_text")
+                or entity.get("name")
+                or entity.get("value")
+            )
+            entity_type = entity.get("type") or entity.get("entity_type")
+            confidence = (
+                entity.get("confidence")
+                if entity.get("confidence") is not None
+                else entity.get("confidence_score")
+            )
+            positions = entity.get("positions") or entity.get("positions_in_text") or []
+
+            normalized_entities.append(
+                {
+                    "text": text or "",
+                    "type": (entity_type or "").lower(),
+                    "confidence": float(confidence) if confidence is not None else 0.5,
+                    "positions": normalize_positions(positions),
+                    "metadata": entity.get("metadata", {}),
+                }
+            )
+
+        normalized_relationships: List[Dict[str, Any]] = []
+        for relationship in data.get("relationships", []) or []:
+            source = (
+                relationship.get("source_entity")
+                or relationship.get("source")
+                or relationship.get("subject")
+                or relationship.get("from")
+            )
+            target = (
+                relationship.get("target_entity")
+                or relationship.get("target")
+                or relationship.get("object")
+                or relationship.get("to")
+            )
+            rel_type = (
+                relationship.get("relationship_type")
+                or relationship.get("type")
+                or relationship.get("relation")
+            )
+            confidence = (
+                relationship.get("confidence")
+                if relationship.get("confidence") is not None
+                else relationship.get("confidence_score")
+            )
+            evidence = (
+                relationship.get("evidence")
+                or relationship.get("evidence_text")
+                or relationship.get("description")
+            )
+
+            normalized_relationships.append(
+                {
+                    "source_entity": source or "",
+                    "target_entity": target or "",
+                    "relationship_type": (rel_type or "").lower(),
+                    "confidence": float(confidence) if confidence is not None else 0.5,
+                    "evidence": evidence or "",
+                    "metadata": relationship.get("metadata", {}),
+                }
+            )
+
+        return {
+            "entities": normalized_entities,
+            "relationships": normalized_relationships,
+        }
 
 
 # Global LLM client instance (lazy-loaded to avoid startup errors)

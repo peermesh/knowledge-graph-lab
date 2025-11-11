@@ -99,6 +99,11 @@ class EntityExtractor:
             # Merge with LLM-identified relationships
             result['relationships'].extend(additional_relationships)
 
+        # Ensure each relationship has a unique identifier
+        for relationship in result['relationships']:
+            if 'id' not in relationship or not relationship['id']:
+                relationship['id'] = str(uuid.uuid4())
+
         # Calculate processing time
         processing_time = (datetime.utcnow() - start_time).total_seconds()
 
