@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from datetime import datetime
 import logging
 
+from src.ai.api.dependencies import get_db
 from src.ai.services.quality_monitor import quality_monitor
 
 logger = logging.getLogger(__name__)
@@ -67,12 +68,6 @@ class TrendAnalysisResponse(BaseModel):
     days_analyzed: int
     trend_direction: str  # improving, stable, declining
     daily_data: List[TrendDataPoint]
-
-
-# Placeholder for database dependency
-def get_db():
-    """Placeholder for database session"""
-    return None
 
 
 @router.get("/quality/report/daily", response_model=DailyReportResponse)

@@ -33,7 +33,7 @@ alembic upgrade head
 
 ### 2. Start the System
 
-```powershell
+```powershell  
 # Start services (if not already running)
 docker-compose up -d
 

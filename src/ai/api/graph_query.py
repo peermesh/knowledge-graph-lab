@@ -6,14 +6,7 @@ from typing import List, Optional, Dict, Any
 from sqlalchemy.orm import Session
 import logging
 
-# Placeholder for database session dependency
-# In production, import from database module
-def get_db():
-    """Placeholder for database session"""
-    # This should return actual SQLAlchemy session
-    # For now, return None
-    return None
-
+from src.ai.api.dependencies import get_db
 from src.ai.services.graph_query import graph_query
 from src.ai.services.vector_search import vector_search
 
