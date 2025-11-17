@@ -13,6 +13,7 @@ Constitution Compliance:
 """
 
 import asyncio
+import json
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -154,19 +155,26 @@ def create_application() -> FastAPI:
         """Health check endpoint for container orchestration."""
         health_status = await health_service.get_health_status()
 
-        if health_status["status"] == "healthy":
-            return {
+        # Return health status with appropriate HTTP status code
+        status_code = 200
+        if health_status["status"] == "unhealthy":
+            status_code = 503
+        elif health_status["status"] == "degraded":
+            status_code = 200  # Degraded is still operational
+        
+        from fastapi import Response
+        return Response(
+            content=json.dumps({
                 "data": health_status,
                 "meta": {
                     "timestamp": health_status["timestamp"],
                     "request_id": getattr(request.state, "correlation_id", "unknown")
                 },
                 "errors": []
-            }
-        else:
-            # Return 503 for unhealthy status
-            from fastapi import HTTPException
-            raise HTTPException(status_code=503, detail="Service unhealthy")
+            }),
+            status_code=status_code,
+            media_type="application/json"
+        )
 
     logger.info("FastAPI application configured successfully")
     return app

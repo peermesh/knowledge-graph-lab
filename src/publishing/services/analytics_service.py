@@ -11,15 +11,29 @@ class AnalyticsService:
         self.collector = MetricsCollector()
         self.analyzer = PerformanceAnalyzer()
 
-    def get_engagement_summary(self) -> Dict[str, Any]:
-        return self.collector.summarize()
+    async def get_engagement_summary(self, channel_id: str = None) -> Dict[str, Any]:
+        return await self.collector.summarize(channel_id=channel_id)
+    
+    async def get_engagement_for_channel(self, channel_id: str) -> Dict[str, Any]:
+        return await self.collector.get_engagement_for_channel(channel_id)
 
     def get_performance(self) -> Dict[str, Any]:
         return self.analyzer.recommendations()
 
-    def track_open(self, publication_id: str, user_id: str = None) -> None:
-        self.tracker.track({"type": "open", "publication_id": publication_id, "user_id": user_id})
+    async def track_open(self, publication_id: str, channel_id: str = None, user_id: str = None) -> None:
+        await self.tracker.track({
+            "type": "open", 
+            "publication_id": publication_id, 
+            "channel_id": channel_id,
+            "user_id": user_id
+        })
 
-    def track_click(self, publication_id: str, url: str = None, user_id: str = None) -> None:
-        self.tracker.track({"type": "click", "publication_id": publication_id, "user_id": user_id, "url": url})
+    async def track_click(self, publication_id: str, channel_id: str = None, url: str = None, user_id: str = None) -> None:
+        await self.tracker.track({
+            "type": "click", 
+            "publication_id": publication_id, 
+            "channel_id": channel_id,
+            "user_id": user_id, 
+            "url": url
+        })
 

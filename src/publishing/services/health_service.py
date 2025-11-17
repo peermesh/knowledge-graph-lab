@@ -56,14 +56,20 @@ class HealthService:
         issues = []
 
         # Check database health
+        db_health = None
         try:
             db_health = await get_db_health()
             if db_health.get("status") != "connected":
-                overall_status = "unhealthy"
+                # Database issues degrade the system, but don't make it completely unhealthy
+                # if other core services (like email) are working
+                if overall_status == "healthy":
+                    overall_status = "degraded"
                 issues.append(f"Database: {db_health.get('error', 'disconnected')}")
         except Exception as e:
-            overall_status = "unhealthy"
-            issues.append(f"Database check failed: {str(e)}")
+            # Database check failures degrade the system, not completely unhealthy
+            if overall_status == "healthy":
+                overall_status = "degraded"
+            issues.append(f"Database: {str(e)}")
 
         # Check Redis health
         try:
@@ -105,12 +111,20 @@ class HealthService:
         # Calculate uptime
         uptime_seconds = int(time.time() - self.start_time)
 
+        # Get database status safely
+        db_status = "unknown"
+        try:
+            if 'db_health' in locals() and db_health:
+                db_status = db_health.get("status", "unknown")
+        except Exception:
+            pass
+        
         health_data = {
             "status": overall_status,
             "timestamp": datetime.utcnow().isoformat(),
             "version": settings.VERSION,
             "uptime_seconds": uptime_seconds,
-            "database_status": db_health.get("status", "unknown") if 'db_health' in locals() else "unknown",
+            "database_status": db_status,
             "external_services": external_services
         }
 

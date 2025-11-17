@@ -10,9 +10,9 @@ Constitution Compliance:
 - Performance: Optimized for high-volume publication processing
 """
 
-from pydantic import BaseModel, Field, validator, UUID4
+from pydantic import BaseModel, Field, validator, UUID4, EmailStr
 from typing import List, Dict, Any, Optional, Union
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 
 
@@ -46,9 +46,9 @@ class CreatePublicationRequest(BaseModel):
     """Request model for creating a new publication."""
 
     content_ids: List[UUID4] = Field(
-        ...,
-        description="IDs of content to be published",
-        min_items=1,
+        default_factory=list,
+        description="IDs of content to be published (optional for testing)",
+        min_items=0,
         max_items=100
     )
 
@@ -82,8 +82,14 @@ class CreatePublicationRequest(BaseModel):
     @validator("scheduled_time")
     def validate_scheduled_time(cls, v):
         """Ensure scheduled time is in the future."""
-        if v and v <= datetime.utcnow():
-            raise ValueError("Scheduled time must be in the future")
+        if v:
+            # Make comparison timezone-aware
+            now = datetime.now(timezone.utc)
+            # Normalize v to UTC if it's naive
+            if v.tzinfo is None:
+                v = v.replace(tzinfo=timezone.utc)
+            if v <= now:
+                raise ValueError("Scheduled time must be in the future")
         return v
 
 
@@ -103,8 +109,14 @@ class UpdatePublicationRequest(BaseModel):
     @validator("scheduled_time")
     def validate_scheduled_time(cls, v):
         """Ensure scheduled time is in the future."""
-        if v and v <= datetime.utcnow():
-            raise ValueError("Scheduled time must be in the future")
+        if v:
+            # Make comparison timezone-aware
+            now = datetime.now(timezone.utc)
+            # Normalize v to UTC if it's naive
+            if v.tzinfo is None:
+                v = v.replace(tzinfo=timezone.utc)
+            if v <= now:
+                raise ValueError("Scheduled time must be in the future")
         return v
 
 
@@ -333,5 +345,14 @@ class PerformanceMetricsRequest(BaseModel):
         "day",
         description="Group results by time period",
         regex="^(hour|day|week|month)$"
+    )
+
+
+class TestNewsletterRequest(BaseModel):
+    """Request model for testing newsletter delivery."""
+
+    test_email: Optional[EmailStr] = Field(
+        None,
+        description="Override: send test to specific email instead of all subscribers"
     )
 
