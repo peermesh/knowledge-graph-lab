@@ -422,3 +422,14 @@ Document ingestion is the pipeline entry point. Getting this right means:
 8. What's the maximum document size we need to support?
 9. Should we validate extracted text with entity extraction?
 10. How do we handle documents with sensitive information (PII)?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **document-ingestion-pipeline/** - Document Parsing, Chunking, and Boilerplate Removal
+   - Location: `deep-research/document-ingestion-pipeline/`
+   - Status: Pending
+   - Research ID: RES-2025-DOC-INGEST-001
+   - Focus: Evaluate PDF/HTML parsers, chunking strategies, and boilerplate removal with 90%+ accuracy and <10 sec/doc processing
+

@@ -50,18 +50,20 @@ ai-module-holistic-review/
 │   ├── COST-ANALYSIS.md                      # Financial impact analysis
 │   └── README.md                             # Research navigation
 │
-└── research/
-    └── deep-research/
-        ├── README.md                            # Deep research execution guide
-        ├── competitive-landscape-full-systems/  # Research topic: full platform evaluation
-        │   ├── prompt.md                        # Clipboard-ready research prompt
-        │   ├── .meta.md                         # Research metadata and objectives
-        │   └── responses/                       # Findings (claude, perplexity, chatgpt, gemini, grok, deepseek)
-        │
-        └── competitive-landscape-partial-solutions/  # Research topic: tools + academic SOTA
-            ├── prompt.md                        # Clipboard-ready research prompt
-            ├── .meta.md                         # Research metadata and objectives
-            └── responses/                       # Findings (claude, perplexity, chatgpt, gemini, grok, deepseek)
+└── deep-research/
+    ├── RESEARCH-INDEX.md                        # Deep research status & execution guide
+    ├── RESEARCH-TRACKS-INVENTORY.md             # Inventory of all 9 research tracks
+    ├── competitive-landscape-full-systems/      # Research topic: full platform evaluation
+    │   ├── prompt.md                            # Clipboard-ready research prompt
+    │   ├── .meta.md                             # Research metadata and objectives
+    │   └── responses/                           # Findings (claude, perplexity, chatgpt, gemini, grok, deepseek)
+    │
+    ├── competitive-landscape-partial-solutions/ # Research topic: tools + academic SOTA
+    │   ├── prompt.md                            # Clipboard-ready research prompt
+    │   ├── .meta.md                             # Research metadata and objectives
+    │   └── responses/                           # Findings (claude, perplexity, chatgpt, gemini, grok, deepseek)
+    │
+    └── [+ 11 more research topics for tracks 01-08]
 ```
 
 ---
@@ -107,7 +109,7 @@ ai-module-holistic-review/
 
 ## The Deep Research Infrastructure
 
-Located in `research/deep-research/`. This directory contains two focused research topics:
+Located in `deep-research/`. This directory contains focused research topics (13 total: 2 from Track 00 + 11 from Tracks 01-08):
 
 **Topic 1: Commercial Platforms & Full System Evaluation**
 - **Question**: Does Perplexity, GraphRAG, LangChain, or another platform already solve this?
@@ -121,10 +123,10 @@ Located in `research/deep-research/`. This directory contains two focused resear
 
 ### How to Execute Deep Research
 
-See `research/deep-research/README.md` for complete execution guidance.
+See `deep-research/RESEARCH-INDEX.md` for complete execution guidance.
 
 **Quick Start**:
-1. Open `research/deep-research/competitive-landscape-full-systems/prompt.md` (or partial-solutions version)
+1. Open `deep-research/[topic-name]/prompt.md`
 2. Copy the prompt
 3. Paste into: Perplexity.ai, ChatGPT, Claude, Gemini, or AI research agent
 4. Save findings to `responses/[model-name].md`
@@ -135,21 +137,21 @@ See `research/deep-research/README.md` for complete execution guidance.
 
 **Research Tracks** (in `research-tracks/`) are the **planning documents** - they outline what needs to be researched and why.
 
-**Deep Research** (in `research/deep-research/`) is the **execution** - it's where the actual research happens and findings are documented.
+**Deep Research** (in `deep-research/`) is the **execution** - it's where the actual research happens and findings are documented.
 
 ### Linking Between Them
 
 **Track 00: Competitive Landscape**
 - Planning: `research-tracks/00-COMPETITIVE-LANDSCAPE-RESEARCH.md`
-- Execution: `research/deep-research/RESEARCH-INDEX.md` + subtopics
+- Execution: `deep-research/competitive-landscape-full-systems/` + `competitive-landscape-partial-solutions/`
 
 This is **CRITICAL PATH** - blocks all other architectural decisions.
 
 **Tracks 01-08: Layer-by-Layer Research**
 - Planning: `research-tracks/01-query-processing-research.md` (etc.)
-- Execution: Will reference deep research findings from Track 00
+- Execution: `deep-research/[track-name]/` (11 research topics total)
 
-Once Track 00 (competitive landscape) is complete, we know which tools/approaches are viable for Tracks 01-08.
+Each research track has corresponding deep-research infrastructure with prompts ready for execution.
 
 ---
 
@@ -158,7 +160,7 @@ Once Track 00 (competitive landscape) is complete, we know which tools/approache
 ### IMMEDIATE (Block everything else)
 
 1. **Does this system already exist?**
-   - Deep research: `research/deep-research/RESEARCH-INDEX.md`
+   - Deep research: `deep-research/RESEARCH-INDEX.md`
    - Research track: `research-tracks/00-COMPETITIVE-LANDSCAPE-RESEARCH.md`
    - Decision: Build vs. buy?
 
@@ -211,7 +213,7 @@ Once Track 00 (competitive landscape) is complete, we know which tools/approache
 | `research-tracks/README.md` | Research planning overview | 5 min | Everyone |
 | `research-tracks/COST-ANALYSIS.md` | Financial impact | 10 min | Product, Finance |
 | `research-tracks/00-COMPETITIVE-LANDSCAPE-RESEARCH.md` | Does this exist? | 15 min | Engineering leads |
-| `research/deep-research/RESEARCH-INDEX.md` | Deep research status + execution | 10 min | Research leads |
+| `deep-research/RESEARCH-INDEX.md` | Deep research status + execution | 10 min | Research leads |
 | Each `pipeline/0X-*.md` | Layer spec | 5-10 min | Technical reviewers |
 | Each `research-tracks/0X-*.md` | Layer research plan | 20-30 min | Deep researchers |
 
@@ -227,7 +229,7 @@ Once Track 00 (competitive landscape) is complete, we know which tools/approache
 ### For Engineering Review
 1. `pipeline/` (all layer specs)
 2. `research-tracks/` (all research plans)
-3. `research/deep-research/RESEARCH-INDEX.md` (what research exists?)
+3. `deep-research/RESEARCH-INDEX.md` (what research exists?)
 
 ### For Stakeholder Review
 1. Start with pipeline overview
@@ -250,7 +252,7 @@ Once Track 00 (competitive landscape) is complete, we know which tools/approache
 
 - **What's the architecture?** → See `pipeline/00-PIPELINE-OVERVIEW.md`
 - **What research needs to happen?** → See `research-tracks/README.md`
-- **How to execute research?** → See `research/deep-research/RESEARCH-INDEX.md`
+- **How to execute research?** → See `deep-research/RESEARCH-INDEX.md`
 - **What's the cost impact?** → See `research-tracks/COST-ANALYSIS.md`
 - **Does this already exist?** → See `research-tracks/00-COMPETITIVE-LANDSCAPE-RESEARCH.md`
 

@@ -1,0 +1,17 @@
+query_id,approach,user_relevance_score,citation_accuracy,answer_completeness,confidence_calibration,approach_latency_ms,cost_per_query_usd,coherence_score,factual_accuracy,source_diversity,implementation_complexity,notes
+query-001,template_based,3.8,0.95,0.72,0.68,180,0.001,4.1,0.88,0.65,low,Fast structured output but lacks nuance for complex queries
+query-001,llm_claude_sonnet,4.4,0.92,0.88,0.82,1850,0.045,4.6,0.91,0.85,medium,High quality natural language but higher latency and cost
+query-001,llm_gpt4o,4.2,0.90,0.85,0.80,950,0.038,4.5,0.89,0.82,medium,Faster than Claude but slightly lower coherence scores
+query-001,hybrid_template_llm,4.5,0.96,0.90,0.85,850,0.018,4.7,0.93,0.88,high,Template for structure LLM for synthesis - best balance
+query-002,template_based,3.6,0.98,0.68,0.70,150,0.001,3.9,0.92,0.62,low,Good citation accuracy but rigid phrasing
+query-002,llm_claude_sonnet,4.6,0.89,0.92,0.84,1920,0.048,4.8,0.87,0.90,medium,Excellent synthesis but occasional citation drift
+query-002,llm_gpt4o,4.3,0.88,0.88,0.82,1050,0.042,4.6,0.86,0.86,medium,Good balance but citation accuracy below template
+query-002,hybrid_template_llm,4.7,0.97,0.94,0.88,920,0.022,4.8,0.91,0.92,high,Template ensures citation tracking LLM provides natural phrasing
+query-003,template_based,3.4,0.94,0.65,0.72,165,0.001,3.7,0.90,0.60,low,Struggles with technical calibration concepts
+query-003,llm_claude_sonnet,4.7,0.91,0.95,0.87,2100,0.052,4.9,0.92,0.93,medium,Excellent technical depth and explanation quality
+query-003,llm_gpt4o,4.5,0.90,0.91,0.85,1150,0.045,4.7,0.91,0.89,medium,Strong performance slightly less detailed than Claude
+query-003,hybrid_template_llm,4.8,0.96,0.96,0.90,1050,0.025,4.9,0.94,0.94,high,Template structures technical content LLM explains nuances
+avg_all,template_based,3.6,0.96,0.68,0.70,165,0.001,3.9,0.90,0.62,low,Consistently high citation accuracy but limited flexibility
+avg_all,llm_claude_sonnet,4.6,0.91,0.92,0.84,1957,0.048,4.8,0.90,0.89,medium,Highest user satisfaction and completeness with moderate costs
+avg_all,llm_gpt4o,4.3,0.89,0.88,0.82,1050,0.042,4.6,0.89,0.86,medium,Good balance of speed cost and quality
+avg_all,hybrid_template_llm,4.7,0.96,0.93,0.88,940,0.022,4.8,0.93,0.91,high,Best overall performance combining template reliability with LLM flexibility

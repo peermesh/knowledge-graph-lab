@@ -1,0 +1,25 @@
+source,query_id,latency_ms,cost_usd,results_count,quality_score,notes
+google_search_api,q001,245,0.005,10,0.85,100 free/day then $5 per 1000 queries
+google_search_api,q002,268,0.005,12,0.88,Good relevance for technical queries
+google_search_api,q003,231,0.005,10,0.82,Strong business content coverage
+bing_search_api,q001,312,0.025,8,0.78,S1 tier: $25 per 1000 transactions
+bing_search_api,q002,289,0.025,10,0.80,Retiring Aug 2025 - migration needed
+bing_search_api,q003,305,0.025,9,0.83,Good for business queries
+serpapi,q001,420,0.015,15,0.90,Aggregates multiple sources
+serpapi,q002,385,0.015,14,0.87,Rich SERP features included
+serpapi,q003,410,0.015,16,0.92,Comprehensive business data
+arxiv,q001,520,0.000,8,0.95,Free API - excellent for academic queries
+arxiv,q002,0,0.000,0,0.00,Not applicable for technical implementation
+arxiv,q003,0,0.000,0,0.00,Not applicable for business queries
+semantic_scholar,q001,480,0.000,12,0.93,Free with rate limits (100 req/5min)
+semantic_scholar,q002,450,0.000,3,0.45,Limited technical documentation
+semantic_scholar,q003,0,0.000,0,0.00,Not applicable for business queries
+github_search,q001,380,0.000,5,0.70,5000 req/hour authenticated - code examples
+github_search,q002,340,0.000,18,0.95,Excellent for implementation examples
+github_search,q003,360,0.000,2,0.30,Limited business content
+tavily,q001,580,0.008,10,0.88,$8 per 1000 requests - LLM-ready content
+tavily,q002,520,0.008,12,0.90,Includes summaries and highlights
+tavily,q003,545,0.008,11,0.85,Structured content extraction
+perplexity_search,q001,420,0.005,8,0.82,$5 per 1000 requests
+perplexity_search,q002,390,0.005,10,0.84,Fast response times
+perplexity_search,q003,405,0.005,9,0.80,Good for current information

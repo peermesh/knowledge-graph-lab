@@ -26,7 +26,7 @@
 
 ## Outputs Created
 
-All files in `.dev/discovery/backend-module/01-distilled/`:
+All files in `.dev/module-doc-audit/backend-architecture/discovery/backend-module/01-distilled/`:
 
 ### 1. vision-statement.md (15K, ~4 pages)
 **Content:**

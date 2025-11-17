@@ -26,14 +26,30 @@
 
 ---
 
+## Prerequisites: Read First
+
+**Before starting research, read this document:**
+`ARCHITECTURE-FOR-COMPETITIVE-RESEARCH.md`
+
+This provides:
+- Detailed system architecture (8 layers, data structures, APIs)
+- Concrete workflow examples with actual data
+- Technical requirements per layer
+- What makes this architecture novel
+- Layer-by-layer maturity assessment (which layers are commoditized vs. novel)
+
+**You cannot effectively answer "does this exist?" without understanding the actual architecture.**
+
+---
+
 ## Research Objectives
 
 ### Primary Questions
 
 1. **Full System Exists?**
-   - Is there a commercial or open-source product that does all 8 layers end-to-end?
-   - Examples to search: Knowledge graph platforms, research automation tools, question-answering systems
-   - Search terms: "autonomous research pipeline", "knowledge graph construction", "research automation platform"
+   - Is there a commercial or open-source product that does all 8 layers end-to-end with the architecture described in ARCHITECTURE-FOR-COMPETITIVE-RESEARCH.md?
+   - Specifically: Autonomous research with gap detection + knowledge graph merge + conflict resolution
+   - Search terms: "autonomous knowledge enrichment", "research orchestration with gap detection", "knowledge graph merge with conflict resolution"
 
 2. **Partial Solutions Exist?**
    - For each of the 8 layers, what existing tools/libraries already do this?
@@ -82,47 +98,85 @@
 - General LLM platforms without the research workflow
 - Simple Q&A systems that don't build persistent graphs
 
-**Key terms to search:**
+**Key terms to search (organized by architecture component):**
+
+*Gap Detection & Analysis:*
+- "gap detection knowledge graph"
+- "knowledge graph gap analysis"
+- "missing information detection"
+- "knowledge base completeness analysis"
+
+*Research Orchestration:*
+- "multi-agent research planning"
+- "task decomposition knowledge gaps"
+- "parallel research agents"
+- "research task orchestration"
+- "agentic research system"
+
+*Knowledge Graph Merge & Conflict Resolution:*
+- "entity resolution deduplication"
+- "knowledge graph merging conflicts"
+- "knowledge graph update strategy"
+- "conflicting information resolution knowledge base"
+- "entity linking entity disambiguation"
+
+*End-to-End Systems:*
+- "autonomous knowledge enrichment"
+- "research enrichment pipeline"
+- "question answering knowledge graph construction"
+- "automated knowledge graph building"
+- "knowledge graph maintenance system"
+- "knowledge graph auto-update"
+
+*Related Concepts:*
 - "knowledge graph construction pipeline"
-- "autonomous research system"
 - "question answering with knowledge graphs"
-- "research enrichment platform"
 - "graph-based research assistant"
 - "automated knowledge extraction"
 - "multi-source knowledge synthesis"
+- "RAG with knowledge graphs"
 
 ### Phase 2: Landscape Scan (Days 1-2)
 
 **Commercial Platforms to Evaluate:**
 
-1. **Perplexity AI** - Takes questions, returns answers with sources
-   - Does it build knowledge graphs? Build persistent state? Multi-step research?
-   - Cost model? Customizable?
+1. **Research Automation Platforms**
+   - **Perplexity AI** - Does it detect gaps before researching? Does it build persistent KGs?
+   - **Tavily** - Research agent platform. Does it have gap detection + orchestration?
+   - **Elicit.org** - Academic research automation. What's the pipeline?
+   - **SciSpace** - Research assistant. Does it build knowledge graphs?
+   - **Consensus** - Search + synthesis. Does it maintain KGs?
 
-2. **Anyscale Ray Serve** - Distributed orchestration
-   - Can you build our pipeline with Ray? What's already there?
+2. **Knowledge Graph + RAG Platforms**
+   - **Microsoft GraphRAG** - Graph RAG system. Does it include gap detection? Merge strategy?
+   - **LlamaIndex Graph Agents** - RAG with graphs. Does it orchestrate research?
+   - **LangGraph + LangChain agents** - Can you build our 8-layer pipeline?
+   - **Neo4j + Ecosystem** - KG storage. What about construction and merging?
+   - **Amazon Neptune** - Managed KG. Does it include auto-construction?
 
-3. **Langchain + Ecosystem** - Agent orchestration
-   - Does LangChain + Llamaindex + custom code = our system?
-   - What would you need to add?
+3. **Entity Resolution & Knowledge Graph Merging**
+   - **Tamr** - Data fusion and entity resolution (enterprise)
+   - **Trifacta** - Data wrangling. Can it handle KG merge scenarios?
+   - **Talend** - Data integration. Does it handle conflicting information?
+   - Look for open-source entity resolution libraries
 
-4. **Knowledge Graph Platforms:**
-   - Neo4j (storage, but not construction)
-   - TigerGraph (storage, but not construction)
-   - Amazon Neptune (storage, but not construction)
-   - Anything that includes the *construction* pipeline?
+4. **Multi-Agent Orchestration Frameworks**
+   - **AutoGen (Microsoft)** - Multi-agent systems. Can you build research orchestration?
+   - **CrewAI** - Agent framework. Can you compose research tasks?
+   - **Anthropic Tools** - Tool use protocol. Can you orchestrate across tools?
+   - **OpenAI Agents** - Agent patterns. Limited to OpenAI models
 
-5. **Enterprise Research Platforms:**
-   - Elicit.org (research automation)
-   - SciSpace (research assistant)
-   - Consensus (search + synthesis)
-   - Does any of these do what we're doing?
+5. **Specialized Knowledge Systems**
+   - **Wikidata + Wikibase** - Open knowledge base. How does it handle updates?
+   - **Freebase (Google)** - How did it handle continuous enrichment?
+   - **YAGO** - Academic knowledge graph. What's the construction pipeline?
+   - **DBpedia** - Open knowledge base. Maintenance approach?
 
-6. **GraphRAG Variants:**
-   - Microsoft GraphRAG
-   - LlamaIndex Graph Agents
-   - Langgraph
-   - Are any of these close to our target?
+6. **Vector DB + Semantic Search + KGs**
+   - **Weaviate** - Vector DB with KG features
+   - **Milvus** - Vector search. KG support?
+   - **Pinecone** - Vector DB. Can you layer KG merge on top?
+   - Check if any offer KG construction features
 
 **Academic/Research Projects:**
 - Search arXiv for "knowledge graph construction", "information extraction pipeline", "automated research"

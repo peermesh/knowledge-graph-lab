@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "d6fd5bf7bedd5585",
+    "type": "split",
+    "children": [
+      {
+        "id": "25e8a23504493454",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cc45ee05c2a1ff72",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "41ea536bd39c557c",
+    "type": "split",
+    "children": [
+      {
+        "id": "df592621e7d62209",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4bb6460429b6b25a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "f971588fa3db318b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2b07c940b8d07b20",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "c92e6a9017189453",
+    "type": "split",
+    "children": [
+      {
+        "id": "7164c9445ead4de0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fe5ed337100bcc31",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "pipeline/00-PIPELINE-OVERVIEW.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 00-PIPELINE-OVERVIEW"
+            }
+          },
+          {
+            "id": "3750c2bc8f069852",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "pipeline/00-PIPELINE-OVERVIEW.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 00-PIPELINE-OVERVIEW"
+            }
+          },
+          {
+            "id": "acaf2d755a478f3a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "568e4969e1ae267f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "pipeline/00-PIPELINE-OVERVIEW.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 00-PIPELINE-OVERVIEW"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "cc45ee05c2a1ff72",
+  "lastOpenFiles": [
+    "Users/grig/work/MSF - Metaverse Standards Forum/repo/msf-wg-tool/open-metaverse/msf_ai_initiative_database_journeys_ontology_and_sheet_improvements.md",
+    "pipeline/00-PIPELINE-OVERVIEW.md",
+    "Users/grig/work/MSF - Metaverse Standards Forum/repo/msf-wg-tool/open-metaverse",
+    "Users/grig/work/MSF - Metaverse Standards Forum/repo/msf-wg-tool",
+    "Users/grig/work/MSF - Metaverse Standards Forum/repo",
+    "Users/grig/work/MSF - Metaverse Standards Forum",
+    "Users/grig/work",
+    "Users/grig",
+    "Users",
+    "README.md"
+  ]
+}

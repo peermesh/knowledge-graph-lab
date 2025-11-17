@@ -251,7 +251,7 @@ Phase 3: Implementation Planning [Not yet executed for v1.0]
 
 **Methodology Documentation:**
 
-- Discovery Kit workflow: `.dev/discovery/backend-module/00-context-intake/` (process logs)
+- Discovery Kit workflow: `.dev/module-doc-audit/backend-architecture/discovery/backend-module/00-context-intake/` (process logs)
 - Process completion report: `process-docs/PHASE1-COMPLETE.md`
 - Agent handover documentation: `process-docs/2025-10-09-13-26-handover-backend-wo0-context-intake.md`
 

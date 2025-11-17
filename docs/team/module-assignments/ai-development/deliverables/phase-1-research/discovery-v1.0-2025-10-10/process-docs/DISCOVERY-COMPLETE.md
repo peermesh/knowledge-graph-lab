@@ -422,7 +422,7 @@ The AI Module Discovery Kit workflow has been successfully executed. All deliver
 ## File Structure
 
 ```
-.dev/discovery/ai-module/
+.dev/module-doc-audit/ai-development/discovery/ai-module/
 ├── 00-intake/
 │   ├── intake.md                  [617 lines, 9/10 confidence]
 │   ├── auto-discovery.md          [~550 lines, complete analysis]

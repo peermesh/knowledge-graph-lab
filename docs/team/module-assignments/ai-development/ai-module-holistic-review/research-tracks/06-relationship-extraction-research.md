@@ -429,3 +429,14 @@ Relationship extraction defines the structure of our knowledge graph. Quality di
 8. How often should we re-extract relationships as document sources are updated?
 9. Can we use relationship frequency across documents as a confidence signal?
 10. What's the user impact of missing vs incorrect relationships (precision vs recall)?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **relationship-extraction/** - Relationship Extraction and Type Taxonomy
+   - Location: `deep-research/relationship-extraction/`
+   - Status: Pending
+   - Research ID: RES-2025-REL-EXTRACT-001
+   - Focus: Compare dependency parsing + LLM vs pure LLM approaches for relationship extraction with 85%+ precision and relationship type taxonomy
+

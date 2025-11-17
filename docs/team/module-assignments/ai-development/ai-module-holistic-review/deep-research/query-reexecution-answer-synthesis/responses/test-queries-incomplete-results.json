@@ -1,0 +1,101 @@
+[
+  {
+    "id": "query-001",
+    "question": "What are the latest LLM cost optimization strategies for production systems?",
+    "initial_query_results": {
+      "entity_coverage": 0.42,
+      "completeness_score": 0.38,
+      "entities_found": ["GPT-4", "Claude", "OpenAI"],
+      "entities_missing": ["DeepSeek R1", "Gemini Flash", "Cohere", "quantization techniques", "caching strategies", "batch processing"],
+      "relationships_found": 12,
+      "relationships_missing": 38,
+      "issues": [
+        "Missing pricing data for models released after August 2024",
+        "No information on newer cost optimization techniques (caching, quantization)",
+        "Incomplete vendor landscape (missing Cohere, DeepSeek, Gemini Flash)",
+        "Missing relationships between optimization techniques and specific models",
+        "No data on batch processing cost benefits"
+      ],
+      "query_timestamp": "2025-01-15T10:00:00Z",
+      "sources_consulted": 5,
+      "avg_source_age_days": 120
+    },
+    "expected_improvement": 0.87,
+    "improvement_mechanism": "Re-execution with expanded search scope (2024-2025 sources), entity extraction for new vendors, relationship extraction for optimization techniques",
+    "target_metrics": {
+      "entity_coverage": 0.90,
+      "completeness_score": 0.85,
+      "additional_entities": 15,
+      "additional_relationships": 45,
+      "sources_needed": 15,
+      "max_source_age_days": 30
+    },
+    "notes": "Initial query missed recent model releases (DeepSeek R1 at $0.55/$2.19 per 1M tokens, 90% cost reduction vs competitors). Re-execution should prioritize 2024-2025 pricing data and optimization techniques."
+  },
+  {
+    "id": "query-002",
+    "question": "How do modern AI systems implement citation accuracy and source verification?",
+    "initial_query_results": {
+      "entity_coverage": 0.55,
+      "completeness_score": 0.48,
+      "entities_found": ["Perplexity", "inline citations", "source panels"],
+      "entities_missing": ["Facticity.AI", "citation accuracy metrics", "attribution verification methods", "hover citations", "source metadata display", "citation validation frameworks"],
+      "relationships_found": 8,
+      "relationships_missing": 28,
+      "issues": [
+        "Missing quantitative citation accuracy benchmarks (Perplexity: 49%, You.com: 68.3%)",
+        "No information on citation validation methods",
+        "Incomplete coverage of citation display patterns (missing hover displays)",
+        "No data on user preference studies for citation formats",
+        "Missing relationships between citation accuracy and user trust"
+      ],
+      "query_timestamp": "2025-01-15T11:30:00Z",
+      "sources_consulted": 4,
+      "avg_source_age_days": 90
+    },
+    "expected_improvement": 0.82,
+    "improvement_mechanism": "Re-execution with focus on recent UX research (2024-2025), citation accuracy benchmarks, verification frameworks",
+    "target_metrics": {
+      "entity_coverage": 0.88,
+      "completeness_score": 0.80,
+      "additional_entities": 12,
+      "additional_relationships": 30,
+      "sources_needed": 12,
+      "max_source_age_days": 60
+    },
+    "notes": "Initial query lacked empirical citation accuracy data. Recent research (2024) shows significant variance: Facticity.AI (14% incorrect) vs GROK-3 (94% incorrect). Re-execution should gather benchmarking studies and UX pattern research."
+  },
+  {
+    "id": "query-003",
+    "question": "What are the best practices for confidence calibration in question answering systems?",
+    "initial_query_results": {
+      "entity_coverage": 0.38,
+      "completeness_score": 0.35,
+      "entities_found": ["ECE", "confidence scores", "LLM"],
+      "entities_missing": ["AUROC", "AUPRC", "AUARC", "reliability diagrams", "verbalized confidence", "stable explanations method", "multicalibration", "conformal prediction"],
+      "relationships_found": 6,
+      "relationships_missing": 32,
+      "issues": [
+        "Missing alternative calibration metrics (AUROC, AUARC, MacroCE)",
+        "No information on specific calibration methods (2024-2025 research)",
+        "Incomplete understanding of ECE calculation and limitations",
+        "No data on practical implementation approaches",
+        "Missing relationships between calibration quality and user trust"
+      ],
+      "query_timestamp": "2025-01-15T14:00:00Z",
+      "sources_consulted": 3,
+      "avg_source_age_days": 150
+    },
+    "expected_improvement": 0.91,
+    "improvement_mechanism": "Re-execution targeting academic papers (2024-2025), calibration method surveys, implementation frameworks",
+    "target_metrics": {
+      "entity_coverage": 0.92,
+      "completeness_score": 0.88,
+      "additional_entities": 18,
+      "additional_relationships": 40,
+      "sources_needed": 18,
+      "max_source_age_days": 45
+    },
+    "notes": "Initial query had very limited coverage. Recent surveys (2025) identify multiple calibration families: UQ methods, LLM-as-judge, trainable estimators. Re-execution should prioritize recent survey papers and ICLR 2025 publications."
+  }
+]

@@ -1,0 +1,9 @@
+framework,pattern,setup_time_min,code_lines,maintainability_notes,learning_curve,coordination_style
+autogen,simple-coordination,30,45,"Clear message history provides audit trail; conversations are debuggable",Moderate,"Conversational - agents talk via messages"
+autogen,multi-agent-groupchat,45,120,"GroupChat coordination visible but can be verbose; speaker selection adds complexity",Moderate-High,"LLM-driven or rule-based speaker selection"
+langgraph,stateful-workflow,20,55,"Explicit state schema makes data flow clear; graph structure is reviewable",High,"Deterministic graph-based flow"
+langgraph,supervisor-pattern,50,95,"Routing logic is explicit and testable; supervisor code can become complex",High,"State-based routing with supervisor node"
+crewai,role-based-sequential,25,40,"Role/task model is intuitive; automatic coordination reduces boilerplate",Low,"Framework-managed sequential execution"
+crewai,hierarchical-manager,40,85,"Manager adds oversight but behavior can be opaque; good for quality control",Low-Moderate,"LLM manager delegates to workers"
+custom,fastapi-direct,60,150,"Full control but high maintenance; no framework overhead",Very High,"Manual orchestration with custom logic"
+custom,simple-state-machine,45,110,"State machine pattern is clear but requires careful design",High,"Event-driven state transitions"

@@ -1,0 +1,61 @@
+method,entity_pair_id,extracted_relationship,relationship_type,correct,confidence,extraction_time_ms,notes
+rule-based-spacy,rel-001,yes,affiliation,true,0.82,15,Direct dependency pattern match (nsubj-prep-pobj)
+rule-based-spacy,rel-002,yes,authorship,true,0.91,12,Pattern: by + entity matches authorship rule
+rule-based-spacy,rel-003,yes,builds-on,true,0.68,18,Weak match - 'builds upon' not in standard dependency rules
+rule-based-spacy,rel-004,yes,citation,true,0.94,14,Strong match - 'cite' verb explicitly in citation rules
+rule-based-spacy,rel-005,yes,collaboration,true,0.87,16,Co-author pattern detected via conjunction
+rule-based-spacy,rel-006,yes,publication,true,0.85,13,Venue relationship via 'presented at' pattern
+rule-based-spacy,rel-007,yes,studies,true,0.79,17,Research focus detected but lower confidence
+rule-based-spacy,rel-008,yes,supervision,true,0.92,14,Direct 'supervised' verb match
+rule-based-spacy,rel-009,yes,funding,true,0.89,15,Funding pattern with monetary amount
+rule-based-spacy,rel-010,yes,contribution,true,0.73,19,Contribution detected but ambiguous pattern
+rule-based-spacy,rel-011,no,none,true,0.88,11,Correctly rejected due to negation detection
+rule-based-spacy,rel-012,no,none,true,0.76,13,Correctly rejected - comparison not relationship
+ml-based-bert,rel-001,yes,affiliation,true,0.93,142,High confidence from contextual embeddings
+ml-based-bert,rel-002,yes,authorship,true,0.96,138,Clear authorship pattern in training data
+ml-based-bert,rel-003,yes,builds-on,true,0.84,156,Conceptual relationship learned from examples
+ml-based-bert,rel-004,yes,citation,true,0.97,145,Strong citation signal in context
+ml-based-bert,rel-005,yes,collaboration,true,0.91,149,Co-authorship pattern well-represented
+ml-based-bert,rel-006,yes,publication,true,0.89,147,Publication venue relationship detected
+ml-based-bert,rel-007,yes,studies,true,0.86,151,Research focus relationship identified
+ml-based-bert,rel-008,yes,supervision,true,0.95,143,Academic supervision pattern recognized
+ml-based-bert,rel-009,yes,funding,true,0.92,148,Funding relationship with strong signals
+ml-based-bert,rel-010,yes,contribution,true,0.81,159,Contribution detected with moderate confidence
+ml-based-bert,rel-011,no,none,true,0.91,136,Negation handling in BERT context
+ml-based-bert,rel-012,no,none,true,0.83,152,Comparison vs relationship distinction
+llm-based-gpt4,rel-001,yes,affiliation,true,0.96,1250,Strong contextual understanding of employment
+llm-based-gpt4,rel-002,yes,authorship,true,0.98,1180,Clear authorship attribution recognized
+llm-based-gpt4,rel-003,yes,builds-on,true,0.91,1420,Semantic understanding of research lineage
+llm-based-gpt4,rel-004,yes,citation,true,0.97,1210,Explicit citation relationship identified
+llm-based-gpt4,rel-005,yes,collaboration,true,0.94,1290,Multi-paper collaboration pattern recognized
+llm-based-gpt4,rel-006,yes,publication,true,0.95,1230,Publication venue relationship clear
+llm-based-gpt4,rel-007,yes,studies,true,0.92,1340,Research focus relationship understood
+llm-based-gpt4,rel-008,yes,supervision,true,0.97,1200,Academic supervision clearly identified
+llm-based-gpt4,rel-009,yes,funding,true,0.96,1260,Funding with grant details recognized
+llm-based-gpt4,rel-010,yes,contribution,true,0.89,1380,Contribution to field identified
+llm-based-gpt4,rel-011,no,none,true,0.94,1190,Explicit negation correctly handled
+llm-based-gpt4,rel-012,no,none,true,0.88,1350,Comparison relationship correctly rejected
+hybrid-spacy-llm,rel-001,yes,affiliation,true,0.95,167,spaCy candidate + LLM validation
+hybrid-spacy-llm,rel-002,yes,authorship,true,0.97,154,High confidence from both methods
+hybrid-spacy-llm,rel-003,yes,builds-on,true,0.88,189,LLM boosted spaCy's weak detection
+hybrid-spacy-llm,rel-004,yes,citation,true,0.98,161,Both methods agree strongly
+hybrid-spacy-llm,rel-005,yes,collaboration,true,0.93,173,Combined confidence scoring
+hybrid-spacy-llm,rel-006,yes,publication,true,0.93,165,Venue relationship confirmed
+hybrid-spacy-llm,rel-007,yes,studies,true,0.90,178,LLM improved classification
+hybrid-spacy-llm,rel-008,yes,supervision,true,0.96,159,Strong agreement both methods
+hybrid-spacy-llm,rel-009,yes,funding,true,0.94,169,Funding pattern validated
+hybrid-spacy-llm,rel-010,yes,contribution,true,0.86,192,LLM refined ambiguous case
+hybrid-spacy-llm,rel-011,no,none,true,0.93,151,Negation caught by both
+hybrid-spacy-llm,rel-012,no,none,true,0.85,181,Comparison correctly rejected
+openIE-stanford,rel-001,yes,researcher_at,true,0.79,45,Open triple: (Alice Johnson; researcher at; Smith Institute)
+openIE-stanford,rel-002,yes,written_by,true,0.88,38,Open triple: (Neural Graph Networks; written by; Johnson et al)
+openIE-stanford,rel-003,yes,builds_upon,true,0.72,52,Open triple extracted but generic relation
+openIE-stanford,rel-004,yes,cites,true,0.91,41,Citation triple clearly extracted
+openIE-stanford,rel-005,yes,co-authored_with,true,0.85,47,Collaboration via co-authorship triple
+openIE-stanford,rel-006,yes,presented_at,true,0.83,43,Publication venue triple
+openIE-stanford,rel-007,yes,introduces_methods_for,true,0.76,56,Research focus but verbose relation
+openIE-stanford,rel-008,yes,supervised,true,0.89,42,Supervision triple extracted
+openIE-stanford,rel-009,yes,received_funding_from,true,0.87,49,Funding triple with amount
+openIE-stanford,rel-010,yes,contributed_to,true,0.74,54,Contribution detected
+openIE-stanford,rel-011,no,none,true,0.71,39,Negation partially handled
+openIE-stanford,rel-012,no,none,false,0.45,51,Incorrectly extracted comparison as relation
