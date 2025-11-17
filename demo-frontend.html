@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publishing Module Demo</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📧</text></svg>">
     <style>
         * {
             margin: 0;
@@ -204,7 +205,17 @@
                 <input type="email" id="subscriber-email" placeholder="user@example.com" />
             </div>
             <div class="form-group">
-                <label>Topics of Interest</label>
+                <label>Subscribe to Channels (required)</label>
+                <div style="display: flex; gap: 5px;">
+                    <select id="subscriber-channels" multiple style="flex: 1; min-height: 80px;">
+                        <option value="">-- No channels available --</option>
+                    </select>
+                    <button onclick="loadChannelsForSubscriber()" style="white-space: nowrap;">🔄 Refresh Channels</button>
+                </div>
+                <small style="color: #666;">Hold Ctrl/Cmd to select multiple channels. These are the channels this subscriber will receive newsletters from.</small>
+            </div>
+            <div class="form-group">
+                <label>Topics of Interest (optional)</label>
                 <input type="text" id="subscriber-topics" placeholder="artificial_intelligence, machine_learning" />
             </div>
             <div class="button-group">
@@ -218,8 +229,22 @@
         <div class="card">
             <h2>📰 Publications</h2>
             <div class="form-group">
-                <label>Content IDs (comma-separated)</label>
-                <input type="text" id="content-ids" placeholder="uuid1, uuid2, uuid3" />
+                <label>Channel (required)</label>
+                <div style="display: flex; gap: 5px;">
+                    <select id="publication-channel-id" style="flex: 1;">
+                        <option value="">-- Select a channel --</option>
+                    </select>
+                    <button onclick="loadChannelsForPublication()" style="white-space: nowrap;">🔄 Refresh Channels</button>
+                </div>
+                <small style="color: #666;">Click "Refresh Channels" to load available channels, or manually enter a channel ID</small>
+            </div>
+            <div class="form-group" style="display: none;" id="channel-manual-input-group">
+                <label>Or enter Channel ID manually</label>
+                <input type="text" id="publication-channel-id-manual" placeholder="Enter channel ID" />
+            </div>
+            <div class="form-group">
+                <label>Content IDs (comma-separated, optional)</label>
+                <input type="text" id="content-ids" placeholder="uuid1, uuid2, uuid3 (leave empty for testing)" />
             </div>
             <div class="form-group">
                 <label>Publication Type</label>
@@ -237,32 +262,47 @@
             <div id="publication-result" class="result"></div>
         </div>
 
-        <!-- Engagement Tracking -->
+        <!-- Test Newsletter -->
         <div class="card">
-            <h2>📈 Engagement Tracking</h2>
+            <h2>📧 Test Newsletter</h2>
             <div class="form-group">
                 <label>Publication ID</label>
-                <input type="text" id="pub-id" placeholder="Enter publication ID" />
+                <input type="text" id="publication-id" placeholder="Enter publication ID to test" />
             </div>
             <div class="form-group">
-                <label>URL (for click tracking)</label>
-                <input type="text" id="click-url" placeholder="https://example.com/article" value="https://example.com" />
+                <label>Test Email (optional - override subscriber list)</label>
+                <input type="email" id="test-email" placeholder="test@example.com" value="bschreibero@icloud.com" />
             </div>
             <div class="button-group">
-                <button onclick="trackOpen()">Track Open</button>
-                <button onclick="trackClick()">Track Click</button>
+                <button onclick="testNewsletter()" style="background-color: #28a745;">📧 Send Test Newsletter</button>
             </div>
-            <div id="engagement-result" class="result"></div>
+            <div id="newsletter-status"></div>
+            <div id="newsletter-result" class="result"></div>
         </div>
 
-        <!-- Analytics Dashboard -->
+        <!-- Channel Analytics -->
         <div class="card">
-            <h2>📊 Analytics Dashboard</h2>
-            <div class="button-group">
-                <button onclick="getEngagement()">Get Engagement Summary</button>
-                <button onclick="getPerformance()">Get Performance Metrics</button>
+            <h2>📊 Channel Analytics</h2>
+            <div class="form-group">
+                <label>Select Channel</label>
+                <div style="display: flex; gap: 5px;">
+                    <select id="analytics-channel-id" style="flex: 1;" onchange="loadChannelAnalytics()">
+                        <option value="">-- Select a channel --</option>
+                    </select>
+                    <button onclick="loadChannelsForAnalytics()" style="white-space: nowrap;">🔄 Refresh Channels</button>
+                </div>
+                <small style="color: #666;">Select a channel to view engagement metrics (opens and clicks)</small>
             </div>
-            <div id="stats-container" class="stats"></div>
+            <div id="channel-stats-container" class="stats" style="display: none;">
+                <div class="stat-card">
+                    <div class="number" id="channel-opens">0</div>
+                    <div class="label">Opens</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="channel-clicks">0</div>
+                    <div class="label">Clicks</div>
+                </div>
+            </div>
             <div id="analytics-result" class="result"></div>
         </div>
     </div>
@@ -282,10 +322,37 @@
             
             try {
                 const response = await fetch(API_BASE + endpoint, options);
-                const data = await response.json();
+                
+                // Handle non-JSON responses
+                let data;
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    data = await response.json();
+                } else {
+                    // For image/pixel responses, just return success
+                    if (contentType && contentType.includes('image/')) {
+                        return { success: response.ok, data: { tracked: true }, status: response.status };
+                    }
+                    // For redirects, return success
+                    if (response.status >= 300 && response.status < 400) {
+                        return { success: true, data: { redirected: true }, status: response.status };
+                    }
+                    // Try to parse as text
+                    const text = await response.text();
+                    try {
+                        data = JSON.parse(text);
+                    } catch {
+                        data = { message: text };
+                    }
+                }
+                
                 return { success: response.ok, data, status: response.status };
             } catch (error) {
-                return { success: false, error: error.message };
+                // Only log actual errors, not expected ones
+                if (!error.message.includes('fetch')) {
+                    console.error('API call error:', error);
+                }
+                return { success: false, error: error.message, status: 0 };
             }
         }
 
@@ -318,9 +385,11 @@
             showResult('health-result', result);
         }
 
+
         // Channel Management
         async function createChannel() {
-            const name = document.getElementById('channel-name').value || 'Demo Channel';
+            const nameInput = document.getElementById('channel-name');
+            const name = nameInput.value || `Demo Channel ${Date.now()}`;
             const type = document.getElementById('channel-type').value;
             const result = await apiCall('/channels', 'POST', {
                 name: name,
@@ -332,7 +401,33 @@
                 },
                 is_active: true
             });
-            showResult('channel-result', result);
+            
+            if (result.success) {
+                // Clear the name input after successful creation
+                nameInput.value = '';
+                // Show success message
+                const statusEl = document.createElement('div');
+                statusEl.className = 'status success';
+                statusEl.innerHTML = `✅ Channel created: ${result.data?.data?.name || name}`;
+                const resultEl = document.getElementById('channel-result');
+                resultEl.innerHTML = '';
+                resultEl.appendChild(statusEl);
+                setTimeout(() => {
+                    resultEl.innerHTML = '';
+                    showResult('channel-result', result);
+                }, 2000);
+            } else {
+                // Show error message if channel already exists
+                if (result.status === 409) {
+                    const statusEl = document.createElement('div');
+                    statusEl.className = 'status error';
+                    statusEl.innerHTML = `❌ ${result.data?.detail || 'Channel already exists. Try a different name or click "List All Channels" to see existing ones.'}`;
+                    const resultEl = document.getElementById('channel-result');
+                    resultEl.innerHTML = '';
+                    resultEl.appendChild(statusEl);
+                }
+                showResult('channel-result', result);
+            }
         }
 
         async function listChannels() {
@@ -340,26 +435,148 @@
             showResult('channel-result', result);
         }
 
+        async function loadChannelsForPublication() {
+            const result = await apiCall('/channels');
+            const selectEl = document.getElementById('publication-channel-id');
+            
+            if (result.success && result.data?.data?.channels) {
+                const channels = result.data.data.channels;
+                
+                // Clear existing options except the first one
+                while (selectEl.options.length > 1) {
+                    selectEl.remove(1);
+                }
+                
+                if (channels.length === 0) {
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'No channels available - create one first';
+                    selectEl.appendChild(option);
+                    return;
+                }
+                
+                // Add channels to dropdown
+                channels.forEach(ch => {
+                    const option = document.createElement('option');
+                    option.value = ch.id;
+                    option.textContent = `${ch.name} (${ch.channel_type})${ch.is_active ? '' : ' - INACTIVE'}`;
+                    selectEl.appendChild(option);
+                });
+                
+                // Auto-select first active channel
+                const firstActive = channels.find(ch => ch.is_active);
+                if (firstActive) {
+                    selectEl.value = firstActive.id;
+                } else if (channels.length > 0) {
+                    selectEl.value = channels[0].id;
+                }
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'Failed to load channels';
+                selectEl.appendChild(option);
+            }
+        }
+
+        async function loadChannelsForSubscriber() {
+            const result = await apiCall('/channels');
+            const selectEl = document.getElementById('subscriber-channels');
+            
+            if (result.success && result.data?.data?.channels) {
+                const channels = result.data.data.channels;
+                
+                // Clear existing options
+                selectEl.innerHTML = '';
+                
+                if (channels.length === 0) {
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'No channels available - create one first';
+                    selectEl.appendChild(option);
+                    return;
+                }
+                
+                // Add channels to multi-select dropdown
+                channels.forEach(ch => {
+                    const option = document.createElement('option');
+                    option.value = ch.id;
+                    option.textContent = `${ch.name} (${ch.channel_type})${ch.is_active ? '' : ' - INACTIVE'}`;
+                    selectEl.appendChild(option);
+                });
+                
+                // Auto-select first active channel
+                const firstActive = channels.find(ch => ch.is_active);
+                if (firstActive) {
+                    selectEl.value = firstActive.id;
+                }
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'Failed to load channels';
+                selectEl.appendChild(option);
+            }
+        }
+
+        // Load channels on page load
+        // Note: This will also be called from window.onload below
+
         // Subscriber Management
         async function createSubscriber() {
-            const email = document.getElementById('subscriber-email').value || `demo${Date.now()}@example.com`;
+            const email = document.getElementById('subscriber-email').value;
+            if (!email) {
+                showStatus('subscriber-result', false, '❌ Please enter an email address');
+                return;
+            }
+
+            const channelsSelect = document.getElementById('subscriber-channels');
+            const selectedChannels = Array.from(channelsSelect.selectedOptions).map(opt => opt.value).filter(v => v);
+            
+            if (selectedChannels.length === 0) {
+                showStatus('subscriber-result', false, '❌ Please select at least one channel to subscribe to. Click "Refresh Channels" to load available channels.');
+                return;
+            }
+
             const topicsInput = document.getElementById('subscriber-topics').value;
-            const topics = topicsInput ? topicsInput.split(',').map(t => t.trim()) : ['artificial_intelligence', 'machine_learning'];
+            const topics = topicsInput ? topicsInput.split(',').map(t => t.trim()).filter(t => t) : [];
             
             const topicInterests = {};
             topics.forEach(topic => {
                 topicInterests[topic] = Math.random() * 0.3 + 0.7; // 0.7-1.0
             });
 
+            showStatus('subscriber-result', true, '⏳ Creating subscriber...');
+
             const result = await apiCall('/subscribers', 'POST', {
                 email: email,
-                preferred_channels: ['email', 'slack'],
+                preferred_channels: selectedChannels, // Use actual channel IDs
                 topic_interests: topicInterests,
                 frequency_settings: {
                     'newsletter': 'daily',
                     'alerts': 'real-time'
                 }
             });
+
+            if (result.success && result.data?.data) {
+                const sub = result.data.data;
+                const successHtml = `
+                    <div class="status success">
+                        ✅ Subscriber Created!
+                        <br><strong>Email:</strong> ${sub.email}
+                        <br><strong>Subscribed to Channels:</strong> ${sub.preferred_channels?.length || 0}
+                        <br><strong>Status:</strong> ${sub.subscription_status}
+                        <br><strong>Topics:</strong> ${Object.keys(sub.topic_interests || {}).length}
+                    </div>
+                `;
+                document.getElementById('subscriber-result').innerHTML = successHtml;
+                
+                // Clear form
+                document.getElementById('subscriber-email').value = '';
+                document.getElementById('subscriber-topics').value = '';
+            } else {
+                showStatus('subscriber-result', false, 
+                    `❌ Failed: ${result.data?.detail || result.errors?.[0]?.message || 'Unknown error'}`);
+            }
+            
             showResult('subscriber-result', result);
         }
 
@@ -370,19 +587,54 @@
 
         // Publication Management
         async function scheduleNewsletter() {
-            const contentIdsInput = document.getElementById('content-ids').value;
+            const selectEl = document.getElementById('publication-channel-id');
+            const manualInputEl = document.getElementById('publication-channel-id-manual');
+            const channelIdInput = selectEl.value.trim() || manualInputEl?.value.trim() || '';
+            
+            if (!channelIdInput) {
+                showStatus('publication-result', false, '❌ Please select or enter a Channel ID. Click "Refresh Channels" to load available channels.');
+                return;
+            }
+
+            const contentIdsInput = document.getElementById('content-ids').value.trim();
             const contentIds = contentIdsInput ? 
-                contentIdsInput.split(',').map(id => id.trim()) : 
-                [generateUUID(), generateUUID()];
+                contentIdsInput.split(',').map(id => id.trim()).filter(id => id.length > 0) : 
+                [];
             
             const pubType = document.getElementById('publication-type').value;
 
+            showStatus('publication-result', true, '⏳ Scheduling newsletter...');
+
             const result = await apiCall('/publications/newsletter/schedule', 'POST', {
                 content_ids: contentIds,
-                channels: [generateUUID()], // Would need a real channel ID
+                channels: [channelIdInput],
                 publication_type: pubType,
                 scheduled_time: new Date(Date.now() + 3600000).toISOString() // 1 hour from now
             });
+            
+            if (result.success && result.data?.data) {
+                const pub = result.data.data;
+                const successHtml = `
+                    <div class="status success">
+                        ✅ Newsletter Scheduled!
+                        <br><strong>Publication ID:</strong> ${pub.id}
+                        <br><strong>Type:</strong> ${pub.publication_type}
+                        <br><strong>Status:</strong> ${pub.status}
+                        <br><strong>Scheduled Time:</strong> ${new Date(pub.scheduled_time).toLocaleString()}
+                        <br><strong>Content Items:</strong> ${pub.content_ids?.length || 0}
+                        <br><strong>Channels:</strong> ${pub.channels?.length || 0}
+                        <br><br><small>Use this Publication ID to test the newsletter delivery.</small>
+                    </div>
+                `;
+                document.getElementById('publication-result').innerHTML = successHtml;
+                
+                // Auto-fill publication ID in test newsletter section
+                document.getElementById('publication-id').value = pub.id;
+            } else {
+                showStatus('publication-result', false, 
+                    `❌ Failed: ${result.data?.detail || result.errors?.[0]?.message || 'Unknown error'}`);
+            }
+            
             showResult('publication-result', result);
         }
 
@@ -391,54 +643,134 @@
             showResult('publication-result', result);
         }
 
-        // Engagement Tracking
-        async function trackOpen() {
-            const pubId = document.getElementById('pub-id').value || `pub-${Date.now()}`;
-            const result = await apiCall(`/analytics/engagement/track/open?publication_id=${pubId}`, 'POST');
-            showResult('engagement-result', result);
-        }
-
-        async function trackClick() {
-            const pubId = document.getElementById('pub-id').value || `pub-${Date.now()}`;
-            const url = document.getElementById('click-url').value || 'https://example.com';
-            const result = await apiCall(`/analytics/engagement/track/click?publication_id=${pubId}&url=${encodeURIComponent(url)}`, 'POST');
-            showResult('engagement-result', result);
-        }
-
-        // Analytics
-        async function getEngagement() {
-            const result = await apiCall('/analytics/engagement');
+        // Test Newsletter
+        async function testNewsletter() {
+            const publicationId = document.getElementById('publication-id').value;
+            const testEmail = document.getElementById('test-email').value || null;
             
-            // Display stats
-            if (result.success && result.data?.data) {
-                const totals = result.data.data.totals || {};
-                const statsHtml = `
-                    <div class="stat-card">
-                        <div class="number">${totals.open || 0}</div>
-                        <div class="label">Total Opens</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="number">${totals.click || 0}</div>
-                        <div class="label">Total Clicks</div>
+            if (!publicationId) {
+                showStatus('newsletter-status', false, '❌ Please enter a Publication ID');
+                return;
+            }
+
+            showStatus('newsletter-status', true, '⏳ Sending test newsletter...');
+
+            const body = testEmail ? { test_email: testEmail } : {};
+            const result = await apiCall(`/publications/${publicationId}/test`, 'POST', body);
+
+            if (result.success && result.data) {
+                const data = result.data;
+                const successHtml = `
+                    <div class="status success">
+                        ✅ Test Newsletter Sent!
+                        <br><strong>Publication ID:</strong> ${data.publication_id}
+                        <br><strong>Total Subscribers:</strong> ${data.total_subscribers}
+                        <br><strong>Successful:</strong> ${data.successful}
+                        <br><strong>Failed:</strong> ${data.failed}
+                        <br><strong>Subject:</strong> ${data.newsletter?.subject || 'N/A'}
+                        <br><br><strong>Delivery Results:</strong>
+                        <pre style="background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto; max-height: 300px;">${JSON.stringify(data.delivery_results, null, 2)}</pre>
                     </div>
                 `;
-                document.getElementById('stats-container').innerHTML = statsHtml;
+                document.getElementById('newsletter-status').innerHTML = successHtml;
+            } else {
+                showStatus('newsletter-status', false, 
+                    `❌ Failed: ${result.data?.detail || result.errors?.[0]?.message || 'Unknown error'}`);
             }
             
-            showResult('analytics-result', result);
+            showResult('newsletter-result', result);
         }
 
-        async function getPerformance() {
-            const result = await apiCall('/analytics/performance');
-            showResult('analytics-result', result);
+        // Channel Analytics
+        async function loadChannelsForAnalytics() {
+            const result = await apiCall('/channels');
+            const selectEl = document.getElementById('analytics-channel-id');
+            
+            if (result.success && result.data?.data?.channels) {
+                const channels = result.data.data.channels;
+                
+                // Clear existing options except the first one
+                while (selectEl.options.length > 1) {
+                    selectEl.remove(1);
+                }
+                
+                if (channels.length === 0) {
+                    const option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'No channels available - create one first';
+                    selectEl.appendChild(option);
+                    return;
+                }
+                
+                // Add channels to dropdown
+                channels.forEach(ch => {
+                    const option = document.createElement('option');
+                    option.value = ch.id;
+                    option.textContent = `${ch.name} (${ch.channel_type})${ch.is_active ? '' : ' - INACTIVE'}`;
+                    selectEl.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'Failed to load channels';
+                selectEl.appendChild(option);
+            }
+        }
+
+        async function loadChannelAnalytics() {
+            const channelId = document.getElementById('analytics-channel-id').value;
+            
+            if (!channelId) {
+                // Hide stats if no channel selected
+                document.getElementById('channel-stats-container').style.display = 'none';
+                document.getElementById('analytics-result').innerHTML = '';
+                return;
+            }
+            
+            // Show loading state
+            document.getElementById('channel-stats-container').style.display = 'flex';
+            document.getElementById('channel-opens').textContent = '...';
+            document.getElementById('channel-clicks').textContent = '...';
+            
+            // Fetch channel-specific engagement data
+            const result = await apiCall(`/analytics/engagement?channel_id=${channelId}`);
+            
+            if (result.success && result.data?.data) {
+                const data = result.data.data;
+                const totals = data.totals || {};
+                
+                // Update stats display
+                document.getElementById('channel-opens').textContent = totals.open || 0;
+                document.getElementById('channel-clicks').textContent = totals.click || 0;
+                
+                // Show additional details in result area
+                const pubCount = data.publication_count || 0;
+                const detailsHtml = `
+                    <div class="status success" style="margin-top: 10px;">
+                        <strong>Channel Analytics</strong><br>
+                        Opens: <strong>${totals.open || 0}</strong><br>
+                        Clicks: <strong>${totals.click || 0}</strong><br>
+                        Publications: <strong>${pubCount}</strong>
+                    </div>
+                `;
+                document.getElementById('analytics-result').innerHTML = detailsHtml;
+            } else {
+                // Show error
+                document.getElementById('channel-opens').textContent = '0';
+                document.getElementById('channel-clicks').textContent = '0';
+                showResult('analytics-result', result);
+            }
         }
 
         // Initialize
         window.onload = () => {
             checkHealth();
+            loadChannelsForPublication(); // Load channels into publication dropdown
+            loadChannelsForSubscriber(); // Load channels into subscriber dropdown
+            loadChannelsForAnalytics(); // Load channels into analytics dropdown
             console.log('🚀 Publishing Module Demo loaded!');
             console.log('API Base:', API_BASE);
-            console.log('Try the Swagger UI at: http://localhost:8080/docs');
+            console.log('Try the Swagger UI at: http://localhost:8080/api/v1/docs');
         };
     </script>
 </body>

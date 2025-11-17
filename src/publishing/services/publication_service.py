@@ -18,7 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_, or_, desc, func
 from sqlalchemy.orm import selectinload
 
-from ..core.database import get_async_session
+from ..core.database import get_async_session, async_session_factory
 from ..models.publication import Publication
 from ..models.channel import Channel
 from ..models.subscriber import Subscriber
@@ -53,24 +53,38 @@ class PublicationService:
     ) -> Publication:
         """Create a new publication with content selection and channel targeting."""
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             # Generate publication ID
             publication_id = str(uuid.uuid4())
 
             # Set default scheduled time if not provided
             if not scheduled_time:
                 scheduled_time = datetime.utcnow()
+            # Convert to naive datetime (database uses TIMESTAMP WITHOUT TIME ZONE)
+            if scheduled_time.tzinfo is not None:
+                scheduled_time = scheduled_time.replace(tzinfo=None)
 
             # Create publication record
+            # Note: personalization_rules and template_id stored in channel_results JSON field
+            # Convert UUID objects to strings for JSON serialization
+            content_ids_str = [str(cid) for cid in content_ids] if content_ids else []
+            channels_str = [str(ch) for ch in channels] if channels else []
+            
+            channel_results_data = {}
+            if personalization_rules:
+                channel_results_data["personalization_rules"] = personalization_rules
+            if template_id:
+                channel_results_data["template_id"] = str(template_id) if template_id else None
+            
             publication = Publication(
                 id=publication_id,
-                content_ids=content_ids,
-                channels=channels,
+                content_ids=content_ids_str,
+                channels=channels_str,
                 publication_type=publication_type,
                 scheduled_time=scheduled_time,
                 status="scheduled",
-                personalization_rules=personalization_rules or {},
-                template_id=template_id
+                channel_results=channel_results_data,
+                personalization_applied=personalization_rules or {}
             )
 
             session.add(publication)
@@ -101,7 +115,7 @@ class PublicationService:
 
     async def get_publication(self, publication_id: str) -> Optional[Publication]:
         """Get publication details by ID."""
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             result = await session.execute(
                 select(Publication).where(Publication.id == publication_id)
             )
@@ -116,7 +130,7 @@ class PublicationService:
     ) -> Tuple[List[Publication], int]:
         """List publications with optional filtering and pagination."""
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             # Build query
             query = select(Publication)
 
@@ -153,7 +167,7 @@ class PublicationService:
     ) -> Optional[Publication]:
         """Update a publication with new data."""
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             publication = await session.get(Publication, publication_id)
 
             if not publication:
@@ -178,7 +192,7 @@ class PublicationService:
     async def cancel_publication(self, publication_id: str) -> bool:
         """Cancel a scheduled publication."""
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             publication = await session.get(Publication, publication_id)
 
             if not publication:
@@ -210,7 +224,7 @@ class PublicationService:
     async def retry_publication(self, publication_id: str) -> bool:
         """Retry a failed publication."""
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             publication = await session.get(Publication, publication_id)
 
             if not publication:
@@ -243,14 +257,15 @@ class PublicationService:
     async def get_publications_by_status(self, status: str, limit: int = 100) -> List[Publication]:
         """Get publications by status for processing."""
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             result = await session.execute(
                 select(Publication)
                 .where(Publication.status == status)
                 .order_by(Publication.scheduled_time)
                 .limit(limit)
             )
-            return result.scalars().all()
+            publications = result.scalars().all()
+            return publications
 
     async def update_publication_status(
         self,
@@ -270,7 +285,7 @@ class PublicationService:
             )
             return True
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             publication = await session.get(Publication, publication_id)
 
             if not publication:
@@ -313,7 +328,7 @@ class PublicationService:
     async def get_publication_analytics(self, publication_id: str) -> Dict[str, Any]:
         """Get analytics data for a publication."""
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             result = await session.execute(
                 select(Analytics)
                 .where(Analytics.publication_id == publication_id)
@@ -346,7 +361,7 @@ class PublicationService:
 
         now = datetime.utcnow()
 
-        async with get_async_session() as session:
+        async with async_session_factory() as session:
             result = await session.execute(
                 select(Publication)
                 .where(
@@ -358,7 +373,8 @@ class PublicationService:
                 .order_by(Publication.scheduled_time)
                 .limit(100)  # Process in batches
             )
-            return result.scalars().all()
+            publications = result.scalars().all()
+            return publications
 
     async def mark_publication_processing(self, publication_id: str) -> bool:
         """Mark publication as processing."""

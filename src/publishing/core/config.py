@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     DEBUG: bool = False
     PORT: int = 8080
+    API_BASE_URL: str = "http://localhost:8080"  # Base URL for API (for tracking URLs)
 
     # Security
     SECRET_KEY: str = "dev-secret"
@@ -30,15 +31,20 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
 
     # Database (PostgreSQL 15+ with JSONB support)
-    DATABASE_HOST: str = "localhost"
+    # Defaults match docker-compose.yml for Docker environment
+    # When running standalone, override via .env file
+    DATABASE_HOST: str = "postgres"  # "postgres" in Docker, "localhost" standalone
     DATABASE_PORT: int = 5432
-    DATABASE_NAME: str = "publishing"
-    DATABASE_USER: str = "postgres"
-    DATABASE_PASSWORD: str = "postgres"
+    DATABASE_NAME: str = "publishing_db"  # Matches docker-compose.yml
+    DATABASE_USER: str = "publishing_user"  # Matches docker-compose.yml
+    DATABASE_PASSWORD: str = "publishing_pass"  # Matches docker-compose.yml
     DATABASE_URL: str = ""
 
     # Redis (7.0+ for caching and pub/sub)
-    REDIS_HOST: str = "localhost"
+    # Auto-detect: "redis" if in Docker, "localhost" if standalone
+    # Docker sets REDIS_HOST=redis in docker-compose.yml
+    # Standalone should set REDIS_HOST=localhost in .env
+    REDIS_HOST: str = "localhost"  # Default to localhost for standalone
     REDIS_PORT: int = 6379
     REDIS_URL: str = ""
     REDIS_PASSWORD: Optional[str] = None
@@ -99,7 +105,7 @@ class Settings(BaseSettings):
             f"{values.get('DATABASE_PASSWORD')}@"
             f"{values.get('DATABASE_HOST', 'localhost')}:"
             f"{values.get('DATABASE_PORT', 5432)}/"
-            f"{values.get('DATABASE_NAME', 'publishing')}"
+            f"{values.get('DATABASE_NAME', 'publishing_db')}"
         )
 
     @validator("REDIS_URL", pre=True)

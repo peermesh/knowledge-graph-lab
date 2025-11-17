@@ -105,7 +105,8 @@ async def get_db_health() -> dict:
     try:
         async with async_session_factory() as session:
             # Execute a simple query to test connectivity
-            result = await session.execute("SELECT 1 as health_check")
+            from sqlalchemy import text
+            result = await session.execute(text("SELECT 1 as health_check"))
             row = result.fetchone()
 
             if row and row.health_check == 1:
