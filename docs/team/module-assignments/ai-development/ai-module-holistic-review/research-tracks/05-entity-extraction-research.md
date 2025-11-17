@@ -409,3 +409,20 @@ Entity extraction is the highest-cost component of our pipeline. Every basis poi
 8. Should entity confidence be normalized 0-1 or domain-specific?
 9. Can we use entity feedback from graph building to improve extraction?
 10. What's our budget for entity extraction cost per month at production scale?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **entity-extraction-llm-benchmarking/** - LLM Provider Comparison for Entity Extraction
+   - Location: `deep-research/entity-extraction-llm-benchmarking/`
+   - Status: Pending
+   - Research ID: RES-2025-ENTITY-LLM-001
+   - Focus: Benchmark Claude 3.5, Haiku, GPT-4, Cohere, Llama for entity extraction with target 85%+ F1 and cost optimization
+
+2. **entity-extraction-ner-deduplication/** - NER Libraries and Entity Deduplication
+   - Location: `deep-research/entity-extraction-ner-deduplication/`
+   - Status: Pending
+   - Research ID: RES-2025-ENTITY-NER-001
+   - Focus: Evaluate spaCy, Flair, HuggingFace NER models plus fuzzy/semantic/LLM deduplication strategies
+

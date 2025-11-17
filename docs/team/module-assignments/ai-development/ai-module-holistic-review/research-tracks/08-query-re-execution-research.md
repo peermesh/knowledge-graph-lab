@@ -475,3 +475,14 @@ Query re-execution is the final user-facing step. Quality here determines produc
 8. How do we handle ambiguous queries: ask user to clarify or guess?
 9. What's the fallback when graph doesn't contain answer (search web)?
 10. How do we explain why system couldn't answer a question?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **query-reexecution-answer-synthesis/** - Answer Synthesis and Quality Assurance
+   - Location: `deep-research/query-reexecution-answer-synthesis/`
+   - Status: Pending
+   - Research ID: RES-2025-QUERY-REEXEC-001
+   - Focus: Evaluate template vs LLM vs hybrid answer synthesis approaches with 85%+ relevance, 98%+ citation accuracy, and <2s latency
+

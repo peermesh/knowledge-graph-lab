@@ -455,3 +455,20 @@ Knowledge graph merge is where data quality is won or lost. Poor merging creates
 8. Should deduplication consider graph structure or just entity attributes?
 9. How do we communicate to users when their entity was merged?
 10. Can we use entity frequency across documents to validate merges?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **knowledge-graph-merge-deduplication/** - Entity Deduplication Algorithms
+   - Location: `deep-research/knowledge-graph-merge-deduplication/`
+   - Status: Pending
+   - Research ID: RES-2025-KG-MERGE-DEDUP-001
+   - Focus: Evaluate fuzzy matching, semantic similarity, and LLM-based deduplication with 95%+ precision and <1% false positive rate
+
+2. **knowledge-graph-merge-neo4j-performance/** - Neo4j Merge Performance and Transaction Integrity
+   - Location: `deep-research/knowledge-graph-merge-neo4j-performance/`
+   - Status: Pending
+   - Research ID: RES-2025-KG-MERGE-NEO4J-001
+   - Focus: Optimize Neo4j merge operations to handle 100K entities in <60 seconds with ACID guarantees and concurrent access support
+

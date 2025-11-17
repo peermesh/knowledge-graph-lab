@@ -1,0 +1,13 @@
+query_id,strategy,coverage_before,coverage_after,quality_score_before,quality_score_after,latency_ms,improvement_percent,sources_added,entities_added,relationships_added,confidence_score,notes
+query-001,baseline_vector_search,0.42,0.42,0.38,0.38,450,0,0,0,0,0.65,Baseline semantic search without re-execution
+query-001,temporal_expansion,0.42,0.68,0.38,0.62,1850,63.2,10,12,28,0.78,Expanded search to include 2024-2025 sources only
+query-001,entity_guided_search,0.42,0.82,0.38,0.75,2100,97.4,14,15,42,0.84,Used missing entities (DeepSeek Cohere Gemini) as search queries
+query-001,graphrag_community,0.42,0.89,0.38,0.87,3200,128.9,18,18,52,0.89,GraphRAG with community summarization and iterative enrichment
+query-002,baseline_vector_search,0.55,0.55,0.48,0.48,380,0,0,0,0,0.70,Baseline semantic search without re-execution
+query-002,citation_focused_search,0.55,0.73,0.48,0.68,1650,41.7,8,9,22,0.76,Targeted search for citation accuracy benchmarks and UX patterns
+query-002,multi_source_synthesis,0.55,0.84,0.48,0.80,2400,66.7,12,12,30,0.82,Combined academic papers industry reports and UX research
+query-002,graphrag_community,0.55,0.88,0.48,0.85,2950,77.1,15,14,35,0.86,GraphRAG with entity extraction for citation validation methods
+query-003,baseline_vector_search,0.38,0.38,0.35,0.35,420,0,0,0,0,0.62,Baseline semantic search without re-execution
+query-003,academic_paper_search,0.38,0.71,0.35,0.70,2100,100.0,12,15,35,0.81,Targeted arxiv and conference papers (ICLR 2025 NAACL 2024)
+query-003,method_taxonomy_search,0.38,0.86,0.35,0.84,2800,140.0,16,18,42,0.88,Built taxonomy of calibration methods then filled gaps systematically
+query-003,graphrag_community,0.38,0.92,0.35,0.91,3500,160.0,20,21,48,0.91,GraphRAG with hierarchical clustering of calibration approaches

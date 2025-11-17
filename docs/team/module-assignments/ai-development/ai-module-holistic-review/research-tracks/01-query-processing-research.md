@@ -279,3 +279,14 @@ Query processing is the entry point to the research orchestration system. Gettin
 3. What's the fallback when confidence is <70%?
 4. How do we version and update intent classifiers?
 5. Do we need multi-language support initially?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **query-processing-nlp-evaluation/** - Query Processing & NLP Library Evaluation
+   - Location: `deep-research/query-processing-nlp-evaluation/`
+   - Status: Pending
+   - Research ID: RES-2025-QUERY-PROC-001
+   - Focus: Evaluate SpaCy, NLTK, transformers, and LLM approaches for query parsing with <50ms latency target and 85%+ accuracy
+

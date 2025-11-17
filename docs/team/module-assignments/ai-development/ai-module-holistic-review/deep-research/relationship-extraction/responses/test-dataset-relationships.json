@@ -1,0 +1,110 @@
+[
+  {
+    "id": "rel-001",
+    "entity_pair": ["Alice Johnson", "Smith Institute"],
+    "text_context": "Alice Johnson, a senior researcher at Smith Institute, published her groundbreaking paper on graph algorithms in Nature Communications.",
+    "relationship_type": "affiliation",
+    "correct_relationship": true,
+    "confidence": 0.95,
+    "notes": "Clear affiliation statement with job title 'researcher at' indicating employment relationship"
+  },
+  {
+    "id": "rel-002",
+    "entity_pair": ["Neural Graph Networks", "Johnson et al. 2023"],
+    "text_context": "The paper 'Neural Graph Networks' by Johnson et al. 2023 introduced a novel architecture for knowledge graph completion.",
+    "relationship_type": "authorship",
+    "correct_relationship": true,
+    "confidence": 0.98,
+    "notes": "Direct authorship attribution using 'by' construction"
+  },
+  {
+    "id": "rel-003",
+    "entity_pair": ["Neural Graph Networks", "Knowledge Graph Embeddings"],
+    "text_context": "Neural Graph Networks builds upon earlier work in Knowledge Graph Embeddings, extending the approach with attention mechanisms.",
+    "relationship_type": "builds-on",
+    "correct_relationship": true,
+    "confidence": 0.87,
+    "notes": "Conceptual relationship indicating research lineage, signaled by 'builds upon' phrase"
+  },
+  {
+    "id": "rel-004",
+    "entity_pair": ["Johnson et al. 2023", "Smith et al. 2022"],
+    "text_context": "Johnson et al. (2023) cite the foundational work of Smith et al. (2022) on graph attention networks.",
+    "relationship_type": "citation",
+    "correct_relationship": true,
+    "confidence": 0.96,
+    "notes": "Explicit citation relationship with 'cite' verb"
+  },
+  {
+    "id": "rel-005",
+    "entity_pair": ["Alice Johnson", "Robert Chen"],
+    "text_context": "Alice Johnson and Robert Chen co-authored three papers on knowledge graph construction between 2021 and 2023.",
+    "relationship_type": "collaboration",
+    "correct_relationship": true,
+    "confidence": 0.93,
+    "notes": "Collaboration indicated by 'co-authored' and multiple joint publications"
+  },
+  {
+    "id": "rel-006",
+    "entity_pair": ["Knowledge Graph Completion Survey", "ACL 2024"],
+    "text_context": "The comprehensive survey on Knowledge Graph Completion was presented at the Annual Meeting of the Association for Computational Linguistics (ACL) in 2024.",
+    "relationship_type": "publication",
+    "correct_relationship": true,
+    "confidence": 0.94,
+    "notes": "Publication venue relationship indicated by 'presented at' phrase"
+  },
+  {
+    "id": "rel-007",
+    "entity_pair": ["Neural Graph Networks", "graph completion"],
+    "text_context": "The paper Neural Graph Networks introduces methods for improving accuracy in graph completion tasks.",
+    "relationship_type": "studies",
+    "correct_relationship": true,
+    "confidence": 0.89,
+    "notes": "Research focus relationship - paper investigates a specific concept/problem"
+  },
+  {
+    "id": "rel-008",
+    "entity_pair": ["Dr. Sarah Martinez", "Alice Johnson"],
+    "text_context": "Dr. Sarah Martinez supervised Alice Johnson's doctoral research on knowledge graph embedding methods from 2018 to 2022.",
+    "relationship_type": "supervision",
+    "correct_relationship": true,
+    "confidence": 0.97,
+    "notes": "Academic supervision relationship with explicit 'supervised' verb and doctoral context"
+  },
+  {
+    "id": "rel-009",
+    "entity_pair": ["National Science Foundation", "Graph Algorithms Project"],
+    "text_context": "The Graph Algorithms Project received $2.5M in funding from the National Science Foundation under grant NSF-2024-001.",
+    "relationship_type": "funding",
+    "correct_relationship": true,
+    "confidence": 0.96,
+    "notes": "Funding relationship with explicit amount and grant number"
+  },
+  {
+    "id": "rel-010",
+    "entity_pair": ["Alice Johnson", "knowledge graph embeddings"],
+    "text_context": "Alice Johnson has made significant contributions to knowledge graph embeddings, developing three widely-cited algorithms.",
+    "relationship_type": "contribution",
+    "correct_relationship": true,
+    "confidence": 0.88,
+    "notes": "Contribution relationship indicating researcher's work in a specific area"
+  },
+  {
+    "id": "rel-011",
+    "entity_pair": ["Smith Institute", "Harvard University"],
+    "text_context": "The Smith Institute for Advanced Computing is located in Cambridge but is not affiliated with any university.",
+    "relationship_type": "affiliation",
+    "correct_relationship": false,
+    "confidence": 0.15,
+    "notes": "Negative example - text explicitly denies affiliation despite geographic proximity"
+  },
+  {
+    "id": "rel-012",
+    "entity_pair": ["tensor factorization", "graph neural networks"],
+    "text_context": "While tensor factorization and graph neural networks are both used in knowledge graphs, they represent fundamentally different approaches.",
+    "relationship_type": "builds-on",
+    "correct_relationship": false,
+    "confidence": 0.25,
+    "notes": "Negative example - comparison does not imply one builds on the other"
+  }
+]

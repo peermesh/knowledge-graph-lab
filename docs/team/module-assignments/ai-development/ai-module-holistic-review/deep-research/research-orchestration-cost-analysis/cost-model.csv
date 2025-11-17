@@ -1,0 +1,65 @@
+Cost Component,Unit,Unit Cost (USD),Units per Task,Cost per Task,Notes,Formula Reference
+
+# LLM COSTS - ORCHESTRATION LAYER
+Query Planning (GPT-4 Turbo),1M tokens,2.00,0.0005,0.001,500 tokens for planning phase,=C2*D2
+Query Execution Coordination (Haiku),1M tokens,0.80,0.001,0.0008,1000 tokens for orchestration,=C3*D3
+Result Synthesis (Claude 3.5 Sonnet),1M tokens,3.00,0.002,0.006,2000 tokens input for synthesis,=C4*D4
+Output Generation (Claude 3.5 Sonnet),1M tokens,15.00,0.0015,0.0225,1500 tokens output,=C5*D5
+LLM Subtotal (per task),,,,,0.0303,=SUM(E2:E5)
+
+# API COSTS - SOURCE QUERIES (3 sources per task)
+Google Search API,1000 queries,5.00,0.003,0.015,3 queries per research task,=C8*D8
+ArXiv API,query,0.00,2,0,Free academic API,=C9*D9
+Semantic Scholar API,query,0.00,2,0,Free with rate limits,=C10*D10
+API Subtotal (per task),,,,,0.015,=SUM(E8:E10)
+
+# INFRASTRUCTURE COSTS - COMPUTE
+Lambda Invocations,1M invocations,0.20,0.000005,0.000001,5 invocations per task,=C14*D14
+Lambda Compute (1GB-seconds),GB-seconds,0.0000166667,2,0.000033334,2 GB-sec per task,=C15*D15
+Infrastructure Subtotal,,,,,0.000034334,=SUM(E14:E15)
+
+# INFRASTRUCTURE COSTS - STORAGE & CACHING
+Redis Cache (per GB-hour),GB-hour,0.023,0.00001,0.00000023,Embedding storage for caching,=C19*D19
+Vector Storage,GB-month,0.25,0.00001,0.0000025,Prorated for task duration,=C20*D20
+Storage Subtotal,,,,,0.00000273,=SUM(E19:E20)
+
+# TOTAL COST PER TASK
+Base Cost (no cache),,,,,0.045367064,"=E7+E12+E17+E22"
+With 30% Cache Hit Rate,,,,,0.031757145,="=E24*(1-0.3)"
+With 50% Cache Hit Rate,,,,,0.022683532,="=E24*(1-0.5)"
+
+# SCALING PROJECTIONS
+Volume Level,Tasks per Day,Daily Cost (no cache),Monthly Cost (no cache),Daily Cost (50% cache),Monthly Cost (50% cache)
+Low Volume,100,4.54,136.10,2.27,68.05
+Medium Volume,1000,45.37,1361.01,22.68,680.51
+High Volume,10000,453.67,13610.12,226.84,6805.06
+
+# COMPONENT BREAKDOWN (percentage)
+Component,Percentage of Total Cost
+LLM Costs,66.8%
+API Costs,33.1%
+Infrastructure (Compute),0.076%
+Infrastructure (Storage),0.006%
+
+# SENSITIVITY ANALYSIS
+Cache Hit Rate,Cost Reduction,Cost per Task
+0%,0%,0.0454
+10%,10%,0.0408
+20%,20%,0.0363
+30%,30%,0.0318
+40%,40%,0.0272
+50%,50%,0.0227
+60%,60%,0.0181
+70%,70%,0.0136
+
+# BATCH PROCESSING SAVINGS
+Processing Mode,LLM Cost Multiplier,Cost per Task
+Real-time,1.00,0.0454
+Batch (50% discount),0.50,0.0302
+
+# SOURCE MIX SCENARIOS
+Scenario,Sources,API Cost per Task,Quality Score,Notes
+All Free (arXiv + Semantic Scholar + GitHub),3,0.000,0.75,Limited to academic/technical queries
+Hybrid 1 (1 paid + 2 free),3,0.005,0.85,Google + arXiv + GitHub
+Hybrid 2 (2 paid + 1 free),3,0.020,0.90,Google + SerpAPI + arXiv
+All Paid (Google + Bing + SerpAPI),3,0.045,0.92,Maximum coverage and quality

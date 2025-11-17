@@ -381,3 +381,20 @@ Research orchestration is the intelligence core. Getting this right means:
 8. How do we measure success: researcher satisfaction, gap quality?
 9. What's the policy for proprietary vs open-source sources?
 10. Should research be real-time or batch (more cost-effective)?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **research-orchestration-frameworks/** - Multi-Agent Orchestration Frameworks Evaluation
+   - Location: `deep-research/research-orchestration-frameworks/`
+   - Status: Pending
+   - Research ID: RES-2025-ORCH-FRAMEWORKS-001
+   - Focus: Evaluate AutoGen, LangChain/LangGraph, and CrewAI for multi-step research workflow orchestration
+
+2. **research-orchestration-cost-analysis/** - Research Source Integration and Cost Modeling
+   - Location: `deep-research/research-orchestration-cost-analysis/`
+   - Status: Pending
+   - Research ID: RES-2025-ORCH-COST-001
+   - Focus: Evaluate web search APIs, academic databases, and infrastructure costs for research source integration
+

@@ -80,7 +80,7 @@ The session log captures actual development decisions, including:
 - Learning the **basic workflow** first
 - Working with **single-database** integrations
 - Creating **straightforward CRUD operations**
-- Starting with Pre-SpecKit for the first time
+- Starting with Kickstart Kit for the first time
 
 ---
 
@@ -153,7 +153,7 @@ The session log captures actual development decisions, including:
 - Time savings estimates (3-6 hours per module)
 - Evidence-based enhancement proposals
 
-**Use this when:** Improving the Pre-SpecKit system itself, understanding common pitfalls
+**Use this when:** Improving the Kickstart Kit system itself, understanding common pitfalls
 
 ---
 

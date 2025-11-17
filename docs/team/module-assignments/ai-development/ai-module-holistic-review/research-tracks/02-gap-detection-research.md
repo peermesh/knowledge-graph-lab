@@ -351,3 +351,14 @@ Gap detection is the core intelligence in the research orchestration system. Get
 5. How do we handle evolving knowledge (new data invalidates old gaps)?
 6. Should researchers be able to provide feedback on gap quality?
 7. How do we handle gaps in relationships vs entities vs attributes?
+
+## Deep Research Generated
+
+This research track generated the following deep-research infrastructure:
+
+1. **gap-detection-algorithms/** - Gap Detection Algorithms and Neo4j Performance
+   - Location: `deep-research/gap-detection-algorithms/`
+   - Status: Pending
+   - Research ID: RES-2025-GAP-DETECT-001
+   - Focus: Evaluate Cypher patterns, graph algorithms, and ML approaches for detecting KG gaps with 85%+ precision and <100ms query latency
+

@@ -85,7 +85,7 @@ Context exhaustion demonstrates WO-0 needs sub-agent delegation pattern for scal
 
 ### Workspace Location
 ```
-/Users/grig/work/peermesh/repo/knowledge-graph-lab-alpha/.dev/discovery/backend-module/
+/Users/grig/work/peermesh/repo/knowledge-graph-lab-alpha/.dev/module-doc-audit/backend-architecture/discovery/backend-module/
 ├── 00-context-intake/
 │   ├── intake.md ✅ COMPLETE
 │   ├── sources/
@@ -254,7 +254,7 @@ Phase 1: Context Intake (Coordinator Agent)
 
 #### 5. Signal Test Agent (5 min)
 
-**Create:** `.dev/discovery/backend-module/PHASE1-COMPLETE.md`
+**Create:** `.dev/module-doc-audit/backend-architecture/discovery/backend-module/PHASE1-COMPLETE.md`
 
 **Content:**
 ```markdown
@@ -265,7 +265,7 @@ End Time: [timestamp]
 Total Time: X minutes (Target: 60-90 min)
 
 ## Outputs Created
-All files in .dev/discovery/backend-module/01-distilled/:
+All files in .dev/module-doc-audit/backend-architecture/discovery/backend-module/01-distilled/:
 - ✅ vision-statement.md (X pages)
 - ✅ requirements-notes.md (X pages)
 - ✅ technical-context.md (X pages)
@@ -395,7 +395,7 @@ Explains WHY backend needs to support:
 
 **Comparison Baseline:**
 
-- `.dev/discovery/backend-module-v0.1-pilot/` - 90 min pilot without WO-0
+- `.dev/module-doc-audit/backend-architecture/discovery/backend-module-v0.1-pilot/` - 90 min pilot without WO-0
 
 ---
 

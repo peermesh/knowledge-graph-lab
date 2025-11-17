@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+psycopg://app:app@db:5432/app
+      JWT_SECRET: devsecret
+      JWT_ALG: HS256
+    ports:
+      - "8000:8000"
+    command: ["uvicorn", "src.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+volumes:
+  db_data:
+

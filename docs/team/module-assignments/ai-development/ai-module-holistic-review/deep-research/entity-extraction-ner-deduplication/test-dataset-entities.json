@@ -1,0 +1,149 @@
+[
+  {
+    "id": "entity-001",
+    "canonical_name": "Geoffrey Hinton",
+    "variations": [
+      "Geoffrey E. Hinton",
+      "G. Hinton",
+      "Geoffrey Everest Hinton",
+      "Hinton, G.",
+      "Hinton, Geoffrey"
+    ],
+    "entity_type": "PERSON",
+    "attributes": {
+      "affiliation": "University of Toronto",
+      "role": "professor",
+      "field": "deep learning",
+      "additional_affiliation": "Google Brain (former)"
+    },
+    "expected_duplicates": ["entity-002"],
+    "is_duplicate": true,
+    "match_confidence": 0.98,
+    "notes": "Name variation with same affiliation and research area. Common academic author name variation case."
+  },
+  {
+    "id": "entity-002",
+    "canonical_name": "G. E. Hinton",
+    "variations": [
+      "Geoff Hinton",
+      "Geoffrey Hinton"
+    ],
+    "entity_type": "PERSON",
+    "attributes": {
+      "affiliation": "University of Toronto",
+      "role": "researcher",
+      "field": "neural networks"
+    },
+    "expected_duplicates": ["entity-001"],
+    "is_duplicate": true,
+    "match_confidence": 0.98,
+    "notes": "Abbreviated form of same author, same institution. Should be merged with entity-001."
+  },
+  {
+    "id": "entity-003",
+    "canonical_name": "Massachusetts Institute of Technology",
+    "variations": [
+      "MIT",
+      "M.I.T.",
+      "Massachusetts Inst. of Technology",
+      "Mass. Inst. Tech."
+    ],
+    "entity_type": "ORG",
+    "attributes": {
+      "type": "university",
+      "location": "Cambridge, MA",
+      "country": "USA"
+    },
+    "expected_duplicates": ["entity-004"],
+    "is_duplicate": true,
+    "match_confidence": 0.99,
+    "notes": "Common institutional name variations and abbreviations. Critical for academic entity resolution."
+  },
+  {
+    "id": "entity-004",
+    "canonical_name": "MIT",
+    "variations": [
+      "Massachusetts Institute of Technology"
+    ],
+    "entity_type": "ORG",
+    "attributes": {
+      "type": "educational institution",
+      "location": "Cambridge, Massachusetts"
+    },
+    "expected_duplicates": ["entity-003"],
+    "is_duplicate": true,
+    "match_confidence": 0.99,
+    "notes": "Same institution as entity-003, demonstrating abbreviation matching challenge."
+  },
+  {
+    "id": "entity-005",
+    "canonical_name": "Transformer Architecture",
+    "variations": [
+      "Transformer",
+      "Transformer Model",
+      "Attention-based Transformer"
+    ],
+    "entity_type": "TECHNIQUE",
+    "attributes": {
+      "introduced_year": "2017",
+      "paper": "Attention Is All You Need",
+      "domain": "natural language processing"
+    },
+    "expected_duplicates": [],
+    "is_duplicate": false,
+    "match_confidence": 1.0,
+    "notes": "Technical term with variations. Should NOT be merged with unrelated 'transformer' mentions in different contexts (e.g., electrical transformers)."
+  },
+  {
+    "id": "entity-006",
+    "canonical_name": "BERT",
+    "variations": [
+      "BERT model",
+      "Bidirectional Encoder Representations from Transformers",
+      "BERT (Bidirectional Encoder Representations from Transformers)"
+    ],
+    "entity_type": "TECHNIQUE",
+    "attributes": {
+      "introduced_year": "2018",
+      "developer": "Google",
+      "paper": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
+    },
+    "expected_duplicates": [],
+    "is_duplicate": false,
+    "match_confidence": 1.0,
+    "notes": "Acronym expansion case. All variations refer to same technique. Important for NLP/ML entity extraction."
+  },
+  {
+    "id": "entity-007",
+    "canonical_name": "Natural Language Processing",
+    "variations": [
+      "NLP",
+      "natural language processing",
+      "Natural Language Processing (NLP)"
+    ],
+    "entity_type": "FIELD",
+    "attributes": {
+      "domain": "computer science",
+      "subdomain": "artificial intelligence"
+    },
+    "expected_duplicates": ["entity-008"],
+    "is_duplicate": true,
+    "match_confidence": 0.95,
+    "notes": "Field name with common acronym. Case-insensitive matching required."
+  },
+  {
+    "id": "entity-008",
+    "canonical_name": "NLP",
+    "variations": [
+      "nlp"
+    ],
+    "entity_type": "FIELD",
+    "attributes": {
+      "full_form": "Natural Language Processing"
+    },
+    "expected_duplicates": ["entity-007"],
+    "is_duplicate": true,
+    "match_confidence": 0.95,
+    "notes": "Acronym form of entity-007. Demonstrates case sensitivity challenge in deduplication."
+  }
+]

@@ -1,0 +1,11 @@
+model_name,architecture,accuracy,precision,recall,f1,speed_entities_per_sec,speed_wps_cpu,speed_wps_gpu,memory_mb,inference_time_ms,model_size_mb,dataset,notes,source
+spaCy en_core_web_trf,RoBERTa Transformer,0.898,0.9008,0.9030,0.9019,68,684,3768,8000,14.6,436,OntoNotes 5.0,Transformer-based high accuracy,spaCy official docs
+spaCy en_core_web_lg,CNN,0.850,0.853,0.847,0.850,1001,10014,14954,800,1.0,588,OntoNotes 5.0,CPU-optimized for speed,spaCy official docs
+Flair NER-fast,Contextual String Embeddings,0.897,0.910,0.885,0.897,32,323,1184,2500,31.0,1200,OntoNotes 5.0,High accuracy with context embeddings,spaCy benchmark comparison
+DistilBERT-NER (HuggingFace),DistilBERT,0.981,0.920,0.923,0.922,150,N/A,N/A,500,6.7,263,CoNLL-2003,Distilled model 40% smaller than BERT,HuggingFace model card
+BERT-base-NER,BERT,0.985,0.935,0.938,0.936,80,N/A,N/A,1500,12.5,440,CoNLL-2003,Full BERT model high accuracy,Literature review
+RoBERTa-NER,RoBERTa,0.987,0.940,0.942,0.941,75,N/A,N/A,1600,13.3,498,CoNLL-2003,Robustly optimized BERT,Literature review
+Stanza (StanfordNLP),BiLSTM + Transformer,0.888,0.891,0.885,0.888,87,878,2180,1200,11.4,650,OntoNotes 5.0,Stanford NLP toolkit,spaCy benchmark comparison
+UDPipe,Feature-based,0.820,0.825,0.815,0.820,110,1101,N/A,400,9.1,85,OntoNotes 5.0,Lightweight traditional approach,spaCy benchmark comparison
+spaCy + GPT-4o-mini (Hybrid),Hybrid NER+LLM,0.920,0.935,0.910,0.922,25,N/A,N/A,1000,40.0,436,Custom test set,High-confidence NER + LLM validation,Estimated from research
+Cohere Entity Extraction API,LLM-based,0.880,0.890,0.870,0.880,200,N/A,N/A,N/A,5.0,N/A,Custom domains,API-based cloud service,Vendor documentation
