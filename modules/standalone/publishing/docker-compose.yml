@@ -80,7 +80,7 @@ services:
         echo 'Waiting for Redis...' &&
         while ! nc -z redis 6379; do sleep 1; done &&
         echo 'Starting application...' &&
-        uvicorn src.publishing.main:app --host 0.0.0.0 --port 8080 --reload
+        uvicorn src.main:app --host 0.0.0.0 --port 8080 --reload
       "
     depends_on:
       postgres:
