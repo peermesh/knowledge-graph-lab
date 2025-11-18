@@ -291,3 +291,4 @@ Your email authentication is properly configured when:
 - If any checks fail ❌ → Review DNS configuration in AWS SES Console
 - Need help? → See troubleshooting section above or check AWS SES documentation
 
+

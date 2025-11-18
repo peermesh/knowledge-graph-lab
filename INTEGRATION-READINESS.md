@@ -357,3 +357,4 @@ class NewsletterGenerator:
 
 **Total estimated time: 4-6 days** once backend report API is ready.
 
+

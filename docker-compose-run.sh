@@ -20,3 +20,4 @@ fi
 # Run docker compose commands
 "$DOCKER_BIN" compose "$@"
 
+
