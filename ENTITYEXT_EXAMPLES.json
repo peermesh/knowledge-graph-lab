@@ -1,0 +1,13 @@
+{
+  "document_id": "9f6c5f6e-5f52-4b7c-bd07-9e1abb77d4e1",
+  "content": "On October 22, 2024, Acme Ventures invested $5 million in NovaBio, a Boston-based biotech startup founded by Dr. Lina Ortiz.",
+  "document_type": "text",
+  "priority": "normal",
+  "extraction_config": {
+    "entity_types": ["organization", "person", "date", "location", "amount"],
+    "relationship_types": ["investment", "founder"],
+    "confidence_threshold": 0.65,
+    "source_type": "press_release"
+  }
+}
+

@@ -18,8 +18,9 @@ class Settings(BaseSettings):
     rabbitmq_url: str = "amqp://guest:guest@localhost:5672"
     
     # LLM Providers
-    openai_api_key: Optional[str] = None
-    anthropic_api_key: Optional[str] = None
+    perplexity_api_key: Optional[str] = None  # Primary LLM provider
+    openai_api_key: Optional[str] = None  # Fallback
+    anthropic_api_key: Optional[str] = None  # Fallback
     
     # Configuration
     env: str = "development"

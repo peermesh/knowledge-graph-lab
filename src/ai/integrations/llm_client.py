@@ -2,6 +2,8 @@
 
 from typing import List, Dict, Any, Optional
 import logging
+import httpx
+import json
 
 from src.ai.config import settings
 
@@ -29,17 +31,26 @@ class LLMClient:
     """Manages LLM interactions with fallback support"""
     
     def __init__(self):
-        """Initialize LLM clients with primary and fallback providers"""
-        if not OPENAI_AVAILABLE or not settings.openai_api_key:
-            logger.warning("OpenAI client not available or API key not set - install langchain-openai and set OPENAI_API_KEY")
-            self.primary_client = None
+        """Initialize LLM clients with primary (Perplexity) and fallback providers"""
+        # Primary: Perplexity
+        if settings.perplexity_api_key:
+            self.primary_client = "perplexity"
+            logger.info("Perplexity configured as primary LLM provider")
         else:
-            self.primary_client = self._create_openai_client()
+            self.primary_client = None
+            logger.warning("Perplexity API key not set - set PERPLEXITY_API_KEY environment variable")
         
-        if ANTHROPIC_AVAILABLE and settings.anthropic_api_key:
-            self.fallback_client = self._create_anthropic_client()
+        # Fallback: OpenAI
+        if OPENAI_AVAILABLE and settings.openai_api_key:
+            self.fallback_client = self._create_openai_client()
         else:
             self.fallback_client = None
+        
+        # Fallback: Anthropic Claude
+        if ANTHROPIC_AVAILABLE and settings.anthropic_api_key:
+            self.claude_fallback = self._create_anthropic_client()
+        else:
+            self.claude_fallback = None
         
     def _create_openai_client(self):
         """Create OpenAI client"""
@@ -93,36 +104,87 @@ class LLMClient:
         prompt = self._build_extraction_prompt(text, entity_types)
         
         # Check if LLM clients are available
-        if not self.primary_client and not self.fallback_client:
-            logger.error("No LLM clients available - please install dependencies")
+        if not self.primary_client and not self.fallback_client and not self.claude_fallback:
+            logger.error("No LLM clients available - please set API keys")
             return {"entities": [], "relationships": []}
         
         try:
-            # Try primary client (OpenAI)
-            if self.primary_client:
-                logger.info(f"Extracting entities using OpenAI GPT-4")
-                response = await self.primary_client.ainvoke(prompt)
-                return self._parse_extraction_response(response.content)
+            # Try primary client (Perplexity)
+            if self.primary_client == "perplexity":
+                logger.info("Extracting entities using Perplexity")
+                response_text = await self._call_perplexity_api(prompt)
+                return self._parse_extraction_response(response_text)
             elif self.fallback_client:
-                logger.info(f"Using fallback LLM (primary not available)")
+                logger.info("Using OpenAI fallback (Perplexity not available)")
                 response = await self.fallback_client.ainvoke(prompt)
+                return self._parse_extraction_response(response.content)
+            elif self.claude_fallback:
+                logger.info("Using Claude fallback")
+                response = await self.claude_fallback.ainvoke(prompt)
                 return self._parse_extraction_response(response.content)
             else:
                 return {"entities": [], "relationships": []}
         except Exception as e:
             logger.warning(f"Primary LLM failed: {e}, trying fallback")
             
+            # Try OpenAI fallback
             if self.fallback_client:
                 try:
-                    # Try fallback client (Claude)
-                    logger.info(f"Extracting entities using Claude")
+                    logger.info("Extracting entities using OpenAI fallback")
                     response = await self.fallback_client.ainvoke(prompt)
                     return self._parse_extraction_response(response.content)
                 except Exception as fallback_error:
-                    logger.error(f"Fallback LLM also failed: {fallback_error}")
+                    logger.warning(f"OpenAI fallback failed: {fallback_error}")
+            
+            # Try Claude fallback
+            if self.claude_fallback:
+                try:
+                    logger.info("Extracting entities using Claude fallback")
+                    response = await self.claude_fallback.ainvoke(prompt)
+                    return self._parse_extraction_response(response.content)
+                except Exception as fallback_error:
+                    logger.error(f"All LLM providers failed. Last error: {fallback_error}")
                     raise
             else:
                 raise
+    
+    async def _call_perplexity_api(self, prompt: str) -> str:
+        """Call Perplexity API for entity extraction"""
+        if not settings.perplexity_api_key:
+            raise ValueError("Perplexity API key not configured")
+        
+        url = "https://api.perplexity.ai/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {settings.perplexity_api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "model": "llama-3.1-sonar-large-128k-online",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are an expert at extracting entities and relationships from text. Always respond with valid JSON only."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            "temperature": 0.1,
+            "max_tokens": 4000
+        }
+        
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            response = await client.post(url, headers=headers, json=payload)
+            response.raise_for_status()
+            result = response.json()
+            
+            # Extract content from Perplexity response
+            if "choices" in result and len(result["choices"]) > 0:
+                return result["choices"][0]["message"]["content"]
+            else:
+                raise ValueError(f"Unexpected Perplexity API response: {result}")
     
     def _build_extraction_prompt(
         self,
@@ -160,7 +222,6 @@ Return the results in JSON format with 'entities' and 'relationships' arrays."""
     
     def _parse_extraction_response(self, response: str) -> Dict[str, Any]:
         """Parse LLM response into structured format and normalize keys"""
-        import json
         import re
 
         data: Dict[str, Any] = {"entities": [], "relationships": []}

@@ -1,0 +1,59 @@
+{
+    "job_id": "9a9b3dff-4157-43c8-9633-354be8696596",
+    "status": "completed",
+    "entities": [
+      {
+        "id": "cf2f61a7-02a1-41a1-acfa-17057be34999",
+        "text": "October 22, 2024",
+        "type": "date",
+        "confidence": 0.67,
+        "positions": [
+          [
+            3,
+            19
+          ]
+        ],
+        "metadata": {}
+      },
+      {
+        "id": "504d60c6-3671-45fe-9f72-b1fce2423b79",
+        "text": "$5 million",
+        "type": "amount",
+        "confidence": 0.67,
+        "positions": [
+          [
+            44,
+            54
+          ]
+        ],
+        "metadata": {}
+      }
+    ],
+    "relationships": [
+      {
+        "id": "37790ce8-5df3-4a4a-b764-438b28beb2ab",
+        "source_entity": "3aad16b2-54f2-4b7d-a2c7-4fee10a8abb4",
+        "target_entity": "21b33220-86d3-4c5b-9448-1ea1ea619fc1",
+        "relationship_type": "invested in",
+        "confidence": 0.63,
+        "evidence": "Acme Ventures invested $5 million in NovaBio",
+        "metadata": {
+          "source_entity_text": "Acme Ventures",
+          "target_entity_text": "NovaBio"
+        }
+      },
+      {
+        "id": "208ef153-973c-4c3e-851f-5ddaf7d90dc8",
+        "source_entity": "0961c677-5e90-4593-ab43-98b0d57e3931",
+        "target_entity": "21b33220-86d3-4c5b-9448-1ea1ea619fc1",
+        "relationship_type": "founded",
+        "confidence": 0.63,
+        "evidence": "NovaBio, a Boston-based biotech startup founded by Dr. Lina Ortiz",
+        "metadata": {
+          "source_entity_text": "Dr. Lina Ortiz",
+          "target_entity_text": "NovaBio"
+        }
+      }
+    ],
+    "processing_time_seconds": 29.274174
+  }
