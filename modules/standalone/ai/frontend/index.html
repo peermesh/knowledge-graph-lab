@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23grad)'/%3E%3Cpath d='M20 22h24v4H20zm0 18h24v4H20zm0-9h18v4H20z' fill='%23e0f2fe'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://unpkg.com/vis-network@9.1.2/styles/vis-network.min.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Knowledge Graph Explorer</h1>
+        <p class="subtitle">Query the REST API and visualize relationships in real-time.</p>
+    </header>
+
+    <main class="app-main">
+        <section class="controls">
+            <form id="query-form" class="panel">
+                <h2>Search the Graph</h2>
+                <label class="field">
+                    <span>API Base URL</span>
+                    <input id="api-base-url" type="url" placeholder="http://localhost:8000" value="http://localhost:8000" required>
+                </label>
+                <label class="field">
+                    <span>Query</span>
+                    <input id="query-text" type="text" placeholder="e.g. Jane Doe" required>
+                </label>
+                <label class="field">
+                    <span>Query Type</span>
+                    <select id="query-type">
+                        <option value="entity_search">Entity Search</option>
+                        <option value="relationship_query">Relationship Query</option>
+                        <option value="similarity_search">Similarity Search</option>
+                    </select>
+                </label>
+                <div class="field duo">
+                    <label>
+                        <span>Limit</span>
+                        <input id="limit" type="number" min="1" max="100" value="25">
+                    </label>
+                    <label>
+                        <span>Confidence ≥</span>
+                        <input id="confidence" type="number" min="0" max="1" step="0.05" value="0.7">
+                    </label>
+                </div>
+                <label class="field">
+                    <span>Entity Types (comma separated)</span>
+                    <input id="entity-types" type="text" placeholder="Person, Organization">
+                </label>
+                <button type="submit" class="primary">Run Query</button>
+            </form>
+
+            <section class="panel results" aria-live="polite">
+                <h2>Results</h2>
+                <div id="results-meta" class="meta"></div>
+                <ul id="entity-list" class="entity-list"></ul>
+            </section>
+        </section>
+
+        <section class="visualization panel">
+            <div class="visual-header">
+                <h2>Graph Visualization</h2>
+                <button id="reset-graph" type="button">Reset View</button>
+            </div>
+            <div id="graph-container"></div>
+            <div id="graph-info" class="graph-info"></div>
+        </section>
+    </main>
+
+    <template id="entity-template">
+        <li>
+            <button class="entity-button"></button>
+            <div class="relationships"></div>
+        </li>
+    </template>
+
+    <script src="https://unpkg.com/vis-network@9.1.2/standalone/umd/vis-network.min.js"></script>
+    <script src="app.js" type="module"></script>
+</body>
+</html>
+

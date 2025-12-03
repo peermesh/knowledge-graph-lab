@@ -1,0 +1,366 @@
+openapi: 3.0.3
+info:
+  title: AI Module - Entity Extraction API
+  description: API for extracting entities and relationships from documents
+  version: 1.0.0
+  contact:
+    name: AI Module Team
+    email: ai-team@knowledge-graph-lab.com
+
+servers:
+  - url: https://api.knowledge-graph-lab.com/ai/v1
+    description: Production
+  - url: https://staging-api.knowledge-graph-lab.com/ai/v1
+    description: Staging
+  - url: http://localhost:8000/ai/v1
+    description: Local development
+
+paths:
+  /extract-entities:
+    post:
+      summary: Extract entities from document
+      description: Process document content and extract entities with confidence scores
+      operationId: extractEntities
+      tags:
+        - Entity Extraction
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractionRequest'
+            examples:
+              newsArticle:
+                summary: News article extraction
+                value:
+                  document_id: "660e8400-e29b-41d4-a716-446655440001"
+                  content: "Microsoft invested $10 billion in OpenAI to accelerate AI development..."
+                  document_type: "text"
+                  extraction_config:
+                    entity_types: ["organization", "person", "funding_amount"]
+                    relationship_types: ["fund", "partner"]
+                    confidence_threshold: 0.7
+                    language: "en"
+                  priority: "normal"
+      responses:
+        '200':
+          description: Extraction completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtractionResponse'
+        '202':
+          description: Extraction job accepted and processing asynchronously
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobAcceptedResponse'
+        '400':
+          description: Bad request - invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - invalid or missing authentication
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /jobs/{job_id}:
+    get:
+      summary: Get extraction job status
+      description: Retrieve the status and results of an extraction job
+      operationId: getJobStatus
+      tags:
+        - Entity Extraction
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          description: Job identifier
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Job status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusResponse'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for authentication
+
+  schemas:
+    ExtractionRequest:
+      type: object
+      required:
+        - document_id
+        - content
+        - document_type
+      properties:
+        document_id:
+          type: string
+          format: uuid
+          description: Unique identifier for the document
+        content:
+          type: string
+          description: Raw document content (text, HTML, or base64-encoded PDF)
+          minLength: 1
+          maxLength: 1000000
+        document_type:
+          type: string
+          enum: [text, html, pdf]
+          description: Format of the document content
+        extraction_config:
+          $ref: '#/components/schemas/ExtractionConfig'
+        priority:
+          type: string
+          enum: [high, normal, low]
+          default: normal
+          description: Processing priority level
+
+    ExtractionConfig:
+      type: object
+      properties:
+        entity_types:
+          type: array
+          items:
+            type: string
+            enum: [organization, person, funding_amount, date, location]
+          default: [organization, person, funding_amount, date, location]
+          description: Entity types to extract
+        relationship_types:
+          type: array
+          items:
+            type: string
+            enum: [fund, partner, acquire, compete, collaborate, mention]
+          default: [fund, partner, acquire, compete, collaborate]
+          description: Relationship types to identify
+        confidence_threshold:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+          default: 0.7
+          description: Minimum confidence score for extracted entities
+        language:
+          type: string
+          enum: [en, es, fr, zh]
+          default: en
+          description: Language of the document content
+
+    ExtractionResponse:
+      type: object
+      required:
+        - job_id
+        - status
+        - entities
+        - relationships
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          description: Job identifier
+        status:
+          type: string
+          enum: [completed]
+          description: Processing status
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+        processing_time_seconds:
+          type: number
+          format: double
+          description: Total processing time in seconds
+
+    JobAcceptedResponse:
+      type: object
+      required:
+        - job_id
+        - status
+      properties:
+        job_id:
+          type: string
+          format: uuid
+          description: Job identifier
+        status:
+          type: string
+          enum: [pending, processing]
+          description: Current job status
+        estimated_completion_seconds:
+          type: integer
+          description: Estimated time to completion in seconds
+
+    JobStatusResponse:
+      type: object
+      required:
+        - job_id
+        - status
+      properties:
+        job_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, processing, completed, failed]
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          description: Extracted entities (only when status=completed)
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+          description: Identified relationships (only when status=completed)
+        processing_time_seconds:
+          type: number
+          format: double
+        error_message:
+          type: string
+          description: Error details (only when status=failed)
+        retry_count:
+          type: integer
+          description: Number of retry attempts
+
+    Entity:
+      type: object
+      required:
+        - id
+        - text
+        - type
+        - confidence
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique entity identifier
+        text:
+          type: string
+          description: Entity text value
+        type:
+          type: string
+          enum: [organization, person, funding_amount, date, location]
+          description: Entity type
+        confidence:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+          description: Confidence score (0.00-1.00)
+        positions:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            minItems: 2
+            maxItems: 2
+          description: Array of [start_char, end_char] positions in source text
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Additional entity properties (aliases, description, etc.)
+
+    Relationship:
+      type: object
+      required:
+        - id
+        - source_entity
+        - target_entity
+        - relationship_type
+        - confidence
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique relationship identifier
+        source_entity:
+          type: string
+          format: uuid
+          description: Source entity ID
+        target_entity:
+          type: string
+          format: uuid
+          description: Target entity ID
+        relationship_type:
+          type: string
+          enum: [fund, partner, acquire, compete, collaborate, mention]
+          description: Type of relationship
+        confidence:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+          description: Confidence score (0.00-1.00)
+        strength:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+          description: Relationship strength (0.00-1.00, optional)
+        evidence:
+          type: string
+          description: Supporting text from source document
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Additional relationship properties
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional error details
+
+    RateLimitErrorResponse:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - type: object
+          properties:
+            retry_after_seconds:
+              type: integer
+              description: Seconds to wait before retrying
