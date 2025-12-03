@@ -1,0 +1,29 @@
+graph TB
+    Client[Client Applications] --> Gateway[API Gateway]
+    Gateway --> Auth{Authentication}
+
+    Auth --> Router[API Router]
+    Router --> REST[REST APIs]
+    Router --> GQL[GraphQL API]
+    Router --> WS[WebSocket Server]
+
+    REST --> RelDB[(Relational DB)]
+    GQL --> GraphDB[(Graph DB)]
+    REST --> GraphDB
+
+    REST --> Cache[(Cache)]
+    GQL --> Cache
+
+    REST --> Queue[Message Queue]
+    Queue --> Workers[Background Workers]
+    Workers --> RelDB
+    Workers --> GraphDB
+
+    REST --> Monitor[Monitoring]
+    Workers --> Monitor
+
+    style RelDB fill:#f9f,stroke:#333
+    style GraphDB fill:#f9f,stroke:#333
+    style Cache fill:#bbf,stroke:#333
+    style Queue fill:#bfb,stroke:#333
+    style Monitor fill:#ffa,stroke:#333
