@@ -140,31 +140,43 @@ async def get_table_status() -> dict:
     """Get status of all publishing module tables."""
     try:
         async with async_session_factory() as session:
-            # Check which tables exist
+            # Check which tables exist in publishing schemas
             result = await session.execute(text("""
-                SELECT table_name
+                SELECT table_schema, table_name
                 FROM information_schema.tables
-                WHERE table_schema = 'public'
-                AND table_name LIKE 'publishing_%'
-                ORDER BY table_name
+                WHERE table_schema LIKE 'publishing_%'
+                ORDER BY table_schema, table_name
             """))
 
-            existing_tables = [row.table_name for row in result.fetchall()]
+            existing_tables = [(row.table_schema, row.table_name) for row in result.fetchall()]
 
-            # Expected tables based on models
+            # Expected tables based on models (schema, table_name)
             expected_tables = [
-                'publishing_channels',
-                'publishing_subscribers',
-                'publishing_publications',
-                'publishing_templates',
-                'publishing_analytics'
+                ('publishing_channels', 'channels'),
+                ('publishing_subscribers', 'subscribers'),
+                ('publishing_publications', 'publications'),
+                ('publishing_templates', 'templates'),
+                ('publishing_analytics', 'analytics')
+            ]
+
+            # Format existing tables for display
+            existing_tables_formatted = [f"{schema}.{table}" for schema, table in existing_tables]
+            expected_tables_formatted = [f"{schema}.{table}" for schema, table in expected_tables]
+
+            missing_tables = [
+                f"{schema}.{table}" for schema, table in expected_tables
+                if (schema, table) not in existing_tables
+            ]
+            extra_tables = [
+                f"{schema}.{table}" for schema, table in existing_tables
+                if (schema, table) not in expected_tables
             ]
 
             return {
-                "existing_tables": existing_tables,
-                "expected_tables": expected_tables,
-                "missing_tables": [t for t in expected_tables if t not in existing_tables],
-                "extra_tables": [t for t in existing_tables if t not in expected_tables]
+                "existing_tables": existing_tables_formatted,
+                "expected_tables": expected_tables_formatted,
+                "missing_tables": missing_tables,
+                "extra_tables": extra_tables
             }
 
     except Exception as e:
