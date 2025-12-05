@@ -1,0 +1,23 @@
+[
+  {
+    "id": "q001",
+    "query": "Recent advances in LLM inference optimization techniques published after 2024",
+    "domain": "academic",
+    "expected_sources": ["arxiv", "semantic_scholar", "google_search"],
+    "rationale": "Academic query requiring scholarly sources with temporal constraints"
+  },
+  {
+    "id": "q002",
+    "query": "Best practices for implementing semantic caching in production RAG systems",
+    "domain": "technical",
+    "expected_sources": ["google_search", "github", "documentation_sites"],
+    "rationale": "Technical implementation query requiring code examples and documentation"
+  },
+  {
+    "id": "q003",
+    "query": "Comparative pricing analysis of commercial search APIs for enterprise applications",
+    "domain": "business",
+    "expected_sources": ["bing_search", "google_search", "serp_api"],
+    "rationale": "Business research requiring current pricing information and comparisons"
+  }
+]

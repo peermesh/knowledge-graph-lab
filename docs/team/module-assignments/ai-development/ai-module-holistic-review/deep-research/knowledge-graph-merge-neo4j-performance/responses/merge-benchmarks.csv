@@ -1,0 +1,15 @@
+operation,graph_size,batch_size,index_enabled,throughput_eps,latency_p50_ms,latency_p99_ms,db_hits,operator,source
+MERGE_single,1K,1,false,78,12.8,156.3,850,NodeByLabelScan,Projected from Chantavy 2020
+MERGE_single,1K,1,true,850,1.2,4.5,45,NodeUniqueIndexSeek,Projected with index (4x improvement)
+MERGE_batch,1K,100,true,2000,50.0,89.0,200,NodeUniqueIndexSeek + UNWIND,Optimized batch + index
+MERGE_batch,10K,100,true,1850,52.0,92.0,200,NodeUniqueIndexSeek + UNWIND,10K graph performance
+MERGE_batch,10K,500,true,2050,240.0,410.0,1000,NodeUniqueIndexSeek + UNWIND,500 batch size
+MERGE_batch,10K,1000,true,2100,470.0,820.0,2000,NodeUniqueIndexSeek + UNWIND,1000 batch size (optimal)
+MERGE_batch,10K,2000,true,1950,1020.0,1850.0,4000,NodeUniqueIndexSeek + UNWIND,2000 batch size
+MERGE_batch,100K,1000,true,1900,476.0,850.0,2000,NodeUniqueIndexSeek + UNWIND,Target scale projection
+MERGE_unwind_large,70K,70000,true,64465,N/A,N/A,N/A,UNWIND single transaction,Chantavy 2020 actual benchmark
+MERGE_unwind_large,7M,7000000,true,65421,N/A,N/A,N/A,UNWIND single transaction,Chantavy 2020 production scale
+MERGE_concurrent,10K,1000,true,4000,520.0,1200.0,2000,Concurrent 5 workers,Community concurrent write reports
+MERGE_composite_index,1K,1,true,455000,0.002,0.015,2,NodeIndexSeek composite,Max De Marzi 2020 (optimal alignment)
+MERGE_no_composite,1K,1,true,1098,0.911,N/A,N/A,NodeByLabelScan,Max De Marzi 2020 (no index)
+MERGE_wrong_order,1K,1,true,582,1.719,N/A,N/A,NodeIndexSeek wrong order,Max De Marzi 2020 (index misalignment)

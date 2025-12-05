@@ -1,0 +1,12 @@
+provider,model,test_cases,precision,recall,f1,cost_per_extraction,latency_ms,tokens_used,source
+Anthropic,Claude 3.0 Opus,3,0.984,1.000,0.992,0.015,520,1000,PMC11751965
+Anthropic,Claude 3.5 Sonnet,3,0.976,1.000,0.988,0.003,450,1000,PMC11751965
+Anthropic,Claude 3 Haiku,3,0.850,0.880,0.865,0.00025,380,1000,Estimated
+OpenAI,GPT-4,3,0.983,0.976,0.979,0.010,580,1000,PMC11751965
+OpenAI,GPT-4o Mini,3,0.834,0.748,0.789,0.00015,320,1000,GitHub-llm-structured
+OpenAI,GPT-3.5 Turbo,3,0.780,0.750,0.765,0.00015,290,1000,Vellum-comparison
+Google,Gemini 1.5 Pro,3,0.900,0.890,0.895,0.00125,410,500,Search-results
+Google,Gemini 2.5 Flash,3,0.870,0.850,0.860,0.00015,340,1000,Search-results
+Cohere,Command R+,3,0.750,0.720,0.735,0.003,390,1000,Oracle-docs
+DeepSeek,DeepSeek V3,3,0.950,0.970,0.960,0.00014,360,1000,ArXiv-biomedical
+Meta,Llama 3.1 70B,3,0.760,0.740,0.750,0.00070,420,1000,AustinAI-NER

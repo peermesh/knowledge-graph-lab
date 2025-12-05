@@ -1,0 +1,51 @@
+[
+  {
+    "id": "entity-001",
+    "text": "Geoffrey Hinton and Yann LeCun published their seminal work on deep learning at NeurIPS 2012, introducing convolutional neural networks that revolutionized computer vision.",
+    "ground_truth_entities": [
+      {"text": "Geoffrey Hinton", "type": "author", "start": 0, "end": 15},
+      {"text": "Yann LeCun", "type": "author", "start": 20, "end": 30},
+      {"text": "deep learning", "type": "concept", "start": 64, "end": 77},
+      {"text": "NeurIPS", "type": "venue", "start": 81, "end": 88},
+      {"text": "2012", "type": "year", "start": 89, "end": 93},
+      {"text": "convolutional neural networks", "type": "concept", "start": 107, "end": 136},
+      {"text": "computer vision", "type": "concept", "start": 157, "end": 172}
+    ],
+    "entity_count": 7,
+    "notes": "Multi-entity example with authors, venue, year, and technical concepts",
+    "domain": "Machine Learning",
+    "difficulty": "medium"
+  },
+  {
+    "id": "entity-002",
+    "text": "The BERT model, developed by researchers at Google AI, was introduced in the paper 'BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding' published at NAACL 2019. The model achieved state-of-the-art results on the GLUE benchmark.",
+    "ground_truth_entities": [
+      {"text": "BERT", "type": "concept", "start": 4, "end": 8},
+      {"text": "Google AI", "type": "institution", "start": 44, "end": 53},
+      {"text": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding", "type": "paper", "start": 84, "end": 164},
+      {"text": "NAACL", "type": "venue", "start": 180, "end": 185},
+      {"text": "2019", "type": "year", "start": 186, "end": 190},
+      {"text": "GLUE benchmark", "type": "concept", "start": 243, "end": 257}
+    ],
+    "entity_count": 6,
+    "notes": "Complex example with long paper title, institution, venue, and benchmark",
+    "domain": "Natural Language Processing",
+    "difficulty": "hard"
+  },
+  {
+    "id": "entity-003",
+    "text": "Researchers at MIT's Computer Science and Artificial Intelligence Laboratory (CSAIL) developed a novel graph neural network architecture for knowledge graph completion, achieving 92% accuracy on the FB15k-237 dataset.",
+    "ground_truth_entities": [
+      {"text": "MIT", "type": "institution", "start": 15, "end": 18},
+      {"text": "Computer Science and Artificial Intelligence Laboratory", "type": "institution", "start": 21, "end": 76},
+      {"text": "CSAIL", "type": "institution", "start": 78, "end": 83},
+      {"text": "graph neural network", "type": "concept", "start": 102, "end": 122},
+      {"text": "knowledge graph completion", "type": "concept", "start": 139, "end": 165},
+      {"text": "FB15k-237", "type": "concept", "start": 201, "end": 210}
+    ],
+    "entity_count": 6,
+    "notes": "Includes institution with acronym, technical concepts, and dataset name",
+    "domain": "Knowledge Graphs",
+    "difficulty": "medium"
+  }
+]

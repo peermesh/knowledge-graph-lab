@@ -1,0 +1,192 @@
+[
+  {
+    "graph_id": "graph-001-research-papers",
+    "description": "Academic research knowledge graph with 20 entities including authors, papers, and institutions",
+    "domain": "academic_research",
+    "entities": [
+      {"id": "author-001", "type": "Author", "name": "John Smith", "affiliation": "MIT", "email": "j.smith@mit.edu"},
+      {"id": "author-002", "type": "Author", "name": "John Smith PhD", "affiliation": "Massachusetts Institute of Technology", "email": "jsmith@mit.edu"},
+      {"id": "author-003", "type": "Author", "name": "J. Smith", "affiliation": "MIT CSAIL", "email": "j.smith@mit.edu"},
+      {"id": "author-004", "type": "Author", "name": "Jane Doe", "affiliation": "Stanford University", "email": "jane.doe@stanford.edu"},
+      {"id": "author-005", "type": "Author", "name": "Jane M. Doe", "affiliation": "Stanford", "email": "jane.doe@stanford.edu"},
+      {"id": "author-006", "type": "Author", "name": "Robert Johnson", "affiliation": "Berkeley", "email": "r.johnson@berkeley.edu"},
+      {"id": "author-007", "type": "Author", "name": "Bob Johnson", "affiliation": "UC Berkeley", "email": "r.johnson@berkeley.edu"},
+      {"id": "author-008", "type": "Author", "name": "Maria Garcia", "affiliation": "Cambridge", "email": "maria@cam.ac.uk"},
+      {"id": "paper-001", "type": "Paper", "title": "Neural Networks for Entity Resolution", "year": 2024, "venue": "ICML"},
+      {"id": "paper-002", "type": "Paper", "title": "Neural Networks for Entity Resolution", "year": 2024, "venue": "International Conference on Machine Learning"},
+      {"id": "paper-003", "type": "Paper", "title": "Deep Learning Approaches to Knowledge Graphs", "year": 2023, "venue": "NeurIPS"},
+      {"id": "inst-001", "type": "Institution", "name": "MIT", "location": "Cambridge, MA"},
+      {"id": "inst-002", "type": "Institution", "name": "Massachusetts Institute of Technology", "location": "Cambridge, Massachusetts"},
+      {"id": "inst-003", "type": "Institution", "name": "Stanford University", "location": "Stanford, CA"},
+      {"id": "inst-004", "type": "Institution", "name": "Stanford", "location": "California"},
+      {"id": "inst-005", "type": "Institution", "name": "University of California Berkeley", "location": "Berkeley, CA"},
+      {"id": "inst-006", "type": "Institution", "name": "UC Berkeley", "location": "Berkeley, California"},
+      {"id": "inst-007", "type": "Institution", "name": "Berkeley", "location": "Berkeley, CA"},
+      {"id": "venue-001", "type": "Venue", "name": "ICML", "full_name": "International Conference on Machine Learning"},
+      {"id": "venue-002", "type": "Venue", "name": "International Conference on Machine Learning", "acronym": "ICML"}
+    ],
+    "relationships": [
+      {"from": "author-001", "to": "paper-001", "type": "authored"},
+      {"from": "author-004", "to": "paper-001", "type": "authored"},
+      {"from": "author-006", "to": "paper-003", "type": "authored"},
+      {"from": "author-001", "to": "inst-001", "type": "affiliated_with"},
+      {"from": "author-004", "to": "inst-003", "type": "affiliated_with"},
+      {"from": "paper-001", "to": "venue-001", "type": "published_at"}
+    ],
+    "ground_truth_duplicates": [
+      {
+        "id1": "author-001",
+        "id2": "author-002",
+        "id3": "author-003",
+        "confidence": 1.0,
+        "reason": "Same person - name variations (formal vs informal, with/without credentials)",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep most complete record (author-002), preserve all emails"
+      },
+      {
+        "id1": "author-004",
+        "id2": "author-005",
+        "confidence": 1.0,
+        "reason": "Same person - with/without middle initial",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep record with middle initial (author-005)"
+      },
+      {
+        "id1": "author-006",
+        "id2": "author-007",
+        "confidence": 0.95,
+        "reason": "Likely same person - formal name vs nickname, matching affiliation and email",
+        "duplicate_type": "semantic_match",
+        "merge_strategy": "Keep formal name (author-006), note nickname as alias"
+      },
+      {
+        "id1": "paper-001",
+        "id2": "paper-002",
+        "confidence": 1.0,
+        "reason": "Same paper - venue acronym vs full name",
+        "duplicate_type": "exact_semantic",
+        "merge_strategy": "Merge, keep both venue representations"
+      },
+      {
+        "id1": "inst-001",
+        "id2": "inst-002",
+        "confidence": 1.0,
+        "reason": "Same institution - acronym vs full name",
+        "duplicate_type": "exact_semantic",
+        "merge_strategy": "Keep full name, add acronym as alias"
+      },
+      {
+        "id1": "inst-003",
+        "id2": "inst-004",
+        "confidence": 1.0,
+        "reason": "Same institution - full name vs short name",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep full name (inst-003)"
+      },
+      {
+        "id1": "inst-005",
+        "id2": "inst-006",
+        "id3": "inst-007",
+        "confidence": 1.0,
+        "reason": "Same institution - multiple name variations",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep official name (inst-005), others as aliases"
+      },
+      {
+        "id1": "venue-001",
+        "id2": "venue-002",
+        "confidence": 1.0,
+        "reason": "Same venue - acronym vs full name with cross-references",
+        "duplicate_type": "exact_semantic",
+        "merge_strategy": "Merge with both acronym and full_name attributes"
+      }
+    ]
+  },
+  {
+    "graph_id": "graph-002-companies",
+    "description": "Business/organization knowledge graph with 15 entities including companies and products",
+    "domain": "business",
+    "entities": [
+      {"id": "company-001", "type": "Company", "name": "OpenAI", "founded": 2015, "headquarters": "San Francisco"},
+      {"id": "company-002", "type": "Company", "name": "OpenAI Inc", "founded": 2015, "location": "San Francisco, CA"},
+      {"id": "company-003", "type": "Company", "name": "Anthropic", "founded": 2021, "headquarters": "San Francisco"},
+      {"id": "company-004", "type": "Company", "name": "Anthropic PBC", "founded": 2021, "location": "San Francisco"},
+      {"id": "company-005", "type": "Company", "name": "Google", "founded": 1998, "headquarters": "Mountain View"},
+      {"id": "company-006", "type": "Company", "name": "Google LLC", "parent": "Alphabet Inc", "founded": 1998},
+      {"id": "product-001", "type": "Product", "name": "GPT-4", "category": "LLM", "release_year": 2023},
+      {"id": "product-002", "type": "Product", "name": "GPT-4 Turbo", "category": "Language Model", "release_year": 2023},
+      {"id": "product-003", "type": "Product", "name": "Claude", "category": "AI Assistant", "version": "3.5"},
+      {"id": "product-004", "type": "Product", "name": "Claude 3.5 Sonnet", "category": "LLM", "developer": "Anthropic"},
+      {"id": "product-005", "type": "Product", "name": "Claude 3.5", "category": "Language Model", "company": "Anthropic"},
+      {"id": "person-001", "type": "Person", "name": "Sam Altman", "role": "CEO", "company": "OpenAI"},
+      {"id": "person-002", "type": "Person", "name": "Samuel Altman", "title": "Chief Executive Officer", "organization": "OpenAI"},
+      {"id": "person-003", "type": "Person", "name": "Dario Amodei", "role": "CEO", "company": "Anthropic"},
+      {"id": "person-004", "type": "Person", "name": "Dario Amodei PhD", "title": "CEO", "organization": "Anthropic PBC"}
+    ],
+    "relationships": [
+      {"from": "company-001", "to": "product-001", "type": "develops"},
+      {"from": "company-003", "to": "product-003", "type": "develops"},
+      {"from": "person-001", "to": "company-001", "type": "leads"},
+      {"from": "person-003", "to": "company-003", "type": "leads"}
+    ],
+    "ground_truth_duplicates": [
+      {
+        "id1": "company-001",
+        "id2": "company-002",
+        "confidence": 1.0,
+        "reason": "Same company - with/without Inc suffix",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep legal name (company-002)"
+      },
+      {
+        "id1": "company-003",
+        "id2": "company-004",
+        "confidence": 1.0,
+        "reason": "Same company - with/without PBC suffix",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep legal name (company-004)"
+      },
+      {
+        "id1": "company-005",
+        "id2": "company-006",
+        "confidence": 1.0,
+        "reason": "Same company - informal vs legal name",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep legal name with parent company info (company-006)"
+      },
+      {
+        "id1": "product-001",
+        "id2": "product-002",
+        "confidence": 0.85,
+        "reason": "Related products but may be different versions - GPT-4 base vs Turbo variant",
+        "duplicate_type": "ambiguous",
+        "merge_strategy": "Do NOT merge - these are different product variants"
+      },
+      {
+        "id1": "product-003",
+        "id2": "product-004",
+        "id3": "product-005",
+        "confidence": 0.90,
+        "reason": "Likely same product family - generic 'Claude' vs specific version",
+        "duplicate_type": "semantic_match",
+        "merge_strategy": "Complex - may need version hierarchy rather than flat merge"
+      },
+      {
+        "id1": "person-001",
+        "id2": "person-002",
+        "confidence": 1.0,
+        "reason": "Same person - informal vs formal name",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep formal name (person-002)"
+      },
+      {
+        "id1": "person-003",
+        "id2": "person-004",
+        "confidence": 1.0,
+        "reason": "Same person - with/without credentials",
+        "duplicate_type": "fuzzy_match",
+        "merge_strategy": "Keep name with credentials (person-004)"
+      }
+    ]
+  }
+]
