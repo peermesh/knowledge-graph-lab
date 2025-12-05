@@ -1,9 +1,0 @@
-metric_category,primary_metric,supporting_evidence,confidence_level,data_recency
-Market Size & Growth,"Digital accessibility software market: $1.25B+ (2025), 8-11% CAGR","Multiple market research firms (360iResearch, Business Insights, Market Research Future)",High,2024-2025
-Component Library Usage,React Aria: 500K+ weekly downloads; Chakra UI: 400K+; MUI: 3M+,NPM download statistics and GitHub metrics across libraries,High,2024-2025
-Testing Tool Adoption,axe-core: 5M+ weekly downloads; 86% of tools use axe engine,"EqualEntry study, academic research, tool documentation",High,2024
-Enterprise Implementation,72% of organizations have digital accessibility policy,Level Access 2023-2024 Digital Accessibility Report,Medium,2023-2024
-Accessibility Issue Coverage,Automated tools detect 30-50% of issues; 50+ issues found across all libraries tested,"Academic study (Karlsson 2021), EqualEntry benchmark testing",High,2021-2024
-Development Integration,React Testing Library: 7M+ weekly downloads; 80% use automated tools,"NPM statistics, developer surveys, GitHub usage data",High,2024-2025
-License Compliance Risk,87.5% MIT licensed (low risk); 12.5% Apache/MPL (low-medium risk),License analysis of top 8 accessibility tools and libraries,High,2024
-Academic Research Volume,15+ academic/industry sources; limited but growing research focus,Systematic review of accessibility research literature,Medium,2021-2025

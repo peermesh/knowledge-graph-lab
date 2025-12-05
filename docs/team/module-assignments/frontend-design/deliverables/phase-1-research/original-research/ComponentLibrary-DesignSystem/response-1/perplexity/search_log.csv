@@ -1,9 +1,0 @@
-query,rationale,results,dead_ends
-mui vs antd vs chakra vs mantine vs tailwind comparison,Direct comparison of primary candidates,Found comprehensive comparisons and statistics,Limited enterprise case studies
-top react ui libraries 2025 npm downloads,Gather popularity metrics and usage statistics,"Obtained GitHub stars, NPM downloads for 15+ libraries",Inconsistent download counting methodologies
-React component library security vulnerabilities,Assess security posture and known issues,Found recent supply chain attacks on React Native packages,Limited component-specific vulnerability databases
-MUI Material UI MIT license SPDX dependencies,License analysis for primary candidate,"Confirmed MIT license, some commercial extensions",Incomplete dependency licensing audit trails
-React UI library accessibility WCAG ARIA compliance,Evaluate accessibility support across libraries,Found academic studies on accessibility compliance,Limited automated accessibility testing data
-Ant Design Apache license dependencies audit,License compliance for enterprise candidate,"Confirmed MIT license (not Apache), clean dependencies",Missing NOTICE file requirements documentation
-shadcn/ui React Radix UI Tailwind CSS license,License analysis for copy-paste model library,"MIT licensed, clean dependency chain",Unclear intellectual property implications of copy-paste
-React component library performance benchmark comparison,Performance characteristics evaluation,"Found bundle size comparisons, runtime performance data",No standardized benchmarking framework

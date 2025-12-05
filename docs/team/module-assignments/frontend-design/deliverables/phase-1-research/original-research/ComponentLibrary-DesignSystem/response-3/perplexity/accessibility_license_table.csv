@@ -1,9 +1,0 @@
-library_tool,spdx_identifier,osi_approved,copyleft,commercial_use,modification,distribution,patent_grant,private_use,attribution_required,source_disclosure,key_restrictions,risk_level,enterprise_friendly,accessibility_specific_clauses
-React Aria,Apache-2.0,Yes,No,Permitted,Permitted,Permitted,Yes,Permitted,Yes,No,Must include copyright notice and Apache license text,Low,Yes,None
-axe-core,MPL-2.0,Yes,Weak,Permitted,Permitted,Permitted,Yes,Permitted,Yes,Modified files only,Must disclose source of modified MPL files,Low-Medium,Yes,None
-Chakra UI,MIT,Yes,No,Permitted,Permitted,Permitted,No,Permitted,Yes,No,Must include copyright notice and MIT license text,Very Low,Yes,None
-Material UI (MUI),MIT,Yes,No,Permitted,Permitted,Permitted,No,Permitted,Yes,No,Must include copyright notice and MIT license text,Very Low,Yes,None
-React Testing Library,MIT,Yes,No,Permitted,Permitted,Permitted,No,Permitted,Yes,No,Must include copyright notice and MIT license text,Very Low,Yes,None
-Ant Design,MIT,Yes,No,Permitted,Permitted,Permitted,No,Permitted,Yes,No,Must include copyright notice and MIT license text,Very Low,Yes,None
-PrimeReact,MIT,Yes,No,Permitted,Permitted,Permitted,No,Permitted,Yes,No,Must include copyright notice and MIT license text,Very Low,Yes,None
-Lighthouse,Apache-2.0,Yes,No,Permitted,Permitted,Permitted,Yes,Permitted,Yes,No,Must include copyright notice and Apache license text,Low,Yes,None
