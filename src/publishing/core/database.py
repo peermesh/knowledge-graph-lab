@@ -13,6 +13,7 @@ Constitution Compliance:
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.pool import StaticPool
+from sqlalchemy import text
 import structlog
 from typing import AsyncGenerator
 
@@ -108,7 +109,6 @@ async def get_db_health() -> dict:
     try:
         async with async_session_factory() as session:
             # Execute a simple query to test connectivity
-            from sqlalchemy import text
             result = await session.execute(text("SELECT 1 as health_check"))
             row = result.fetchone()
 
@@ -141,13 +141,13 @@ async def get_table_status() -> dict:
     try:
         async with async_session_factory() as session:
             # Check which tables exist
-            result = await session.execute("""
+            result = await session.execute(text("""
                 SELECT table_name
                 FROM information_schema.tables
                 WHERE table_schema = 'public'
                 AND table_name LIKE 'publishing_%'
                 ORDER BY table_name
-            """)
+            """))
 
             existing_tables = [row.table_name for row in result.fetchall()]
 
