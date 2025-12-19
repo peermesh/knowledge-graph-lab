@@ -1,0 +1,18 @@
+{
+  "module": "ai",
+  "current_version": "v1.0-2025-11-07",
+  "versions": [
+    {
+      "version": "v1.0-2025-11-07",
+      "location": "active/v1.0-2025-11-07",
+      "developer": "haejeg",
+      "submission_date": "2025-11-07",
+      "extraction_date": "2025-11-18",
+      "status": "active",
+      "type": "initial_submission",
+      "review_status": "pending"
+    }
+  ],
+  "archived_versions": [],
+  "last_updated": "2025-11-18T14:32:00Z"
+}

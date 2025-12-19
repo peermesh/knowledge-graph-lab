@@ -190,6 +190,77 @@ gh pr create --fill
 
 ---
 
+## Module Directory Best Practices
+
+### Where to Commit Your Work
+
+**Phase 1 & 2 (Research & Planning):**
+- Commit to: `docs/team/module-assignments/[your-module]/deliverables/`
+- Example: `docs/team/module-assignments/backend-architecture/deliverables/phase-1-research/`
+
+**Phase 3+ (Implementation):**
+- Commit to: `modules/standalone/[your-module]/`
+- Example: `modules/standalone/backend/` for backend implementation
+
+**Experimental Work:**
+- Commit to: `modules/experimental/[module]/[yourname]-[feature]/`
+- Example: `modules/experimental/backend/john-auth-system/`
+
+### Branch Naming for Module Work
+
+**Research & Planning:**
+```bash
+git checkout -b yourname/phase-1-research
+git checkout -b yourname/phase-2-prd
+```
+
+**Implementation:**
+```bash
+git checkout -b yourname/backend-v1.1
+git checkout -b yourname/frontend-auth
+```
+
+**Experimental Features:**
+```bash
+git checkout -b yourname/experimental-backend-graphql
+git checkout -b yourname/experimental-ai-chatbot
+```
+
+### Commit Messages for Module Work
+
+**Research Phase:**
+```bash
+git commit -m "docs: add Phase 1 research brief for backend architecture"
+git commit -m "research: analyze 5 backend frameworks for scalability"
+```
+
+**Implementation:**
+```bash
+git commit -m "feat: implement user authentication API"
+git commit -m "fix: resolve database connection timeout issue"
+git commit -m "refactor: simplify entity validation logic"
+```
+
+**Experimental:**
+```bash
+git commit -m "experimental: prototype GraphQL API for backend"
+git commit -m "experimental: test AI chatbot integration"
+```
+
+### Module Version Tagging
+
+When you complete a module version:
+
+```bash
+# Create version tag
+git tag v1.1-backend-2025-11-25
+
+# Push with tags
+git push origin yourname/backend-v1.1 --tags
+```
+
+---
+
 ## Troubleshooting
 
 * **Permission denied / 403:** You don't have repo access. Confirm invite accepted and run `gh auth status`.

@@ -1,0 +1,16 @@
+{
+  "module": "ai",
+  "version": "v1.0-2025-11-07",
+  "developer": "haejeg",
+  "submission_date": "2025-11-07",
+  "source": {
+    "repo": "https://github.com/peermesh/knowledge-graph-lab",
+    "branch": "haejeg",
+    "commit": "406d58fcf48b5158290c5516f26cda42aabd307b",
+    "extracted_at": "2025-11-18T14:32:00Z"
+  },
+  "type": "initial_submission",
+  "based_on": null,
+  "changes": [],
+  "extraction_note": "Original submission restored from public repo - correction of previous degraded extraction"
+}
