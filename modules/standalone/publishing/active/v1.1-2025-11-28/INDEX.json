@@ -1,0 +1,18 @@
+{
+  "module": "publishing",
+  "current_version": "v1.0-2025-11-01",
+  "versions": [
+    {
+      "version": "v1.0-2025-11-01",
+      "location": "active/v1.0-2025-11-01",
+      "developer": "bschreiber8",
+      "submission_date": "2025-11-01",
+      "extraction_date": "2025-11-18",
+      "status": "active",
+      "type": "initial_submission",
+      "review_status": "pending"
+    }
+  ],
+  "archived_versions": [],
+  "last_updated": "2025-11-18T14:26:00Z"
+}
