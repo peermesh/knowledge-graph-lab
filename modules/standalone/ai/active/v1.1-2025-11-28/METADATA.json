@@ -1,0 +1,21 @@
+{
+  "module": "ai",
+  "version": "v1.1-2025-11-28",
+  "developer": "haejeg",
+  "submission_date": "2025-11-07",
+  "source": {
+    "repo": "https://github.com/peermesh/knowledge-graph-lab",
+    "branch": "haejeg",
+    "commit": "406d58fcf48b5158290c5516f26cda42aabd307b",
+    "extracted_at": "2025-11-29T06:17:48Z"
+  },
+  "type": "enhancement",
+  "based_on": "v1.0-2025-11-07",
+  "changes": [
+    "CRIT-1: Implemented missing lib/ modules (deduplication, confidence_scoring, text_processing)",
+    "CRIT-2: Fixed vector embedding dimension mismatch - now uses configurable settings",
+    "CRIT-4: Added LLM API key validation on startup"
+  ],
+  "extraction_note": "Original submission restored from public repo - correction of previous degraded extraction",
+  "enhancement_note": "Enhanced from v1.0-2025-11-07: P0 critical fixes"
+}

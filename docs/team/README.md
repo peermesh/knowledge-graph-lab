@@ -19,6 +19,50 @@ Welcome! You're here to build a module. Let's get you to the right place.
 
 **Next Step**: Navigate to your module directory above. Inside you'll find assignments organized by phase.
 
+## Module Implementation Directory
+
+Once your research and planning phases are complete, you'll work in the main `modules/` directory:
+
+```
+modules/
+├── standalone/          # Active, production-ready modules
+│   ├── publishing/     # Publishing System module
+│   ├── frontend/       # Frontend Interface module
+│   ├── backend/        # Backend Infrastructure module
+│   └── ai/             # AI Intelligence module
+├── experimental/       # Development sandbox for new features
+└── integrated/         # Future cross-module integrations
+```
+
+### Working in the Modules Directory
+
+**For Active Development:**
+- Work directly in `modules/standalone/[your-module]/`
+- Use Git tags for versioning (see [modules/VERSIONING-RULES.md](../../modules/VERSIONING-RULES.md))
+- Example: `modules/standalone/backend/` for backend development
+
+**For Experimental Features:**
+- Create branches for experimental work
+- Use naming: `yourname/experimental-[feature]`
+- Work in `modules/experimental/[module]/[yourname]-[feature]/`
+- Promoted to `standalone/` when stable
+
+**Git Workflow for Module Development:**
+```bash
+# Create feature branch
+git checkout -b yourname/experimental-backend-auth
+
+# Work in experimental directory
+cd modules/experimental/backend/yourname-experimental-auth/
+
+# When ready to promote
+git mv modules/experimental/backend/yourname-experimental-auth/* modules/standalone/backend/
+git commit -m "feat: add authentication system to backend module"
+
+# Create version tag
+git tag v1.1-backend-2025-11-25
+```
+
 ## Quick Links
 
 - **System Overview**: [../design/product/system-overview.md](../design/product/system-overview.md) - What we're building and how modules connect (READ FIRST)
@@ -57,6 +101,7 @@ Use this systematic approach to create comprehensive requirements documentation:
    - `02-phase-1-research/` - Research phase assignments
    - `03-phase-2-prd+plan/` - Planning phase assignments
    - `deliverables/` - Where your completed work goes
+   - `work-in-progress/` - Where your active work happens
 4. **Ask your team lead**: Which phase you should be working on right now
 5. **Start your assignment**: Open the `b` file in your current phase folder (e.g., `02b-...-assignment.md`)
 
@@ -75,10 +120,15 @@ module-assignments/[your-module]/
 │   ├── 03a-...-overview.md
 │   ├── 03b-...-assignment.md
 │   └── 03c-...-advanced.md
-└── deliverables/                   ← Your completed work
-    ├── phase-1-research/
-    ├── phase-2-planning/
-    └── [future phases...]
+├── deliverables/                   ← Your completed, finalized work
+│   ├── phase-1-research/
+│   ├── phase-2-planning/
+│   └── [future phases...]
+├── work-in-progress/               ← Active construction zone
+│   ├── raw/                        ← Notes, transcripts
+│   ├── ai-generated/               ← AI outputs
+│   └── synthesis/                  ← Drafts
+└── handoffs/                       ← Code/integrations ready for others
 ```
 
 **File naming pattern**:
@@ -93,3 +143,5 @@ module-assignments/[your-module]/
 2. Open that phase's folder in your module (e.g., `03-phase-2-prd+plan/`)
 3. Start with the `b` file (e.g., `03b-phase-2-prd-assignment.md`)
 4. Refer to `a` (overview) and `c` (advanced) files as needed
+5. Do your work in `work-in-progress/`
+6. Move completed, reviewed work to `deliverables/`

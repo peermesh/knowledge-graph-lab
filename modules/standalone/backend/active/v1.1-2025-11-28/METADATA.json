@@ -1,0 +1,22 @@
+{
+  "module": "backend",
+  "version": "v1.1-2025-11-28",
+  "developer": "gorodinskiia",
+  "submission_date": "2025-11-05",
+  "source": {
+    "repo": "https://github.com/peermesh/knowledge-graph-lab",
+    "branch": "gorodinskiia",
+    "commit": "5ca20237f88c9748ca19a41413434165daa11cac",
+    "extracted_at": "2025-11-29T06:11:38Z"
+  },
+  "type": "enhancement",
+  "based_on": "v1.0-2025-11-05",
+  "changes": [
+    "SECURITY-004: Added rate limiting to auth endpoint",
+    "SECURITY-003: Added comprehensive input validation for entities",
+    "ERROR-001: Improved error handling with structured logging",
+    "SCHEMA-001: Fixed FK type mismatch in entity_relationship model"
+  ],
+  "extraction_note": "Original submission restored from public repo - correction of previous degraded extraction",
+  "enhancement_note": "Enhanced from v1.0-2025-11-05: P0 security and schema fixes"
+}

@@ -32,12 +32,37 @@ The project has four core modules. You'll be assigned to one:
 - [ ] Skim [Project Vision](../design/strategy/vision.md) - Why it matters
 - [ ] Review [Project Plan](project-plan/overview.md) - Phase milestones and deliverables
 
+### Learn Repository Structure
+- [ ] Read [Module Directory Overview](../../modules/README.md) - How modules are organized
+- [ ] Review [Versioning Rules](../../modules/VERSIONING-RULES.md) - How module versions work
+- [ ] Understand [Git Workflow](git-workflow.md) - Branching and commit best practices
+
 ### Start Your First Assignment
 - [ ] Go to your module's current phase folder (ask team lead which phase)
 - [ ] Open the `XXb-...-assignment.md` file in that folder (where XX is the phase number)
 - [ ] Review the `XXa-...-overview.md` file for context
 - [ ] Complete your assigned tasks
 - [ ] Submit your work via pull request - See [git-workflow.md](git-workflow.md)
+
+## Module Implementation Phase (Future)
+
+When you move beyond research and planning:
+
+### Module Directory Structure
+```
+modules/
+├── standalone/          # Where you implement your module
+│   └── [your-module]/  # Your active module directory
+├── experimental/       # For testing new features
+└── integrated/         # For cross-module work
+```
+
+### Implementation Workflow
+- [ ] Work directly in `modules/standalone/[your-module]/`
+- [ ] Use Git tags for versioning (see [Versioning Rules](../../modules/VERSIONING-RULES.md))
+- [ ] Create feature branches: `yourname/feature-name`
+- [ ] For experiments: `modules/experimental/[module]/[yourname]-[feature]/`
+- [ ] Follow commit message standards in [Git Workflow](git-workflow.md)
 
 ## Getting Help
 

@@ -1,0 +1,390 @@
+openapi: 3.0.3
+info:
+  title: AI Module - Content Analysis API
+  description: API for analyzing content for insights, sentiment, topics, and entities
+  version: 1.0.0
+  contact:
+    name: AI Module Team
+    email: ai-team@knowledge-graph-lab.com
+
+servers:
+  - url: https://api.knowledge-graph-lab.com/ai/v1
+    description: Production
+  - url: https://staging-api.knowledge-graph-lab.com/ai/v1
+    description: Staging
+  - url: http://localhost:8000/ai/v1
+    description: Local development
+
+paths:
+  /analyze-content:
+    post:
+      summary: Analyze content
+      description: Perform analysis on content for sentiment, topics, summary, or entities
+      operationId: analyzeContent
+      tags:
+        - Content Analysis
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnalysisRequest'
+            examples:
+              sentimentAnalysis:
+                summary: Sentiment analysis
+                value:
+                  content: "Microsoft's partnership with OpenAI is driving significant advances in AI technology..."
+                  analysis_type: "sentiment"
+                  options:
+                    include_confidence: true
+                    language: "en"
+              topicsAnalysis:
+                summary: Topics extraction
+                value:
+                  content: "The AI research landscape is dominated by a few key players..."
+                  analysis_type: "topics"
+                  options:
+                    max_topics: 10
+                    language: "en"
+      responses:
+        '200':
+          description: Analysis completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalysisResponse'
+        '400':
+          description: Bad request - invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimitErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /health:
+    get:
+      summary: Health check
+      description: Check AI module health and status
+      operationId: healthCheck
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '503':
+          description: Service is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for authentication
+
+  schemas:
+    AnalysisRequest:
+      type: object
+      required:
+        - content
+        - analysis_type
+      properties:
+        content:
+          type: string
+          description: Content to analyze
+          minLength: 1
+          maxLength: 100000
+        analysis_type:
+          type: string
+          enum: [sentiment, topics, summary, entities]
+          description: Type of analysis to perform
+        options:
+          $ref: '#/components/schemas/AnalysisOptions'
+
+    AnalysisOptions:
+      type: object
+      properties:
+        max_length:
+          type: integer
+          minimum: 50
+          maximum: 5000
+          default: 500
+          description: Maximum length for summaries (words)
+        max_topics:
+          type: integer
+          minimum: 1
+          maximum: 20
+          default: 10
+          description: Maximum number of topics to extract
+        include_confidence:
+          type: boolean
+          default: true
+          description: Include confidence scores in results
+        language:
+          type: string
+          enum: [en, es, fr, zh]
+          default: en
+          description: Language of the content
+
+    AnalysisResponse:
+      type: object
+      required:
+        - analysis_id
+        - analysis_type
+        - results
+        - processing_time_seconds
+      properties:
+        analysis_id:
+          type: string
+          format: uuid
+          description: Unique identifier for this analysis
+        analysis_type:
+          type: string
+          enum: [sentiment, topics, summary, entities]
+          description: Type of analysis performed
+        results:
+          oneOf:
+            - $ref: '#/components/schemas/SentimentResults'
+            - $ref: '#/components/schemas/TopicsResults'
+            - $ref: '#/components/schemas/SummaryResults'
+            - $ref: '#/components/schemas/EntitiesResults'
+          discriminator:
+            propertyName: analysis_type
+        processing_time_seconds:
+          type: number
+          format: double
+          description: Time taken to complete analysis
+
+    SentimentResults:
+      type: object
+      required:
+        - sentiment
+      properties:
+        sentiment:
+          type: string
+          enum: [positive, negative, neutral, mixed]
+          description: Overall sentiment classification
+        confidence:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+          description: Confidence in sentiment classification
+        scores:
+          $ref: '#/components/schemas/SentimentScores'
+
+    SentimentScores:
+      type: object
+      properties:
+        positive:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+        negative:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+        neutral:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+        mixed:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+
+    TopicsResults:
+      type: object
+      required:
+        - topics
+      properties:
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+          description: Extracted topics
+
+    Topic:
+      type: object
+      required:
+        - text
+        - relevance
+      properties:
+        text:
+          type: string
+          description: Topic text
+        relevance:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+          description: Relevance score (0.0-1.0)
+        category:
+          type: string
+          description: Optional topic category
+
+    SummaryResults:
+      type: object
+      required:
+        - summary
+      properties:
+        summary:
+          type: string
+          description: Generated summary text
+        summary_length:
+          type: integer
+          description: Length of summary in words
+        compression_ratio:
+          type: number
+          format: double
+          description: Ratio of summary length to original content length
+
+    EntitiesResults:
+      type: object
+      required:
+        - entities
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+          description: Extracted entities
+        entity_count:
+          type: integer
+          description: Total number of entities extracted
+
+    Entity:
+      type: object
+      required:
+        - id
+        - text
+        - type
+        - confidence
+      properties:
+        id:
+          type: string
+          format: uuid
+        text:
+          type: string
+        type:
+          type: string
+          enum: [organization, person, funding_amount, date, location]
+        confidence:
+          type: number
+          format: double
+          minimum: 0.0
+          maximum: 1.0
+        positions:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+            minItems: 2
+            maxItems: 2
+        metadata:
+          type: object
+          additionalProperties: true
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - version
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+          description: Overall service health status
+        version:
+          type: string
+          description: Service version
+          example: "1.0.0"
+        timestamp:
+          type: string
+          format: date-time
+          description: Health check timestamp (ISO 8601)
+        checks:
+          $ref: '#/components/schemas/HealthChecks'
+
+    HealthChecks:
+      type: object
+      properties:
+        database:
+          $ref: '#/components/schemas/ComponentHealth'
+        vector_db:
+          $ref: '#/components/schemas/ComponentHealth'
+        llm_apis:
+          $ref: '#/components/schemas/ComponentHealth'
+        message_queue:
+          $ref: '#/components/schemas/ComponentHealth'
+
+    ComponentHealth:
+      type: object
+      required:
+        - status
+        - response_time_ms
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        response_time_ms:
+          type: integer
+          description: Component response time in milliseconds
+        error_message:
+          type: string
+          description: Error message if unhealthy
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional error context
+
+    RateLimitErrorResponse:
+      allOf:
+        - $ref: '#/components/schemas/ErrorResponse'
+        - type: object
+          properties:
+            retry_after_seconds:
+              type: integer
+              description: Seconds to wait before retrying

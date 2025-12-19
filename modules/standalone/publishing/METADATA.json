@@ -1,0 +1,25 @@
+{
+  "module": "publishing",
+  "version": "v1.0-2025-11-01",
+  "developer": "bschreiber8",
+  "submission_date": "2025-11-01",
+  "source": {
+    "repo": "https://github.com/peermesh/knowledge-graph-lab",
+    "branch": "001-publishing-module",
+    "commit": "54f50db0d1548a92bdee2f97fb0628d65c8b5c0f",
+    "extracted_at": "2025-11-18T14:26:00Z"
+  },
+  "type": "initial_submission",
+  "based_on": null,
+  "changes": [],
+  "extraction_note": "Original submission restored from public repo - correction of previous degraded extraction",
+  "verification": {
+    "demo_frontend_lines": 778,
+    "complete_features": true,
+    "ai_integration": true,
+    "alerts_system": true,
+    "analytics": true,
+    "personalization": true,
+    "workers": true
+  }
+}

@@ -146,6 +146,42 @@ python3 scripts/validate-standalone-compliance.py docs/modules/backend-architect
 
 ---
 
+## Git Repositories
+
+This project contains **13 independent Git repositories** (including submodules). When making changes, be aware that commits may be needed in multiple repos.
+
+### Repository Map
+
+| # | Repository | Path | Remote | Description |
+|---|------------|------|--------|-------------|
+| 1 | **knowledge-graph-lab-alpha** | `/` (root) | `alpha` | Main project repository |
+| 2 | **kits** | `.dev/kits/` | `origin` | Meta-repository for all development kits |
+| 3 | **design-kit** | `.dev/kits/design-kit/` | `origin` | UX/UI design specification generator |
+| 4 | **design-catalog** | `.dev/kits/design-kit/design-catalog/` | `origin` | Design component catalog |
+| 5 | **discovery-kit** | `.dev/kits/discovery-kit/` | `origin` | Project discovery and analysis |
+| 6 | **requirements-kit** | `.dev/kits/requirements-kit/` | `origin` | Requirements generation |
+| 7 | **spec-kit** | `.dev/kits/spec-kit/` | `origin` | Feature specification generator |
+| 8 | **kickstart-kit** | `.dev/kits/kickstart-kit/` | `origin` | Project initialization |
+| 9 | **kit-template** | `.dev/kits/kit-template/` | `origin` | Template for new kits |
+| 10 | **walkthrough-kit** | `.dev/kits/walkthrough-kit/` | `origin` | Interactive walkthroughs |
+| 11 | **product-wizard** | `.dev/kits/product-wizard/` | `origin` | Product development workflow |
+| 12 | **3d-interactive-diagram-lab** | `.dev/projects/3d-interactive-diagram-lab/` | `origin` | 3D visualization experiments |
+| 13 | **prompts** | `docs/team/prompts/` | `origin` | Shared prompt library |
+
+### Quick Status Check
+
+```bash
+# Check all repos for uncommitted changes
+for dir in . .dev/kits .dev/kits/design-kit .dev/kits/design-kit/design-catalog \
+  .dev/kits/discovery-kit .dev/kits/requirements-kit .dev/kits/spec-kit \
+  .dev/kits/kickstart-kit .dev/kits/kit-template .dev/kits/walkthrough-kit \
+  .dev/kits/product-wizard .dev/projects/3d-interactive-diagram-lab docs/team/prompts; do
+  echo "=== $dir ===" && cd "$dir" && git status --short && cd - > /dev/null
+done
+```
+
+---
+
 ## Project Information
 
 - **Repository**: [github.com/knowledge-graph-lab](https://github.com)
@@ -159,3 +195,8 @@ python3 scripts/validate-standalone-compliance.py docs/modules/backend-architect
 
 *Building the future of intelligent knowledge systems, one module at a time.*
 
+
+ 
+.
+ 
+ 
