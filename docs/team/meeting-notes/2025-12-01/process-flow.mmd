@@ -1,0 +1,19 @@
+flowchart TD
+    A[Current State:<br/>Unclear completion criteria<br/>Person-dependent workflow] --> B[Grig & Interns<br/>Work Together]
+    B --> C[Create Standardized<br/>Design Docs]
+    B --> D[Build Spec-of-Spec<br/>System]
+    B --> E[Develop Unified<br/>Test Bench]
+    C --> F[Document-Driven<br/>Development]
+    D --> F
+    E --> F
+    F --> G[Interns: Write & Maintain<br/>Design Docs & Journeys]
+    F --> H[Spec-of-Spec: Validate<br/>Completeness & Consistency]
+    F --> I[Test Bench: Run<br/>Journey-Based Tests]
+    G --> J[Gap Files Generated]
+    H --> J
+    I --> J
+    J --> K[Interns: Address Gaps<br/>Iterate on Modules]
+    K --> L[Modules Meet<br/>Definition of Done]
+    L --> M[Sustainable<br/>Development Process]
+
+
