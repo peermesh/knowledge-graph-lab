@@ -10,7 +10,7 @@
 ### Root Level
 ```
 knowledge-graph-lab/
-├── [ROOT CLUTTER - 18+ files] ⚠️
+├── [ROOT CLUTTER - 17 files] ⚠️
 │   ├── DATABASE-RESET.md
 │   ├── DEMO-QUICKSTART.md
 │   ├── DOCKER-DATABASE-SETUP.md
@@ -39,7 +39,7 @@ knowledge-graph-lab/
 │       │   └── publishing-tools/
 │       │       └── deliverables/
 │       │           └── phase-3-mvp/    ⚠️ DELIVERABLES IN WORK AREA
-│       │               └── [20 files]
+│       │               └── [18 files]
 │       │
 │       └── deliverables/
 │           ├── handoffs/
@@ -114,7 +114,7 @@ knowledge-graph-lab/
 │           │   └── publishing-tools/
 │           ├── phase-3-mvp/            🆕 NEW
 │           │   └── publishing-tools/   # MOVED from module-assignments
-│           │       └── [20 files]
+│           │       └── [18 files]
 │           └── handoffs/
 │               └── publishing-tools/
 │                   └── email-integration/  ✅ CLEANED
@@ -131,7 +131,7 @@ knowledge-graph-lab/
 
 ### 1. Root Level Cleanup
 ```
-BEFORE: 18+ documentation files + config files
+BEFORE: 17 documentation files + config files
 AFTER:  Only essential config files + README.md
 ```
 
@@ -309,7 +309,7 @@ Contains:
 
 ## Benefits Summary
 
-✅ **Root Cleanup**: 18+ files → 6-8 essential files  
+✅ **Root Cleanup**: 17 files → 6-8 essential files  
 ✅ **Clear Separation**: Work vs. deliverables vs. operations  
 ✅ **Flattened Nesting**: 16 levels → 8 levels max  
 ✅ **Cleaner Repository**: No node_modules committed  

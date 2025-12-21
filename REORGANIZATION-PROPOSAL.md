@@ -14,7 +14,7 @@ This proposal reorganizes root-level documentation files and publishing-related 
 
 ## Current Problems
 
-### 1. Root-Level File Clutter (18 documentation files)
+### 1. Root-Level File Clutter (15 files to move + 2 keepers = 17 total)
 **Problem**: Too many documentation files at root level reduce discoverability.
 
 **Files to relocate**:
@@ -50,9 +50,10 @@ This proposal reorganizes root-level documentation files and publishing-related 
 
 ### 4. Publishing Module: Mixed Deliverables Locations
 **Problem**: Publishing deliverables exist in multiple locations:
-- `docs/team/module-assignments/publishing-tools/deliverables/phase-3-mvp/` (20 files)
+- `docs/team/module-assignments/publishing-tools/deliverables/phase-3-mvp/` (18 files)
 - `docs/team/deliverables/handoffs/publishing-tools/` (email-integration handoff)
 - `docs/team/deliverables/phase-1-research/publishing-tools/` (research files)
+- `docs/team/module-reviews/publishing/` (module review files) - **NEW from master merge**
 
 **Impact**: Unclear where to find final, approved deliverables.
 
@@ -135,7 +136,7 @@ knowledge-graph-lab/
 │           │   └── publishing-tools/
 │           ├── phase-3-mvp/           # NEW
 │           │   └── publishing-tools/  # MOVED from module-assignments
-│           │       └── [20 phase-3-mvp files]
+│           │       └── [18 phase-3-mvp files]
 │           └── handoffs/
 │               └── publishing-tools/
 │                   └── email-integration/  # CLEANED (no node_modules)
@@ -199,6 +200,7 @@ mkdir -p docs/team/work/module-assignments/publishing-tools/{raw,ai-generated,sy
 1. Move `docs/team/module-assignments/publishing-tools/deliverables/phase-3-mvp/*` 
    → `docs/team/deliverables/phase-3-mvp/publishing-tools/`
 2. Ensure `docs/team/deliverables/phase-1-research/publishing-tools/` exists (keep as-is)
+3. **Keep** `docs/team/module-reviews/publishing/` as-is (not part of this reorganization)
 
 ### Step 4: Clean Up Publishing Handoffs
 1. **Remove** `docs/team/deliverables/handoffs/publishing-tools/email-integration/working-example/node_modules/`
@@ -209,7 +211,7 @@ mkdir -p docs/team/work/module-assignments/publishing-tools/{raw,ai-generated,sy
 
 ## Benefits
 
-1. **Root Cleanup**: 18 files → 6-8 essential files
+1. **Root Cleanup**: 15 files moved → 6-8 essential files remain
 2. **Clear Separation**: Work vs. deliverables clearly separated
 3. **Reduced Nesting**: 16 levels → 8 levels max
 4. **Cleaner Repository**: No node_modules committed

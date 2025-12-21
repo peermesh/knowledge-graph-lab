@@ -91,14 +91,24 @@ See [.dev/kits/README.md](.dev/kits/README.md) for complete pipeline walkthrough
 ```
 knowledge-graph-lab/
 ├── docs/
-│   ├── team/           # Team member guides and resources
-│   ├── modules/        # Module specifications and assignments
-│   │   └── shared/     # ⚡ Shared module requirements (Docker, APIs, auth)
-│   ├── design/         # Architecture and requirements
-│   ├── research/       # Research methodology and tools
-├── scripts/           # ⚡ Validation scripts for shared requirements
-├── src/               # Source code (Phase 2+)
-└── tests/             # Test suites (Phase 2+)
+│   ├── getting-started/  # Entry points: START-HERE.md, QUICKSTART.md, DEMO-QUICKSTART.md
+│   ├── operations/       # Operations docs: Docker, database, email, demos
+│   │   ├── docker/       # Docker setup and configuration
+│   │   ├── database/     # Database management
+│   │   ├── email/        # Email configuration
+│   │   ├── verification/ # Verification guides
+│   │   └── demos/        # Demo scripts and frontend
+│   ├── status/           # Project status tracking
+│   ├── team/             # Team member guides and resources
+│   │   ├── work/         # Work in progress (Creation Zone)
+│   │   └── deliverables/ # Final deliverables (Consumption Zone)
+│   ├── modules/          # Module specifications and assignments
+│   │   └── shared/       # ⚡ Shared module requirements (Docker, APIs, auth)
+│   ├── design/           # Architecture and requirements
+│   └── research/         # Research methodology and tools
+├── scripts/             # ⚡ Validation scripts for shared requirements
+├── src/                 # Source code (Phase 2+)
+└── tests/               # Test suites (Phase 2+)
 ```
 
 ### 🔧 Quick Commands for Module Compliance
@@ -213,6 +223,14 @@ done
 
 - **Repository**: [github.com/knowledge-graph-lab](https://github.com)
 - **Documentation**: See directories below
+
+## Quick Links
+
+- **[Getting Started](docs/getting-started/START-HERE.md)** - Start here for first-time setup
+- **[Quick Start Guide](docs/getting-started/QUICKSTART.md)** - Fast setup instructions
+- **[Demo Quick Start](docs/getting-started/DEMO-QUICKSTART.md)** - Run the demo quickly
+- **[Operations Documentation](docs/operations/)** - Docker, database, email setup
+- **[Project Status](docs/status/)** - Implementation status and readiness
 
 ## For Team Members
 
