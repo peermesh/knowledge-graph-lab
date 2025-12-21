@@ -123,9 +123,12 @@ router.include_router(
 
 
 # Global exception handler for consistent error responses
+# Note: This is now handled in main.py with specific handlers
+# Keeping for backward compatibility if needed
 async def global_exception_handler(request: Request, exc: Exception):
     """Handle all uncaught exceptions with RFC7807 output."""
-    return await rfc7807_exception_handler(request, exc)
+    from .exceptions import generic_exception_handler
+    return await generic_exception_handler(request, exc)
 
 
 logger.info("API router configured successfully", routes=len(router.routes))

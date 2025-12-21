@@ -148,9 +148,15 @@ def create_application() -> FastAPI:
     # Include API routes
     app.include_router(api_router, prefix="/api/v1")
 
-    # Register global exception handler on the app
-    from .api import global_exception_handler  # local import to avoid circular
-    app.add_exception_handler(Exception, global_exception_handler)
+    # Register exception handlers (order matters - specific before generic)
+    from fastapi.exceptions import HTTPException
+    from .api.exceptions import http_exception_handler, generic_exception_handler
+    
+    # Register HTTPException handler first (more specific)
+    app.add_exception_handler(HTTPException, http_exception_handler)
+    
+    # Register generic exception handler as fallback
+    app.add_exception_handler(Exception, generic_exception_handler)
 
     # Health check endpoint (required for container orchestration)
     @app.get("/health")
