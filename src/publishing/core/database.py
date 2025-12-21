@@ -185,11 +185,18 @@ async def get_table_status() -> dict:
 
 
 async def init_database_for_testing() -> None:
-    """Initialize database for testing with test-specific configuration."""
+    """
+    Initialize database for testing with test-specific configuration.
+    
+    Note: This function uses Base.metadata.create_all() for test SQLite databases only.
+    Production databases are managed by Alembic migrations (see create_db_and_tables()).
+    """
     if settings.DEBUG:
         logger.info("Initializing database for testing")
 
         # Use in-memory SQLite for tests if PostgreSQL not available
+        # Note: create_all() is acceptable here for test databases only
+        # Production databases use Alembic migrations (see create_db_and_tables())
         test_engine = create_async_engine(
             "sqlite+aiosqlite:///./test_publishing.db",
             connect_args={"check_same_thread": False},
