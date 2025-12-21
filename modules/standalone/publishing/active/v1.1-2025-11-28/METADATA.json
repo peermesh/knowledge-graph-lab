@@ -1,0 +1,29 @@
+{
+  "module": "publishing",
+  "version": "v1.1-2025-11-28",
+  "developer": "bschreiber8",
+  "submission_date": "2025-11-01",
+  "source": {
+    "repo": "https://github.com/peermesh/knowledge-graph-lab",
+    "branch": "001-publishing-module",
+    "commit": "54f50db0d1548a92bdee2f97fb0628d65c8b5c0f",
+    "extracted_at": "2025-11-29T06:14:11Z"
+  },
+  "type": "enhancement",
+  "based_on": "v1.0-2025-11-01",
+  "changes": [
+    "P0-4: Implemented comprehensive JWT security test suite",
+    "P0-5: Added database error handling with timeout and proper SQLAlchemy text()"
+  ],
+  "extraction_note": "Original submission restored from public repo - correction of previous degraded extraction",
+  "verification": {
+    "demo_frontend_lines": 778,
+    "complete_features": true,
+    "ai_integration": true,
+    "alerts_system": true,
+    "analytics": true,
+    "personalization": true,
+    "workers": true
+  },
+  "enhancement_note": "Enhanced from v1.0-2025-11-01: P0 security fixes"
+}

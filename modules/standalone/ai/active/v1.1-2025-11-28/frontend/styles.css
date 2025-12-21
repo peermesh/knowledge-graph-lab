@@ -1,0 +1,232 @@
+:root {
+    color-scheme: light dark;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.4;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header {
+    padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.8), rgba(15, 118, 110, 0.8));
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 600;
+}
+
+.subtitle {
+    margin-top: 0.5rem;
+    color: rgba(226, 232, 240, 0.8);
+}
+
+.app-main {
+    display: grid;
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    grid-template-columns: minmax(300px, 360px) 1fr;
+    flex: 1;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.panel {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+}
+
+.panel h2 {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.field span {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(148, 163, 184, 0.95);
+}
+
+.field input,
+.field select {
+    padding: 0.55rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(15, 23, 42, 0.7);
+    color: inherit;
+    font-size: 0.95rem;
+}
+
+.field input:focus,
+.field select:focus {
+    outline: none;
+    border-color: rgba(59, 130, 246, 0.7);
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3);
+}
+
+.field.duo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+button.primary {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+button.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+}
+
+.results {
+    max-height: 40vh;
+    overflow: hidden auto;
+}
+
+.meta {
+    font-size: 0.8rem;
+    color: rgba(148, 163, 184, 0.85);
+    margin-bottom: 0.75rem;
+}
+
+.entity-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.entity-list li {
+    background: rgba(30, 41, 59, 0.65);
+    border-radius: 12px;
+    padding: 0.75rem;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.entity-button {
+    text-align: left;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.entity-button:hover {
+    color: #38bdf8;
+}
+
+.relationships {
+    font-size: 0.82rem;
+    color: rgba(148, 163, 184, 0.9);
+}
+
+.relationships span {
+    display: inline-block;
+    padding: 0.25rem 0.45rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.3rem;
+    border-radius: 8px;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(96, 165, 250, 0.18);
+}
+
+.visualization {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.visual-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#reset-graph {
+    border: none;
+    border-radius: 8px;
+    padding: 0.45rem 0.8rem;
+    background: rgba(148, 163, 184, 0.2);
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+#reset-graph:hover {
+    background: rgba(148, 163, 184, 0.35);
+}
+
+#graph-container {
+    flex: 1;
+    min-height: clamp(320px, 50vh, 640px);
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(15, 23, 42, 0.6);
+}
+
+.graph-info {
+    font-size: 0.85rem;
+    color: rgba(148, 163, 184, 0.9);
+    min-height: 2rem;
+}
+
+.graph-info strong {
+    color: #38bdf8;
+}
+
+@media (max-width: 960px) {
+    .app-main {
+        grid-template-columns: 1fr;
+    }
+
+    .results {
+        max-height: 320px;
+    }
+}
+

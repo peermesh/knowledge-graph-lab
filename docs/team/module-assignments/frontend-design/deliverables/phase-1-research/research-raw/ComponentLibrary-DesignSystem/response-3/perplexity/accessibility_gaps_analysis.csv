@@ -1,0 +1,9 @@
+gap_category,severity,description,affected_libraries
+Automated Testing Coverage,High,"Automated tools detect only 30-50% of accessibility issues, manual testing still required",All testing tools
+Component Library Consistency,High,"Inconsistent ARIA implementation across React libraries, even popular ones","Ant Design, React Bootstrap, Material UI"
+Enterprise Testing Integration,Medium,Limited CI/CD integration and enterprise workflow compatibility,Most open source tools
+Mobile Accessibility,High,"Mobile accessibility testing lags behind desktop, especially for touch interactions",All component libraries
+Cognitive Accessibility,High,Cognitive accessibility often overlooked in favor of screen reader compatibility,All component libraries
+Real User Impact Measurement,Medium,Few tools measure actual user impact vs. technical compliance,All testing tools
+Developer Education,Medium,"Developers lack accessibility knowledge, tools need better guidance",All libraries
+Cross-Framework Standards,Medium,"No unified accessibility standards across React, Vue, Angular ecosystems",Platform-specific libraries
