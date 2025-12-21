@@ -10,17 +10,54 @@ The publishing module now uses **PostgreSQL** for persistent data storage and **
 
 ## Step 1: Environment Setup
 
-### Copy Environment Template
+### 1. Copy the Example Environment File
+
+The `.env.example` file is now included in the repository and contains all necessary configuration templates.
+
 ```bash
 cp .env.example .env
 ```
 
-The `.env` file contains placeholder credentials for:
-- PostgreSQL (already configured for Docker)
-- Redis (already configured for Docker)
-- AWS SES (placeholder - add real credentials when available)
-- Slack API (placeholder - add real credentials when available)
-- Discord API (placeholder - add real credentials when available)
+This creates your local `.env` file with placeholder values that work for standalone testing.
+
+### 2. (Optional) Update .env with Real Credentials for Production
+
+For standalone testing, the default placeholder values work fine. You can skip this step if you're just testing locally.
+
+If you need real service integration, edit `.env` and add your actual credentials:
+
+**AWS SES (for email delivery):**
+```bash
+AWS_ACCESS_KEY_ID=your-actual-access-key
+AWS_SECRET_ACCESS_KEY=your-actual-secret-key
+SES_SENDER_EMAIL=noreply@yourdomain.com
+AWS_REGION=us-east-2
+```
+
+**Slack API (for Slack integration):**
+```bash
+SLACK_BOT_TOKEN=xoxb-your-actual-slack-token
+SLACK_CHANNEL_ID=your-channel-id
+```
+
+**Discord API (for Discord integration):**
+```bash
+DISCORD_BOT_TOKEN=your-actual-discord-token
+DISCORD_CHANNEL_ID=your-channel-id
+```
+
+### 3. For Standalone Testing
+
+The default placeholder values in `.env.example` are sufficient for:
+- Local development
+- Testing API endpoints
+- Database operations
+- Redis caching
+- Mock email/Slack/Discord operations
+
+**No real credentials are required** for standalone testing. The system will run in placeholder mode for external services.
+
+**Note:** The `.env` file is gitignored, so your local credentials won't be committed to the repository.
 
 ## Step 2: Start Services
 
@@ -199,24 +236,39 @@ docker-compose logs api | grep "PLACEHOLDER EMAIL"
 
 ### When You Have Real Credentials
 
-Edit `.env` and add real credentials:
-```bash
-# AWS SES
-AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-SES_SENDER_EMAIL=noreply@yourdomain.com
+If you need to send real emails or integrate with real Slack/Discord channels, update your `.env` file with actual credentials (see Step 1 for details).
 
-# Slack
-SLACK_BOT_TOKEN=xoxb-your-real-token
+After updating `.env`:
 
-# Discord
-DISCORD_BOT_TOKEN=your-real-token
-```
+1. **Restart the API service:**
+   ```bash
+   docker-compose restart api
+   ```
 
-Restart the API:
-```bash
-docker-compose restart api
-```
+2. **Verify credentials are loaded:**
+   ```bash
+   # Check email service status
+   curl http://localhost:8080/api/v1/email/status | jq
+   
+   # Should show "mode": "aws_ses" instead of "placeholder"
+   ```
+
+3. **Test with real service:**
+   ```bash
+   # Send test email (now uses real AWS SES)
+   curl -X POST http://localhost:8080/api/v1/email/test \
+     -H "Content-Type: application/json" \
+     -d '{
+       "to_email": "your-email@example.com",
+       "subject": "Test Email",
+       "body": "This is a test email from the publishing module"
+     }' | jq
+   ```
+
+**Important:** 
+- Real credentials are only needed for production or integration testing
+- For local development, placeholder mode is recommended
+- Never commit `.env` with real credentials to version control
 
 ## Step 7: Explore Mock Data
 
