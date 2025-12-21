@@ -1,6 +1,7 @@
 services:
   # PostgreSQL Database
   postgres:
+    container_name: publishing-postgres
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: publishing_user
@@ -20,6 +21,7 @@ services:
 
   # Redis Cache and Pub/Sub
   redis:
+    container_name: publishing-redis
     image: redis:7-alpine
     command: redis-server --appendonly yes
     ports:
@@ -36,6 +38,7 @@ services:
 
   # Publishing Module API
   api:
+    container_name: publishing-api
     build: .
     ports:
       - "8080:8080"
@@ -98,6 +101,7 @@ services:
 
   # Simple Frontend (Nginx serving demo HTML)
   frontend:
+    container_name: publishing-frontend
     image: nginx:alpine
     ports:
       - "3000:80"
