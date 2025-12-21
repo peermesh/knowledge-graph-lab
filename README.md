@@ -146,6 +146,33 @@ python3 scripts/validate-standalone-compliance.py docs/modules/backend-architect
 
 ---
 
+## Auto-Sync to Public Repository
+
+This private alpha repo automatically syncs to the public repository ([peermesh/knowledge-graph-lab](https://github.com/peermesh/knowledge-graph-lab)) via GitHub Actions.
+
+### What Gets Synced
+- `docs/` → public repo `docs/`
+- `modules/` → public repo `modules/`
+- `README.md` → public repo `README.md`
+
+### When It Runs
+- Automatically on every push to `main` that touches the synced paths
+- No manual action required
+
+### How It Works
+1. Push changes to `main` branch in this alpha repo
+2. GitHub Action detects changes in `docs/`, `modules/`, or `README.md`
+3. Action clones public repo, rsyncs changes, commits, and pushes
+4. Public repo is updated automatically
+
+### Setup (One-Time)
+See [.github/SYNC-SETUP.md](.github/SYNC-SETUP.md) for token configuration.
+
+### Verification
+Check the Actions tab in GitHub to see sync status, or verify the public repo directly.
+
+---
+
 ## Git Repositories
 
 This project contains **13 independent Git repositories** (including submodules). When making changes, be aware that commits may be needed in multiple repos.
