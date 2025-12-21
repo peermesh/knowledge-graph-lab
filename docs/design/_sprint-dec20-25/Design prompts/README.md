@@ -16,6 +16,18 @@ This package contains everything you need to build the Knowledge Graph Lab inter
 | `05-phase-onboarding-settings.md` | Phase 5: Onboarding flow and settings |
 | `06-phase-polish-integration.md` | Phase 6: Polish and connect everything |
 | `07-component-inventory.md` | Reference: All components and types |
+| `08-design-document.md` | What "done" looks like - return here when lost |
+| `09-complete-specification.md` | **Single-file version** for one-prompt agents |
+
+## Two Approaches
+
+This package supports two different ways of working with AI agents:
+
+**Phased approach (documents 00-08):** Feed one phase at a time. Better for agents that get confused by large specs. Start with 00 for context, then work through 01-06 in order. Use 07 and 08 as references.
+
+**Single-prompt approach (document 09):** Feed the complete specification in one shot. Better for agents that handle large context well and prefer having everything upfront.
+
+Test both to see which produces better results with your tools.
 
 ## How to Use These Documents
 
