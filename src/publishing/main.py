@@ -138,6 +138,14 @@ def create_application() -> FastAPI:
 
         except Exception as e:
             process_time = time.time() - start_time
+            # #region agent log
+            import traceback
+            try:
+                with open('/Users/benschreiber/Desktop/knowledge-graph-lab/.cursor/debug.log', 'a') as f:
+                    f.write(json.dumps({"id":"log_request_error","timestamp":int(time.time()*1000),"location":"main.py:139","message":"Request error","data":{"error":str(e),"traceback":traceback.format_exc()},"sessionId":"debug-session","runId":"run1","hypothesisId":"C"})+"\n")
+            except (FileNotFoundError, OSError):
+                pass
+            # #endregion
             request_logger.error(
                 "Request failed",
                 error=str(e),

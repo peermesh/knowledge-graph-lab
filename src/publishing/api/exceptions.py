@@ -13,6 +13,10 @@ Constitution Compliance:
 from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
 from typing import Optional
+from ..core.config import settings
+import structlog
+
+logger = structlog.get_logger(__name__)
 
 
 def create_problem_detail(
@@ -98,10 +102,26 @@ async def http_exception_handler(request: Request, exc: HTTPException) -> JSONRe
         trace_id=trace_id
     )
     
+    # Add CORS headers to error response
+    headers = {"Content-Type": "application/problem+json"}
+    origin = request.headers.get("origin")
+    cors_origins = ["*"] if settings.DEBUG else settings.CORS_ORIGINS
+    logger.debug("HTTP exception CORS check", origin=origin, debug=settings.DEBUG, cors_origins=cors_origins)
+    if origin:
+        # Check if origin is allowed
+        if "*" in cors_origins or origin in cors_origins:
+            headers["Access-Control-Allow-Origin"] = origin if "*" not in cors_origins else "*"
+            headers["Access-Control-Allow-Credentials"] = "true"
+            headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+            headers["Access-Control-Allow-Headers"] = "*"
+            logger.debug("CORS headers added to HTTP exception response", headers=headers)
+    else:
+        logger.debug("No origin header in request for HTTP exception")
+    
     return JSONResponse(
         status_code=exc.status_code,
         content=problem,
-        headers={"Content-Type": "application/problem+json"}
+        headers=headers
     )
 
 
@@ -129,10 +149,26 @@ async def generic_exception_handler(request: Request, exc: Exception) -> JSONRes
         trace_id=trace_id
     )
     
+    # Add CORS headers to error response
+    headers = {"Content-Type": "application/problem+json"}
+    origin = request.headers.get("origin")
+    cors_origins = ["*"] if settings.DEBUG else settings.CORS_ORIGINS
+    logger.debug("Generic exception CORS check", origin=origin, debug=settings.DEBUG, cors_origins=cors_origins)
+    if origin:
+        # Check if origin is allowed
+        if "*" in cors_origins or origin in cors_origins:
+            headers["Access-Control-Allow-Origin"] = origin if "*" not in cors_origins else "*"
+            headers["Access-Control-Allow-Credentials"] = "true"
+            headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+            headers["Access-Control-Allow-Headers"] = "*"
+            logger.debug("CORS headers added to generic exception response", headers=headers)
+    else:
+        logger.debug("No origin header in request for generic exception")
+    
     return JSONResponse(
         status_code=500,
         content=problem,
-        headers={"Content-Type": "application/problem+json"}
+        headers=headers
     )
 
 

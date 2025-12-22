@@ -1,6 +1,8 @@
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 from sqlalchemy import select, desc
+from sqlalchemy.exc import IntegrityError
+from fastapi import HTTPException
 from ..core.database import async_session_factory
 from ..models.subscriber import Subscriber
 from .preference_validation import PreferenceValidationService
@@ -21,18 +23,30 @@ class SubscriberService:
         topic_interests = topic_interests or {}
         frequency_settings = frequency_settings or {}
 
-        async with async_session_factory() as session:
-            subscriber = Subscriber(
-                email=email,
-                user_id=user_id,
-                preferred_channels=preferred_channels,
-                topic_interests=topic_interests,
-                frequency_settings=frequency_settings,
-                subscription_status="active",
+        try:
+            async with async_session_factory() as session:
+                subscriber = Subscriber(
+                    email=email,
+                    user_id=user_id,
+                    preferred_channels=preferred_channels,
+                    topic_interests=topic_interests,
+                    frequency_settings=frequency_settings,
+                    subscription_status="active",
+                )
+                session.add(subscriber)
+                await session.commit()
+                return subscriber
+        except IntegrityError as e:
+            # Check if it's a duplicate email error
+            if "email" in str(e.orig).lower() or "unique" in str(e.orig).lower():
+                raise HTTPException(
+                    status_code=409,
+                    detail=f"Subscriber with email '{email}' already exists"
+                )
+            raise HTTPException(
+                status_code=409,
+                detail="A subscriber with this information already exists"
             )
-            session.add(subscriber)
-            await session.commit()
-            return subscriber
 
     async def list_subscribers(self, limit: int = 50, offset: int = 0) -> List[Subscriber]:
         async with async_session_factory() as session:

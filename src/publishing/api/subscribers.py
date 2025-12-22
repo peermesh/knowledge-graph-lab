@@ -25,6 +25,14 @@ async def list_subscribers(limit: int = 50, offset: int = 0):
 
 @router.post("", response_model=SubscriberResponse)
 async def create_subscriber(request: SubscriberCreateRequest = Body(...)):
+    # #region agent log
+    import json, time
+    try:
+        with open('/Users/benschreiber/Desktop/knowledge-graph-lab/.cursor/debug.log', 'a') as f:
+            f.write(json.dumps({"id":"log_subscriber_entry","timestamp":int(time.time()*1000),"location":"subscribers.py:27","message":"create_subscriber called","data":{"email":request.email},"sessionId":"debug-session","runId":"run1","hypothesisId":"C"})+"\n")
+    except (FileNotFoundError, OSError):
+        pass
+    # #endregion
     sub = await service.create_subscriber(
         email=request.email,
         user_id=str(request.user_id) if request.user_id else None,
@@ -32,4 +40,11 @@ async def create_subscriber(request: SubscriberCreateRequest = Body(...)):
         topic_interests=request.topic_interests,
         frequency_settings=request.frequency_settings,
     )
+    # #region agent log
+    try:
+        with open('/Users/benschreiber/Desktop/knowledge-graph-lab/.cursor/debug.log', 'a') as f:
+            f.write(json.dumps({"id":"log_subscriber_exit","timestamp":int(time.time()*1000),"location":"subscribers.py:35","message":"create_subscriber returning","data":{"subscriber_id":sub.get("id") if isinstance(sub, dict) else None},"sessionId":"debug-session","runId":"run1","hypothesisId":"C"})+"\n")
+    except (FileNotFoundError, OSError):
+        pass
+    # #endregion
     return success_response(data=sub)

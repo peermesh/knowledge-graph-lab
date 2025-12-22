@@ -196,30 +196,19 @@
             <div id="channel-result" class="result"></div>
         </div>
 
-        <!-- Subscribers -->
-        <div class="card">
-            <h2>👥 Subscribers</h2>
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="subscriber-email" placeholder="user@example.com" />
-            </div>
-            <div class="form-group">
-                <label>Topics of Interest</label>
-                <input type="text" id="subscriber-topics" placeholder="artificial_intelligence, machine_learning" />
-            </div>
-            <div class="button-group">
-                <button onclick="createSubscriber()">Create Subscriber</button>
-                <button onclick="listSubscribers()">List Subscribers</button>
-            </div>
-            <div id="subscriber-result" class="result"></div>
-        </div>
-
         <!-- Publications -->
         <div class="card">
             <h2>📰 Publications</h2>
             <div class="form-group">
-                <label>Content IDs (comma-separated)</label>
-                <input type="text" id="content-ids" placeholder="uuid1, uuid2, uuid3" />
+                <label>Content IDs (comma-separated, optional)</label>
+                <input type="text" id="content-ids" placeholder="uuid1, uuid2, uuid3 (leave empty for testing)" />
+            </div>
+            <div class="form-group">
+                <label>Channel</label>
+                <select id="publication-channel">
+                    <option value="">-- Select a channel --</option>
+                </select>
+                <button onclick="loadChannelsForPublications()" style="margin-top: 5px; padding: 6px 12px; font-size: 12px;">Refresh Channels</button>
             </div>
             <div class="form-group">
                 <label>Publication Type</label>
@@ -235,6 +224,31 @@
                 <button onclick="listPublications()">List Publications</button>
             </div>
             <div id="publication-result" class="result"></div>
+        </div>
+
+        <!-- Subscribers -->
+        <div class="card">
+            <h2>👥 Subscribers</h2>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="subscriber-email" placeholder="user@example.com" />
+            </div>
+            <div class="form-group">
+                <label>Publication</label>
+                <select id="subscriber-publication">
+                    <option value="">-- Select a publication (optional) --</option>
+                </select>
+                <button onclick="loadPublicationsForSubscribers()" style="margin-top: 5px; padding: 6px 12px; font-size: 12px;">Refresh Publications</button>
+            </div>
+            <div class="form-group">
+                <label>Topics of Interest</label>
+                <input type="text" id="subscriber-topics" placeholder="artificial_intelligence, machine_learning" />
+            </div>
+            <div class="button-group">
+                <button onclick="createSubscriber()">Create Subscriber</button>
+                <button onclick="listSubscribers()">List Subscribers</button>
+            </div>
+            <div id="subscriber-result" class="result"></div>
         </div>
 
         <!-- Engagement Tracking -->
@@ -253,6 +267,29 @@
                 <button onclick="trackClick()">Track Click</button>
             </div>
             <div id="engagement-result" class="result"></div>
+        </div>
+
+        <!-- Send Test Publication -->
+        <div class="card">
+            <h2>📤 Send Test Publication</h2>
+            <div class="form-group">
+                <label>Select Publication</label>
+                <select id="test-publication">
+                    <option value="">-- Select a publication --</option>
+                </select>
+                <button onclick="loadPublicationsForTest()" style="margin-top: 5px; padding: 6px 12px; font-size: 12px;">Refresh Publications</button>
+            </div>
+            <div class="form-group">
+                <label>Test Email (optional)</label>
+                <input type="email" id="test-email" placeholder="test@example.com (leave empty to send to all subscribers)" />
+                <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                    If provided, sends only to this email. Otherwise sends to all active subscribers.
+                </small>
+            </div>
+            <div class="button-group">
+                <button onclick="sendTestPublication()">Send Test Publication</button>
+            </div>
+            <div id="test-publication-result" class="result"></div>
         </div>
 
         <!-- Analytics Dashboard -->
@@ -338,11 +375,109 @@
         async function listChannels() {
             const result = await apiCall('/channels');
             showResult('channel-result', result);
+            // Also refresh the dropdown
+            loadChannelsForPublications();
+        }
+
+        // Load channels for publications dropdown
+        async function loadChannelsForPublications() {
+            const result = await apiCall('/channels');
+            const select = document.getElementById('publication-channel');
+            select.innerHTML = '<option value="">-- Select a channel --</option>';
+            
+            if (result.success && result.data?.data?.channels) {
+                const channels = Array.isArray(result.data.data.channels) ? result.data.data.channels : [];
+                channels.forEach(channel => {
+                    const option = document.createElement('option');
+                    option.value = channel.id;
+                    option.textContent = `${channel.name} (${channel.channel_type})`;
+                    select.appendChild(option);
+                });
+            }
+        }
+
+        // Load publications for subscribers dropdown
+        async function loadPublicationsForSubscribers() {
+            const result = await apiCall('/publications?limit=50');
+            const select = document.getElementById('subscriber-publication');
+            select.innerHTML = '<option value="">-- Select a publication (optional) --</option>';
+            
+            if (result.success && result.data?.data?.publications) {
+                const publications = Array.isArray(result.data.data.publications) ? result.data.data.publications : [];
+                publications.forEach(pub => {
+                    const option = document.createElement('option');
+                    option.value = pub.id;
+                    const pubType = pub.publication_type || 'unknown';
+                    const status = pub.status || 'unknown';
+                    option.textContent = `${pubType} - ${status} (${pub.id.substring(0, 8)}...)`;
+                    select.appendChild(option);
+                });
+            }
+        }
+
+        // Load publications for test sending dropdown
+        async function loadPublicationsForTest() {
+            const result = await apiCall('/publications?limit=50');
+            const select = document.getElementById('test-publication');
+            select.innerHTML = '<option value="">-- Select a publication --</option>';
+            
+            if (result.success && result.data?.data?.publications) {
+                const publications = Array.isArray(result.data.data.publications) ? result.data.data.publications : [];
+                publications.forEach(pub => {
+                    const option = document.createElement('option');
+                    option.value = pub.id;
+                    const pubType = pub.publication_type || 'unknown';
+                    const status = pub.status || 'unknown';
+                    const channelCount = pub.channels ? pub.channels.length : 0;
+                    option.textContent = `${pubType} - ${status} (${channelCount} channels) - ${pub.id.substring(0, 8)}...`;
+                    select.appendChild(option);
+                });
+            }
+        }
+
+        // Send test publication to all subscribers
+        async function sendTestPublication() {
+            const publicationId = document.getElementById('test-publication').value;
+            if (!publicationId) {
+                alert('Please select a publication first.');
+                return;
+            }
+
+            const testEmail = document.getElementById('test-email').value.trim();
+            
+            const requestBody = testEmail ? { test_email: testEmail } : {};
+            
+            const result = await apiCall(`/publications/${publicationId}/test`, 'POST', requestBody);
+            
+            if (result.success && result.data?.data) {
+                const data = result.data.data;
+                const summary = `
+📧 Test Publication Sent!
+
+Publication ID: ${data.publication_id}
+Total Subscribers: ${data.total_subscribers}
+✅ Successful: ${data.successful}
+❌ Failed: ${data.failed}
+
+${data.delivery_results ? `Delivery Results:\n${JSON.stringify(data.delivery_results, null, 2)}` : ''}
+
+${data.newsletter ? `Newsletter Preview:\nSubject: ${data.newsletter.subject}\n${data.newsletter.content_preview}` : ''}
+
+💡 The email includes:
+- Tracking pixel for open tracking
+- Click tracking links (all links are wrapped with tracking URLs)
+- Test links to example.com that will be tracked
+                `;
+                showResult('test-publication-result', { ...result, summary });
+            } else {
+                showResult('test-publication-result', result);
+            }
         }
 
         // Subscriber Management
         async function createSubscriber() {
             const email = document.getElementById('subscriber-email').value || `demo${Date.now()}@example.com`;
+            const publicationId = document.getElementById('subscriber-publication').value;
             const topicsInput = document.getElementById('subscriber-topics').value;
             const topics = topicsInput ? topicsInput.split(',').map(t => t.trim()) : ['artificial_intelligence', 'machine_learning'];
             
@@ -351,16 +486,39 @@
                 topicInterests[topic] = Math.random() * 0.3 + 0.7; // 0.7-1.0
             });
 
-            const result = await apiCall('/subscribers', 'POST', {
+            // Default preferred channels
+            let preferredChannels = ['email', 'slack'];
+
+            // If a publication is selected, fetch its channels and use those
+            if (publicationId) {
+                try {
+                    const pubResult = await apiCall(`/publications/${publicationId}`);
+                    if (pubResult.success && pubResult.data?.data?.channels) {
+                        preferredChannels = pubResult.data.data.channels;
+                        console.log('Using channels from publication:', preferredChannels);
+                    }
+                } catch (error) {
+                    console.warn('Failed to fetch publication channels, using defaults:', error);
+                }
+            }
+
+            const subscriberData = {
                 email: email,
-                preferred_channels: ['email', 'slack'],
+                preferred_channels: preferredChannels,
                 topic_interests: topicInterests,
                 frequency_settings: {
                     'newsletter': 'daily',
                     'alerts': 'real-time'
                 }
-            });
+            };
+
+            const result = await apiCall('/subscribers', 'POST', subscriberData);
             showResult('subscriber-result', result);
+            
+            // Reload publications dropdown after creating subscriber
+            if (result.success) {
+                loadPublicationsForSubscribers();
+            }
         }
 
         async function listSubscribers() {
@@ -372,23 +530,36 @@
         async function scheduleNewsletter() {
             const contentIdsInput = document.getElementById('content-ids').value;
             const contentIds = contentIdsInput ? 
-                contentIdsInput.split(',').map(id => id.trim()) : 
-                [generateUUID(), generateUUID()];
+                contentIdsInput.split(',').map(id => id.trim()).filter(id => id.length > 0) : 
+                [];
+            
+            const channelId = document.getElementById('publication-channel').value;
+            if (!channelId) {
+                alert('Please select a channel first. Click "Refresh Channels" to load available channels.');
+                return;
+            }
             
             const pubType = document.getElementById('publication-type').value;
 
             const result = await apiCall('/publications/newsletter/schedule', 'POST', {
                 content_ids: contentIds,
-                channels: [generateUUID()], // Would need a real channel ID
+                channels: [channelId],
                 publication_type: pubType,
                 scheduled_time: new Date(Date.now() + 3600000).toISOString() // 1 hour from now
             });
             showResult('publication-result', result);
+            // Reload publications dropdown after creating
+            if (result.success) {
+                loadPublicationsForSubscribers();
+            }
         }
 
         async function listPublications() {
             const result = await apiCall('/publications?limit=10');
             showResult('publication-result', result);
+            // Also refresh the dropdowns
+            loadPublicationsForSubscribers();
+            loadPublicationsForTest();
         }
 
         // Engagement Tracking
@@ -436,6 +607,9 @@
         // Initialize
         window.onload = () => {
             checkHealth();
+            loadChannelsForPublications();
+            loadPublicationsForSubscribers();
+            loadPublicationsForTest();
             console.log('🚀 Publishing Module Demo loaded!');
             console.log('API Base:', API_BASE);
             console.log('Try the Swagger UI at: http://localhost:8080/docs');
