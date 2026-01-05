@@ -123,6 +123,7 @@ python3 scripts/validate-standalone-compliance.py docs/modules/backend-architect
 ├── backups/           # Archived copies of important files
 ├── documentation/     # AI-generated analysis and summaries
 └── reports/           # Analysis reports and findings
+.dev/PROBLEM-DISCOVERY-PROCESS.md # Standard debugging workflow
 ```
 
 **What's in .dev/ai/**:
