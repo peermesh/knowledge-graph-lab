@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KGL Pipeline Debugger - Interactive Visualization</title>
+  <style>
+    :root {
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --border-primary: #30363d;
+      --border-secondary: #484f58;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-muted: #6e7681;
+      --accent-blue: #58a6ff;
+      --accent-green: #3fb950;
+      --accent-yellow: #d29922;
+      --accent-red: #f85149;
+      --accent-purple: #a371f7;
+      --accent-pink: #db61a2;
+      --accent-orange: #f0883e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: auto;
+    }
+
+    header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-primary);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header h1 .badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      background: var(--accent-green);
+      color: var(--bg-primary);
+      border-radius: 12px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .toolbar button {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-primary);
+      color: var(--text-primary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .toolbar button:hover {
+      background: var(--border-primary);
+    }
+
+    .toolbar button.primary {
+      background: var(--accent-green);
+      border-color: var(--accent-green);
+      color: var(--bg-primary);
+    }
+
+    .toolbar button.primary:hover {
+      background: #2ea043;
+    }
+
+    .status-bar {
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border-primary);
+      padding: 8px 24px;
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-item .label {
+      color: var(--text-secondary);
+    }
+
+    .status-item .value {
+      font-weight: 600;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    }
+
+    .status-item .value.green { color: var(--accent-green); }
+    .status-item .value.yellow { color: var(--accent-yellow); }
+    .status-item .value.blue { color: var(--accent-blue); }
+
+    main {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 1200px;
+    }
+
+    .layer {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .layer.security {
+      border-color: var(--accent-red);
+      box-shadow: 0 0 20px rgba(248, 81, 73, 0.1);
+    }
+
+    .layer.exploration {
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 20px rgba(163, 113, 247, 0.1);
+    }
+
+    .layer.reasoning {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
+    }
+
+    .layer.processing {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 20px rgba(63, 185, 80, 0.1);
+    }
+
+    .layer.output {
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 20px rgba(240, 136, 62, 0.1);
+    }
+
+    .layer-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .layer-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .layer.security .layer-icon { background: rgba(248, 81, 73, 0.2); }
+    .layer.exploration .layer-icon { background: rgba(163, 113, 247, 0.2); }
+    .layer.reasoning .layer-icon { background: rgba(88, 166, 255, 0.2); }
+    .layer.processing .layer-icon { background: rgba(63, 185, 80, 0.2); }
+    .layer.output .layer-icon { background: rgba(240, 136, 62, 0.2); }
+
+    .layer-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .layer.security .layer-title { color: var(--accent-red); }
+    .layer.exploration .layer-title { color: var(--accent-purple); }
+    .layer.reasoning .layer-title { color: var(--accent-blue); }
+    .layer.processing .layer-title { color: var(--accent-green); }
+    .layer.output .layer-title { color: var(--accent-orange); }
+
+    .layer-description {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .zone-label {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-tertiary);
+      color: var(--text-muted);
+    }
+
+    .layer.security .zone-label {
+      background: rgba(248, 81, 73, 0.2);
+      color: var(--accent-red);
+    }
+
+    .components {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .component {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-primary);
+      border-radius: 10px;
+      padding: 12px 16px;
+      min-width: 120px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .component:hover {
+      border-color: var(--border-secondary);
+      transform: translateY(-2px);
+    }
+
+    .component.large {
+      min-width: 140px;
+      padding: 16px 20px;
+    }
+
+    .component-name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .component-type {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .component-status {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      font-size: 11px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-green);
+    }
+
+    .status-dot.idle { background: var(--text-muted); }
+    .status-dot.running { background: var(--accent-yellow); animation: pulse 1s infinite; }
+    .status-dot.ready { background: var(--accent-green); }
+    .status-dot.error { background: var(--accent-red); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .arrow {
+      font-size: 20px;
+      color: var(--text-muted);
+    }
+
+    .parallel-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      background: var(--bg-primary);
+      border: 1px dashed var(--border-primary);
+      border-radius: 8px;
+    }
+
+    .parallel-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .parallel-items {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .component.small {
+      min-width: 100px;
+      padding: 8px 12px;
+    }
+
+    .component.small .component-name {
+      font-size: 12px;
+    }
+
+    .mixins {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .mixin {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mixin:hover {
+      border-color: var(--accent-blue);
+    }
+
+    .mixin.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: var(--bg-primary);
+    }
+
+    /* Inner loop container */
+    .inner-loop {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-primary);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    .inner-loop-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .decision-branches {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .decision-branch {
+      flex: 1;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-primary);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .decision-branch.active {
+      border-color: var(--accent-green);
+    }
+
+    .decision-branch .branch-label {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .decision-branch .branch-desc {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      border-radius: 12px;
+      width: 640px;
+      max-height: 80vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-primary);
+      padding: 0 20px;
+    }
+
+    .modal-tab {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.15s;
+    }
+
+    .modal-tab:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-tab.active {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent-blue);
+    }
+
+    .modal-content {
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .modal-section {
+      margin-bottom: 20px;
+    }
+
+    .modal-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .modal-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 8px 12px;
+      font-size: 13px;
+    }
+
+    .info-label {
+      color: var(--text-secondary);
+    }
+
+    .info-value {
+      color: var(--text-primary);
+    }
+
+    .info-value.success { color: var(--accent-green); }
+    .info-value.warning { color: var(--accent-yellow); }
+    .info-value.error { color: var(--accent-red); }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-primary);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: var(--text-primary);
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .form-checkbox input {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--accent-blue);
+    }
+
+    .docs-content {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .docs-content h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 16px 0 8px;
+    }
+
+    .docs-content h3:first-child {
+      margin-top: 0;
+    }
+
+    .docs-content p {
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+    }
+
+    .docs-content ul {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .docs-content li {
+      margin-bottom: 4px;
+      color: var(--text-secondary);
+    }
+
+    .docs-content code {
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+      background: var(--bg-tertiary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .metric-card {
+      background: var(--bg-tertiary);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    .legend {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 11px;
+    }
+
+    .legend-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      KGL Pipeline Debugger
+      <span class="badge">v0.2.0</span>
+    </h1>
+    <div class="toolbar">
+      <button class="primary" id="runBtn">
+        <span>▶</span> Run
+      </button>
+      <button id="pauseBtn">
+        <span>⏸</span> Pause
+      </button>
+      <button id="stepBtn">
+        <span>⏭</span> Step
+      </button>
+      <button id="rerunBtn">
+        <span>↻</span> Re-run
+      </button>
+      <button id="saveBtn">
+        <span>💾</span> Save
+      </button>
+      <button id="loadBtn">
+        <span>📂</span> Load
+      </button>
+    </div>
+  </header>
+
+  <div class="status-bar">
+    <div class="status-item">
+      <span class="label">Iteration:</span>
+      <span class="value blue">3/10</span>
+    </div>
+    <div class="status-item">
+      <span class="label">Confidence:</span>
+      <span class="value yellow">72%</span>
+    </div>
+    <div class="status-item">
+      <span class="label">Coverage:</span>
+      <span class="value green">85%</span>
+    </div>
+    <div class="status-item">
+      <span class="label">Cost:</span>
+      <span class="value">$0.023</span>
+    </div>
+    <div class="status-item">
+      <span class="label">Time:</span>
+      <span class="value">4.2s</span>
+    </div>
+    <div class="status-item">
+      <span class="label">Status:</span>
+      <span class="value green">Ready</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- Layer 1: Input Gate -->
+    <div class="layer security">
+      <span class="zone-label">Untrusted → Trusted</span>
+      <div class="layer-header">
+        <div class="layer-icon">🔒</div>
+        <div>
+          <div class="layer-title">Layer 1: Input Gate</div>
+          <div class="layer-description">Security boundary - converts all input to known data structures</div>
+        </div>
+      </div>
+      <div class="components">
+        <div class="component" onclick="openModal('validate')">
+          <div class="component-name">Validate</div>
+          <div class="component-type">Schema + Type Check</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Ready</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component" onclick="openModal('sanitize')">
+          <div class="component-name">Sanitize</div>
+          <div class="component-type">Injection Prevention</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Ready</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component" onclick="openModal('normalize')">
+          <div class="component-name">Normalize</div>
+          <div class="component-type">Known Structures</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Ready</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component" onclick="openModal('log')">
+          <div class="component-name">Log</div>
+          <div class="component-type">Audit Trail</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Active</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component" onclick="openModal('queue')">
+          <div class="component-name">Queue</div>
+          <div class="component-type">Processing Queue</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>3 pending</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 2: Exploration Layer -->
+    <div class="layer exploration">
+      <span class="zone-label">Pre-Research Discovery</span>
+      <div class="layer-header">
+        <div class="layer-icon">🔮</div>
+        <div>
+          <div class="layer-title">Layer 2: Exploration Layer</div>
+          <div class="layer-description">Transform fuzzy intent into concrete research questions</div>
+        </div>
+      </div>
+      <div class="components">
+        <div class="component large" onclick="openModal('dialogue')">
+          <div class="component-name">Dialogue Engine</div>
+          <div class="component-type">Socratic Questioning</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Ready</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component large" onclick="openModal('profile')">
+          <div class="component-name">User Profile</div>
+          <div class="component-type">Psych + Factual Model</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Loaded</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component large" onclick="openModal('context')">
+          <div class="component-name">Context Map</div>
+          <div class="component-type">Org + Stakes</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Mapped</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component large" onclick="openModal('crystallize')">
+          <div class="component-name">Crystallize</div>
+          <div class="component-type">Research Questions</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>3 questions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 3: Reasoning Engine -->
+    <div class="layer reasoning">
+      <span class="zone-label">Outer Loop Control</span>
+      <div class="layer-header">
+        <div class="layer-icon">🧠</div>
+        <div>
+          <div class="layer-title">Layer 3: Reasoning Engine</div>
+          <div class="layer-description">Orchestrate iteration and convergence decisions</div>
+        </div>
+      </div>
+
+      <div class="components">
+        <div class="component large" onclick="openModal('state-monitor')">
+          <div class="component-name">State Monitor</div>
+          <div class="component-type">Confidence + Coverage</div>
+          <div class="component-status">
+            <span class="status-dot running"></span>
+            <span>Tracking</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component large" onclick="openModal('evaluate')">
+          <div class="component-name">Evaluate</div>
+          <div class="component-type">Score Quality</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>72% conf</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component large" onclick="openModal('decide')">
+          <div class="component-name">Decide</div>
+          <div class="component-type">CONTINUE | OUTPUT | ASK</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>CONTINUE</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component large" onclick="openModal('refine')">
+          <div class="component-name">Refine</div>
+          <div class="component-type">Adjust Strategy</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>EXPAND</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="decision-branches">
+        <div class="decision-branch active">
+          <div class="branch-label" style="color: var(--accent-green)">CONTINUE</div>
+          <div class="branch-desc">Keep researching</div>
+        </div>
+        <div class="decision-branch">
+          <div class="branch-label">OUTPUT</div>
+          <div class="branch-desc">Synthesize answer</div>
+        </div>
+        <div class="decision-branch">
+          <div class="branch-label">ASK</div>
+          <div class="branch-desc">Need clarification</div>
+        </div>
+      </div>
+
+      <!-- Layer 4: Inner Loop / Processing Pipeline -->
+      <div class="inner-loop">
+        <div class="inner-loop-header">
+          <span>⟳</span>
+          <span>Layer 4: Processing Pipeline (Inner Loop)</span>
+        </div>
+
+        <div class="components">
+          <div class="component" onclick="openModal('query')">
+            <div class="component-name">L1: Query</div>
+            <div class="component-type">Parse & Plan</div>
+            <div class="mixins">
+              <span class="mixin active" title="Cost">$</span>
+              <span class="mixin active" title="Trace">⏱</span>
+              <span class="mixin" title="Cache">📦</span>
+            </div>
+          </div>
+          <span class="arrow">→</span>
+          <div class="component" onclick="openModal('gaps')">
+            <div class="component-name">L2: Gaps</div>
+            <div class="component-type">Analyze KG State</div>
+            <div class="mixins">
+              <span class="mixin active" title="Cost">$</span>
+              <span class="mixin active" title="Trace">⏱</span>
+              <span class="mixin" title="Cache">📦</span>
+            </div>
+          </div>
+          <span class="arrow">→</span>
+
+          <div class="parallel-container">
+            <div class="parallel-label">Parallel Search</div>
+            <div class="parallel-items">
+              <div class="component small" onclick="openModal('search-meili')">
+                <div class="component-name">Meilisearch</div>
+              </div>
+              <div class="component small" onclick="openModal('search-qdrant')">
+                <div class="component-name">Qdrant</div>
+              </div>
+              <div class="component small" onclick="openModal('search-tavily')">
+                <div class="component-name">Tavily</div>
+              </div>
+            </div>
+          </div>
+
+          <span class="arrow">→</span>
+          <div class="component" onclick="openModal('merge-search')">
+            <div class="component-name">Merge</div>
+            <div class="component-type">RRF k=60</div>
+          </div>
+          <span class="arrow">→</span>
+          <div class="component" onclick="openModal('ingest')">
+            <div class="component-name">L4: Ingest</div>
+            <div class="component-type">Parse Docs</div>
+            <div class="mixins">
+              <span class="mixin active" title="Cost">$</span>
+              <span class="mixin active" title="Trace">⏱</span>
+              <span class="mixin active" title="Cache">📦</span>
+            </div>
+          </div>
+          <span class="arrow">→</span>
+          <div class="component" onclick="openModal('extract')">
+            <div class="component-name">L5: Extract</div>
+            <div class="component-type">Entities</div>
+            <div class="mixins">
+              <span class="mixin active" title="Cost">$</span>
+              <span class="mixin active" title="Trace">⏱</span>
+              <span class="mixin" title="Cache">📦</span>
+            </div>
+          </div>
+          <span class="arrow">→</span>
+          <div class="component" onclick="openModal('relate')">
+            <div class="component-name">L6: Relate</div>
+            <div class="component-type">Relationships</div>
+            <div class="mixins">
+              <span class="mixin active" title="Cost">$</span>
+              <span class="mixin active" title="Trace">⏱</span>
+              <span class="mixin" title="Cache">📦</span>
+            </div>
+          </div>
+          <span class="arrow">→</span>
+          <div class="component" onclick="openModal('kg-merge')">
+            <div class="component-name">L7: KG Merge</div>
+            <div class="component-type">TGFR Dedup</div>
+            <div class="mixins">
+              <span class="mixin active" title="Cost">$</span>
+              <span class="mixin active" title="Trace">⏱</span>
+              <span class="mixin" title="Cache">📦</span>
+            </div>
+          </div>
+          <span class="arrow">→</span>
+          <div class="component" onclick="openModal('synth')">
+            <div class="component-name">L8: Synth</div>
+            <div class="component-type">Generate Answer</div>
+            <div class="mixins">
+              <span class="mixin active" title="Cost">$</span>
+              <span class="mixin active" title="Trace">⏱</span>
+              <span class="mixin active" title="Cache">📦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layer 5: Output Gate -->
+    <div class="layer output">
+      <span class="zone-label">Publishing & Syndication</span>
+      <div class="layer-header">
+        <div class="layer-icon">📤</div>
+        <div>
+          <div class="layer-title">Layer 5: Output Gate</div>
+          <div class="layer-description">User-controlled delivery to channels</div>
+        </div>
+      </div>
+      <div class="components">
+        <div class="component" onclick="openModal('classify')">
+          <div class="component-name">Classify</div>
+          <div class="component-type">Type + Audience</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Ready</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component" onclick="openModal('schedule')">
+          <div class="component-name">Schedule</div>
+          <div class="component-type">When to Deliver</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Immediate</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+        <div class="component" onclick="openModal('format')">
+          <div class="component-name">Format</div>
+          <div class="component-type">Per-Channel</div>
+          <div class="component-status">
+            <span class="status-dot ready"></span>
+            <span>Ready</span>
+          </div>
+        </div>
+        <span class="arrow">→</span>
+
+        <div class="parallel-container">
+          <div class="parallel-label">Delivery Channels</div>
+          <div class="parallel-items" style="flex-direction: row; gap: 8px;">
+            <div class="component small" onclick="openModal('email')">
+              <div class="component-name">📧 Email</div>
+            </div>
+            <div class="component small" onclick="openModal('push')">
+              <div class="component-name">🔔 Push</div>
+            </div>
+            <div class="component small" onclick="openModal('slack')">
+              <div class="component-name">💬 Slack</div>
+            </div>
+            <div class="component small" onclick="openModal('rss')">
+              <div class="component-name">📰 RSS</div>
+            </div>
+            <div class="component small" onclick="openModal('webhook')">
+              <div class="component-name">🔗 Webhook</div>
+            </div>
+          </div>
+        </div>
+
+        <span class="arrow">→</span>
+        <div class="component" onclick="openModal('track')">
+          <div class="component-name">Track</div>
+          <div class="component-type">Opens + Clicks</div>
+          <div class="component-status">
+            <span class="status-dot running"></span>
+            <span>Monitoring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="legend">
+    <div class="legend-title">Layers</div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: var(--accent-red)"></div>
+      <span>Input Gate (Security)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: var(--accent-purple)"></div>
+      <span>Exploration (Discovery)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: var(--accent-blue)"></div>
+      <span>Reasoning (Control)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: var(--accent-green)"></div>
+      <span>Processing (Inner Loop)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background: var(--accent-orange)"></div>
+      <span>Output Gate (Delivery)</span>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Component</div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-tabs">
+        <div class="modal-tab active" onclick="switchTab('summary')">Summary</div>
+        <div class="modal-tab" onclick="switchTab('settings')">Settings</div>
+        <div class="modal-tab" onclick="switchTab('docs')">Docs</div>
+        <div class="modal-tab" onclick="switchTab('metrics')">Metrics</div>
+      </div>
+      <div class="modal-content" id="modalContent">
+        <!-- Content injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Component data
+    const components = {
+      // Input Gate
+      'validate': {
+        title: 'Validate',
+        summary: {
+          purpose: 'Verify input matches expected schema and constraints',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (12ms)',
+          input: 'Raw HTTP Request',
+          output: 'ValidatedInput | ValidationError'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Schema Strict Mode', name: 'schema_strict', checked: true },
+          { type: 'input', label: 'Max Depth', name: 'max_depth', value: '10' },
+          { type: 'input', label: 'Max Array Length', name: 'max_array_length', value: '1000' },
+          { type: 'checkbox', label: 'Type Coercion', name: 'type_coercion', checked: false },
+          { type: 'input', label: 'Max String Length', name: 'max_string_length', value: '100000' },
+          { type: 'input', label: 'Max Total Size (bytes)', name: 'max_total_size', value: '10485760' }
+        ],
+        docs: `
+          <h3>Validation Rules</h3>
+          <p>The Validator ensures all input matches expected schemas before processing.</p>
+          <ul>
+            <li><strong>String:</strong> Length limits, character whitelist, encoding check</li>
+            <li><strong>Number:</strong> Range bounds, integer vs float, NaN rejection</li>
+            <li><strong>Array:</strong> Length limit, item type validation</li>
+            <li><strong>Object:</strong> Schema match, depth limit, required fields</li>
+            <li><strong>File:</strong> Size limit, MIME whitelist, magic byte verification</li>
+            <li><strong>URL:</strong> Protocol whitelist (https), domain validation</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Requests Validated', value: '1,247' },
+          { label: 'Passed', value: '1,203' },
+          { label: 'Rejected', value: '44' },
+          { label: 'Avg Latency', value: '12ms' },
+          { label: 'P99 Latency', value: '45ms' },
+          { label: 'Error Rate', value: '3.5%' }
+        ]
+      },
+      'sanitize': {
+        title: 'Sanitize',
+        summary: {
+          purpose: 'Remove or neutralize dangerous content, prevent prompt injection',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (8ms)',
+          input: 'ValidatedInput',
+          output: 'SanitizedText'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Detect Prompt Injection', name: 'detect_injection', checked: true },
+          { type: 'input', label: 'Max LLM Input Length', name: 'max_llm_input', value: '50000' },
+          { type: 'select', label: 'Instruction Pattern Action', name: 'pattern_action', options: ['reject', 'warn', 'log'] },
+          { type: 'checkbox', label: 'Detect Query Injection', name: 'detect_sqli', checked: true },
+          { type: 'checkbox', label: 'Escape HTML', name: 'escape_html', checked: true },
+          { type: 'checkbox', label: 'Normalize Unicode', name: 'normalize_unicode', checked: true }
+        ],
+        docs: `
+          <h3>Prompt Injection Prevention</h3>
+          <p>The key insight: instead of filtering "bad" prompts, convert everything to structured data.</p>
+          <h3>Detection Patterns</h3>
+          <ul>
+            <li><code>ignore previous instructions</code></li>
+            <li><code>you are now...</code></li>
+            <li><code>system:</code> markers</li>
+            <li><code>[INST]</code> delimiters</li>
+          </ul>
+          <p>All text is wrapped in typed data structures before reaching LLMs.</p>
+        `,
+        metrics: [
+          { label: 'Inputs Processed', value: '1,203' },
+          { label: 'Injection Blocked', value: '7' },
+          { label: 'XSS Blocked', value: '12' },
+          { label: 'Avg Latency', value: '8ms' },
+          { label: 'Safety Score Avg', value: '0.94' },
+          { label: 'Block Rate', value: '1.6%' }
+        ]
+      },
+      'normalize': {
+        title: 'Normalize',
+        summary: {
+          purpose: 'Convert sanitized input to known internal data structures',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (3ms)',
+          input: 'SanitizedText',
+          output: 'KnownInput (typed)'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Strict Type Detection', name: 'strict_types', checked: true },
+          { type: 'select', label: 'Unknown Type Action', name: 'unknown_action', options: ['reject', 'default', 'ask'] },
+          { type: 'checkbox', label: 'Enforce Enums', name: 'enforce_enums', checked: true }
+        ],
+        docs: `
+          <h3>Known Input Types</h3>
+          <p>After normalization, there is no "user input" - only typed, validated structures:</p>
+          <ul>
+            <li><code>ResearchQuery</code> - User research requests</li>
+            <li><code>DocumentUpload</code> - File uploads</li>
+            <li><code>FeedbackSignal</code> - User feedback</li>
+            <li><code>ConfigurationUpdate</code> - Settings changes</li>
+            <li><code>SubscriptionChange</code> - Delivery preferences</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Normalized', value: '1,184' },
+          { label: 'ResearchQuery', value: '892' },
+          { label: 'DocumentUpload', value: '156' },
+          { label: 'Other Types', value: '136' },
+          { label: 'Avg Latency', value: '3ms' },
+          { label: 'Type Errors', value: '0' }
+        ]
+      },
+      'log': {
+        title: 'Log',
+        summary: {
+          purpose: 'Complete audit trail for debugging and security analysis',
+          status: 'Active',
+          lastRun: 'Continuous',
+          input: 'All processing events',
+          output: 'InputLog records'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Log Raw Input', name: 'log_raw', checked: false },
+          { type: 'checkbox', label: 'Log Input Hash', name: 'log_hash', checked: true },
+          { type: 'checkbox', label: 'Log Input Sample', name: 'log_sample', checked: true },
+          { type: 'input', label: 'Sample Max Length', name: 'sample_length', value: '500' },
+          { type: 'input', label: 'Debug Retention (days)', name: 'retention_debug', value: '1' },
+          { type: 'input', label: 'Error Retention (days)', name: 'retention_error', value: '365' }
+        ],
+        docs: `
+          <h3>Log Levels</h3>
+          <ul>
+            <li><strong>DEBUG:</strong> Full raw input (dev only) - 24 hours</li>
+            <li><strong>INFO:</strong> Hashes, decisions, timing - 30 days</li>
+            <li><strong>WARN:</strong> Validation failures, sanitization flags - 90 days</li>
+            <li><strong>ERROR:</strong> Injection attempts, schema mismatches - 1 year</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Logs Today', value: '4,892' },
+          { label: 'Errors', value: '23' },
+          { label: 'Warnings', value: '156' },
+          { label: 'Storage Used', value: '2.3 GB' },
+          { label: 'Avg Write', value: '0.5ms' },
+          { label: 'Query P99', value: '45ms' }
+        ]
+      },
+      'queue': {
+        title: 'Queue',
+        summary: {
+          purpose: 'Only validated, sanitized, normalized data enters processing',
+          status: '3 pending',
+          lastRun: 'Active',
+          input: 'KnownInput',
+          output: 'QueueEntry'
+        },
+        settings: [
+          { type: 'input', label: 'Max Queue Depth', name: 'max_depth', value: '10000' },
+          { type: 'select', label: 'Priority Levels', name: 'priorities', options: ['high, normal, low', 'critical, high, normal, low'] },
+          { type: 'input', label: 'Timeout (seconds)', name: 'timeout', value: '300' }
+        ],
+        docs: `
+          <h3>Queue Interface</h3>
+          <p>The queue is the final gate. Only data that has passed validation, sanitization, and normalization can enter.</p>
+          <h3>Priority Levels</h3>
+          <ul>
+            <li><strong>High:</strong> User-initiated research queries</li>
+            <li><strong>Normal:</strong> Background processing</li>
+            <li><strong>Low:</strong> Batch operations</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Queue Depth', value: '3' },
+          { label: 'Processed/hr', value: '1,247' },
+          { label: 'Avg Wait', value: '0.3s' },
+          { label: 'Max Wait', value: '12s' },
+          { label: 'Dropped', value: '0' },
+          { label: 'Throughput', value: '98.7%' }
+        ]
+      },
+      // Exploration Layer
+      'dialogue': {
+        title: 'Dialogue Engine',
+        summary: {
+          purpose: 'Surface latent needs through Socratic questioning',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:30:00',
+          input: 'User conversation',
+          output: 'Extracted intent + needs'
+        },
+        settings: [
+          { type: 'input', label: 'Max Turns Before Crystallize', name: 'max_turns', value: '10' },
+          { type: 'input', label: 'Min Turns Before Crystallize', name: 'min_turns', value: '2' },
+          { type: 'select', label: 'Question Style', name: 'style', options: ['socratic', 'direct', 'mixed'] },
+          { type: 'select', label: 'Patience Level', name: 'patience', options: ['high', 'medium', 'low'] }
+        ],
+        docs: `
+          <h3>Conversation Patterns</h3>
+          <ul>
+            <li><strong>Opening:</strong> "What's on your mind?" - Low-pressure entry</li>
+            <li><strong>Deepening:</strong> "What would change if you knew that?" - Reveal stakes</li>
+            <li><strong>Reframing:</strong> "The real question seems to be..." - Surface hidden question</li>
+            <li><strong>Constraint:</strong> "What would make an answer unusable?" - Find dealbreakers</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Sessions', value: '342' },
+          { label: 'Avg Turns', value: '4.2' },
+          { label: 'Clarity Score', value: '0.87' },
+          { label: 'User Satisfaction', value: '4.6/5' },
+          { label: 'Time to Crystallize', value: '3.2 min' },
+          { label: 'Early Exit', value: '12%' }
+        ]
+      },
+      'profile': {
+        title: 'User Profile',
+        summary: {
+          purpose: 'Build psychological + factual model of the user',
+          status: 'Loaded',
+          lastRun: 'Background',
+          input: 'Dialogue signals',
+          output: 'UserProfile'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Infer from Dialogue', name: 'infer', checked: true },
+          { type: 'input', label: 'Inference Confidence Threshold', name: 'threshold', value: '0.7' },
+          { type: 'checkbox', label: 'Ask for Confirmation', name: 'confirm', checked: false },
+          { type: 'checkbox', label: 'Persist Across Sessions', name: 'persist', checked: true }
+        ],
+        docs: `
+          <h3>Profile Dimensions</h3>
+          <ul>
+            <li><strong>Factual:</strong> Role, organization, domain expertise</li>
+            <li><strong>Psychological:</strong> Decision style, learning preference, risk tolerance</li>
+            <li><strong>Inferred:</strong> Stated blockers, hidden constraints</li>
+            <li><strong>Context:</strong> Stakeholders, success criteria</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Profiles Active', value: '1,247' },
+          { label: 'Inference Accuracy', value: '82%' },
+          { label: 'Traits Inferred', value: '8.3 avg' },
+          { label: 'Confirmed', value: '67%' },
+          { label: 'Updated Today', value: '156' },
+          { label: 'Cache Hit', value: '89%' }
+        ]
+      },
+      'context': {
+        title: 'Context Map',
+        summary: {
+          purpose: 'Understand organizational environment',
+          status: 'Mapped',
+          lastRun: 'Background',
+          input: 'User + dialogue signals',
+          output: 'ContextMap'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Infer Stakeholders', name: 'stakeholders', checked: true },
+          { type: 'checkbox', label: 'Infer Constraints', name: 'constraints', checked: true },
+          { type: 'select', label: 'Political Awareness', name: 'political', options: ['low', 'medium', 'high'] },
+          { type: 'checkbox', label: 'Ask About History', name: 'history', checked: true }
+        ],
+        docs: `
+          <h3>Context Dimensions</h3>
+          <ul>
+            <li><strong>Stakeholders:</strong> Who cares, influence level, concerns</li>
+            <li><strong>Constraints:</strong> Budget, time, resources, policies</li>
+            <li><strong>Environment:</strong> Timeline, decision process</li>
+            <li><strong>Politics:</strong> Status quo beneficiaries, change champions</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Contexts Mapped', value: '342' },
+          { label: 'Stakeholders Found', value: '4.2 avg' },
+          { label: 'Constraints Found', value: '3.1 avg' },
+          { label: 'Accuracy', value: '78%' },
+          { label: 'Impact on Results', value: '+23%' },
+          { label: 'Time Spent', value: '45s avg' }
+        ]
+      },
+      'crystallize': {
+        title: 'Crystallize',
+        summary: {
+          purpose: 'Transform fuzzy intent into concrete research questions',
+          status: '3 questions',
+          lastRun: '2026-01-10 14:31:00',
+          input: 'Dialogue + Profile + Context',
+          output: 'ResearchQuestion[]'
+        },
+        settings: [
+          { type: 'input', label: 'Min Questions', name: 'min_questions', value: '1' },
+          { type: 'input', label: 'Max Questions', name: 'max_questions', value: '5' },
+          { type: 'checkbox', label: 'Require User Confirmation', name: 'confirm', checked: true },
+          { type: 'input', label: 'Decomposition Depth', name: 'depth', value: '2' },
+          { type: 'select', label: 'Scope Strictness', name: 'strictness', options: ['loose', 'medium', 'strict'] }
+        ],
+        docs: `
+          <h3>Good Research Questions</h3>
+          <ul>
+            <li><strong>Specific:</strong> "Market size for X in region Y" not "How big is the market"</li>
+            <li><strong>Bounded:</strong> "In the next 2 years" not "in the future"</li>
+            <li><strong>Answerable:</strong> Can be answered with available sources</li>
+            <li><strong>Actionable:</strong> Answer leads to a decision</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Questions Generated', value: '1,026' },
+          { label: 'Avg per Session', value: '3.0' },
+          { label: 'User Approval', value: '91%' },
+          { label: 'Clarity Score', value: '0.89' },
+          { label: 'Actionability', value: '0.86' },
+          { label: 'Generation Time', value: '1.2s' }
+        ]
+      },
+      // Reasoning Engine
+      'state-monitor': {
+        title: 'State Monitor',
+        summary: {
+          purpose: 'Track pipeline state across iterations',
+          status: 'Tracking',
+          lastRun: 'Continuous',
+          input: 'Pipeline events',
+          output: 'PipelineState'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Track Confidence', name: 'confidence', checked: true },
+          { type: 'checkbox', label: 'Track Coverage', name: 'coverage', checked: true },
+          { type: 'checkbox', label: 'Track Cost', name: 'cost', checked: true },
+          { type: 'checkbox', label: 'Track Time', name: 'time', checked: true },
+          { type: 'input', label: 'History Depth', name: 'history', value: '10' },
+          { type: 'select', label: 'Confidence Model', name: 'model', options: ['weighted_average', 'ml_model'] }
+        ],
+        docs: `
+          <h3>Confidence Calculation</h3>
+          <p>Weighted average of:</p>
+          <ul>
+            <li>Source quality (30%)</li>
+            <li>Entity coverage (25%)</li>
+            <li>Citation density (20%)</li>
+            <li>Consistency score (15%)</li>
+            <li>Recency score (10%)</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Current Confidence', value: '72%' },
+          { label: 'Current Coverage', value: '85%' },
+          { label: 'Iteration', value: '3/10' },
+          { label: 'Cost Spent', value: '$0.023' },
+          { label: 'Time Elapsed', value: '4.2s' },
+          { label: 'Trend', value: '+8%/iter' }
+        ]
+      },
+      'evaluate': {
+        title: 'Evaluate',
+        summary: {
+          purpose: 'Score current answer quality and identify gaps',
+          status: '72% confidence',
+          lastRun: '2026-01-10 14:32:00',
+          input: 'Current state + answer',
+          output: 'EvaluationResult'
+        },
+        settings: [
+          { type: 'input', label: 'Completeness Weight', name: 'w_complete', value: '0.30' },
+          { type: 'input', label: 'Accuracy Weight', name: 'w_accuracy', value: '0.25' },
+          { type: 'input', label: 'Relevance Weight', name: 'w_relevance', value: '0.20' },
+          { type: 'input', label: 'Freshness Weight', name: 'w_fresh', value: '0.15' },
+          { type: 'input', label: 'Coherence Weight', name: 'w_coherence', value: '0.10' },
+          { type: 'checkbox', label: 'Gap Detection', name: 'gaps', checked: true },
+          { type: 'checkbox', label: 'Contradiction Detection', name: 'contradictions', checked: true }
+        ],
+        docs: `
+          <h3>Evaluation Dimensions</h3>
+          <ul>
+            <li><strong>Completeness (30%):</strong> All aspects addressed</li>
+            <li><strong>Accuracy (25%):</strong> Claims well-supported</li>
+            <li><strong>Relevance (20%):</strong> Content relevant to query</li>
+            <li><strong>Freshness (15%):</strong> Information current</li>
+            <li><strong>Coherence (10%):</strong> Logical flow</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Completeness', value: '78%' },
+          { label: 'Accuracy', value: '85%' },
+          { label: 'Relevance', value: '92%' },
+          { label: 'Freshness', value: '88%' },
+          { label: 'Coherence', value: '90%' },
+          { label: 'Gaps Found', value: '2' }
+        ]
+      },
+      'decide': {
+        title: 'Decide',
+        summary: {
+          purpose: 'Determine next action based on evaluation',
+          status: 'CONTINUE',
+          lastRun: '2026-01-10 14:32:00',
+          input: 'EvaluationResult',
+          output: 'Decision (CONTINUE | OUTPUT | ASK)'
+        },
+        settings: [
+          { type: 'input', label: 'Confidence Threshold', name: 'conf_threshold', value: '0.85' },
+          { type: 'input', label: 'Coverage Threshold', name: 'cov_threshold', value: '0.90' },
+          { type: 'input', label: 'Max Iterations', name: 'max_iter', value: '10' },
+          { type: 'input', label: 'Cost Budget ($)', name: 'budget', value: '0.50' },
+          { type: 'input', label: 'Diminishing Returns Window', name: 'dr_window', value: '3' },
+          { type: 'input', label: 'Diminishing Returns Threshold', name: 'dr_threshold', value: '0.05' }
+        ],
+        docs: `
+          <h3>Decision Tree</h3>
+          <ul>
+            <li>Confidence ≥ 85% AND Coverage ≥ 90% → <strong>OUTPUT</strong></li>
+            <li>Max iterations reached → <strong>OUTPUT</strong> (best effort)</li>
+            <li>Budget exhausted → <strong>OUTPUT</strong> (constrained)</li>
+            <li>Needs clarification → <strong>ASK</strong></li>
+            <li>Diminishing returns → <strong>OUTPUT</strong></li>
+            <li>Otherwise → <strong>CONTINUE</strong></li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Decisions Made', value: '1,026' },
+          { label: 'CONTINUE', value: '62%' },
+          { label: 'OUTPUT', value: '35%' },
+          { label: 'ASK', value: '3%' },
+          { label: 'Avg Iterations', value: '3.8' },
+          { label: 'Early Exit', value: '28%' }
+        ]
+      },
+      'refine': {
+        title: 'Refine',
+        summary: {
+          purpose: 'Adjust strategy for next iteration',
+          status: 'EXPAND',
+          lastRun: '2026-01-10 14:32:00',
+          input: 'EvaluationResult + State',
+          output: 'RefinedQuery'
+        },
+        settings: [
+          { type: 'select', label: 'Strategy Selection', name: 'strategy', options: ['automatic', 'manual'] },
+          { type: 'checkbox', label: 'Allow Query Rewrite', name: 'rewrite', checked: true },
+          { type: 'checkbox', label: 'Allow Source Preference', name: 'source_pref', checked: true },
+          { type: 'input', label: 'Pivot After Iterations', name: 'pivot', value: '3' },
+          { type: 'select', label: 'Query Diversity', name: 'diversity', options: ['low', 'medium', 'high'] }
+        ],
+        docs: `
+          <h3>Refinement Strategies</h3>
+          <ul>
+            <li><strong>EXPAND:</strong> Broaden search (low coverage, high confidence)</li>
+            <li><strong>NARROW:</strong> Focus on weak areas (high coverage, low confidence)</li>
+            <li><strong>PIVOT:</strong> Try different angle (stuck after 3 iterations)</li>
+            <li><strong>DEEPEN:</strong> More detail on specific aspect</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Refinements', value: '892' },
+          { label: 'EXPAND', value: '45%' },
+          { label: 'NARROW', value: '32%' },
+          { label: 'PIVOT', value: '12%' },
+          { label: 'DEEPEN', value: '11%' },
+          { label: 'Success Rate', value: '+15% conf' }
+        ]
+      },
+      // Inner Loop stages
+      'query': {
+        title: 'L1: Query - Parse & Plan',
+        summary: {
+          purpose: 'Parse user query into structured intent',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (35ms)',
+          input: 'ResearchQuestion',
+          output: 'QueryOutput (intent, entities, relations)'
+        },
+        settings: [
+          { type: 'select', label: 'Module', name: 'module', options: ['query.hybrid', 'query.spacy', 'query.haiku'] },
+          { type: 'input', label: 'spaCy Model', name: 'spacy_model', value: 'en_core_web_trf' },
+          { type: 'input', label: 'LLM Fallback Threshold', name: 'fallback', value: '0.7' },
+          { type: 'input', label: 'Max Entities', name: 'max_entities', value: '20' },
+          { type: 'input', label: 'Timeout (ms)', name: 'timeout', value: '50' }
+        ],
+        docs: `
+          <h3>Hybrid Approach</h3>
+          <p>Uses spaCy for fast NER + Claude Haiku for complex intent classification.</p>
+          <h3>Output</h3>
+          <ul>
+            <li><strong>Intent:</strong> comparison, explanation, how_to, research</li>
+            <li><strong>Entities:</strong> Names, types, importance</li>
+            <li><strong>Relations:</strong> Expected relationships</li>
+            <li><strong>Constraints:</strong> Date range, source type, domain</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Queries Parsed', value: '1,026' },
+          { label: 'Intent Accuracy', value: '87%' },
+          { label: 'Avg Latency', value: '35ms' },
+          { label: 'LLM Fallback', value: '23%' },
+          { label: 'Entities/Query', value: '4.2' },
+          { label: 'Cost/Query', value: '$0.0002' }
+        ]
+      },
+      'gaps': {
+        title: 'L2: Gaps - Analyze KG State',
+        summary: {
+          purpose: 'Compare query requirements against knowledge graph',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (65ms)',
+          input: 'QueryOutput + KG snapshot',
+          output: 'GapsOutput'
+        },
+        settings: [
+          { type: 'select', label: 'Module', name: 'module', options: ['gaps.hybrid', 'gaps.cypher', 'gaps.llm'] },
+          { type: 'input', label: 'Staleness Threshold (days)', name: 'staleness', value: '30' },
+          { type: 'input', label: 'Low Confidence Threshold', name: 'confidence', value: '0.7' },
+          { type: 'input', label: 'Min Source Count', name: 'sources', value: '2' },
+          { type: 'checkbox', label: 'Use PageRank', name: 'pagerank', checked: true },
+          { type: 'checkbox', label: 'Use LLM Reasoning', name: 'llm', checked: true }
+        ],
+        docs: `
+          <h3>Gap Types</h3>
+          <ul>
+            <li><strong>missing_entity:</strong> Expected entity not in KG</li>
+            <li><strong>missing_relation:</strong> Relationship not found</li>
+            <li><strong>stale_data:</strong> Information outdated</li>
+            <li><strong>low_confidence:</strong> Weak evidence</li>
+            <li><strong>single_source:</strong> Needs corroboration</li>
+            <li><strong>conflict:</strong> Sources disagree</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Analyses', value: '1,026' },
+          { label: 'Gaps Found', value: '3.2 avg' },
+          { label: 'Precision', value: '87%' },
+          { label: 'Recall', value: '82%' },
+          { label: 'Latency', value: '65ms' },
+          { label: 'Cost', value: '$0.0003' }
+        ]
+      },
+      'search-meili': {
+        title: 'Search: Meilisearch',
+        summary: {
+          purpose: 'Full-text and hybrid search',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (245ms)',
+          input: 'SearchPriority[]',
+          output: 'SearchResult[]'
+        },
+        settings: [
+          { type: 'input', label: 'Endpoint', name: 'endpoint', value: 'http://localhost:7700' },
+          { type: 'input', label: 'Index', name: 'index', value: 'kgl_knowledge' },
+          { type: 'input', label: 'Max Results', name: 'max_results', value: '50' },
+          { type: 'input', label: 'Timeout (ms)', name: 'timeout', value: '500' }
+        ],
+        docs: `
+          <h3>Meilisearch</h3>
+          <p>Lightning-fast search engine with typo tolerance and faceted filtering.</p>
+          <ul>
+            <li>Full-text search with typo tolerance</li>
+            <li>Faceted filtering</li>
+            <li>Hybrid vector search (v1.3+)</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Queries', value: '2,345' },
+          { label: 'Results/Query', value: '32' },
+          { label: 'Avg Latency', value: '245ms' },
+          { label: 'P95 Latency', value: '412ms' },
+          { label: 'Cache Hits', value: '49%' },
+          { label: 'Cost', value: '$0 (local)' }
+        ]
+      },
+      'search-qdrant': {
+        title: 'Search: Qdrant',
+        summary: {
+          purpose: 'Vector similarity search',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (189ms)',
+          input: 'SearchPriority[]',
+          output: 'SearchResult[]'
+        },
+        settings: [
+          { type: 'input', label: 'Endpoint', name: 'endpoint', value: 'http://localhost:6333' },
+          { type: 'input', label: 'Collection', name: 'collection', value: 'kgl_embeddings' },
+          { type: 'input', label: 'Embedding Model', name: 'model', value: 'text-embedding-3-small' },
+          { type: 'input', label: 'Max Results', name: 'max_results', value: '50' }
+        ],
+        docs: `
+          <h3>Qdrant Vector Search</h3>
+          <p>Semantic similarity search using embeddings.</p>
+          <ul>
+            <li>Fast approximate nearest neighbor search</li>
+            <li>Filtering with payload metadata</li>
+            <li>OpenAI embeddings integration</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Queries', value: '2,345' },
+          { label: 'Results/Query', value: '28' },
+          { label: 'Avg Latency', value: '189ms' },
+          { label: 'Similarity Avg', value: '0.78' },
+          { label: 'Cache Hits', value: '42%' },
+          { label: 'Cost', value: '$0 (local)' }
+        ]
+      },
+      'search-tavily': {
+        title: 'Search: Tavily',
+        summary: {
+          purpose: 'Web search for external sources',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (1.2s)',
+          input: 'SearchPriority[]',
+          output: 'SearchResult[]'
+        },
+        settings: [
+          { type: 'input', label: 'Max Results', name: 'max_results', value: '20' },
+          { type: 'select', label: 'Search Depth', name: 'depth', options: ['basic', 'advanced'] },
+          { type: 'checkbox', label: 'Include Raw Content', name: 'raw', checked: true },
+          { type: 'input', label: 'Timeout (ms)', name: 'timeout', value: '2000' }
+        ],
+        docs: `
+          <h3>Tavily Web Search</h3>
+          <p>AI-optimized web search API for research.</p>
+          <ul>
+            <li>Real-time web search</li>
+            <li>Content extraction included</li>
+            <li>Optimized for AI consumption</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Queries', value: '1,892' },
+          { label: 'Results/Query', value: '15' },
+          { label: 'Avg Latency', value: '1.2s' },
+          { label: 'Relevance', value: '0.82' },
+          { label: 'Cost/Query', value: '$0.01' },
+          { label: 'Total Cost', value: '$18.92' }
+        ]
+      },
+      'synth': {
+        title: 'L8: Synth - Answer Synthesis',
+        summary: {
+          purpose: 'Generate final answer with citations',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00 (950ms)',
+          input: 'KG query results',
+          output: 'SynthesizedAnswer'
+        },
+        settings: [
+          { type: 'select', label: 'Style', name: 'style', options: ['conversational', 'academic', 'technical', 'executive'] },
+          { type: 'select', label: 'Format', name: 'format', options: ['prose', 'bullet_points', 'numbered'] },
+          { type: 'input', label: 'Max Length (tokens)', name: 'max_length', value: '2000' },
+          { type: 'select', label: 'Citation Style', name: 'citations', options: ['inline', 'footnote', 'endnote'] },
+          { type: 'checkbox', label: 'Include Confidence Scores', name: 'confidence', checked: true },
+          { type: 'input', label: 'Temperature', name: 'temperature', value: '0.3' }
+        ],
+        docs: `
+          <h3>Synthesis Pipeline</h3>
+          <ul>
+            <li>Query knowledge graph for relevant context</li>
+            <li>Apply template for query type</li>
+            <li>Generate with Claude 3.5 Sonnet</li>
+            <li>Attach citations with confidence</li>
+          </ul>
+          <h3>Quality Targets</h3>
+          <ul>
+            <li>User satisfaction: 4.7/5</li>
+            <li>Citation accuracy: 96-97%</li>
+            <li>Latency: 850-1050ms</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Answers Generated', value: '892' },
+          { label: 'Avg Latency', value: '950ms' },
+          { label: 'User Satisfaction', value: '4.7/5' },
+          { label: 'Citation Accuracy', value: '96%' },
+          { label: 'Avg Length', value: '1,250 tok' },
+          { label: 'Cost/Answer', value: '$0.0004' }
+        ]
+      },
+      // Output Gate
+      'classify': {
+        title: 'Classify',
+        summary: {
+          purpose: 'Determine output type, audience, and urgency',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00',
+          input: 'SynthesizedAnswer',
+          output: 'ClassifiedOutput'
+        },
+        settings: [
+          { type: 'checkbox', label: 'Use Topic Subscriptions', name: 'topics', checked: true },
+          { type: 'checkbox', label: 'Use Entity Following', name: 'entities', checked: true },
+          { type: 'input', label: 'Min Relevance Score', name: 'relevance', value: '0.7' }
+        ],
+        docs: `
+          <h3>Output Classification</h3>
+          <ul>
+            <li><strong>answer:</strong> Direct response to user query (immediate)</li>
+            <li><strong>alert:</strong> Breaking news, deadline (high urgency)</li>
+            <li><strong>report:</strong> Scheduled research report (normal)</li>
+            <li><strong>digest:</strong> Weekly summary (batch)</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Classified', value: '1,892' },
+          { label: 'Answers', value: '68%' },
+          { label: 'Alerts', value: '12%' },
+          { label: 'Reports', value: '15%' },
+          { label: 'Digests', value: '5%' },
+          { label: 'Accuracy', value: '94%' }
+        ]
+      },
+      'schedule': {
+        title: 'Schedule',
+        summary: {
+          purpose: 'Determine when outputs should be delivered',
+          status: 'Immediate',
+          lastRun: '2026-01-10 14:32:00',
+          input: 'ClassifiedOutput + Preferences',
+          output: 'ScheduledDelivery'
+        },
+        settings: [
+          { type: 'input', label: 'Default Digest Time', name: 'digest_time', value: '09:00' },
+          { type: 'input', label: 'Default Timezone', name: 'timezone', value: 'UTC' },
+          { type: 'checkbox', label: 'Enable Batching', name: 'batching', checked: true },
+          { type: 'input', label: 'Batch Window (minutes)', name: 'batch_window', value: '30' },
+          { type: 'input', label: 'Max Emails/User/Day', name: 'max_emails', value: '20' }
+        ],
+        docs: `
+          <h3>Scheduling Modes</h3>
+          <ul>
+            <li><strong>Immediate:</strong> Send now (urgent, user responses)</li>
+            <li><strong>Scheduled:</strong> Specific time (reports, digests)</li>
+            <li><strong>Window:</strong> Within time range (batch with others)</li>
+            <li><strong>Hold:</strong> Queue but don't send (needs approval)</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Scheduled', value: '1,892' },
+          { label: 'Immediate', value: '72%' },
+          { label: 'Batched', value: '18%' },
+          { label: 'Held', value: '10%' },
+          { label: 'Avg Delay', value: '2.3 min' },
+          { label: 'On Time', value: '99.2%' }
+        ]
+      },
+      'format': {
+        title: 'Format',
+        summary: {
+          purpose: 'Transform content for each delivery channel',
+          status: 'Ready',
+          lastRun: '2026-01-10 14:32:00',
+          input: 'ScheduledDelivery',
+          output: 'FormattedOutput[]'
+        },
+        settings: [
+          { type: 'input', label: 'Template Directory', name: 'templates', value: '/templates/output' },
+          { type: 'checkbox', label: 'Enable Personalization', name: 'personalize', checked: true },
+          { type: 'checkbox', label: 'Track Opens (Email)', name: 'track_opens', checked: true },
+          { type: 'checkbox', label: 'Track Clicks (Email)', name: 'track_clicks', checked: true }
+        ],
+        docs: `
+          <h3>Channel Formats</h3>
+          <ul>
+            <li><strong>Email:</strong> HTML + text fallback + tracking</li>
+            <li><strong>Push:</strong> Title, body, icon, action URL</li>
+            <li><strong>Slack:</strong> Block kit format</li>
+            <li><strong>RSS:</strong> Standard feed item</li>
+            <li><strong>Webhook:</strong> JSON + HMAC signature</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Formatted', value: '3,245' },
+          { label: 'Email', value: '45%' },
+          { label: 'Push', value: '32%' },
+          { label: 'Slack', value: '15%' },
+          { label: 'Other', value: '8%' },
+          { label: 'Avg Time', value: '45ms' }
+        ]
+      },
+      'track': {
+        title: 'Track',
+        summary: {
+          purpose: 'Monitor delivery status and engagement',
+          status: 'Monitoring',
+          lastRun: 'Continuous',
+          input: 'Delivery events',
+          output: 'DeliveryTracking'
+        },
+        settings: [
+          { type: 'select', label: 'Storage', name: 'storage', options: ['postgresql', 'mongodb'] },
+          { type: 'input', label: 'Retention (days)', name: 'retention', value: '365' },
+          { type: 'checkbox', label: 'Publish Events', name: 'events', checked: true }
+        ],
+        docs: `
+          <h3>Tracking Events</h3>
+          <ul>
+            <li><strong>sent:</strong> Transport confirmed</li>
+            <li><strong>delivered:</strong> Provider webhook</li>
+            <li><strong>bounced:</strong> Delivery failed</li>
+            <li><strong>opened:</strong> Tracking pixel loaded</li>
+            <li><strong>clicked:</strong> Link redirect</li>
+            <li><strong>tapped:</strong> Push notification tap</li>
+          </ul>
+        `,
+        metrics: [
+          { label: 'Sent', value: '3,245' },
+          { label: 'Delivered', value: '98.7%' },
+          { label: 'Open Rate', value: '42%' },
+          { label: 'Click Rate', value: '8.3%' },
+          { label: 'Bounce Rate', value: '1.3%' },
+          { label: 'Avg Time', value: '0.8s' }
+        ]
+      }
+    };
+
+    let currentTab = 'summary';
+
+    function openModal(componentId) {
+      const component = components[componentId];
+      if (!component) return;
+
+      document.getElementById('modalTitle').textContent = component.title;
+      document.getElementById('modalOverlay').classList.add('active');
+
+      currentTab = 'summary';
+      updateModalTabs();
+      renderModalContent(component);
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      updateModalTabs();
+
+      // Re-render content
+      const title = document.getElementById('modalTitle').textContent;
+      const component = Object.values(components).find(c => c.title === title);
+      if (component) {
+        renderModalContent(component);
+      }
+    }
+
+    function updateModalTabs() {
+      document.querySelectorAll('.modal-tab').forEach(t => {
+        t.classList.toggle('active', t.textContent.toLowerCase() === currentTab);
+      });
+    }
+
+    function renderModalContent(component) {
+      const content = document.getElementById('modalContent');
+
+      if (currentTab === 'summary') {
+        content.innerHTML = `
+          <div class="modal-section">
+            <div class="modal-section-title">Overview</div>
+            <div class="info-grid">
+              <div class="info-label">Purpose</div>
+              <div class="info-value">${component.summary.purpose}</div>
+              <div class="info-label">Status</div>
+              <div class="info-value success">${component.summary.status}</div>
+              <div class="info-label">Last Run</div>
+              <div class="info-value">${component.summary.lastRun}</div>
+              <div class="info-label">Input</div>
+              <div class="info-value">${component.summary.input}</div>
+              <div class="info-label">Output</div>
+              <div class="info-value">${component.summary.output}</div>
+            </div>
+          </div>
+        `;
+      } else if (currentTab === 'settings') {
+        let settingsHtml = component.settings.map(s => {
+          if (s.type === 'checkbox') {
+            return `
+              <label class="form-checkbox">
+                <input type="checkbox" ${s.checked ? 'checked' : ''}>
+                ${s.label}
+              </label>
+            `;
+          } else if (s.type === 'select') {
+            return `
+              <div class="form-group">
+                <label class="form-label">${s.label}</label>
+                <select class="form-input">
+                  ${s.options.map(o => `<option>${o}</option>`).join('')}
+                </select>
+              </div>
+            `;
+          } else {
+            return `
+              <div class="form-group">
+                <label class="form-label">${s.label}</label>
+                <input type="text" class="form-input" value="${s.value}">
+              </div>
+            `;
+          }
+        }).join('');
+
+        content.innerHTML = `
+          <div class="modal-section">
+            <div class="modal-section-title">Configuration</div>
+            ${settingsHtml}
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 16px;">
+            <button class="toolbar" style="background: var(--accent-green); border-color: var(--accent-green); color: var(--bg-primary);">Apply</button>
+            <button class="toolbar">Reset to Defaults</button>
+          </div>
+        `;
+      } else if (currentTab === 'docs') {
+        content.innerHTML = `
+          <div class="docs-content">
+            ${component.docs}
+          </div>
+        `;
+      } else if (currentTab === 'metrics') {
+        const metricsHtml = component.metrics.map(m => `
+          <div class="metric-card">
+            <div class="metric-value">${m.value}</div>
+            <div class="metric-label">${m.label}</div>
+          </div>
+        `).join('');
+
+        content.innerHTML = `
+          <div class="modal-section">
+            <div class="modal-section-title">Performance Metrics</div>
+            <div class="metrics-grid">
+              ${metricsHtml}
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Close modal on overlay click
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Close modal on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -5,6 +5,8 @@
 **Last Updated:** 2025-11-15
 **Scope:** All kits in the ecosystem
 
+> **See Also:** For bash script patterns, exit codes, and JSON output, see [UKIS-STANDARD.md](/.dev/kits/shared/standards/UKIS-STANDARD.md). This document focuses on CLI flags, directory structure, and metadata schema.
+
 ---
 
 ## 1. Introduction & Purpose
